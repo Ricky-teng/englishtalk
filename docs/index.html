@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="用嘴巴跟 AI 即時練英文對話，可以隨時插話打斷。內建單字本與間隔重複複習。">
+<meta name="theme-color" content="#2a78d6">
+<title>English Talk — 雙工英文對話練習</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗣️</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <span class="brand">🗣️ English Talk</span>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="chat" aria-selected="true">對話</button>
+    <button role="tab" data-tab="vocab" aria-selected="false">單字本 <span class="pill zero" id="pillVocab">0</span></button>
+    <button role="tab" data-tab="review" aria-selected="false">複習 <span class="pill zero" id="pillDue">0</span></button>
+    <button role="tab" data-tab="stats" aria-selected="false">紀錄</button>
+  </nav>
+  <div class="spacer"></div>
+  <span class="badge" id="badgeEngine">—</span>
+  <span class="badge" id="badgeTTS">—</span>
+  <button class="btn sm ghost" id="btnTheme" title="切換深淺色">🌓</button>
+  <button class="btn sm" id="btnSettings">設定</button>
+</header>
+
+<main>
+
+  <!-- ============================ 對話 ============================ -->
+  <section class="page active" id="page-chat">
+    <div id="statusbar">
+      <div id="dot"></div>
+      <span id="statusText">尚未開始</span>
+      <div id="meter"><div id="meterFill"></div></div>
+      <div class="spacer"></div>
+      <span class="muted" id="turnInfo"></span>
+    </div>
+
+    <div id="chat"><div id="chatInner"></div></div>
+
+    <footer>
+      <div class="footer-inner">
+        <button class="btn primary" id="btnStart">開始對話</button>
+        <button class="btn danger" id="btnStop" disabled>結束</button>
+        <input type="text" id="textInput" placeholder="也可以直接打字送出（Enter）" autocomplete="off">
+        <div id="hint">建議戴耳機。AI 說話時你隨時可以插話打斷；點 AI 訊息裡的任何單字即可查詢並收進單字本。</div>
+      </div>
+    </footer>
+  </section>
+
+  <!-- ============================ 單字本 ============================ -->
+  <section class="page" id="page-vocab">
+    <div class="scroll"><div class="wrap">
+      <h2 class="title">單字本</h2>
+      <p class="lede">點對話裡的單字就會收進來。到期的單字會自動出現在複習，也會被 AI 在聊天中自然用出來。</p>
+
+      <div class="vocab-toolbar">
+        <input type="search" id="vocabSearch" placeholder="搜尋單字或中文意思…">
+        <select id="vocabTag" style="width:auto;min-width:120px"><option value="">所有標籤</option></select>
+        <select id="vocabSort" style="width:auto;min-width:110px">
+          <option value="due">依到期日</option>
+          <option value="new">最新加入</option>
+          <option value="az">字母順序</option>
+        </select>
+        <button class="btn sm" id="btnBulkAdd">批次加入</button>
+        <button class="btn sm ghost" id="btnVocabExport">匯出 CSV</button>
+      </div>
+
+      <div id="vocabCounts" class="tiles"></div>
+      <div id="vocabList" class="vlist"></div>
+    </div></div>
+  </section>
+
+  <!-- ============================ 複習 ============================ -->
+  <section class="page" id="page-review">
+    <div class="scroll"><div class="wrap">
+      <h2 class="title">複習</h2>
+      <p class="lede">間隔重複：記得越牢，下次出現得越晚。答錯的會今天再出現一次。</p>
+
+      <div class="row" style="margin-bottom:18px">
+        <div class="grow">
+          <label class="field" for="reviewTag">複習範圍</label>
+          <select id="reviewTag"><option value="">全部單字</option></select>
+        </div>
+        <button class="btn primary" id="btnStartReview">開始複習</button>
+      </div>
+
+      <div id="reviewStage" class="review-stage"></div>
+    </div></div>
+  </section>
+
+  <!-- ============================ 紀錄 ============================ -->
+  <section class="page" id="page-stats">
+    <div class="scroll"><div class="wrap">
+      <h2 class="title">練習紀錄</h2>
+      <p class="lede">所有資料都存在這台裝置的瀏覽器裡，沒有上傳到任何地方。</p>
+
+      <div id="statTiles" class="tiles"></div>
+
+      <div class="card">
+        <h3>練習熱力圖</h3>
+        <div id="heatmap"></div>
+      </div>
+
+      <div class="card">
+        <h3>每日明細</h3>
+        <div class="table-scroll" id="dailyTable"></div>
+      </div>
+
+      <div class="card">
+        <h3>對話紀錄</h3>
+        <div id="sessionList"></div>
+      </div>
+
+      <div class="card">
+        <h3>備份</h3>
+        <p class="note" style="margin-top:0">匯出的檔案包含單字本、對話紀錄與統計，但<strong>不含 API 金鑰</strong>。換電腦時匯入即可延續進度。</p>
+        <div class="row" style="margin-top:12px">
+          <button class="btn" id="btnExportAll">匯出備份</button>
+          <button class="btn" id="btnImportAll">匯入備份</button>
+          <div class="spacer"></div>
+          <button class="btn danger" id="btnWipe">清除所有資料</button>
+        </div>
+        <input type="file" id="importFile" accept="application/json,.json" hidden>
+      </div>
+    </div></div>
+  </section>
+
+</main>
+
+<!-- ============================ 單字彈窗 ============================ -->
+<div id="wordPop" hidden></div>
+
+<!-- ============================ 設定 ============================ -->
+<dialog class="modal" id="dlgSettings">
+  <div class="m-head">
+    <h2>設定</h2>
+    <p class="note" style="margin-bottom:0">
+      金鑰只存在你自己的瀏覽器（localStorage），不會傳給這個網站的伺服器，因為它根本沒有伺服器。
+    </p>
+  </div>
+  <div class="m-body">
+
+    <label class="field" for="cfgProvider">對話模型供應商</label>
+    <select id="cfgProvider">
+      <option value="gemini">Google Gemini（推薦：免費額度大、瀏覽器直連最穩）</option>
+      <option value="groq">Groq（回應最快，少數瀏覽器可能被跨來源政策擋下）</option>
+    </select>
+
+    <div id="grpGemini">
+      <label class="field" for="cfgGeminiKey">Gemini API 金鑰 <span class="badge" id="stGemini">未設定</span></label>
+      <input type="password" id="cfgGeminiKey" placeholder="AIza…（留空表示不更動）" autocomplete="off">
+      <div class="note">免費申請：<a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></div>
+      <label class="field" for="cfgGeminiModel">Gemini 模型</label>
+      <div class="row">
+        <input type="text" id="cfgGeminiModel" list="listGemini" class="grow">
+        <button class="btn sm" id="btnFetchGemini" type="button">抓取可用清單</button>
+      </div>
+      <datalist id="listGemini"></datalist>
+      <div class="note" id="noteGemini"></div>
+    </div>
+
+    <div id="grpGroq">
+      <label class="field" for="cfgGroqKey">Groq API 金鑰 <span class="badge" id="stGroq">未設定</span></label>
+      <input type="password" id="cfgGroqKey" placeholder="gsk_…（留空表示不更動）" autocomplete="off">
+      <div class="note">免費申請：<a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a></div>
+      <label class="field" for="cfgGroqModel">Groq 模型</label>
+      <div class="row">
+        <input type="text" id="cfgGroqModel" list="listGroq" class="grow">
+        <button class="btn sm" id="btnFetchGroq" type="button">抓取可用清單</button>
+      </div>
+      <datalist id="listGroq"></datalist>
+      <div class="note" id="noteGroq"></div>
+    </div>
+
+    <hr style="border:0;border-top:1px solid var(--line);margin:22px 0 4px">
+
+    <label class="field" for="cfgTTSEngine">AI 語音引擎</label>
+    <select id="cfgTTSEngine">
+      <option value="browser">瀏覽器內建（免費無限、零延遲，建議用 Edge 取得神經語音）</option>
+      <option value="edge">微軟 Edge 朗讀服務（音質最好，但可能被擋，失敗會自動退回）</option>
+    </select>
+
+    <div id="grpBrowserVoice">
+      <label class="field" for="cfgBrowserVoice">瀏覽器語音</label>
+      <select id="cfgBrowserVoice"></select>
+      <div class="note">名字含 Natural / Online 的是神經語音，音質最接近真人。在 Microsoft Edge 開啟本站可以拿到最多這類語音。</div>
+    </div>
+
+    <div id="grpEdgeVoice" hidden>
+      <label class="field" for="cfgEdgeVoice">微軟語音</label>
+      <select id="cfgEdgeVoice"></select>
+    </div>
+
+    <div class="row">
+      <div class="grow">
+        <label class="field" for="cfgRate">語速</label>
+        <select id="cfgRate">
+          <option value="0.75">很慢</option>
+          <option value="0.9">慢</option>
+          <option value="1">正常</option>
+          <option value="1.1">快</option>
+          <option value="1.25">很快</option>
+        </select>
+      </div>
+      <div class="grow">
+        <label class="field" for="cfgLevel">你的英文程度</label>
+        <select id="cfgLevel">
+          <option value="A2">A2 初級</option>
+          <option value="B1">B1 中級</option>
+          <option value="B2">B2 中高級</option>
+          <option value="C1">C1 高級</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="field" for="cfgPersona">AI 角色設定（英文描述）</label>
+    <input type="text" id="cfgPersona">
+
+    <div class="row">
+      <div class="grow">
+        <label class="field" for="cfgBarge">搶話靈敏度</label>
+        <select id="cfgBarge">
+          <option value="0">關閉（AI 說完才聽）</option>
+          <option value="2">高靈敏</option>
+          <option value="3">中（推薦）</option>
+          <option value="4.5">低靈敏（吵雜環境）</option>
+        </select>
+      </div>
+      <div class="grow">
+        <label class="field" for="cfgSilence">停頓多久算你說完</label>
+        <select id="cfgSilence">
+          <option value="700">0.7 秒（反應快）</option>
+          <option value="1000">1.0 秒（推薦）</option>
+          <option value="1500">1.5 秒（想慢慢講）</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer">
+      <input type="checkbox" id="cfgUseVocab" style="width:auto">
+      讓 AI 在對話中自然用到我正在複習的單字
+    </label>
+
+    <div style="height:8px"></div>
+  </div>
+  <div class="m-foot">
+    <button class="btn ghost" id="btnCloseSettings">取消</button>
+    <button class="btn primary" id="btnSaveSettings">儲存</button>
+  </div>
+</dialog>
+
+<!-- ============================ 批次加入單字 ============================ -->
+<dialog class="modal" id="dlgBulk">
+  <div class="m-head">
+    <h2>批次加入單字</h2>
+    <p class="note" style="margin-bottom:0">
+      直接貼上課本的單字表就行，逗號、換行、tab 或「單字 中文」混排都能認得。
+      一次最多 20 個，AI 會自動補上音標、詞性、中文意思與例句。
+    </p>
+  </div>
+  <div class="m-body">
+    <label class="field" for="bulkTag">標籤（選填，用來分組複習）</label>
+    <input type="text" id="bulkTag" placeholder="例如：第三課、期中考、商用英文">
+    <label class="field" for="bulkText">單字</label>
+    <textarea id="bulkText" placeholder="accomplish&#10;negotiate&#10;sustainable&#10;reluctant"></textarea>
+    <div class="note" id="bulkNote"></div>
+  </div>
+  <div class="m-foot">
+    <button class="btn ghost" id="btnCloseBulk">取消</button>
+    <button class="btn primary" id="btnDoBulk">查詢並加入</button>
+  </div>
+</dialog>
+
+<div id="toast"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雙工英文對話練習 AI</title>
+<style>
+  :root{
+    --bg:#0e1117; --panel:#161b24; --panel2:#1d2430; --line:#2a3340;
+    --text:#e6edf5; --muted:#8b98a9; --accent:#4da3ff; --accent2:#2ee6a8;
+    --user:#22303f; --ai:#1b2b26; --danger:#ff6b6b;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:"Noto Sans TC","Segoe UI",system-ui,-apple-system,sans-serif;
+    display:flex; flex-direction:column;
+  }
+  header{
+    display:flex; align-items:center; gap:12px; padding:12px 18px;
+    border-bottom:1px solid var(--line); background:var(--panel);
+  }
+  header h1{font-size:16px; margin:0; font-weight:600; letter-spacing:.3px}
+  .spacer{flex:1}
+  button{
+    font-family:inherit; font-size:14px; cursor:pointer; border-radius:8px;
+    border:1px solid var(--line); background:var(--panel2); color:var(--text);
+    padding:8px 14px; transition:.15s;
+  }
+  button:hover{border-color:var(--accent)}
+  button:disabled{opacity:.45; cursor:not-allowed}
+  .primary{background:var(--accent); border-color:var(--accent); color:#06131f; font-weight:600}
+  .danger{background:transparent; border-color:var(--danger); color:var(--danger)}
+
+  /* 狀態列 */
+  #statusbar{
+    display:flex; align-items:center; gap:10px; padding:10px 18px;
+    border-bottom:1px solid var(--line); background:var(--panel); font-size:13px;
+  }
+  #dot{width:10px;height:10px;border-radius:50%;background:#555;flex:none}
+  #dot.listening{background:var(--accent2); box-shadow:0 0 0 0 rgba(46,230,168,.6); animation:pulse 1.4s infinite}
+  #dot.thinking{background:#ffcc5c}
+  #dot.speaking{background:var(--accent)}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(46,230,168,.55)}
+    70%{box-shadow:0 0 0 10px rgba(46,230,168,0)}
+    100%{box-shadow:0 0 0 0 rgba(46,230,168,0)}
+  }
+  #meter{width:120px;height:6px;background:#232c38;border-radius:3px;overflow:hidden;flex:none}
+  #meterFill{height:100%;width:0;background:linear-gradient(90deg,var(--accent2),var(--accent));transition:width .08s linear}
+
+  /* 對話區 */
+  #chat{flex:1; overflow-y:auto; padding:20px 18px 8px; display:flex; flex-direction:column; gap:12px}
+  .msg{max-width:min(760px,86%); padding:11px 14px; border-radius:12px; line-height:1.6; white-space:pre-wrap; word-break:break-word}
+  .msg.user{align-self:flex-end; background:var(--user); border:1px solid #2f4155}
+  .msg.ai{align-self:flex-start; background:var(--ai); border:1px solid #27453a}
+  .msg.sys{align-self:center; background:transparent; color:var(--muted); font-size:13px; border:1px dashed var(--line)}
+  .msg .who{display:block; font-size:11px; color:var(--muted); margin-bottom:4px; letter-spacing:.5px}
+  .msg.interim{opacity:.55; font-style:italic}
+
+  /* 底部 */
+  footer{padding:12px 18px 18px; border-top:1px solid var(--line); background:var(--panel); display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+  #hint{font-size:12px; color:var(--muted); flex:1; min-width:200px}
+  #textInput{flex:1; min-width:220px; padding:9px 12px; border-radius:8px; border:1px solid var(--line); background:var(--panel2); color:var(--text); font-family:inherit; font-size:14px}
+
+  /* 設定面板 */
+  #settings{
+    position:fixed; inset:0; background:rgba(0,0,0,.6); display:none;
+    align-items:center; justify-content:center; padding:20px; z-index:50;
+  }
+  #settings.open{display:flex}
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    width:min(560px,100%); max-height:88vh; overflow-y:auto; padding:22px;
+  }
+  .card h2{margin:0 0 4px; font-size:17px}
+  .card p.sub{margin:0 0 18px; font-size:13px; color:var(--muted); line-height:1.6}
+  label{display:block; font-size:13px; margin:14px 0 5px; color:var(--muted)}
+  input[type=text],input[type=password],select{
+    width:100%; padding:9px 11px; border-radius:8px; border:1px solid var(--line);
+    background:var(--panel2); color:var(--text); font-family:inherit; font-size:14px;
+  }
+  .row{display:flex; gap:10px}
+  .row>*{flex:1}
+  .note{font-size:12px; color:var(--muted); margin-top:5px; line-height:1.6}
+  .note a{color:var(--accent)}
+  .actions{display:flex; gap:10px; justify-content:flex-end; margin-top:22px}
+  .badge{font-size:11px; padding:2px 7px; border-radius:6px; border:1px solid var(--line); color:var(--muted)}
+  .badge.on{color:var(--accent2); border-color:#2c5f4d}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>雙工英文對話練習 AI</h1>
+  <span id="engineBadge" class="badge">—</span>
+  <span id="ttsBadge" class="badge">—</span>
+  <div class="spacer"></div>
+  <button id="btnExport">匯出逐字稿</button>
+  <button id="btnSettings">設定</button>
+</header>
+
+<div id="statusbar">
+  <div id="dot"></div>
+  <span id="statusText">尚未開始</span>
+  <div id="meter"><div id="meterFill"></div></div>
+  <div class="spacer"></div>
+  <span id="turnInfo" style="color:var(--muted)"></span>
+</div>
+
+<div id="chat"></div>
+
+<footer>
+  <button id="btnStart" class="primary">開始對話</button>
+  <button id="btnStop" class="danger" disabled>結束</button>
+  <input id="textInput" type="text" placeholder="也可以直接打字送出（按 Enter）" autocomplete="off">
+  <div id="hint">建議戴耳機，AI 說話時你隨時可以插話搶話。</div>
+</footer>
+
+<!-- 設定面板 -->
+<div id="settings">
+  <div class="card">
+    <h2>設定</h2>
+    <p class="sub">金鑰只會存在你電腦上的 config.json，不會送到別的地方。</p>
+
+    <label>對話模型供應商</label>
+    <select id="cfgProvider">
+      <option value="groq">Groq（最快，適合即時對話）</option>
+      <option value="gemini">Google Gemini（免費額度大）</option>
+    </select>
+
+    <label>Groq API 金鑰 <span id="groqState" class="badge">未設定</span></label>
+    <input id="cfgGroqKey" type="password" placeholder="gsk_... （留空表示不更動）">
+    <div class="note">免費申請：<a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a>　免費額度每天重置，個人練習綽綽有餘。</div>
+
+    <label>Groq 模型</label>
+    <div class="row">
+      <input id="cfgGroqModel" type="text" list="groqModels" style="flex:2">
+      <button id="btnFetchGroq" type="button" style="flex:0 0 auto">抓取可用清單</button>
+    </div>
+    <datalist id="groqModels"></datalist>
+    <div id="groqModelNote" class="note"></div>
+
+    <label>Gemini API 金鑰 <span id="gemState" class="badge">未設定</span></label>
+    <input id="cfgGemKey" type="password" placeholder="AIza... （留空表示不更動）">
+    <div class="note">免費申請：<a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></div>
+
+    <label>Gemini 模型</label>
+    <div class="row">
+      <input id="cfgGemModel" type="text" list="gemModels" style="flex:2">
+      <button id="btnFetchGem" type="button" style="flex:0 0 auto">抓取可用清單</button>
+    </div>
+    <datalist id="gemModels"></datalist>
+    <div id="gemModelNote" class="note"></div>
+
+    <label>AI 語音（edge-tts，免費無限）</label>
+    <select id="cfgVoice"></select>
+
+    <div class="row">
+      <div>
+        <label>語速</label>
+        <select id="cfgRate">
+          <option value="-20%">很慢 -20%</option>
+          <option value="-10%">慢 -10%</option>
+          <option value="+0%">正常</option>
+          <option value="+10%">快 +10%</option>
+          <option value="+20%">很快 +20%</option>
+        </select>
+      </div>
+      <div>
+        <label>你的英文程度</label>
+        <select id="cfgLevel">
+          <option value="A2">A2 初級</option>
+          <option value="B1">B1 中級</option>
+          <option value="B2">B2 中高級</option>
+          <option value="C1">C1 高級</option>
+        </select>
+      </div>
+    </div>
+
+    <label>AI 角色設定（英文描述）</label>
+    <input id="cfgPersona" type="text">
+
+    <div class="row" style="margin-top:14px">
+      <div>
+        <label>搶話靈敏度（越小越容易被打斷）</label>
+        <select id="cfgBarge">
+          <option value="0">關閉搶話（AI 說完才聽）</option>
+          <option value="2.0">高靈敏</option>
+          <option value="3.0">中（推薦）</option>
+          <option value="4.5">低靈敏（吵雜環境）</option>
+        </select>
+      </div>
+      <div>
+        <label>停頓多久算你說完</label>
+        <select id="cfgSilence">
+          <option value="700">0.7 秒（反應快）</option>
+          <option value="1000">1.0 秒（推薦）</option>
+          <option value="1500">1.5 秒（想慢慢講）</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="btnCancelCfg">取消</button>
+      <button id="btnSaveCfg" class="primary">儲存</button>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* =========================================================================
+   雙工英文對話練習 AI — 前端
+   流程：連續語音辨識 → 靜音判定成句 → 串流 LLM → 逐句 TTS 播放
+   雙工關鍵：AI 說話時麥克風不關，偵測到使用者出聲就立刻停止播放並接手
+   ========================================================================= */
+
+/* ---------- 全域狀態 ---------- */
+const S = {
+  cfg: null,                 // 伺服器設定
+  bargeSensitivity: 3.0,     // 搶話門檻倍率（相對於環境噪音底）
+  silenceMs: 1000,           // 判定「說完了」的靜音長度
+  running: false,            // 對話是否進行中
+  state: "idle",             // idle | listening | thinking | speaking
+  history: [],               // [{role:'user'|'assistant', content}]
+  recog: null,               // SpeechRecognition 實例
+  recogAlive: false,
+  finalBuf: "",              // 本回合已確定的辨識結果
+  interimBuf: "",            // 本回合暫時的辨識結果
+  silenceTimer: null,
+  abortCtrl: null,           // 中止 LLM 串流
+  ttsQueue: [],              // 待唸的句子
+  ttsBusy: false,
+  curAudio: null,            // 目前播放的 <audio>
+  curSpoken: "",             // 目前正在唸的句子（用來過濾回音）
+  stopSpeaking: false,       // 搶話旗標
+  useBrowserTTS: false,      // edge-tts 不可用時退回瀏覽器語音
+  noiseFloor: 0.005,
+  level: 0,
+  vadReady: false,
+  aiNode: null,              // 目前這回合 AI 訊息的 DOM
+  interimNode: null,
+};
+
+/* ---------- DOM ---------- */
+const $ = (id) => document.getElementById(id);
+const chatEl = $("chat");
+
+/* =========================================================================
+   1. 設定載入與儲存
+   ========================================================================= */
+
+async function loadConfig() {
+  const r = await fetch("/api/config");
+  S.cfg = await r.json();
+
+  // 語音下拉
+  const vs = $("cfgVoice");
+  vs.innerHTML = "";
+  (S.cfg.voices || []).forEach(v => {
+    const o = document.createElement("option");
+    o.value = v.id; o.textContent = v.label;
+    vs.appendChild(o);
+  });
+
+  $("cfgProvider").value   = S.cfg.provider;
+  $("cfgGroqModel").value  = S.cfg.groq_model;
+  $("cfgGemModel").value   = S.cfg.gemini_model;
+  $("cfgVoice").value      = S.cfg.voice;
+  $("cfgRate").value       = S.cfg.rate;
+  $("cfgLevel").value      = S.cfg.level;
+  $("cfgPersona").value    = S.cfg.persona;
+  $("cfgBarge").value      = String(S.bargeSensitivity);
+  $("cfgSilence").value    = String(S.silenceMs);
+
+  setBadge($("groqState"), S.cfg.has_groq_key, "已設定", "未設定");
+  setBadge($("gemState"),  S.cfg.has_gemini_key, "已設定", "未設定");
+
+  S.useBrowserTTS = !S.cfg.edge_tts;
+  $("engineBadge").textContent = S.cfg.provider === "gemini" ? "Gemini" : "Groq";
+  $("ttsBadge").textContent = S.cfg.edge_tts ? "edge-tts 語音" : "瀏覽器語音";
+  $("ttsBadge").className = "badge" + (S.cfg.edge_tts ? " on" : "");
+
+  // 沒有任何金鑰就自動打開設定
+  if (!S.cfg.has_groq_key && !S.cfg.has_gemini_key) openSettings();
+}
+
+function setBadge(el, on, yes, no) {
+  el.textContent = on ? yes : no;
+  el.className = "badge" + (on ? " on" : "");
+}
+
+async function saveConfig() {
+  const body = {
+    provider:     $("cfgProvider").value,
+    groq_api_key: $("cfgGroqKey").value,
+    groq_model:   $("cfgGroqModel").value.trim(),
+    gemini_api_key: $("cfgGemKey").value,
+    gemini_model: $("cfgGemModel").value.trim(),
+    voice:        $("cfgVoice").value,
+    rate:         $("cfgRate").value,
+    level:        $("cfgLevel").value,
+    persona:      $("cfgPersona").value.trim(),
+  };
+  await fetch("/api/settings", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  S.bargeSensitivity = parseFloat($("cfgBarge").value);
+  S.silenceMs = parseInt($("cfgSilence").value, 10);
+  $("cfgGroqKey").value = "";
+  $("cfgGemKey").value = "";
+  await loadConfig();
+  closeSettings();
+  sysMsg("設定已儲存。");
+}
+
+/**
+ * 向伺服器查詢「這把金鑰實際可用」的模型清單，填進 datalist。
+ * 模型會被供應商汰換，寫死名稱遲早 404，所以提供這個即時查詢。
+ */
+async function fetchModels(provider) {
+  const isGroq = provider === "groq";
+  const noteEl  = $(isGroq ? "groqModelNote" : "gemModelNote");
+  const listEl  = $(isGroq ? "groqModels" : "gemModels");
+  const inputEl = $(isGroq ? "cfgGroqModel" : "cfgGemModel");
+
+  noteEl.textContent = "查詢中…";
+  try {
+    const r = await fetch("/api/models?provider=" + provider);
+    const d = await r.json();
+    if (d.error) { noteEl.textContent = "查詢失敗：" + d.error; return; }
+
+    const models = d.models || [];
+    listEl.innerHTML = "";
+    models.forEach(m => {
+      const o = document.createElement("option");
+      o.value = m;
+      listEl.appendChild(o);
+    });
+
+    // 目前填的模型如果不在清單裡，自動換成一個可用的
+    if (!models.includes(inputEl.value.trim()) && models.length) {
+      const prefer = isGroq
+        ? ["llama-3.1-8b-instant", "openai/gpt-oss-20b", "openai/gpt-oss-120b"]
+        : ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"];
+      inputEl.value = prefer.find(p => models.includes(p)) || models[0];
+    }
+    noteEl.textContent = "找到 " + models.length + " 個可用模型，點輸入框可以下拉選擇。";
+  } catch (e) {
+    noteEl.textContent = "查詢失敗：" + e.message;
+  }
+}
+
+function openSettings(){ $("settings").classList.add("open"); }
+function closeSettings(){ $("settings").classList.remove("open"); }
+
+/* =========================================================================
+   2. 畫面輔助
+   ========================================================================= */
+
+function setState(st) {
+  S.state = st;
+  const dot = $("dot"), txt = $("statusText");
+  dot.className = st;
+  txt.textContent = {
+    idle: "尚未開始",
+    listening: "聆聽中… 請說英文",
+    thinking: "思考中…",
+    speaking: "AI 說話中（可直接插話打斷）",
+  }[st] || st;
+}
+
+function addMsg(kind, text, cls) {
+  const d = document.createElement("div");
+  d.className = "msg " + kind + (cls ? " " + cls : "");
+  const w = document.createElement("span");
+  w.className = "who";
+  w.textContent = kind === "user" ? "你" : (kind === "ai" ? "AI" : "系統");
+  d.appendChild(w);
+  const body = document.createElement("span");
+  body.textContent = text;
+  d.appendChild(body);
+  chatEl.appendChild(d);
+  chatEl.scrollTop = chatEl.scrollHeight;
+  return { root: d, body: body };
+}
+
+function sysMsg(t) { addMsg("sys", t); }
+
+function showInterim(text) {
+  if (!text) { clearInterim(); return; }
+  if (!S.interimNode) S.interimNode = addMsg("user", text, "interim");
+  else { S.interimNode.body.textContent = text; }
+  chatEl.scrollTop = chatEl.scrollHeight;
+}
+
+function clearInterim() {
+  if (S.interimNode) { S.interimNode.root.remove(); S.interimNode = null; }
+}
+
+/* =========================================================================
+   3. VAD：用獨立的麥克風串流偵測音量，用來「搶話」
+      echoCancellation 開啟，可大幅減少喇叭聲被自己聽到
+   ========================================================================= */
+
+async function initVAD() {
+  if (S.vadReady) return true;
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+    });
+    const ac = new (window.AudioContext || window.webkitAudioContext)();
+    if (ac.state === "suspended") await ac.resume();
+    const src = ac.createMediaStreamSource(stream);
+    const an = ac.createAnalyser();
+    an.fftSize = 1024;
+    src.connect(an);
+    const buf = new Float32Array(an.fftSize);
+
+    let aboveSince = 0;
+    const tick = () => {
+      an.getFloatTimeDomainData(buf);
+      let sum = 0;
+      for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
+      const rms = Math.sqrt(sum / buf.length);
+      S.level = rms;
+
+      // 只在非播放狀態更新噪音底，避免把 AI 的聲音當成環境音
+      if (S.state !== "speaking") {
+        S.noiseFloor = S.noiseFloor * 0.995 + rms * 0.005;
+        if (S.noiseFloor < 0.002) S.noiseFloor = 0.002;
+      }
+
+      $("meterFill").style.width = Math.min(100, rms * 900) + "%";
+
+      // 搶話判定：AI 說話中且音量持續超過門檻 220ms
+      if (S.running && S.state === "speaking" && S.bargeSensitivity > 0) {
+        const th = Math.max(S.noiseFloor * S.bargeSensitivity, 0.018);
+        if (rms > th) {
+          if (!aboveSince) aboveSince = performance.now();
+          else if (performance.now() - aboveSince > 220) { aboveSince = 0; bargeIn(); }
+        } else {
+          aboveSince = 0;
+        }
+      } else {
+        aboveSince = 0;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    S.vadReady = true;
+    return true;
+  } catch (e) {
+    sysMsg("無法取得麥克風：" + e.message + "（搶話功能將關閉）");
+    return false;
+  }
+}
+
+/* =========================================================================
+   4. 語音辨識（Web Speech API，免費無限）
+   ========================================================================= */
+
+function makeRecognizer() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    sysMsg("這個瀏覽器不支援語音辨識，請改用 Chrome 或 Edge。你仍可以用下方輸入框打字練習。");
+    return null;
+  }
+  const r = new SR();
+  r.lang = "en-US";
+  r.continuous = true;
+  r.interimResults = true;
+  r.maxAlternatives = 1;
+
+  r.onstart = () => { S.recogAlive = true; };
+
+  r.onresult = (ev) => {
+    let finalAdd = "", interim = "";
+    for (let i = ev.resultIndex; i < ev.results.length; i++) {
+      const res = ev.results[i];
+      const t = res[0].transcript;
+      if (res.isFinal) finalAdd += t + " ";
+      else interim += t;
+    }
+    const candidate = (finalAdd + interim).trim();
+    if (!candidate) return;
+
+    // AI 說話時：先判斷這是不是喇叭回音
+    if (S.state === "speaking") {
+      if (isEcho(candidate)) return;          // 是自己的聲音，忽略
+      if (wordCount(candidate) >= 2) bargeIn(); // 真的是人在講話 → 搶話
+      else return;
+    }
+
+    if (finalAdd) S.finalBuf += finalAdd;
+    S.interimBuf = interim;
+    showInterim((S.finalBuf + S.interimBuf).trim());
+    scheduleCommit();
+  };
+
+  r.onerror = (ev) => {
+    if (ev.error === "not-allowed" || ev.error === "service-not-allowed") {
+      sysMsg("麥克風權限被拒絕，請在網址列左側允許麥克風後重新整理。");
+      stopConversation();
+    }
+    // no-speech / aborted / network 都交給 onend 自動重啟
+  };
+
+  r.onend = () => {
+    S.recogAlive = false;
+    if (S.running) {
+      // Chrome 會在一段靜默後自動停止，這裡無縫重啟，維持「一直在聽」
+      setTimeout(() => { if (S.running && !S.recogAlive) safeStart(); }, 120);
+    }
+  };
+  return r;
+}
+
+function safeStart() {
+  try { S.recog.start(); } catch (e) { /* 已在執行中，忽略 */ }
+}
+
+function wordCount(t) { return t.trim().split(/\s+/).filter(Boolean).length; }
+
+function normWords(t) {
+  return t.toLowerCase().replace(/[^a-z0-9'\s]/g, " ").split(/\s+/).filter(Boolean);
+}
+
+/** 判斷辨識到的文字是不是 AI 自己的聲音被麥克風收回來 */
+function isEcho(text) {
+  if (!S.curSpoken) return false;
+  const a = normWords(text);
+  if (a.length === 0) return false;
+  const b = new Set(normWords(S.curSpoken));
+  let hit = 0;
+  for (const w of a) if (b.has(w)) hit++;
+  return (hit / a.length) >= 0.6;
+}
+
+/** 重設靜音計時器；使用者停頓夠久就送出這一回合 */
+function scheduleCommit() {
+  if (S.silenceTimer) clearTimeout(S.silenceTimer);
+  S.silenceTimer = setTimeout(commitTurn, S.silenceMs);
+}
+
+function commitTurn() {
+  S.silenceTimer = null;
+  const text = (S.finalBuf + " " + S.interimBuf).trim();
+  S.finalBuf = ""; S.interimBuf = "";
+  clearInterim();
+  if (wordCount(text) < 1) return;
+  sendToAI(text);
+}
+
+/* =========================================================================
+   5. 搶話：立刻停止播放、中止串流、回到聆聽
+   ========================================================================= */
+
+function bargeIn() {
+  if (S.state !== "speaking") return;
+  S.stopSpeaking = true;
+  S.ttsQueue.length = 0;
+  S.curSpoken = "";
+  if (S.curAudio) { try { S.curAudio.pause(); } catch (e) {} S.curAudio = null; }
+  try { window.speechSynthesis.cancel(); } catch (e) {}
+  if (S.abortCtrl) { try { S.abortCtrl.abort(); } catch (e) {} }
+  setState("listening");
+}
+
+/* =========================================================================
+   6. 呼叫 LLM（SSE 串流）並逐句送去合成
+   ========================================================================= */
+
+async function sendToAI(userText) {
+  addMsg("user", userText);
+  S.history.push({ role: "user", content: userText });
+  if (S.history.length > 24) S.history = S.history.slice(-24);
+
+  setState("thinking");
+  S.stopSpeaking = false;
+  S.curSpoken = "";
+  S.aiNode = null;
+
+  const ctrl = new AbortController();
+  S.abortCtrl = ctrl;
+
+  let full = "";      // 這回合 AI 的完整回覆
+  let pending = "";   // 尚未切成完整句子的緩衝
+
+  try {
+    const resp = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: S.history }),
+      signal: ctrl.signal,
+    });
+    if (!resp.ok || !resp.body) throw new Error("HTTP " + resp.status);
+
+    const reader = resp.body.getReader();
+    const dec = new TextDecoder();
+    let sseBuf = "";
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      if (S.stopSpeaking) break;
+
+      sseBuf += dec.decode(value, { stream: true });
+      const parts = sseBuf.split("\n\n");
+      sseBuf = parts.pop();
+
+      for (const part of parts) {
+        const line = part.trim();
+        if (!line.startsWith("data:")) continue;
+        let obj;
+        try { obj = JSON.parse(line.slice(5).trim()); } catch (e) { continue; }
+
+        if (obj.error) { sysMsg("錯誤：" + obj.error); continue; }
+        if (obj.done) continue;
+        if (!obj.delta) continue;
+
+        full += obj.delta;
+        pending += obj.delta;
+
+        // 更新畫面文字
+        if (!S.aiNode) S.aiNode = addMsg("ai", "");
+        S.aiNode.body.textContent = full;
+        chatEl.scrollTop = chatEl.scrollHeight;
+
+        // 切出完整句子，立刻排入 TTS（這是低延遲的關鍵）
+        const cut = splitSentences(pending);
+        pending = cut.rest;
+        for (const s of cut.sentences) enqueueTTS(s);
+      }
+    }
+  } catch (e) {
+    if (e.name !== "AbortError") sysMsg("連線失敗：" + e.message);
+  } finally {
+    if (S.abortCtrl === ctrl) S.abortCtrl = null;
+  }
+
+  const tail = pending.trim();
+  if (tail && !S.stopSpeaking) enqueueTTS(tail);
+
+  if (full.trim()) S.history.push({ role: "assistant", content: full.trim() });
+  $("turnInfo").textContent = "已對話 " + Math.floor(S.history.length / 2) + " 回合";
+
+  // 如果沒有任何東西要唸（例如被打斷），直接回到聆聽
+  if (!S.ttsBusy && S.ttsQueue.length === 0 && S.state !== "listening") {
+    setState(S.running ? "listening" : "idle");
+  }
+}
+
+/** 把串流文字切成完整句子；未成句的部分留在 rest */
+function splitSentences(buf) {
+  const sentences = [];
+  let rest = buf;
+  const re = /[^.!?]*[.!?]+["')\]]*\s+/;
+  let m;
+  while ((m = rest.match(re)) !== null) {
+    const s = m[0].trim();
+    if (s) sentences.push(s);
+    rest = rest.slice(m[0].length);
+  }
+  // 句子太長還沒遇到句號時，在逗號處先斷一次，避免等太久
+  if (rest.length > 150) {
+    const idx = rest.lastIndexOf(", ");
+    if (idx > 40) { sentences.push(rest.slice(0, idx + 1).trim()); rest = rest.slice(idx + 2); }
+  }
+  return { sentences, rest };
+}
+
+/* =========================================================================
+   7. TTS 佇列：邊收邊唸，且預先抓下一句的音訊
+   ========================================================================= */
+
+function enqueueTTS(text) {
+  if (!text || S.stopSpeaking) return;
+  S.ttsQueue.push(text);
+  if (!S.ttsBusy) runTTS();
+}
+
+async function runTTS() {
+  S.ttsBusy = true;
+  setState("speaking");
+  let prefetch = null;   // {text, promise}
+
+  while (S.ttsQueue.length > 0 && !S.stopSpeaking) {
+    const text = S.ttsQueue.shift();
+    let audioPromise;
+    if (prefetch && prefetch.text === text) audioPromise = prefetch.promise;
+    else audioPromise = fetchTTS(text);
+    prefetch = null;
+
+    // 一邊播這句，一邊先去抓下一句
+    if (S.ttsQueue.length > 0) {
+      const nx = S.ttsQueue[0];
+      prefetch = { text: nx, promise: fetchTTS(nx) };
+    }
+
+    let url = null;
+    try { url = await audioPromise; } catch (e) { url = null; }
+    if (S.stopSpeaking) { if (url) URL.revokeObjectURL(url); break; }
+
+    S.curSpoken = text;
+    if (url) {
+      await playAudio(url);
+      URL.revokeObjectURL(url);
+    } else {
+      await speakWithBrowser(text);
+    }
+  }
+
+  S.curSpoken = "";
+  S.ttsBusy = false;
+  if (S.running && S.state === "speaking") setState("listening");
+  else if (!S.running) setState("idle");
+}
+
+/** 向本機 edge-tts 端點要 mp3；失敗回傳 null（改用瀏覽器語音） */
+async function fetchTTS(text) {
+  if (S.useBrowserTTS) return null;
+  try {
+    const r = await fetch("/api/tts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    });
+    if (!r.ok) {
+      if (r.status === 503) S.useBrowserTTS = true;   // 套件沒裝，之後都別再試
+      return null;
+    }
+    const blob = await r.blob();
+    if (!blob || blob.size < 200) return null;
+    return URL.createObjectURL(blob);
+  } catch (e) {
+    return null;
+  }
+}
+
+function playAudio(url) {
+  return new Promise((resolve) => {
+    const a = new Audio(url);
+    S.curAudio = a;
+    const finish = () => { if (S.curAudio === a) S.curAudio = null; resolve(); };
+    a.onended = finish;
+    a.onerror = finish;
+    a.onpause = () => { if (!a.ended) finish(); };   // 被搶話時
+    a.play().catch(finish);
+  });
+}
+
+/** 瀏覽器內建語音（備援） */
+function speakWithBrowser(text) {
+  return new Promise((resolve) => {
+    if (!("speechSynthesis" in window)) return resolve();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US";
+    u.rate = 1.0;
+    const voices = window.speechSynthesis.getVoices();
+    const pick = voices.find(v => /en-US/i.test(v.lang) && /natural|google|aria|zira/i.test(v.name))
+              || voices.find(v => /^en/i.test(v.lang));
+    if (pick) u.voice = pick;
+    u.onend = resolve;
+    u.onerror = resolve;
+    window.speechSynthesis.speak(u);
+  });
+}
+
+/* =========================================================================
+   8. 對話開始 / 結束
+   ========================================================================= */
+
+async function startConversation() {
+  if (S.running) return;
+  if (!S.cfg) { sysMsg("設定尚未載入完成，請稍候或重新整理。"); return; }
+  if (!S.cfg.has_groq_key && !S.cfg.has_gemini_key) {
+    sysMsg("請先到「設定」填入 Groq 或 Gemini 的免費 API 金鑰。");
+    openSettings();
+    return;
+  }
+
+  await initVAD();              // 需要使用者手勢才能開麥克風與 AudioContext
+  try { window.speechSynthesis.getVoices(); } catch (e) {}
+
+  S.recog = makeRecognizer();
+  S.running = true;
+  S.stopSpeaking = false;
+  $("btnStart").disabled = true;
+  $("btnStop").disabled = false;
+  setState("listening");
+
+  if (S.recog) safeStart();
+
+  // 第一回合由 AI 開場，讓使用者不用想開場白
+  if (S.history.length === 0) await sendToAI("Hi!");
+}
+
+function stopConversation() {
+  S.running = false;
+  bargeIn();
+  S.stopSpeaking = true;
+  S.ttsQueue.length = 0;
+  if (S.silenceTimer) { clearTimeout(S.silenceTimer); S.silenceTimer = null; }
+  if (S.recog) { try { S.recog.stop(); } catch (e) {} }
+  clearInterim();
+  $("btnStart").disabled = false;
+  $("btnStop").disabled = true;
+  setState("idle");
+}
+
+/* =========================================================================
+   9. 逐字稿匯出
+   ========================================================================= */
+
+function exportTranscript() {
+  if (S.history.length === 0) { sysMsg("還沒有對話可以匯出。"); return; }
+  const lines = S.history.map(m => (m.role === "user" ? "YOU: " : "AI : ") + m.content);
+  const stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+  const blob = new Blob(["English Talk 逐字稿 " + stamp + "\n\n" + lines.join("\n\n")],
+                        { type: "text/plain;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "englishtalk-" + stamp + ".txt";
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+
+/* =========================================================================
+   10. 事件綁定
+   ========================================================================= */
+
+$("btnStart").addEventListener("click", startConversation);
+$("btnStop").addEventListener("click", stopConversation);
+$("btnSettings").addEventListener("click", openSettings);
+$("btnCancelCfg").addEventListener("click", closeSettings);
+$("btnSaveCfg").addEventListener("click", saveConfig);
+$("btnExport").addEventListener("click", exportTranscript);
+$("btnFetchGroq").addEventListener("click", () => fetchModels("groq"));
+$("btnFetchGem").addEventListener("click", () => fetchModels("gemini"));
+
+$("textInput").addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+  const t = e.target.value.trim();
+  if (!t) return;
+  e.target.value = "";
+  if (S.state === "speaking") bargeIn();
+  if (!S.running) {           // 允許純打字模式
+    S.running = true;
+    $("btnStart").disabled = true;
+    $("btnStop").disabled = false;
+  }
+  sendToAI(t);
+});
+
+$("settings").addEventListener("click", (e) => { if (e.target.id === "settings") closeSettings(); });
+window.addEventListener("beforeunload", () => { if (S.running) stopConversation(); });
+
+loadConfig().catch(e => sysMsg("載入設定失敗：" + e.message));
+</script>
+</body>
+</html>

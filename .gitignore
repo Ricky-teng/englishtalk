@@ -1,0 +1,24 @@
+# 本機 Python 版的設定檔 —— 內含 API 金鑰，絕對不可進版控
+config.json
+config.local.json
+*.key
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 編輯器與系統
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 部署平台
+.vercel
+.netlify
+node_modules/
