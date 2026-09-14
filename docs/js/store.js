@@ -27,7 +27,10 @@ function emptyState() {
       persona: "Ava, a warm and curious American friend in her late twenties",
       bargeSensitivity: 3.0,         // 0 = 關閉搶話
       silenceMs: 1000,
-      useVocabInChat: true,          // 讓 AI 刻意用到你的單字
+      // 0 = 關閉，1 = 每輪都注入。0.5 大約每兩輪一次。
+      // 用機率閘門控制，而不是在提示詞裡寫「偶爾」—— 模型對程度副詞不敏感，
+      // 但「這一輪根本沒拿到單字」是確定的。
+      vocabFrequency: 0.5,
       autoLookup: true,              // 點單字自動查詢
       promoteHeard: true,            // AI 用了但你沒接的字，自動提前複習
       analyzeGaps: true,             // 對話結束後挖出「想講但講不出來」的字
@@ -63,6 +66,12 @@ export function load() {
     const raw = localStorage.getItem(KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
+      // 舊版的布林開關 → 新版的頻率數值
+      if (parsed.settings && parsed.settings.useVocabInChat !== undefined
+          && parsed.settings.vocabFrequency === undefined) {
+        parsed.settings.vocabFrequency = parsed.settings.useVocabInChat ? 0.5 : 0;
+        delete parsed.settings.useVocabInChat;
+      }
       state = fillDefaults(parsed, base);
       state.v = SCHEMA_VERSION;
     } else {

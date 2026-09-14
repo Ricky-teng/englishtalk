@@ -11,7 +11,7 @@ import { settings } from "./store.js";
 
 /* ---------- 系統提示 ---------- */
 
-function systemPrompt({ level, persona, scenario, dueWords }) {
+function systemPrompt({ level, persona, scenario, dueWords, invite }) {
   let p = `You are ${persona}. You are having a REAL-TIME SPOKEN conversation with a language \
 learner whose English level is roughly ${level} (CEFR). Your output is read aloud by a \
 text-to-speech engine, so it must sound like natural speech.
@@ -32,16 +32,21 @@ flowing. Never comment on their grammar, never correct them, never mention that 
     p += `\n\nRole-play setting: ${scenario} Stay in that role for the whole conversation.`;
   }
   if (dueWords && dueWords.length) {
-    // 不指定要用哪個字，而是給一池候選讓模型挑話題搭得上的，
-    // 並要求它問一個「會讓學習者自己說出那個字」的問題 —— 產出才是學習事件。
-    p += `\n\nVOCABULARY GOAL (never mention this to the learner):
-The learner is studying these words: ${dueWords.join(", ")}.
-Silently pick ONE, at most TWO, that genuinely fit what you are already talking about. Nudge the \
-conversation toward a situation where that word belongs, use it yourself in your reply, and end \
-with a question that makes it natural for the learner to use THAT SAME WORD in their answer.
-Never list these words, never say you are practising vocabulary, never tell them to use a word, \
-and never bend the conversation somewhere weird just to fit one in. If none of them fit right \
-now, ignore this section completely and just keep the conversation natural.`;
+    // 注意這裡的語氣：是「剛好合適才用」，不是「想辦法用進去」。
+    // 出現頻率由外面的機率閘門控制（有些回合根本不會走到這段），
+    // 所以這段只要負責「用得自然」，不需要也不該負責「一定要用到」。
+    p += `\n\nVOCABULARY (never mention any of this to the learner):
+The learner happens to be studying these words: ${dueWords.join(", ")}.
+If — and ONLY if — one of them fits what you were going to say anyway, use it.
+Do NOT change the subject to fit a word in. Do NOT steer toward a topic where a word would \
+belong. Do NOT use more than one. Using NONE of them is a perfectly good outcome: sounding like \
+a real person matters far more than hitting a word. A conversation that is obviously fishing for \
+vocabulary is worse than useless.`;
+    if (invite) {
+      p += `\nIf you do use one and it still feels natural, your follow-up question can be one \
+the learner would likely answer using that same word — but only if that question is something a \
+real person would actually ask here.`;
+    }
   }
   return p;
 }
@@ -62,6 +67,7 @@ export async function chatStream(messages, opts, onDelta) {
     persona: s.persona,
     scenario: opts.scenario,
     dueWords: opts.dueWords,
+    invite: opts.invite,
   });
   return s.provider === "groq"
     ? groqStream(sys, messages, opts.signal, onDelta)

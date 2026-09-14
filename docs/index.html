@@ -242,10 +242,18 @@
       </div>
     </div>
 
-    <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer">
-      <input type="checkbox" id="cfgUseVocab" style="width:auto">
-      讓 AI 在對話中自然用到我正在複習的單字
-    </label>
+    <label class="field" for="cfgVocabFreq">AI 在對話中用到我的單字的頻率</label>
+    <select id="cfgVocabFreq">
+      <option value="0">不要（純自然對話）</option>
+      <option value="0.25">很少 — 大約每四輪一次</option>
+      <option value="0.5">適中 — 大約每三輪一次（推薦）</option>
+      <option value="0.75">常常 — 大約每四輪三次，而且會引導你也用出來</option>
+      <option value="1">每一輪都要 — 考前衝刺用，會明顯刻意</option>
+    </select>
+    <div class="note">
+      覺得太刻意就往下調。每場對話的前兩輪一定不會塞單字，讓話題先自然建立。
+      「很少」和「適中」不會連續兩輪都塞。
+    </div>
 
     <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-top:8px">
       <input type="checkbox" id="cfgPromoteHeard" style="width:auto">

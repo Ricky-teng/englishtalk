@@ -96,6 +96,8 @@ const C = {
   aiNode: null,
   interimNode: null,
   secondsTimer: null,
+  turnCount: 0,        // 這場對話進行到第幾輪
+  lastVocabTurn: -99,  // 上次注入單字是第幾輪
 };
 
 const chatInner = $("chatInner");
@@ -228,6 +230,29 @@ function bargeIn() {
   setState("listening");
 }
 
+/**
+ * 決定這一輪要不要把單字池交給模型。
+ *
+ * 關鍵：頻率由這裡的機率決定，不是靠提示詞裡寫「偶爾用一下」——
+ * 模型對程度副詞不敏感，但「這一輪根本沒拿到單字」是百分之百確定的。
+ *
+ * 另外兩個讓它不刻意的規則：
+ *   1. 前兩輪不注入，先讓對話自然建立起來
+ *   2. 除非設成「每一輪」，否則不會連續兩輪都注入
+ */
+function shouldInjectVocab() {
+  const f = Number(Store.settings().vocabFrequency);
+  if (!f || f <= 0) return false;
+  if (!Store.vocab().length) return false;
+  if (C.turnCount < 3) return false;   // 前兩輪一定不注入
+  // 低頻率時強制隔一輪，高頻率時解除冷卻 —— 否則「常常」跟「適中」會被冷卻壓成一樣
+  const gap = f >= 0.75 ? 1 : 2;
+  if (f < 1 && C.turnCount - C.lastVocabTurn < gap) return false;
+  if (f < 1 && Math.random() >= f) return false;
+  C.lastVocabTurn = C.turnCount;
+  return true;
+}
+
 /* ---------- 一回合 ---------- */
 
 async function sendTurn(userText) {
@@ -248,12 +273,16 @@ async function sendTurn(userText) {
   const ctrl = new AbortController();
   C.abort = ctrl;
 
+  C.turnCount++;
   const s = Store.settings();
-  const dueWords = s.useVocabInChat ? V.wordsForChat(6) : [];
+  const inject = shouldInjectVocab();
+  const dueWords = inject ? V.wordsForChat(8) : [];
+  // 只有在最高的兩檔頻率，才額外要求 AI 問「會誘使你用到那個字」的問題
+  const invite = inject && Number(s.vocabFrequency) >= 0.75;
 
   let full = "", pending = "";
   try {
-    full = await LLM.chatStream(C.history, { dueWords, signal: ctrl.signal }, (delta) => {
+    full = await LLM.chatStream(C.history, { dueWords, invite, signal: ctrl.signal }, (delta) => {
       pending += delta;
       if (!C.aiNode) C.aiNode = addMsg("ai", "");
       renderClickableWords(C.aiNode.body, (C.aiNode._raw = (C.aiNode._raw || "") + delta));
@@ -316,6 +345,7 @@ async function startChat() {
 
   C.running = true;
   C.stopSpeaking = false;
+  if (!C.history.length) { C.turnCount = 0; C.lastVocabTurn = -99; }
   $("btnStart").disabled = true;
   $("btnStop").disabled = false;
   setState("listening");
@@ -1171,7 +1201,7 @@ function openSettings() {
   $("cfgPersona").value = s.persona;
   $("cfgBarge").value = String(s.bargeSensitivity);
   $("cfgSilence").value = String(s.silenceMs);
-  $("cfgUseVocab").checked = !!s.useVocabInChat;
+  $("cfgVocabFreq").value = String(s.vocabFrequency);
   $("cfgPromoteHeard").checked = !!s.promoteHeard;
   $("cfgAnalyzeGaps").checked = !!s.analyzeGaps;
   $("cacheInfo").textContent = `目前已快取 ${Store.cacheSize()} 個單字的查詢結果，這些字不會再呼叫 API。`;
@@ -1250,7 +1280,7 @@ $("btnSaveSettings").addEventListener("click", () => {
   s.persona = $("cfgPersona").value.trim() || s.persona;
   s.bargeSensitivity = Number($("cfgBarge").value);
   s.silenceMs = Number($("cfgSilence").value);
-  s.useVocabInChat = $("cfgUseVocab").checked;
+  s.vocabFrequency = Number($("cfgVocabFreq").value);
   s.promoteHeard = $("cfgPromoteHeard").checked;
   s.analyzeGaps = $("cfgAnalyzeGaps").checked;
   Store.save(true);
