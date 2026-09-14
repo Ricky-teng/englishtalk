@@ -29,8 +29,11 @@ function emptyState() {
       silenceMs: 1000,
       useVocabInChat: true,          // 讓 AI 刻意用到你的單字
       autoLookup: true,              // 點單字自動查詢
+      promoteHeard: true,            // AI 用了但你沒接的字，自動提前複習
+      analyzeGaps: true,             // 對話結束後挖出「想講但講不出來」的字
     },
     vocab: [],     // 單字本（含 SM-2 間隔重複欄位）
+    lookups: {},   // 查詢快取：查過的字永久留著，同一個字一輩子只查一次
     sessions: [],  // 對話紀錄
     daily: {},     // { "YYYY-MM-DD": {seconds, turns, userWords, reviews} }
   };
@@ -88,6 +91,7 @@ export function save(immediate = false) {
 
 export function settings() { return load().settings; }
 export function vocab()    { return load().vocab; }
+export function lookups()  { return load().lookups; }
 export function sessions() { return load().sessions; }
 export function daily()    { return load().daily; }
 
@@ -113,6 +117,42 @@ export function bumpDaily(patch) {
   st.daily[k] = row;
   save();
 }
+
+/* ---------- 查詢快取 ---------- */
+
+const LOOKUP_CACHE_MAX = 3000;
+
+export function cacheGet(word) {
+  const k = String(word || "").trim().toLowerCase();
+  if (!k) return null;
+  const hit = load().lookups[k];
+  if (!hit) return null;
+  hit.t = Date.now();          // 更新使用時間，供汰換用
+  return hit;
+}
+
+export function cacheSet(word, data) {
+  const k = String(word || "").trim().toLowerCase();
+  if (!k || !data) return;
+  const st = load();
+  st.lookups[k] = { ...data, t: Date.now() };
+
+  // 超過上限就丟掉最久沒用的一批（一次丟 200 個，免得每次都在整理）
+  const keys = Object.keys(st.lookups);
+  if (keys.length > LOOKUP_CACHE_MAX) {
+    keys.sort((a, b) => (st.lookups[a].t || 0) - (st.lookups[b].t || 0));
+    for (const dead of keys.slice(0, 200)) delete st.lookups[dead];
+  }
+  save();
+}
+
+export function cacheDrop(word) {
+  const k = String(word || "").trim().toLowerCase();
+  const st = load();
+  if (st.lookups[k]) { delete st.lookups[k]; save(); }
+}
+
+export function cacheSize() { return Object.keys(load().lookups).length; }
 
 /* ---------- 匯出 / 匯入 ---------- */
 
@@ -146,6 +186,10 @@ export function importJSON(text, mode = "merge") {
     byWord.set(k, v);
     added++;
   }
+  for (const [k, v] of Object.entries(incoming.lookups || {})) {
+    if (!st.lookups[k]) st.lookups[k] = v;
+  }
+
   const ids = new Set(st.sessions.map(s => s.id));
   let addedSessions = 0;
   for (const s of (incoming.sessions || [])) {

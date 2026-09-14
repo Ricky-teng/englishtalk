@@ -32,9 +32,16 @@ flowing. Never comment on their grammar, never correct them, never mention that 
     p += `\n\nRole-play setting: ${scenario} Stay in that role for the whole conversation.`;
   }
   if (dueWords && dueWords.length) {
-    p += `\n\nThe learner is currently studying these words: ${dueWords.join(", ")}. \
-Weave one or two of them into your replies NATURALLY when the topic allows. Never list them, \
-never announce that you are using them, and never force one in if it would sound strange.`;
+    // 不指定要用哪個字，而是給一池候選讓模型挑話題搭得上的，
+    // 並要求它問一個「會讓學習者自己說出那個字」的問題 —— 產出才是學習事件。
+    p += `\n\nVOCABULARY GOAL (never mention this to the learner):
+The learner is studying these words: ${dueWords.join(", ")}.
+Silently pick ONE, at most TWO, that genuinely fit what you are already talking about. Nudge the \
+conversation toward a situation where that word belongs, use it yourself in your reply, and end \
+with a question that makes it natural for the learner to use THAT SAME WORD in their answer.
+Never list these words, never say you are practising vocabulary, never tell them to use a word, \
+and never bend the conversation somewhere weird just to fit one in. If none of them fit right \
+now, ignore this section completely and just keep the conversation natural.`;
   }
   return p;
 }

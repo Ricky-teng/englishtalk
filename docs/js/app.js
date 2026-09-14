@@ -236,6 +236,11 @@ async function sendTurn(userText) {
   if (C.history.length > 24) C.history = C.history.slice(-24);
   Stats.recordTurn("user", userText, wordCount(userText));
 
+  // 你自己把單字說出來了 —— 這才是真正的學習事件，記進產出紀錄。
+  // 完全不打斷對話、不跳提示，結束時才在總結一次告訴你。
+  const produced = V.markProduced(V.matchWords(userText));
+  if (produced.length) Stats.recordProduced(produced.map(c => c.word));
+
   setState("thinking");
   C.stopSpeaking = false;
   C.aiNode = null;
@@ -269,6 +274,9 @@ async function sendTurn(userText) {
   if (full.trim()) {
     C.history.push({ role: "assistant", content: full.trim() });
     Stats.recordTurn("assistant", full.trim());
+    const heard = V.matchWords(full);
+    V.markHeard(heard);                          // 曝光次數，不影響排程
+    Stats.recordHeard(heard.map(c => c.word));   // 這場對話 AI 用過哪些字
   }
   $("turnInfo").textContent = Math.floor(C.history.length / 2) + " 回合";
 
@@ -332,7 +340,26 @@ function stopChat() {
   $("btnStop").disabled = true;
   setState("idle");
   if (done && done.turns > 0) {
-    sysMsg(`這次練習：${done.turns} 回合、開口 ${done.userWords} 個字。已存進「紀錄」。`);
+    let line = `這次練習：${done.turns} 回合、開口 ${done.userWords} 個字。`;
+    if (done.produced && done.produced.length) {
+      line += `\n你在對話中自己用出了 ${done.produced.length} 個單字本的字：`
+            + done.produced.join("、") + "。";
+    }
+    sysMsg(line);
+
+    const s2 = Store.settings();
+
+    // 「聽得懂但講不出來」：AI 用了、你沒接的字，提前到明天複習（純本地，不呼叫 API）
+    if (s2.promoteHeard) {
+      const moved = V.promoteHeardNotProduced(done.heard, done.produced);
+      if (moved.length) {
+        sysMsg("這幾個字 AI 用了、你沒跟著用到，已經排進明天的複習："
+             + moved.map(c => c.word).join("、"));
+      }
+    }
+
+    // 「想講但講不出來」：整場對話只呼叫一次 API
+    if (s2.analyzeGaps && done.turns >= 3) renderGaps(done);
   }
   refreshPills();
 }
@@ -363,12 +390,75 @@ window.addEventListener("tts:fallback", (e) => {
 
 window.addEventListener("beforeunload", () => { if (C.running) stopChat(); });
 
+/** 對話結束後，把「你想講但講不出來」的字列出來，可一鍵加入單字本 */
+async function renderGaps(session) {
+  const node = addMsg("sys", "正在看看有沒有你想講但沒講出來的字…");
+  let gaps = [];
+  try {
+    gaps = await V.findGaps(session.messages, Store.settings().level);
+  } catch (e) {
+    node.root.remove();
+    return;                      // 失敗就安靜跳過，不要用錯誤訊息打擾練習心情
+  }
+  if (!gaps.length) {
+    node.body.textContent = "這次表達得很順，沒有明顯卡住的地方。";
+    return;
+  }
+
+  node.body.textContent = "";
+  node.root.classList.add("gaps");
+  node.body.appendChild(el("div", "gaps-title", "你可能想講的是這幾個字"));
+
+  for (const g of gaps) {
+    const row = el("div", "gap");
+    if (g.said) row.appendChild(el("div", "gap-said", "你說：" + g.said));
+
+    const head = el("div", "gap-head");
+    head.appendChild(el("span", "gap-word", g.suggest));
+    if (g.zh) head.appendChild(el("span", "gap-zh", g.zh));
+    row.appendChild(head);
+
+    if (g.better) row.appendChild(el("div", "gap-better", g.better));
+
+    const acts = el("div", "gap-acts");
+    const bSpeak = el("button", "btn sm ghost", "🔊");
+    bSpeak.addEventListener("click", () => TTS.speak(g.suggest, undefined, null));
+    const bAdd = el("button", "btn sm primary", "加入單字本");
+    if (V.find(g.suggest)) { bAdd.textContent = "已在單字本"; bAdd.disabled = true; }
+    bAdd.addEventListener("click", async () => {
+      bAdd.disabled = true;
+      bAdd.textContent = "查詢中…";
+      try {
+        const d = await V.lookup(g.suggest);     // 走快取，多半不會真的打 API
+        // 一律用建議的那個字形當卡片名稱：字典可能回原形（reluctantly → reluctant），
+        // 但畫面上顯示的是 suggest，加進去的就該是同一個，不然使用者會困惑。
+        V.add(g.suggest, {
+          ...d,
+          word: g.suggest,
+          zh: g.zh || d.zh,                      // 情境判斷過的中文比字典的通用解釋準
+          example: d.example || g.better,
+        });
+      } catch (e) {
+        V.add(g.suggest, { zh: g.zh, example: g.better });
+      }
+      bAdd.textContent = "已加入";
+      refreshPills();
+      toast(`已加入「${g.suggest}」`);
+    });
+    acts.append(bSpeak, bAdd);
+    row.appendChild(acts);
+    node.body.appendChild(row);
+  }
+  scrollChat();
+}
+
 /* =========================================================================
    單字彈窗
    ========================================================================= */
 
 const pop = $("wordPop");
 let popWord = "";
+let popContext = "";
 
 document.addEventListener("click", (e) => {
   const w = e.target.closest(".msg.ai .w");
@@ -378,27 +468,37 @@ document.addEventListener("click", (e) => {
 
 async function openWordPop(spanEl) {
   const word = spanEl.dataset.word;
-  popWord = word;
   const sentence = spanEl.closest(".body") ? spanEl.closest(".body").textContent : "";
 
-  // 定位在被點的字下方
+  // 定位在被點的字下方（之後點近義詞不會再移動，維持閱讀焦點）
   const r = spanEl.getBoundingClientRect();
   pop.hidden = false;
+  pop.innerHTML = "";
+  const pw = pop.offsetWidth || 330;
+  pop.style.left = Math.min(Math.max(r.left - pw / 2 + r.width / 2, 12),
+                            window.innerWidth - pw - 12) + "px";
+  const below = r.bottom + 8;
+  pop.style.top = (below + 260 > window.innerHeight ? Math.max(r.top - 260, 12) : below) + "px";
+
+  loadWordPop(word, sentence.slice(0, 300));
+}
+
+/** 查一個字並畫進彈窗；點近義／反義詞會再呼叫這個，形成可連續探索的字詞網 */
+async function loadWordPop(word, context = "") {
+  popWord = word;
+  popContext = context;
   pop.innerHTML = `<div class="wp-head"><span class="wp-word">${esc(word)}</span></div>
                    <p class="wp-zh muted">查詢中…</p>`;
-  const pw = pop.offsetWidth;
-  pop.style.left = Math.min(Math.max(r.left - pw / 2 + r.width / 2, 12), window.innerWidth - pw - 12) + "px";
-  const below = r.bottom + 8;
-  pop.style.top = (below + 200 > window.innerHeight ? Math.max(r.top - 200, 12) : below) + "px";
 
   const existing = V.find(word);
   if (existing && existing.zh) { paintWordPop(existing, true); return; }
 
   try {
-    const d = await V.lookup(word, sentence.slice(0, 300));
+    const d = await V.lookup(word, context);
     if (popWord !== word) return;   // 使用者已經點了別的字
     paintWordPop(d, false);
   } catch (e) {
+    if (popWord !== word) return;
     pop.innerHTML = `<div class="wp-head"><span class="wp-word">${esc(word)}</span></div>
                      <p class="wp-zh">查詢失敗：${esc(e.message)}</p>
                      <div class="wp-actions">
@@ -414,6 +514,20 @@ async function openWordPop(spanEl) {
   }
 }
 
+/** 近義／反義詞區塊。每個詞都是可點的，點了就查那個詞。 */
+function relatedHTML(label, cls, list) {
+  if (!list || !list.length) return "";
+  const saved = new Set(Store.vocab().map(v => v.word.toLowerCase()));
+  const chips = list.map(x => {
+    const inBook = saved.has(x.w.toLowerCase()) ? " saved" : "";
+    const tip = x.zh ? ` title="${esc(x.zh)}"` : "";
+    return `<button class="chip ${cls}${inBook}" data-lookup="${esc(x.w)}"${tip}>`
+         + `${esc(x.w)}${x.zh ? `<i>${esc(x.zh)}</i>` : ""}</button>`;
+  }).join("");
+  return `<div class="wp-rel"><span class="wp-rel-label">${label}</span>
+            <div class="chips">${chips}</div></div>`;
+}
+
 function paintWordPop(d, already) {
   pop.innerHTML = `
     <div class="wp-head">
@@ -423,12 +537,26 @@ function paintWordPop(d, already) {
     </div>
     ${d.zh ? `<p class="wp-zh">${esc(d.zh)}</p>` : ""}
     ${d.example ? `<div class="wp-ex">${esc(d.example)}<br><span class="muted">${esc(d.exampleZh || "")}</span></div>` : ""}
+    ${relatedHTML("近義", "syn", d.synonyms)}
+    ${relatedHTML("反義", "ant", d.antonyms)}
     <div class="wp-actions">
-      <button class="btn sm ghost" id="wpSpeak">🔊 唸一次</button>
+      <button class="btn sm ghost" id="wpSpeak">🔊</button>
+      <button class="btn sm ghost" id="wpRefetch" title="這不是這句話裡的意思？重新查一次">↻</button>
       ${already ? `<button class="btn sm" disabled>已在單字本</button>`
                 : `<button class="btn sm primary" id="wpAdd">加入單字本</button>`}
     </div>`;
   $("wpSpeak").addEventListener("click", () => TTS.speak(d.word, undefined, null));
+  $("wpRefetch").addEventListener("click", async () => {
+    V.forgetLookup(d.word);
+    pop.innerHTML = `<div class="wp-head"><span class="wp-word">${esc(d.word)}</span></div>
+                     <p class="wp-zh muted">重新查詢中…</p>`;
+    try {
+      const fresh = await V.lookup(d.word, popContext, true);
+      if (popWord === d.word) paintWordPop(fresh, !!V.find(d.word));
+    } catch (e) {
+      if (popWord === d.word) paintWordPop(d, already);
+    }
+  });
   const add = $("wpAdd");
   if (add) add.addEventListener("click", () => {
     V.add(d.word, d);
@@ -436,6 +564,11 @@ function paintWordPop(d, already) {
     refreshPills();
     markSaved(d.word);
     toast(`已加入「${d.word}」，之後會出現在複習`);
+  });
+
+  // 點近義／反義詞就查那個詞，彈窗原地換內容
+  pop.querySelectorAll("[data-lookup]").forEach(btn => {
+    btn.addEventListener("click", () => loadWordPop(btn.dataset.lookup, ""));
   });
 }
 
@@ -461,10 +594,10 @@ function renderVocab() {
   $("vocabCounts").innerHTML = `
     <div class="tile"><div class="t-label">總單字</div><div class="t-value">${c.total}</div></div>
     <div class="tile"><div class="t-label">今天待複習</div><div class="t-value">${c.due}</div></div>
-    <div class="tile"><div class="t-label">學習中</div><div class="t-value">${c.learning}</div>
-      <div class="t-sub">間隔未滿 21 天</div></div>
-    <div class="tile"><div class="t-label">已掌握</div><div class="t-value">${c.mastered}</div>
-      <div class="t-sub">間隔 21 天以上</div></div>`;
+    <div class="tile"><div class="t-label">認得</div><div class="t-value">${c.mastered}</div>
+      <div class="t-sub">卡片複習間隔 21 天以上</div></div>
+    <div class="tile"><div class="t-label">說得出來</div><div class="t-value">${c.spoken}</div>
+      <div class="t-sub">在對話中自己用過；${c.spokenOften} 個用過 3 次以上</div></div>`;
 
   // 標籤下拉
   const tagSel = $("vocabTag");
@@ -490,6 +623,11 @@ function renderVocab() {
 
   if (sort === "az") list.sort((a, b) => a.word.localeCompare(b.word));
   else if (sort === "new") list.sort((a, b) => b.created - a.created);
+  else if (sort === "spoken") list.sort((a, b) => (b.produced || 0) - (a.produced || 0));
+  else if (sort === "unspoken") {
+    list = list.filter(v => !(v.produced || 0));
+    list.sort((a, b) => (a.due < b.due ? -1 : 1));
+  }
   else list.sort((a, b) => (a.due < b.due ? -1 : a.due > b.due ? 1 : 0));
 
   const box = $("vocabList");
@@ -514,11 +652,28 @@ function renderVocab() {
     if (v.zh) main.appendChild(el("div", "vzh", (v.pos ? v.pos + " · " : "") + v.zh));
     if (v.example) main.appendChild(el("div", "vex", v.example));
 
+    const relLine = (label, cls, list) => {
+      if (!list || !list.length) return;
+      const box = el("div", "vrel");
+      box.appendChild(el("small", null, label));
+      list.forEach(x => {
+        const c = el("span", "chip " + cls, x.w);
+        if (x.zh) { const i = el("i", null, x.zh); c.appendChild(i); }
+        c.style.cursor = "default";
+        box.appendChild(c);
+      });
+      main.appendChild(box);
+    };
+    relLine("近義", "syn", v.synonyms);
+    relLine("反義", "ant", v.antonyms);
+
     const meta = el("div", "vmeta");
     const dueTag = el("span", "tag" + (v.due <= today ? " due" : ""),
       v.due <= today ? "今天複習" : "下次 " + v.due);
     meta.appendChild(dueTag);
     meta.appendChild(el("span", "tag", v.reps ? `複習 ${v.reps} 次` : "尚未複習"));
+    // 產出是另一條線：說得出來比認得重要，所以給它獨立的綠色標記
+    if (v.produced) meta.appendChild(el("span", "tag spoken", `說出 ${v.produced} 次`));
     (v.tags || []).forEach(t => meta.appendChild(el("span", "tag", t)));
     main.appendChild(meta);
 
@@ -526,14 +681,9 @@ function renderVocab() {
     const bSpeak = el("button", "btn sm ghost", "🔊");
     bSpeak.title = "唸一次";
     bSpeak.addEventListener("click", () => TTS.speak(v.word, undefined, null));
-    const bTag = el("button", "btn sm ghost", "🏷");
-    bTag.title = "編輯標籤";
-    bTag.addEventListener("click", () => {
-      const t = prompt("標籤（用空白分隔多個）", (v.tags || []).join(" "));
-      if (t == null) return;
-      V.update(v.id, { tags: t.split(/\s+/).filter(Boolean) });
-      renderVocab();
-    });
+    const bTag = el("button", "btn sm ghost", "✎");
+    bTag.title = "編輯";
+    bTag.addEventListener("click", () => openWordEditor(v));
     const bDel = el("button", "btn sm ghost", "✕");
     bDel.title = "刪除";
     bDel.addEventListener("click", () => {
@@ -564,37 +714,184 @@ $("btnVocabExport").addEventListener("click", () => {
   download(V.toCSV(), "englishtalk-vocab-" + Store.todayKey() + ".csv", "text/csv;charset=utf-8");
 });
 
-/* ---------- 批次加入 ---------- */
+/* ---------- 手動新增／編輯單一單字 ---------- */
 
-$("btnBulkAdd").addEventListener("click", () => $("dlgBulk").showModal());
+const dlgWord = $("dlgWord");
+let editingId = null;
+
+/** [{w,zh}] → "settle(和解), resolve(解決)" 這種好編輯的一行文字 */
+function relToText(list) {
+  return (list || []).map(x => x.w + (x.zh ? `(${x.zh})` : "")).join(", ");
+}
+
+/** 反向：把一行文字解析回 [{w,zh}]，中文可用括號或不寫 */
+function textToRel(text) {
+  const out = [];
+  for (const piece of String(text || "").split(/[,、;；]/)) {
+    const t = piece.trim();
+    if (!t) continue;
+    const m = t.match(/^([A-Za-z][A-Za-z'’\- ]*?)\s*[（(]\s*([^）)]*)\s*[）)]\s*$/);
+    if (m) out.push({ w: m[1].trim(), zh: m[2].trim() });
+    else if (/^[A-Za-z]/.test(t)) out.push({ w: t, zh: "" });
+    if (out.length >= 5) break;
+  }
+  return out;
+}
+
+function openWordEditor(card) {
+  editingId = card ? card.id : null;
+  $("wordDlgTitle").textContent = card ? "編輯單字" : "新增單字";
+  $("wfWord").value       = card ? card.word : "";
+  $("wfPhonetic").value   = card ? (card.phonetic || "") : "";
+  $("wfPos").value        = card ? (card.pos || "") : "";
+  $("wfZh").value         = card ? (card.zh || "") : "";
+  $("wfExample").value    = card ? (card.example || "") : "";
+  $("wfExampleZh").value  = card ? (card.exampleZh || "") : "";
+  $("wfSyn").value        = card ? relToText(card.synonyms) : "";
+  $("wfAnt").value        = card ? relToText(card.antonyms) : "";
+  $("wfTags").value       = card ? (card.tags || []).join(" ") : ($("vocabTag").value || "");
+  $("wordDlgNote").textContent = "";
+  dlgWord.showModal();
+  setTimeout(() => $("wfWord").focus(), 50);
+}
+
+$("btnAddOne").addEventListener("click", () => openWordEditor(null));
+$("btnCloseWord").addEventListener("click", () => dlgWord.close());
+
+$("btnAutoFill").addEventListener("click", async () => {
+  const word = $("wfWord").value.trim();
+  const note = $("wordDlgNote");
+  if (!word) { note.textContent = "請先填英文單字。"; return; }
+  const btn = $("btnAutoFill");
+  btn.disabled = true;
+  note.textContent = "查詢中…";
+  try {
+    const d = await V.lookup(word);
+    // 只補空白欄位，不覆蓋你已經自己打好的內容
+    if (!$("wfPhonetic").value.trim())  $("wfPhonetic").value = d.phonetic || "";
+    if (!$("wfPos").value.trim())       $("wfPos").value = d.pos || "";
+    if (!$("wfZh").value.trim())        $("wfZh").value = d.zh || "";
+    if (!$("wfExample").value.trim())   $("wfExample").value = d.example || "";
+    if (!$("wfExampleZh").value.trim()) $("wfExampleZh").value = d.exampleZh || "";
+    if (!$("wfSyn").value.trim())       $("wfSyn").value = relToText(d.synonyms);
+    if (!$("wfAnt").value.trim())       $("wfAnt").value = relToText(d.antonyms);
+    note.textContent = "已補上空白欄位，你原本填的內容沒有被改動。";
+  } catch (e) {
+    note.textContent = "查詢失敗：" + e.message + "（可以直接自己填）";
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+$("btnSaveWord").addEventListener("click", () => {
+  const word = $("wfWord").value.trim();
+  if (!word) { $("wordDlgNote").textContent = "英文單字不能空白。"; return; }
+  const data = {
+    word,
+    phonetic:  $("wfPhonetic").value.trim(),
+    pos:       $("wfPos").value.trim(),
+    zh:        $("wfZh").value.trim(),
+    example:   $("wfExample").value.trim(),
+    exampleZh: $("wfExampleZh").value.trim(),
+    synonyms:  textToRel($("wfSyn").value),
+    antonyms:  textToRel($("wfAnt").value),
+    tags:      $("wfTags").value.split(/\s+/).filter(Boolean),
+  };
+  if (editingId) {
+    V.update(editingId, data);
+    toast(`已更新「${word}」`);
+  } else {
+    const dup = V.find(word);
+    if (dup) {
+      V.update(dup.id, data);
+      toast(`「${word}」已存在，已更新內容`);
+    } else {
+      V.add(word, data);
+      toast(`已加入「${word}」`);
+    }
+  }
+  dlgWord.close();
+  refreshPills();
+  renderVocab();
+});
+
+// Enter 直接存檔，方便連續輸入
+dlgWord.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && e.target.tagName === "INPUT") {
+    e.preventDefault();
+    $("btnSaveWord").click();
+  }
+});
+
+/* ---------- 批次貼上 ---------- */
+
+$("btnBulkAdd").addEventListener("click", () => {
+  $("bulkTag").value = $("vocabTag").value || "";
+  $("bulkNote").textContent = "";
+  $("dlgBulk").showModal();
+});
 $("btnCloseBulk").addEventListener("click", () => $("dlgBulk").close());
 
 $("btnDoBulk").addEventListener("click", async () => {
-  const raw = $("bulkText").value;
+  const rows = V.parseWordLines($("bulkText").value);
   const tag = $("bulkTag").value.trim();
-  const words = V.parseWordList(raw);
+  const useAI = $("bulkUseAI").checked;
   const note = $("bulkNote");
-  if (!words.length) { note.textContent = "沒有認出任何英文單字。"; return; }
-
   const btn = $("btnDoBulk");
-  btn.disabled = true;
-  note.textContent = `認出 ${words.length} 個單字，查詢中…`;
-  try {
-    const arr = await V.lookupBatch(words);
+
+  if (!rows.length) { note.textContent = "沒有認出任何英文單字。"; return; }
+
+  // 不用 AI：完全照貼上的內容存，不動任何欄位，也不花 API 額度
+  if (!useAI) {
     let added = 0;
-    arr.forEach((d, i) => {
-      const word = (d && d.word) || words[i];
-      if (!word) return;
-      const r = V.add(word, { ...d, word, tags: tag ? [tag] : [] });
-      if (r.isNew) added++;
+    for (const r of rows) {
+      const res = V.add(r.word, { word: r.word, zh: r.zh, tags: tag ? [tag] : [] });
+      if (res.isNew) added++;
+    }
+    note.textContent = `完成：新增 ${added} 個，${rows.length - added} 個已存在。`;
+    toast(`已加入 ${added} 個單字`);
+    $("bulkText").value = "";
+    refreshPills();
+    renderVocab();
+    return;
+  }
+
+  if (rows.length > 20) {
+    note.textContent = `一次最多 20 個（現在有 ${rows.length} 個）。請分批，或取消勾選 AI 補齊。`;
+    return;
+  }
+
+  btn.disabled = true;
+  note.textContent = `認出 ${rows.length} 個單字，查詢中…`;
+  try {
+    // 已經查過的字直接從快取拿，只有真的沒查過的才送出去
+    const { byWord, asked } = await V.lookupBatchCached(rows.map(r => r.word));
+    let added = 0;
+    rows.forEach((r) => {
+      const d = byWord[r.word.toLowerCase()] || {};
+      const merged = {
+        word: r.word,
+        phonetic: d.phonetic || "",
+        pos: d.pos || "",
+        zh: r.zh || d.zh || "",          // 你自己打的中文永遠優先
+        example: d.example || "",
+        exampleZh: d.exampleZh || "",
+        synonyms: d.synonyms || [],
+        antonyms: d.antonyms || [],
+        tags: tag ? [tag] : [],
+      };
+      const res = V.add(r.word, merged);
+      if (res.isNew) added++;
     });
-    note.textContent = `完成：新增 ${added} 個，${words.length - added} 個已存在。`;
+    const cached = rows.length - asked;
+    note.textContent = `完成：新增 ${added} 個，${rows.length - added} 個已存在。`
+                     + (cached > 0 ? `（其中 ${cached} 個直接用快取，沒有呼叫 API）` : "");
     toast(`已加入 ${added} 個單字`);
     $("bulkText").value = "";
     refreshPills();
     renderVocab();
   } catch (e) {
-    note.textContent = "查詢失敗：" + e.message;
+    note.textContent = "AI 查詢失敗：" + e.message + "　可以取消勾選「用 AI 補齊」直接存。";
   } finally {
     btn.disabled = false;
   }
@@ -681,6 +978,26 @@ function paintCard() {
       if (card.exampleZh) fc.appendChild(el("div", "fc-exzh", card.exampleZh));
     }
     if (!card.zh) fc.appendChild(el("div", "fc-zh muted", "（這張卡還沒有中文意思）"));
+
+    // 背面才顯示近義／反義 —— 正面看到就變成提示，失去回想的效果
+    const relBox = el("div", "fc-rel");
+    const addRel = (label, cls, list) => {
+      if (!list || !list.length) return;
+      const row = el("div", "wp-rel");
+      row.appendChild(el("span", "wp-rel-label", label));
+      const chips = el("div", "chips");
+      list.forEach(x => {
+        const c = el("span", "chip " + cls, x.w);
+        if (x.zh) c.appendChild(el("i", null, x.zh));
+        c.style.cursor = "default";
+        chips.appendChild(c);
+      });
+      row.appendChild(chips);
+      relBox.appendChild(row);
+    };
+    addRel("近義", "syn", card.synonyms);
+    addRel("反義", "ant", card.antonyms);
+    if (relBox.children.length) fc.appendChild(relBox);
   } else {
     fc.appendChild(el("div", "muted", "想想看意思，再按下面顯示答案"));
   }
@@ -754,8 +1071,8 @@ function renderStats() {
       <div class="t-sub">開口 ${w.userWords} 個字</div></div>
     <div class="tile"><div class="t-label">累計練習</div><div class="t-value">${Stats.fmtDuration(t.seconds)}</div>
       <div class="t-sub">${t.days} 天、${t.sessions} 場對話</div></div>
-    <div class="tile"><div class="t-label">單字本</div><div class="t-value">${c.total}</div>
-      <div class="t-sub">已掌握 ${c.mastered}、待複習 ${c.due}</div></div>`;
+    <div class="tile"><div class="t-label">說得出來的單字</div><div class="t-value">${c.spoken}<span style="font-size:15px"> / ${c.total}</span></div>
+      <div class="t-sub">本週在對話中用出 ${w.produced} 次</div></div>`;
 
   const hm = $("heatmap");
   hm.innerHTML = "";
@@ -855,6 +1172,9 @@ function openSettings() {
   $("cfgBarge").value = String(s.bargeSensitivity);
   $("cfgSilence").value = String(s.silenceMs);
   $("cfgUseVocab").checked = !!s.useVocabInChat;
+  $("cfgPromoteHeard").checked = !!s.promoteHeard;
+  $("cfgAnalyzeGaps").checked = !!s.analyzeGaps;
+  $("cacheInfo").textContent = `目前已快取 ${Store.cacheSize()} 個單字的查詢結果，這些字不會再呼叫 API。`;
   $("cfgGeminiKey").value = "";
   $("cfgGroqKey").value = "";
   setKeyBadge($("stGemini"), !!s.geminiKey);
@@ -931,6 +1251,8 @@ $("btnSaveSettings").addEventListener("click", () => {
   s.bargeSensitivity = Number($("cfgBarge").value);
   s.silenceMs = Number($("cfgSilence").value);
   s.useVocabInChat = $("cfgUseVocab").checked;
+  s.promoteHeard = $("cfgPromoteHeard").checked;
+  s.analyzeGaps = $("cfgAnalyzeGaps").checked;
   Store.save(true);
 
   TTS.resetEdge();

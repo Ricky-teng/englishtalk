@@ -22,6 +22,8 @@ export function beginSession() {
     userWords: 0,
     scenario: "",
     messages: [],
+    produced: [],      // 這場對話中你自己說出來的目標單字
+    heard: [],         // 這場對話中 AI 用過的單字本單字
   };
   return active;
 }
@@ -34,6 +36,21 @@ export function recordTurn(role, content, words = 0) {
     active.userWords += words;
     bumpDaily({ turns: 1, userWords: words });
   }
+}
+
+/** 記下這場對話中 AI 用過的單字 */
+export function recordHeard(words) {
+  if (!active || !words || !words.length) return;
+  for (const w of words) if (!active.heard.includes(w)) active.heard.push(w);
+}
+
+/** 記下這場對話中說出口的單字（同一場不重複計入清單） */
+export function recordProduced(words) {
+  if (!active || !words || !words.length) return;
+  for (const w of words) {
+    if (!active.produced.includes(w)) active.produced.push(w);
+  }
+  bumpDaily({ produced: words.length });
 }
 
 /** 每隔一段時間呼叫，累積實際練習秒數（比用起訖時間相減準，因為中間可能放著沒動） */
@@ -80,28 +97,30 @@ export function streak() {
 
 export function totals() {
   const d = daily();
-  let seconds = 0, turns = 0, userWords = 0, reviews = 0, days = 0;
+  let seconds = 0, turns = 0, userWords = 0, reviews = 0, produced = 0, days = 0;
   for (const row of Object.values(d)) {
     seconds += row.seconds || 0;
     turns += row.turns || 0;
     userWords += row.userWords || 0;
     reviews += row.reviews || 0;
+    produced += row.produced || 0;
     if ((row.seconds || 0) > 60 || (row.turns || 0) > 0) days++;
   }
-  return { seconds, turns, userWords, reviews, days, sessions: sessions().length };
+  return { seconds, turns, userWords, reviews, produced, days, sessions: sessions().length };
 }
 
 export function thisWeek() {
   const d = daily();
-  let seconds = 0, turns = 0, userWords = 0;
+  let seconds = 0, turns = 0, userWords = 0, produced = 0;
   for (let i = 0; i < 7; i++) {
     const row = d[dayKeyOffset(-i)];
     if (!row) continue;
     seconds += row.seconds || 0;
     turns += row.turns || 0;
     userWords += row.userWords || 0;
+    produced += row.produced || 0;
   }
-  return { seconds, turns, userWords };
+  return { seconds, turns, userWords, produced };
 }
 
 export function fmtDuration(sec) {
@@ -269,7 +288,7 @@ export function renderHeatmapTable(days = 30) {
   const tbl = document.createElement("table");
   tbl.className = "data-table";
   tbl.innerHTML = "<thead><tr><th>日期</th><th>練習時間</th><th>對話回合</th>"
-                + "<th>開口字數</th><th>複習單字</th></tr></thead>";
+                + "<th>開口字數</th><th>說出單字</th><th>卡片複習</th></tr></thead>";
   const tb = document.createElement("tbody");
   let any = false;
   for (let i = 0; i < days; i++) {
@@ -280,12 +299,12 @@ export function renderHeatmapTable(days = 30) {
     const tr = document.createElement("tr");
     tr.innerHTML = `<td>${k}</td><td>${fmtDuration(row.seconds)}</td>`
                  + `<td>${row.turns || 0}</td><td>${row.userWords || 0}</td>`
-                 + `<td>${row.reviews || 0}</td>`;
+                 + `<td>${row.produced || 0}</td><td>${row.reviews || 0}</td>`;
     tb.appendChild(tr);
   }
   if (!any) {
     const tr = document.createElement("tr");
-    tr.innerHTML = '<td colspan="5" class="muted">最近還沒有練習紀錄</td>';
+    tr.innerHTML = '<td colspan="6" class="muted">最近還沒有練習紀錄</td>';
     tb.appendChild(tr);
   }
   tbl.appendChild(tb);

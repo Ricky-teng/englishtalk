@@ -54,7 +54,7 @@
   <section class="page" id="page-vocab">
     <div class="scroll"><div class="wrap">
       <h2 class="title">單字本</h2>
-      <p class="lede">點對話裡的單字就會收進來。到期的單字會自動出現在複習，也會被 AI 在聊天中自然用出來。</p>
+      <p class="lede">三種加入方式：對話中點單字、手動新增、批次貼上課本單字表。到期的字會出現在複習，也會被 AI 在聊天中自然用出來 —— 你自己把它說出口時會記一次「產出」。</p>
 
       <div class="vocab-toolbar">
         <input type="search" id="vocabSearch" placeholder="搜尋單字或中文意思…">
@@ -63,8 +63,11 @@
           <option value="due">依到期日</option>
           <option value="new">最新加入</option>
           <option value="az">字母順序</option>
+          <option value="spoken">最常說出</option>
+          <option value="unspoken">還沒說出口</option>
         </select>
-        <button class="btn sm" id="btnBulkAdd">批次加入</button>
+        <button class="btn sm primary" id="btnAddOne">＋ 新增單字</button>
+        <button class="btn sm" id="btnBulkAdd">批次貼上</button>
         <button class="btn sm ghost" id="btnVocabExport">匯出 CSV</button>
       </div>
 
@@ -244,6 +247,20 @@
       讓 AI 在對話中自然用到我正在複習的單字
     </label>
 
+    <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-top:8px">
+      <input type="checkbox" id="cfgPromoteHeard" style="width:auto">
+      AI 用了、我卻沒跟著用的字，自動提前到明天複習
+    </label>
+    <div class="note" style="margin-left:26px">不花 API 額度，純本地判斷。</div>
+
+    <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-top:8px">
+      <input type="checkbox" id="cfgAnalyzeGaps" style="width:auto">
+      對話結束後，找出我「想講但講不出來」的字
+    </label>
+    <div class="note" style="margin-left:26px">一整場對話只會多呼叫一次 API。關掉可以更省額度。</div>
+
+    <div class="note" id="cacheInfo" style="margin-top:14px"></div>
+
     <div style="height:8px"></div>
   </div>
   <div class="m-foot">
@@ -252,25 +269,89 @@
   </div>
 </dialog>
 
-<!-- ============================ 批次加入單字 ============================ -->
+<!-- ============================ 手動新增／編輯單字 ============================ -->
+<dialog class="modal" id="dlgWord">
+  <div class="m-head">
+    <h2 id="wordDlgTitle">新增單字</h2>
+    <p class="note" style="margin-bottom:0">
+      全部欄位都可以自己填，照課本寫也行。只填英文的話，可以按「用 AI 補齊」讓它補上其他欄位。
+    </p>
+  </div>
+  <div class="m-body">
+    <label class="field" for="wfWord">英文單字或片語 <span style="color:var(--danger)">*</span></label>
+    <div class="row">
+      <input type="text" id="wfWord" class="grow" placeholder="negotiate" autocomplete="off">
+      <button class="btn sm" id="btnAutoFill" type="button">用 AI 補齊</button>
+    </div>
+
+    <div class="row">
+      <div class="grow">
+        <label class="field" for="wfPhonetic">音標</label>
+        <input type="text" id="wfPhonetic" placeholder="/nɪˈɡoʊʃieɪt/">
+      </div>
+      <div class="grow">
+        <label class="field" for="wfPos">詞性</label>
+        <input type="text" id="wfPos" placeholder="verb">
+      </div>
+    </div>
+
+    <label class="field" for="wfZh">中文意思</label>
+    <input type="text" id="wfZh" placeholder="談判、協商">
+
+    <label class="field" for="wfExample">例句</label>
+    <input type="text" id="wfExample" placeholder="We need to negotiate a better price.">
+
+    <label class="field" for="wfExampleZh">例句中文</label>
+    <input type="text" id="wfExampleZh" placeholder="我們需要談出一個更好的價格。">
+
+    <label class="field" for="wfSyn">近義詞</label>
+    <input type="text" id="wfSyn" placeholder="settle(和解), bargain(討價還價)">
+
+    <label class="field" for="wfAnt">反義詞</label>
+    <input type="text" id="wfAnt" placeholder="refuse(拒絕)">
+    <div class="note">用逗號分隔，中文放在括號裡（可省略）。</div>
+
+    <label class="field" for="wfTags">標籤（用空白分隔，例如課次）</label>
+    <input type="text" id="wfTags" placeholder="第三課 期中考">
+
+    <div class="note" id="wordDlgNote"></div>
+  </div>
+  <div class="m-foot">
+    <button class="btn ghost" id="btnCloseWord">取消</button>
+    <button class="btn primary" id="btnSaveWord">儲存</button>
+  </div>
+</dialog>
+
+<!-- ============================ 批次貼上單字 ============================ -->
 <dialog class="modal" id="dlgBulk">
   <div class="m-head">
-    <h2>批次加入單字</h2>
+    <h2>批次貼上單字</h2>
     <p class="note" style="margin-bottom:0">
-      直接貼上課本的單字表就行，逗號、換行、tab 或「單字 中文」混排都能認得。
-      一次最多 20 個，AI 會自動補上音標、詞性、中文意思與例句。
+      直接貼課本的單字表。每行一個，支援 <code>單字</code>、<code>單字 中文</code>、
+      <code>單字,中文</code>、<code>單字&lt;tab&gt;中文</code>。
     </p>
   </div>
   <div class="m-body">
     <label class="field" for="bulkTag">標籤（選填，用來分組複習）</label>
     <input type="text" id="bulkTag" placeholder="例如：第三課、期中考、商用英文">
+
     <label class="field" for="bulkText">單字</label>
-    <textarea id="bulkText" placeholder="accomplish&#10;negotiate&#10;sustainable&#10;reluctant"></textarea>
+    <textarea id="bulkText" placeholder="negotiate  談判&#10;sustainable  永續的&#10;reluctant  不情願的"></textarea>
+
+    <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer">
+      <input type="checkbox" id="bulkUseAI" style="width:auto" checked>
+      用 AI 補齊音標、詞性與例句
+    </label>
+    <div class="note">
+      不勾選的話就完全照你貼的內容存，一個字都不改，也不會用到 API 額度 ——
+      課本上的中文跟老師給的定義要一模一樣時選這個。<br>
+      勾選時：你自己填的中文會被保留，AI 只補空白的欄位；一次最多 20 個字。
+    </div>
     <div class="note" id="bulkNote"></div>
   </div>
   <div class="m-foot">
     <button class="btn ghost" id="btnCloseBulk">取消</button>
-    <button class="btn primary" id="btnDoBulk">查詢並加入</button>
+    <button class="btn primary" id="btnDoBulk">加入單字本</button>
   </div>
 </dialog>
 
