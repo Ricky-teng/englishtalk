@@ -838,26 +838,200 @@ function textToRel(text) {
 
 let editingForms = null;   // 詞形（過去式等）不給手動編，查到的就跟著存
 
-function openWordEditor(card) {
-  editingId = card ? card.id : null;
-  $("wordDlgTitle").textContent = card ? "編輯單字" : "新增單字";
-  $("wfWord").value       = card ? card.word : "";
-  $("wfPhonetic").value   = card ? (card.phonetic || "") : "";
-  $("wfPos").value        = card ? (card.pos || "") : "";
-  $("wfZh").value         = card ? (card.zh || "") : "";
-  $("wfExample").value    = card ? (card.example || "") : "";
-  $("wfExampleZh").value  = card ? (card.exampleZh || "") : "";
-  $("wfSyn").value        = card ? relToText(card.synonyms) : "";
-  $("wfAnt").value        = card ? relToText(card.antonyms) : "";
-  $("wfFam").value        = card ? V.familyToText(card.family) : "";
-  editingForms = card && Array.isArray(card.forms) ? card.forms : null;
-  $("wfTags").value       = card ? (card.tags || []).join(" ") : ($("vocabTag").value || "");
-  $("wordDlgNote").textContent = "";
-  dlgWord.showModal();
-  setTimeout(() => $("wfWord").focus(), 50);
+const allTags = () => [...new Set(Store.vocab().flatMap(v => v.tags || []))].sort();
+function fillTagOptions() {
+  $("tagOptions").innerHTML = allTags().map(t => `<option value="${esc(t)}">`).join("");
 }
 
-$("btnAddOne").addEventListener("click", () => openWordEditor(null));
+/**
+ * 打開單字編輯器。
+ * @param {Object|null} card     要編輯的卡；null 表示新增
+ * @param {Object} prefill       新增時預先填好的內容（從候選清單按「編輯後加入」）
+ */
+function openWordEditor(card, prefill = null) {
+  const d = card || prefill || {};
+  editingId = card ? card.id : null;
+  $("wordDlgTitle").textContent = card ? "編輯單字" : "新增單字";
+  $("wfWord").value       = d.word || "";
+  $("wfPhonetic").value   = d.phonetic || "";
+  $("wfPos").value        = d.pos || "";
+  $("wfZh").value         = d.zh || "";
+  $("wfExample").value    = d.example || "";
+  $("wfExampleZh").value  = d.exampleZh || "";
+  $("wfSyn").value        = relToText(d.synonyms);
+  $("wfAnt").value        = relToText(d.antonyms);
+  $("wfFam").value        = V.familyToText(d.family);
+  editingForms = Array.isArray(d.forms) ? d.forms : null;
+  $("wfTags").value       = card ? (card.tags || []).join(" ")
+                          : ((prefill && prefill.tags) || [$("vocabTag").value]).filter(Boolean).join(" ");
+  // 有填進階欄位就展開，空的就收起來，畫面不會一打開就一長串
+  $("wfMore").open = !!(d.example || (d.synonyms || []).length || (d.antonyms || []).length || (d.family || []).length);
+  $("wfPick").innerHTML = "";
+  $("wordDlgNote").textContent = "";
+  fillTagOptions();
+  dlgWord.showModal();
+  setTimeout(() => $(d.word ? "wfZh" : "wfWord").focus(), 50);
+}
+
+/* ---------- 候選清單（新增單字的查詢結果、編輯器的 AI 補齊共用） ---------- */
+
+/** 這個候選跟單字本的關係：new 還沒有、same 已經有這個意思、sense 有這個字但不是這個意思 */
+function candState(r) {
+  const ex = V.find(r.word);
+  if (!ex) return { st: "new" };
+  // 括號裡的補充說明不算：「耗盡（資源）」跟「耗盡」是同一個意思
+  const norm = (t) => String(t || "").replace(/[（(][^)）]*[)）]/g, "").replace(/[\s、，,；;／/]+/g, "|");
+  const have = new Set(norm(ex.zh).split("|").filter(Boolean));
+  const overlap = norm(r.zh).split("|").some(z => z && have.has(z)) || !ex.zh;
+  return { st: overlap ? "same" : "sense", card: ex };
+}
+
+/**
+ * @param {HTMLElement} box
+ * @param {Array} results
+ * @param {"add"|"pick"} mode  add：直接加入單字本；pick：填進編輯器
+ * @param {Function} onPick    pick 模式選了哪一個
+ */
+function renderCands(box, results, mode, onPick) {
+  box.innerHTML = "";
+  results.forEach((r) => {
+    const c = el("div", "cand");
+    c.innerHTML = `
+      <div class="cand-head"><b class="cand-word">${esc(r.word)}</b>
+        ${r.phonetic ? `<span class="cand-ipa">${esc(r.phonetic)}</span>` : ""}
+        ${r.pos ? `<span class="cand-pos">${esc(V.posShort(r.pos))}</span>` : ""}
+        <button class="mini cand-say" title="唸這個字" aria-label="唸 ${esc(r.word)}">🔊</button></div>
+      <div class="cand-zh">${esc(r.zh)}</div>
+      ${r.note ? `<div class="cand-note">${esc(r.note)}</div>` : ""}
+      ${r.example ? `<div class="cand-ex">${esc(r.example)}${r.exampleZh ? `<br><span class="muted">${esc(r.exampleZh)}</span>` : ""}</div>` : ""}
+      ${mode === "add" ? formsHTML(r, false) : ""}
+      <div class="cand-acts"></div>`;
+    c.querySelector(".cand-say").addEventListener("click", () => TTS.speak(r.word, undefined, null));
+    const acts = c.querySelector(".cand-acts");
+
+    if (mode === "pick") {
+      const b = el("button", "btn sm primary", "用這個");
+      b.addEventListener("click", () => {
+        box.querySelectorAll(".cand").forEach(x => x.classList.toggle("chosen", x === c));
+        onPick(r);
+      });
+      acts.appendChild(b);
+    } else {
+      const paint = () => {
+        acts.innerHTML = "";
+        const s = candState(r);
+        const tag = $("addTag").value.trim();
+        const tags = tag ? [tag] : [];
+        if (s.st === "same") {
+          acts.appendChild(el("span", "cand-done", "✓ 已在單字本"));
+          if (tag && !(s.card.tags || []).includes(tag)) {
+            const b = el("button", "btn sm ghost", `也加上「${tag}」標籤`);
+            b.addEventListener("click", () => { V.add(r.word, { tags }); paint(); renderVocab(); });
+            acts.appendChild(b);
+          }
+          return;
+        }
+        const main = el("button", "btn sm primary", s.st === "new" ? "＋ 加入" : "補上這個意思");
+        if (s.st === "sense") main.title = `單字本已經有「${s.card.zh}」，會把「${r.zh}」加在後面`;
+        main.addEventListener("click", () => {
+          if (s.st === "new") {
+            const { note, ...data } = r;
+            V.add(r.word, { ...data, tags });
+            toast(`已加入「${r.word}」`);
+          } else {
+            V.update(s.card.id, { zh: `${s.card.zh}；${r.zh}`,
+                                  tags: [...new Set([...(s.card.tags || []), ...tags])] });
+            toast(`「${r.word}」多了一個意思：${r.zh}`);
+          }
+          refreshPills();
+          renderVocab();
+          // 同一個字的其他意思，按鈕要從「加入」變成「補上這個意思」
+          box.querySelectorAll(".cand").forEach(x => x._paint && x._paint());
+        });
+        acts.appendChild(main);
+        if (s.st === "new") {
+          const ed = el("button", "btn sm ghost", "改一下再加入");
+          ed.addEventListener("click", () => {
+            const { note, ...data } = r;
+            openWordEditor(null, { ...data, tags });
+          });
+          acts.appendChild(ed);
+        }
+      };
+      c._paint = paint;
+      paint();
+    }
+    box.appendChild(c);
+  });
+}
+
+/* ---------- 新增單字：輸入英文或中文 → 列出候選 → 一鍵加入 ---------- */
+
+const dlgAdd = $("dlgAdd");
+let addSeq = 0;
+
+function openAddDialog() {
+  $("addQuery").value = "";
+  $("addTag").value = $("vocabTag").value || "";
+  $("addResults").innerHTML = "";
+  fillTagOptions();
+  dlgAdd.showModal();
+  setTimeout(() => $("addQuery").focus(), 50);
+}
+
+async function runAddSearch(force = false) {
+  const q = $("addQuery").value.trim();
+  const box = $("addResults");
+  if (!q) { $("addQuery").focus(); return; }
+  const seq = ++addSeq;
+  box.innerHTML = `<p class="muted note">查詢中…</p>`;
+  $("btnAddSearch").disabled = true;
+  try {
+    const { results, cached, zh } = await V.search(q, { force, level: Store.settings().level });
+    if (seq !== addSeq) return;
+    if (!results.length) {
+      box.innerHTML = `<p class="note">找不到「${esc(q)}」。換個說法，或用下面的「手動填寫」。</p>`;
+      return;
+    }
+    box.innerHTML = "";
+    const head = el("div", "add-head");
+    head.innerHTML = `<span>${zh ? `「${esc(q)}」可以說成 ${results.length} 種：` : results.length > 1 ? `「${esc(results[0].word)}」有 ${results.length} 個意思，選你要的：` : "查到了："}</span>
+      ${cached ? `<span class="muted">（查過的，沒有花 API）</span>` : ""}`;
+    if (cached) {
+      const again = el("button", "mini", "↻ 重查");
+      again.addEventListener("click", () => runAddSearch(true));
+      head.appendChild(again);
+    }
+    box.appendChild(head);
+    const list = el("div", "cand-list");
+    box.appendChild(list);
+    renderCands(list, results, "add");
+  } catch (e) {
+    if (seq !== addSeq) return;
+    box.innerHTML = `<p class="note">查詢失敗：${esc(e.message)}<br>可以先用下面的「手動填寫」加入，之後再補。</p>`;
+  } finally {
+    if (seq === addSeq) $("btnAddSearch").disabled = false;
+  }
+}
+
+$("btnAddOne").addEventListener("click", openAddDialog);
+$("btnAddSearch").addEventListener("click", () => runAddSearch());
+$("addQuery").addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.isComposing) { e.preventDefault(); runAddSearch(); }
+});
+// 改了標籤，候選卡上的按鈕（例如「也加上標籤」）要跟著更新
+$("addTag").addEventListener("input", () => $("addResults").querySelectorAll(".cand").forEach(c => c._paint && c._paint()));
+$("btnAddDone").addEventListener("click", () => dlgAdd.close());
+$("btnAddManual").addEventListener("click", () => {
+  const q = $("addQuery").value.trim();
+  const zh = /[㐀-鿿]/.test(q);
+  openWordEditor(null, { word: zh ? "" : q, zh: zh ? q : "",
+                         tags: $("addTag").value.trim() ? [$("addTag").value.trim()] : [] });
+});
+// 編輯器存檔（從候選「改一下再加入」）之後，候選卡的狀態要更新
+dlgWord.addEventListener("close", () => {
+  if (dlgAdd.open) $("addResults").querySelectorAll(".cand").forEach(c => c._paint && c._paint());
+});
 
 // 舊單字一次補齊詞性變化：每 25 個字一個請求
 $("btnFillForms").addEventListener("click", async () => {
@@ -881,31 +1055,44 @@ $("btnFillForms").addEventListener("click", async () => {
 });
 $("btnCloseWord").addEventListener("click", () => dlgWord.close());
 
+/** 把選中的候選填進編輯器：只補空白欄位，你自己打的不動 */
+function applyCand(r) {
+  const fill = (id, val) => { if (!$(id).value.trim() && val) $(id).value = val; };
+  fill("wfWord", r.word);
+  fill("wfZh", r.zh);
+  fill("wfPhonetic", r.phonetic);
+  fill("wfPos", r.pos);
+  fill("wfExample", r.example);
+  fill("wfExampleZh", r.exampleZh);
+  fill("wfSyn", relToText(r.synonyms));
+  fill("wfAnt", relToText(r.antonyms));
+  fill("wfFam", V.familyToText(r.family));
+  if (Array.isArray(r.forms)) editingForms = r.forms;
+  $("wordDlgNote").textContent = "已補上空白欄位，你原本填的內容沒有被改動。例句、近義詞在「更多欄位」裡。";
+}
+
 $("btnAutoFill").addEventListener("click", async () => {
   const word = $("wfWord").value.trim();
+  const zh = $("wfZh").value.trim();
   const note = $("wordDlgNote");
-  if (!word) { note.textContent = "請先填英文單字。"; return; }
+  const pick = $("wfPick");
+  if (!word && !zh) { note.textContent = "英文或中文先填一個。"; $("wfWord").focus(); return; }
   const btn = $("btnAutoFill");
   btn.disabled = true;
+  pick.innerHTML = "";
   note.textContent = "查詢中…";
   try {
-    const d = await V.lookup(word);
-    // 只補空白欄位，不覆蓋你已經自己打好的內容
-    if (!$("wfPhonetic").value.trim())  $("wfPhonetic").value = d.phonetic || "";
-    if (!$("wfPos").value.trim())       $("wfPos").value = d.pos || "";
-    if (!$("wfZh").value.trim())        $("wfZh").value = d.zh || "";
-    if (!$("wfExample").value.trim())   $("wfExample").value = d.example || "";
-    if (!$("wfExampleZh").value.trim()) $("wfExampleZh").value = d.exampleZh || "";
-    if (!$("wfSyn").value.trim())       $("wfSyn").value = relToText(d.synonyms);
-    if (!$("wfAnt").value.trim())       $("wfAnt").value = relToText(d.antonyms);
-    if (!Array.isArray(d.family)) {
-      try { await V.fetchForms([word]); } catch (e) {}
-      const hit = Store.cacheGet(word) || {};
-      d.forms = hit.forms; d.family = hit.family;
-    }
-    if (!$("wfFam").value.trim())       $("wfFam").value = V.familyToText(d.family);
-    if (Array.isArray(d.forms)) editingForms = d.forms;
-    note.textContent = "已補上空白欄位，你原本填的內容沒有被改動。";
+    const { results } = await V.search(word || zh, { level: Store.settings().level });
+    // 填了英文：只留這個字的各個意思；填了中文：全部候選都給你挑
+    let list = word ? results.filter(r => r.word.toLowerCase() === word.toLowerCase()) : results;
+    if (!list.length) list = results;
+    if (!list.length) { note.textContent = "查不到，請直接自己填。"; return; }
+    if (list.length === 1) { applyCand(list[0]); return; }
+    note.textContent = "";
+    renderCands(pick, list, "pick", (r) => { applyCand(r); });
+    // 說明放在候選清單正上方，不要放在最底下看不到
+    pick.prepend(el("div", "add-head", word ? `「${word}」有 ${list.length} 個意思，選你要的那個：`
+                                            : `「${zh}」可以說成 ${list.length} 種，選你要的那個：`));
   } catch (e) {
     note.textContent = "查詢失敗：" + e.message + "（可以直接自己填）";
   } finally {
@@ -915,7 +1102,12 @@ $("btnAutoFill").addEventListener("click", async () => {
 
 $("btnSaveWord").addEventListener("click", () => {
   const word = $("wfWord").value.trim();
-  if (!word) { $("wordDlgNote").textContent = "英文單字不能空白。"; return; }
+  if (!word) {
+    $("wordDlgNote").textContent = $("wfZh").value.trim()
+      ? "還沒有英文 —— 按「✨ 用 AI 補齊」從中文找英文，或自己填。" : "英文單字不能空白。";
+    $("wfWord").focus();
+    return;
+  }
   const data = {
     word,
     phonetic:  $("wfPhonetic").value.trim(),
@@ -947,11 +1139,12 @@ $("btnSaveWord").addEventListener("click", () => {
   renderVocab();
 });
 
-// Enter 直接存檔，方便連續輸入
+// Enter：還沒有英文就先幫你查，有英文就直接存檔（方便連續輸入）
 dlgWord.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" && e.target.tagName === "INPUT") {
+  if (e.key === "Enter" && !e.isComposing && e.target.tagName === "INPUT") {
     e.preventDefault();
-    $("btnSaveWord").click();
+    if (!$("wfWord").value.trim() && $("wfZh").value.trim()) $("btnAutoFill").click();
+    else $("btnSaveWord").click();
   }
 });
 

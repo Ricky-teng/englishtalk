@@ -324,52 +324,82 @@
 </dialog>
 
 <!-- ============================ 手動新增／編輯單字 ============================ -->
+<dialog class="modal" id="dlgAdd">
+  <div class="m-head">
+    <h2>新增單字</h2>
+    <p class="note" style="margin-bottom:0">輸入英文或中文都可以，會列出所有可能的字或意思讓你挑。</p>
+  </div>
+  <div class="m-body">
+    <div class="row add-search">
+      <input type="search" id="addQuery" class="grow" placeholder="例如：消耗、negotiate、look forward to" autocomplete="off" enterkeyhint="search">
+      <button class="btn primary" id="btnAddSearch" type="button">查詢</button>
+    </div>
+    <div class="add-tagrow">
+      <label for="addTag">加到標籤</label>
+      <input type="text" id="addTag" list="tagOptions" placeholder="可留空，例如：第三課" autocomplete="off">
+      <datalist id="tagOptions"></datalist>
+    </div>
+    <div id="addResults" class="add-results" aria-live="polite"></div>
+    <button class="btn sm ghost" id="btnAddManual" type="button">課本的定義要一字不差？手動填寫全部欄位</button>
+  </div>
+  <div class="m-foot">
+    <button class="btn" id="btnAddDone">完成</button>
+  </div>
+</dialog>
+
 <dialog class="modal" id="dlgWord">
   <div class="m-head">
     <h2 id="wordDlgTitle">新增單字</h2>
     <p class="note" style="margin-bottom:0">
-      全部欄位都可以自己填，照課本寫也行。只填英文的話，可以按「用 AI 補齊」讓它補上其他欄位。
+      英文或中文填一個就好，按「用 AI 補齊」會列出候選讓你挑，而且只補空白的欄位，不會改你自己填的內容。
     </p>
   </div>
   <div class="m-body">
-    <label class="field" for="wfWord">英文單字或片語 <span style="color:var(--danger)">*</span></label>
-    <div class="row">
-      <input type="text" id="wfWord" class="grow" placeholder="negotiate" autocomplete="off">
-      <button class="btn sm" id="btnAutoFill" type="button">用 AI 補齊</button>
+    <div class="row wf-main">
+      <div class="grow">
+        <label class="field" for="wfWord">英文</label>
+        <input type="text" id="wfWord" placeholder="例：negotiate" autocomplete="off">
+      </div>
+      <div class="grow">
+        <label class="field" for="wfZh">中文意思</label>
+        <input type="text" id="wfZh" placeholder="例：談判、協商" autocomplete="off">
+      </div>
     </div>
+    <button class="btn sm" id="btnAutoFill" type="button" style="margin-top:10px">✨ 用 AI 補齊</button>
+    <div id="wfPick" class="add-results"></div>
 
     <div class="row">
       <div class="grow">
         <label class="field" for="wfPhonetic">音標</label>
-        <input type="text" id="wfPhonetic" placeholder="/nɪˈɡoʊʃieɪt/">
+        <input type="text" id="wfPhonetic" placeholder="例：/nɪˈɡoʊʃieɪt/">
       </div>
       <div class="grow">
         <label class="field" for="wfPos">詞性</label>
-        <input type="text" id="wfPos" placeholder="verb">
+        <input type="text" id="wfPos" placeholder="例：verb">
       </div>
     </div>
 
-    <label class="field" for="wfZh">中文意思</label>
-    <input type="text" id="wfZh" placeholder="談判、協商">
-
-    <label class="field" for="wfExample">例句</label>
-    <input type="text" id="wfExample" placeholder="We need to negotiate a better price.">
-
-    <label class="field" for="wfExampleZh">例句中文</label>
-    <input type="text" id="wfExampleZh" placeholder="我們需要談出一個更好的價格。">
-
-    <label class="field" for="wfSyn">近義詞</label>
-    <input type="text" id="wfSyn" placeholder="settle(和解), bargain(討價還價)">
-
-    <label class="field" for="wfAnt">反義詞</label>
-    <input type="text" id="wfAnt" placeholder="refuse(拒絕)">
-
-    <label class="field" for="wfFam">詞性變化（同字根、不同詞性）</label>
-    <input type="text" id="wfFam" placeholder="decision n. 決定, decisive adj. 果斷的">
-    <div class="note">用逗號分隔，中文放在括號裡（可省略）。</div>
-
     <label class="field" for="wfTags">標籤（用空白分隔，例如課次）</label>
-    <input type="text" id="wfTags" placeholder="第三課 期中考">
+    <input type="text" id="wfTags" list="tagOptions" placeholder="例：第三課 期中考">
+
+    <details id="wfMore" class="wf-more">
+      <summary>更多欄位：例句、近義詞、反義詞、詞性變化</summary>
+      <label class="field" for="wfExample">例句</label>
+      <input type="text" id="wfExample" placeholder="例：We need to negotiate a better price.">
+
+      <label class="field" for="wfExampleZh">例句中文</label>
+      <input type="text" id="wfExampleZh" placeholder="例：我們需要談出一個更好的價格。">
+
+      <label class="field" for="wfSyn">近義詞</label>
+      <input type="text" id="wfSyn" placeholder="例：settle(和解), bargain(討價還價)">
+
+      <label class="field" for="wfAnt">反義詞</label>
+      <input type="text" id="wfAnt" placeholder="例：refuse(拒絕)">
+
+      <label class="field" for="wfFam">詞性變化（同字根、不同詞性）</label>
+      <input type="text" id="wfFam" placeholder="例：decision n. 決定, decisive adj. 果斷的">
+      <div class="note">用逗號分隔，中文放在括號裡（可省略）。</div>
+    </details>
 
     <div class="note" id="wordDlgNote"></div>
   </div>

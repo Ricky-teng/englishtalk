@@ -757,3 +757,38 @@ button:focus-visible, .chip:focus-visible, a:focus-visible {
 .fc-forms .chip { cursor: default; }
 .wp-rel > .chips, .wf-list { flex: 1; min-width: 0; }
 .wf-row { align-items: baseline; }
+
+/* =========================================================================
+   新增單字：查詢 → 候選清單 → 一鍵加入
+   ========================================================================= */
+.add-search { gap: 8px; }
+.add-tagrow { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.add-tagrow label { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.add-tagrow input { flex: 1; min-width: 0; }
+.add-results { margin-top: 12px; }
+.add-results:empty { display: none; }
+.add-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13.5px; margin-bottom: 8px; }
+.cand-list { display: grid; gap: 10px; }
+#wfPick { display: grid; gap: 10px; }
+.cand { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; background: var(--surface-2); }
+.cand.chosen { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.cand-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
+.cand-word { font-size: 17px; }
+.cand-ipa { font-size: 12.5px; color: var(--muted); }
+.cand-pos { font-size: 11px; padding: 1px 7px; border-radius: 6px; background: var(--surface); color: var(--text-2); border: 1px solid var(--line); }
+.cand-say { margin-left: auto; }
+.cand-zh { font-size: 15px; margin-top: 4px; }
+.cand-note { font-size: 12.5px; color: var(--text-2); margin-top: 2px; }
+.cand-ex { font-size: 13px; color: var(--text-2); margin-top: 6px; padding-left: 9px; border-left: 2px solid var(--line-strong); }
+.cand .wp-forms { font-size: 12.5px; }
+.cand .wp-rel { margin-top: 6px; }
+.cand .chip { cursor: default; font-size: 12px; }
+.cand-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+.cand-done { font-size: 13px; color: var(--good); font-weight: 600; }
+#btnAddManual { margin: 14px 0 4px; white-space: normal; text-align: left; }
+
+/* 單字編輯器：範例文字要一眼看得出是「提示」不是已經填好的值 */
+#dlgWord input::placeholder, #dlgAdd input::placeholder { color: var(--muted); opacity: .6; font-style: italic; }
+.wf-main { gap: 10px; }
+.wf-more { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 10px; }
+.wf-more summary { cursor: pointer; font-size: 13.5px; color: var(--text-2); padding: 4px 0; }

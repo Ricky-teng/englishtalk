@@ -2,7 +2,7 @@
  * whatsnew.js — 新版本第一次打開時的「新功能」介紹，以及安裝到桌面
  */
 
-export const APP_VERSION = "2.3";
+export const APP_VERSION = "2.4";
 const SEEN_KEY = "englishtalk.seenVersion";
 
 let deferredInstall = null;   // Android / 桌面 Chrome 的安裝提示
@@ -55,6 +55,8 @@ function installHelp() {
 }
 
 const FEATURES = [
+  { icon: "🔎", title: "新增單字：打中文也可以", go: "vocab",
+    body: "按「＋ 新增單字」，輸入中文（例如「消耗」）會列出 consume、use up、deplete 等候選，每個都附用法差別和例句；輸入英文則列出它的各個意思（bank：銀行／河岸）。挑你要的按「＋ 加入」就好，同一個字的第二個意思會用「補上這個意思」併進去。查過的不會再花 API。" },
   { icon: "🌳", title: "單字底下顯示詞形與詞性變化", go: "vocab",
     body: "查單字時，意思底下會列出詞形（decided、deciding、decides）和同字根的其他詞性（decision n. 決定、decisive adj. 果斷的），點一下就能查那個字。單字本和翻卡背面也看得到。舊單字可以在單字本按「補齊詞性變化」一次補完，每 25 個字只花一次 API。" },
   { icon: "✏️", title: "文法修正，標在你那句話底下", go: "chat",

@@ -208,6 +208,75 @@ export function normRelated(arr) {
   return out;
 }
 
+/* ---------- 新增單字用的搜尋：中文或英文都可以，列出所有可能讓你挑 ---------- */
+
+const hasCJK = (t) => /[㐀-鿿]/.test(t);
+
+/**
+ * 輸入中文 → 列出可以表達它的英文字（常用的在前，附用法差別）。
+ * 輸入英文 → 列出這個字的各個意思／詞性（一個意思一筆）。
+ * 結果以查詢字串為鍵永久快取，同樣的查詢不會再花 API。
+ * @returns {Promise<{results:Array, cached:boolean, zh:boolean}>}
+ */
+export async function search(query, { force = false, level = "B1" } = {}) {
+  const q = String(query || "").trim();
+  if (!q) return { results: [], cached: false, zh: false };
+  const zh = hasCJK(q);
+  const key = "?" + q.toLowerCase();
+  if (!force) {
+    const hit = cacheGet(key);
+    if (hit && Array.isArray(hit.results) && hit.results.length) return { results: hit.results, cached: true, zh };
+  }
+
+  const task = zh
+    ? `The user typed Chinese: "${q}". List the English words or short phrases that express it, \
+most common first. Include options with DIFFERENT nuance or usage (everyday vs formal, \
+physical vs abstract, etc.) so the user can pick the one they mean. At most 6.`
+    : `The user typed English: "${q}". List its DISTINCT meanings a learner would meet, most common \
+first: one element per meaning or part of speech, all with the same "word". At most 4. \
+If it is misspelled, use the intended word. If it has only one common meaning, return one element.`;
+
+  const prompt = `You are a bilingual dictionary for a Traditional Chinese speaker (CEFR ${level}) \
+who is adding words to a vocabulary book.
+${task}
+
+Return ONLY a JSON array, no markdown fence. Each element:
+{"word":"dictionary form","phonetic":"/IPA/","pos":"verb","zh":"繁體中文意思(15字內)",\
+"note":"繁體中文一句話：這個選項什麼時候用、跟其他選項差在哪(20字內)",\
+"example":"one short natural English sentence for THIS meaning","exampleZh":"例句的繁體中文翻譯",\
+"synonyms":[{"w":"near-synonym","zh":"中文"}],"antonyms":[{"w":"antonym","zh":"中文"}],\
+"forms":[{"k":"past","w":"decided"}],"family":[{"w":"decision","pos":"n.","zh":"決定"}]}
+
+At most 2 synonyms and 2 antonyms each (same sense; empty array if none, never invent).
+${FORMS_RULES}
+Traditional Chinese only (never Simplified). Keep every field short.`;
+
+  const raw = await complete(prompt, { maxTokens: 3500 });
+  const arr = parseJSON(raw);
+  if (!Array.isArray(arr)) throw new Error("模型沒有回傳清單");
+  const results = arr.slice(0, 6).map(d => ({
+    word: String(d.word || "").trim(),
+    phonetic: String(d.phonetic || "").trim(),
+    pos: String(d.pos || "").trim(),
+    zh: String(d.zh || "").trim(),
+    note: String(d.note || "").trim(),
+    example: String(d.example || "").trim(),
+    exampleZh: String(d.exampleZh || "").trim(),
+    synonyms: normRelated(d.synonyms).slice(0, 2),
+    antonyms: normRelated(d.antonyms).slice(0, 2),
+    forms: normForms(d.forms, d.word),
+    family: normFamily(d.family, d.word),
+  })).filter(r => /^[A-Za-z]/.test(r.word) && r.zh);
+  if (results.length) {
+    cacheSet(key, { results });
+    // 順便當作單字查詢的快取（只在還沒查過時），之後點這個字就不用再查
+    for (const r of results) {
+      if (!cacheGet(r.word)) { const { note, ...card } = r; cacheSet(r.word, card); }
+    }
+  }
+  return { results, cached: false, zh };
+}
+
 /* ---------- 詞形與詞性變化 ---------- */
 
 export const FORM_LABELS = { past: "過去式", pp: "過去分詞", ing: "現在分詞", s3: "第三人稱",
