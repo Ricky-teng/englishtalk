@@ -29,13 +29,15 @@ export function beginSession() {
 }
 
 export function recordTurn(role, content, words = 0) {
-  if (!active) return;
-  active.messages.push({ role, content, t: Date.now() });
+  if (!active) return null;
+  const msg = { role, content, t: Date.now() };
+  active.messages.push(msg);
   if (role === "user") {
     active.turns++;
     active.userWords += words;
     bumpDaily({ turns: 1, userWords: words });
   }
+  return msg;     // 呼叫端可以之後把文法修正掛在這則訊息上
 }
 
 /** 記下這場對話中 AI 用過的單字 */

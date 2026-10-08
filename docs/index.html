@@ -6,7 +6,12 @@
 <meta name="description" content="用嘴巴跟 AI 即時練英文對話，可以隨時插話打斷。內建單字本與間隔重複複習。">
 <meta name="theme-color" content="#2a78d6">
 <title>English Talk — 雙工英文對話練習</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗣️</text></svg>">
+<link rel="icon" type="image/png" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="English Talk">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,6 +27,7 @@
   <div class="spacer"></div>
   <span class="badge" id="badgeEngine">—</span>
   <span class="badge" id="badgeTTS">—</span>
+  <button class="btn sm" id="btnInstall" hidden title="安裝到桌面，像 App 一樣使用">📲 安裝</button>
   <button class="btn sm ghost" id="btnTheme" title="切換深淺色">🌓</button>
   <button class="btn sm" id="btnSettings">設定</button>
 </header>
@@ -68,6 +74,7 @@
         </select>
         <button class="btn sm primary" id="btnAddOne">＋ 新增單字</button>
         <button class="btn sm" id="btnBulkAdd">批次貼上</button>
+        <button class="btn sm ghost" id="btnFillForms" hidden>補齊詞性變化</button>
         <button class="btn sm ghost" id="btnVocabExport">匯出 CSV</button>
       </div>
 
@@ -82,13 +89,19 @@
       <h2 class="title">複習</h2>
       <p class="lede">間隔重複：記得越牢，下次出現得越晚。答錯的會今天再出現一次。</p>
 
-      <div class="row" style="margin-bottom:18px">
-        <div class="grow">
-          <label class="field" for="reviewTag">複習範圍</label>
-          <select id="reviewTag"><option value="">全部單字</option></select>
+      <div class="review-controls">
+        <label class="field" style="margin-top:0">複習方式</label>
+        <div class="mode-grid" id="reviewMode" role="radiogroup" aria-label="複習方式"></div>
+        <p class="note" id="reviewModeNote" style="margin:8px 0 0"></p>
+        <div class="row" style="margin-top:4px">
+          <div class="grow">
+            <label class="field" for="reviewTag">複習範圍</label>
+            <select id="reviewTag"><option value="">全部單字</option></select>
+          </div>
+          <button class="btn primary" id="btnStartReview">開始複習</button>
         </div>
-        <button class="btn primary" id="btnStartReview">開始複習</button>
       </div>
+      <div style="height:18px"></div>
 
       <div id="reviewStage" class="review-stage"></div>
     </div></div>
@@ -101,6 +114,8 @@
       <p class="lede">所有資料都存在這台裝置的瀏覽器裡，沒有上傳到任何地方。</p>
 
       <div id="statTiles" class="tiles"></div>
+
+      <div id="insights"></div>
 
       <div class="card">
         <h3>練習熱力圖</h3>
@@ -151,6 +166,10 @@
       <option value="gemini">Google Gemini（推薦：免費額度大、瀏覽器直連最穩）</option>
       <option value="groq">Groq（回應最快，少數瀏覽器可能被跨來源政策擋下）</option>
     </select>
+    <div class="row" style="margin-top:8px;align-items:center">
+      <button class="btn sm" id="btnTestKey" type="button">🔌 測試連線</button>
+      <span class="note" id="testKeyNote" style="margin:0"></span>
+    </div>
 
     <div id="grpGemini">
       <label class="field" for="cfgGeminiKey">Gemini API 金鑰 <span class="badge" id="stGemini">未設定</span></label>
@@ -267,11 +286,38 @@
     </label>
     <div class="note" style="margin-left:26px">一整場對話只會多呼叫一次 API。關掉可以更省額度。</div>
 
+    <label class="field" for="cfgGrammar">文法修正</label>
+    <select id="cfgGrammar">
+      <option value="live">即時 — 每句說完就標在那句底下（推薦）</option>
+      <option value="end">對話結束後 — 一次檢查全部，最省額度</option>
+      <option value="off">關閉</option>
+    </select>
+    <div class="note">AI 不會在對話中糾正你，修正只會安靜地寫在你那句話底下。
+      即時模式會把排隊中的句子合併成一次送出，平均每 1–3 句才多一次 API；
+      Gemini 用的是額度另計的 flash-lite 模型，不會吃掉對話的額度。</div>
+
+    <label class="field" for="cfgScheduler">複習排程演算法</label>
+    <select id="cfgScheduler">
+      <option value="fsrs">FSRS — Anki 現行的演算法，同樣記得牢、複習次數更少（推薦）</option>
+      <option value="sm2">SM-2 — 傳統演算法</option>
+    </select>
+    <label class="field" for="cfgRetention">目標記憶率（FSRS）</label>
+    <select id="cfgRetention">
+      <option value="0.85">85% — 複習量最少，偶爾會忘</option>
+      <option value="0.9">90% — 標準（推薦）</option>
+      <option value="0.95">95% — 考前衝刺，複習量約多一倍</option>
+    </select>
+    <div class="note">切換後會依新規則重排所有字的複習日。兩種演算法的紀錄會一直同步保存，隨時可以換回來。</div>
+
     <div class="note" id="cacheInfo" style="margin-top:14px"></div>
 
     <div style="height:8px"></div>
   </div>
   <div class="m-foot">
+    <span class="note" style="margin:0 auto 0 0">
+      <span id="appVersion"></span> ·
+      <a href="#" id="lnkWhatsNew">看新功能</a>
+    </span>
     <button class="btn ghost" id="btnCloseSettings">取消</button>
     <button class="btn primary" id="btnSaveSettings">儲存</button>
   </div>
@@ -317,6 +363,9 @@
 
     <label class="field" for="wfAnt">反義詞</label>
     <input type="text" id="wfAnt" placeholder="refuse(拒絕)">
+
+    <label class="field" for="wfFam">詞性變化（同字根、不同詞性）</label>
+    <input type="text" id="wfFam" placeholder="decision n. 決定, decisive adj. 果斷的">
     <div class="note">用逗號分隔，中文放在括號裡（可省略）。</div>
 
     <label class="field" for="wfTags">標籤（用空白分隔，例如課次）</label>

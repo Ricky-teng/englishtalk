@@ -171,7 +171,11 @@ async function geminiStream(sys, messages, signal, onDelta) {
 
 /* ---------- 一次性呼叫（單字查詢等，不需要串流） ---------- */
 
-export async function complete(prompt, { json = false, maxTokens = 600 } = {}) {
+/**
+ * @param {Object} o  json：要求回 JSON；maxTokens；
+ *                    geminiModel：改用別的 Gemini 模型（例如文法檢查用較輕的 flash-lite，額度另計）
+ */
+export async function complete(prompt, { json = false, maxTokens = 600, geminiModel = "" } = {}) {
   const s = settings();
   if (s.provider === "groq") {
     if (!s.groqKey) throw new Error("尚未設定 Groq API 金鑰");
@@ -193,7 +197,7 @@ export async function complete(prompt, { json = false, maxTokens = 600 } = {}) {
 
   if (!s.geminiKey) throw new Error("尚未設定 Gemini API 金鑰");
   const url = "https://generativelanguage.googleapis.com/v1beta/models/"
-            + encodeURIComponent(s.geminiModel) + ":generateContent";
+            + encodeURIComponent(geminiModel || s.geminiModel) + ":generateContent";
   const resp = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": s.geminiKey },

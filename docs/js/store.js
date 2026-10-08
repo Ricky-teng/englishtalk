@@ -32,11 +32,18 @@ function emptyState() {
       // 但「這一輪根本沒拿到單字」是確定的。
       vocabFrequency: 0.5,
       autoLookup: true,              // 點單字自動查詢
+      reviewMode: "flip",            // flip = 翻卡（預設，搭捷運也能用），speak = 用說的複習
       promoteHeard: true,            // AI 用了但你沒接的字，自動提前複習
       analyzeGaps: true,             // 對話結束後挖出「想講但講不出來」的字
+      scheduler: "fsrs",             // fsrs | sm2
+      retention: 0.9,                // FSRS 目標記憶率：0.85 輕鬆、0.9 標準、0.95 嚴格
+      grammarCheck: "live",          // live = 每句說完就在旁邊標出修正，end = 對話結束一次檢查，off
+      grammarModel: "gemini-2.5-flash-lite",  // 文法檢查用的模型（Gemini），額度跟對話分開算
     },
-    vocab: [],     // 單字本（含 SM-2 間隔重複欄位）
+    vocab: [],     // 單字本（含 FSRS 與 SM-2 間隔重複欄位）
     lookups: {},   // 查詢快取：查過的字永久留著，同一個字一輩子只查一次
+    reviewLog: [], // 每一次作答的紀錄 {t, w, m, q, ms, r}，個人分析用（只留最近 6000 筆）
+    coach: {},     // AI 週報快取 { "2026-W41": "…" }，同一週只呼叫一次
     sessions: [],  // 對話紀錄
     daily: {},     // { "YYYY-MM-DD": {seconds, turns, userWords, reviews} }
   };
@@ -74,6 +81,8 @@ export function load() {
       }
       state = fillDefaults(parsed, base);
       state.v = SCHEMA_VERSION;
+      // v2.0 曾把預設改成「用說的」；沒有自己切換過的人一律回到翻卡
+      if (!state.settings.reviewModeChosen) state.settings.reviewMode = "flip";
     } else {
       state = base;
     }
@@ -102,6 +111,7 @@ export function settings() { return load().settings; }
 export function vocab()    { return load().vocab; }
 export function lookups()  { return load().lookups; }
 export function sessions() { return load().sessions; }
+export function reviewLog() { return load().reviewLog; }
 export function daily()    { return load().daily; }
 
 /* ---------- 日期工具（一律用本地時區的 YYYY-MM-DD） ---------- */

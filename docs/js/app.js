@@ -8,6 +8,13 @@ import * as TTS from "./tts.js";
 import * as V from "./vocab.js";
 import * as Stats from "./stats.js";
 import { Listener, isSupported, wordCount } from "./asr.js";
+import { initLookup, closeLookup, formsHTML } from "./lookup.js";
+import { initShadow, openShadow } from "./shadow.js";
+import { initSpeakReview, startSpeakReview, stopSpeakReview, isActive as speakReviewActive } from "./speakreview.js";
+import * as Insights from "./insights.js";
+import { initQuiz, startQuiz, stopQuiz, isQuizActive, QUIZ_MODES } from "./quiz.js";
+import * as Grammar from "./grammar.js";
+import { initWhatsNew, maybeShowWhatsNew, openWhatsNew, APP_VERSION } from "./whatsnew.js";
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => {
@@ -46,6 +53,9 @@ $("btnTheme").addEventListener("click", () => {
 /* ---------- 分頁 ---------- */
 
 function showTab(name) {
+  if (name !== "review" && speakReviewActive()) stopSpeakReview();
+  if (name !== "review" && isQuizActive()) { stopQuiz(); }
+  closeLookup();
   document.querySelectorAll("nav.tabs button").forEach(b => {
     b.setAttribute("aria-selected", String(b.dataset.tab === name));
   });
@@ -102,6 +112,13 @@ const C = {
 
 const chatInner = $("chatInner");
 
+// 文法修正底下的「聽正確說法」「跟讀」
+chatInner.addEventListener("fix:hear", (e) => {
+  pauseConversationAudio();
+  TTS.speak(e.detail, undefined, null).then(resumeConversationAudio);
+});
+chatInner.addEventListener("fix:shadow", (e) => openShadow(e.detail));
+
 function setState(st) {
   C.state = st;
   $("dot").className = st;
@@ -115,14 +132,57 @@ function setState(st) {
 
 function addMsg(kind, text) {
   const d = el("div", "msg " + kind);
-  d.appendChild(el("span", "who", kind === "user" ? "你" : kind === "ai" ? "AI" : "系統"));
+  const head = el("div", "msg-head");
+  head.appendChild(el("span", "who", kind === "user" ? "你" : kind === "ai" ? "AI" : "系統"));
+  d.appendChild(head);
   const body = el("span", "body");
   if (kind === "ai") renderClickableWords(body, text || "");
   else body.textContent = text || "";
   d.appendChild(body);
+
+  // AI 的每一句話都可以再聽一次、或拿來跟讀
+  if (kind === "ai") {
+    const acts = el("div", "msg-acts");
+    const bReplay = el("button", "mini", "🔊 再聽");
+    bReplay.title = "再聽一次這句";
+    bReplay.addEventListener("click", () => {
+      const t = body.textContent.trim();
+      if (t) { pauseConversationAudio(); TTS.speak(t, undefined, null).then(resumeConversationAudio); }
+    });
+    const bShadow = el("button", "mini", "🎤 跟讀");
+    bShadow.title = "跟著唸這句，看哪些字發音不清楚";
+    bShadow.addEventListener("click", () => {
+      const t = body.textContent.trim();
+      if (t) openShadow(t);
+    });
+    acts.append(bReplay, bShadow);
+    head.appendChild(acts);          // 放在「AI」那一行的右邊，不額外佔高度
+  }
+
   chatInner.appendChild(d);
   scrollChat();
   return { root: d, body };
+}
+
+/* ---------- 暫停／恢復對話的麥克風與喇叭（跟讀、用說的複習要獨占） ---------- */
+
+let pausedForTool = false;
+
+function pauseConversationAudio() {
+  if (C.state === "speaking" || C.ttsBusy) bargeIn();
+  TTS.stop();
+  if (C.running && C.listener && C.listener.running) {
+    C.listener.stop();
+    pausedForTool = true;
+  }
+}
+
+function resumeConversationAudio() {
+  if (pausedForTool && C.running && C.listener) {
+    C.listener.start();
+    setState("listening");
+  }
+  pausedForTool = false;
 }
 
 function sysMsg(t) { addMsg("sys", t); }
@@ -255,11 +315,21 @@ function shouldInjectVocab() {
 
 /* ---------- 一回合 ---------- */
 
+function removeWelcome() {
+  const w = chatInner.querySelector(".welcome");
+  if (w) w.remove();
+}
+
 async function sendTurn(userText) {
-  addMsg("user", userText);
+  removeWelcome();   // 直接打字開始聊也要收掉歡迎面板
+  const node = addMsg("user", userText);
+  const prevAI = [...C.history].reverse().find(m => m.role === "assistant");
   C.history.push({ role: "user", content: userText });
   if (C.history.length > 24) C.history = C.history.slice(-24);
-  Stats.recordTurn("user", userText, wordCount(userText));
+  const rec = Stats.recordTurn("user", userText, wordCount(userText));
+
+  // 文法檢查：排進佇列就走，不等結果、不影響 AI 回話的速度
+  Grammar.check(userText, prevAI ? prevAI.content : "", node, rec);
 
   // 你自己把單字說出來了 —— 這才是真正的學習事件，記進產出紀錄。
   // 完全不打斷對話、不跳提示，結束時才在總結一次告訴你。
@@ -318,6 +388,7 @@ async function sendTurn(userText) {
 
 async function startChat() {
   if (C.running) return;
+  removeWelcome();
   const s = Store.settings();
   const hasKey = s.provider === "groq" ? s.groqKey : s.geminiKey;
   if (!hasKey) {
@@ -370,28 +441,122 @@ function stopChat() {
   $("btnStop").disabled = true;
   setState("idle");
   if (done && done.turns > 0) {
-    let line = `這次練習：${done.turns} 回合、開口 ${done.userWords} 個字。`;
-    if (done.produced && done.produced.length) {
-      line += `\n你在對話中自己用出了 ${done.produced.length} 個單字本的字：`
-            + done.produced.join("、") + "。";
-    }
-    sysMsg(line);
-
     const s2 = Store.settings();
 
     // 「聽得懂但講不出來」：AI 用了、你沒接的字，提前到明天複習（純本地，不呼叫 API）
-    if (s2.promoteHeard) {
-      const moved = V.promoteHeardNotProduced(done.heard, done.produced);
-      if (moved.length) {
-        sysMsg("這幾個字 AI 用了、你沒跟著用到，已經排進明天的複習："
-             + moved.map(c => c.word).join("、"));
-      }
-    }
+    const moved = s2.promoteHeard ? V.promoteHeardNotProduced(done.heard, done.produced) : [];
+    renderRecap(done, moved);
 
     // 「想講但講不出來」：整場對話只呼叫一次 API
     if (s2.analyzeGaps && done.turns >= 3) renderGaps(done);
+
+    // 文法：還沒檢查完的句子補檢查（「對話結束後」模式只在這裡打 API）
+    Grammar.flushAll().then(() => updateRecapGrammar(done));
   }
   refreshPills();
+}
+
+/** 對話結束的總結卡：這次練了什麼、用出了哪些字、哪些字排進明天 */
+function renderRecap(done, moved) {
+  const mins = Math.max(1, Math.round((done.end - done.start) / 60000));
+  const streak = Stats.streak();
+  const produced = done.produced || [];
+  const due = V.counts().due;
+
+  const card = el("div", "recap");
+  card.innerHTML = `
+    <div class="recap-head">
+      <span class="recap-title">這次練習</span>
+      ${streak ? `<span class="recap-streak">🔥 連續 ${streak} 天</span>` : ""}
+    </div>
+    <div class="recap-nums">
+      <div><b>${mins}</b><span>分鐘</span></div>
+      <div><b>${done.turns}</b><span>回合</span></div>
+      <div><b>${done.userWords}</b><span>開口字數</span></div>
+      <div><b>${produced.length}</b><span>用出的單字</span></div>
+    </div>
+    <div class="recap-grammar"></div>
+    ${produced.length ? `<div class="recap-sec"><span class="recap-label">你自己用出來的</span>
+      <div class="chips">${produced.map(w => `<span class="chip syn">${esc(w)}</span>`).join("")}</div></div>` : ""}
+    ${moved.length ? `<div class="recap-sec"><span class="recap-label">AI 用了、你還沒接 → 已排進明天複習</span>
+      <div class="chips">${moved.map(c => `<span class="chip ant">${esc(c.word)}${c.zh ? `<i>${esc(c.zh)}</i>` : ""}</span>`).join("")}</div></div>` : ""}
+    ${!produced.length && Store.vocab().length
+      ? `<p class="note" style="margin:10px 0 0">這次還沒用到單字本的字。下次試著把正在背的字用進對話裡 —— 說出口的那一刻才是真正記住的時候。</p>` : ""}
+    <div class="recap-acts"></div>`;
+
+  const acts = card.querySelector(".recap-acts");
+  if (due > 0) {
+    const b = el("button", "btn sm primary", reviewLabel(due));
+    b.addEventListener("click", () => { showTab("review"); startReviewRound(); });
+    acts.appendChild(b);
+  }
+  const again = el("button", "btn sm ghost", "再聊一場");
+  again.addEventListener("click", () => {
+    C.history = [];
+    Grammar.reset();
+    chatInner.innerHTML = "";
+    startChat();
+  });
+  acts.appendChild(again);
+
+  chatInner.appendChild(card);
+  C.recapNode = card;
+  updateRecapGrammar(done);
+  scrollChat();
+}
+
+/** 總結卡上的文法摘要：檢查結果陸續回來時會更新 */
+function updateRecapGrammar(done) {
+  const box = C.recapNode && C.recapNode.querySelector(".recap-grammar");
+  if (!box || Grammar.mode() === "off") return;
+  const users = (done.messages || []).filter(m => m.role === "user");
+  const checked = users.filter(m => m.fix);
+  const bad = checked.filter(m => !m.fix.ok);
+  if (!checked.length) { box.innerHTML = ""; return; }
+  box.innerHTML = `<div class="recap-sec"><span class="recap-label">✏️ 文法</span>
+    <p class="note" style="margin:4px 0 0">${bad.length
+      ? `檢查了 ${checked.length} 句，其中 <b>${bad.length}</b> 句有更好的說法，已經標在那幾句底下。試著用「🎤 跟讀」把正確的說法唸一遍。`
+      : `檢查了 ${checked.length} 句，都沒有文法問題 👍`}</p></div>`;
+}
+
+/** 對話頁一打開、還沒開始聊天時的歡迎面板 */
+function renderWelcome() {
+  if (chatInner.querySelector(".welcome")) return;
+  const s = Store.settings();
+  const h = new Date().getHours();
+  const hello = h < 5 ? "夜深了" : h < 11 ? "早安" : h < 14 ? "午安" : h < 18 ? "下午好" : "晚上好";
+  const streak = Stats.streak();
+  const today = (Store.daily()[Store.todayKey()] || {});
+  const c = V.counts();
+  const hasKey = s.provider === "groq" ? !!s.groqKey : !!s.geminiKey;
+
+  const box = el("div", "welcome");
+  box.innerHTML = `
+    <div class="wl-hello">${hello} 👋</div>
+    <div class="wl-stats">
+      ${streak ? `<span>🔥 連續 ${streak} 天</span>` : `<span>今天是新的開始</span>`}
+      <span>${(today.seconds || 0) >= 60 ? `今天練了 ${Stats.fmtDuration(today.seconds)}` : "今天還沒開口"}</span>
+      <span>單字本 ${c.total} 字 · 說得出來 ${c.spoken} 字</span>
+    </div>
+    <div class="wl-acts"></div>
+    <div class="wl-tip">小技巧：網站上任何一個英文字都可以點來查，AI 說的每句話都能「跟讀」。</div>`;
+
+  const acts = box.querySelector(".wl-acts");
+  if (!hasKey) {
+    const b = el("button", "btn primary", "先設定免費 API 金鑰");
+    b.addEventListener("click", openSettings);
+    acts.appendChild(b);
+  } else {
+    const b = el("button", "btn primary", "🗣️ 開始對話");
+    b.addEventListener("click", startChat);
+    acts.appendChild(b);
+  }
+  if (c.due > 0) {
+    const b = el("button", "btn", reviewLabel(c.due));
+    b.addEventListener("click", () => { showTab("review"); startReviewRound(); });
+    acts.appendChild(b);
+  }
+  chatInner.prepend(box);
 }
 
 $("btnStart").addEventListener("click", startChat);
@@ -486,121 +651,15 @@ async function renderGaps(session) {
    單字彈窗
    ========================================================================= */
 
-const pop = $("wordPop");
-let popWord = "";
-let popContext = "";
-
-document.addEventListener("click", (e) => {
-  const w = e.target.closest(".msg.ai .w");
-  if (w) { openWordPop(w); return; }
-  if (!pop.hidden && !pop.contains(e.target)) pop.hidden = true;
+// 全站點字查詢與跟讀都在獨立模組裡（lookup.js、shadow.js），這裡只負責接線
+initShadow({
+  pauseAudio: pauseConversationAudio,
+  resumeAudio: resumeConversationAudio,
 });
-
-async function openWordPop(spanEl) {
-  const word = spanEl.dataset.word;
-  const sentence = spanEl.closest(".body") ? spanEl.closest(".body").textContent : "";
-
-  // 定位在被點的字下方（之後點近義詞不會再移動，維持閱讀焦點）
-  const r = spanEl.getBoundingClientRect();
-  pop.hidden = false;
-  pop.innerHTML = "";
-  const pw = pop.offsetWidth || 330;
-  pop.style.left = Math.min(Math.max(r.left - pw / 2 + r.width / 2, 12),
-                            window.innerWidth - pw - 12) + "px";
-  const below = r.bottom + 8;
-  pop.style.top = (below + 260 > window.innerHeight ? Math.max(r.top - 260, 12) : below) + "px";
-
-  loadWordPop(word, sentence.slice(0, 300));
-}
-
-/** 查一個字並畫進彈窗；點近義／反義詞會再呼叫這個，形成可連續探索的字詞網 */
-async function loadWordPop(word, context = "") {
-  popWord = word;
-  popContext = context;
-  pop.innerHTML = `<div class="wp-head"><span class="wp-word">${esc(word)}</span></div>
-                   <p class="wp-zh muted">查詢中…</p>`;
-
-  const existing = V.find(word);
-  if (existing && existing.zh) { paintWordPop(existing, true); return; }
-
-  try {
-    const d = await V.lookup(word, context);
-    if (popWord !== word) return;   // 使用者已經點了別的字
-    paintWordPop(d, false);
-  } catch (e) {
-    if (popWord !== word) return;
-    pop.innerHTML = `<div class="wp-head"><span class="wp-word">${esc(word)}</span></div>
-                     <p class="wp-zh">查詢失敗：${esc(e.message)}</p>
-                     <div class="wp-actions">
-                       <button class="btn sm" id="wpAddRaw">先加入，之後再補</button>
-                     </div>`;
-    $("wpAddRaw").addEventListener("click", () => {
-      V.add(word);
-      pop.hidden = true;
-      refreshPills();
-      markSaved(word);
-      toast(`已加入「${word}」`);
-    });
-  }
-}
-
-/** 近義／反義詞區塊。每個詞都是可點的，點了就查那個詞。 */
-function relatedHTML(label, cls, list) {
-  if (!list || !list.length) return "";
-  const saved = new Set(Store.vocab().map(v => v.word.toLowerCase()));
-  const chips = list.map(x => {
-    const inBook = saved.has(x.w.toLowerCase()) ? " saved" : "";
-    const tip = x.zh ? ` title="${esc(x.zh)}"` : "";
-    return `<button class="chip ${cls}${inBook}" data-lookup="${esc(x.w)}"${tip}>`
-         + `${esc(x.w)}${x.zh ? `<i>${esc(x.zh)}</i>` : ""}</button>`;
-  }).join("");
-  return `<div class="wp-rel"><span class="wp-rel-label">${label}</span>
-            <div class="chips">${chips}</div></div>`;
-}
-
-function paintWordPop(d, already) {
-  pop.innerHTML = `
-    <div class="wp-head">
-      <span class="wp-word">${esc(d.word)}</span>
-      ${d.phonetic ? `<span class="wp-ipa">${esc(d.phonetic)}</span>` : ""}
-      ${d.pos ? `<span class="wp-pos">${esc(d.pos)}</span>` : ""}
-    </div>
-    ${d.zh ? `<p class="wp-zh">${esc(d.zh)}</p>` : ""}
-    ${d.example ? `<div class="wp-ex">${esc(d.example)}<br><span class="muted">${esc(d.exampleZh || "")}</span></div>` : ""}
-    ${relatedHTML("近義", "syn", d.synonyms)}
-    ${relatedHTML("反義", "ant", d.antonyms)}
-    <div class="wp-actions">
-      <button class="btn sm ghost" id="wpSpeak">🔊</button>
-      <button class="btn sm ghost" id="wpRefetch" title="這不是這句話裡的意思？重新查一次">↻</button>
-      ${already ? `<button class="btn sm" disabled>已在單字本</button>`
-                : `<button class="btn sm primary" id="wpAdd">加入單字本</button>`}
-    </div>`;
-  $("wpSpeak").addEventListener("click", () => TTS.speak(d.word, undefined, null));
-  $("wpRefetch").addEventListener("click", async () => {
-    V.forgetLookup(d.word);
-    pop.innerHTML = `<div class="wp-head"><span class="wp-word">${esc(d.word)}</span></div>
-                     <p class="wp-zh muted">重新查詢中…</p>`;
-    try {
-      const fresh = await V.lookup(d.word, popContext, true);
-      if (popWord === d.word) paintWordPop(fresh, !!V.find(d.word));
-    } catch (e) {
-      if (popWord === d.word) paintWordPop(d, already);
-    }
-  });
-  const add = $("wpAdd");
-  if (add) add.addEventListener("click", () => {
-    V.add(d.word, d);
-    pop.hidden = true;
-    refreshPills();
-    markSaved(d.word);
-    toast(`已加入「${d.word}」，之後會出現在複習`);
-  });
-
-  // 點近義／反義詞就查那個詞，彈窗原地換內容
-  pop.querySelectorAll("[data-lookup]").forEach(btn => {
-    btn.addEventListener("click", () => loadWordPop(btn.dataset.lookup, ""));
-  });
-}
+initLookup({
+  toast,
+  onVocabChanged: (word) => { refreshPills(); markSaved(word); },
+});
 
 function markSaved(word) {
   document.querySelectorAll(".msg.ai .w").forEach(n => {
@@ -620,6 +679,9 @@ function esc(s) {
 
 function renderVocab() {
   refreshPills();
+  const miss = V.missingForms().length;
+  $("btnFillForms").hidden = !miss;
+  if (!$("btnFillForms").disabled) $("btnFillForms").textContent = `補齊詞性變化（${miss} 個字）`;
   const c = V.counts();
   $("vocabCounts").innerHTML = `
     <div class="tile"><div class="t-label">總單字</div><div class="t-value">${c.total}</div></div>
@@ -680,6 +742,8 @@ function renderVocab() {
     main.appendChild(line1);
 
     if (v.zh) main.appendChild(el("div", "vzh", (v.pos ? v.pos + " · " : "") + v.zh));
+    const fm = formsHTML(v, false);
+    if (fm) { const box = el("div", "vforms"); box.innerHTML = fm; main.appendChild(box); }
     if (v.example) main.appendChild(el("div", "vex", v.example));
 
     const relLine = (label, cls, list) => {
@@ -711,6 +775,10 @@ function renderVocab() {
     const bSpeak = el("button", "btn sm ghost", "🔊");
     bSpeak.title = "唸一次";
     bSpeak.addEventListener("click", () => TTS.speak(v.word, undefined, null));
+    const bShadowEx = el("button", "btn sm ghost", "🎤");
+    bShadowEx.title = "跟讀例句";
+    bShadowEx.disabled = !v.example;
+    bShadowEx.addEventListener("click", () => openShadow(v.example));
     const bTag = el("button", "btn sm ghost", "✎");
     bTag.title = "編輯";
     bTag.addEventListener("click", () => openWordEditor(v));
@@ -721,7 +789,7 @@ function renderVocab() {
       V.remove(v.id);
       renderVocab();
     });
-    acts.append(bSpeak, bTag, bDel);
+    acts.append(bSpeak, bShadowEx, bTag, bDel);
 
     item.append(main, acts);
     box.appendChild(item);
@@ -768,6 +836,8 @@ function textToRel(text) {
   return out;
 }
 
+let editingForms = null;   // 詞形（過去式等）不給手動編，查到的就跟著存
+
 function openWordEditor(card) {
   editingId = card ? card.id : null;
   $("wordDlgTitle").textContent = card ? "編輯單字" : "新增單字";
@@ -779,6 +849,8 @@ function openWordEditor(card) {
   $("wfExampleZh").value  = card ? (card.exampleZh || "") : "";
   $("wfSyn").value        = card ? relToText(card.synonyms) : "";
   $("wfAnt").value        = card ? relToText(card.antonyms) : "";
+  $("wfFam").value        = card ? V.familyToText(card.family) : "";
+  editingForms = card && Array.isArray(card.forms) ? card.forms : null;
   $("wfTags").value       = card ? (card.tags || []).join(" ") : ($("vocabTag").value || "");
   $("wordDlgNote").textContent = "";
   dlgWord.showModal();
@@ -786,6 +858,27 @@ function openWordEditor(card) {
 }
 
 $("btnAddOne").addEventListener("click", () => openWordEditor(null));
+
+// 舊單字一次補齊詞性變化：每 25 個字一個請求
+$("btnFillForms").addEventListener("click", async () => {
+  const btn = $("btnFillForms");
+  const todo = V.missingForms();
+  if (!todo.length) { toast("每個字都已經有詞性變化了"); return; }
+  btn.disabled = true;
+  let done = 0;
+  try {
+    for (let i = 0; i < todo.length; i += 25) {
+      btn.textContent = `補查中 ${Math.min(i + 25, todo.length)}/${todo.length}…`;
+      done += await V.fetchForms(todo.slice(i, i + 25));
+    }
+    toast(`已補上 ${done} 個字的詞性變化`);
+  } catch (e) {
+    toast("補查失敗：" + e.message);
+  } finally {
+    btn.disabled = false;
+    renderVocab();
+  }
+});
 $("btnCloseWord").addEventListener("click", () => dlgWord.close());
 
 $("btnAutoFill").addEventListener("click", async () => {
@@ -805,6 +898,13 @@ $("btnAutoFill").addEventListener("click", async () => {
     if (!$("wfExampleZh").value.trim()) $("wfExampleZh").value = d.exampleZh || "";
     if (!$("wfSyn").value.trim())       $("wfSyn").value = relToText(d.synonyms);
     if (!$("wfAnt").value.trim())       $("wfAnt").value = relToText(d.antonyms);
+    if (!Array.isArray(d.family)) {
+      try { await V.fetchForms([word]); } catch (e) {}
+      const hit = Store.cacheGet(word) || {};
+      d.forms = hit.forms; d.family = hit.family;
+    }
+    if (!$("wfFam").value.trim())       $("wfFam").value = V.familyToText(d.family);
+    if (Array.isArray(d.forms)) editingForms = d.forms;
     note.textContent = "已補上空白欄位，你原本填的內容沒有被改動。";
   } catch (e) {
     note.textContent = "查詢失敗：" + e.message + "（可以直接自己填）";
@@ -825,6 +925,8 @@ $("btnSaveWord").addEventListener("click", () => {
     exampleZh: $("wfExampleZh").value.trim(),
     synonyms:  textToRel($("wfSyn").value),
     antonyms:  textToRel($("wfAnt").value),
+    family:    V.textToFamily($("wfFam").value),
+    ...(editingForms ? { forms: editingForms } : {}),
     tags:      $("wfTags").value.split(/\s+/).filter(Boolean),
   };
   if (editingId) {
@@ -908,6 +1010,7 @@ $("btnDoBulk").addEventListener("click", async () => {
         exampleZh: d.exampleZh || "",
         synonyms: d.synonyms || [],
         antonyms: d.antonyms || [],
+        ...(Array.isArray(d.family) ? { forms: d.forms || [], family: d.family } : {}),
         tags: tag ? [tag] : [],
       };
       const res = V.add(r.word, merged);
@@ -934,6 +1037,9 @@ $("btnDoBulk").addEventListener("click", async () => {
 const R = { queue: [], idx: 0, revealed: false, tag: "", done: 0 };
 
 function renderReviewHome() {
+  $("page-review").classList.remove("reviewing");
+  R.flipActive = false;
+  paintReviewMode();
   const sel = $("reviewTag");
   const cur = sel.value;
   sel.innerHTML = '<option value="">全部單字</option>';
@@ -963,15 +1069,110 @@ function renderReviewHome() {
 
 $("reviewTag").addEventListener("change", renderReviewHome);
 
-$("btnStartReview").addEventListener("click", () => {
+/* ---------- 複習方式：用說的／翻卡 ---------- */
+
+/* 所有複習方式。翻卡是預設；「用說的」要能語音辨識；其餘都是不用出聲的題型（quiz.js） */
+const REVIEW_MODES = {
+  flip:  { icon: "🃏", name: "翻卡", tip: "看英文想中文，翻面後自己評分。最快刷過一輪，也能離線用。" },
+  ...QUIZ_MODES,
+  speak: { icon: "🎤", name: "用說的", tip: "畫面給你中文，AI 用語音問一個問題，你要想出英文單字並用它說一句話回答。需要開口。" },
+};
+const MODE_ORDER = ["flip", "mixed", "mcEn", "mcZh", "cloze", "spell", "listen", "speak", "match"];
+
+function reviewMode() {
+  const m = Store.settings().reviewMode;
+  if (!REVIEW_MODES[m]) return "flip";
+  if (m === "speak" && !isSupported()) return "flip";
+  return m;
+}
+
+/** 各處「去複習」按鈕的文字跟著目前的複習方式走 */
+function reviewLabel(n) {
+  const m = REVIEW_MODES[reviewMode()];
+  return `${m.icon} 複習 ${n} 個字`;
+}
+
+function paintReviewMode() {
+  const mode = reviewMode();
+  const grid = $("reviewMode");
+  grid.innerHTML = "";
+  for (const key of MODE_ORDER) {
+    const m = REVIEW_MODES[key];
+    const b = el("button", "mode-btn");
+    b.type = "button";
+    b.dataset.mode = key;
+    b.setAttribute("role", "radio");
+    b.setAttribute("aria-checked", String(key === mode));
+    b.innerHTML = `<span class="mi">${m.icon}</span><span class="mn">${m.name}</span>`;
+    if (key === "speak" && !isSupported()) {
+      b.disabled = true;
+      b.title = "這個瀏覽器不支援語音辨識，請改用 Chrome 或 Edge";
+    }
+    b.addEventListener("click", () => {
+      if (speakReviewActive() || isQuizActive()) return;
+      Store.settings().reviewMode = key;
+      Store.settings().reviewModeChosen = true;   // 記住是自己選的，之後不會被預設值蓋掉
+      Store.save();
+      paintReviewMode();
+    });
+    grid.appendChild(b);
+  }
+  $("reviewModeNote").textContent = REVIEW_MODES[mode].tip;
+}
+
+
+initSpeakReview({
+  stage: $("reviewStage"),
+  pauseAudio: pauseConversationAudio,
+  resumeAudio: resumeConversationAudio,
+  toast,
+  onDone: (what) => {
+    refreshPills();
+    if (what === "again") startReviewRound();
+    if (what === "home") renderReviewHome();
+  },
+});
+
+initQuiz({
+  stage: $("reviewStage"),
+  toast,
+  onGraded: refreshPills,
+  onDone: (what) => {
+    refreshPills();
+    if (what === "again") startReviewRound();
+    if (what === "home") renderReviewHome();
+  },
+});
+
+/**
+ * 開始一輪複習。
+ * @param {Array} override 指定要練的卡（例如分析頁的「專攻最難的字」），不給就用到期的字
+ * @param {string} forceMode 指定題型（不改變使用者的預設選擇）
+ */
+function startReviewRound(override, forceMode) {
+  const mode = forceMode || reviewMode();
   R.tag = $("reviewTag").value;
-  R.queue = V.due(R.tag);
+  R.flipActive = false;
+  if (Array.isArray(override) && override.length) {
+    R.queue = override.slice();
+  } else if (mode === "match") {
+    // 配對是暖身遊戲：不限到期，從整個範圍隨機抽
+    R.queue = Store.vocab().filter(v => !R.tag || (v.tags || []).includes(R.tag));
+  } else {
+    R.queue = V.due(R.tag);
+  }
   R.idx = 0;
   R.done = 0;
   R.revealed = false;
-  if (!R.queue.length) { toast("目前沒有到期的單字"); return; }
+  if (!R.queue.length) { toast("目前沒有到期的單字"); renderReviewHome(); return; }
+  $("page-review").classList.add("reviewing");   // 複習進行中收起上方控制列，手機上卡片才看得到
+  if (mode === "speak") { startSpeakReview(R.queue); return; }
+  if (mode !== "flip") { startQuiz(mode, R.queue); return; }
+  R.flipActive = true;
   paintCard();
-});
+}
+
+$("btnStartReview").addEventListener("click", () => startReviewRound());
 
 function paintCard() {
   const stage = $("reviewStage");
@@ -992,12 +1193,14 @@ function paintCard() {
   }
 
   const card = R.queue[R.idx];
+  if (!R.revealed) R.shownAt = Date.now();   // 從看到題目開始計時
   const prog = el("div", "review-progress");
   prog.appendChild(el("span", null, `第 ${R.idx + 1} / ${R.queue.length} 張`));
   prog.appendChild(el("span", null, `本輪已複習 ${R.done}`));
   stage.appendChild(prog);
 
-  const fc = el("div", "flashcard");
+  // 正面還沒翻牌時不能點字查詢，不然等於直接看答案
+  const fc = el("div", "flashcard" + (R.revealed ? "" : " no-lookup"));
   fc.appendChild(el("div", "fc-word", card.word));
   if (card.phonetic) fc.appendChild(el("div", "fc-ipa", card.phonetic));
 
@@ -1027,6 +1230,8 @@ function paintCard() {
     };
     addRel("近義", "syn", card.synonyms);
     addRel("反義", "ant", card.antonyms);
+    const fm = formsHTML(card, false);
+    if (fm) { const box = el("div", "fc-forms"); box.innerHTML = fm; fc.appendChild(box); }
     if (relBox.children.length) fc.appendChild(relBox);
   } else {
     fc.appendChild(el("div", "muted", "想想看意思，再按下面顯示答案"));
@@ -1039,6 +1244,11 @@ function paintCard() {
   const bSpeak = el("button", "btn ghost", "🔊 唸一次");
   bSpeak.addEventListener("click", () => TTS.speak(card.word, undefined, null));
   bar.appendChild(bSpeak);
+  if (R.revealed && card.example) {
+    const bSh = el("button", "btn ghost", "🎤 跟讀例句");
+    bSh.addEventListener("click", () => openShadow(card.example));
+    bar.appendChild(bSh);
+  }
   stage.appendChild(bar);
 
   if (!R.revealed) {
@@ -1049,16 +1259,19 @@ function paintCard() {
     stage.appendChild(show);
   } else {
     const grades = el("div", "grade-row");
+    const ivl = V.previewIntervals(card);
+    const when = (d) => d === 0 ? "今天再來" : d === 1 ? "明天" : d < 60 ? `${d} 天後`
+      : d < 365 ? `${Math.round(d / 30)} 個月後` : `${(d / 365).toFixed(1)} 年後`;
     [
-      { q: 0, label: "忘記", hint: "今天再來" },
-      { q: 3, label: "困難", hint: "很快再看" },
-      { q: 4, label: "普通", hint: "正常間隔" },
-      { q: 5, label: "簡單", hint: "拉長間隔" },
-    ].forEach(g => {
+      { q: 0, label: "忘記" },
+      { q: 3, label: "困難" },
+      { q: 4, label: "普通" },
+      { q: 5, label: "簡單" },
+    ].map(g => ({ ...g, hint: when(ivl[g.q]) })).forEach(g => {
       const b = el("button");
       b.innerHTML = `<b>${g.label}</b><small>${g.hint}</small>`;
       b.addEventListener("click", () => {
-        V.grade(card.id, g.q);
+        V.grade(card.id, g.q, { mode: "flip", ms: Date.now() - (R.shownAt || Date.now()) });
         R.done++;
         R.idx++;
         R.revealed = false;
@@ -1073,9 +1286,11 @@ function paintCard() {
 
 // 空白鍵翻牌、1-4 評分
 document.addEventListener("keydown", (e) => {
-  const reviewing = $("page-review").classList.contains("active") && R.queue.length;
+  // 只有翻卡模式要處理空白鍵與 1–4；其他題型各自處理自己的按鍵
+  const reviewing = $("page-review").classList.contains("active") && R.flipActive && R.queue.length;
   if (!reviewing) return;
   if (e.target.matches("input, textarea, select")) return;
+  if (document.querySelector("dialog[open]")) return;   // 跟讀視窗開著時不要誤觸評分
   if (e.code === "Space") { e.preventDefault(); if (!R.revealed) { R.revealed = true; paintCard(); } }
   if (R.revealed && /^[1-4]$/.test(e.key)) {
     const btns = document.querySelectorAll(".grade-row button");
@@ -1103,6 +1318,8 @@ function renderStats() {
       <div class="t-sub">${t.days} 天、${t.sessions} 場對話</div></div>
     <div class="tile"><div class="t-label">說得出來的單字</div><div class="t-value">${c.spoken}<span style="font-size:15px"> / ${c.total}</span></div>
       <div class="t-sub">本週在對話中用出 ${w.produced} 次</div></div>`;
+
+  renderInsights();
 
   const hm = $("heatmap");
   hm.innerHTML = "";
@@ -1137,11 +1354,56 @@ function renderStats() {
       const line = el("div", "s-line");
       line.appendChild(el("b", null, m.role === "user" ? "你" : "AI"));
       line.appendChild(document.createTextNode(m.content));
+      if (m.role === "user" && m.fix && !m.fix.ok) Grammar.renderFix(line, m.content, m.fix);
       body.appendChild(line);
     }
     d.appendChild(body);
     box.appendChild(d);
   }
+}
+
+/* ---------- 個人分析 ---------- */
+
+function renderInsights() {
+  const data = Insights.compute();
+  Insights.render($("insights"), data, async (act, btn) => {
+    const go = (cards, mode) => {
+      if (!cards.length) { toast("目前沒有可以練的字"); return; }
+      showTab("review");
+      startReviewRound(cards, mode);
+    };
+    const sample = (arr, n) => arr.slice().sort(() => Math.random() - .5).slice(0, n);
+    if (act === "mixed") go(V.due("").slice(0, 15), "mixed");
+    if (act === "produce-gap") go(sample(data.passiveGap, 15), "mixed");
+    if (act === "leeches") go(data.leeches, "mixed");
+    if (act === "spell") {
+      const due = V.due("");
+      go(due.length ? due : sample(Store.vocab().filter(v => v.zh), 15), "spell");
+    }
+    if (act === "freq") {
+      Store.settings().vocabFrequency = 0.75;
+      Store.save();
+      toast("已把對話中的單字頻率調到「常常」");
+    }
+    if (act === "coach") {
+      const s = Store.settings();
+      if (!(s.provider === "groq" ? s.groqKey : s.geminiKey)) { toast("要先到設定填 API 金鑰"); return; }
+      btn.disabled = true;
+      btn.textContent = "產生中…";
+      const body = $("insights").querySelector(".coach-body");
+      try {
+        const cached = !!Store.load().coach[Insights.weekKey()];
+        const text = await Insights.coachReport(data, cached);
+        body.textContent = text;
+        btn.textContent = "重新產生";
+      } catch (e) {
+        body.textContent = "產生失敗：" + e.message;
+        btn.textContent = "再試一次";
+      } finally {
+        btn.disabled = false;
+      }
+    }
+  });
 }
 
 /* ---------- 備份 ---------- */
@@ -1191,6 +1453,8 @@ const dlg = $("dlgSettings");
 
 function openSettings() {
   const s = Store.settings();
+  $("appVersion").textContent = "v" + APP_VERSION;
+  $("testKeyNote").textContent = "";
   $("cfgProvider").value = s.provider;
   $("cfgGeminiModel").value = s.geminiModel;
   $("cfgGroqModel").value = s.groqModel;
@@ -1204,6 +1468,10 @@ function openSettings() {
   $("cfgVocabFreq").value = String(s.vocabFrequency);
   $("cfgPromoteHeard").checked = !!s.promoteHeard;
   $("cfgAnalyzeGaps").checked = !!s.analyzeGaps;
+  $("cfgGrammar").value = s.grammarCheck || "live";
+  $("cfgScheduler").value = s.scheduler || "fsrs";
+  $("cfgRetention").value = String(s.retention || 0.9);
+  $("cfgRetention").disabled = $("cfgScheduler").value !== "fsrs";
   $("cacheInfo").textContent = `目前已快取 ${Store.cacheSize()} 個單字的查詢結果，這些字不會再呼叫 API。`;
   $("cfgGeminiKey").value = "";
   $("cfgGroqKey").value = "";
@@ -1283,7 +1551,17 @@ $("btnSaveSettings").addEventListener("click", () => {
   s.vocabFrequency = Number($("cfgVocabFreq").value);
   s.promoteHeard = $("cfgPromoteHeard").checked;
   s.analyzeGaps = $("cfgAnalyzeGaps").checked;
+  s.grammarCheck = $("cfgGrammar").value;
+  const schedChanged = s.scheduler !== $("cfgScheduler").value
+    || Number(s.retention) !== Number($("cfgRetention").value);
+  s.scheduler = $("cfgScheduler").value;
+  s.retention = Number($("cfgRetention").value);
   Store.save(true);
+  if (schedChanged) {
+    const n = V.rescheduleAll();
+    if (n) setTimeout(() => toast(`已依新的排程重新安排 ${n} 個字的複習日`), 2700);
+    refreshPills();
+  }
 
   TTS.resetEdge();
   if (C.listener) C.listener.configure({
@@ -1292,6 +1570,11 @@ $("btnSaveSettings").addEventListener("click", () => {
   refreshBadges();
   dlg.close();
   toast("設定已儲存");
+});
+
+// 目標記憶率只對 FSRS 有意義
+$("cfgScheduler").addEventListener("change", () => {
+  $("cfgRetention").disabled = $("cfgScheduler").value !== "fsrs";
 });
 
 /* ---------- 模型清單 ---------- */
@@ -1330,6 +1613,50 @@ async function fetchModelsInto(provider) {
   }
 }
 
+/* ---------- 測試連線：貼完金鑰馬上知道能不能用，不用等到開始對話才發現 ---------- */
+
+$("btnTestKey").addEventListener("click", async () => {
+  const note = $("testKeyNote");
+  const s = Store.settings();
+  const provider = $("cfgProvider").value;
+  const isGroq = provider === "groq";
+  const typed = $(isGroq ? "cfgGroqKey" : "cfgGeminiKey").value.trim();
+  const model = $(isGroq ? "cfgGroqModel" : "cfgGeminiModel").value.trim();
+
+  // 暫時套用畫面上的值來測，測完還原；真正存檔要按「儲存」
+  const backup = { provider: s.provider, groqKey: s.groqKey, geminiKey: s.geminiKey,
+                   groqModel: s.groqModel, geminiModel: s.geminiModel };
+  s.provider = provider;
+  if (typed) { if (isGroq) s.groqKey = typed; else s.geminiKey = typed; }
+  if (model) { if (isGroq) s.groqModel = model; else s.geminiModel = model; }
+
+  if (!(isGroq ? s.groqKey : s.geminiKey)) {
+    Object.assign(s, backup);
+    note.textContent = "請先貼上金鑰。";
+    return;
+  }
+  const btn = $("btnTestKey");
+  btn.disabled = true;
+  note.textContent = "測試中…";
+  try {
+    const t0 = performance.now();
+    await LLM.complete("Reply with the single word OK.", { maxTokens: 10 });
+    const ms = Math.round(performance.now() - t0);
+    note.textContent = `✅ 可以用！回應時間 ${ms} 毫秒。記得按「儲存」。`;
+  } catch (e) {
+    note.textContent = "❌ " + e.message;
+  } finally {
+    Object.assign(s, backup);
+    btn.disabled = false;
+  }
+});
+
+$("lnkWhatsNew").addEventListener("click", (e) => {
+  e.preventDefault();
+  dlg.close();
+  openWhatsNew();
+});
+
 $("btnFetchGemini").addEventListener("click", () => fetchModelsInto("gemini"));
 $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
 
@@ -1353,11 +1680,22 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
   }
 
   const s = Store.settings();
-  if (!s.geminiKey && !s.groqKey) {
-    sysMsg("歡迎！第一次使用請先到右上角「設定」貼上一組免費 API 金鑰，就可以開始說英文了。");
-    setTimeout(openSettings, 400);
-  } else {
-    sysMsg("按「開始對話」，AI 會先跟你打招呼。說話時不用等它說完，直接插話就好。");
+  const hasAnyKey = !!(s.geminiKey || s.groqKey);
+  renderWelcome();
+
+  // 新功能介紹：老使用者第一次打開新版本才會看到；全新使用者直接去設定金鑰
+  initWhatsNew({ go: (tab) => showTab(tab) });   // 「試試看」會切到對應的分頁
+  const returning = hasAnyKey || Store.vocab().length > 0 || Store.sessions().length > 0;
+  const shown = maybeShowWhatsNew(returning);
+  if (!hasAnyKey && !shown) setTimeout(openSettings, 400);
+
+  // 從桌面捷徑打開（?tab=review 之類）
+  const tab = new URLSearchParams(location.search).get("tab");
+  if (tab && document.getElementById("page-" + tab)) showTab(tab);
+
+  // 可安裝成 App、離線也能開（只在安全來源註冊：https 或本機）
+  if ("serviceWorker" in navigator && window.isSecureContext) {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
   }
 
   TTS.loadVoices();

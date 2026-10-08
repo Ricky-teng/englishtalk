@@ -181,13 +181,13 @@ export function loadVoices() {
 
 export function browserVoices() { return voicesCache; }
 
-function speakBrowser(text, onStart) {
+function speakBrowser(text, onStart, rateOverride) {
   return new Promise((resolve) => {
     if (!("speechSynthesis" in window)) return resolve();
     const s = settings();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = "en-US";
-    u.rate = Number(s.rate) || 1;
+    u.rate = Number(rateOverride || s.rate) || 1;
     const want = voicesCache.find(v => v.name === s.browserVoice);
     if (want) u.voice = want;
     else if (voicesCache.length) u.voice = voicesCache[0];
@@ -225,12 +225,22 @@ export async function prefetch(text) {
  * 唸一句。blob 可傳入 prefetch() 的結果；沒有就即時決定。
  * @param {Function} onStart 真正開始發聲時呼叫（用來切換 UI 狀態）
  */
-export async function speak(text, blob, onStart) {
+export async function speak(text, blob, onStart, rateOverride) {
   current.cancelled = false;
-  if (blob === undefined) blob = await prefetch(text);
+  if (blob === undefined) {
+    // 指定語速時（例如跟讀的慢速播放）不能用預先合成好的音檔，要重新合成
+    if (rateOverride) {
+      const s = settings();
+      if (s.ttsEngine === "edge" && !edgeDisabled) {
+        try { blob = await edgeSynth(text, s.edgeVoice, rateOverride); } catch (e) { blob = null; }
+      } else blob = null;
+    } else {
+      blob = await prefetch(text);
+    }
+  }
   if (current.cancelled) return;
 
-  if (!blob) return speakBrowser(text, onStart);
+  if (!blob) return speakBrowser(text, onStart, rateOverride);
 
   return new Promise((resolve) => {
     const url = URL.createObjectURL(blob);

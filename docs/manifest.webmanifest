@@ -1,0 +1,23 @@
+{
+  "name": "English Talk — 雙工英文對話練習",
+  "short_name": "English Talk",
+  "description": "用嘴巴跟 AI 即時練英文對話，可以隨時插話。內建單字本、用說的複習與跟讀練習。",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f7f4",
+  "theme_color": "#2a78d6",
+  "categories": ["education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "開始對話", "url": "./?tab=chat", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "用說的複習", "url": "./?tab=review", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "單字本", "url": "./?tab=vocab", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}
