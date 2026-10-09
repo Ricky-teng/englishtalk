@@ -18,8 +18,94 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 function networkMessage(who) {
   if (typeof navigator !== "undefined" && navigator.onLine === false) return "目前沒有網路連線，連上之後再試一次。";
   return who === "Groq"
-    ? "連不上 Groq（已自動重試）。可能是網路不穩，或被瀏覽器的跨來源政策擋下 —— 到設定改用 Gemini 會比較穩。"
+    ? "連不上 Groq（已自動重試）。最常見的原因是這一分鐘的免費額度用完了 —— Groq 擋下請求時，瀏覽器常常只顯示「Failed to fetch」。等 30 秒到 1 分鐘再試；一直發生的話，到設定把「查字用的模型」設成自動，或改用 Gemini。"
     : `連不上 ${who}（已自動重試）。通常是網路一時不穩；如果一直發生，檢查廣告封鎖等擴充功能是否擋了 googleapis.com。`;
+}
+
+/* ---------- Groq：免費額度很緊，要自己排隊 ---------- */
+//
+// Groq 免費方案每個模型各自計算：每分鐘約 30 次請求，以及「每分鐘 token 數」（TPM），
+// llama-3.1-8b-instant 只有幾千。對話、查字、文法檢查、詞性補查擠在同一分鐘，
+// 很容易超過 → 429。更麻煩的是，被擋下的回應有時沒有跨來源標頭，
+// 瀏覽器只會顯示「Failed to fetch」，看不出是額度問題。
+// 所以這裡在送出前先自己算：這一分鐘還剩多少，不夠就等一下再送（對話優先、背景工作讓路）。
+
+const GROQ_LIMITS = [            // 依模型名稱比對；保守取官方數字的 85%
+  [/8b-instant/i, { rpm: 30, tpm: 6000 }],
+  [/70b/i,        { rpm: 30, tpm: 12000 }],
+  [/gpt-oss/i,    { rpm: 30, tpm: 8000 }],
+];
+const groqLedger = new Map();    // model → [{t, tokens}]
+const groqBlocked = new Map();   // model → 伺服器說要等到幾點（429 的 retry-after）
+
+function groqLimit(model) {
+  const hit = GROQ_LIMITS.find(([re]) => re.test(model));
+  const l = hit ? hit[1] : { rpm: 30, tpm: 6000 };
+  return { rpm: Math.floor(l.rpm * 0.85), tpm: Math.floor(l.tpm * 0.85) };
+}
+
+/** 粗估 token：英文約 4 字元一個，中文約 1 字一個 */
+export function estTokens(text) {
+  const t = String(text || "");
+  const cjk = (t.match(/[\u3400-\u9fff]/g) || []).length;
+  return Math.ceil((t.length - cjk) / 4 + cjk);
+}
+
+/**
+ * 等到這個模型這一分鐘還有額度再送。
+ * @param {"chat"|"fg"|"bg"} priority  chat：最多等 1.5 秒就送；fg（你在等的查字）：最多 25 秒；bg（文法等背景工作）：等到有為止
+ * @returns {Object} 帳本裡這筆紀錄，收到回應後用實際用量更正
+ */
+async function groqGate(model, tokens, priority = "fg") {
+  const { rpm, tpm } = groqLimit(model);
+  const maxWait = priority === "chat" ? 1500 : priority === "fg" ? 25000 : 120000;
+  const start = Date.now();
+  if (!groqLedger.has(model)) groqLedger.set(model, []);
+  const log = groqLedger.get(model);
+  for (;;) {
+    const now = Date.now();
+    while (log.length && now - log[0].t > 60000) log.shift();
+    const used = log.reduce((a, x) => a + x.tokens, 0);
+    const blocked = (groqBlocked.get(model) || 0) - now;
+    const fits = log.length < rpm && (used + tokens <= tpm || !log.length);
+    if ((fits && blocked <= 0) || now - start >= maxWait) break;
+    // 要等多久：等到最舊的那筆過期，或伺服器指定的時間
+    const wait = Math.max(blocked, log.length ? 60000 - (now - log[0].t) + 50 : 500);
+    await sleep(Math.min(wait, 2000, Math.max(50, maxWait - (now - start))));
+  }
+  const entry = { t: Date.now(), tokens };
+  log.push(entry);
+  return entry;
+}
+
+/** 從 Groq 的回應標頭讀「還剩多少」；讀不到（瀏覽器沒開放）就算了 */
+function groqReadHeaders(model, resp) {
+  try {
+    const ra = Number(resp.headers.get("retry-after"));
+    if (resp.status === 429 && ra > 0) groqBlocked.set(model, Date.now() + ra * 1000);
+    const left = Number(resp.headers.get("x-ratelimit-remaining-tokens"));
+    const reset = String(resp.headers.get("x-ratelimit-reset-tokens") || "");
+    const m = reset.match(/([\d.]+)(ms|s|m)/);
+    if (Number.isFinite(left) && left < 600 && m) {
+      const ms = Number(m[1]) * (m[2] === "ms" ? 1 : m[2] === "s" ? 1000 : 60000);
+      groqBlocked.set(model, Date.now() + Math.min(ms, 60000));
+    }
+  } catch (e) { /* 標頭沒有開放給瀏覽器讀 */ }
+}
+
+/**
+ * 查字、文法、詞性補查用哪個 Groq 模型。
+ * 「自動」= llama-3.3-70b-versatile：中文與 JSON 都比 8B 穩很多，而且額度跟對話用的模型分開算，
+ * 背景工作就不會把對話的額度吃光。這個模型不能用（404）時自動退回對話模型。
+ */
+let groqToolFallback = false;
+export function groqModelFor(kind) {
+  const s = settings();
+  if (kind === "chat") return s.groqModel;
+  const t = s.groqToolModel || "auto";
+  if (t === "same") return s.groqModel;
+  if (t === "auto") return groqToolFallback ? s.groqModel : "llama-3.3-70b-versatile";
+  return t;
 }
 
 /**
@@ -43,7 +129,11 @@ async function fetchRetry(url, init, { who = "Gemini", tries = 3, timeoutMs = 30
       const retry = (RETRY_STATUS.has(resp.status) || (resp.status === 429 && !last429)) && i < tries - 1;
       if (!retry) return resp;      // 成功：外部的停止訊號要繼續連著，串流讀到一半才停得下來
       if (outer) outer.removeEventListener("abort", onAbort);
-      if (resp.status === 429) { last429 = true; await sleep(4000); } else await sleep(800 * (i + 1) ** 2);
+      if (resp.status === 429) {
+        last429 = true;
+        const ra = Number(resp.headers.get("retry-after"));
+        await sleep(ra > 0 && ra <= 20 ? ra * 1000 + 200 : 4000);
+      } else await sleep(800 * (i + 1) ** 2);
     } catch (e) {
       clearTimeout(timer);
       if (outer) outer.removeEventListener("abort", onAbort);
@@ -51,7 +141,8 @@ async function fetchRetry(url, init, { who = "Gemini", tries = 3, timeoutMs = 30
       if (i === tries - 1) {
         throw new Error(timedOut ? `${who} 太久沒有回應（已重試）。網路慢或伺服器忙，等一下再試。` : networkMessage(who));
       }
-      await sleep(700 * (i + 1) ** 2);
+      // Groq 被限流時，回應常常沒有跨來源標頭 → 瀏覽器只看到 Failed to fetch。等久一點再試。
+      await sleep(who === "Groq" ? 2500 * (i + 1) ** 2 : 700 * (i + 1) ** 2);
     }
   }
   throw new Error(networkMessage(who));
@@ -166,6 +257,8 @@ async function groqStream(sys, messages, signal, onDelta) {
   const s = settings();
   if (!s.groqKey) throw new Error("尚未設定 Groq API 金鑰");
 
+  const model = s.groqModel;
+  await groqGate(model, estTokens(sys + JSON.stringify(messages)) + 120, "chat");
   const resp = await fetchRetry("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: {
@@ -173,7 +266,7 @@ async function groqStream(sys, messages, signal, onDelta) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: s.groqModel,
+      model,
       stream: true,
       temperature: 0.85,
       max_tokens: 220,
@@ -181,6 +274,7 @@ async function groqStream(sys, messages, signal, onDelta) {
     }),
     signal,
   }, { who: "Groq", timeoutMs: 20000 });
+  groqReadHeaders(model, resp);
   if (!resp.ok) throw new Error(await describeError(resp, "Groq"));
 
   let full = "";
@@ -232,27 +326,13 @@ async function geminiStream(sys, messages, signal, onDelta) {
  * @param {Object} o  json：要求回 JSON；maxTokens；
  *                    geminiModel：改用別的 Gemini 模型（例如文法檢查用較輕的 flash-lite，額度另計）
  */
-export async function complete(prompt, { json = false, maxTokens = 600, geminiModel = "", geminiJson = false } = {}) {
+export async function complete(prompt, { json = false, maxTokens = 600, geminiModel = "", geminiJson = false,
+                                         priority = "fg" } = {}) {
+  // priority：fg = 你正在等結果（查字）；bg = 背景工作（文法、補詞性），Groq 額度緊時讓路
   // json：要求回一個 JSON 物件（兩家都支援）
   // geminiJson：只對 Gemini 開 JSON 模式（回傳是陣列時用；Groq 的 JSON 模式只接受物件）
   const s = settings();
-  if (s.provider === "groq") {
-    if (!s.groqKey) throw new Error("尚未設定 Groq API 金鑰");
-    const resp = await fetchRetry("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: { "Authorization": "Bearer " + s.groqKey, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: s.groqModel,
-        temperature: 0.3,
-        max_tokens: maxTokens,
-        messages: [{ role: "user", content: prompt }],
-        ...(json ? { response_format: { type: "json_object" } } : {}),
-      }),
-    }, { who: "Groq" });
-    if (!resp.ok) throw new Error(await describeError(resp, "Groq"));
-    const d = await resp.json();
-    return d.choices[0].message.content;
-  }
+  if (s.provider === "groq") return groqComplete(prompt, { json, maxTokens, geminiJson, priority });
 
   if (!s.geminiKey) throw new Error("尚未設定 Gemini API 金鑰");
   const model = geminiModel || s.geminiModel;
@@ -281,6 +361,57 @@ export async function complete(prompt, { json = false, maxTokens = 600, geminiMo
     return text;
   }
   throw new Error("回應太長被截斷了，再試一次。");
+}
+
+/**
+ * Groq 的一次性呼叫。
+ * - 先排隊（groqGate），不要一口氣把每分鐘額度用完
+ * - 要 JSON 陣列時，請模型包成 {"items":[...]}，這樣就能開 Groq 的 JSON 模式（它只接受物件），回傳時再拆開
+ * - JSON 模式驗證失敗（小模型偶爾會）→ 關掉 JSON 模式再要一次，交給 parseJSON 去挖
+ * - 查字用的模型不存在 → 退回對話模型
+ */
+async function groqComplete(prompt, { json, maxTokens, geminiJson, priority }) {
+  const s = settings();
+  if (!s.groqKey) throw new Error("尚未設定 Groq API 金鑰");
+  const wrap = geminiJson && !json;                 // 要陣列 → 包成物件
+  const text = wrap ? prompt + '\n\nIMPORTANT: wrap the JSON array in an object like {"items": [ ... ]} and return only that object.' : prompt;
+  // 免費方案每分鐘 token 很少，單次請求的上限不要開太大
+  const maxOut = Math.min(maxTokens, 2400);
+  let useJson = json || wrap;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const model = groqModelFor("tool");
+    const entry = await groqGate(model, estTokens(text) + Math.round(maxOut * 0.6), priority);
+    const resp = await fetchRetry("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: { "Authorization": "Bearer " + s.groqKey, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model,
+        temperature: 0.3,
+        max_tokens: maxOut,
+        messages: [{ role: "user", content: text }],
+        ...(useJson ? { response_format: { type: "json_object" } } : {}),
+      }),
+    }, { who: "Groq" });
+    groqReadHeaders(model, resp);
+    if (!resp.ok) {
+      const msg = await describeError(resp, "Groq");
+      if (resp.status === 404 && model !== s.groqModel) { groqToolFallback = true; continue; }
+      if (resp.status === 400 && useJson && /json/i.test(msg)) { useJson = false; continue; }
+      if (resp.status === 413) throw new Error("這次要查的內容太長，超過 Groq 免費方案單次上限。分成少一點再試。");
+      throw new Error(msg);
+    }
+    const d = await resp.json();
+    if (d.usage && d.usage.total_tokens) entry.tokens = d.usage.total_tokens;   // 用實際用量更正帳本
+    const out = (d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content) || "";
+    if (!wrap) return out;
+    try {
+      const obj = parseJSON(out);
+      if (Array.isArray(obj)) return JSON.stringify(obj);
+      const arr = obj.items || Object.values(obj).find(Array.isArray);
+      return JSON.stringify(arr || []);
+    } catch (e) { return out; }
+  }
+  throw new Error("Groq 查詢失敗，請再試一次。");
 }
 
 /** 從回應中挖出 JSON（模型偶爾會多包一層 ``` 或前後文字） */

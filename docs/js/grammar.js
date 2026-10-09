@@ -168,7 +168,7 @@ LINES:
 ${list}`;
 
   const geminiModel = G.useMainModel ? "" : (s.grammarModel || "gemini-2.5-flash-lite");
-  const raw = await complete(prompt, { maxTokens: 300 + batch.length * 220, geminiModel, geminiJson: true });
+  const raw = await complete(prompt, { maxTokens: 300 + batch.length * 220, geminiModel, geminiJson: true, priority: "bg" });
   const arr = parseJSON(raw);
   if (!Array.isArray(arr)) throw new Error("文法檢查回傳格式不正確");
 

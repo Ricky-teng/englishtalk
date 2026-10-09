@@ -1728,6 +1728,7 @@ function openSettings() {
   $("cfgProvider").value = s.provider;
   $("cfgGeminiModel").value = s.geminiModel;
   $("cfgGroqModel").value = s.groqModel;
+  $("cfgGroqTool").value = ["auto", "same"].includes(s.groqToolModel) ? s.groqToolModel : "auto";
   $("cfgTTSEngine").value = s.ttsEngine;
   $("cfgEdgeVoice").value = s.edgeVoice;
   $("cfgRate").value = String(s.rate);
@@ -1810,6 +1811,7 @@ $("btnSaveSettings").addEventListener("click", () => {
   if ($("cfgGroqKey").value.trim()) s.groqKey = $("cfgGroqKey").value.trim();
   s.geminiModel = $("cfgGeminiModel").value.trim() || s.geminiModel;
   s.groqModel = $("cfgGroqModel").value.trim() || s.groqModel;
+  s.groqToolModel = $("cfgGroqTool").value;
   s.ttsEngine = $("cfgTTSEngine").value;
   s.browserVoice = $("cfgBrowserVoice").value || "";
   s.edgeVoice = $("cfgEdgeVoice").value;

@@ -449,7 +449,7 @@ Return ONLY a JSON array, no markdown fence, one element per word, same order:
 
 ${FORMS_RULES}
 "zh" is Traditional Chinese (never Simplified), 8 characters or fewer.`;
-  const raw = await complete(prompt, { maxTokens: 300 + list.length * 160, geminiJson: true });
+  const raw = await complete(prompt, { maxTokens: 300 + list.length * 160, geminiJson: true, priority: "bg" });
   const arr = parseJSON(raw);
   if (!Array.isArray(arr)) throw new Error("模型沒有回傳陣列");
   let n = 0;
@@ -500,7 +500,10 @@ export async function lookupBatchCached(words) {
   }
   if (!need.length) return { byWord, asked: 0 };
 
-  const arr = await lookupBatch(need);
+  // Groq 免費方案每分鐘 token 很少，一次 20 個字會超過單次上限 → 分小批送
+  const size = load().settings.provider === "groq" ? 6 : 20;
+  const arr = [];
+  for (let i = 0; i < need.length; i += size) arr.push(...await lookupBatch(need.slice(i, i + size)));
   need.forEach((w, i) => {
     const d = arr[i];
     if (!d) return;

@@ -2,7 +2,7 @@
  * whatsnew.js — 新版本第一次打開時的「新功能」介紹，以及安裝到桌面
  */
 
-export const APP_VERSION = "2.5";
+export const APP_VERSION = "2.6";
 const SEEN_KEY = "englishtalk.seenVersion";
 
 let deferredInstall = null;   // Android / 桌面 Chrome 的安裝提示
@@ -55,6 +55,8 @@ function installHelp() {
 }
 
 const FEATURES = [
+  { icon: "⚡", title: "Groq 變穩了", go: "chat",
+    body: "Groq 免費方案每分鐘能用的量很少，對話、查字、文法檢查擠在一起就會被擋，瀏覽器只顯示「Failed to fetch」。現在會先自己算額度、不夠就排隊；查字和文法改用另一個模型（llama-3.3-70b），額度跟對話分開算，中文和格式也更穩。" },
   { icon: "📚", title: "同一個字的不同意思，合成一張卡", go: "vocab",
     body: "查 bank 會看到一張卡、底下列出「銀行」「河岸」，勾選要的意思一起加入；之後再加同一個字的新意思，也會併進同一張卡。單字本、翻卡背面、查字彈窗都會一行一個意思列出來。另外連線變穩了：網路不穩會自動重試，Gemini 回覆被截斷也會自動補要一次。" },
   { icon: "🔎", title: "新增單字：打中文也可以", go: "vocab",

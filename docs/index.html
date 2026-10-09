@@ -195,6 +195,13 @@
       </div>
       <datalist id="listGroq"></datalist>
       <div class="note" id="noteGroq"></div>
+      <label class="field" for="cfgGroqTool">查字、新增單字、文法檢查用的模型</label>
+      <select id="cfgGroqTool">
+        <option value="auto">自動 — llama-3.3-70b-versatile（推薦：中文和格式比較穩，額度跟對話分開算）</option>
+        <option value="same">跟對話用同一個（最省，但額度會互搶）</option>
+      </select>
+      <div class="note">Groq 免費方案每個模型每分鐘能用的量很少。查字和文法檢查改用另一個模型，對話就不會被它們擠到「額度用完」。
+        這個模型不能用時會自動退回對話模型。</div>
     </div>
 
     <hr style="border:0;border-top:1px solid var(--line);margin:22px 0 4px">

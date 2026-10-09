@@ -7,7 +7,7 @@
  * 跨網域的請求（Gemini、Groq 等 API）完全不經手、不快取。
  */
 
-const VERSION = "et-v8";
+const VERSION = "et-v9";
 const SHELL = [
   "./", "index.html", "styles.css", "manifest.webmanifest",
   "js/app.js", "js/store.js", "js/llm.js", "js/tts.js", "js/asr.js", "js/vocab.js",

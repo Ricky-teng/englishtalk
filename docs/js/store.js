@@ -19,6 +19,9 @@ function emptyState() {
       groqKey: "",
       geminiModel: "gemini-2.5-flash",
       groqModel: "llama-3.1-8b-instant",
+      // 查字、新增單字、文法檢查用的 Groq 模型：auto = llama-3.3-70b-versatile（不能用時退回對話模型），
+      // same = 跟對話同一個。分開用的好處是額度各算各的，背景工作不會吃掉對話的額度。
+      groqToolModel: "auto",
       ttsEngine: "browser",          // browser | edge
       browserVoice: "",              // speechSynthesis 的 voice.name
       edgeVoice: "en-US-AvaNeural",
