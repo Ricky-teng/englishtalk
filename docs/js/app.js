@@ -741,7 +741,8 @@ function renderVocab() {
     if (v.phonetic) line1.appendChild(el("span", "vipa", v.phonetic));
     main.appendChild(line1);
 
-    if (v.zh) main.appendChild(el("div", "vzh", (v.pos ? v.pos + " · " : "") + v.zh));
+    const zhEl = sensesEl(v, "vzh");
+    if (zhEl) main.appendChild(zhEl);
     const fm = formsHTML(v, false);
     if (fm) { const box = el("div", "vforms"); box.innerHTML = fm; main.appendChild(box); }
     if (v.example) main.appendChild(el("div", "vex", v.example));
@@ -837,6 +838,7 @@ function textToRel(text) {
 }
 
 let editingForms = null;   // 詞形（過去式等）不給手動編，查到的就跟著存
+let editingSenses = null;  // 多個意思；中文欄位被改過就不再沿用（以你打的為準）
 
 const allTags = () => [...new Set(Store.vocab().flatMap(v => v.tags || []))].sort();
 function fillTagOptions() {
@@ -862,6 +864,7 @@ function openWordEditor(card, prefill = null) {
   $("wfAnt").value        = relToText(d.antonyms);
   $("wfFam").value        = V.familyToText(d.family);
   editingForms = Array.isArray(d.forms) ? d.forms : null;
+  editingSenses = Array.isArray(d.senses) && d.senses.length > 1 ? d.senses : null;
   $("wfTags").value       = card ? (card.tags || []).join(" ")
                           : ((prefill && prefill.tags) || [$("vocabTag").value]).filter(Boolean).join(" ");
   // 有填進階欄位就展開，空的就收起來，畫面不會一打開就一長串
@@ -875,92 +878,149 @@ function openWordEditor(card, prefill = null) {
 
 /* ---------- 候選清單（新增單字的查詢結果、編輯器的 AI 補齊共用） ---------- */
 
-/** 這個候選跟單字本的關係：new 還沒有、same 已經有這個意思、sense 有這個字但不是這個意思 */
-function candState(r) {
-  const ex = V.find(r.word);
-  if (!ex) return { st: "new" };
-  // 括號裡的補充說明不算：「耗盡（資源）」跟「耗盡」是同一個意思
-  const norm = (t) => String(t || "").replace(/[（(][^)）]*[)）]/g, "").replace(/[\s、，,；;／/]+/g, "|");
-  const have = new Set(norm(ex.zh).split("|").filter(Boolean));
-  const overlap = norm(r.zh).split("|").some(z => z && have.has(z)) || !ex.zh;
-  return { st: overlap ? "same" : "sense", card: ex };
+/** 卡片上的意思清單（多個意思時一行一個；只有一個就照舊顯示「詞性 · 中文」） */
+function sensesEl(card, cls) {
+  const ss = V.sensesOf(card);
+  if (ss.length <= 1) return card.zh ? el("div", cls, (card.pos ? card.pos + " · " : "") + card.zh) : null;
+  const ol = el("ol", cls + " senses");
+  ss.forEach(x => {
+    const li = el("li");
+    if (x.pos) li.appendChild(el("span", "sense-pos", V.posShort(x.pos)));
+    li.appendChild(document.createTextNode(x.zh));
+    ol.appendChild(li);
+  });
+  return ol;
 }
 
 /**
+ * 候選清單：同一個英文字的不同意思放在同一張卡裡，一個意思一行。
  * @param {HTMLElement} box
- * @param {Array} results
- * @param {"add"|"pick"} mode  add：直接加入單字本；pick：填進編輯器
- * @param {Function} onPick    pick 模式選了哪一個
+ * @param {Array} results   V.search() 的結果（會先依英文字分組）
+ * @param {"add"|"pick"} mode  add：勾選意思後加入單字本；pick：填進編輯器
+ * @param {Function} onPick    pick 模式：選了哪個（已合成好的單筆資料）
  */
 function renderCands(box, results, mode, onPick) {
   box.innerHTML = "";
-  results.forEach((r) => {
+  V.groupResults(results).forEach((g) => {
     const c = el("div", "cand");
     c.innerHTML = `
-      <div class="cand-head"><b class="cand-word">${esc(r.word)}</b>
-        ${r.phonetic ? `<span class="cand-ipa">${esc(r.phonetic)}</span>` : ""}
-        ${r.pos ? `<span class="cand-pos">${esc(V.posShort(r.pos))}</span>` : ""}
-        <button class="mini cand-say" title="唸這個字" aria-label="唸 ${esc(r.word)}">🔊</button></div>
-      <div class="cand-zh">${esc(r.zh)}</div>
-      ${r.note ? `<div class="cand-note">${esc(r.note)}</div>` : ""}
-      ${r.example ? `<div class="cand-ex">${esc(r.example)}${r.exampleZh ? `<br><span class="muted">${esc(r.exampleZh)}</span>` : ""}</div>` : ""}
-      ${mode === "add" ? formsHTML(r, false) : ""}
+      <div class="cand-head"><b class="cand-word">${esc(g.word)}</b>
+        ${g.phonetic ? `<span class="cand-ipa">${esc(g.phonetic)}</span>` : ""}
+        ${g.senses.length > 1 ? `<span class="cand-n">${g.senses.length} 個意思</span>` : ""}
+        <button class="mini cand-say" title="唸這個字" aria-label="唸 ${esc(g.word)}">🔊</button></div>
+      <div class="cand-senses"></div>
+      ${mode === "add" ? formsHTML(g, false) : ""}
       <div class="cand-acts"></div>`;
-    c.querySelector(".cand-say").addEventListener("click", () => TTS.speak(r.word, undefined, null));
+    c.querySelector(".cand-say").addEventListener("click", () => TTS.speak(g.word, undefined, null));
+    const list = c.querySelector(".cand-senses");
     const acts = c.querySelector(".cand-acts");
 
+    // 把「一個意思」合成可以填進編輯器的資料
+    const asData = (ss) => {
+      const j = V.joinSenses(ss);
+      return { word: g.word, phonetic: g.phonetic, pos: j.pos, zh: j.zh,
+               example: ss[0].example, exampleZh: ss[0].exampleZh,
+               synonyms: ss[0].synonyms, antonyms: ss[0].antonyms,
+               forms: g.forms, family: g.family, senses: ss.length > 1 ? ss : undefined };
+    };
+    const senseHTML = (x) => `
+      <span class="sense-pos">${esc(V.posShort(x.pos))}</span><span class="sense-zh">${esc(x.zh)}</span>
+      ${x.note ? `<span class="cand-note">${esc(x.note)}</span>` : ""}
+      ${x.example ? `<div class="cand-ex">${esc(x.example)}${x.exampleZh ? `<br><span class="muted">${esc(x.exampleZh)}</span>` : ""}</div>` : ""}`;
+
     if (mode === "pick") {
-      const b = el("button", "btn sm primary", "用這個");
-      b.addEventListener("click", () => {
-        box.querySelectorAll(".cand").forEach(x => x.classList.toggle("chosen", x === c));
-        onPick(r);
-      });
-      acts.appendChild(b);
-    } else {
-      const paint = () => {
-        acts.innerHTML = "";
-        const s = candState(r);
-        const tag = $("addTag").value.trim();
-        const tags = tag ? [tag] : [];
-        if (s.st === "same") {
-          acts.appendChild(el("span", "cand-done", "✓ 已在單字本"));
-          if (tag && !(s.card.tags || []).includes(tag)) {
-            const b = el("button", "btn sm ghost", `也加上「${tag}」標籤`);
-            b.addEventListener("click", () => { V.add(r.word, { tags }); paint(); renderVocab(); });
-            acts.appendChild(b);
-          }
-          return;
-        }
-        const main = el("button", "btn sm primary", s.st === "new" ? "＋ 加入" : "補上這個意思");
-        if (s.st === "sense") main.title = `單字本已經有「${s.card.zh}」，會把「${r.zh}」加在後面`;
-        main.addEventListener("click", () => {
-          if (s.st === "new") {
-            const { note, ...data } = r;
-            V.add(r.word, { ...data, tags });
-            toast(`已加入「${r.word}」`);
-          } else {
-            V.update(s.card.id, { zh: `${s.card.zh}；${r.zh}`,
-                                  tags: [...new Set([...(s.card.tags || []), ...tags])] });
-            toast(`「${r.word}」多了一個意思：${r.zh}`);
-          }
-          refreshPills();
-          renderVocab();
-          // 同一個字的其他意思，按鈕要從「加入」變成「補上這個意思」
-          box.querySelectorAll(".cand").forEach(x => x._paint && x._paint());
+      g.senses.forEach(x => {
+        const row = el("div", "sense-row");
+        row.innerHTML = `<div class="sense-body">${senseHTML(x)}</div>`;
+        const b = el("button", "btn sm primary", "用這個");
+        b.addEventListener("click", () => {
+          box.querySelectorAll(".sense-row, .cand").forEach(n => n.classList.remove("chosen"));
+          row.classList.add("chosen");
+          onPick(asData([x]));
         });
-        acts.appendChild(main);
-        if (s.st === "new") {
-          const ed = el("button", "btn sm ghost", "改一下再加入");
-          ed.addEventListener("click", () => {
-            const { note, ...data } = r;
-            openWordEditor(null, { ...data, tags });
-          });
-          acts.appendChild(ed);
-        }
-      };
-      c._paint = paint;
-      paint();
+        row.appendChild(b);
+        list.appendChild(row);
+      });
+      if (g.senses.length > 1) {
+        const all = el("button", "btn sm ghost", `用全部 ${g.senses.length} 個意思`);
+        all.addEventListener("click", () => {
+          box.querySelectorAll(".sense-row, .cand").forEach(n => n.classList.remove("chosen"));
+          c.classList.add("chosen");
+          onPick(asData(g.senses));
+        });
+        acts.appendChild(all);
+      }
+      box.appendChild(c);
+      return;
     }
+
+    // 加入模式：每個意思一個勾選框；單字本已經有的意思顯示「已收錄」
+    const paint = () => {
+      const card = V.find(g.word);
+      const have = V.sensesOf(card);
+      list.innerHTML = "";
+      const boxes = [];
+      g.senses.forEach((x, i) => {
+        const owned = card && have.some(h => V.sameSense(h.zh, x.zh));
+        const row = el("label", "sense-row" + (owned ? " owned" : ""));
+        if (owned) row.appendChild(el("span", "sense-owned", "✓"));
+        else {
+          const cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.checked = true;              // 預設全選，不要的再取消
+          cb.addEventListener("change", updateBtn);
+          boxes.push({ cb, x });
+          row.appendChild(cb);
+        }
+        const body = el("div", "sense-body");
+        body.innerHTML = senseHTML(x) + (owned ? `<span class="sense-tag">已收錄</span>` : "");
+        row.appendChild(body);
+        list.appendChild(row);
+      });
+
+      acts.innerHTML = "";
+      const tag = $("addTag").value.trim();
+      const tags = tag ? [tag] : [];
+      if (!boxes.length) {
+        acts.appendChild(el("span", "cand-done", "✓ 已在單字本"));
+        if (tag && card && !(card.tags || []).includes(tag)) {
+          const b = el("button", "btn sm ghost", `也加上「${tag}」標籤`);
+          b.addEventListener("click", () => { V.add(g.word, { tags }); paint(); renderVocab(); });
+          acts.appendChild(b);
+        }
+        return;
+      }
+      const main = el("button", "btn sm primary");
+      function updateBtn() {
+        const n = boxes.filter(b => b.cb.checked).length;
+        main.disabled = !n;
+        main.textContent = !n ? "先勾選要加入的意思"
+          : card ? `補上勾選的 ${n} 個意思`
+          : g.senses.length > 1 ? `＋ 加入（${n} 個意思）` : "＋ 加入";
+      }
+      updateBtn();
+      main.addEventListener("click", () => {
+        const picked = boxes.filter(b => b.cb.checked).map(b => b.x);
+        if (!picked.length) return;
+        const res = V.addSenses(g, picked, tags);
+        toast(res.isNew ? `已加入「${g.word}」${picked.length > 1 ? `（${picked.length} 個意思）` : ""}`
+                        : `「${g.word}」多了 ${res.added} 個意思`);
+        refreshPills();
+        renderVocab();
+        paint();
+      });
+      acts.appendChild(main);
+      if (!card) {
+        const ed = el("button", "btn sm ghost", "改一下再加入");
+        ed.addEventListener("click", () => {
+          const picked = boxes.filter(b => b.cb.checked).map(b => b.x);
+          openWordEditor(null, { ...asData(picked.length ? picked : g.senses), tags });
+        });
+        acts.appendChild(ed);
+      }
+    };
+    c._paint = paint;
+    paint();
     box.appendChild(c);
   });
 }
@@ -995,7 +1055,10 @@ async function runAddSearch(force = false) {
     }
     box.innerHTML = "";
     const head = el("div", "add-head");
-    head.innerHTML = `<span>${zh ? `「${esc(q)}」可以說成 ${results.length} 種：` : results.length > 1 ? `「${esc(results[0].word)}」有 ${results.length} 個意思，選你要的：` : "查到了："}</span>
+    const groups = V.groupResults(results);
+    head.innerHTML = `<span>${zh ? `「${esc(q)}」可以說成 ${groups.length} 種：`
+      : groups.length === 1 && groups[0].senses.length > 1 ? `「${esc(groups[0].word)}」有 ${groups[0].senses.length} 個意思，勾選你要的：`
+      : "查到了："}</span>
       ${cached ? `<span class="muted">（查過的，沒有花 API）</span>` : ""}`;
     if (cached) {
       const again = el("button", "mini", "↻ 重查");
@@ -1008,7 +1071,10 @@ async function runAddSearch(force = false) {
     renderCands(list, results, "add");
   } catch (e) {
     if (seq !== addSeq) return;
-    box.innerHTML = `<p class="note">查詢失敗：${esc(e.message)}<br>可以先用下面的「手動填寫」加入，之後再補。</p>`;
+    box.innerHTML = `<p class="note">查詢失敗：${esc(e.message)}<br>可以再試一次，或先用下面的「手動填寫」加入，之後再補。</p>`;
+    const again = el("button", "btn sm primary", "↻ 再試一次");
+    again.addEventListener("click", () => runAddSearch(true));
+    box.appendChild(again);
   } finally {
     if (seq === addSeq) $("btnAddSearch").disabled = false;
   }
@@ -1068,6 +1134,7 @@ function applyCand(r) {
   fill("wfAnt", relToText(r.antonyms));
   fill("wfFam", V.familyToText(r.family));
   if (Array.isArray(r.forms)) editingForms = r.forms;
+  editingSenses = r.senses || null;
   $("wordDlgNote").textContent = "已補上空白欄位，你原本填的內容沒有被改動。例句、近義詞在「更多欄位」裡。";
 }
 
@@ -1088,11 +1155,12 @@ $("btnAutoFill").addEventListener("click", async () => {
     if (!list.length) list = results;
     if (!list.length) { note.textContent = "查不到，請直接自己填。"; return; }
     if (list.length === 1) { applyCand(list[0]); return; }
+    const nGroups = V.groupResults(list).length;
     note.textContent = "";
     renderCands(pick, list, "pick", (r) => { applyCand(r); });
     // 說明放在候選清單正上方，不要放在最底下看不到
     pick.prepend(el("div", "add-head", word ? `「${word}」有 ${list.length} 個意思，選你要的那個：`
-                                            : `「${zh}」可以說成 ${list.length} 種，選你要的那個：`));
+                                            : `「${zh}」可以說成 ${nGroups} 種，選你要的那個：`));
   } catch (e) {
     note.textContent = "查詢失敗：" + e.message + "（可以直接自己填）";
   } finally {
@@ -1121,14 +1189,22 @@ $("btnSaveWord").addEventListener("click", () => {
     ...(editingForms ? { forms: editingForms } : {}),
     tags:      $("wfTags").value.split(/\s+/).filter(Boolean),
   };
+  // 多個意思：中文欄位沒被改過才沿用；改過就以你打的為準
+  const js = editingSenses ? V.joinSenses(editingSenses) : null;
+  data.senses = js && js.zh === data.zh ? editingSenses : undefined;
   if (editingId) {
     V.update(editingId, data);
     toast(`已更新「${word}」`);
   } else {
     const dup = V.find(word);
-    if (dup) {
-      V.update(dup.id, data);
-      toast(`「${word}」已存在，已更新內容`);
+    if (dup && data.zh && !V.sameSense(dup.zh, data.zh)) {
+      // 同一個字、不同意思 → 併成同一張卡的另一個意思，不會變兩張
+      const ss = data.senses || [{ pos: data.pos, zh: data.zh, example: data.example, exampleZh: data.exampleZh }];
+      V.addSenses({ word: dup.word, phonetic: data.phonetic, forms: data.forms, family: data.family }, ss, data.tags);
+      toast(`「${word}」已經在單字本，已把「${data.zh}」併進去成為另一個意思`);
+    } else if (dup) {
+      V.add(word, data);           // 同一個意思：只補空白欄位、合併標籤
+      toast(`「${word}」已經在單字本，已補上空白欄位`);
     } else {
       V.add(word, data);
       toast(`已加入「${word}」`);
@@ -1398,7 +1474,8 @@ function paintCard() {
   if (card.phonetic) fc.appendChild(el("div", "fc-ipa", card.phonetic));
 
   if (R.revealed) {
-    if (card.zh) fc.appendChild(el("div", "fc-zh", (card.pos ? card.pos + " · " : "") + card.zh));
+    const zhEl = sensesEl(card, "fc-zh");
+    if (zhEl) fc.appendChild(zhEl);
     if (card.example) {
       fc.appendChild(el("div", "fc-ex", card.example));
       if (card.exampleZh) fc.appendChild(el("div", "fc-exzh", card.exampleZh));

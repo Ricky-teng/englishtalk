@@ -254,9 +254,11 @@ async function loadWord(word, context) {
                      <p class="wp-zh">查詢失敗：${esc(e.message)}</p>
                      <div class="wp-actions">
                        <button class="btn sm ghost" data-act="speak">🔊</button>
+                       <button class="btn sm primary" data-act="retry">↻ 重試</button>
                        <button class="btn sm" data-act="addraw">先加入，之後再補</button>
                      </div>`;
     pop.querySelector('[data-act="speak"]').addEventListener("click", () => TTS.speak(word, undefined, null));
+    pop.querySelector('[data-act="retry"]').addEventListener("click", () => loadWord(word, context));
     pop.querySelector('[data-act="addraw"]').addEventListener("click", () => {
       V.add(word);
       closeLookup();
@@ -320,7 +322,9 @@ function paint(d, already) {
       ${d.phonetic ? `<span class="wp-ipa">${esc(d.phonetic)}</span>` : ""}
       ${d.pos ? `<span class="wp-pos">${esc(d.pos)}</span>` : ""}
     </div>
-    ${d.zh ? `<p class="wp-zh">${esc(d.zh)}</p>` : ""}
+    ${(card && V.sensesOf(card).length > 1)
+      ? `<ol class="wp-zh senses">${V.sensesOf(card).map(x => `<li>${x.pos ? `<span class="sense-pos">${esc(V.posShort(x.pos))}</span>` : ""}${esc(x.zh)}</li>`).join("")}</ol>`
+      : d.zh ? `<p class="wp-zh">${esc(d.zh)}</p>` : ""}
     ${Array.isArray(d.family) ? formsHTML(d) : `<div class="wp-forms wp-forms-wait muted">詞性變化查詢中…</div>`}
     ${d.example ? `<div class="wp-ex">${esc(d.example)}<br><span class="muted">${esc(d.exampleZh || "")}</span></div>` : ""}
     ${relatedHTML("近義", "syn", d.synonyms)}

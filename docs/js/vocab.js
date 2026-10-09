@@ -153,6 +153,7 @@ export async function lookup(word, context = "", force = false) {
         example: card.example, exampleZh: card.exampleZh,
         synonyms: card.synonyms || [], antonyms: card.antonyms || [],
         forms: card.forms || (hit && hit.forms), family: card.family || (hit && hit.family),
+        senses: card.senses,
       };
     }
     // 2. 再看查詢快取
@@ -251,7 +252,7 @@ At most 2 synonyms and 2 antonyms each (same sense; empty array if none, never i
 ${FORMS_RULES}
 Traditional Chinese only (never Simplified). Keep every field short.`;
 
-  const raw = await complete(prompt, { maxTokens: 3500 });
+  const raw = await complete(prompt, { maxTokens: 3500, geminiJson: true });
   const arr = parseJSON(raw);
   if (!Array.isArray(arr)) throw new Error("模型沒有回傳清單");
   const results = arr.slice(0, 6).map(d => ({
@@ -275,6 +276,93 @@ Traditional Chinese only (never Simplified). Keep every field short.`;
     }
   }
   return { results, cached: false, zh };
+}
+
+/* ---------- 一個字、多個意思 ---------- */
+// 同一個英文字只會有一張卡；不同意思存在 card.senses：[{pos, zh, example, exampleZh}]
+// card.zh / card.pos 是所有意思合起來的版本（銀行；河岸），測驗、複習、匯出都照舊用它。
+
+const zhKeys = (t) => String(t || "").replace(/[（(][^)）]*[)）]/g, "")
+  .split(/[\s、，,；;／/]+/).map(x => x.trim()).filter(Boolean);
+
+/** 兩個中文意思是不是同一個（有任何一個詞重疊就算；括號裡的補充說明不算） */
+export function sameSense(a, b) {
+  const A = new Set(zhKeys(a));
+  return zhKeys(b).some(k => A.has(k));
+}
+
+/** 這張卡的所有意思；舊卡沒有 senses 就把 zh 當成唯一的意思 */
+export function sensesOf(card) {
+  if (!card) return [];
+  if (Array.isArray(card.senses) && card.senses.length) return card.senses;
+  return card.zh ? [{ pos: card.pos || "", zh: card.zh, example: card.example || "", exampleZh: card.exampleZh || "" }] : [];
+}
+
+/** 把多個意思合成卡片上的 zh / pos */
+export function joinSenses(senses) {
+  return {
+    zh: senses.map(x => x.zh).filter(Boolean).join("；"),
+    pos: [...new Set(senses.map(x => posShort(x.pos)).filter(Boolean))].join(" / "),
+  };
+}
+
+/**
+ * 查詢結果依英文字分組：bank（銀行）、bank（河岸）→ 一組 bank，底下兩個意思。
+ * 詞形、詞性變化、音標取第一個意思的（同一個字本來就一樣）。
+ */
+export function groupResults(results) {
+  const groups = [];
+  for (const r of results || []) {
+    const k = r.word.toLowerCase();
+    let g = groups.find(x => x.word.toLowerCase() === k);
+    if (!g) {
+      g = { word: r.word, phonetic: r.phonetic, forms: r.forms, family: r.family,
+            synonyms: r.synonyms, antonyms: r.antonyms, senses: [] };
+      groups.push(g);
+    }
+    if (g.senses.some(x => sameSense(x.zh, r.zh) && posShort(x.pos) === posShort(r.pos))) continue;
+    g.senses.push({ pos: r.pos, zh: r.zh, note: r.note || "", example: r.example, exampleZh: r.exampleZh,
+                    synonyms: r.synonyms || [], antonyms: r.antonyms || [] });
+  }
+  return groups;
+}
+
+/**
+ * 把一組（同一個字）裡勾選的意思加進單字本：沒有這個字就新增一張卡，有就把新意思併進去。
+ * @returns {{card, added:number, isNew:boolean}}
+ */
+export function addSenses(group, picked, tags = []) {
+  const clean = picked.map(({ note, synonyms, antonyms, ...x }) => x);
+  const ex = find(group.word);
+  if (!ex) {
+    const first = picked[0] || {};
+    const j = joinSenses(clean);
+    const { card } = add(group.word, {
+      phonetic: group.phonetic || "", pos: j.pos, zh: j.zh,
+      example: first.example || "", exampleZh: first.exampleZh || "",
+      synonyms: first.synonyms && first.synonyms.length ? first.synonyms : (group.synonyms || []),
+      antonyms: first.antonyms && first.antonyms.length ? first.antonyms : (group.antonyms || []),
+      ...(Array.isArray(group.family) ? { forms: group.forms || [], family: group.family } : {}),
+      senses: clean.length > 1 ? clean : undefined,
+      tags,
+    });
+    if (!card.senses) delete card.senses;
+    return { card, added: clean.length, isNew: true };
+  }
+  const have = sensesOf(ex);
+  const fresh = clean.filter(x => !have.some(h => sameSense(h.zh, x.zh)));
+  const all = [...have, ...fresh];
+  const j = joinSenses(all);
+  ex.senses = all.length > 1 ? all : undefined;
+  if (!ex.senses) delete ex.senses;
+  ex.zh = j.zh;
+  ex.pos = j.pos || ex.pos;
+  if (!ex.example && all[0]) { ex.example = all[0].example || ""; ex.exampleZh = all[0].exampleZh || ""; }
+  if (!ex.phonetic && group.phonetic) ex.phonetic = group.phonetic;
+  if (!Array.isArray(ex.family) && Array.isArray(group.family)) { ex.forms = group.forms || []; ex.family = group.family; }
+  ex.tags = [...new Set([...(ex.tags || []), ...tags])];
+  save();
+  return { card: ex, added: fresh.length, isNew: false };
 }
 
 /* ---------- 詞形與詞性變化 ---------- */
@@ -361,7 +449,7 @@ Return ONLY a JSON array, no markdown fence, one element per word, same order:
 
 ${FORMS_RULES}
 "zh" is Traditional Chinese (never Simplified), 8 characters or fewer.`;
-  const raw = await complete(prompt, { maxTokens: 300 + list.length * 160 });
+  const raw = await complete(prompt, { maxTokens: 300 + list.length * 160, geminiJson: true });
   const arr = parseJSON(raw);
   if (!Array.isArray(arr)) throw new Error("模型沒有回傳陣列");
   let n = 0;
@@ -451,7 +539,7 @@ exists (never invent an antonym). Return exactly ${list.length} elements, in the
 Traditional Chinese only.
 
 ${FORMS_RULES}`;
-  const raw = await complete(prompt, { json: false, maxTokens: 6000 });
+  const raw = await complete(prompt, { maxTokens: 6000, geminiJson: true });
   const arr = parseJSON(raw);
   if (!Array.isArray(arr)) throw new Error("模型沒有回傳陣列");
   return arr;
@@ -830,7 +918,7 @@ Rules:
 TRANSCRIPT:
 ${lines}`;
 
-  const raw = await complete(prompt, { json: false, maxTokens: 1200 });
+  const raw = await complete(prompt, { maxTokens: 1200, geminiJson: true });
   const arr = parseJSON(raw);
   if (!Array.isArray(arr)) return [];
   return arr

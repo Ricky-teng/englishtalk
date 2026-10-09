@@ -2,7 +2,7 @@
  * whatsnew.js — 新版本第一次打開時的「新功能」介紹，以及安裝到桌面
  */
 
-export const APP_VERSION = "2.4";
+export const APP_VERSION = "2.5";
 const SEEN_KEY = "englishtalk.seenVersion";
 
 let deferredInstall = null;   // Android / 桌面 Chrome 的安裝提示
@@ -55,6 +55,8 @@ function installHelp() {
 }
 
 const FEATURES = [
+  { icon: "📚", title: "同一個字的不同意思，合成一張卡", go: "vocab",
+    body: "查 bank 會看到一張卡、底下列出「銀行」「河岸」，勾選要的意思一起加入；之後再加同一個字的新意思，也會併進同一張卡。單字本、翻卡背面、查字彈窗都會一行一個意思列出來。另外連線變穩了：網路不穩會自動重試，Gemini 回覆被截斷也會自動補要一次。" },
   { icon: "🔎", title: "新增單字：打中文也可以", go: "vocab",
     body: "按「＋ 新增單字」，輸入中文（例如「消耗」）會列出 consume、use up、deplete 等候選，每個都附用法差別和例句；輸入英文則列出它的各個意思（bank：銀行／河岸）。挑你要的按「＋ 加入」就好，同一個字的第二個意思會用「補上這個意思」併進去。查過的不會再花 API。" },
   { icon: "🌳", title: "單字底下顯示詞形與詞性變化", go: "vocab",

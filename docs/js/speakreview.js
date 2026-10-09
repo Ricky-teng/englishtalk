@@ -76,7 +76,7 @@ Return ONLY a JSON array, no markdown fence:
 
 ${chunk.map(c => `WORD: ${c.word}${c.zh ? `  (meaning: ${c.zh})` : ""}`).join("\n")}`;
     try {
-      const raw = await complete(prompt, { json: false, maxTokens: 1800 });
+      const raw = await complete(prompt, { maxTokens: 1800, geminiJson: true });
       const arr = parseJSON(raw);
       if (!Array.isArray(arr)) throw new Error("格式不正確");
       for (const c of chunk) {

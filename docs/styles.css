@@ -792,3 +792,23 @@ button:focus-visible, .chip:focus-visible, a:focus-visible {
 .wf-main { gap: 10px; }
 .wf-more { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 10px; }
 .wf-more summary { cursor: pointer; font-size: 13.5px; color: var(--text-2); padding: 4px 0; }
+
+/* ---------- 一個字、多個意思 ---------- */
+.cand-n { font-size: 11.5px; color: var(--accent); font-weight: 600; }
+.cand-senses { display: grid; gap: 6px; margin-top: 6px; }
+.sense-row { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border-radius: 9px;
+  background: var(--surface); border: 1px solid var(--line); cursor: pointer; }
+.sense-row input[type=checkbox] { width: 18px; height: 18px; margin-top: 2px; flex: none; accent-color: var(--accent); }
+.sense-row.owned { cursor: default; opacity: .8; }
+.sense-row.chosen, .cand.chosen { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.sense-row > .btn { flex: none; margin-left: auto; }
+.sense-body { flex: 1; min-width: 0; }
+.sense-pos { display: inline-block; font-size: 11px; font-weight: 600; color: var(--accent); margin-right: 6px; }
+.sense-zh { font-size: 15px; }
+.sense-row .cand-note { display: block; }
+.sense-row .cand-ex { margin-top: 4px; }
+.sense-owned { color: var(--good); font-weight: 700; width: 18px; text-align: center; flex: none; }
+.sense-tag { font-size: 11px; color: var(--good); margin-left: 6px; }
+ol.senses { margin: 4px 0 0; padding-left: 20px; }
+ol.senses li { margin: 1px 0; }
+.fc-zh.senses { text-align: left; display: inline-block; }
