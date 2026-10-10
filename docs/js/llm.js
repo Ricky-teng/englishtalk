@@ -8,6 +8,7 @@
  */
 
 import { settings } from "./store.js";
+import { AUTO_TOOL } from "./models.js";
 
 /* ---------- 連線：逾時、自動重試、把錯誤翻成人話 ---------- */
 
@@ -94,19 +95,23 @@ function groqReadHeaders(model, resp) {
 }
 
 /**
- * 查字、文法、詞性補查用哪個 Groq 模型。
- * 「自動」= llama-3.3-70b-versatile：中文與 JSON 都比 8B 穩很多，而且額度跟對話用的模型分開算，
- * 背景工作就不會把對話的額度吃光。這個模型不能用（404）時自動退回對話模型。
+ * 查字、新增單字、文法、詞性補查用哪個模型（kind = "tool"）；對話用 kind = "chat"。
+ * 「自動」：Groq 用 llama-3.3-70b-versatile、Gemini 用 gemini-3.5-flash-lite ——
+ * 中文和格式穩，而且額度跟對話用的模型分開算，背景工作不會吃掉對話的額度。
+ * 選的模型不能用（404／沒有權限）時自動退回對話模型，直到你在設定換模型為止。
  */
-let groqToolFallback = false;
-export function groqModelFor(kind) {
+const toolFallback = { groq: false, gemini: false };
+export function resetModelFallback() { toolFallback.groq = toolFallback.gemini = false; noThinkCfg.clear(); noReasonCfg.clear(); }
+
+export function modelFor(provider, kind) {
   const s = settings();
-  if (kind === "chat") return s.groqModel;
-  const t = s.groqToolModel || "auto";
-  if (t === "same") return s.groqModel;
-  if (t === "auto") return groqToolFallback ? s.groqModel : "llama-3.3-70b-versatile";
-  return t;
+  const chat = provider === "groq" ? s.groqModel : s.geminiModel;
+  if (kind === "chat") return chat;
+  const t = (provider === "groq" ? s.groqToolModel : s.geminiToolModel) || "auto";
+  if (t === "same" || toolFallback[provider]) return chat;
+  return t === "auto" ? AUTO_TOOL[provider] : t;
 }
+export function groqModelFor(kind) { return modelFor("groq", kind); }
 
 /**
  * fetch 加上逾時與自動重試。
@@ -149,18 +154,37 @@ async function fetchRetry(url, init, { who = "Gemini", tries = 3, timeoutMs = 30
 }
 
 /**
- * Gemini 2.5 Flash 預設會先「思考」，思考用掉的 token 也算在 maxOutputTokens 裡：
- * 回覆容易被截斷（JSON 不完整 → 查詢失敗）、第一個字也出得慢。
- * 對話與查字都不需要深度推理，所以 2.5 Flash 系列直接關掉思考。
- * 其他模型（Pro 不能關）就多給一些 token 額度，避免被思考吃光。
+ * 思考設定：思考用掉的 token 也算在 maxOutputTokens 裡，回覆容易被截斷（JSON 不完整 →「查詢失敗」），
+ * 第一句話也會變慢。對話與查字不需要深度推理，所以一律開到最低：
+ *   - 2.5 Flash 系列：thinkingBudget 0（完全關掉）
+ *   - 3.x：thinkingLevel 設成該模型支援的最低一級（minimal 或 low）
+ *   - 其他（例如 2.5 Pro 不能關）：不指定，但多給 token 額度
+ * 萬一模型不認得這個設定（400），就拿掉設定再送一次，並記住這個模型不要再帶。
  */
+const noThinkCfg = new Set();
+const MINIMAL_OK = /3\.5-flash|3\.6-flash|3-flash-preview/i;
+function geminiThinking(model) {
+  if (noThinkCfg.has(model)) return null;
+  if (/2\.5-flash/i.test(model)) return { thinkingBudget: 0 };
+  const m = String(model).match(/gemini-(\d+)/i);
+  if (m && Number(m[1]) >= 3) return { thinkingLevel: MINIMAL_OK.test(model) ? "minimal" : "low" };
+  return null;
+}
 function geminiGenConfig(model, maxTokens, extra = {}) {
-  const flash25 = /2\.5-flash/i.test(model);
+  const think = geminiThinking(model);
+  const off = think && think.thinkingBudget === 0;
   return {
-    maxOutputTokens: flash25 ? maxTokens : maxTokens + 2048,
-    ...(flash25 ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
+    maxOutputTokens: off ? maxTokens : maxTokens + (think ? 1024 : 2048),
+    ...(think ? { thinkingConfig: think } : {}),
     ...extra,
   };
+}
+/** 400 而且錯誤訊息提到 thinking → 這個模型不吃這個設定 */
+async function thinkingRejected(model, resp) {
+  if (resp.status !== 400 || noThinkCfg.has(model) || !geminiThinking(model)) return false;
+  const t = await resp.clone().text().catch(() => "");
+  if (/thinking/i.test(t)) { noThinkCfg.add(model); return true; }
+  return false;
 }
 
 /* ---------- 系統提示 ---------- */
@@ -259,7 +283,7 @@ async function groqStream(sys, messages, signal, onDelta) {
 
   const model = s.groqModel;
   await groqGate(model, estTokens(sys + JSON.stringify(messages)) + 120, "chat");
-  const resp = await fetchRetry("https://api.groq.com/openai/v1/chat/completions", {
+  const send = () => fetchRetry("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: {
       "Authorization": "Bearer " + s.groqKey,
@@ -268,13 +292,20 @@ async function groqStream(sys, messages, signal, onDelta) {
     body: JSON.stringify({
       model,
       stream: true,
+      ...groqReasoning(model),
       temperature: 0.85,
       max_tokens: 220,
       messages: [{ role: "system", content: sys }, ...messages],
     }),
     signal,
   }, { who: "Groq", timeoutMs: 20000 });
+  let resp = await send();
   groqReadHeaders(model, resp);
+  if (resp.status === 400 && !noReasonCfg.has(model) && Object.keys(groqReasoning(model)).length
+      && /reasoning/i.test(await resp.clone().text().catch(() => ""))) {
+    noReasonCfg.add(model);            // 這個模型不吃推理參數 → 拿掉再送一次
+    resp = await send();
+  }
   if (!resp.ok) throw new Error(await describeError(resp, "Groq"));
 
   let full = "";
@@ -297,7 +328,7 @@ async function geminiStream(sys, messages, signal, onDelta) {
   const url = "https://generativelanguage.googleapis.com/v1beta/models/"
             + encodeURIComponent(s.geminiModel) + ":streamGenerateContent?alt=sse";
 
-  const resp = await fetchRetry(url, {
+  const send = () => fetchRetry(url, {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-goog-api-key": s.geminiKey },
     body: JSON.stringify({
@@ -307,6 +338,8 @@ async function geminiStream(sys, messages, signal, onDelta) {
     }),
     signal,
   }, { who: "Gemini", timeoutMs: 20000 });
+  let resp = await send();
+  if (await thinkingRejected(s.geminiModel, resp)) resp = await send();
   if (!resp.ok) throw new Error(await describeError(resp, "Gemini"));
 
   let full = "";
@@ -327,19 +360,19 @@ async function geminiStream(sys, messages, signal, onDelta) {
  *                    geminiModel：改用別的 Gemini 模型（例如文法檢查用較輕的 flash-lite，額度另計）
  */
 export async function complete(prompt, { json = false, maxTokens = 600, geminiModel = "", geminiJson = false,
-                                         priority = "fg" } = {}) {
+                                         priority = "fg", kind = "tool" } = {}) {
   // priority：fg = 你正在等結果（查字）；bg = 背景工作（文法、補詞性），Groq 額度緊時讓路
   // json：要求回一個 JSON 物件（兩家都支援）
   // geminiJson：只對 Gemini 開 JSON 模式（回傳是陣列時用；Groq 的 JSON 模式只接受物件）
   const s = settings();
-  if (s.provider === "groq") return groqComplete(prompt, { json, maxTokens, geminiJson, priority });
+  if (s.provider === "groq") return groqComplete(prompt, { json, maxTokens, geminiJson, priority, kind });
 
   if (!s.geminiKey) throw new Error("尚未設定 Gemini API 金鑰");
-  const model = geminiModel || s.geminiModel;
-  const url = "https://generativelanguage.googleapis.com/v1beta/models/"
-            + encodeURIComponent(model) + ":generateContent";
   let budget = maxTokens;
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const model = geminiModel || modelFor("gemini", kind);
+    const url = "https://generativelanguage.googleapis.com/v1beta/models/"
+              + encodeURIComponent(model) + ":generateContent";
     const resp = await fetchRetry(url, {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-goog-api-key": s.geminiKey },
@@ -351,12 +384,18 @@ export async function complete(prompt, { json = false, maxTokens = 600, geminiMo
         }),
       }),
     }, { who: "Gemini" });
-    if (!resp.ok) throw new Error(await describeError(resp, "Gemini"));
+    if (!resp.ok) {
+      if (await thinkingRejected(model, resp)) continue;
+      // 查字用的模型不能用（被汰換、或新帳號沒有權限）→ 退回對話模型
+      if ((resp.status === 404 || resp.status === 403) && !geminiModel && kind === "tool"
+          && model !== s.geminiModel && !toolFallback.gemini) { toolFallback.gemini = true; continue; }
+      throw new Error(await describeError(resp, "Gemini"));
+    }
     const d = await resp.json();
     const cand = (d.candidates || [])[0] || {};
-    const text = ((cand.content || {}).parts || []).map(p => p.text || "").join("");
+    const text = ((cand.content || {}).parts || []).filter(p => !p.thought).map(p => p.text || "").join("");
     // 回到一半被 token 上限截斷 → 給兩倍額度再要一次（不然 JSON 不完整就會「查詢失敗」）
-    if (cand.finishReason === "MAX_TOKENS" && attempt === 0) { budget *= 2; continue; }
+    if (cand.finishReason === "MAX_TOKENS" && budget === maxTokens) { budget *= 2; continue; }
     if (!text && cand.finishReason === "SAFETY") throw new Error("Gemini 拒絕回答這個內容（安全過濾）。");
     return text;
   }
@@ -370,7 +409,21 @@ export async function complete(prompt, { json = false, maxTokens = 600, geminiMo
  * - JSON 模式驗證失敗（小模型偶爾會）→ 關掉 JSON 模式再要一次，交給 parseJSON 去挖
  * - 查字用的模型不存在 → 退回對話模型
  */
-async function groqComplete(prompt, { json, maxTokens, geminiJson, priority }) {
+/**
+ * 推理型模型（gpt-oss、qwen）在 Groq 上可以調低思考程度、把思考過程藏起來，
+ * 不然會慢、會吃額度，qwen 還可能把 <think>…</think> 混進回覆裡被念出來。
+ * 參數不被接受（400）時拿掉再送，並記住。
+ */
+const noReasonCfg = new Set();
+function groqReasoning(model) {
+  if (noReasonCfg.has(model)) return {};
+  if (/gpt-oss/i.test(model)) return { reasoning_effort: "low", include_reasoning: false };
+  if (/qwen/i.test(model)) return { reasoning_format: "hidden" };
+  return {};
+}
+const stripThink = (t) => String(t || "").replace(/<think>[\s\S]*?<\/think>\s*/g, "");
+
+async function groqComplete(prompt, { json, maxTokens, geminiJson, priority, kind = "tool" }) {
   const s = settings();
   if (!s.groqKey) throw new Error("尚未設定 Groq API 金鑰");
   const wrap = geminiJson && !json;                 // 要陣列 → 包成物件
@@ -378,8 +431,8 @@ async function groqComplete(prompt, { json, maxTokens, geminiJson, priority }) {
   // 免費方案每分鐘 token 很少，單次請求的上限不要開太大
   const maxOut = Math.min(maxTokens, 2400);
   let useJson = json || wrap;
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const model = groqModelFor("tool");
+  for (let attempt = 0; attempt < 4; attempt++) {
+    const model = modelFor("groq", kind);
     const entry = await groqGate(model, estTokens(text) + Math.round(maxOut * 0.6), priority);
     const resp = await fetchRetry("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -390,19 +443,23 @@ async function groqComplete(prompt, { json, maxTokens, geminiJson, priority }) {
         max_tokens: maxOut,
         messages: [{ role: "user", content: text }],
         ...(useJson ? { response_format: { type: "json_object" } } : {}),
+        ...groqReasoning(model),
       }),
     }, { who: "Groq" });
     groqReadHeaders(model, resp);
     if (!resp.ok) {
       const msg = await describeError(resp, "Groq");
-      if (resp.status === 404 && model !== s.groqModel) { groqToolFallback = true; continue; }
+      if (resp.status === 400 && /reasoning/i.test(msg) && !noReasonCfg.has(model)) { noReasonCfg.add(model); continue; }
+      if ((resp.status === 404 || resp.status === 403) && kind === "tool" && model !== s.groqModel && !toolFallback.groq) {
+        toolFallback.groq = true; continue;
+      }
       if (resp.status === 400 && useJson && /json/i.test(msg)) { useJson = false; continue; }
       if (resp.status === 413) throw new Error("這次要查的內容太長，超過 Groq 免費方案單次上限。分成少一點再試。");
       throw new Error(msg);
     }
     const d = await resp.json();
     if (d.usage && d.usage.total_tokens) entry.tokens = d.usage.total_tokens;   // 用實際用量更正帳本
-    const out = (d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content) || "";
+    const out = stripThink((d.choices && d.choices[0] && d.choices[0].message && d.choices[0].message.content) || "");
     if (!wrap) return out;
     try {
       const obj = parseJSON(out);

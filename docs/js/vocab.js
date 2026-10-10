@@ -688,11 +688,38 @@ export function previewIntervals(card) {
   return { 0: 0, 3: next(3), 4: next(4), 5: next(5) };
 }
 
+/** 這張卡今天該不該複習（新卡、到期、今天答錯要再看的都算） */
+export function isDue(card) { return !!card && (!card.due || card.due <= todayKey()); }
+
+/**
+ * 還沒到期、但想多練的字：依「此刻記得的機率」由低到高排，最快會忘的先練。
+ * 練習不會改變複習排程（見 grade）。
+ */
+export function practicePool(tag = "", n = 20) {
+  return vocab()
+    .filter(v => (!tag || (v.tags || []).includes(tag)) && !isDue(v))
+    .map(v => ({ v, r: recallNow(v) ?? 1 }))
+    .sort((a, b) => a.r - b.r)
+    .slice(0, n)
+    .map(x => x.v);
+}
+
 export function grade(id, quality, meta = {}) {
   const card = vocab().find(v => v.id === id);
   if (!card) return null;
   const repsBefore = card.reps || 0;
   const mode = meta.mode || "flip";
+
+  // 還沒到期的字 = 練習：只記錄作答（給分析用），不動排程。
+  // 間隔重複的效果來自「快忘的時候才複習」；提早複習再按「普通」會把間隔拉長，等於騙過演算法。
+  if (!isDue(card)) {
+    const log = load().reviewLog;
+    log.push({ t: Date.now(), w: card.word, m: mode, q: quality, ms: Math.round(meta.ms || 0), r: repsBefore, p: 1 });
+    if (log.length > 6000) log.splice(0, log.length - 6000);
+    save();
+    bumpDaily({ reviews: 1 });
+    return card;
+  }
 
   // --- SM-2（一直在背景更新，切回 SM-2 時才不會從頭來） ---
   let smIvl = card.smIvl ?? card.interval ?? 0;

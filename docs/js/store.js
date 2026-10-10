@@ -17,7 +17,8 @@ function emptyState() {
       provider: "gemini",            // gemini | groq
       geminiKey: "",
       groqKey: "",
-      geminiModel: "gemini-2.5-flash",
+      // 2.5 系列只開放給最近用過的帳號，新使用者預設用 3.5 Flash-Lite（快、省、幾乎不思考）
+      geminiModel: "gemini-3.5-flash-lite",
       groqModel: "llama-3.1-8b-instant",
       // 查字、新增單字、文法檢查用的 Groq 模型：auto = llama-3.3-70b-versatile（不能用時退回對話模型），
       // same = 跟對話同一個。分開用的好處是額度各算各的，背景工作不會吃掉對話的額度。
@@ -41,7 +42,8 @@ function emptyState() {
       scheduler: "fsrs",             // fsrs | sm2
       retention: 0.9,                // FSRS 目標記憶率：0.85 輕鬆、0.9 標準、0.95 嚴格
       grammarCheck: "live",          // live = 每句說完就在旁邊標出修正，end = 對話結束一次檢查，off
-      grammarModel: "gemini-2.5-flash-lite",  // 文法檢查用的模型（Gemini），額度跟對話分開算
+      // 查字、新增單字、文法檢查用的 Gemini 模型：auto = gemini-3.5-flash-lite，same = 跟對話同一個
+      geminiToolModel: "auto",
     },
     vocab: [],     // 單字本（含 FSRS 與 SM-2 間隔重複欄位）
     lookups: {},   // 查詢快取：查過的字永久留著，同一個字一輩子只查一次

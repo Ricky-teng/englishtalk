@@ -14,6 +14,7 @@ import { initSpeakReview, startSpeakReview, stopSpeakReview, isActive as speakRe
 import * as Insights from "./insights.js";
 import { initQuiz, startQuiz, stopQuiz, isQuizActive, QUIZ_MODES } from "./quiz.js";
 import * as Grammar from "./grammar.js";
+import { mountPicker } from "./models.js";
 import { initWhatsNew, maybeShowWhatsNew, openWhatsNew, APP_VERSION } from "./whatsnew.js";
 
 const $ = (id) => document.getElementById(id);
@@ -1305,7 +1306,29 @@ $("btnDoBulk").addEventListener("click", async () => {
 
 const R = { queue: [], idx: 0, revealed: false, tag: "", done: 0 };
 
+/** 練習模式的提示橫幅 */
+function setPracticeBanner(on) {
+  let b = $("practiceBanner");
+  if (!b) {
+    b = el("div", "practice-banner");
+    b.id = "practiceBanner";
+    $("reviewStage").before(b);
+  }
+  b.hidden = !on;
+  b.innerHTML = on ? `<b>練習模式</b><span>這些字還沒到複習時間。可以盡量練，作答會記進分析，但<b>不會改變複習排程</b> —— 間隔重複要在「快忘的時候」複習才有效。</span>` : "";
+}
+
+/** 「繼續練習」按鈕（今天的複習做完之後） */
+function practiceButton(tag) {
+  const n = V.practicePool(tag, 20).length;
+  if (!n) return null;
+  const b = el("button", "btn", `繼續練習 ${n} 個最快會忘的字（不影響排程）`);
+  b.addEventListener("click", () => startReviewRound());
+  return b;
+}
+
 function renderReviewHome() {
+  setPracticeBanner(false);
   $("page-review").classList.remove("reviewing");
   R.flipActive = false;
   paintReviewMode();
@@ -1331,8 +1354,12 @@ function renderReviewHome() {
   if (!c.due) {
     stage.appendChild(makeEmpty("今天的複習做完了 🎉",
       `這組共 ${c.total} 個單字，已掌握 ${c.mastered} 個。明天再來，或先去對話練幾句。`));
+    const pb = practiceButton(cur);
+    if (pb) { pb.style.marginTop = "12px"; stage.lastElementChild.appendChild(pb); }
+    $("btnStartReview").textContent = "開始練習";
     return;
   }
+  $("btnStartReview").textContent = "開始複習";
   stage.appendChild(makeEmpty(`有 ${c.due} 個單字等著複習`, "按上面的「開始複習」。"));
 }
 
@@ -1429,11 +1456,18 @@ function startReviewRound(override, forceMode) {
     R.queue = Store.vocab().filter(v => !R.tag || (v.tags || []).includes(R.tag));
   } else {
     R.queue = V.due(R.tag);
+    // 到期的都複習完了 → 自動接「練習」：挑最快會忘的字，作答不改變排程
+    if (!R.queue.length) {
+      R.queue = V.practicePool(R.tag, 20);   // 上方會出現「練習模式」說明，不另外跳通知
+    }
   }
   R.idx = 0;
   R.done = 0;
   R.revealed = false;
-  if (!R.queue.length) { toast("目前沒有到期的單字"); renderReviewHome(); return; }
+  if (!R.queue.length) { toast("這組還沒有可以練習的單字"); renderReviewHome(); return; }
+  // 這輪全部都還沒到期 → 練習模式（配對遊戲本來就不計分，不用標）
+  R.practice = mode !== "match" && R.queue.every(c => !V.isDue(c));
+  setPracticeBanner(R.practice);
   $("page-review").classList.add("reviewing");   // 複習進行中收起上方控制列，手機上卡片才看得到
   if (mode === "speak") { startSpeakReview(R.queue); return; }
   if (mode !== "flip") { startQuiz(mode, R.queue); return; }
@@ -1454,9 +1488,26 @@ function paintCard() {
       R.queue = again;
       R.idx = 0;
     } else {
-      stage.appendChild(makeEmpty("這輪複習完成 🎉", `總共複習了 ${R.done} 次。`));
+      // 結束畫面要留著，不要馬上被首頁蓋掉
+      R.flipActive = false;
+      setPracticeBanner(false);
+      $("page-review").classList.remove("reviewing");
+      const end = makeEmpty(R.practice ? "這輪練習完成 💪" : "這輪複習完成 🎉",
+        R.practice ? `練習了 ${R.done} 次，複習排程沒有變動。` : `總共複習了 ${R.done} 次。`);
+      const row = el("div", "row");
+      row.style.cssText = "justify-content:center;margin-top:12px";
+      const more = practiceButton(R.tag);
+      if (V.due(R.tag).length) {
+        const b = el("button", "btn primary", "繼續複習到期的字");
+        b.addEventListener("click", () => startReviewRound());
+        row.appendChild(b);
+      } else if (more) row.appendChild(more);
+      const home = el("button", "btn ghost", "回複習首頁");
+      home.addEventListener("click", renderReviewHome);
+      row.appendChild(home);
+      end.appendChild(row);
+      stage.appendChild(end);
       refreshPills();
-      renderReviewHome();
       return;
     }
   }
@@ -1465,7 +1516,7 @@ function paintCard() {
   if (!R.revealed) R.shownAt = Date.now();   // 從看到題目開始計時
   const prog = el("div", "review-progress");
   prog.appendChild(el("span", null, `第 ${R.idx + 1} / ${R.queue.length} 張`));
-  prog.appendChild(el("span", null, `本輪已複習 ${R.done}`));
+  prog.appendChild(el("span", null, `本輪已${R.practice ? "練習" : "複習"} ${R.done}`));
   stage.appendChild(prog);
 
   // 正面還沒翻牌時不能點字查詢，不然等於直接看答案
@@ -1529,7 +1580,7 @@ function paintCard() {
     stage.appendChild(show);
   } else {
     const grades = el("div", "grade-row");
-    const ivl = V.previewIntervals(card);
+    const ivl = V.isDue(card) ? V.previewIntervals(card) : null;
     const when = (d) => d === 0 ? "今天再來" : d === 1 ? "明天" : d < 60 ? `${d} 天後`
       : d < 365 ? `${Math.round(d / 30)} 個月後` : `${(d / 365).toFixed(1)} 年後`;
     [
@@ -1537,7 +1588,7 @@ function paintCard() {
       { q: 3, label: "困難" },
       { q: 4, label: "普通" },
       { q: 5, label: "簡單" },
-    ].map(g => ({ ...g, hint: when(ivl[g.q]) })).forEach(g => {
+    ].map(g => ({ ...g, hint: ivl ? when(ivl[g.q]) : "練習・不影響排程" })).forEach(g => {
       const b = el("button");
       b.innerHTML = `<b>${g.label}</b><small>${g.hint}</small>`;
       b.addEventListener("click", () => {
@@ -1721,14 +1772,28 @@ $("btnWipe").addEventListener("click", () => {
 
 const dlg = $("dlgSettings");
 
+/* ---------- 模型選擇器（下拉選單 + 優缺點說明卡） ---------- */
+const pick = {};
+for (const [prov, P] of [["gemini", "Gemini"], ["groq", "Groq"]]) {
+  pick[prov + "Chat"] = mountPicker({ provider: prov, kind: "chat",
+    select: $(`cfg${P}Model`), custom: $(`cfg${P}ModelCustom`), desc: $(`desc${P}Model`) });
+  pick[prov + "Tool"] = mountPicker({ provider: prov, kind: "tool",
+    select: $(`cfg${P}Tool`), custom: $(`cfg${P}ToolCustom`), desc: $(`desc${P}Tool`),
+    chatValue: () => pick[prov + "Chat"].get() });
+  // 對話模型換了，「跟對話用同一個」的說明卡也要跟著換
+  $(`cfg${P}Model`).addEventListener("change", () => pick[prov + "Tool"].refresh());
+  $(`cfg${P}ModelCustom`).addEventListener("input", () => pick[prov + "Tool"].refresh());
+}
+
 function openSettings() {
   const s = Store.settings();
   $("appVersion").textContent = "v" + APP_VERSION;
   $("testKeyNote").textContent = "";
   $("cfgProvider").value = s.provider;
-  $("cfgGeminiModel").value = s.geminiModel;
-  $("cfgGroqModel").value = s.groqModel;
-  $("cfgGroqTool").value = ["auto", "same"].includes(s.groqToolModel) ? s.groqToolModel : "auto";
+  pick.geminiChat.set(s.geminiModel);
+  pick.geminiTool.set(s.geminiToolModel || "auto");
+  pick.groqChat.set(s.groqModel);
+  pick.groqTool.set(s.groqToolModel || "auto");
   $("cfgTTSEngine").value = s.ttsEngine;
   $("cfgEdgeVoice").value = s.edgeVoice;
   $("cfgRate").value = String(s.rate);
@@ -1761,9 +1826,10 @@ function setKeyBadge(node, on) {
 
 function syncProviderVisibility() {
   const p = $("cfgProvider").value;
-  // 兩組都留著讓使用者可以先填好備用，只是把目前選的放前面強調
-  $("grpGemini").style.opacity = p === "gemini" ? "1" : ".6";
-  $("grpGroq").style.opacity = p === "groq" ? "1" : ".6";
+  // 只顯示目前選的供應商（每個模型都有說明卡，兩組一起列會太長）；
+  // 另一組的金鑰與模型都還保留著，切換供應商就會出現
+  $("grpGemini").hidden = p !== "gemini";
+  $("grpGroq").hidden = p !== "groq";
 }
 
 function syncTTSVisibility() {
@@ -1809,9 +1875,11 @@ $("btnSaveSettings").addEventListener("click", () => {
   s.provider = $("cfgProvider").value;
   if ($("cfgGeminiKey").value.trim()) s.geminiKey = $("cfgGeminiKey").value.trim();
   if ($("cfgGroqKey").value.trim()) s.groqKey = $("cfgGroqKey").value.trim();
-  s.geminiModel = $("cfgGeminiModel").value.trim() || s.geminiModel;
-  s.groqModel = $("cfgGroqModel").value.trim() || s.groqModel;
-  s.groqToolModel = $("cfgGroqTool").value;
+  s.geminiModel = pick.geminiChat.get() || s.geminiModel;
+  s.groqModel = pick.groqChat.get() || s.groqModel;
+  s.geminiToolModel = pick.geminiTool.get() || "auto";
+  s.groqToolModel = pick.groqTool.get() || "auto";
+  LLM.resetModelFallback();          // 換了模型就重新試一次，不沿用上次「不能用」的紀錄
   s.ttsEngine = $("cfgTTSEngine").value;
   s.browserVoice = $("cfgBrowserVoice").value || "";
   s.edgeVoice = $("cfgEdgeVoice").value;
@@ -1854,8 +1922,6 @@ $("cfgScheduler").addEventListener("change", () => {
 async function fetchModelsInto(provider) {
   const isGroq = provider === "groq";
   const note = $(isGroq ? "noteGroq" : "noteGemini");
-  const list = $(isGroq ? "listGroq" : "listGemini");
-  const input = $(isGroq ? "cfgGroqModel" : "cfgGeminiModel");
 
   // 先把畫面上輸入的金鑰暫存起來，讓查詢可以立刻用新金鑰
   const s = Store.settings();
@@ -1866,21 +1932,12 @@ async function fetchModelsInto(provider) {
   note.textContent = "查詢中…";
   try {
     const models = await LLM.listModels(provider);
-    list.innerHTML = "";
-    models.forEach(m => {
-      const o = document.createElement("option");
-      o.value = m;
-      list.appendChild(o);
-    });
-    if (!models.includes(input.value.trim()) && models.length) {
-      const prefer = isGroq
-        ? ["llama-3.1-8b-instant", "openai/gpt-oss-20b", "openai/gpt-oss-120b"]
-        : ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"];
-      input.value = prefer.find(p => models.includes(p)) || models[0];
-    }
-    note.textContent = `找到 ${models.length} 個可用模型，點輸入框可下拉選擇。`;
+    pick[provider + "Chat"].addFetched(models);
+    pick[provider + "Tool"].addFetched(models);
+    note.textContent = `你的帳號可以用 ${models.length} 個模型；清單外的已經加到下拉選單最下面。`;
   } catch (e) {
     note.textContent = "查詢失敗：" + e.message;
+  } finally {
     if (typed) { if (isGroq) s.groqKey = backup; else s.geminiKey = backup; }
   }
 }
@@ -1893,7 +1950,7 @@ $("btnTestKey").addEventListener("click", async () => {
   const provider = $("cfgProvider").value;
   const isGroq = provider === "groq";
   const typed = $(isGroq ? "cfgGroqKey" : "cfgGeminiKey").value.trim();
-  const model = $(isGroq ? "cfgGroqModel" : "cfgGeminiModel").value.trim();
+  const model = pick[provider + "Chat"].get();
 
   // 暫時套用畫面上的值來測，測完還原；真正存檔要按「儲存」
   const backup = { provider: s.provider, groqKey: s.groqKey, geminiKey: s.geminiKey,
@@ -1912,7 +1969,7 @@ $("btnTestKey").addEventListener("click", async () => {
   note.textContent = "測試中…";
   try {
     const t0 = performance.now();
-    await LLM.complete("Reply with the single word OK.", { maxTokens: 10 });
+    await LLM.complete("Reply with the single word OK.", { maxTokens: 10, kind: "chat" });
     const ms = Math.round(performance.now() - t0);
     note.textContent = `✅ 可以用！回應時間 ${ms} 毫秒。記得按「儲存」。`;
   } catch (e) {

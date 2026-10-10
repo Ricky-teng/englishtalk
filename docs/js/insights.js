@@ -81,7 +81,8 @@ export function compute() {
   const recog = recent.filter(l => RECOGNIZE.includes(l.m));
   const prod = recent.filter(l => PRODUCE.includes(l.m));
   // 只看「之前複習過」的卡，新卡第一次答錯不算忘記
-  const matured = recent.filter(l => (l.r || 0) > 0);
+  // 保持率只看「到期才複習」的作答；提前練習（p）本來就還記得，算進去會灌水
+  const matured = recent.filter(l => (l.r || 0) > 0 && !l.p);
 
   // ---- 單字掌握度 ----
   const mastery = {

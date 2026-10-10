@@ -167,8 +167,8 @@ At most 3 edits per line. If unsure, mark ok:true.
 LINES:
 ${list}`;
 
-  const geminiModel = G.useMainModel ? "" : (s.grammarModel || "gemini-2.5-flash-lite");
-  const raw = await complete(prompt, { maxTokens: 300 + batch.length * 220, geminiModel, geminiJson: true, priority: "bg" });
+  // 用哪個模型交給 llm.js 決定（設定裡「查字、文法用的模型」，不能用時自動退回對話模型）
+  const raw = await complete(prompt, { maxTokens: 300 + batch.length * 220, geminiJson: true, priority: "bg" });
   const arr = parseJSON(raw);
   if (!Array.isArray(arr)) throw new Error("文法檢查回傳格式不正確");
 

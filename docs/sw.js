@@ -7,12 +7,12 @@
  * 跨網域的請求（Gemini、Groq 等 API）完全不經手、不快取。
  */
 
-const VERSION = "et-v9";
+const VERSION = "et-v11";
 const SHELL = [
   "./", "index.html", "styles.css", "manifest.webmanifest",
   "js/app.js", "js/store.js", "js/llm.js", "js/tts.js", "js/asr.js", "js/vocab.js",
   "js/stats.js", "js/lookup.js", "js/shadow.js", "js/listen.js", "js/speakreview.js",
-  "js/whatsnew.js", "js/quiz.js", "js/insights.js", "js/fsrs.js", "js/grammar.js", "icons/icon-192.png", "icons/icon-512.png",
+  "js/whatsnew.js", "js/quiz.js", "js/insights.js", "js/fsrs.js", "js/grammar.js", "js/models.js", "icons/icon-192.png", "icons/icon-512.png",
 ];
 
 self.addEventListener("install", (e) => {

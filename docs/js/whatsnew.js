@@ -2,7 +2,7 @@
  * whatsnew.js — 新版本第一次打開時的「新功能」介紹，以及安裝到桌面
  */
 
-export const APP_VERSION = "2.6";
+export const APP_VERSION = "2.8";
 const SEEN_KEY = "englishtalk.seenVersion";
 
 let deferredInstall = null;   // Android / 桌面 Chrome 的安裝提示
@@ -55,6 +55,10 @@ function installHelp() {
 }
 
 const FEATURES = [
+  { icon: "💪", title: "複習完還能繼續練", go: "review",
+    body: "到期的字複習完之後，可以按「繼續練習」：挑出最快會忘的字再練一輪，所有題型都能用。還沒到期的字只算練習，會記進分析，但不會改變複習排程 —— 間隔重複要在快忘的時候複習才有效，提早按「普通」反而會讓下次間隔被拉太長。" },
+  { icon: "🎛️", title: "模型改成下拉選單，附優缺點", go: "settings",
+    body: "設定裡的模型改成下拉選單，選了就會顯示速度、聰明程度、優點、缺點和免費額度。「對話用」和「查字、文法用」可以分開選，額度各算各的。清單裡沒有的模型，可以按「抓取我帳號可用的模型」或自己輸入。" },
   { icon: "⚡", title: "Groq 變穩了", go: "chat",
     body: "Groq 免費方案每分鐘能用的量很少，對話、查字、文法檢查擠在一起就會被擋，瀏覽器只顯示「Failed to fetch」。現在會先自己算額度、不夠就排隊；查字和文法改用另一個模型（llama-3.3-70b），額度跟對話分開算，中文和格式也更穩。" },
   { icon: "📚", title: "同一個字的不同意思，合成一張卡", go: "vocab",
