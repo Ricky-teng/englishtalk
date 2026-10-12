@@ -10,7 +10,10 @@
  */
 
 import { load, save, vocab, uid, todayKey, dayKeyOffset, bumpDaily,
-         cacheGet, cacheSet, cacheDrop } from "./store.js";
+         cacheGet, cacheSet, cacheDrop, roomy } from "./store.js";
+
+// 作答紀錄最多留幾筆（個人分析用）：IndexedDB 空間大可以留很久，退回 localStorage 時少留一點
+const logMax = () => (roomy() ? 50000 : 6000);
 import { complete, parseJSON } from "./llm.js";
 import * as FSRS from "./fsrs.js";
 
@@ -715,7 +718,7 @@ export function grade(id, quality, meta = {}) {
   if (!isDue(card)) {
     const log = load().reviewLog;
     log.push({ t: Date.now(), w: card.word, m: mode, q: quality, ms: Math.round(meta.ms || 0), r: repsBefore, p: 1 });
-    if (log.length > 6000) log.splice(0, log.length - 6000);
+    if (log.length > logMax()) log.splice(0, log.length - logMax());
     save();
     bumpDaily({ reviews: 1 });
     return card;
@@ -756,7 +759,7 @@ export function grade(id, quality, meta = {}) {
   const log = load().reviewLog;
   log.push({ t: Date.now(), w: card.word, m: meta.mode || "flip", q,
              ms: Math.round(meta.ms || 0), r: repsBefore });
-  if (log.length > 6000) log.splice(0, log.length - 6000);
+  if (log.length > logMax()) log.splice(0, log.length - logMax());
 
   save();
   bumpDaily({ reviews: 1 });

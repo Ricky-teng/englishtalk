@@ -128,6 +128,11 @@
       </div>
 
       <div class="card">
+        <h3>AI 用量</h3>
+        <div id="aiUsage"></div>
+      </div>
+
+      <div class="card">
         <h3>對話紀錄</h3>
         <div id="sessionList"></div>
       </div>
@@ -135,6 +140,7 @@
       <div class="card">
         <h3>備份</h3>
         <p class="note" style="margin-top:0">匯出的檔案包含單字本、對話紀錄與統計，但<strong>不含 API 金鑰</strong>。換電腦時匯入即可延續進度。</p>
+        <div id="storageInfo" class="storage-info"></div>
         <div class="row" style="margin-top:12px">
           <button class="btn" id="btnExportAll">匯出備份</button>
           <button class="btn" id="btnImportAll">匯入備份</button>
@@ -170,6 +176,12 @@
       <button class="btn sm" id="btnTestKey" type="button">🔌 測試連線</button>
       <span class="note" id="testKeyNote" style="margin:0"></span>
     </div>
+
+    <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-top:12px">
+      <input type="checkbox" id="cfgFallback" style="width:auto">
+      主要的 AI 出問題時，自動換備援（對話不會斷）
+    </label>
+    <div class="note" id="fallbackChain" style="margin-left:26px"></div>
 
     <div id="grpGemini">
       <label class="field" for="cfgGeminiKey">Gemini API 金鑰 <span class="badge" id="stGemini">未設定</span></label>
@@ -253,6 +265,10 @@
       </div>
     </div>
 
+    <label class="field" for="cfgGoal">練習目標</label>
+    <select id="cfgGoal"></select>
+    <div class="note">換目標會一起換掉下面的 AI 角色（如果你沒有自己改過角色的話）。</div>
+
     <label class="field" for="cfgPersona">AI 角色設定（英文描述）</label>
     <input type="text" id="cfgPersona">
 
@@ -331,7 +347,8 @@
   <div class="m-foot">
     <span class="note" style="margin:0 auto 0 0">
       <span id="appVersion"></span> ·
-      <a href="#" id="lnkWhatsNew">看新功能</a>
+      <a href="#" id="lnkWhatsNew">看新功能</a> ·
+      <a href="#" id="lnkOnboard">新手引導</a>
     </span>
     <button class="btn ghost" id="btnCloseSettings">取消</button>
     <button class="btn primary" id="btnSaveSettings">儲存</button>

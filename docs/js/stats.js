@@ -6,7 +6,7 @@
  * 每格都有 hover 提示，並附一份表格檢視給讀螢幕或想看確切數字的人。
  */
 
-import { load, sessions, daily, todayKey, dayKeyOffset, uid, save, bumpDaily } from "./store.js";
+import { load, sessions, daily, todayKey, dayKeyOffset, uid, save, bumpDaily, roomy } from "./store.js";
 import { counts } from "./vocab.js";
 
 /* ---------- 對話階段記錄 ---------- */
@@ -66,9 +66,10 @@ export function endSession() {
   active.end = Date.now();
   if (active.messages.length >= 2) {
     sessions().push(active);
-    // 只留最近 200 場，避免 localStorage 爆掉
+    // 對話紀錄上限：IndexedDB 留 2000 場；退回 localStorage（約 5MB）時只留 200 場
     const list = sessions();
-    if (list.length > 200) list.splice(0, list.length - 200);
+    const max = roomy() ? 2000 : 200;
+    if (list.length > max) list.splice(0, list.length - max);
     save(true);
   }
   const done = active;

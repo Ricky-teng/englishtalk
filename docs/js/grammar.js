@@ -168,7 +168,7 @@ LINES:
 ${list}`;
 
   // 用哪個模型交給 llm.js 決定（設定裡「查字、文法用的模型」，不能用時自動退回對話模型）
-  const raw = await complete(prompt, { maxTokens: 300 + batch.length * 220, geminiJson: true, priority: "bg" });
+  const raw = await complete(prompt, { maxTokens: 300 + batch.length * 220, geminiJson: true, priority: "bg", purpose: "grammar" });
   const arr = parseJSON(raw);
   if (!Array.isArray(arr)) throw new Error("文法檢查回傳格式不正確");
 

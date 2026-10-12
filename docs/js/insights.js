@@ -441,7 +441,7 @@ export function render(container, d, act) {
 }
 
 /** 共用的 hover／鍵盤焦點說明框 */
-function attachTips(root) {
+export function attachTips(root) {
   let tip = document.getElementById("dvTip");
   if (!tip) {
     tip = document.createElement("div");

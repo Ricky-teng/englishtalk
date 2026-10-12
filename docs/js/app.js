@@ -14,8 +14,14 @@ import { initSpeakReview, startSpeakReview, stopSpeakReview, isActive as speakRe
 import * as Insights from "./insights.js";
 import { initQuiz, startQuiz, stopQuiz, isQuizActive, QUIZ_MODES } from "./quiz.js";
 import * as Grammar from "./grammar.js";
-import { mountPicker } from "./models.js";
+import { mountPicker, info as modelInfo, CATALOG } from "./models.js";
+import * as Usage from "./usage.js";
+import { initOnboarding, needsOnboarding, openOnboarding, GOALS } from "./onboarding.js";
 import { initWhatsNew, maybeShowWhatsNew, openWhatsNew, APP_VERSION } from "./whatsnew.js";
+
+// 先把資料從瀏覽器資料庫（IndexedDB）讀進記憶體，下面的程式才能同步取用
+await Store.init();
+window.__etState = () => Store.load();   // 給自動測試與除錯用：目前記憶體中的資料
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => {
@@ -83,9 +89,16 @@ function refreshPills() {
 
 function refreshBadges() {
   const s = Store.settings();
-  $("badgeEngine").textContent = s.provider === "groq" ? "Groq" : "Gemini";
   const hasKey = s.provider === "groq" ? !!s.groqKey : !!s.geminiKey;
-  $("badgeEngine").className = "badge" + (hasKey ? " on" : " warn");
+  if (LLM.route.backup && LLM.route.chat) {
+    $("badgeEngine").textContent = "備援中";
+    $("badgeEngine").className = "badge warn";
+    $("badgeEngine").title = `主要的 AI 暫時不能用，現在由 ${LLM.route.lastName} 接手；恢復後會自動切回。`;
+  } else {
+    $("badgeEngine").textContent = s.provider === "groq" ? "Groq" : "Gemini";
+    $("badgeEngine").className = "badge" + (hasKey ? " on" : " warn");
+    $("badgeEngine").title = "";
+  }
   const usingEdge = s.ttsEngine === "edge" && !TTS.edgeIsDisabled();
   $("badgeTTS").textContent = usingEdge ? "微軟語音" : "瀏覽器語音";
   $("badgeTTS").className = "badge" + (usingEdge ? " on" : "");
@@ -391,10 +404,10 @@ async function startChat() {
   if (C.running) return;
   removeWelcome();
   const s = Store.settings();
-  const hasKey = s.provider === "groq" ? s.groqKey : s.geminiKey;
-  if (!hasKey) {
-    sysMsg("請先到「設定」填入免費 API 金鑰。");
-    openSettings();
+  // 任一家有金鑰就能聊（主要的那家沒有，備援會接手）
+  if (!(s.groqKey || s.geminiKey)) {
+    sysMsg("還沒有 AI 金鑰。申請免費的只要 1 分鐘。");
+    openOnboarding(2);
     return;
   }
 
@@ -529,7 +542,7 @@ function renderWelcome() {
   const streak = Stats.streak();
   const today = (Store.daily()[Store.todayKey()] || {});
   const c = V.counts();
-  const hasKey = s.provider === "groq" ? !!s.groqKey : !!s.geminiKey;
+  const hasKey = !!(s.groqKey || s.geminiKey);
 
   const box = el("div", "welcome");
   box.innerHTML = `
@@ -544,8 +557,8 @@ function renderWelcome() {
 
   const acts = box.querySelector(".wl-acts");
   if (!hasKey) {
-    const b = el("button", "btn primary", "先設定免費 API 金鑰");
-    b.addEventListener("click", openSettings);
+    const b = el("button", "btn primary", "🔑 申請免費 AI 金鑰（約 1 分鐘）");
+    b.addEventListener("click", () => openOnboarding(2));
     acts.appendChild(b);
   } else {
     const b = el("button", "btn primary", "🗣️ 開始對話");
@@ -1624,7 +1637,84 @@ document.addEventListener("keydown", (e) => {
    紀錄
    ========================================================================= */
 
+/** 儲存空間：存在哪裡、用了多少、還剩多少 */
+async function renderStorage() {
+  const box = $("storageInfo");
+  if (!box) return;
+  const u = await Store.usage();
+  const mb = (b) => b == null ? "—" : b < 1024 * 1024 ? (b / 1024).toFixed(0) + " KB"
+    : b < 1024 ** 3 ? (b / 1024 / 1024).toFixed(1) + " MB" : (b / 1024 ** 3).toFixed(1) + " GB";
+  const ratio = u.used != null && u.quota ? Math.min(1, u.used / u.quota) : null;
+  const idb = u.backend === "indexedDB";
+  const counts = `單字 ${Store.vocab().length} 個、對話 ${Store.sessions().length} 場、查詢快取 ${Store.cacheSize()} 筆`;
+  box.innerHTML = `
+    <div class="si-head"><b>儲存空間</b><span class="muted">${idb ? "瀏覽器資料庫（IndexedDB）" : "localStorage（上限約 5MB）"}</span></div>
+    ${ratio != null ? `<div class="si-bar" role="img" aria-label="已使用 ${Math.round(ratio * 100)}%"><span style="width:${Math.max(ratio * 100, 1)}%"></span></div>` : ""}
+    <div class="si-text">已用 <b>${mb(u.used)}</b>${u.quota ? `，這台裝置還能用約 <b>${mb(u.quota - (u.used || 0))}</b>` : ""}。${counts}。</div>
+    ${idb ? `<div class="si-text muted">${u.persisted ? "✓ 已設定為不會被瀏覽器自動清除。" : "瀏覽器在空間很緊張時可能會清掉網站資料；安裝成 App 後通常就不會。"}一般使用好幾年都用不完。</div>`
+          : `<div class="si-text warn">這個瀏覽器不能用資料庫（可能是無痕模式），只能存約 5MB。${ratio > 0.7 ? "<b>快滿了</b>，請先匯出備份。" : "建議定期匯出備份。"}</div>`}`;
+}
+
+/** 一個模型的顯示名稱 */
+function modelName(provider, model) {
+  const m = modelInfo(provider, model);
+  return (m ? m.name : model) + (provider === "groq" ? "（Groq）" : "（Gemini）");
+}
+
+/** 已知的每日次數上限：Groq 回應標頭 > 整理過的官方數字 > 不知道 */
+function dailyLimit(provider, model) {
+  const h = Usage.limitOf(provider, model);
+  if (h && h.rpd) return { rpd: h.rpd, remaining: h.remaining, from: "Groq 回報" };
+  const m = modelInfo(provider, model);
+  return m && m.rpd ? { rpd: m.rpd, from: "官方免費額度" } : null;
+}
+
+/** 「紀錄」頁的 AI 用量：今天每個模型用了多少、最近 7 天、備援切換幾次 */
+function renderUsage() {
+  const box = $("aiUsage");
+  if (!box) return;
+  const rows = Usage.today();
+  const days = Usage.lastDays(7);
+  const fmt = (n) => n >= 10000 ? (n / 1000).toFixed(0) + "K" : n >= 1000 ? (n / 1000).toFixed(1) + "K" : String(n);
+  const maxReq = Math.max(1, ...rows.map(r => r.req));
+  const list = rows.length ? rows.map(r => {
+    const lim = dailyLimit(r.provider, r.model);
+    const by = Object.entries(r.by || {}).map(([k, v]) => `${Usage.PURPOSE[k] || k} ${v}`).join("・");
+    const pct = lim ? r.req / lim.rpd : null;
+    return `<div class="au-row">
+      <div class="au-name"><b>${esc(modelName(r.provider, r.model))}</b>
+        ${r.backup ? `<span class="au-tag">備援接手 ${r.backup} 次</span>` : ""}</div>
+      <div class="au-bar" data-tip="${esc(lim ? `今天 ${r.req} 次／每天上限 ${lim.rpd} 次（${lim.from}）` : `今天 ${r.req} 次（不知道這個模型的每日上限）`)}" tabindex="0">
+        <span style="width:${Math.max(2, (lim ? Math.min(1, pct) : r.req / maxReq) * 100)}%" class="${pct > 0.8 ? "hot" : ""}"></span></div>
+      <div class="au-meta">
+        <span>${r.req} 次${lim ? ` / ${lim.rpd}` : ""}</span>
+        <span>${fmt(r.tok)} token</span>
+        ${r.fail ? `<span class="au-fail" title="${esc(r.lastFail || "")}">失敗 ${r.fail}${r.lastFail ? `（${esc(r.lastFail)}）` : ""}</span>` : ""}
+        ${by ? `<span class="muted">${esc(by)}</span>` : ""}
+        ${lim && lim.remaining != null ? `<span class="muted">剩 ${lim.remaining} 次</span>` : ""}
+      </div></div>`;
+  }).join("") : `<p class="muted note">今天還沒有用到 AI。</p>`;
+
+  const dmax = Math.max(1, ...days.map(d => d.req));
+  const week = days.some(d => d.req) ? `
+    <div class="au-sub">最近 7 天（每天呼叫幾次 AI）</div>
+    <div class="vb au-week">${days.map(d => `
+      <div class="vb-col" data-tip="${esc(`${d.label}：${d.req} 次、${fmt(d.tok)} token${d.fail ? `、失敗 ${d.fail} 次` : ""}${d.backup ? `、備援接手 ${d.backup} 次` : ""}`)}" tabindex="0">
+        <span class="vb-val">${d.req || ""}</span>
+        <span class="vb-bar" style="${d.req ? `height:${d.req / dmax * 100}%` : "height:0;min-height:0"}"></span>
+        <span class="vb-label">${esc(d.label)}</span></div>`).join("")}</div>
+    <details class="dv-table"><summary>看數字</summary><table><thead><tr><th>日期</th><th>次數</th><th>token</th><th>失敗</th><th>備援</th></tr></thead>
+      <tbody>${days.map(d => `<tr><td>${d.key}</td><td>${d.req}</td><td>${d.tok}</td><td>${d.fail}</td><td>${d.backup}</td></tr>`).join("")}</tbody></table></details>` : "";
+
+  box.innerHTML = `<p class="note" style="margin-top:0">只算這個瀏覽器送出的請求。token 是供應商回報的實際用量（拿不到時用估計）。
+    每日上限：Groq 有回報就用它的數字，否則用官方公布的免費額度；兩個都沒有就只顯示次數。</p>
+    <div class="au-list">${list}</div>${week}`;
+  Insights.attachTips(box);
+}
+
 function renderStats() {
+  renderStorage();
+  renderUsage();
   const t = Stats.totals();
   const w = Stats.thisWeek();
   const s = Stats.streak();
@@ -1762,8 +1852,7 @@ $("importFile").addEventListener("change", async (e) => {
 
 $("btnWipe").addEventListener("click", () => {
   if (!confirm("這會刪掉單字本、對話紀錄、統計與金鑰設定，且無法復原。確定嗎？")) return;
-  Store.wipe();
-  location.reload();
+  Store.wipe().then(() => location.reload());
 });
 
 /* =========================================================================
@@ -1771,6 +1860,29 @@ $("btnWipe").addEventListener("click", () => {
    ========================================================================= */
 
 const dlg = $("dlgSettings");
+
+/** 設定頁：備援會依什麼順序接手 */
+function paintFallbackChain() {
+  const s = Store.settings();
+  const box = $("fallbackChain");
+  if (!$("cfgFallback").checked) { box.textContent = "關閉時，主要的 AI 不能用就會直接顯示錯誤。"; return; }
+  const chain = LLM.candidates("chat").map(c => modelName(c.provider, c.model));
+  const other = s.provider === "groq" ? "Gemini" : "Groq";
+  const hasOther = s.provider === "groq" ? !!s.geminiKey : !!s.groqKey;
+  box.innerHTML = `對話的接手順序：${chain.map(esc).join(" → ")}。`
+    + (hasOther ? "" : `<br>再填一組 <b>${other}</b> 的免費金鑰，連 ${s.provider === "groq" ? "Groq" : "Gemini"} 整個不能用時也接得上。`)
+    + `<br>換到備援時對話裡會出現一行提示，主要的恢復後自動切回。`;
+}
+$("cfgFallback").addEventListener("change", paintFallbackChain);
+
+// 對話途中換到備援、或切回主要的 AI：在對話裡留一行提示，頂端標章也跟著變
+window.addEventListener("llm:route", (e) => {
+  const d = e.detail;
+  sysMsg(d.backup
+    ? `🔁 主要的 AI 暫時不能用（${d.why || "連不上"}），這次改由 ${d.name} 回答，對話繼續。`
+    : `✅ 主要的 AI 恢復了，已切回 ${d.name}。`);
+  refreshBadges();
+});
 
 /* ---------- 模型選擇器（下拉選單 + 優缺點說明卡） ---------- */
 const pick = {};
@@ -1790,6 +1902,10 @@ function openSettings() {
   $("appVersion").textContent = "v" + APP_VERSION;
   $("testKeyNote").textContent = "";
   $("cfgProvider").value = s.provider;
+  $("cfgGoal").innerHTML = Object.entries(GOALS).map(([k, g]) => `<option value="${k}">${g.icon} ${esc(g.label)} — ${esc(g.hint)}</option>`).join("");
+  $("cfgGoal").value = s.goal || "daily";
+  $("cfgFallback").checked = s.fallback !== false;
+  paintFallbackChain();
   pick.geminiChat.set(s.geminiModel);
   pick.geminiTool.set(s.geminiToolModel || "auto");
   pick.groqChat.set(s.groqModel);
@@ -1875,11 +1991,21 @@ $("btnSaveSettings").addEventListener("click", () => {
   s.provider = $("cfgProvider").value;
   if ($("cfgGeminiKey").value.trim()) s.geminiKey = $("cfgGeminiKey").value.trim();
   if ($("cfgGroqKey").value.trim()) s.groqKey = $("cfgGroqKey").value.trim();
+  s.fallback = $("cfgFallback").checked;
+  // 換目標：角色是預設的（沒自己改過）才跟著換
+  const newGoal = $("cfgGoal").value;
+  const typedPersona = $("cfgPersona").value.trim();
+  const presets = Object.values(GOALS).map(g => g.persona);
+  if (newGoal !== (s.goal || "daily") && (!typedPersona || presets.includes(typedPersona))) {
+    $("cfgPersona").value = GOALS[newGoal].persona;
+  }
+  s.goal = newGoal;
   s.geminiModel = pick.geminiChat.get() || s.geminiModel;
   s.groqModel = pick.groqChat.get() || s.groqModel;
   s.geminiToolModel = pick.geminiTool.get() || "auto";
   s.groqToolModel = pick.groqTool.get() || "auto";
   LLM.resetModelFallback();          // 換了模型就重新試一次，不沿用上次「不能用」的紀錄
+  refreshBadges();
   s.ttsEngine = $("cfgTTSEngine").value;
   s.browserVoice = $("cfgBrowserVoice").value || "";
   s.edgeVoice = $("cfgEdgeVoice").value;
@@ -1969,7 +2095,7 @@ $("btnTestKey").addEventListener("click", async () => {
   note.textContent = "測試中…";
   try {
     const t0 = performance.now();
-    await LLM.complete("Reply with the single word OK.", { maxTokens: 10, kind: "chat" });
+    await LLM.complete("Reply with the single word OK.", { maxTokens: 10, kind: "chat", noFailover: true });
     const ms = Math.round(performance.now() - t0);
     note.textContent = `✅ 可以用！回應時間 ${ms} 毫秒。記得按「儲存」。`;
   } catch (e) {
@@ -1980,6 +2106,11 @@ $("btnTestKey").addEventListener("click", async () => {
   }
 });
 
+$("lnkOnboard").addEventListener("click", (e) => {
+  e.preventDefault();
+  $("dlgSettings").close();
+  openOnboarding(0);
+});
 $("lnkWhatsNew").addEventListener("click", (e) => {
   e.preventDefault();
   dlg.close();
@@ -2013,10 +2144,19 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
   renderWelcome();
 
   // 新功能介紹：老使用者第一次打開新版本才會看到；全新使用者直接去設定金鑰
-  initWhatsNew({ go: (tab) => showTab(tab) });   // 「試試看」會切到對應的分頁
+  initWhatsNew({ go: (tab) => (tab === "settings" ? openSettings() : tab === "onboard" ? openOnboarding(0) : showTab(tab)) });   // 「試試看」會切到對應的分頁或打開設定
   const returning = hasAnyKey || Store.vocab().length > 0 || Store.sessions().length > 0;
+  initOnboarding({
+    onFinish: () => {
+      refreshBadges();
+      const w = chatInner.querySelector(".welcome");
+      if (w) { w.remove(); renderWelcome(); }
+    },
+    startChat: () => { showTab("chat"); removeWelcome(); startChat(); },
+    openAdd: () => { showTab("vocab"); openAddDialog(); },
+  });
   const shown = maybeShowWhatsNew(returning);
-  if (!hasAnyKey && !shown) setTimeout(openSettings, 400);
+  if (!shown && needsOnboarding()) setTimeout(() => openOnboarding(0), 300);
 
   // 從桌面捷徑打開（?tab=review 之類）
   const tab = new URLSearchParams(location.search).get("tab");
@@ -2029,6 +2169,6 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
 
   TTS.loadVoices();
   window.addEventListener("store:error", () => {
-    toast("瀏覽器儲存空間已滿，請到「紀錄」匯出備份後清理舊資料。", 5000);
+    toast("資料存不進去（瀏覽器儲存空間不足）。請到「紀錄」匯出備份，再清理舊資料。", 6000);
   });
 })();

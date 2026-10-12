@@ -19,7 +19,7 @@
 Google／Groq，完全不經過你的伺服器。所以不管多少人用這個網站，你的花費都是零，
 也不可能有人刷爆你的額度。
 
-所有資料（單字本、對話紀錄、統計）都存在使用者自己的 `localStorage`。
+所有資料（單字本、對話紀錄、統計）都存在使用者自己瀏覽器的資料庫（IndexedDB，容量通常幾百 MB 以上；不支援時自動退回 localStorage）。
 你不持有任何人的資料，自然也沒有隱私與法遵問題。
 
 ---
@@ -66,11 +66,8 @@ npx vercel --prod
 
 ## 使用者第一次要做的事
 
-1. 申請一組免費金鑰（二選一，兩個都填也行，隨時可切換）
-   - **Gemini**（推薦）：<https://aistudio.google.com/apikey>
-   - **Groq**（回應最快）：<https://console.groq.com/keys>
-2. 開網站 → 右上角「設定」→ 貼上金鑰 → 儲存
-3. 按「開始對話」→ 允許麥克風 → 開始講英文
+第一次打開網站會自動跑新手引導（約 3 分鐘）：選目標與程度 → 申請免費金鑰（Gemini 或 Groq，
+貼上自動判斷並當場驗證）→ 試麥克風 → 開始第一場對話。
 
 建議用 **Chrome 或 Edge**。語音辨識只有這兩個支援，
 而 Edge 還能拿到 Microsoft 的神經語音（設定裡名字有 Natural / Online 的那些），音質最好。
@@ -241,7 +238,7 @@ Service worker 採「網路優先」：有網路一律拿最新版（推新版�
 ├── styles.css      深淺色主題、響應式
 ├── js/
 │   ├── app.js      主程式：串起對話、單字本、複習、統計
-│   ├── store.js    localStorage 資料層、查詢快取、schema 升級、匯出匯入
+│   ├── store.js    資料層（IndexedDB，退回 localStorage）、查詢快取、schema 升級、匯出匯入
 │   ├── llm.js      Gemini / Groq 瀏覽器直連（SSE 串流）
 │   ├── tts.js      語音合成：瀏覽器內建 ＋ 微軟 Edge 朗讀（自動降級）
 │   ├── asr.js      語音辨識、VAD、搶話與回音過濾（對話用的持續聆聽）

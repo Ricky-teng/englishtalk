@@ -2,7 +2,7 @@
  * whatsnew.js — 新版本第一次打開時的「新功能」介紹，以及安裝到桌面
  */
 
-export const APP_VERSION = "2.8";
+export const APP_VERSION = "2.11";
 const SEEN_KEY = "englishtalk.seenVersion";
 
 let deferredInstall = null;   // Android / 桌面 Chrome 的安裝提示
@@ -55,6 +55,14 @@ function installHelp() {
 }
 
 const FEATURES = [
+  { icon: "🧭", title: "新手引導", go: "onboard",
+    body: "第一次使用會有 5 步驟引導：選目標（日常、工作、多益、雅思托福、旅行）和程度、一步步申請免費金鑰（貼上自動判斷是哪一家並當場驗證）、試麥克風和喇叭。設定裡多了「練習目標」，換目標 AI 的角色會跟著換。" },
+  { icon: "🛟", title: "備援 AI：對話不會斷", go: "settings",
+    body: "主要的 AI 額度用完、連不上或伺服器忙的時候，自動換下一個模型接手（例如 Groq 8B → Groq 70B → Gemini），對話裡會留一行提示，恢復後自動切回。兩家的金鑰都填，連一整家掛掉都接得上。" },
+  { icon: "📈", title: "看得到 AI 用量", go: "stats",
+    body: "「紀錄」頁新增 AI 用量：今天每個模型用了幾次、多少 token、失敗幾次、備援接手幾次，以及離每日免費上限還有多少；還有最近 7 天的趨勢。" },
+  { icon: "💾", title: "儲存空間不會再不夠", go: "stats",
+    body: "資料從 localStorage（上限約 5MB）搬到瀏覽器內建的資料庫 IndexedDB，容量大很多，一般用好幾年都用不完。舊資料第一次打開時自動搬過去，不用做任何事。「紀錄」頁最下面可以看到用了多少空間。" },
   { icon: "💪", title: "複習完還能繼續練", go: "review",
     body: "到期的字複習完之後，可以按「繼續練習」：挑出最快會忘的字再練一輪，所有題型都能用。還沒到期的字只算練習，會記進分析，但不會改變複習排程 —— 間隔重複要在快忘的時候複習才有效，提早按「普通」反而會讓下次間隔被拉太長。" },
   { icon: "🎛️", title: "模型改成下拉選單，附優缺點", go: "settings",
