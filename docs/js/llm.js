@@ -648,7 +648,7 @@ export async function listModels(provider) {
     const d = await r.json();
     return (d.data || [])
       .map(m => m.id)
-      .filter(id => id && !/whisper|tts|guard|embed/i.test(id))
+      .filter(id => id && !/whisper|tts|guard|embed|orpheus|playai|safeguard|compound/i.test(id))   // 只留能聊天的文字模型
       .sort();
   }
   if (!s.geminiKey) throw new Error("尚未設定 Gemini API 金鑰");
@@ -660,7 +660,7 @@ export async function listModels(provider) {
   return (d.models || [])
     .filter(m => (m.supportedGenerationMethods || []).includes("generateContent"))
     .map(m => (m.name || "").replace("models/", ""))
-    .filter(n => n && !/embed|image|imagen|veo/i.test(n))
+    .filter(n => n && !/embed|image|imagen|veo|tts|live|transcribe|translate|omni|robotics|computer|aqa|banana/i.test(n))   // 只留能聊天的文字模型
     .sort();
 }
 

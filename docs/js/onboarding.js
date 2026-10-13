@@ -14,6 +14,7 @@ import * as Store from "./store.js";
 import * as LLM from "./llm.js";
 import * as TTS from "./tts.js";
 import { listenOnce, canListen } from "./listen.js";
+import { CATALOG, AUTO_TOOL, info as modelInfo } from "./models.js";
 
 const DONE_KEY = "onboardedAt";      // 存在 settings 裡：完成（或跳過）引導的時間
 
@@ -62,6 +63,24 @@ const PROVIDERS = {
     pros: "回話最快，但每分鐘額度比較少。",
   },
 };
+
+/**
+ * 新手不會選模型：從這把金鑰「實際能用」的模型裡，照推薦順序挑幾個來試。
+ * @param {string[]|null} ids  帳號可用的模型清單；拿不到（null）就用整理過的推薦清單
+ */
+export function pickChatModels(provider, ids) {
+  const fits = CATALOG[provider].filter(m => m.fit.includes("chat")).map(m => m.id);
+  const others = CATALOG[provider].filter(m => !m.fit.includes("chat")).map(m => m.id);
+  if (!ids) return fits.slice(0, 4);
+  const have = new Set(ids);
+  const out = [...fits, ...others].filter(id => have.has(id));
+  // 清單外的新模型：挑名字看起來是快速聊天用的（例如新的 flash-lite、instant）
+  const fast = provider === "groq" ? /instant|versatile|llama|gpt-oss|qwen/i : /flash/i;
+  const extra = ids.filter(id => !out.includes(id) && fast.test(id) && !/preview|exp/i.test(id))
+                   .sort((a, b) => (/lite|instant/i.test(b) ? 1 : 0) - (/lite|instant/i.test(a) ? 1 : 0));
+  const rest = ids.filter(id => !out.includes(id) && !extra.includes(id));
+  return [...out, ...extra, ...rest].slice(0, 4);
+}
 
 /** 從金鑰開頭判斷是哪一家 */
 export function detectProvider(key) {
@@ -294,7 +313,11 @@ function paintKey(body) {
     if (!key) { note.textContent = "還沒貼上金鑰。"; note.className = "ob-keynote warn"; input.focus(); return; }
     const p = detectProvider(key) || W.provider;
     const s2 = Store.settings();
-    const backup = { provider: s2.provider, geminiKey: s2.geminiKey, groqKey: s2.groqKey };
+    const backup = { provider: s2.provider, geminiKey: s2.geminiKey, groqKey: s2.groqKey,
+                     geminiModel: s2.geminiModel, groqModel: s2.groqModel,
+                     geminiToolModel: s2.geminiToolModel, groqToolModel: s2.groqToolModel };
+    const modelKey = p === "groq" ? "groqModel" : "geminiModel";
+    const toolKey = p === "groq" ? "groqToolModel" : "geminiToolModel";
     s2.provider = p;
     if (p === "groq") s2.groqKey = key; else s2.geminiKey = key;
     note.textContent = "檢查中…"; note.className = "ob-keynote";
@@ -302,13 +325,35 @@ function paintKey(body) {
     btn.disabled = true;
     try {
       const t0 = performance.now();
-      await LLM.complete("Reply with the single word OK.", { maxTokens: 10, kind: "chat", noFailover: true, purpose: "chat" });
+      // 1. 先問這把金鑰能用哪些模型：不需要指定模型，也順便驗證金鑰對不對
+      let ids = null;
+      try { ids = await LLM.listModels(p); }
+      catch (e) { if (/40[013]/.test(e.message)) throw e; }   // 金鑰錯就直接報錯；其他（網路）就改用推薦清單直接試
+      // 2. 照推薦順序挑幾個，一個一個試，第一個能回話的就用它
+      const cands = pickChatModels(p, ids && ids.length ? ids : null);
+      let used = "", lastErr = null;
+      for (const m of cands) {
+        s2[modelKey] = m;
+        note.textContent = `檢查中…（試用 ${(modelInfo(p, m) || {}).name || m}）`;
+        try {
+          await LLM.complete("Reply with the single word OK.", { maxTokens: 10, kind: "chat", noFailover: true, purpose: "chat" });
+          used = m;
+          break;
+        } catch (e) {
+          lastErr = e;
+          if (/40[13]/.test(e.message)) break;          // 金鑰問題，換模型也沒用
+        }
+      }
+      if (!used) throw lastErr || new Error("找不到這把金鑰能用的模型");
+      // 查字用的模型：推薦的那個帳號裡有就用「自動」，沒有就跟對話用同一個
+      s2[toolKey] = !ids || ids.includes(AUTO_TOOL[p]) ? "auto" : "same";
       // 第一把金鑰決定主要供應商；已經有另一家的話，新的這把就當備援
       if (backup.geminiKey || backup.groqKey) s2.provider = backup.provider;
       Store.save(true);
       LLM.resetModelFallback();
       W.keyOk = true;
-      note.innerHTML = `✅ 可以用了！（${PROVIDERS[p].name}，回應 ${Math.round(performance.now() - t0)} 毫秒）`
+      note.innerHTML = `✅ 可以用了！自動選了 <b>${esc((modelInfo(p, used) || {}).name || used)}</b>`
+        + `（${Math.round(performance.now() - t0)} 毫秒；之後在設定裡可以換模型）`
         + (s2.geminiKey && s2.groqKey ? "<br>兩家都有了，一家出問題時另一家會自動接手。" : "");
       note.className = "ob-keynote ok";
       input.value = "";
