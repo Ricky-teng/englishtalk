@@ -1,0 +1,58 @@
+{
+ "id": "U4",
+ "title": "咖啡廳用餐",
+ "tag": "ALL2610-U4",
+ "verified": true,
+ "items": [
+  {
+   "w": "apology",
+   "pos": "n.",
+   "zh": "道歉"
+  },
+  {
+   "w": "fantastic",
+   "pos": "adj.",
+   "zh": "棒極了的"
+  },
+  {
+   "w": "scan",
+   "pos": "v.",
+   "zh": "瀏覽；掃描"
+  },
+  {
+   "w": "minimum",
+   "pos": "adj.",
+   "zh": "最低的"
+  },
+  {
+   "w": "percent",
+   "pos": "n.",
+   "zh": "百分比"
+  },
+  {
+   "w": "recommend",
+   "pos": "v.",
+   "zh": "推薦"
+  },
+  {
+   "w": "substantial",
+   "pos": "adj.",
+   "zh": "份量足的"
+  },
+  {
+   "w": "mustard",
+   "pos": "n.",
+   "zh": "芥末醬"
+  },
+  {
+   "w": "adjust",
+   "pos": "v.",
+   "zh": "調整"
+  },
+  {
+   "w": "absolutely",
+   "pos": "adv.",
+   "zh": "當然"
+  }
+ ]
+}

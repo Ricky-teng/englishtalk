@@ -1,0 +1,68 @@
+{
+ "id": "U8",
+ "title": "寵物用品也通膨 飼主壓力逐年增",
+ "tag": "CNN2610-U8",
+ "verified": true,
+ "items": [
+  {
+   "w": "furry",
+   "pos": "adj.",
+   "zh": "毛茸茸的"
+  },
+  {
+   "w": "biotech",
+   "pos": "n.",
+   "zh": "生技"
+  },
+  {
+   "w": "overweight",
+   "pos": "adj.",
+   "zh": "超重的"
+  },
+  {
+   "w": "feline",
+   "pos": "adj.",
+   "zh": "貓科的"
+  },
+  {
+   "w": "deserve",
+   "pos": "v.",
+   "zh": "應得"
+  },
+  {
+   "w": "groom",
+   "pos": "v.",
+   "zh": "幫（動物）梳理"
+  },
+  {
+   "w": "vet",
+   "pos": "n.",
+   "zh": "獸醫"
+  },
+  {
+   "w": "leash",
+   "pos": "n.",
+   "zh": "牽繩"
+  },
+  {
+   "w": "obese",
+   "pos": "adj.",
+   "zh": "過度肥胖的"
+  },
+  {
+   "w": "underdiagnose",
+   "pos": "v.",
+   "zh": "低度診斷"
+  },
+  {
+   "w": "spay",
+   "pos": "v.",
+   "zh": "替母寵物結紮"
+  },
+  {
+   "w": "neuter",
+   "pos": "v.",
+   "zh": "替公寵物結紮"
+  }
+ ]
+}

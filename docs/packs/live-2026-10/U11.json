@@ -1,0 +1,33 @@
+{
+ "id": "U11",
+ "title": "巴黎迪士尼夢幻一日遊",
+ "tag": "Live2610-U11",
+ "verified": true,
+ "items": [
+  {
+   "w": "toward",
+   "pos": "prep.",
+   "zh": "朝向"
+  },
+  {
+   "w": "courage",
+   "pos": "n.",
+   "zh": "勇氣"
+  },
+  {
+   "w": "classic",
+   "pos": "n.",
+   "zh": "經典作品"
+  },
+  {
+   "w": "bar",
+   "pos": "n.",
+   "zh": "條；塊"
+  },
+  {
+   "w": "firework",
+   "pos": "n.",
+   "zh": "煙火"
+  }
+ ]
+}

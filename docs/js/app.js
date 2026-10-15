@@ -15,6 +15,7 @@ import * as Insights from "./insights.js";
 import { initQuiz, startQuiz, stopQuiz, isQuizActive, QUIZ_MODES } from "./quiz.js";
 import * as Grammar from "./grammar.js";
 import { mountPicker, info as modelInfo, CATALOG } from "./models.js";
+import { initPacks, openPacks } from "./packs.js";
 import * as Usage from "./usage.js";
 import { initOnboarding, needsOnboarding, openOnboarding, GOALS } from "./onboarding.js";
 import { initWhatsNew, maybeShowWhatsNew, openWhatsNew, APP_VERSION } from "./whatsnew.js";
@@ -742,7 +743,13 @@ function renderVocab() {
     box.appendChild(makeEmpty(
       Store.vocab().length ? "沒有符合條件的單字" : "單字本還是空的",
       Store.vocab().length ? "換個搜尋條件試試。"
-        : "在對話中點任何一個英文字就會收進來，或按上面的「批次加入」貼上整課單字表。"));
+        : "在對話中點任何一個英文字就會收進來；也可以直接加入整課的課本單字包。"));
+    if (!Store.vocab().length) {
+      const b = el("button", "btn primary", "📦 看看有哪些單字包");
+      b.style.marginTop = "12px";
+      b.addEventListener("click", openPacks);
+      box.lastElementChild.appendChild(b);
+    }
     return;
   }
 
@@ -1095,6 +1102,11 @@ async function runAddSearch(force = false) {
 }
 
 $("btnAddOne").addEventListener("click", openAddDialog);
+$("btnPacks").addEventListener("click", openPacks);
+initPacks({
+  toast,
+  onChanged: () => { refreshPills(); renderVocab(); },
+});
 $("btnAddSearch").addEventListener("click", () => runAddSearch());
 $("addQuery").addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.isComposing) { e.preventDefault(); runAddSearch(); }
@@ -2154,6 +2166,7 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
     },
     startChat: () => { showTab("chat"); removeWelcome(); startChat(); },
     openAdd: () => { showTab("vocab"); openAddDialog(); },
+    openPacks: () => { showTab("vocab"); openPacks(); },
   });
   const shown = maybeShowWhatsNew(returning);
   if (!shown && needsOnboarding()) setTimeout(() => openOnboarding(0), 300);

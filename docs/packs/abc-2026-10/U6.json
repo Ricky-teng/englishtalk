@@ -1,0 +1,48 @@
+{
+ "id": "U6",
+ "title": "現在進行式",
+ "tag": "ABC2610-U6",
+ "verified": true,
+ "items": [
+  {
+   "w": "restroom",
+   "pos": "n.",
+   "zh": "洗手間"
+  },
+  {
+   "w": "check",
+   "pos": "v.",
+   "zh": "查看；檢查"
+  },
+  {
+   "w": "list",
+   "pos": "n.",
+   "zh": "清單"
+  },
+  {
+   "w": "hang",
+   "pos": "v.",
+   "zh": "掛"
+  },
+  {
+   "w": "ring",
+   "pos": "v.",
+   "zh": "（鈴）響"
+  },
+  {
+   "w": "answer",
+   "pos": "v.",
+   "zh": "接（電話）"
+  },
+  {
+   "w": "number",
+   "pos": "n.",
+   "zh": "電話號碼"
+  },
+  {
+   "w": "miss",
+   "pos": "v.",
+   "zh": "錯過"
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "id": "PIC",
+ "title": "畫中有話：萬聖夜變裝",
+ "tag": "ABC2610-PIC",
+ "verified": true,
+ "items": [
+  {
+   "w": "item",
+   "pos": "n.",
+   "zh": "物品"
+  },
+  {
+   "w": "perfect",
+   "pos": "adj.",
+   "zh": "完美的；合適的"
+  },
+  {
+   "w": "expensive",
+   "pos": "adj.",
+   "zh": "昂貴的"
+  },
+  {
+   "w": "mirror",
+   "pos": "n.",
+   "zh": "鏡子"
+  }
+ ]
+}

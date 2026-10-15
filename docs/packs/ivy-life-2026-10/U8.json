@@ -1,0 +1,53 @@
+{
+ "id": "U8",
+ "title": "翻譯 Sentence Translation",
+ "tag": "常春藤生活2610-U8",
+ "verified": true,
+ "items": [
+  {
+   "w": "relationship",
+   "pos": "n.",
+   "zh": "人際關係"
+  },
+  {
+   "w": "explore",
+   "pos": "v.",
+   "zh": "探索"
+  },
+  {
+   "w": "environment",
+   "pos": "n.",
+   "zh": "環境"
+  },
+  {
+   "w": "unforgettable",
+   "pos": "adj.",
+   "zh": "難忘的"
+  },
+  {
+   "w": "memory",
+   "pos": "n.",
+   "zh": "回憶"
+  },
+  {
+   "w": "show respect for",
+   "pos": "phr.",
+   "zh": "尊重…"
+  },
+  {
+   "w": "be willing to",
+   "pos": "phr.",
+   "zh": "願意…"
+  },
+  {
+   "w": "one another",
+   "pos": "phr.",
+   "zh": "彼此"
+  },
+  {
+   "w": "a field trip",
+   "pos": "phr.",
+   "zh": "校外教學"
+  }
+ ]
+}

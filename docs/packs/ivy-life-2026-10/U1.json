@@ -1,0 +1,103 @@
+{
+ "id": "U1",
+ "title": "白牙",
+ "tag": "常春藤生活2610-U1",
+ "verified": true,
+ "items": [
+  {
+   "w": "territory",
+   "pos": "n.",
+   "zh": "地盤"
+  },
+  {
+   "w": "tame",
+   "pos": "v.",
+   "zh": "馴服"
+  },
+  {
+   "w": "cruel",
+   "pos": "adj.",
+   "zh": "殘酷的"
+  },
+  {
+   "w": "faith",
+   "pos": "n.",
+   "zh": "信任"
+  },
+  {
+   "w": "patience",
+   "pos": "n.",
+   "zh": "耐性"
+  },
+  {
+   "w": "character",
+   "pos": "n.",
+   "zh": "性格"
+  },
+  {
+   "w": "struggle",
+   "pos": "v.",
+   "zh": "掙扎"
+  },
+  {
+   "w": "guard",
+   "pos": "v.",
+   "zh": "看守"
+  },
+  {
+   "w": "drive",
+   "pos": "n.",
+   "zh": "本能；衝勁"
+  },
+  {
+   "w": "respond",
+   "pos": "v.",
+   "zh": "回應"
+  },
+  {
+   "w": "tend",
+   "pos": "v.",
+   "zh": "往往會"
+  },
+  {
+   "w": "nervous",
+   "pos": "adj.",
+   "zh": "緊張的"
+  },
+  {
+   "w": "intelligent",
+   "pos": "adj.",
+   "zh": "聰明的"
+  },
+  {
+   "w": "average",
+   "pos": "adj.",
+   "zh": "一般的"
+  },
+  {
+   "w": "pick on sb",
+   "pos": "phr.",
+   "zh": "欺負某人"
+  },
+  {
+   "w": "fall into the hands of",
+   "pos": "phr.",
+   "zh": "落入…手中"
+  },
+  {
+   "w": "lose faith in",
+   "pos": "phr.",
+   "zh": "對…失去信心"
+  },
+  {
+   "w": "respond to",
+   "pos": "phr.",
+   "zh": "對…回應"
+  },
+  {
+   "w": "tend to",
+   "pos": "phr.",
+   "zh": "容易…；往往"
+  }
+ ]
+}

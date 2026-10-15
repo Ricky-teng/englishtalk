@@ -1,0 +1,48 @@
+{
+ "id": "U9",
+ "title": "美力台灣 3D 偏鄉巡演計畫",
+ "tag": "ABC2610-U9",
+ "verified": true,
+ "items": [
+  {
+   "w": "movie theater",
+   "pos": "n.",
+   "zh": "電影院"
+  },
+  {
+   "w": "truck",
+   "pos": "n.",
+   "zh": "卡車"
+  },
+  {
+   "w": "television",
+   "pos": "n.",
+   "zh": "電視"
+  },
+  {
+   "w": "nature",
+   "pos": "n.",
+   "zh": "大自然"
+  },
+  {
+   "w": "visit",
+   "pos": "v.",
+   "zh": "拜訪；參觀"
+  },
+  {
+   "w": "dream",
+   "pos": "v.",
+   "zh": "夢想"
+  },
+  {
+   "w": "future",
+   "pos": "n.",
+   "zh": "未來"
+  },
+  {
+   "w": "matter",
+   "pos": "v.",
+   "zh": "重要"
+  }
+ ]
+}

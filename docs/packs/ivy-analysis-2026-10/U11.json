@@ -1,0 +1,78 @@
+{
+ "id": "U11",
+ "title": "採買食材 今晚你想來點……？",
+ "tag": "常春藤解析2610-U11",
+ "verified": true,
+ "items": [
+  {
+   "w": "purchase",
+   "pos": "v.",
+   "zh": "購買"
+  },
+  {
+   "w": "fast-paced",
+   "pos": "adj.",
+   "zh": "快節奏的"
+  },
+  {
+   "w": "groceries",
+   "pos": "n.",
+   "zh": "食品雜貨"
+  },
+  {
+   "w": "produce",
+   "pos": "n.",
+   "zh": "蔬果農產"
+  },
+  {
+   "w": "demanding",
+   "pos": "adj.",
+   "zh": "費力的；吃重的"
+  },
+  {
+   "w": "tap",
+   "pos": "v.",
+   "zh": "點按（螢幕）"
+  },
+  {
+   "w": "vendor",
+   "pos": "n.",
+   "zh": "攤販"
+  },
+  {
+   "w": "dependability",
+   "pos": "n.",
+   "zh": "可靠程度"
+  },
+  {
+   "w": "household",
+   "pos": "n.",
+   "zh": "家庭；住戶"
+  },
+  {
+   "w": "smoothly",
+   "pos": "adv.",
+   "zh": "順暢地"
+  },
+  {
+   "w": "at one's fingertips",
+   "pos": "phr.",
+   "zh": "唾手可得"
+  },
+  {
+   "w": "make a purchase",
+   "pos": "phr.",
+   "zh": "購物"
+  },
+  {
+   "w": "in contrast",
+   "pos": "phr.",
+   "zh": "相較之下"
+  },
+  {
+   "w": "rely on",
+   "pos": "phr.",
+   "zh": "依靠"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "id": "U10",
+ "title": "一起動起來吧！",
+ "tag": "ALL2610-U10",
+ "verified": true,
+ "items": [
+  {
+   "w": "marathon",
+   "pos": "n.",
+   "zh": "馬拉松"
+  },
+  {
+   "w": "workout",
+   "pos": "n.",
+   "zh": "健身運動"
+  },
+  {
+   "w": "hooked",
+   "pos": "adj.",
+   "zh": "著迷的"
+  },
+  {
+   "w": "exhausted",
+   "pos": "adj.",
+   "zh": "累壞的"
+  },
+  {
+   "w": "sustain",
+   "pos": "v.",
+   "zh": "維持"
+  },
+  {
+   "w": "consistent",
+   "pos": "adj.",
+   "zh": "持之以恆的"
+  },
+  {
+   "w": "rewarding",
+   "pos": "adj.",
+   "zh": "有收穫的"
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "id": "U8",
+ "title": "日本機器狼對抗野熊",
+ "tag": "Live2610-U8",
+ "verified": true,
+ "items": [
+  {
+   "w": "monster",
+   "pos": "n.",
+   "zh": "怪物"
+  },
+  {
+   "w": "frightening",
+   "pos": "adj.",
+   "zh": "嚇人的"
+  },
+  {
+   "w": "flash",
+   "pos": "v.",
+   "zh": "閃爍；閃光"
+  },
+  {
+   "w": "kilometer",
+   "pos": "n.",
+   "zh": "公里"
+  }
+ ]
+}

@@ -1,0 +1,128 @@
+{
+ "id": "L2",
+ "title": "Goodbye, John",
+ "tag": "龍騰B1-L2",
+ "verified": true,
+ "items": [
+  {
+   "w": "relationship",
+   "pos": "n.",
+   "zh": "戀愛關係；關係"
+  },
+  {
+   "w": "satisfying",
+   "pos": "adj.",
+   "zh": "令人滿意的"
+  },
+  {
+   "w": "inspire",
+   "pos": "v.",
+   "zh": "激勵；啟發"
+  },
+  {
+   "w": "connect",
+   "pos": "v.",
+   "zh": "建立關係；連結"
+  },
+  {
+   "w": "communicate",
+   "pos": "v.",
+   "zh": "溝通"
+  },
+  {
+   "w": "introduce",
+   "pos": "v.",
+   "zh": "引進；使初次接觸"
+  },
+  {
+   "w": "throughout",
+   "pos": "prep.",
+   "zh": "自始至終；遍及"
+  },
+  {
+   "w": "message",
+   "pos": "n.",
+   "zh": "訊息"
+  },
+  {
+   "w": "refresh",
+   "pos": "v.",
+   "zh": "重新整理（頁面）；使恢復精神"
+  },
+  {
+   "w": "romantic",
+   "pos": "adj.",
+   "zh": "浪漫的"
+  },
+  {
+   "w": "focus",
+   "pos": "v.",
+   "zh": "專注；集中"
+  },
+  {
+   "w": "ignore",
+   "pos": "v.",
+   "zh": "忽略；不理會"
+  },
+  {
+   "w": "attention",
+   "pos": "n.",
+   "zh": "注意力"
+  },
+  {
+   "w": "deny",
+   "pos": "v.",
+   "zh": "否認"
+  },
+  {
+   "w": "respond",
+   "pos": "v.",
+   "zh": "回應；回覆"
+  },
+  {
+   "w": "disappointed",
+   "pos": "adj.",
+   "zh": "失望的"
+  },
+  {
+   "w": "personally",
+   "pos": "adv.",
+   "zh": "針對個人地；親自"
+  },
+  {
+   "w": "in fact",
+   "pos": "phr.",
+   "zh": "事實上"
+  },
+  {
+   "w": "go through",
+   "pos": "phr.",
+   "zh": "經歷；仔細查看"
+  },
+  {
+   "w": "in case",
+   "pos": "phr.",
+   "zh": "以防萬一"
+  },
+  {
+   "w": "in addition",
+   "pos": "phr.",
+   "zh": "此外"
+  },
+  {
+   "w": "hang out",
+   "pos": "phr.",
+   "zh": "閒晃；一起出去玩"
+  },
+  {
+   "w": "turn to",
+   "pos": "phr.",
+   "zh": "求助於；轉向"
+  },
+  {
+   "w": "take sth. personally",
+   "pos": "phr.",
+   "zh": "認為是針對自己"
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "id": "U5",
+ "title": "快來參加蛋糕野餐吧！",
+ "tag": "常春藤生活2610-U5",
+ "verified": true,
+ "items": [
+  {
+   "w": "alone",
+   "pos": "adj.",
+   "zh": "孤單的；獨自"
+  },
+  {
+   "w": "message",
+   "pos": "n.",
+   "zh": "訊息"
+  },
+  {
+   "w": "invitation",
+   "pos": "n.",
+   "zh": "邀請"
+  },
+  {
+   "w": "be not alone",
+   "pos": "phr.",
+   "zh": "不是只有你"
+  },
+  {
+   "w": "keep an eye on",
+   "pos": "phr.",
+   "zh": "留意"
+  }
+ ]
+}

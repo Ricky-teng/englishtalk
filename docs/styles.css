@@ -916,3 +916,42 @@ dialog.onboard .m-foot { gap: 8px; }
 .ob-choices:not(.lv) .ob-choice .ob-ci { grid-row: span 2; }
 .ob-next .ob-choice { grid-template-columns: auto 1fr; column-gap: 10px; align-items: center; }
 .ob-next .ob-choice .ob-ci { grid-row: span 2; }
+
+/* =========================================================================
+   公共單字包
+   ========================================================================= */
+dialog.packs { width: min(640px, calc(100vw - 24px)); }
+dialog.packs .m-body { max-height: 66vh; padding-bottom: 8px; }
+.pk-books { display: grid; gap: 8px; margin-top: 12px; }
+.pk-book { display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--surface-2); color: var(--text); font: inherit; cursor: pointer; }
+.pk-book:hover { border-color: var(--accent); }
+.pk-ci { font-size: 26px; }
+.pk-bt { flex: 1; display: grid; gap: 2px; }
+.pk-bt small { color: var(--text-2); font-size: 12.5px; }
+.pk-done { color: var(--good) !important; }
+.pk-go { font-size: 22px; color: var(--muted); }
+.pk-back { margin-top: 10px; }
+.pk-head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-top: 10px; font-size: 16px; }
+.pk-head .muted { font-size: 13px; }
+.pk-note { margin: 6px 0 0; font-size: 12.5px; line-height: 1.6; }
+.pk-all { margin: 10px 0; }
+.pk-units { display: grid; gap: 8px; }
+.pk-unit { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; background: var(--surface-2); }
+.pk-uh { display: flex; align-items: center; gap: 10px; }
+.pk-code { font-weight: 700; color: var(--accent); min-width: 2.2em; }
+.pk-ut { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.pk-ut b { font-size: 14px; }
+.pk-ut small { font-size: 12px; color: var(--text-2); }
+.pk-warn { color: var(--warn); }
+.pk-uh .btn { flex: none; white-space: nowrap; }
+.pk-more { margin-top: 6px; }
+.pk-more summary { cursor: pointer; font-size: 12.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pk-list { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; font-size: 13px; }
+.pk-w { display: inline-flex; gap: 4px; align-items: baseline; }
+.pk-w i { font-style: normal; font-size: 11px; color: var(--accent); }
+.pk-w small { color: var(--text-2); }
+dialog.packs .m-body { overflow-x: hidden; }
+.pk-unit, .pk-ut { min-width: 0; }
+.pk-more summary { display: block; max-width: 100%; }
+.pk-list { overflow-wrap: anywhere; }

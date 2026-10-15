@@ -1,0 +1,98 @@
+{
+ "id": "R3",
+ "title": "An Island's Beauty, an Islander's Duty",
+ "tag": "龍騰B1-R3",
+ "verified": false,
+ "items": [
+  {
+   "w": "industrial",
+   "pos": "adj.",
+   "zh": "工業的"
+  },
+  {
+   "w": "proof",
+   "pos": "n.",
+   "zh": "證據；證明"
+  },
+  {
+   "w": "damage",
+   "pos": "n.",
+   "zh": "損害"
+  },
+  {
+   "w": "prevent",
+   "pos": "v.",
+   "zh": "預防；阻止"
+  },
+  {
+   "w": "masterpiece",
+   "pos": "n.",
+   "zh": "傑作"
+  },
+  {
+   "w": "grateful",
+   "pos": "adj.",
+   "zh": "感激的"
+  },
+  {
+   "w": "impact",
+   "pos": "n.",
+   "zh": "影響；衝擊"
+  },
+  {
+   "w": "tragic",
+   "pos": "adj.",
+   "zh": "悲慘的；悲劇的"
+  },
+  {
+   "w": "shed",
+   "pos": "v.",
+   "zh": "流（淚）；脫落"
+  },
+  {
+   "w": "disaster",
+   "pos": "n.",
+   "zh": "災難"
+  },
+  {
+   "w": "record",
+   "pos": "v.",
+   "zh": "記錄"
+  },
+  {
+   "w": "conservation",
+   "pos": "n.",
+   "zh": "保育；保護"
+  },
+  {
+   "w": "effective",
+   "pos": "adj.",
+   "zh": "有效的"
+  },
+  {
+   "w": "capture",
+   "pos": "v.",
+   "zh": "捕捉；拍攝到"
+  },
+  {
+   "w": "photographer",
+   "pos": "n.",
+   "zh": "攝影師"
+  },
+  {
+   "w": "documentary",
+   "pos": "n.",
+   "zh": "紀錄片"
+  },
+  {
+   "w": "director",
+   "pos": "n.",
+   "zh": "導演；主管"
+  },
+  {
+   "w": "gratitude",
+   "pos": "n.",
+   "zh": "感激"
+  }
+ ]
+}

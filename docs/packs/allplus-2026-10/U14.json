@@ -1,0 +1,38 @@
+{
+ "id": "U14",
+ "title": "描述個人偏好",
+ "tag": "ALL2610-U14",
+ "verified": true,
+ "items": [
+  {
+   "w": "preference",
+   "pos": "n.",
+   "zh": "偏好"
+  },
+  {
+   "w": "beloved",
+   "pos": "adj.",
+   "zh": "心愛的"
+  },
+  {
+   "w": "affordable",
+   "pos": "adj.",
+   "zh": "價格親民的"
+  },
+  {
+   "w": "delightful",
+   "pos": "adj.",
+   "zh": "令人愉快的"
+  },
+  {
+   "w": "mash",
+   "pos": "v.",
+   "zh": "搗成泥"
+  },
+  {
+   "w": "texture",
+   "pos": "n.",
+   "zh": "口感"
+  }
+ ]
+}

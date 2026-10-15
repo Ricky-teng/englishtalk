@@ -1,0 +1,68 @@
+{
+ "id": "R1",
+ "title": "進階閱讀 1：猜拳文化的古老起源",
+ "tag": "ABC2610-R1",
+ "verified": true,
+ "items": [
+  {
+   "w": "piece",
+   "pos": "n.",
+   "zh": "一塊；一個"
+  },
+  {
+   "w": "winner",
+   "pos": "n.",
+   "zh": "贏家"
+  },
+  {
+   "w": "cover",
+   "pos": "v.",
+   "zh": "蓋住"
+  },
+  {
+   "w": "cut",
+   "pos": "v.",
+   "zh": "剪；切"
+  },
+  {
+   "w": "thousand",
+   "pos": "adj.",
+   "zh": "一千的"
+  },
+  {
+   "w": "frog",
+   "pos": "n.",
+   "zh": "青蛙"
+  },
+  {
+   "w": "hundred",
+   "pos": "adj.",
+   "zh": "一百的"
+  },
+  {
+   "w": "West",
+   "pos": "n.",
+   "zh": "西方國家"
+  },
+  {
+   "w": "newspaper",
+   "pos": "n.",
+   "zh": "報紙"
+  },
+  {
+   "w": "magazine",
+   "pos": "n.",
+   "zh": "雜誌"
+  },
+  {
+   "w": "playground",
+   "pos": "n.",
+   "zh": "遊樂場"
+  },
+  {
+   "w": "office",
+   "pos": "n.",
+   "zh": "辦公室"
+  }
+ ]
+}

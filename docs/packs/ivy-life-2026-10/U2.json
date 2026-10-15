@@ -1,0 +1,53 @@
+{
+ "id": "U2",
+ "title": "我的社團首選",
+ "tag": "常春藤生活2610-U2",
+ "verified": true,
+ "items": [
+  {
+   "w": "improve",
+   "pos": "v.",
+   "zh": "進步；改善"
+  },
+  {
+   "w": "skill",
+   "pos": "n.",
+   "zh": "技能"
+  },
+  {
+   "w": "perform",
+   "pos": "v.",
+   "zh": "表演"
+  },
+  {
+   "w": "performance",
+   "pos": "n.",
+   "zh": "演出"
+  },
+  {
+   "w": "stage",
+   "pos": "n.",
+   "zh": "舞台"
+  },
+  {
+   "w": "advanced",
+   "pos": "adj.",
+   "zh": "進階的"
+  },
+  {
+   "w": "organize",
+   "pos": "v.",
+   "zh": "籌辦"
+  },
+  {
+   "w": "colorful",
+   "pos": "adj.",
+   "zh": "色彩繽紛的"
+  },
+  {
+   "w": "expect to",
+   "pos": "phr.",
+   "zh": "期待（做）…"
+  }
+ ]
+}

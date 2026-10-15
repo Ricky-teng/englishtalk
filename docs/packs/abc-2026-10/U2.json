@@ -1,0 +1,68 @@
+{
+ "id": "U2",
+ "title": "《小王子》",
+ "tag": "ABC2610-U2",
+ "verified": true,
+ "items": [
+  {
+   "w": "serious",
+   "pos": "adj.",
+   "zh": "認真的；嚴肅的"
+  },
+  {
+   "w": "appear",
+   "pos": "v.",
+   "zh": "出現"
+  },
+  {
+   "w": "surprised",
+   "pos": "adj.",
+   "zh": "驚訝的"
+  },
+  {
+   "w": "unhappy",
+   "pos": "adj.",
+   "zh": "不快樂的"
+  },
+  {
+   "w": "adult",
+   "pos": "n.",
+   "zh": "大人"
+  },
+  {
+   "w": "knowledge",
+   "pos": "n.",
+   "zh": "知識"
+  },
+  {
+   "w": "understand",
+   "pos": "v.",
+   "zh": "了解"
+  },
+  {
+   "w": "arrive",
+   "pos": "v.",
+   "zh": "抵達"
+  },
+  {
+   "w": "fix",
+   "pos": "v.",
+   "zh": "修理"
+  },
+  {
+   "w": "plane",
+   "pos": "n.",
+   "zh": "飛機"
+  },
+  {
+   "w": "plan",
+   "pos": "n.",
+   "zh": "計畫"
+  },
+  {
+   "w": "laugh",
+   "pos": "n.",
+   "zh": "笑聲"
+  }
+ ]
+}

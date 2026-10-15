@@ -1,0 +1,133 @@
+{
+ "id": "L4",
+ "title": "Sniffing Out More Than Just Bones",
+ "tag": "龍騰B1-L4",
+ "verified": true,
+ "items": [
+  {
+   "w": "sensitive",
+   "pos": "adj.",
+   "zh": "敏感的；靈敏的"
+  },
+  {
+   "w": "keen",
+   "pos": "adj.",
+   "zh": "敏銳的；熱衷的"
+  },
+  {
+   "w": "detect",
+   "pos": "v.",
+   "zh": "察覺；偵測"
+  },
+  {
+   "w": "item",
+   "pos": "n.",
+   "zh": "物品；項目"
+  },
+  {
+   "w": "accomplish",
+   "pos": "v.",
+   "zh": "完成；達成"
+  },
+  {
+   "w": "disease",
+   "pos": "n.",
+   "zh": "疾病"
+  },
+  {
+   "w": "infected",
+   "pos": "adj.",
+   "zh": "受感染的"
+  },
+  {
+   "w": "locate",
+   "pos": "v.",
+   "zh": "找出……的位置"
+  },
+  {
+   "w": "reward",
+   "pos": "v.",
+   "zh": "獎勵；回報"
+  },
+  {
+   "w": "ability",
+   "pos": "n.",
+   "zh": "能力"
+  },
+  {
+   "w": "predict",
+   "pos": "v.",
+   "zh": "預測"
+  },
+  {
+   "w": "manage",
+   "pos": "v.",
+   "zh": "設法做到；管理"
+  },
+  {
+   "w": "create",
+   "pos": "v.",
+   "zh": "創造"
+  },
+  {
+   "w": "expose",
+   "pos": "v.",
+   "zh": "使接觸；暴露"
+  },
+  {
+   "w": "perform",
+   "pos": "v.",
+   "zh": "執行；表演"
+  },
+  {
+   "w": "behavior",
+   "pos": "n.",
+   "zh": "行為"
+  },
+  {
+   "w": "alert",
+   "pos": "v.",
+   "zh": "警告；使警覺"
+  },
+  {
+   "w": "complete",
+   "pos": "v.",
+   "zh": "完成"
+  },
+  {
+   "w": "assign",
+   "pos": "v.",
+   "zh": "指派；分配"
+  },
+  {
+   "w": "specific",
+   "pos": "adj.",
+   "zh": "特定的；明確的"
+  },
+  {
+   "w": "due to",
+   "pos": "phr.",
+   "zh": "由於"
+  },
+  {
+   "w": "all of a sudden",
+   "pos": "phr.",
+   "zh": "突然"
+  },
+  {
+   "w": "turn out (to be)",
+   "pos": "phr.",
+   "zh": "結果是；原來是"
+  },
+  {
+   "w": "come across",
+   "pos": "phr.",
+   "zh": "偶然遇到；發現"
+  },
+  {
+   "w": "carry out",
+   "pos": "phr.",
+   "zh": "執行；進行"
+  }
+ ]
+}

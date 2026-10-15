@@ -2,7 +2,7 @@
  * whatsnew.js — 新版本第一次打開時的「新功能」介紹，以及安裝到桌面
  */
 
-export const APP_VERSION = "2.11";
+export const APP_VERSION = "2.12";
 const SEEN_KEY = "englishtalk.seenVersion";
 
 let deferredInstall = null;   // Android / 桌面 Chrome 的安裝提示
@@ -55,6 +55,8 @@ function installHelp() {
 }
 
 const FEATURES = [
+  { icon: "📦", title: "公共單字包：課本單字一鍵加入", go: "vocab",
+    body: "單字本多了「📦 單字包」：第一個是龍騰版高中英文第一冊，每一課都整理好單字和片語，一鍵加入、不花 API。加入的字會帶上課次標籤，複習頁可以只練某一課；已經有的字不會重複，只會補上標籤。" },
   { icon: "🧭", title: "新手引導", go: "onboard",
     body: "第一次使用會有 5 步驟引導：選目標（日常、工作、多益、雅思托福、旅行）和程度、一步步申請免費金鑰（貼上自動判斷是哪一家並當場驗證）、試麥克風和喇叭。設定裡多了「練習目標」，換目標 AI 的角色會跟著換。" },
   { icon: "🛟", title: "備援 AI：對話不會斷", go: "settings",

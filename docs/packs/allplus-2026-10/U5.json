@@ -1,0 +1,68 @@
+{
+ "id": "U5",
+ "title": "背起行囊，漫遊德奧絕美風光",
+ "tag": "ALL2610-U5",
+ "verified": true,
+ "items": [
+  {
+   "w": "scenic",
+   "pos": "adj.",
+   "zh": "景色優美的"
+  },
+  {
+   "w": "stall",
+   "pos": "n.",
+   "zh": "攤子"
+  },
+  {
+   "w": "cliff",
+   "pos": "n.",
+   "zh": "懸崖"
+  },
+  {
+   "w": "stunning",
+   "pos": "adj.",
+   "zh": "美得驚人的"
+  },
+  {
+   "w": "bounce",
+   "pos": "v.",
+   "zh": "彈跳；反彈"
+  },
+  {
+   "w": "cluster",
+   "pos": "n.",
+   "zh": "一群；一簇"
+  },
+  {
+   "w": "compact",
+   "pos": "adj.",
+   "zh": "小巧緊湊的"
+  },
+  {
+   "w": "overalls",
+   "pos": "n.",
+   "zh": "吊帶工作褲"
+  },
+  {
+   "w": "theme",
+   "pos": "n.",
+   "zh": "主題"
+  },
+  {
+   "w": "tram",
+   "pos": "n.",
+   "zh": "路面電車"
+  },
+  {
+   "w": "departure",
+   "pos": "n.",
+   "zh": "出發"
+  },
+  {
+   "w": "extension",
+   "pos": "n.",
+   "zh": "延伸；擴建"
+  }
+ ]
+}

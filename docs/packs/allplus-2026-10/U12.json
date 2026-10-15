@@ -1,0 +1,73 @@
+{
+ "id": "U12",
+ "title": "學生在申請大學時應使用 AI 嗎？",
+ "tag": "ALL2610-U12",
+ "verified": true,
+ "items": [
+  {
+   "w": "application",
+   "pos": "n.",
+   "zh": "申請"
+  },
+  {
+   "w": "portfolio",
+   "pos": "n.",
+   "zh": "作品集"
+  },
+  {
+   "w": "admission",
+   "pos": "n.",
+   "zh": "入學許可"
+  },
+  {
+   "w": "competitive",
+   "pos": "adj.",
+   "zh": "競爭激烈的"
+  },
+  {
+   "w": "disclose",
+   "pos": "v.",
+   "zh": "揭露；公開"
+  },
+  {
+   "w": "excessive",
+   "pos": "adj.",
+   "zh": "過度的"
+  },
+  {
+   "w": "evaluation",
+   "pos": "n.",
+   "zh": "評估"
+  },
+  {
+   "w": "polish",
+   "pos": "v.",
+   "zh": "潤飾"
+  },
+  {
+   "w": "consequence",
+   "pos": "n.",
+   "zh": "後果"
+  },
+  {
+   "w": "counselor",
+   "pos": "n.",
+   "zh": "輔導老師"
+  },
+  {
+   "w": "rural",
+   "pos": "adj.",
+   "zh": "鄉下的"
+  },
+  {
+   "w": "slot",
+   "pos": "n.",
+   "zh": "名額"
+  },
+  {
+   "w": "assess",
+   "pos": "v.",
+   "zh": "評量"
+  }
+ ]
+}

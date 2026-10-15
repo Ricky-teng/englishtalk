@@ -1,0 +1,98 @@
+{
+ "id": "U7",
+ "title": "翻譯 Translation (2026.10)",
+ "tag": "常春藤解析2610-U7",
+ "verified": true,
+ "items": [
+  {
+   "w": "anxious",
+   "pos": "adj.",
+   "zh": "焦慮的"
+  },
+  {
+   "w": "realize",
+   "pos": "v.",
+   "zh": "察覺"
+  },
+  {
+   "w": "battery",
+   "pos": "n.",
+   "zh": "電池"
+  },
+  {
+   "w": "fortunately",
+   "pos": "adv.",
+   "zh": "幸好"
+  },
+  {
+   "w": "rental",
+   "pos": "n.",
+   "zh": "租借"
+  },
+  {
+   "w": "charge",
+   "pos": "v.",
+   "zh": "充電"
+  },
+  {
+   "w": "post",
+   "pos": "v.",
+   "zh": "發布（貼文）"
+  },
+  {
+   "w": "complaint",
+   "pos": "n.",
+   "zh": "抱怨"
+  },
+  {
+   "w": "algorithm",
+   "pos": "n.",
+   "zh": "演算法"
+  },
+  {
+   "w": "content",
+   "pos": "n.",
+   "zh": "（網路）內容"
+  },
+  {
+   "w": "mechanism",
+   "pos": "n.",
+   "zh": "機制"
+  },
+  {
+   "w": "enable",
+   "pos": "v.",
+   "zh": "使能夠"
+  },
+  {
+   "w": "cannot help but",
+   "pos": "phr.",
+   "zh": "忍不住"
+  },
+  {
+   "w": "a power bank",
+   "pos": "phr.",
+   "zh": "行動電源"
+  },
+  {
+   "w": "even if",
+   "pos": "phr.",
+   "zh": "即使"
+  },
+  {
+   "w": "common ground",
+   "pos": "phr.",
+   "zh": "共同點"
+  },
+  {
+   "w": "enable sb to",
+   "pos": "phr.",
+   "zh": "讓某人能夠"
+  },
+  {
+   "w": "connect with",
+   "pos": "phr.",
+   "zh": "與…產生連結"
+  }
+ ]
+}

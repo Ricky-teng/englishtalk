@@ -82,12 +82,12 @@ function distractors(card, field) {
 export function clozeOf(card) {
   const ex = card.example || "";
   if (!ex) return null;
-  const parts = card.word.trim().split(/\s+/).map(p => V.stemWord(p.toLowerCase()));
+  const parts = card.word.trim().split(/\s+/).map(p => p.toLowerCase());
   const toks = [...ex.matchAll(/[A-Za-z][A-Za-z'’-]*/g)];
   for (let i = 0; i + parts.length <= toks.length; i++) {
     let ok = true;
     for (let k = 0; k < parts.length; k++) {
-      if (V.stemWord(toks[i + k][0].toLowerCase()) !== parts[k]) { ok = false; break; }
+      if (!V.isFormOf(toks[i + k][0], parts[k])) { ok = false; break; }
     }
     if (!ok) continue;
     const start = toks[i].index;

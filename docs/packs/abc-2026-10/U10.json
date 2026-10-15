@@ -1,0 +1,68 @@
+{
+ "id": "U10",
+ "title": "微短劇崛起，你不追嗎？",
+ "tag": "ABC2610-U10",
+ "verified": true,
+ "items": [
+  {
+   "w": "video",
+   "pos": "n.",
+   "zh": "影片"
+  },
+  {
+   "w": "whole",
+   "pos": "adj.",
+   "zh": "整個的"
+  },
+  {
+   "w": "action",
+   "pos": "n.",
+   "zh": "動作戲"
+  },
+  {
+   "w": "strange",
+   "pos": "adj.",
+   "zh": "奇怪的"
+  },
+  {
+   "w": "begin",
+   "pos": "v.",
+   "zh": "開始"
+  },
+  {
+   "w": "business",
+   "pos": "n.",
+   "zh": "公司"
+  },
+  {
+   "w": "modern",
+   "pos": "adj.",
+   "zh": "現代的"
+  },
+  {
+   "w": "language",
+   "pos": "n.",
+   "zh": "語言"
+  },
+  {
+   "w": "pay",
+   "pos": "v.",
+   "zh": "付款"
+  },
+  {
+   "w": "cost",
+   "pos": "v.",
+   "zh": "花費"
+  },
+  {
+   "w": "price",
+   "pos": "n.",
+   "zh": "價錢"
+  },
+  {
+   "w": "ticket",
+   "pos": "n.",
+   "zh": "票"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "id": "U5",
+ "title": "有始有終",
+ "tag": "ABC2610-U5",
+ "verified": true,
+ "items": [
+  {
+   "w": "finish",
+   "pos": "v.",
+   "zh": "做完；完成"
+  },
+  {
+   "w": "excited",
+   "pos": "adj.",
+   "zh": "興奮的"
+  },
+  {
+   "w": "bored",
+   "pos": "adj.",
+   "zh": "無聊的"
+  },
+  {
+   "w": "choice",
+   "pos": "n.",
+   "zh": "選擇"
+  },
+  {
+   "w": "end",
+   "pos": "n.",
+   "zh": "結尾"
+  },
+  {
+   "w": "between",
+   "pos": "prep.",
+   "zh": "在…之間"
+  },
+  {
+   "w": "during",
+   "pos": "prep.",
+   "zh": "在…期間"
+  },
+  {
+   "w": "habit",
+   "pos": "n.",
+   "zh": "習慣"
+  }
+ ]
+}

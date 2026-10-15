@@ -1,0 +1,1608 @@
+{
+ "version": 1,
+ "packs": [
+  {
+   "id": "longteng-b1",
+   "title": "龍騰版 高中英文 第一冊",
+   "subtitle": "高一上｜113 學年起的版本",
+   "tagPrefix": "龍騰B1",
+   "note": "非龍騰官方資料。L1–L9 的單字與片語依均一教育平台的各課單字清單整理；Review 1–3 找不到現行版本的官方字表，是從舊版同名單元整理的，可能不完整。中文解釋為依課文語境自行撰寫的簡短釋義，考試請以課本為準。",
+   "units": [
+    {
+     "id": "L1",
+     "title": "Firsts in Life",
+     "tag": "龍騰B1-L1",
+     "file": "longteng-b1/L1.json",
+     "verified": true,
+     "words": 18,
+     "phrases": 7,
+     "preview": [
+      "memorable",
+      "reply",
+      "yell",
+      "perfect",
+      "accidentally",
+      "failure"
+     ]
+    },
+    {
+     "id": "L2",
+     "title": "Goodbye, John",
+     "tag": "龍騰B1-L2",
+     "file": "longteng-b1/L2.json",
+     "verified": true,
+     "words": 17,
+     "phrases": 7,
+     "preview": [
+      "relationship",
+      "satisfying",
+      "inspire",
+      "connect",
+      "communicate",
+      "introduce"
+     ]
+    },
+    {
+     "id": "L3",
+     "title": "Do Animals Sleep like You and Me?",
+     "tag": "龍騰B1-L3",
+     "file": "longteng-b1/L3.json",
+     "verified": true,
+     "words": 18,
+     "phrases": 6,
+     "preview": [
+      "wonder",
+      "amazing",
+      "average",
+      "therefore",
+      "nap",
+      "float"
+     ]
+    },
+    {
+     "id": "R1",
+     "title": "When Shocked in Rome",
+     "tag": "龍騰B1-R1",
+     "file": "longteng-b1/R1.json",
+     "verified": false,
+     "words": 18,
+     "phrases": 0,
+     "preview": [
+      "embrace",
+      "disappear",
+      "custom",
+      "daily",
+      "grab",
+      "culture"
+     ]
+    },
+    {
+     "id": "L4",
+     "title": "Sniffing Out More Than Just Bones",
+     "tag": "龍騰B1-L4",
+     "file": "longteng-b1/L4.json",
+     "verified": true,
+     "words": 20,
+     "phrases": 5,
+     "preview": [
+      "sensitive",
+      "keen",
+      "detect",
+      "item",
+      "accomplish",
+      "disease"
+     ]
+    },
+    {
+     "id": "L5",
+     "title": "The Life of a Plastic Bag",
+     "tag": "龍騰B1-L5",
+     "file": "longteng-b1/L5.json",
+     "verified": true,
+     "words": 16,
+     "phrases": 5,
+     "preview": [
+      "plastic",
+      "convenience",
+      "eagerly",
+      "surround",
+      "drift",
+      "envy"
+     ]
+    },
+    {
+     "id": "L6",
+     "title": "Built for Freedom: The Statue of Liberty",
+     "tag": "龍騰B1-L6",
+     "file": "longteng-b1/L6.json",
+     "verified": true,
+     "words": 17,
+     "phrases": 3,
+     "preview": [
+      "freedom",
+      "statue",
+      "remove",
+      "celebration",
+      "independence",
+      "monument"
+     ]
+    },
+    {
+     "id": "R2",
+     "title": "Having Fun with Change",
+     "tag": "龍騰B1-R2",
+     "file": "longteng-b1/R2.json",
+     "verified": false,
+     "words": 18,
+     "phrases": 0,
+     "preview": [
+      "signal",
+      "improvement",
+      "routine",
+      "promote",
+      "actually",
+      "twist"
+     ]
+    },
+    {
+     "id": "L7",
+     "title": "From Trash to Triumph",
+     "tag": "龍騰B1-L7",
+     "file": "longteng-b1/L7.json",
+     "verified": true,
+     "words": 17,
+     "phrases": 7,
+     "preview": [
+      "triumph",
+      "apply",
+      "instrument",
+      "somehow",
+      "barely",
+      "invaluable"
+     ]
+    },
+    {
+     "id": "L8",
+     "title": "Convenience Stores: Where Our Wallets Are Always Open",
+     "tag": "龍騰B1-L8",
+     "file": "longteng-b1/L8.json",
+     "verified": true,
+     "words": 17,
+     "phrases": 6,
+     "preview": [
+      "familiar",
+      "urge",
+      "strategy",
+      "visible",
+      "purchase",
+      "profitable"
+     ]
+    },
+    {
+     "id": "L9",
+     "title": "Fighting for or against Graffiti",
+     "tag": "龍騰B1-L9",
+     "file": "longteng-b1/L9.json",
+     "verified": true,
+     "words": 16,
+     "phrases": 5,
+     "preview": [
+      "detailed",
+      "mess",
+      "express",
+      "opinion",
+      "contrast",
+      "horror"
+     ]
+    },
+    {
+     "id": "R3",
+     "title": "An Island's Beauty, an Islander's Duty",
+     "tag": "龍騰B1-R3",
+     "file": "longteng-b1/R3.json",
+     "verified": false,
+     "words": 18,
+     "phrases": 0,
+     "preview": [
+      "industrial",
+      "proof",
+      "damage",
+      "prevent",
+      "masterpiece",
+      "grateful"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "live-2026-10",
+   "title": "LIVE 互動英語 2026 年 10 月號",
+   "subtitle": "雜誌｜No.306・每篇文章的重點單字",
+   "tagPrefix": "Live2610",
+   "note": "非 LiveABC 官方資料。單字依 LiveABC 官方「行動單字卡」網頁的各單元字表整理，中文解釋為依文章語境自行撰寫的簡短釋義。完整解說、例句與發音請看官方單字卡。",
+   "link": "https://voccard.liveabc.com/live/2026/10",
+   "linkText": "LiveABC 官方行動單字卡",
+   "units": [
+    {
+     "id": "U1",
+     "title": "〈快樂王子〉",
+     "tag": "Live2610-U1",
+     "file": "live-2026-10/U1.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "statue",
+      "sword",
+      "palace",
+      "hunger",
+      "suffering",
+      "strip"
+     ]
+    },
+    {
+     "id": "U2",
+     "title": "從軍服到日常穿搭",
+     "tag": "Live2610-U2",
+     "file": "live-2026-10/U2.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "military",
+      "pilot",
+      "introduce",
+      "originally",
+      "protect",
+      "navy"
+     ]
+    },
+    {
+     "id": "U3",
+     "title": "當 AI 只會當你的「應聲蟲」",
+     "tag": "Live2610-U3",
+     "file": "live-2026-10/U3.json",
+     "verified": true,
+     "words": 5,
+     "phrases": 0,
+     "preview": [
+      "advice",
+      "confident",
+      "apologize",
+      "situation",
+      "replace"
+     ]
+    },
+    {
+     "id": "U4",
+     "title": "外送實用英語",
+     "tag": "Live2610-U4",
+     "file": "live-2026-10/U4.json",
+     "verified": true,
+     "words": 8,
+     "phrases": 0,
+     "preview": [
+      "cart",
+      "customer",
+      "realize",
+      "relief",
+      "alley",
+      "patience"
+     ]
+    },
+    {
+     "id": "U5",
+     "title": "香菜背後的科學與文化",
+     "tag": "Live2610-U5",
+     "file": "live-2026-10/U5.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "debate",
+      "flavor",
+      "specific",
+      "process",
+      "reaction",
+      "stretch"
+     ]
+    },
+    {
+     "id": "U7",
+     "title": "亞莉安娜：天后的重生之路",
+     "tag": "Live2610-U7",
+     "file": "live-2026-10/U7.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "award",
+      "quit",
+      "bomb",
+      "stadium",
+      "engagement",
+      "admit"
+     ]
+    },
+    {
+     "id": "U8",
+     "title": "日本機器狼對抗野熊",
+     "tag": "Live2610-U8",
+     "file": "live-2026-10/U8.json",
+     "verified": true,
+     "words": 4,
+     "phrases": 0,
+     "preview": [
+      "monster",
+      "frightening",
+      "flash",
+      "kilometer"
+     ]
+    },
+    {
+     "id": "U9",
+     "title": "夏威夷風情：漫遊歐胡島",
+     "tag": "Live2610-U9",
+     "file": "live-2026-10/U9.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "relaxed",
+      "appeal",
+      "tunnel",
+      "farther",
+      "electricity",
+      "native"
+     ]
+    },
+    {
+     "id": "U10",
+     "title": "品嚐美味的臺灣水果",
+     "tag": "Live2610-U10",
+     "file": "live-2026-10/U10.json",
+     "verified": true,
+     "words": 4,
+     "phrases": 0,
+     "preview": [
+      "tasty",
+      "vitamin",
+      "ripe",
+      "paradise"
+     ]
+    },
+    {
+     "id": "U11",
+     "title": "巴黎迪士尼夢幻一日遊",
+     "tag": "Live2610-U11",
+     "file": "live-2026-10/U11.json",
+     "verified": true,
+     "words": 5,
+     "phrases": 0,
+     "preview": [
+      "toward",
+      "courage",
+      "classic",
+      "bar",
+      "firework"
+     ]
+    },
+    {
+     "id": "U12",
+     "title": "紙鈔訴說著發行國家的故事",
+     "tag": "Live2610-U12",
+     "file": "live-2026-10/U12.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "represent",
+      "meanwhile",
+      "excellence",
+      "visible",
+      "sweat",
+      "promote"
+     ]
+    },
+    {
+     "id": "U13",
+     "title": "英文寫作課：我最喜歡的休閒活動",
+     "tag": "Live2610-U13",
+     "file": "live-2026-10/U13.json",
+     "verified": true,
+     "words": 4,
+     "phrases": 0,
+     "preview": [
+      "leisure",
+      "anxious",
+      "afterward",
+      "passion"
+     ]
+    },
+    {
+     "id": "U14",
+     "title": "微習慣：小小成功推動你持續前進",
+     "tag": "Live2610-U14",
+     "file": "live-2026-10/U14.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "goal",
+      "maintain",
+      "task",
+      "skip",
+      "achievement",
+      "memory"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "abc-2026-10",
+   "title": "ABC 互動英語 2026 年 10 月號",
+   "subtitle": "雜誌｜2026 年 10 月號・每篇文章的重點單字",
+   "tagPrefix": "ABC2610",
+   "note": "非 LiveABC 官方資料。單字依 LiveABC 官方「行動單字卡」網頁的ABC 互動英語各單元字表整理，中文解釋為依文章語境自行撰寫的簡短釋義。完整解說、例句與發音請看官方單字卡。",
+   "link": "https://voccard.liveabc.com/abc/2026/10",
+   "linkText": "LiveABC 官方行動單字卡",
+   "units": [
+    {
+     "id": "U1",
+     "title": "用英語談論家人",
+     "tag": "ABC2610-U1",
+     "file": "abc-2026-10/U1.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 0,
+     "preview": [
+      "pretty",
+      "homework",
+      "space",
+      "lonely",
+      "relative",
+      "different"
+     ]
+    },
+    {
+     "id": "U2",
+     "title": "《小王子》",
+     "tag": "ABC2610-U2",
+     "file": "abc-2026-10/U2.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 0,
+     "preview": [
+      "serious",
+      "appear",
+      "surprised",
+      "unhappy",
+      "adult",
+      "knowledge"
+     ]
+    },
+    {
+     "id": "U4",
+     "title": "生活處處有色彩",
+     "tag": "ABC2610-U4",
+     "file": "abc-2026-10/U4.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 0,
+     "preview": [
+      "rainbow",
+      "mean",
+      "elementary school",
+      "order",
+      "scared",
+      "joy"
+     ]
+    },
+    {
+     "id": "U5",
+     "title": "有始有終",
+     "tag": "ABC2610-U5",
+     "file": "abc-2026-10/U5.json",
+     "verified": true,
+     "words": 8,
+     "phrases": 0,
+     "preview": [
+      "finish",
+      "excited",
+      "bored",
+      "choice",
+      "end",
+      "between"
+     ]
+    },
+    {
+     "id": "U6",
+     "title": "現在進行式",
+     "tag": "ABC2610-U6",
+     "file": "abc-2026-10/U6.json",
+     "verified": true,
+     "words": 8,
+     "phrases": 0,
+     "preview": [
+      "restroom",
+      "check",
+      "list",
+      "hang",
+      "ring",
+      "answer"
+     ]
+    },
+    {
+     "id": "U7",
+     "title": "愈夜愈熱鬧的西班牙晚餐",
+     "tag": "ABC2610-U7",
+     "file": "abc-2026-10/U7.json",
+     "verified": true,
+     "words": 8,
+     "phrases": 0,
+     "preview": [
+      "country",
+      "ahead",
+      "set",
+      "pleasant",
+      "main",
+      "social"
+     ]
+    },
+    {
+     "id": "U8",
+     "title": "萬聖夜服裝會透露你的個性",
+     "tag": "ABC2610-U8",
+     "file": "abc-2026-10/U8.json",
+     "verified": true,
+     "words": 4,
+     "phrases": 0,
+     "preview": [
+      "shape",
+      "allow",
+      "hide",
+      "comfortable"
+     ]
+    },
+    {
+     "id": "U9",
+     "title": "美力台灣 3D 偏鄉巡演計畫",
+     "tag": "ABC2610-U9",
+     "file": "abc-2026-10/U9.json",
+     "verified": true,
+     "words": 8,
+     "phrases": 0,
+     "preview": [
+      "movie theater",
+      "truck",
+      "television",
+      "nature",
+      "visit",
+      "dream"
+     ]
+    },
+    {
+     "id": "U10",
+     "title": "微短劇崛起，你不追嗎？",
+     "tag": "ABC2610-U10",
+     "file": "abc-2026-10/U10.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 0,
+     "preview": [
+      "video",
+      "whole",
+      "action",
+      "strange",
+      "begin",
+      "business"
+     ]
+    },
+    {
+     "id": "R1",
+     "title": "進階閱讀 1：猜拳文化的古老起源",
+     "tag": "ABC2610-R1",
+     "file": "abc-2026-10/R1.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 0,
+     "preview": [
+      "piece",
+      "winner",
+      "cover",
+      "cut",
+      "thousand",
+      "frog"
+     ]
+    },
+    {
+     "id": "R2",
+     "title": "進階閱讀 2：查理．蒙格──偉大的思想家與投資人",
+     "tag": "ABC2610-R2",
+     "file": "abc-2026-10/R2.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 0,
+     "preview": [
+      "successful",
+      "straight",
+      "difficult",
+      "train",
+      "science",
+      "law"
+     ]
+    },
+    {
+     "id": "R3",
+     "title": "進階閱讀 3：什麼是軟社交？",
+     "tag": "ABC2610-R3",
+     "file": "abc-2026-10/R3.json",
+     "verified": true,
+     "words": 6,
+     "phrases": 0,
+     "preview": [
+      "build",
+      "talk",
+      "quiet",
+      "moment",
+      "repeat",
+      "care"
+     ]
+    },
+    {
+     "id": "PIC",
+     "title": "畫中有話：萬聖夜變裝",
+     "tag": "ABC2610-PIC",
+     "file": "abc-2026-10/PIC.json",
+     "verified": true,
+     "words": 4,
+     "phrases": 0,
+     "preview": [
+      "item",
+      "perfect",
+      "expensive",
+      "mirror"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "allplus-2026-10",
+   "title": "ALL+ 互動英語 2026 年 10 月號",
+   "subtitle": "雜誌｜2026 年 10 月號・每篇文章的重點單字",
+   "tagPrefix": "ALL2610",
+   "note": "非 LiveABC 官方資料。單字依 LiveABC 官方「行動單字卡」網頁的ALL+ 互動英語各單元字表整理，中文解釋為依文章語境自行撰寫的簡短釋義。完整解說、例句與發音請看官方單字卡。",
+   "link": "https://voccard.liveabc.com/allplus/2026/10",
+   "linkText": "LiveABC 官方行動單字卡",
+   "units": [
+    {
+     "id": "U1",
+     "title": "AI 設計疫苗首次人體試驗 初步成效可期",
+     "tag": "ALL2610-U1",
+     "file": "allplus-2026-10/U1.json",
+     "verified": true,
+     "words": 7,
+     "phrases": 0,
+     "preview": [
+      "researcher",
+      "artificial",
+      "intelligence",
+      "intend",
+      "virus",
+      "volunteer"
+     ]
+    },
+    {
+     "id": "U2",
+     "title": "珍．古德：啟發跨世代的改變",
+     "tag": "ALL2610-U2",
+     "file": "allplus-2026-10/U2.json",
+     "verified": true,
+     "words": 14,
+     "phrases": 0,
+     "preview": [
+      "inspire",
+      "determination",
+      "financial",
+      "illustrate",
+      "potential",
+      "twig"
+     ]
+    },
+    {
+     "id": "U3",
+     "title": "那些曾被視為致命的日常美食",
+     "tag": "ALL2610-U3",
+     "file": "allplus-2026-10/U3.json",
+     "verified": true,
+     "words": 14,
+     "phrases": 0,
+     "preview": [
+      "deadly",
+      "supposedly",
+      "toxic",
+      "genuine",
+      "Indigenous",
+      "breed"
+     ]
+    },
+    {
+     "id": "U4",
+     "title": "咖啡廳用餐",
+     "tag": "ALL2610-U4",
+     "file": "allplus-2026-10/U4.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "apology",
+      "fantastic",
+      "scan",
+      "minimum",
+      "percent",
+      "recommend"
+     ]
+    },
+    {
+     "id": "U5",
+     "title": "背起行囊，漫遊德奧絕美風光",
+     "tag": "ALL2610-U5",
+     "file": "allplus-2026-10/U5.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 0,
+     "preview": [
+      "scenic",
+      "stall",
+      "cliff",
+      "stunning",
+      "bounce",
+      "cluster"
+     ]
+    },
+    {
+     "id": "U7",
+     "title": "你最愛餐廳裡隱藏的科學",
+     "tag": "ALL2610-U7",
+     "file": "allplus-2026-10/U7.json",
+     "verified": true,
+     "words": 13,
+     "phrases": 0,
+     "preview": [
+      "accidental",
+      "subtle",
+      "psychology",
+      "stimulate",
+      "placement",
+      "profitable"
+     ]
+    },
+    {
+     "id": "CNN",
+     "title": "CNN News：AI 心理治療：是良伴，還是隱患？",
+     "tag": "ALL2610-CNN",
+     "file": "allplus-2026-10/CNN.json",
+     "verified": true,
+     "words": 9,
+     "phrases": 0,
+     "preview": [
+      "companion",
+      "confidential",
+      "lawsuit",
+      "reinforce",
+      "disapprove",
+      "context"
+     ]
+    },
+    {
+     "id": "U8",
+     "title": "學會放手",
+     "tag": "ALL2610-U8",
+     "file": "allplus-2026-10/U8.json",
+     "verified": true,
+     "words": 6,
+     "phrases": 0,
+     "preview": [
+      "disorder",
+      "distinguish",
+      "collector",
+      "antique",
+      "possession",
+      "therapy"
+     ]
+    },
+    {
+     "id": "U9",
+     "title": "能量飲料背後的隱藏代價",
+     "tag": "ALL2610-U9",
+     "file": "allplus-2026-10/U9.json",
+     "verified": true,
+     "words": 6,
+     "phrases": 0,
+     "preview": [
+      "beverage",
+      "fatigue",
+      "ingredient",
+      "inevitable",
+      "disrupt",
+      "cautious"
+     ]
+    },
+    {
+     "id": "U10",
+     "title": "一起動起來吧！",
+     "tag": "ALL2610-U10",
+     "file": "allplus-2026-10/U10.json",
+     "verified": true,
+     "words": 7,
+     "phrases": 0,
+     "preview": [
+      "marathon",
+      "workout",
+      "hooked",
+      "exhausted",
+      "sustain",
+      "consistent"
+     ]
+    },
+    {
+     "id": "U11",
+     "title": "自然界的紀錄之王",
+     "tag": "ALL2610-U11",
+     "file": "allplus-2026-10/U11.json",
+     "verified": true,
+     "words": 14,
+     "phrases": 0,
+     "preview": [
+      "evolution",
+      "astonishing",
+      "remarkable",
+      "trait",
+      "consume",
+      "despite"
+     ]
+    },
+    {
+     "id": "U12",
+     "title": "學生在申請大學時應使用 AI 嗎？",
+     "tag": "ALL2610-U12",
+     "file": "allplus-2026-10/U12.json",
+     "verified": true,
+     "words": 13,
+     "phrases": 0,
+     "preview": [
+      "application",
+      "portfolio",
+      "admission",
+      "competitive",
+      "disclose",
+      "excessive"
+     ]
+    },
+    {
+     "id": "U13",
+     "title": "一路向上：電梯的驚奇冷知識",
+     "tag": "ALL2610-U13",
+     "file": "allplus-2026-10/U13.json",
+     "verified": true,
+     "words": 13,
+     "phrases": 0,
+     "preview": [
+      "pioneer",
+      "halt",
+      "widespread",
+      "skyscraper",
+      "architect",
+      "construct"
+     ]
+    },
+    {
+     "id": "U14",
+     "title": "描述個人偏好",
+     "tag": "ALL2610-U14",
+     "file": "allplus-2026-10/U14.json",
+     "verified": true,
+     "words": 6,
+     "phrases": 0,
+     "preview": [
+      "preference",
+      "beloved",
+      "affordable",
+      "delightful",
+      "mash",
+      "texture"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cnn-2026-10",
+   "title": "CNN 互動英語 2026 年 10 月號",
+   "subtitle": "雜誌｜2026 年 10 月號・每篇文章的重點單字",
+   "tagPrefix": "CNN2610",
+   "note": "非 LiveABC 官方資料。單字依 LiveABC 官方「行動單字卡」網頁的CNN 互動英語各單元字表整理，中文解釋為依文章語境自行撰寫的簡短釋義。完整解說、例句與發音請看官方單字卡。",
+   "link": "https://voccard.liveabc.com/cnn/2026/10",
+   "linkText": "LiveABC 官方行動單字卡",
+   "units": [
+    {
+     "id": "U1",
+     "title": "強震撼動日本九州 熊本災情嚴重",
+     "tag": "CNN2610-U1",
+     "file": "cnn-2026-10/U1.json",
+     "verified": true,
+     "words": 27,
+     "phrases": 0,
+     "preview": [
+      "calamity",
+      "broadcaster",
+      "rubble",
+      "partially",
+      "collapse",
+      "devastation"
+     ]
+    },
+    {
+     "id": "U2",
+     "title": "你所不知道的美國總統度假地大衛營",
+     "tag": "CNN2610-U2",
+     "file": "cnn-2026-10/U2.json",
+     "verified": true,
+     "words": 24,
+     "phrases": 0,
+     "preview": [
+      "legendary",
+      "retreat",
+      "presidential",
+      "hot spot",
+      "diplomacy",
+      "chief executive"
+     ]
+    },
+    {
+     "id": "U3",
+     "title": "美國校園禁用手機 學習成效大幅提升！",
+     "tag": "CNN2610-U3",
+     "file": "cnn-2026-10/U3.json",
+     "verified": true,
+     "words": 13,
+     "phrases": 0,
+     "preview": [
+      "device",
+      "ban",
+      "inevitable",
+      "school district",
+      "sociable",
+      "distraction"
+     ]
+    },
+    {
+     "id": "U4",
+     "title": "日本人普遍睡眠不足 睡眠商機崛起",
+     "tag": "CNN2610-U4",
+     "file": "cnn-2026-10/U4.json",
+     "verified": true,
+     "words": 16,
+     "phrases": 0,
+     "preview": [
+      "sleep-deprived",
+      "predicate",
+      "monitor",
+      "pulse",
+      "lullaby",
+      "refresh"
+     ]
+    },
+    {
+     "id": "U5",
+     "title": "解決勞力短缺 機器人將取代傳統人力",
+     "tag": "CNN2610-U5",
+     "file": "cnn-2026-10/U5.json",
+     "verified": true,
+     "words": 25,
+     "phrases": 0,
+     "preview": [
+      "humanoid",
+      "wow",
+      "ambition",
+      "stretch",
+      "viral",
+      "cargo bay"
+     ]
+    },
+    {
+     "id": "U6",
+     "title": "不只是一雙鞋！？Nike 推出神經科學運動鞋",
+     "tag": "CNN2610-U6",
+     "file": "cnn-2026-10/U6.json",
+     "verified": true,
+     "words": 14,
+     "phrases": 0,
+     "preview": [
+      "alter",
+      "footing",
+      "decline",
+      "athletic",
+      "ambitious",
+      "neuroscience"
+     ]
+    },
+    {
+     "id": "U7",
+     "title": "人工智慧將成為醫師診斷助手",
+     "tag": "CNN2610-U7",
+     "file": "cnn-2026-10/U7.json",
+     "verified": true,
+     "words": 23,
+     "phrases": 0,
+     "preview": [
+      "diagnose",
+      "physician",
+      "overwhelming",
+      "specialty",
+      "essentially",
+      "ultimately"
+     ]
+    },
+    {
+     "id": "U8",
+     "title": "寵物用品也通膨 飼主壓力逐年增",
+     "tag": "CNN2610-U8",
+     "file": "cnn-2026-10/U8.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 0,
+     "preview": [
+      "furry",
+      "biotech",
+      "overweight",
+      "feline",
+      "deserve",
+      "groom"
+     ]
+    },
+    {
+     "id": "U9",
+     "title": "法拉利也跨足電動車 車迷買單嗎？",
+     "tag": "CNN2610-U9",
+     "file": "cnn-2026-10/U9.json",
+     "verified": true,
+     "words": 14,
+     "phrases": 0,
+     "preview": [
+      "prance",
+      "criticism",
+      "surpass",
+      "luxury",
+      "hefty",
+      "automotive"
+     ]
+    },
+    {
+     "id": "U10",
+     "title": "自駕體驗美國最經典的 66 號公路",
+     "tag": "CNN2610-U10",
+     "file": "cnn-2026-10/U10.json",
+     "verified": true,
+     "words": 15,
+     "phrases": 0,
+     "preview": [
+      "route",
+      "journey",
+      "iconic",
+      "road trip",
+      "physically",
+      "digital"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ivy-analysis-2026-10",
+   "title": "常春藤解析英語 2026 年 10 月號",
+   "subtitle": "雜誌｜2026 年 10 月號・官網免費廣播文章的單字與片語",
+   "tagPrefix": "常春藤解析2610",
+   "note": "非常春藤官方資料。依常春藤官網免費公開的「解析英語廣播文章」（10/1–10/30）整理每篇的 Words in Use 與 Practical Phrases，可能不是紙本雜誌的全部文章；中文解釋為依文章語境自行撰寫的簡短釋義。",
+   "link": "https://www.ivy.com.tw/newsLetter/analysis_list",
+   "linkText": "常春藤官網解析英語廣播文章",
+   "units": [
+    {
+     "id": "U1",
+     "title": "守護臺灣淺山精靈：石虎",
+     "tag": "常春藤解析2610-U1",
+     "file": "ivy-analysis-2026-10/U1.json",
+     "verified": true,
+     "words": 32,
+     "phrases": 10,
+     "preview": [
+      "elusive",
+      "ecosystem",
+      "characteristic",
+      "identification",
+      "continuous",
+      "camouflage"
+     ]
+    },
+    {
+     "id": "U2",
+     "title": "眼前的曲線不是曲線 飛機的「直線」是什麼？",
+     "tag": "常春藤解析2610-U2",
+     "file": "ivy-analysis-2026-10/U2.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 6,
+     "preview": [
+      "route",
+      "puzzling",
+      "pilot",
+      "sphere",
+      "globe",
+      "location"
+     ]
+    },
+    {
+     "id": "U3",
+     "title": "如果我能進入遊戲世界……",
+     "tag": "常春藤解析2610-U3",
+     "file": "ivy-analysis-2026-10/U3.json",
+     "verified": true,
+     "words": 9,
+     "phrases": 4,
+     "preview": [
+      "endless",
+      "imaginary",
+      "mysterious",
+      "routine",
+      "unexpected",
+      "confidence"
+     ]
+    },
+    {
+     "id": "U4",
+     "title": "毛小孩碗中的「碳爪跡」",
+     "tag": "常春藤解析2610-U4",
+     "file": "ivy-analysis-2026-10/U4.json",
+     "verified": true,
+     "words": 15,
+     "phrases": 5,
+     "preview": [
+      "carbon",
+      "overlook",
+      "analyze",
+      "emission",
+      "composition",
+      "format"
+     ]
+    },
+    {
+     "id": "U5",
+     "title": "數位排毒夏令營：放下手機 走入戶外",
+     "tag": "常春藤解析2610-U5",
+     "file": "ivy-analysis-2026-10/U5.json",
+     "verified": true,
+     "words": 14,
+     "phrases": 5,
+     "preview": [
+      "tremendous",
+      "obsession",
+      "span",
+      "sedentary",
+      "diminish",
+      "accommodate"
+     ]
+    },
+    {
+     "id": "U6",
+     "title": "《臺灣漫遊錄》奪國際布克獎／蘇門答臘紅毛猩猩首度踏上「保命樹冠橋」",
+     "tag": "常春藤解析2610-U6",
+     "file": "ivy-analysis-2026-10/U6.json",
+     "verified": true,
+     "words": 15,
+     "phrases": 5,
+     "preview": [
+      "literature",
+      "accompany",
+      "delicacy",
+      "boundary",
+      "colonial",
+      "preserve"
+     ]
+    },
+    {
+     "id": "U7",
+     "title": "翻譯 Translation (2026.10)",
+     "tag": "常春藤解析2610-U7",
+     "file": "ivy-analysis-2026-10/U7.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 6,
+     "preview": [
+      "anxious",
+      "realize",
+      "battery",
+      "fortunately",
+      "rental",
+      "charge"
+     ]
+    },
+    {
+     "id": "U8",
+     "title": "@ 符號的奇幻旅程！",
+     "tag": "常春藤解析2610-U8",
+     "file": "ivy-analysis-2026-10/U8.json",
+     "verified": true,
+     "words": 27,
+     "phrases": 10,
+     "preview": [
+      "tag",
+      "assume",
+      "invention",
+      "communication",
+      "manuscript",
+      "document"
+     ]
+    },
+    {
+     "id": "U9",
+     "title": "當 AI 變身「浪費觀察員」",
+     "tag": "常春藤解析2610-U9",
+     "file": "ivy-analysis-2026-10/U9.json",
+     "verified": true,
+     "words": 13,
+     "phrases": 5,
+     "preview": [
+      "artificial",
+      "intelligence",
+      "reservation",
+      "bin",
+      "discard",
+      "ingredient"
+     ]
+    },
+    {
+     "id": "U10",
+     "title": "二十年磨一劍！ 科學家揪出阿茲海默新機制、實驗藥現曙光",
+     "tag": "常春藤解析2610-U10",
+     "file": "ivy-analysis-2026-10/U10.json",
+     "verified": true,
+     "words": 13,
+     "phrases": 3,
+     "preview": [
+      "yield",
+      "experimental",
+      "experiment",
+      "progression",
+      "lifespan",
+      "regulate"
+     ]
+    },
+    {
+     "id": "U11",
+     "title": "採買食材 今晚你想來點……？",
+     "tag": "常春藤解析2610-U11",
+     "file": "ivy-analysis-2026-10/U11.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 4,
+     "preview": [
+      "purchase",
+      "fast-paced",
+      "groceries",
+      "produce",
+      "demanding",
+      "tap"
+     ]
+    },
+    {
+     "id": "U12",
+     "title": "當經典成真時 是神還原還是大翻車？",
+     "tag": "常春藤解析2610-U12",
+     "file": "ivy-analysis-2026-10/U12.json",
+     "verified": true,
+     "words": 29,
+     "phrases": 13,
+     "preview": [
+      "illustrated",
+      "confine",
+      "beloved",
+      "format",
+      "minimize",
+      "potential"
+     ]
+    },
+    {
+     "id": "U13",
+     "title": "固態電池若成真 電動車大翻身？",
+     "tag": "常春藤解析2610-U13",
+     "file": "ivy-analysis-2026-10/U13.json",
+     "verified": true,
+     "words": 13,
+     "phrases": 3,
+     "preview": [
+      "solid",
+      "charge",
+      "discharge",
+      "innovation",
+      "conventional",
+      "dense"
+     ]
+    },
+    {
+     "id": "U14",
+     "title": "北極遠征隊 凜冬不言退",
+     "tag": "常春藤解析2610-U14",
+     "file": "ivy-analysis-2026-10/U14.json",
+     "verified": true,
+     "words": 27,
+     "phrases": 9,
+     "preview": [
+      "pursuit",
+      "endure",
+      "undertake",
+      "anchor",
+      "latitude",
+      "longitude"
+     ]
+    },
+    {
+     "id": "U15",
+     "title": "一個律師的誕生",
+     "tag": "常春藤解析2610-U15",
+     "file": "ivy-analysis-2026-10/U15.json",
+     "verified": true,
+     "words": 14,
+     "phrases": 7,
+     "preview": [
+      "plead",
+      "prohibit",
+      "initially",
+      "legalize",
+      "profession",
+      "restriction"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ivy-life-2026-10",
+   "title": "常春藤生活英語 2026 年 10 月號",
+   "subtitle": "雜誌｜2026 年 10 月號・官網免費廣播文章的單字與片語",
+   "tagPrefix": "常春藤生活2610",
+   "note": "非常春藤官方資料。依常春藤官網免費公開的「生活英語廣播文章」（10/1–10/30）整理每篇的 Words in Use 與 Practical Phrases，可能不是紙本雜誌的全部文章；中文解釋為依文章語境自行撰寫的簡短釋義。",
+   "link": "https://www.ivy.com.tw/newsLetter/life_list",
+   "linkText": "常春藤官網生活英語廣播文章",
+   "units": [
+    {
+     "id": "U1",
+     "title": "白牙",
+     "tag": "常春藤生活2610-U1",
+     "file": "ivy-life-2026-10/U1.json",
+     "verified": true,
+     "words": 14,
+     "phrases": 5,
+     "preview": [
+      "territory",
+      "tame",
+      "cruel",
+      "faith",
+      "patience",
+      "character"
+     ]
+    },
+    {
+     "id": "U2",
+     "title": "我的社團首選",
+     "tag": "常春藤生活2610-U2",
+     "file": "ivy-life-2026-10/U2.json",
+     "verified": true,
+     "words": 8,
+     "phrases": 1,
+     "preview": [
+      "improve",
+      "skill",
+      "perform",
+      "performance",
+      "stage",
+      "advanced"
+     ]
+    },
+    {
+     "id": "U3",
+     "title": "想要一夜好眠 看這篇準沒錯！",
+     "tag": "常春藤生活2610-U3",
+     "file": "ivy-life-2026-10/U3.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 6,
+     "preview": [
+      "maintain",
+      "routine",
+      "expert",
+      "equally",
+      "block",
+      "mask"
+     ]
+    },
+    {
+     "id": "U4",
+     "title": "不只是健行 更是一場長途跋涉的冒險！",
+     "tag": "常春藤生活2610-U4",
+     "file": "ivy-life-2026-10/U4.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 7,
+     "preview": [
+      "hiker",
+      "hiking",
+      "backpack",
+      "tent",
+      "supplies",
+      "remote"
+     ]
+    },
+    {
+     "id": "U5",
+     "title": "快來參加蛋糕野餐吧！",
+     "tag": "常春藤生活2610-U5",
+     "file": "ivy-life-2026-10/U5.json",
+     "verified": true,
+     "words": 3,
+     "phrases": 2,
+     "preview": [
+      "alone",
+      "message",
+      "invitation"
+     ]
+    },
+    {
+     "id": "U6",
+     "title": "傢俱",
+     "tag": "常春藤生活2610-U6",
+     "file": "ivy-life-2026-10/U6.json",
+     "verified": true,
+     "words": 4,
+     "phrases": 5,
+     "preview": [
+      "furniture",
+      "stuff",
+      "item",
+      "reasonable"
+     ]
+    },
+    {
+     "id": "U7",
+     "title": "BookTok：分享書籍的新方式",
+     "tag": "常春藤生活2610-U7",
+     "file": "ivy-life-2026-10/U7.json",
+     "verified": true,
+     "words": 17,
+     "phrases": 6,
+     "preview": [
+      "discuss",
+      "discussion",
+      "review",
+      "creator",
+      "career",
+      "collection"
+     ]
+    },
+    {
+     "id": "U8",
+     "title": "翻譯 Sentence Translation",
+     "tag": "常春藤生活2610-U8",
+     "file": "ivy-life-2026-10/U8.json",
+     "verified": true,
+     "words": 5,
+     "phrases": 4,
+     "preview": [
+      "relationship",
+      "explore",
+      "environment",
+      "unforgettable",
+      "memory"
+     ]
+    },
+    {
+     "id": "U9",
+     "title": "好茶不怕火煉 苦盡甘來的溫潤焙茶",
+     "tag": "常春藤生活2610-U9",
+     "file": "ivy-life-2026-10/U9.json",
+     "verified": true,
+     "words": 14,
+     "phrases": 5,
+     "preview": [
+      "impressive",
+      "worth",
+      "steam",
+      "roast",
+      "natural",
+      "remaining"
+     ]
+    },
+    {
+     "id": "U10",
+     "title": "藏不住的私房景點",
+     "tag": "常春藤生活2610-U10",
+     "file": "ivy-life-2026-10/U10.json",
+     "verified": true,
+     "words": 5,
+     "phrases": 3,
+     "preview": [
+      "tourist",
+      "blame",
+      "deny",
+      "peaceful",
+      "local"
+     ]
+    },
+    {
+     "id": "U11",
+     "title": "如遊戲裡非玩家角色的大笨鳥",
+     "tag": "常春藤生活2610-U11",
+     "file": "ivy-life-2026-10/U11.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 6,
+     "preview": [
+      "motionless",
+      "campus",
+      "patient",
+      "freeze",
+      "feather",
+      "threatened"
+     ]
+    },
+    {
+     "id": "U12",
+     "title": "芬蘭的深偽防衛戰",
+     "tag": "常春藤生活2610-U12",
+     "file": "ivy-life-2026-10/U12.json",
+     "verified": true,
+     "words": 7,
+     "phrases": 2,
+     "preview": [
+      "edit",
+      "cheat",
+      "fake",
+      "headline",
+      "reliable",
+      "educational"
+     ]
+    },
+    {
+     "id": "U13",
+     "title": "走進蛋白石和人造蛋白石的炫目雙重奏",
+     "tag": "常春藤生活2610-U13",
+     "file": "ivy-life-2026-10/U13.json",
+     "verified": true,
+     "words": 13,
+     "phrases": 6,
+     "preview": [
+      "effect",
+      "solid",
+      "vivid",
+      "cloudy",
+      "jewelry",
+      "glow"
+     ]
+    },
+    {
+     "id": "U14",
+     "title": "籌劃萬聖節變裝派對",
+     "tag": "常春藤生活2610-U14",
+     "file": "ivy-life-2026-10/U14.json",
+     "verified": true,
+     "words": 11,
+     "phrases": 5,
+     "preview": [
+      "hold",
+      "theme",
+      "classic",
+      "restricted",
+      "judge",
+      "plain"
+     ]
+    }
+   ]
+  }
+ ]
+}

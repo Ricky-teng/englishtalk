@@ -91,7 +91,7 @@ export function detectProvider(key) {
 }
 
 let dlg = null;
-let hooks = { onFinish: () => {}, openAdd: () => {}, startChat: () => {} };
+let hooks = { onFinish: () => {}, openAdd: () => {}, openPacks: () => {}, startChat: () => {} };
 const W = { step: 0, goal: "daily", level: "B1", provider: "gemini", keyOk: false, keyProvider: "", micOk: null };
 
 export function initOnboarding(h) { hooks = { ...hooks, ...h }; }
@@ -175,6 +175,7 @@ function finish(action) {
   hooks.onFinish();
   if (action === "chat") hooks.startChat();
   if (action === "add") hooks.openAdd();
+  if (action === "packs") hooks.openPacks();
 }
 
 /** 目標與程度寫進設定；角色只在使用者沒自己改過時才換 */
@@ -237,7 +238,9 @@ function paint() {
                                       : "還沒有金鑰：單字本和複習可以先用，對話和查字要等設定好金鑰。";
     body.innerHTML = `
       <div class="ob-next">
-        <button type="button" class="ob-choice" data-go="add"><span class="ob-ci">📚</span><b>先加幾個單字</b>
+        <button type="button" class="ob-choice" data-go="packs"><span class="ob-ci">📦</span><b>加入課本單字包</b>
+          <small>整課的課本單字一鍵加入，複習時可以只練某一課</small></button>
+        <button type="button" class="ob-choice" data-go="add"><span class="ob-ci">📚</span><b>自己加幾個單字</b>
           <small>打中文或英文都能查，AI 之後會在聊天中用到它們</small></button>
         ${hasKey ? "" : `<button type="button" class="ob-choice" data-go="key"><span class="ob-ci">🔑</span><b>回去設定金鑰</b><small>大約 1 分鐘</small></button>`}
       </div>
@@ -250,6 +253,7 @@ function paint() {
         </ul>
       </div>`;
     body.querySelector('[data-go="add"]').addEventListener("click", () => finish("add"));
+    body.querySelector('[data-go="packs"]').addEventListener("click", () => finish("packs"));
     const k = body.querySelector('[data-go="key"]');
     if (k) k.addEventListener("click", () => { W.step = STEPS.indexOf("key"); paint(); });
     $('[data-ob="next"]').hidden = !hasKey;

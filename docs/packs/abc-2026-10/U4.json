@@ -1,0 +1,68 @@
+{
+ "id": "U4",
+ "title": "生活處處有色彩",
+ "tag": "ABC2610-U4",
+ "verified": true,
+ "items": [
+  {
+   "w": "rainbow",
+   "pos": "n.",
+   "zh": "彩虹"
+  },
+  {
+   "w": "mean",
+   "pos": "v.",
+   "zh": "意思是"
+  },
+  {
+   "w": "elementary school",
+   "pos": "n.",
+   "zh": "小學"
+  },
+  {
+   "w": "order",
+   "pos": "n.",
+   "zh": "順序"
+  },
+  {
+   "w": "scared",
+   "pos": "adj.",
+   "zh": "害怕的"
+  },
+  {
+   "w": "joy",
+   "pos": "n.",
+   "zh": "喜悅"
+  },
+  {
+   "w": "pleasure",
+   "pos": "n.",
+   "zh": "樂趣"
+  },
+  {
+   "w": "queen",
+   "pos": "n.",
+   "zh": "女王"
+  },
+  {
+   "w": "spoon",
+   "pos": "n.",
+   "zh": "湯匙"
+  },
+  {
+   "w": "lie",
+   "pos": "n.",
+   "zh": "謊話"
+  },
+  {
+   "w": "treat",
+   "pos": "v.",
+   "zh": "對待"
+  },
+  {
+   "w": "correct",
+   "pos": "adj.",
+   "zh": "對的；正確的"
+  }
+ ]
+}

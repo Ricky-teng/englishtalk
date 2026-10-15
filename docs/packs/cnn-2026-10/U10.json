@@ -1,0 +1,83 @@
+{
+ "id": "U10",
+ "title": "自駕體驗美國最經典的 66 號公路",
+ "tag": "CNN2610-U10",
+ "verified": true,
+ "items": [
+  {
+   "w": "route",
+   "pos": "n.",
+   "zh": "路線"
+  },
+  {
+   "w": "journey",
+   "pos": "v.",
+   "zh": "旅行"
+  },
+  {
+   "w": "iconic",
+   "pos": "adj.",
+   "zh": "具代表性的"
+  },
+  {
+   "w": "road trip",
+   "pos": "n.",
+   "zh": "公路旅行"
+  },
+  {
+   "w": "physically",
+   "pos": "adv.",
+   "zh": "實際上"
+  },
+  {
+   "w": "digital",
+   "pos": "adj.",
+   "zh": "數位的"
+  },
+  {
+   "w": "version",
+   "pos": "n.",
+   "zh": "版本"
+  },
+  {
+   "w": "anniversary",
+   "pos": "n.",
+   "zh": "週年"
+  },
+  {
+   "w": "fuel",
+   "pos": "n.",
+   "zh": "燃料"
+  },
+  {
+   "w": "petrol",
+   "pos": "n.",
+   "zh": "汽油（英）"
+  },
+  {
+   "w": "concerned",
+   "pos": "adj.",
+   "zh": "擔心的"
+  },
+  {
+   "w": "cylinder",
+   "pos": "n.",
+   "zh": "汽缸"
+  },
+  {
+   "w": "weigh",
+   "pos": "v.",
+   "zh": "重（若干）"
+  },
+  {
+   "w": "turbo",
+   "pos": "n.",
+   "zh": "渦輪增壓"
+  },
+  {
+   "w": "exotic",
+   "pos": "adj.",
+   "zh": "異國的；奇特的"
+  }
+ ]
+}

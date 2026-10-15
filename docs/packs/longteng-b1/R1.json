@@ -1,0 +1,98 @@
+{
+ "id": "R1",
+ "title": "When Shocked in Rome",
+ "tag": "龍騰B1-R1",
+ "verified": false,
+ "items": [
+  {
+   "w": "embrace",
+   "pos": "v.",
+   "zh": "擁抱；欣然接受"
+  },
+  {
+   "w": "disappear",
+   "pos": "v.",
+   "zh": "消失"
+  },
+  {
+   "w": "custom",
+   "pos": "n.",
+   "zh": "習俗"
+  },
+  {
+   "w": "daily",
+   "pos": "adj.",
+   "zh": "每天的；日常的"
+  },
+  {
+   "w": "grab",
+   "pos": "v.",
+   "zh": "抓住；匆忙拿（吃）"
+  },
+  {
+   "w": "culture",
+   "pos": "n.",
+   "zh": "文化"
+  },
+  {
+   "w": "afterward",
+   "pos": "adv.",
+   "zh": "之後；後來"
+  },
+  {
+   "w": "greet",
+   "pos": "v.",
+   "zh": "問候；迎接"
+  },
+  {
+   "w": "schedule",
+   "pos": "n.",
+   "zh": "行程表；時間表"
+  },
+  {
+   "w": "astonishment",
+   "pos": "n.",
+   "zh": "驚訝"
+  },
+  {
+   "w": "forever",
+   "pos": "adv.",
+   "zh": "永遠"
+  },
+  {
+   "w": "valuable",
+   "pos": "adj.",
+   "zh": "寶貴的；有價值的"
+  },
+  {
+   "w": "include",
+   "pos": "v.",
+   "zh": "包含；包括"
+  },
+  {
+   "w": "midday",
+   "pos": "n.",
+   "zh": "正午；中午"
+  },
+  {
+   "w": "sacred",
+   "pos": "adj.",
+   "zh": "神聖的"
+  },
+  {
+   "w": "dummy",
+   "pos": "n.",
+   "zh": "假人；人體模型"
+  },
+  {
+   "w": "monk",
+   "pos": "n.",
+   "zh": "僧侶；修士"
+  },
+  {
+   "w": "difference",
+   "pos": "n.",
+   "zh": "差異；不同"
+  }
+ ]
+}

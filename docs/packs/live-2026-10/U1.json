@@ -1,0 +1,58 @@
+{
+ "id": "U1",
+ "title": "〈快樂王子〉",
+ "tag": "Live2610-U1",
+ "verified": true,
+ "items": [
+  {
+   "w": "statue",
+   "pos": "n.",
+   "zh": "雕像"
+  },
+  {
+   "w": "sword",
+   "pos": "n.",
+   "zh": "劍"
+  },
+  {
+   "w": "palace",
+   "pos": "n.",
+   "zh": "宮殿"
+  },
+  {
+   "w": "hunger",
+   "pos": "n.",
+   "zh": "飢餓"
+  },
+  {
+   "w": "suffering",
+   "pos": "n.",
+   "zh": "苦難；受苦"
+  },
+  {
+   "w": "strip",
+   "pos": "v.",
+   "zh": "剝除；拿走"
+  },
+  {
+   "w": "jewel",
+   "pos": "n.",
+   "zh": "寶石；珠寶"
+  },
+  {
+   "w": "angel",
+   "pos": "n.",
+   "zh": "天使"
+  },
+  {
+   "w": "precious",
+   "pos": "adj.",
+   "zh": "珍貴的"
+  },
+  {
+   "w": "forever",
+   "pos": "adv.",
+   "zh": "永遠"
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "id": "U9",
+ "title": "能量飲料背後的隱藏代價",
+ "tag": "ALL2610-U9",
+ "verified": true,
+ "items": [
+  {
+   "w": "beverage",
+   "pos": "n.",
+   "zh": "飲品"
+  },
+  {
+   "w": "fatigue",
+   "pos": "n.",
+   "zh": "疲勞"
+  },
+  {
+   "w": "ingredient",
+   "pos": "n.",
+   "zh": "成分"
+  },
+  {
+   "w": "inevitable",
+   "pos": "adj.",
+   "zh": "必然的"
+  },
+  {
+   "w": "disrupt",
+   "pos": "v.",
+   "zh": "打亂"
+  },
+  {
+   "w": "cautious",
+   "pos": "adj.",
+   "zh": "小心的"
+  }
+ ]
+}

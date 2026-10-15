@@ -584,9 +584,12 @@ export function parseWordLines(text) {
 
     // 先用明確的分隔符切開（tab、逗號、分號、兩個以上空白），
     // 這樣 "reluctant<tab>adj. 不情願的" 不會把 adj 誤當成片語的一部分。
-    const parts = line.split(/\t+|\s*[,;，；]\s*|\s{2,}/);
+    // 有 Tab 就只切第一個 Tab：後面整段都是中文，裡面的「；」「，」要原樣保留
+    const tab = line.indexOf("\t");
+    const parts = tab > 0 ? [line.slice(0, tab), line.slice(tab + 1)]
+                          : line.split(/\s*[,;，；]\s*|\s{2,}/);
     let head = parts[0].trim();
-    let rest = parts.slice(1).join(" ").trim();
+    let rest = (tab > 0 ? parts[1] : parts.slice(1).join(" ")).trim();
 
     // 沒有分隔符時（例如 "negotiate 談判"），從英文結束的位置切
     if (!rest) {
@@ -603,7 +606,8 @@ export function parseWordLines(text) {
       .trim();
 
     // 確認 head 真的是英文
-    if (!/^[A-Za-z][A-Za-z'’\- ]*$/.test(head)) continue;
+    // 片語可以帶 sth. / sb. 和括號，例如 take sth. seriously、turn out (to be)
+    if (!/^[A-Za-z][A-Za-z'’.()\- ]*$/.test(head)) continue;
     const word = head.replace(/\s+/g, " ").trim();
     const key = word.toLowerCase();
     if (key.length < 2 || seen.has(key)) continue;
@@ -801,8 +805,21 @@ export function recallNow(card) {
  * 極輕量的英文詞幹化，只為了讓 negotiate / negotiated / negotiating 對得起來。
  * 不追求語言學正確，追求的是「同一個字的各種變化都算數」。
  */
+// 片語裡常見的不規則動詞：took / taken 都算 take
+const IRREGULAR = {
+  took: "take", taken: "take", went: "go", gone: "go", came: "come", got: "get", gotten: "get",
+  made: "make", stood: "stand", held: "hold", ran: "run", hung: "hang", brought: "bring", kept: "keep",
+  gave: "give", given: "give", found: "find", saw: "see", seen: "see", did: "do", done: "do",
+  had: "have", has: "have", left: "leave", thought: "think", told: "tell", said: "say", felt: "feel",
+  began: "begin", begun: "begin", wrote: "write", written: "write", spoke: "speak", spoken: "speak",
+  ate: "eat", eaten: "eat", drove: "drive", driven: "drive", grew: "grow", grown: "grow",
+  knew: "know", known: "know", threw: "throw", thrown: "throw", wore: "wear", worn: "wear",
+  sought: "seek", caught: "catch", taught: "teach", bought: "buy", fell: "fall", fallen: "fall",
+};
+
 function stem(w) {
   w = w.toLowerCase();
+  if (IRREGULAR[w]) w = IRREGULAR[w];
   if (w.length <= 3) return w;
   const undouble = (s) => (/([^aeiou])\1$/.test(s) ? s.slice(0, -1) : s);
 
@@ -818,13 +835,6 @@ function stem(w) {
   return w;
 }
 
-function stemTokens(text) {
-  return String(text || "").toLowerCase()
-    .replace(/[^a-z0-9'\s-]/g, " ")
-    .split(/\s+/).filter(Boolean)
-    .map(stem);
-}
-
 /** 對外提供詞幹化，跟讀比對也用同一套規則，兩邊判斷才會一致 */
 export function stemWord(w) { return stem(String(w || "")); }
 
@@ -832,12 +842,92 @@ export function stemWord(w) { return stem(String(w || "")); }
  * 判斷一段話裡有沒有用到某個特定的字（支援詞形變化與片語）。
  * 用說的複習靠這個判斷答對沒，所以不需要呼叫 API。
  */
+// 片語裡的「代稱」：take sth. seriously、let sb. down、on one's own
+const PLACEHOLDER = /^(sb|sth|someone|somebody|something|one's|oneself|one|sb's|sth's)$/;
+const BE = new Set(["be", "am", "is", "are", "was", "were", "been", "being",
+                    "i'm", "you're", "we're", "they're", "he's", "she's", "it's", "that's"]);
+// 不規則動詞反查：take → took、taken
+const IRREG_FORMS = {};
+for (const [past, base] of Object.entries(IRREGULAR)) (IRREG_FORMS[base] = IRREG_FORMS[base] || []).push(past);
+
+/**
+ * 一個字所有常見的變化形（從原形往外推，而不是把文字裡的字砍成詞幹）。
+ * 砍詞幹的做法會讓 theme 跟 them、plane 跟 plan 被當成同一個字；
+ * 從原形產生變化形就不會：plane 只會比到 plane / planes / planed / planing。
+ */
+const formCache = new Map();
+function formsOf(base) {
+  const w = String(base || "").toLowerCase();
+  if (formCache.has(w)) return formCache.get(w);
+  const f = new Set([w, w + "s", w + "es", w + "ed", w + "ing", w + "'s"]);
+  if (w.endsWith("e")) { f.add(w + "d"); f.add(w.slice(0, -1) + "ing"); f.add(w + "r"); f.add(w + "st"); }
+  if (/[^aeiou]y$/.test(w)) { const r = w.slice(0, -1); f.add(r + "ies"); f.add(r + "ied"); f.add(r + "ier"); f.add(r + "iest"); }
+  if (/ie$/.test(w)) f.add(w.slice(0, -2) + "ying");                         // lie → lying
+  if (/^[^aeiou]*[aeiou][^aeiouwxy]$/.test(w) || /[^aeiou][aeiou][bdgmnprt]$/.test(w)) {
+    const d = w + w.slice(-1);                                               // stop → stopped / stopping
+    f.add(d + "ed"); f.add(d + "ing"); f.add(d + "er"); f.add(d + "est");
+  }
+  if (/(s|x|z|ch|sh)$/.test(w)) f.add(w + "es");
+  if (/f$/.test(w)) f.add(w.slice(0, -1) + "ves");                           // leaf → leaves
+  if (/fe$/.test(w)) f.add(w.slice(0, -2) + "ves");                          // knife → knives
+  f.add(w + "er"); f.add(w + "est"); f.add(w + "ly");
+  for (const x of IRREG_FORMS[w] || []) f.add(x);
+  formCache.set(w, f);
+  return f;
+}
+
+/** 文字裡的這個字，是不是 base 的某個變化形（例句挖空、片語比對共用） */
+export function isFormOf(token, base) {
+  return formsOf(base).has(String(token || "").toLowerCase().replace(/’/g, "'"));
+}
+
+/** 文字切成小寫的字（保留撇號：don't、one's） */
+function tokensOf(text) {
+  return String(text || "").toLowerCase().replace(/’/g, "'")
+    .replace(/[^a-z0-9'\s-]/g, " ").split(/\s+/)
+    .map(t => t.replace(/^['-]+|['-]+$/g, "")).filter(Boolean);
+}
+
+/**
+ * 單字本裡的字或片語，拆成比對用的零件：
+ * - 括號裡是可有可無的部分：turn out (to be) → turn out
+ * - ... 或 sb./sth./one's 是「任何 1–3 個字」
+ * - 開頭的 be 可以是任何 be 動詞
+ */
+const partCache = new Map();
+function partsOf(word) {
+  if (partCache.has(word)) return partCache.get(word);
+  const raw = String(word).toLowerCase().replace(/’/g, "'")
+    .replace(/\([^)]*\)/g, " ")
+    .replace(/\.\.\.|…/g, " sth ")
+    .replace(/[^a-z0-9'\s-]/g, " ")
+    .split(/\s+/).filter(Boolean);
+  const parts = raw.map((t, i) => PLACEHOLDER.test(t) ? { any: true }
+    : (t === "be" && i === 0 && raw.length > 1) ? { be: true } : { w: t });
+  partCache.set(word, parts);
+  return parts;
+}
+
+function matchAt(toks, ti, parts, pi) {
+  if (pi === parts.length) return true;
+  if (ti >= toks.length) return false;
+  const p = parts[pi];
+  if (p.any) {                                   // 代稱：吃掉 1–3 個字
+    for (let k = 1; k <= 3 && ti + k <= toks.length; k++) if (matchAt(toks, ti + k, parts, pi + 1)) return true;
+    return false;
+  }
+  if (p.be) return BE.has(toks[ti]) && matchAt(toks, ti + 1, parts, pi + 1);
+  return formsOf(p.w).has(toks[ti]) && matchAt(toks, ti + 1, parts, pi + 1);
+}
+
+function usesParts(toks, parts) {
+  if (!parts.length) return false;
+  for (let i = 0; i < toks.length; i++) if (matchAt(toks, i, parts, 0)) return true;
+  return false;
+}
+
 export function textUsesWord(text, word) {
-  const toks = stemTokens(text);
-  const parts = stemTokens(word);
-  if (!toks.length || !parts.length) return false;
-  if (parts.length === 1) return toks.includes(parts[0]);
-  return (" " + toks.join(" ") + " ").includes(" " + parts.join(" ") + " ");
+  return usesParts(tokensOf(text), partsOf(word));
 }
 
 /**
@@ -845,20 +935,9 @@ export function textUsesWord(text, word) {
  * @returns {Array} 命中的卡片
  */
 export function matchWords(text) {
-  const toks = stemTokens(text);
+  const toks = tokensOf(text);
   if (!toks.length) return [];
-  const single = new Set(toks);
-  const joined = " " + toks.join(" ") + " ";
-  const hits = [];
-  for (const v of vocab()) {
-    const parts = stemTokens(v.word);
-    if (!parts.length) continue;
-    const ok = parts.length === 1
-      ? single.has(parts[0])
-      : joined.includes(" " + parts.join(" ") + " ");
-    if (ok) hits.push(v);
-  }
-  return hits;
+  return vocab().filter(v => usesParts(toks, partsOf(v.word)));
 }
 
 /** 記錄「你說出來了」。同一回合同一個字只算一次。 */

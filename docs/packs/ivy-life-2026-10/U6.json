@@ -1,0 +1,53 @@
+{
+ "id": "U6",
+ "title": "傢俱",
+ "tag": "常春藤生活2610-U6",
+ "verified": true,
+ "items": [
+  {
+   "w": "furniture",
+   "pos": "n.",
+   "zh": "家具"
+  },
+  {
+   "w": "stuff",
+   "pos": "n.",
+   "zh": "東西"
+  },
+  {
+   "w": "item",
+   "pos": "n.",
+   "zh": "物件；品項"
+  },
+  {
+   "w": "reasonable",
+   "pos": "adj.",
+   "zh": "（價格）合理的"
+  },
+  {
+   "w": "a selection of",
+   "pos": "phr.",
+   "zh": "各式精選的"
+  },
+  {
+   "w": "quite a few",
+   "pos": "phr.",
+   "zh": "相當多"
+  },
+  {
+   "w": "could use",
+   "pos": "phr.",
+   "zh": "很需要"
+  },
+  {
+   "w": "hold off on",
+   "pos": "phr.",
+   "zh": "暫緩（做）"
+  },
+  {
+   "w": "for the time being",
+   "pos": "phr.",
+   "zh": "目前暫時"
+  }
+ ]
+}

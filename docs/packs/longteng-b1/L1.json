@@ -1,0 +1,133 @@
+{
+ "id": "L1",
+ "title": "Firsts in Life",
+ "tag": "龍騰B1-L1",
+ "verified": true,
+ "items": [
+  {
+   "w": "memorable",
+   "pos": "adj.",
+   "zh": "難忘的"
+  },
+  {
+   "w": "reply",
+   "pos": "v.",
+   "zh": "回覆；回答"
+  },
+  {
+   "w": "yell",
+   "pos": "v.",
+   "zh": "大叫；吼叫"
+  },
+  {
+   "w": "perfect",
+   "pos": "adj.",
+   "zh": "完美的"
+  },
+  {
+   "w": "accidentally",
+   "pos": "adv.",
+   "zh": "意外地；不小心地"
+  },
+  {
+   "w": "failure",
+   "pos": "n.",
+   "zh": "失敗"
+  },
+  {
+   "w": "recall",
+   "pos": "v.",
+   "zh": "回想起"
+  },
+  {
+   "w": "presentation",
+   "pos": "n.",
+   "zh": "報告；簡報"
+  },
+  {
+   "w": "skip",
+   "pos": "v.",
+   "zh": "跳過；略過"
+  },
+  {
+   "w": "ruin",
+   "pos": "v.",
+   "zh": "毀掉；破壞"
+  },
+  {
+   "w": "depressed",
+   "pos": "adj.",
+   "zh": "沮喪的；消沉的"
+  },
+  {
+   "w": "embarrassed",
+   "pos": "adj.",
+   "zh": "尷尬的；難為情的"
+  },
+  {
+   "w": "upset",
+   "pos": "adj.",
+   "zh": "難過的；心煩的"
+  },
+  {
+   "w": "reflect",
+   "pos": "v.",
+   "zh": "反思；回想"
+  },
+  {
+   "w": "remind",
+   "pos": "v.",
+   "zh": "提醒；使想起"
+  },
+  {
+   "w": "realize",
+   "pos": "v.",
+   "zh": "了解到；意識到"
+  },
+  {
+   "w": "traditional",
+   "pos": "adj.",
+   "zh": "傳統的"
+  },
+  {
+   "w": "fortunately",
+   "pos": "adv.",
+   "zh": "幸運地"
+  },
+  {
+   "w": "the rest of",
+   "pos": "phr.",
+   "zh": "其餘的；剩下的"
+  },
+  {
+   "w": "in person",
+   "pos": "phr.",
+   "zh": "親自；當面"
+  },
+  {
+   "w": "take sth. seriously",
+   "pos": "phr.",
+   "zh": "認真看待某事"
+  },
+  {
+   "w": "let sb. down",
+   "pos": "phr.",
+   "zh": "讓某人失望"
+  },
+  {
+   "w": "make sure",
+   "pos": "phr.",
+   "zh": "確定；確保"
+  },
+  {
+   "w": "put sth. first",
+   "pos": "phr.",
+   "zh": "把某事放在第一位"
+  },
+  {
+   "w": "dress up",
+   "pos": "phr.",
+   "zh": "打扮；盛裝"
+  }
+ ]
+}

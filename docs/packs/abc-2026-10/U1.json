@@ -1,0 +1,68 @@
+{
+ "id": "U1",
+ "title": "用英語談論家人",
+ "tag": "ABC2610-U1",
+ "verified": true,
+ "items": [
+  {
+   "w": "pretty",
+   "pos": "adv.",
+   "zh": "相當；很"
+  },
+  {
+   "w": "homework",
+   "pos": "n.",
+   "zh": "功課"
+  },
+  {
+   "w": "space",
+   "pos": "n.",
+   "zh": "空間"
+  },
+  {
+   "w": "lonely",
+   "pos": "adj.",
+   "zh": "寂寞的"
+  },
+  {
+   "w": "relative",
+   "pos": "n.",
+   "zh": "親戚"
+  },
+  {
+   "w": "different",
+   "pos": "adj.",
+   "zh": "不一樣的"
+  },
+  {
+   "w": "remember",
+   "pos": "v.",
+   "zh": "記得"
+  },
+  {
+   "w": "born",
+   "pos": "adj.",
+   "zh": "出生的"
+  },
+  {
+   "w": "dentist",
+   "pos": "n.",
+   "zh": "牙醫師"
+  },
+  {
+   "w": "clean",
+   "pos": "v.",
+   "zh": "清潔"
+  },
+  {
+   "w": "tooth",
+   "pos": "n.",
+   "zh": "牙齒"
+  },
+  {
+   "w": "choose",
+   "pos": "v.",
+   "zh": "挑選"
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+{
+ "id": "L6",
+ "title": "Built for Freedom: The Statue of Liberty",
+ "tag": "龍騰B1-L6",
+ "verified": true,
+ "items": [
+  {
+   "w": "freedom",
+   "pos": "n.",
+   "zh": "自由"
+  },
+  {
+   "w": "statue",
+   "pos": "n.",
+   "zh": "雕像"
+  },
+  {
+   "w": "remove",
+   "pos": "v.",
+   "zh": "移除；拿掉"
+  },
+  {
+   "w": "celebration",
+   "pos": "n.",
+   "zh": "慶祝；慶典"
+  },
+  {
+   "w": "independence",
+   "pos": "n.",
+   "zh": "獨立"
+  },
+  {
+   "w": "monument",
+   "pos": "n.",
+   "zh": "紀念碑；紀念建築"
+  },
+  {
+   "w": "symbolize",
+   "pos": "v.",
+   "zh": "象徵"
+  },
+  {
+   "w": "firmly",
+   "pos": "adv.",
+   "zh": "穩固地；堅定地"
+  },
+  {
+   "w": "represent",
+   "pos": "v.",
+   "zh": "代表；象徵"
+  },
+  {
+   "w": "ancient",
+   "pos": "adj.",
+   "zh": "古代的；古老的"
+  },
+  {
+   "w": "unfair",
+   "pos": "adj.",
+   "zh": "不公平的"
+  },
+  {
+   "w": "slavery",
+   "pos": "n.",
+   "zh": "奴隸制度"
+  },
+  {
+   "w": "treatment",
+   "pos": "n.",
+   "zh": "對待；待遇"
+  },
+  {
+   "w": "tourist",
+   "pos": "n.",
+   "zh": "觀光客"
+  },
+  {
+   "w": "attraction",
+   "pos": "n.",
+   "zh": "景點；吸引力"
+  },
+  {
+   "w": "landmark",
+   "pos": "n.",
+   "zh": "地標"
+  },
+  {
+   "w": "globe",
+   "pos": "n.",
+   "zh": "地球；全世界"
+  },
+  {
+   "w": "even though",
+   "pos": "phr.",
+   "zh": "即使；雖然"
+  },
+  {
+   "w": "close to",
+   "pos": "phr.",
+   "zh": "接近；將近"
+  },
+  {
+   "w": "over time",
+   "pos": "phr.",
+   "zh": "隨著時間"
+  }
+ ]
+}

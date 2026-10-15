@@ -1,0 +1,93 @@
+{
+ "id": "U4",
+ "title": "不只是健行 更是一場長途跋涉的冒險！",
+ "tag": "常春藤生活2610-U4",
+ "verified": true,
+ "items": [
+  {
+   "w": "hiker",
+   "pos": "n.",
+   "zh": "健行者"
+  },
+  {
+   "w": "hiking",
+   "pos": "n.",
+   "zh": "健行"
+  },
+  {
+   "w": "backpack",
+   "pos": "n.",
+   "zh": "背包"
+  },
+  {
+   "w": "tent",
+   "pos": "n.",
+   "zh": "帳篷"
+  },
+  {
+   "w": "supplies",
+   "pos": "n.",
+   "zh": "補給品"
+  },
+  {
+   "w": "remote",
+   "pos": "adj.",
+   "zh": "偏遠的"
+  },
+  {
+   "w": "hire",
+   "pos": "v.",
+   "zh": "雇用"
+  },
+  {
+   "w": "hometown",
+   "pos": "n.",
+   "zh": "家鄉"
+  },
+  {
+   "w": "frozen",
+   "pos": "adj.",
+   "zh": "結冰的"
+  },
+  {
+   "w": "kilometer",
+   "pos": "n.",
+   "zh": "公里"
+  },
+  {
+   "w": "aim to",
+   "pos": "phr.",
+   "zh": "打算；目標是"
+  },
+  {
+   "w": "leave behind",
+   "pos": "phr.",
+   "zh": "拋下"
+  },
+  {
+   "w": "set out to",
+   "pos": "phr.",
+   "zh": "著手去做"
+  },
+  {
+   "w": "on foot",
+   "pos": "phr.",
+   "zh": "徒步"
+  },
+  {
+   "w": "give up",
+   "pos": "phr.",
+   "zh": "放棄"
+  },
+  {
+   "w": "in return",
+   "pos": "phr.",
+   "zh": "作為回報"
+  },
+  {
+   "w": "come to realize",
+   "pos": "phr.",
+   "zh": "逐漸明白"
+  }
+ ]
+}

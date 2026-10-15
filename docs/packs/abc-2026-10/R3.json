@@ -1,0 +1,38 @@
+{
+ "id": "R3",
+ "title": "進階閱讀 3：什麼是軟社交？",
+ "tag": "ABC2610-R3",
+ "verified": true,
+ "items": [
+  {
+   "w": "build",
+   "pos": "v.",
+   "zh": "建立"
+  },
+  {
+   "w": "talk",
+   "pos": "n.",
+   "zh": "交談"
+  },
+  {
+   "w": "quiet",
+   "pos": "adj.",
+   "zh": "安靜的"
+  },
+  {
+   "w": "moment",
+   "pos": "n.",
+   "zh": "片刻"
+  },
+  {
+   "w": "repeat",
+   "pos": "v.",
+   "zh": "重複"
+  },
+  {
+   "w": "care",
+   "pos": "n.",
+   "zh": "關心"
+  }
+ ]
+}

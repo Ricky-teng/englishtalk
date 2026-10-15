@@ -1,0 +1,38 @@
+{
+ "id": "U8",
+ "title": "學會放手",
+ "tag": "ALL2610-U8",
+ "verified": true,
+ "items": [
+  {
+   "w": "disorder",
+   "pos": "n.",
+   "zh": "失調症"
+  },
+  {
+   "w": "distinguish",
+   "pos": "v.",
+   "zh": "分辨"
+  },
+  {
+   "w": "collector",
+   "pos": "n.",
+   "zh": "收藏者"
+  },
+  {
+   "w": "antique",
+   "pos": "n.",
+   "zh": "古董"
+  },
+  {
+   "w": "possession",
+   "pos": "n.",
+   "zh": "所有物"
+  },
+  {
+   "w": "therapy",
+   "pos": "n.",
+   "zh": "治療"
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "id": "U10",
+ "title": "藏不住的私房景點",
+ "tag": "常春藤生活2610-U10",
+ "verified": true,
+ "items": [
+  {
+   "w": "tourist",
+   "pos": "n.",
+   "zh": "遊客"
+  },
+  {
+   "w": "blame",
+   "pos": "v.",
+   "zh": "怪罪"
+  },
+  {
+   "w": "deny",
+   "pos": "v.",
+   "zh": "否認"
+  },
+  {
+   "w": "peaceful",
+   "pos": "adj.",
+   "zh": "寧靜的"
+  },
+  {
+   "w": "local",
+   "pos": "n.",
+   "zh": "當地人"
+  },
+  {
+   "w": "be crowded with",
+   "pos": "phr.",
+   "zh": "擠滿…"
+  },
+  {
+   "w": "come across",
+   "pos": "phr.",
+   "zh": "偶然發現"
+  },
+  {
+   "w": "at least",
+   "pos": "phr.",
+   "zh": "至少"
+  }
+ ]
+}

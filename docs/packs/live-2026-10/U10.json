@@ -1,0 +1,28 @@
+{
+ "id": "U10",
+ "title": "品嚐美味的臺灣水果",
+ "tag": "Live2610-U10",
+ "verified": true,
+ "items": [
+  {
+   "w": "tasty",
+   "pos": "adj.",
+   "zh": "好吃的"
+  },
+  {
+   "w": "vitamin",
+   "pos": "n.",
+   "zh": "維他命"
+  },
+  {
+   "w": "ripe",
+   "pos": "adj.",
+   "zh": "成熟的（果實）"
+  },
+  {
+   "w": "paradise",
+   "pos": "n.",
+   "zh": "天堂；樂園"
+  }
+ ]
+}
