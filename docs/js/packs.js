@@ -108,7 +108,7 @@ function paintBooks(body) {
         ${done ? `<small class="pk-done">已加入 ${done} 個</small>` : ""}</span>
       <span class="pk-go">›</span></button>`;
   }).join("")}</div>
-  <p class="note">想要其他版本或其他冊？之後會陸續加上。也可以用「＋ 新增單字」或「批次貼上」自己加。</p>`;
+  <p class="note">想要其他版本或其他冊？之後會陸續加上。也可以用「＋ 新增單字」或「⋯ → 批次貼上」自己加。</p>`;
   body.querySelectorAll("[data-book]").forEach(b => b.addEventListener("click", () => { openBook = b.dataset.book; paint(); }));
 }
 

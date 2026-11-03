@@ -91,7 +91,8 @@ export function detectProvider(key) {
 }
 
 let dlg = null;
-let hooks = { onFinish: () => {}, openAdd: () => {}, openPacks: () => {}, startChat: () => {} };
+let hooks = { onFinish: () => {}, openAdd: () => {}, openPacks: () => {}, startChat: () => {},
+              cloud: false, signIn: () => {} };   // cloud：網站有設定雲端同步時，第一步可以直接登入取回資料
 const W = { step: 0, goal: "daily", level: "B1", provider: "gemini", keyOk: false, keyProvider: "", micOk: null };
 
 export function initOnboarding(h) { hooks = { ...hooks, ...h }; }
@@ -147,6 +148,13 @@ const STEPS = ["welcome", "goal", "key", "mic", "done"];
 function markDone() {
   const s = Store.settings();
   if (!s[DONE_KEY]) { s[DONE_KEY] = Date.now(); Store.save(true); }
+}
+
+/** 從外面直接結束引導（例如登入雲端後已經取回金鑰） */
+export function finishOnboarding() {
+  markDone();
+  if (dlg && dlg.open) dlg.close();
+  hooks.onFinish();
 }
 
 function skip() {
@@ -207,7 +215,11 @@ function paint() {
         <div><span>📚</span><p><b>單字會回到對話裡</b>你在背的字，AI 會自然地用出來；你自己說出口就記一次「會用了」。</p></div>
         <div><span>✏️</span><p><b>不打斷的文法提示</b>每句話說完，更好的說法會安靜地標在旁邊。</p></div>
       </div>
-      <p class="note">完全免費：用的是 Google 或 Groq 提供的免費 AI 額度，金鑰和資料都只存在你自己的瀏覽器。</p>`;
+      <p class="note">完全免費：用的是 Google 或 Groq 提供的免費 AI 額度，金鑰和資料預設只存在你自己的瀏覽器。</p>
+      ${hooks.cloud ? `<div class="ob-restore"><span>在別的裝置用過了？</span>
+        <button type="button" class="btn sm" data-ob-restore>☁️ 用 Google 登入取回資料</button></div>` : ""}`;
+    const rb = body.querySelector("[data-ob-restore]");
+    if (rb) rb.addEventListener("click", () => hooks.signIn());
   }
 
   if (name === "goal") {

@@ -17,12 +17,14 @@ import * as Grammar from "./grammar.js";
 import { mountPicker, info as modelInfo, CATALOG } from "./models.js";
 import { initPacks, openPacks } from "./packs.js";
 import * as Usage from "./usage.js";
-import { initOnboarding, needsOnboarding, openOnboarding, GOALS } from "./onboarding.js";
+import * as Sync from "./sync.js";
+import { initOnboarding, needsOnboarding, openOnboarding, finishOnboarding, GOALS } from "./onboarding.js";
 import { initWhatsNew, maybeShowWhatsNew, openWhatsNew, APP_VERSION } from "./whatsnew.js";
 
 // 先把資料從瀏覽器資料庫（IndexedDB）讀進記憶體，下面的程式才能同步取用
 await Store.init();
 window.__etState = () => Store.load();   // 給自動測試與除錯用：目前記憶體中的資料
+Sync.init();                             // 雲端同步：網站沒設定 Firebase 或沒登入過就什麼都不做
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => {
@@ -694,17 +696,15 @@ function esc(s) {
 
 function renderVocab() {
   refreshPills();
-  const miss = V.missingForms().length;
-  $("btnFillForms").hidden = !miss;
-  if (!$("btnFillForms").disabled) $("btnFillForms").textContent = `補齊詞性變化（${miss} 個字）`;
+  // 「更多」上的小藍點：有字還沒查詞性變化
+  $("vocabMoreDot").hidden = !V.missingForms().length;
   const c = V.counts();
+  // 說明文字放在 title（滑鼠移上去／長按才看得到），畫面上只留數字
   $("vocabCounts").innerHTML = `
     <div class="tile"><div class="t-label">總單字</div><div class="t-value">${c.total}</div></div>
-    <div class="tile"><div class="t-label">今天待複習</div><div class="t-value">${c.due}</div></div>
-    <div class="tile"><div class="t-label">認得</div><div class="t-value">${c.mastered}</div>
-      <div class="t-sub">卡片複習間隔 21 天以上</div></div>
-    <div class="tile"><div class="t-label">說得出來</div><div class="t-value">${c.spoken}</div>
-      <div class="t-sub">在對話中自己用過；${c.spokenOften} 個用過 3 次以上</div></div>`;
+    <div class="tile"><div class="t-label">待複習</div><div class="t-value">${c.due}</div></div>
+    <div class="tile" title="卡片複習間隔 21 天以上"><div class="t-label">認得</div><div class="t-value">${c.mastered}</div></div>
+    <div class="tile" title="在對話中自己用過；${c.spokenOften} 個用過 3 次以上"><div class="t-label">說得出</div><div class="t-value">${c.spoken}</div></div>`;
 
   // 標籤下拉
   const tagSel = $("vocabTag");
@@ -787,35 +787,84 @@ function renderVocab() {
     const dueTag = el("span", "tag" + (v.due <= today ? " due" : ""),
       v.due <= today ? "今天複習" : "下次 " + v.due);
     meta.appendChild(dueTag);
-    meta.appendChild(el("span", "tag", v.reps ? `複習 ${v.reps} 次` : "尚未複習"));
+    // 還沒複習過就不多放一個「尚未複習」，少一個標籤比較清爽
+    if (v.reps) meta.appendChild(el("span", "tag", `複習 ${v.reps} 次`));
     // 產出是另一條線：說得出來比認得重要，所以給它獨立的綠色標記
     if (v.produced) meta.appendChild(el("span", "tag spoken", `說出 ${v.produced} 次`));
     (v.tags || []).forEach(t => meta.appendChild(el("span", "tag", t)));
     main.appendChild(meta);
 
+    // 每個字只留「唸」跟「⋯」兩顆，其他動作收進選單
     const acts = el("div", "vacts");
     const bSpeak = el("button", "btn sm ghost", "🔊");
     bSpeak.title = "唸一次";
     bSpeak.addEventListener("click", () => TTS.speak(v.word, undefined, null));
-    const bShadowEx = el("button", "btn sm ghost", "🎤");
-    bShadowEx.title = "跟讀例句";
-    bShadowEx.disabled = !v.example;
-    bShadowEx.addEventListener("click", () => openShadow(v.example));
-    const bTag = el("button", "btn sm ghost", "✎");
-    bTag.title = "編輯";
-    bTag.addEventListener("click", () => openWordEditor(v));
-    const bDel = el("button", "btn sm ghost", "✕");
-    bDel.title = "刪除";
-    bDel.addEventListener("click", () => {
-      if (!confirm(`刪除「${v.word}」？`)) return;
-      V.remove(v.id);
-      renderVocab();
-    });
-    acts.append(bSpeak, bShadowEx, bTag, bDel);
+    const bMore = el("button", "btn sm ghost", "⋯");
+    bMore.title = "更多";
+    bMore.setAttribute("aria-haspopup", "menu");
+    bMore.addEventListener("click", () => popMenu(bMore, [
+      { label: "✎ 編輯", run: () => openWordEditor(v) },
+      { label: "🎤 跟讀例句", hint: v.example ? "" : "沒有例句", disabled: !v.example, run: () => openShadow(v.example) },
+      { label: "🗑 刪除", danger: true, run: () => {
+        if (!confirm(`刪除「${v.word}」？`)) return;
+        V.remove(v.id);
+        renderVocab();
+      } },
+    ]));
+    acts.append(bSpeak, bMore);
 
     item.append(main, acts);
     box.appendChild(item);
   }
+}
+
+/**
+ * 小型彈出選單：貼在按鈕下方（放不下就往上），點外面、按 Esc、捲動都會關。
+ * items: [{ label, hint?, disabled?, danger?, run }]
+ */
+let popEl = null;
+function closePop() {
+  if (!popEl) return;
+  popEl.remove();
+  popEl = null;
+  document.removeEventListener("pointerdown", onPopOutside, true);
+  document.removeEventListener("keydown", onPopKey, true);
+  window.removeEventListener("resize", closePop);
+  document.removeEventListener("scroll", closePop, true);
+}
+function onPopOutside(e) { if (popEl && !popEl.contains(e.target) && e.target !== popEl._anchor) closePop(); }
+function onPopKey(e) { if (e.key === "Escape") { e.stopPropagation(); const a = popEl && popEl._anchor; closePop(); a && a.focus(); } }
+function popMenu(anchor, items) {
+  // 再點同一顆按鈕 = 關掉
+  if (popEl && popEl._anchor === anchor) { closePop(); return; }
+  closePop();
+  const m = el("div", "pop-menu");
+  m.setAttribute("role", "menu");
+  m._anchor = anchor;
+  for (const it of items) {
+    const b = el("button", it.danger ? "danger" : "", it.label);
+    b.type = "button";
+    b.setAttribute("role", "menuitem");
+    if (it.hint) b.appendChild(el("small", null, it.hint));
+    b.disabled = !!it.disabled;
+    b.addEventListener("click", () => { closePop(); it.run(); });
+    m.appendChild(b);
+  }
+  // 選單要放在打開中的 dialog 裡才不會被蓋住
+  (anchor.closest("dialog[open]") || document.body).appendChild(m);
+  const r = anchor.getBoundingClientRect();
+  const w = m.offsetWidth, h = m.offsetHeight;
+  const left = Math.max(8, Math.min(r.right - w, window.innerWidth - w - 8));
+  const top = r.bottom + 6 + h > window.innerHeight - 8 ? Math.max(8, r.top - h - 6) : r.bottom + 6;
+  m.style.left = left + "px";
+  m.style.top = top + "px";
+  popEl = m;
+  document.addEventListener("pointerdown", onPopOutside, true);
+  document.addEventListener("keydown", onPopKey, true);
+  window.addEventListener("resize", closePop);
+  document.addEventListener("scroll", closePop, true);
+  const first = m.querySelector("button:not([disabled])");
+  first && first.focus({ preventScroll: true });
 }
 
 function makeEmpty(big, small) {
@@ -829,9 +878,20 @@ $("vocabSearch").addEventListener("input", renderVocab);
 $("vocabTag").addEventListener("change", renderVocab);
 $("vocabSort").addEventListener("change", renderVocab);
 
-$("btnVocabExport").addEventListener("click", () => {
+function exportVocabCSV() {
   if (!Store.vocab().length) return toast("單字本是空的");
   download(V.toCSV(), "englishtalk-vocab-" + Store.todayKey() + ".csv", "text/csv;charset=utf-8");
+}
+
+// 單字本右上「⋯」：比較少用的動作
+$("btnVocabMore").addEventListener("click", () => {
+  const miss = V.missingForms().length;
+  popMenu($("btnVocabMore"), [
+    { label: "📋 批次貼上單字表", run: openBulk },
+    { label: "🔤 補齊詞性變化", hint: fillingForms ? "補查中…" : miss ? `${miss} 個字` : "都有了",
+      disabled: !miss || fillingForms, run: fillForms },
+    { label: "⬇ 匯出 CSV", run: exportVocabCSV },
+  ]);
 });
 
 /* ---------- 手動新增／編輯單一單字 ---------- */
@@ -1125,26 +1185,28 @@ dlgWord.addEventListener("close", () => {
   if (dlgAdd.open) $("addResults").querySelectorAll(".cand").forEach(c => c._paint && c._paint());
 });
 
-// 舊單字一次補齊詞性變化：每 25 個字一個請求
-$("btnFillForms").addEventListener("click", async () => {
-  const btn = $("btnFillForms");
+// 舊單字一次補齊詞性變化：每 25 個字一個請求；進度用提示訊息顯示
+let fillingForms = false;
+async function fillForms() {
   const todo = V.missingForms();
   if (!todo.length) { toast("每個字都已經有詞性變化了"); return; }
-  btn.disabled = true;
+  if (fillingForms) return;
+  fillingForms = true;
   let done = 0;
   try {
     for (let i = 0; i < todo.length; i += 25) {
-      btn.textContent = `補查中 ${Math.min(i + 25, todo.length)}/${todo.length}…`;
+      toast(`補查詞性變化中 ${Math.min(i + 25, todo.length)}/${todo.length}…`, 60000);
       done += await V.fetchForms(todo.slice(i, i + 25));
+      renderVocab();
     }
     toast(`已補上 ${done} 個字的詞性變化`);
   } catch (e) {
     toast("補查失敗：" + e.message);
   } finally {
-    btn.disabled = false;
+    fillingForms = false;
     renderVocab();
   }
-});
+}
 $("btnCloseWord").addEventListener("click", () => dlgWord.close());
 
 /** 把選中的候選填進編輯器：只補空白欄位，你自己打的不動 */
@@ -1252,11 +1314,11 @@ dlgWord.addEventListener("keydown", (e) => {
 
 /* ---------- 批次貼上 ---------- */
 
-$("btnBulkAdd").addEventListener("click", () => {
+function openBulk() {
   $("bulkTag").value = $("vocabTag").value || "";
   $("bulkNote").textContent = "";
   $("dlgBulk").showModal();
-});
+}
 $("btnCloseBulk").addEventListener("click", () => $("dlgBulk").close());
 
 $("btnDoBulk").addEventListener("click", async () => {
@@ -1726,6 +1788,7 @@ function renderUsage() {
 
 function renderStats() {
   renderStorage();
+  renderSync();
   renderUsage();
   const t = Stats.totals();
   const w = Stats.thisWeek();
@@ -1862,9 +1925,129 @@ $("importFile").addEventListener("change", async (e) => {
   e.target.value = "";
 });
 
-$("btnWipe").addEventListener("click", () => {
-  if (!confirm("這會刪掉單字本、對話紀錄、統計與金鑰設定，且無法復原。確定嗎？")) return;
-  Store.wipe().then(() => location.reload());
+$("btnWipe").addEventListener("click", async () => {
+  const cloud = Sync.status.user ? "\n\n（只清這台裝置，雲端的資料不會刪；同時會登出雲端同步。）" : "";
+  if (!confirm("這會刪掉單字本、對話紀錄、統計與金鑰設定，且無法復原。確定嗎？" + cloud)) return;
+  // 先登出、忘掉同步紀錄：不然清空後的本機會被當成「全部刪掉」同步到雲端
+  await Sync.forget();
+  await Store.wipe();
+  location.reload();
+});
+
+/* =========================================================================
+   雲端同步（Firebase）
+   ========================================================================= */
+
+function agoText(t) {
+  if (!t) return "";
+  const s = Math.round((Date.now() - t) / 1000);
+  if (s < 10) return "剛剛";
+  if (s < 60) return `${s} 秒前`;
+  if (s < 3600) return `${Math.floor(s / 60)} 分鐘前`;
+  return new Date(t).toLocaleString("zh-TW", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+}
+
+const SYNC_TEXT = {
+  idle: (st) => `✓ 已同步・${agoText(st.lastSync)}`,
+  syncing: () => "同步中…",
+  offline: () => "目前離線，連上網路後會自動同步",
+  error: (st) => `⚠ 同步失敗：${st.error}`,
+  off: () => "",
+};
+
+/** 紀錄頁的雲端同步卡片＋右上角的小雲朵 */
+function renderSync() {
+  const st = Sync.status;
+  $("syncCard").hidden = !st.configured;
+  const badge = $("badgeSync");
+  badge.hidden = !st.user;
+  badge.className = "badge sync-badge" + (st.state === "error" ? " warn" : st.state === "idle" ? " on" : "");
+  badge.textContent = st.state === "syncing" ? "☁︎ …" : st.state === "error" ? "☁︎ !" : st.state === "offline" ? "☁︎ ✕" : "☁︎";
+  badge.title = "雲端同步：" + (SYNC_TEXT[st.state] || SYNC_TEXT.off)(st);
+  $("statsLede").textContent = st.user
+    ? "資料存在這台裝置，也會同步到你登入的 Google 帳號（只有你自己讀得到）。"
+    : "所有資料都存在這台裝置的瀏覽器裡，沒有上傳到任何地方。";
+  if (!st.configured) return;
+
+  const box = $("syncBox");
+  if (!st.user) {
+    box.innerHTML = `
+      <p class="note" style="margin-top:0">用 Google 帳號登入後，單字本、複習進度、對話紀錄和設定會自動存到雲端；
+        換手機或電腦登入同一個帳號就能接著用。不登入也能照常使用，資料只存在這台裝置。</p>
+      <div class="row"><button class="btn primary" type="button" id="btnSyncIn" ${st.loading ? "disabled" : ""}>
+        ${st.loading ? "載入中…" : "用 Google 登入"}</button></div>
+      ${st.state === "error" ? `<p class="note sync-err">${esc(st.error)}</p>` : ""}`;
+    $("btnSyncIn").addEventListener("click", syncSignIn);
+    return;
+  }
+  const s = Store.settings();
+  box.innerHTML = `
+    <div class="sync-user">
+      ${st.user.photo ? `<img src="${esc(st.user.photo)}" alt="" referrerpolicy="no-referrer">` : `<span class="sync-av">${esc((st.user.name || st.user.email || "?")[0])}</span>`}
+      <div><b>${esc(st.user.name || st.user.email)}</b><small>${esc(st.user.name ? st.user.email : "")}</small></div>
+    </div>
+    <p class="note sync-state ${st.state}" style="margin:10px 0 0">${esc((SYNC_TEXT[st.state] || SYNC_TEXT.off)(st))}</p>
+    <label class="field sync-keys">
+      <input type="checkbox" id="cfgSyncKeys" ${s.syncKeys ? "checked" : ""} style="width:auto">
+      也同步 API 金鑰
+    </label>
+    <div class="note" style="margin-left:26px">打開後，Gemini／Groq 金鑰會存到你的雲端帳號（只有你登入才讀得到），
+      新裝置登入就不用再貼一次。這個開關會套用到同一帳號的每台裝置；關掉後下次同步會從雲端移除金鑰（各裝置本機的金鑰保留）。</div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" type="button" id="btnSyncNow" ${st.state === "syncing" ? "disabled" : ""}>立即同步</button>
+      <div class="spacer"></div>
+      <button class="btn ghost" type="button" id="btnSyncOut">登出</button>
+    </div>`;
+  $("btnSyncNow").addEventListener("click", () => Sync.syncNow());
+  $("btnSyncOut").addEventListener("click", async () => {
+    if (!confirm("登出雲端同步？這台裝置上的資料會保留，之後登入會再合併。")) return;
+    await Sync.signOut();
+    toast("已登出雲端同步");
+  });
+  $("cfgSyncKeys").addEventListener("change", (e) => {
+    Store.settings().syncKeys = e.target.checked;
+    Store.save(true);
+    Sync.syncNow();
+  });
+}
+
+async function syncSignIn() {
+  try {
+    const ok = await Sync.signIn();
+    if (ok) toast("已登入，正在同步…");
+  } catch (e) {
+    toast("登入失敗：" + e.message, 5000);
+  }
+}
+
+window.addEventListener("sync:status", renderSync);
+// 「已同步・幾分鐘前」每分鐘更新一次
+setInterval(() => { if (Sync.status.user && $("page-stats").classList.contains("active")) renderSync(); }, 60000);
+$("badgeSync").addEventListener("click", () => {
+  showTab("stats");
+  $("syncCard").scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
+// 從雲端拉到別台裝置的變動：重畫畫面
+window.addEventListener("sync:pulled", (e) => {
+  const r = e.detail;
+  refreshPills();
+  refreshBadges();
+  if ($("page-vocab").classList.contains("active")) renderVocab();
+  if ($("page-review").classList.contains("active") && !isQuizActive() && !speakReviewActive()) renderReviewHome();
+  if ($("page-stats").classList.contains("active")) renderStats();
+  const bits = [];
+  if (r.pulledVocab) bits.push(`${r.pulledVocab} 個單字`);
+  if (r.pulledSessions) bits.push(`${r.pulledSessions} 場對話`);
+  if (r.settingsChanged.length) bits.push("設定");
+  if (bits.length) toast(`已從雲端同步：${bits.join("、")}`);
+  // 新裝置在引導畫面登入、而且同步到了金鑰 → 引導可以直接結束
+  const s = Store.settings();
+  if ((s.geminiKey || s.groqKey) && document.getElementById("dlgOnboard")?.open) {
+    finishOnboarding();
+    refreshBadges();
+    toast("已從雲端取回你的資料和金鑰，可以直接開始了", 4000);
+  }
 });
 
 /* =========================================================================
@@ -2145,6 +2328,7 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
 
   refreshBadges();
   refreshPills();
+  renderSync();
   setState("idle");
 
   if (!isSupported()) {
@@ -2167,6 +2351,8 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
     startChat: () => { showTab("chat"); removeWelcome(); startChat(); },
     openAdd: () => { showTab("vocab"); openAddDialog(); },
     openPacks: () => { showTab("vocab"); openPacks(); },
+    cloud: Sync.configured(),
+    signIn: syncSignIn,
   });
   const shown = maybeShowWhatsNew(returning);
   if (!shown && needsOnboarding()) setTimeout(() => openOnboarding(0), 300);

@@ -226,8 +226,31 @@ footer {
 #wordPop .wp-actions { display: flex; gap: 8px; margin-top: 14px; }
 
 /* ---------- 單字本 ---------- */
-.vocab-toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
-.vocab-toolbar input[type=search] { flex: 1; min-width: 160px; }
+.vocab-actions { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; }
+.vocab-actions .btn { flex: none; }
+.vmore-btn { position: relative; font-size: 18px; line-height: 1; padding-left: 14px; padding-right: 14px; }
+.vmore-btn .dot { position: absolute; top: 5px; right: 6px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.vocab-filter { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; margin-bottom: 14px; }
+.vocab-filter select { width: auto; min-width: 0; }
+@media (max-width: 560px) {
+  .vocab-filter { grid-template-columns: 1fr 1fr; }
+  .vocab-filter input[type=search] { grid-column: 1 / -1; }
+  .vocab-filter select { width: 100%; }
+}
+/* 單字本上方的數字：一列四格的精簡版 */
+.tiles.compact { grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+.tiles.compact .tile { padding: 9px 10px; text-align: center; }
+.tiles.compact .t-label { font-size: 11.5px; }
+.tiles.compact .t-value { font-size: 20px; margin-top: 1px; }
+/* 彈出選單（更多動作） */
+.pop-menu { position: fixed; z-index: 60; min-width: 180px; padding: 5px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.pop-menu button { all: unset; box-sizing: border-box; padding: 9px 12px; border-radius: 7px; cursor: pointer;
+  font-size: 14px; color: var(--text); display: flex; gap: 8px; align-items: center; }
+.pop-menu button:hover, .pop-menu button:focus-visible { background: var(--surface-2); }
+.pop-menu button.danger { color: var(--danger); }
+.pop-menu button[disabled] { opacity: .45; cursor: default; }
+.pop-menu small { color: var(--muted); margin-left: auto; padding-left: 10px; }
 .vlist { display: flex; flex-direction: column; gap: 8px; }
 .vitem {
   background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
@@ -955,3 +978,16 @@ dialog.packs .m-body { overflow-x: hidden; }
 .pk-unit, .pk-ut { min-width: 0; }
 .pk-more summary { display: block; max-width: 100%; }
 .pk-list { overflow-wrap: anywhere; }
+
+/* ---------- 雲端同步 ---------- */
+.sync-badge { cursor: pointer; font: inherit; font-size: 12px; background: transparent; }
+.sync-user { display: flex; align-items: center; gap: 10px; }
+.sync-user img, .sync-user .sync-av { width: 36px; height: 36px; border-radius: 50%; flex: none; object-fit: cover; }
+.sync-user .sync-av { display: grid; place-items: center; background: var(--surface-2); font-weight: 700; }
+.sync-user b { display: block; }
+.sync-user small { color: var(--muted); font-size: 12.5px; }
+.sync-state.error, .sync-err { color: var(--danger); }
+.sync-state.idle { color: var(--good); }
+.sync-keys { display: flex; align-items: center; gap: 9px; cursor: pointer; margin-top: 14px; }
+.ob-restore { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; padding: 10px 12px;
+  border: 1px dashed var(--line); border-radius: 10px; font-size: 13.5px; color: var(--text-2); }

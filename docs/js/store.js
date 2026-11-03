@@ -52,6 +52,7 @@ function emptyState() {
       grammarCheck: "live",          // live = 每句說完就在旁邊標出修正，end = 對話結束一次檢查，off
       // 查字、新增單字、文法檢查用的 Gemini 模型：auto = gemini-3.5-flash-lite，same = 跟對話同一個
       geminiToolModel: "auto",
+      syncKeys: false,               // 雲端同步時要不要連 API 金鑰一起同步（預設不要；只在這台裝置有效）
     },
     vocab: [],     // 單字本（含 FSRS 與 SM-2 間隔重複欄位）
     lookups: {},   // 查詢快取：查過的字永久留著，同一個字一輩子只查一次
@@ -210,8 +211,12 @@ export async function usage() {
   return out;
 }
 
-/** 存檔（預設延遲 400ms 合併多次寫入，避免每個按鍵都寫一次） */
-export function save(immediate = false) {
+/**
+ * 存檔（預設延遲 400ms 合併多次寫入，避免每個按鍵都寫一次）。
+ * 存完會發出 store:saved 事件，雲端同步靠它知道「資料有變」；
+ * opts.fromSync = true 表示是同步本身寫的，同步不用再因此排一次。
+ */
+export function save(immediate = false, opts = {}) {
   if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
   const fail = (e) => {
     console.error("[store] 寫入失敗（可能是容量已滿）", e);
@@ -223,11 +228,12 @@ export function save(immediate = false) {
     if (db) {
       // put 的當下就把資料複製一份，之後再改記憶體裡的 state 不會影響這次寫入
       try { idbPut(DB_KEY, state).catch(fail); } catch (e) { fail(e); }
-      return;
+    } else {
+      try {
+        localStorage.setItem(KEY, JSON.stringify(state));
+      } catch (e) { fail(e); }
     }
-    try {
-      localStorage.setItem(KEY, JSON.stringify(state));
-    } catch (e) { fail(e); }
+    try { window.dispatchEvent(new CustomEvent("store:saved", { detail: { fromSync: !!opts.fromSync } })); } catch (e) {}
   };
   if (immediate) doSave(); else saveTimer = setTimeout(doSave, 400);
 }

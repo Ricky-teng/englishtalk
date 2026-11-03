@@ -27,6 +27,7 @@
   <div class="spacer"></div>
   <span class="badge" id="badgeEngine">—</span>
   <span class="badge" id="badgeTTS">—</span>
+  <button class="badge sync-badge" id="badgeSync" type="button" hidden title="雲端同步">☁︎</button>
   <button class="btn sm" id="btnInstall" hidden title="安裝到桌面，像 App 一樣使用">📲 安裝</button>
   <button class="btn sm ghost" id="btnTheme" title="切換深淺色">🌓</button>
   <button class="btn sm" id="btnSettings">設定</button>
@@ -60,26 +61,30 @@
   <section class="page" id="page-vocab">
     <div class="scroll"><div class="wrap">
       <h2 class="title">單字本</h2>
-      <p class="lede">三種加入方式：對話中點單字、手動新增、批次貼上課本單字表。到期的字會出現在複習，也會被 AI 在聊天中自然用出來 —— 你自己把它說出口時會記一次「產出」。</p>
+      <p class="lede">在對話中點任何英文字就會收進來。到期的字會出現在複習，AI 也會在聊天中自然用出來。</p>
 
-      <div class="vocab-toolbar">
+      <!-- 動作：常用的兩個直接放，其他收進「更多」 -->
+      <div class="vocab-actions">
+        <button class="btn primary" id="btnAddOne">＋ 新增單字</button>
+        <button class="btn" id="btnPacks">📦 單字包</button>
+        <button class="btn ghost vmore-btn" id="btnVocabMore" aria-haspopup="menu" title="更多">⋯<span class="dot" id="vocabMoreDot" hidden></span></button>
+      </div>
+
+      <div id="vocabCounts" class="tiles compact"></div>
+
+      <!-- 篩選：搜尋一列，標籤與排序並排 -->
+      <div class="vocab-filter">
         <input type="search" id="vocabSearch" placeholder="搜尋單字或中文意思…">
-        <select id="vocabTag" style="width:auto;min-width:120px"><option value="">所有標籤</option></select>
-        <select id="vocabSort" style="width:auto;min-width:110px">
+        <select id="vocabTag" aria-label="標籤"><option value="">所有標籤</option></select>
+        <select id="vocabSort" aria-label="排序">
           <option value="due">依到期日</option>
           <option value="new">最新加入</option>
           <option value="az">字母順序</option>
           <option value="spoken">最常說出</option>
           <option value="unspoken">還沒說出口</option>
         </select>
-        <button class="btn sm primary" id="btnAddOne">＋ 新增單字</button>
-        <button class="btn sm" id="btnPacks">📦 單字包</button>
-        <button class="btn sm" id="btnBulkAdd">批次貼上</button>
-        <button class="btn sm ghost" id="btnFillForms" hidden>補齊詞性變化</button>
-        <button class="btn sm ghost" id="btnVocabExport">匯出 CSV</button>
       </div>
 
-      <div id="vocabCounts" class="tiles"></div>
       <div id="vocabList" class="vlist"></div>
     </div></div>
   </section>
@@ -112,7 +117,7 @@
   <section class="page" id="page-stats">
     <div class="scroll"><div class="wrap">
       <h2 class="title">練習紀錄</h2>
-      <p class="lede">所有資料都存在這台裝置的瀏覽器裡，沒有上傳到任何地方。</p>
+      <p class="lede" id="statsLede">所有資料都存在這台裝置的瀏覽器裡，沒有上傳到任何地方。</p>
 
       <div id="statTiles" class="tiles"></div>
 
@@ -136,6 +141,12 @@
       <div class="card">
         <h3>對話紀錄</h3>
         <div id="sessionList"></div>
+      </div>
+
+      <!-- 雲端同步：網站有設定 Firebase 才會出現 -->
+      <div class="card" id="syncCard" hidden>
+        <h3>☁️ 雲端同步</h3>
+        <div id="syncBox"></div>
       </div>
 
       <div class="card">
@@ -163,7 +174,7 @@
   <div class="m-head">
     <h2>設定</h2>
     <p class="note" style="margin-bottom:0">
-      金鑰只存在你自己的瀏覽器（localStorage），不會傳給這個網站的伺服器，因為它根本沒有伺服器。
+      金鑰只存在你自己的瀏覽器，不會傳給這個網站（它沒有自己的伺服器）。登入雲端同步、而且打開「同步 API 金鑰」時，才會存到你自己的雲端帳號。
     </p>
   </div>
   <div class="m-body">
