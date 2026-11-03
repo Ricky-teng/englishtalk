@@ -40,29 +40,24 @@ function stable(v) {
 
 // 這些設定只跟「這台裝置」有關，不同步
 const LOCAL_ONLY_SETTINGS = new Set(["browserVoice", "onboardedAt"]);
-// API 金鑰：使用者打開「同步金鑰」（syncKeys，這個開關本身會同步到每台裝置）才會上傳
+// API 金鑰永遠不以明文上傳：要同步的話，由 vault.js 用使用者的同步密碼加密後放在 payload.vault
 const KEY_SETTINGS = new Set(["geminiKey", "groqKey"]);
 
-/** 哪些設定欄位要同步 */
-export function syncableSetting(k, withKeys) {
-  if (LOCAL_ONLY_SETTINGS.has(k)) return false;
-  if (KEY_SETTINGS.has(k)) return !!withKeys;
-  return true;
+/** 哪些設定欄位要同步（「同步金鑰」開關 syncKeys 本身會同步，讓每台裝置知道要不要處理保險箱） */
+export function syncableSetting(k) {
+  return !LOCAL_ONLY_SETTINGS.has(k) && !KEY_SETTINGS.has(k);
 }
 
 /**
  * 從本機資料挑出要上傳的部分。
  * 查詢快取（lookups）可以重查、AI 用量是各裝置各自的，都不上傳，省雲端空間。
  */
-export function buildPayload(st, { withKeys = false } = {}) {
+export function buildPayload(st, { vault = null } = {}) {
   const settings = {};
   for (const [k, v] of Object.entries(st.settings || {})) {
-    if (!syncableSetting(k, withKeys)) continue;
-    // 金鑰是空的就不上傳（不然會把另一台的金鑰清掉）
-    if (KEY_SETTINGS.has(k) && !v) continue;
-    settings[k] = v;
+    if (syncableSetting(k)) settings[k] = v;
   }
-  return {
+  const out = {
     v: 1,
     settings,
     vocab: st.vocab || [],
@@ -71,6 +66,9 @@ export function buildPayload(st, { withKeys = false } = {}) {
     daily: st.daily || {},
     coach: st.coach || {},
   };
+  // 加密過的金鑰保險箱（沒開金鑰同步就不放）
+  if (vault) out.vault = vault;
+  return out;
 }
 
 /** 記下「這次同步完的樣子」：每筆資料只存雜湊，很小 */
@@ -185,7 +183,7 @@ function sameProgress(a, b) {
  * remote 是雲端那份 payload（沒有雲端資料時傳 null）；base 是上次同步完的雜湊（第一次同步傳 null）。
  * 回傳 { pulledVocab, pulledSessions, settingsChanged, logAdded }
  */
-export function mergeInto(st, remote, base, { withKeys = false, logMax = 6000 } = {}) {
+export function mergeInto(st, remote, base, { logMax = 6000 } = {}) {
   const b = base || { vocab: {}, sessions: {}, settings: {} };
   const res = { pulledVocab: 0, pulledSessions: 0, settingsChanged: [], logAdded: 0 };
   if (!remote) return res;
@@ -241,21 +239,16 @@ export function mergeInto(st, remote, base, { withKeys = false, logMax = 6000 } 
     const hl = hashOf(lv);
     if (hl === hashOf(rv)) return;
     const empty = lv === undefined || lv === "";
-    const isKey = k === "geminiKey" || k === "groqKey";
-    // 本機沒改過 → 用雲端的。
-    // 金鑰：這台第一次參與金鑰同步時，以帳號裡的金鑰為準（也就是打開「同步金鑰」那台裝置的金鑰）
-    const localUntouched = bs[k] !== undefined ? hl === bs[k] : (isKey || firstSync || empty);
+    // 本機沒改過 → 用雲端的
+    const localUntouched = bs[k] !== undefined ? hl === bs[k] : (firstSync || empty);
     if (localUntouched) {
       st.settings[k] = rv;
       res.settingsChanged.push(k);
     }
   };
-  // 「同步金鑰」開關先合併，決定這一輪金鑰要不要一起合併
-  if ("syncKeys" in rs) adopt("syncKeys");
-  const keysOn = withKeys || !!st.settings.syncKeys;
+  // 舊版曾經以明文上傳金鑰：syncableSetting 會把它們擋掉，不會寫進本機；下次上傳就從雲端消失
   for (const k of Object.keys(rs)) {
-    if (k === "syncKeys" || !syncableSetting(k, keysOn)) continue;
-    adopt(k);
+    if (syncableSetting(k)) adopt(k);
   }
   return res;
 }

@@ -1965,7 +1965,7 @@ function renderSync() {
   badge.textContent = st.state === "syncing" ? "☁︎ …" : st.state === "error" ? "☁︎ !" : st.state === "offline" ? "☁︎ ✕" : "☁︎";
   badge.title = "雲端同步：" + (SYNC_TEXT[st.state] || SYNC_TEXT.off)(st);
   $("statsLede").textContent = st.user
-    ? "資料存在這台裝置，也會同步到你登入的 Google 帳號（只有你自己讀得到）。"
+    ? "資料存在這台裝置，也會同步到雲端（跟著你的 Google 帳號）。"
     : "所有資料都存在這台裝置的瀏覽器裡，沒有上傳到任何地方。";
   if (!st.configured) return;
 
@@ -1974,6 +1974,8 @@ function renderSync() {
     box.innerHTML = `
       <p class="note" style="margin-top:0">用 Google 帳號登入後，單字本、複習進度、對話紀錄和設定會自動存到雲端；
         換手機或電腦登入同一個帳號就能接著用。不登入也能照常使用，資料只存在這台裝置。</p>
+      <p class="note">雲端資料存在本網站的 Firebase 專案：其他使用者讀不到你的資料，但網站管理者技術上看得到單字本與對話紀錄。
+        API 金鑰不會以明文上傳（要同步金鑰時會先用你自己設的密碼加密）。</p>
       <div class="row"><button class="btn primary" type="button" id="btnSyncIn" ${st.loading ? "disabled" : ""}>
         ${st.loading ? "載入中…" : "用 Google 登入"}</button></div>
       ${st.state === "error" ? `<p class="note sync-err">${esc(st.error)}</p>` : ""}`;
@@ -1987,12 +1989,8 @@ function renderSync() {
       <div><b>${esc(st.user.name || st.user.email)}</b><small>${esc(st.user.name ? st.user.email : "")}</small></div>
     </div>
     <p class="note sync-state ${st.state}" style="margin:10px 0 0">${esc((SYNC_TEXT[st.state] || SYNC_TEXT.off)(st))}</p>
-    <label class="field sync-keys">
-      <input type="checkbox" id="cfgSyncKeys" ${s.syncKeys ? "checked" : ""} style="width:auto">
-      也同步 API 金鑰
-    </label>
-    <div class="note" style="margin-left:26px">打開後，Gemini／Groq 金鑰會存到你的雲端帳號（只有你登入才讀得到），
-      新裝置登入就不用再貼一次。這個開關會套用到同一帳號的每台裝置；關掉後下次同步會從雲端移除金鑰（各裝置本機的金鑰保留）。</div>
+    ${vaultHTML(st.vault)}
+    <p class="note" style="margin-top:12px">其他使用者讀不到你的資料；網站管理者技術上看得到單字本與對話紀錄，但看不到加密過的 API 金鑰。</p>
     <div class="row" style="margin-top:12px">
       <button class="btn" type="button" id="btnSyncNow" ${st.state === "syncing" ? "disabled" : ""}>立即同步</button>
       <div class="spacer"></div>
@@ -2004,12 +2002,115 @@ function renderSync() {
     await Sync.signOut();
     toast("已登出雲端同步");
   });
-  $("cfgSyncKeys").addEventListener("change", (e) => {
-    Store.settings().syncKeys = e.target.checked;
-    Store.save(true);
-    Sync.syncNow();
-  });
+  box.querySelectorAll("[data-vault]").forEach(b => b.addEventListener("click", () => vaultAction(b.dataset.vault)));
 }
+
+/* ---------- API 金鑰同步（端對端加密） ---------- */
+
+function vaultHTML(state) {
+  if (state === "unsupported") {
+    return `<div class="vault"><b>🔐 API 金鑰同步</b><p class="note">這個瀏覽器不支援加密功能（需要 https），金鑰不會同步。</p></div>`;
+  }
+  if (state === "off") {
+    return `<div class="vault"><b>🔐 API 金鑰同步：關閉</b>
+      <p class="note">金鑰只存在這台裝置，換裝置要重新貼一次。打開後，金鑰會先用你自己設的「同步密碼」在瀏覽器裡加密才上傳，
+        雲端只存密文，網站管理者也解不開；新裝置輸入同一組密碼就能取回。</p>
+      <button class="btn sm" type="button" data-vault="enable">設定同步密碼並開啟</button></div>`;
+  }
+  if (state === "locked") {
+    return `<div class="vault locked"><b>🔒 雲端有加密的 API 金鑰</b>
+      <p class="note">輸入你在其他裝置設定的同步密碼，就能把金鑰取回這台裝置。</p>
+      <div class="row"><button class="btn sm primary" type="button" data-vault="unlock">輸入同步密碼</button>
+        <button class="btn sm ghost" type="button" data-vault="reset">忘記密碼？</button>
+        <div class="spacer"></div><button class="btn sm ghost" type="button" data-vault="disable">關閉金鑰同步</button></div></div>`;
+  }
+  return `<div class="vault on"><b>🔐 API 金鑰同步：開啟（端對端加密）</b>
+    <p class="note">金鑰用你的同步密碼加密後才上傳，網站管理者也解不開。同一帳號的每台裝置都要輸入同一組密碼才能取回。</p>
+    <div class="row"><button class="btn sm" type="button" data-vault="reset">更改同步密碼</button>
+      <div class="spacer"></div><button class="btn sm ghost" type="button" data-vault="disable">關閉金鑰同步</button></div></div>`;
+}
+
+async function vaultAction(act) {
+  if (act === "disable") {
+    if (!confirm("關閉金鑰同步？雲端的加密金鑰會刪除，每台裝置上已經有的金鑰會保留。")) return;
+    await Sync.disableKeySync();
+    toast("已關閉金鑰同步");
+    return;
+  }
+  if (act === "unlock") return openVaultDialog("unlock");
+  if (act === "reset") {
+    if (Sync.status.vault === "locked" && !confirm("重設同步密碼會用「這台裝置」的金鑰建立新的加密保險箱，蓋掉雲端舊的；其他裝置之後要輸入新密碼。繼續嗎？")) return;
+    return openVaultDialog("set", true);
+  }
+  return openVaultDialog("set");
+}
+
+let dlgVault = null;
+function openVaultDialog(mode, isReset = false) {
+  if (!dlgVault) {
+    dlgVault = document.createElement("dialog");
+    dlgVault.className = "modal vault-dlg";
+    document.body.appendChild(dlgVault);
+  }
+  const set = mode === "set";
+  const s = Store.settings();
+  const noKey = set && !s.geminiKey && !s.groqKey;
+  dlgVault.innerHTML = `
+    <form method="dialog">
+      <div class="m-head"><h2>${set ? (isReset ? "設定新的同步密碼" : "設定同步密碼") : "輸入同步密碼"}</h2>
+        <p class="note" style="margin:0">${set
+          ? "這組密碼只用來在你的瀏覽器裡加密 API 金鑰，不會上傳，網站管理者也不知道。<b>忘記密碼就解不開</b>，只能重設並在每台裝置重新輸入。"
+          : "輸入你在其他裝置設定的同步密碼。"}</p></div>
+      <div class="m-body">
+        ${noKey ? `<p class="note sync-err">這台裝置還沒有 API 金鑰，加密的保險箱會是空的。可以先到設定貼上金鑰再來開啟。</p>` : ""}
+        <label class="field" for="vPass">同步密碼</label>
+        <input type="password" id="vPass" autocomplete="${set ? "new-password" : "current-password"}" minlength="8" required>
+        ${set ? `<label class="field" for="vPass2">再輸入一次</label>
+        <input type="password" id="vPass2" autocomplete="new-password" minlength="8" required>
+        <div class="note">至少 8 個字元；跟 Google 帳號密碼不同比較安全。</div>` : ""}
+        <p class="note vault-msg" aria-live="polite"></p>
+      </div>
+      <div class="m-foot">
+        <button class="btn ghost" type="button" data-x>取消</button>
+        <button class="btn primary" type="submit">${set ? "加密並上傳" : "解鎖"}</button>
+      </div>
+    </form>`;
+  const msg = dlgVault.querySelector(".vault-msg");
+  dlgVault.querySelector("[data-x]").addEventListener("click", () => dlgVault.close());
+  dlgVault.querySelector("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const p1 = dlgVault.querySelector("#vPass").value;
+    const btn = dlgVault.querySelector('button[type="submit"]');
+    if (p1.length < 8) { msg.textContent = "密碼至少要 8 個字元。"; return; }
+    if (set && p1 !== dlgVault.querySelector("#vPass2").value) { msg.textContent = "兩次輸入的密碼不一樣。"; return; }
+    btn.disabled = true;
+    msg.textContent = set ? "加密中…" : "解鎖中…（需要一兩秒）";
+    try {
+      if (set) {
+        await Sync.setKeyPassphrase(p1);
+        dlgVault.close();
+        toast(isReset ? "已用新密碼重新加密金鑰" : "已開啟金鑰同步（端對端加密）");
+      } else if (await Sync.unlockKeys(p1)) {
+        dlgVault.close();
+        toast("已取回 API 金鑰");
+      } else {
+        msg.textContent = "密碼不對，再試一次。";
+      }
+    } catch (err) {
+      msg.textContent = "失敗：" + err.message;
+    } finally {
+      btn.disabled = false;
+    }
+  });
+  dlgVault.showModal();
+  dlgVault.querySelector("#vPass").focus();
+}
+
+// 新裝置同步完發現雲端有加密金鑰：在引導畫面就直接問密碼，其他時候提示一下
+window.addEventListener("sync:locked", () => {
+  if (document.getElementById("dlgOnboard")?.open) openVaultDialog("unlock");
+  else toast("雲端有加密的 API 金鑰：到「紀錄 → 雲端同步」輸入同步密碼就能取回", 5000);
+});
 
 async function syncSignIn() {
   try {

@@ -21,12 +21,16 @@
 
 import * as Store from "./store.js";
 import * as M from "./syncmerge.js";
+import * as Vault from "./vault.js";
 import { firebaseConfig } from "./firebase-config.js";
 
 const SDK = "https://www.gstatic.com/firebasejs/12.3.0/";
 const BASE_KEY = "englishtalk.syncBase";   // 上次同步完的樣子：{ uid, rev, hash, base }
 const FLAG_KEY = "englishtalk.syncOn";     // 這台裝置登入過：下次打開自動載入 SDK
 const DEV_KEY = "englishtalk.deviceId";
+const VREMOTE = "englishtalk.vaultRemote";   // 雲端目前的金鑰保險箱（密文）；這台還沒解鎖時原樣保留，不會被蓋掉
+const VCACHE = "englishtalk.vaultCache";     // { fp, vault }：本機金鑰沒變就沿用同一個保險箱，不用重新上傳
+const VSEEN = "englishtalk.vaultSeen";       // 已經解開套用過的保險箱雜湊
 const DEBOUNCE_MS = 15000;                 // 改完資料 15 秒沒再動就上傳
 const MAX_WAIT_MS = 60000;                 // 一直有在改的話，最多 60 秒也要上傳一次
 
@@ -38,6 +42,7 @@ export const status = {
   state: "off",
   lastSync: 0,
   error: "",
+  vault: "off",        // 金鑰同步：off 沒開／ready 這台已解鎖／locked 要輸入同步密碼／unsupported 瀏覽器不支援
 };
 
 let fb = null;                 // { auth, db, A: auth 模組, F: firestore 模組 }
@@ -45,12 +50,19 @@ let sdkPromise = null;
 let timer = null, firstDirty = 0;
 let running = null, again = false;
 let unsubMeta = null;
+let lockedNotified = false;
 
 const lsGet = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
 const lsDel = (k) => { try { localStorage.removeItem(k); } catch (e) {} };
 
-function emit() { window.dispatchEvent(new CustomEvent("sync:status", { detail: status })); }
+const lsJSON = (k) => { try { return JSON.parse(lsGet(k) || "null"); } catch (e) { return null; } };
+const lsSetJSON = (k, v) => (v == null ? lsDel(k) : lsSet(k, JSON.stringify(v)));
+
+function emit() {
+  status.vault = vaultState();
+  window.dispatchEvent(new CustomEvent("sync:status", { detail: status }));
+}
 function setState(s, err = "") { status.state = s; status.error = err; emit(); }
 
 export function configured() {
@@ -169,6 +181,7 @@ export async function signOut() {
   if (status.user) { try { await syncNow(); } catch (e) {} }
   clearTimeout(timer); timer = null; firstDirty = 0;
   lsDel(BASE_KEY);
+  forgetVault();
   await fb.A.signOut(fb.auth);
 }
 
@@ -180,6 +193,7 @@ export async function forget() {
   clearTimeout(timer); timer = null; firstDirty = 0;
   lsDel(BASE_KEY);
   lsDel(FLAG_KEY);
+  forgetVault();
   if (fb) { try { await fb.A.signOut(fb.auth); } catch (e) {} }
   // SDK 還沒載入（這次沒用到同步）：直接刪掉 Firebase 記住登入狀態的資料庫，效果等於登出
   else { try { indexedDB.deleteDatabase("firebaseLocalStorageDb"); } catch (e) {} }
@@ -209,6 +223,10 @@ export function syncNow() {
       const res = await syncOnce();
       status.lastSync = Date.now();
       setState("idle");
+      if (status.vault === "locked" && !lockedNotified) {
+        lockedNotified = true;
+        window.dispatchEvent(new CustomEvent("sync:locked"));
+      }
       if (res && (res.pulledVocab || res.pulledSessions || res.logAdded || res.settingsChanged.length)) {
         window.dispatchEvent(new CustomEvent("sync:pulled", { detail: res }));
       }
@@ -239,7 +257,8 @@ async function syncOnce() {
     if (meta && meta.rev !== saved.rev) {
       const remote = await readRemote(uid, meta);
       if (!remote) continue;               // 讀到一半被別台改掉了，重來
-      const res = M.mergeInto(st, remote, saved.base, { withKeys: !!st.settings.syncKeys, logMax: Store.roomy() ? 50000 : 6000 });
+      const res = M.mergeInto(st, remote, saved.base, { logMax: Store.roomy() ? 50000 : 6000 });
+      await takeRemoteVault(st, remote.vault || null, res);
       if (res.pulledVocab || res.pulledSessions || res.logAdded || res.settingsChanged.length) {
         Store.save(true, { fromSync: true });
         pulled = pulled ? addRes(pulled, res) : res;
@@ -247,7 +266,7 @@ async function syncOnce() {
     }
 
     // 2. 本機跟雲端不一樣 → 上傳
-    const payload = M.buildPayload(st, { withKeys: !!st.settings.syncKeys });
+    const payload = M.buildPayload(st, { vault: await localVault(st) });
     const hash = M.hashOf(payload);
     let rev = meta ? (meta.rev || 0) : 0;
     if (!meta || hash !== meta.hash) {
@@ -261,6 +280,8 @@ async function syncOnce() {
 
     // 3. 記下這次同步完的樣子
     writeBase({ uid, rev, hash, base: M.snapshotBase(payload) });
+    lsSetJSON(VREMOTE, payload.vault || null);
+    if (payload.vault) { Vault.markUploaded(); lsSet(VSEEN, M.hashOf(payload.vault)); }
     return pulled;
   }
   throw new Error("雲端資料一直在變動，等一下再試");
@@ -309,6 +330,97 @@ async function writeRemote(uid, payload, hash, expectedRev, oldN) {
     });
   });
   return newRev;
+}
+
+/* ---------- API 金鑰（端對端加密） ---------- */
+
+function vaultState() {
+  if (!Vault.supported()) return "unsupported";
+  if (!Store.settings().syncKeys) return "off";
+  const lk = Vault.localKey(), rv = lsJSON(VREMOTE);
+  if (lk && (!rv || rv.salt === lk.salt || lk.fresh)) return "ready";
+  return "locked";
+}
+
+/** 雲端有沒有加密過的金鑰（決定按下「同步金鑰」時是要「設定密碼」還是「輸入密碼」） */
+export function remoteVault() { return lsJSON(VREMOTE); }
+
+/** 把解開的金鑰寫進本機設定 */
+function applyKeys(st, data, changed) {
+  for (const f of Vault.KEY_FIELDS) {
+    if (data[f] && st.settings[f] !== data[f]) { st.settings[f] = data[f]; changed.push(f); }
+  }
+}
+
+/** 拉到雲端資料時：記下雲端的保險箱；這台解得開而且是新的，就套用裡面的金鑰 */
+async function takeRemoteVault(st, rv, res) {
+  lsSetJSON(VREMOTE, rv);
+  if (!rv || !st.settings.syncKeys) return;
+  const h = M.hashOf(rv);
+  if (h === lsGet(VSEEN)) return;
+  const data = await Vault.open(rv);
+  if (!data) return;                       // 這台還沒解鎖，或別台改過密碼：等使用者輸入密碼
+  applyKeys(st, data, res.settingsChanged);
+  lsSet(VSEEN, h);
+  lsSetJSON(VCACHE, { fp: await Vault.fingerprint(st.settings), vault: rv });
+}
+
+/** 要上傳的保險箱 */
+async function localVault(st) {
+  if (!st.settings.syncKeys || !Vault.supported()) return null;
+  const lk = Vault.localKey(), rv = lsJSON(VREMOTE);
+  if (!lk) return rv;                                      // 這台還沒解鎖：原樣保留雲端的
+  if (rv && rv.salt !== lk.salt && !lk.fresh) return rv;   // 別台改過密碼、這台還沒重新解鎖
+  const fp = await Vault.fingerprint(st.settings);
+  const c = lsJSON(VCACHE);
+  if (c && c.fp === fp && c.vault && c.vault.salt === lk.salt) return c.vault;
+  const v = await Vault.seal(st.settings);
+  lsSetJSON(VCACHE, { fp, vault: v });
+  return v;
+}
+
+function forgetVault() {
+  Vault.forget();
+  lsDel(VREMOTE); lsDel(VCACHE); lsDel(VSEEN);
+  lockedNotified = false;
+}
+
+/** 打開金鑰同步（第一次）或重設同步密碼：用這台的金鑰建立新的保險箱，蓋掉雲端舊的 */
+export async function setKeyPassphrase(pass) {
+  await Vault.setPassphrase(pass);
+  lsDel(VCACHE);
+  Store.settings().syncKeys = true;
+  Store.save(true);
+  emit();
+  await syncNow();
+}
+
+/** 新裝置：輸入同步密碼，打開雲端的保險箱。密碼錯回傳 false */
+export async function unlockKeys(pass) {
+  const rv = lsJSON(VREMOTE);
+  if (!rv) return false;
+  const data = await Vault.unlock(pass, rv);
+  if (!data) return false;
+  const st = Store.load();
+  const changed = [];
+  applyKeys(st, data, changed);
+  lsSet(VSEEN, M.hashOf(rv));
+  lsSetJSON(VCACHE, { fp: await Vault.fingerprint(st.settings), vault: rv });
+  Store.save(true, { fromSync: true });
+  emit();
+  window.dispatchEvent(new CustomEvent("sync:pulled", {
+    detail: { pulledVocab: 0, pulledSessions: 0, logAdded: 0, settingsChanged: changed } }));
+  syncNow();
+  return true;
+}
+
+/** 關掉金鑰同步：下次同步會把雲端的保險箱刪掉（各裝置本機的金鑰保留） */
+export async function disableKeySync() {
+  Store.settings().syncKeys = false;
+  Store.save(true);
+  forgetVault();
+  emit();
+  await syncNow();
 }
 
 /* ---------- 錯誤訊息 ---------- */

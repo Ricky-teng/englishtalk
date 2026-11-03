@@ -52,7 +52,7 @@ function emptyState() {
       grammarCheck: "live",          // live = 每句說完就在旁邊標出修正，end = 對話結束一次檢查，off
       // 查字、新增單字、文法檢查用的 Gemini 模型：auto = gemini-3.5-flash-lite，same = 跟對話同一個
       geminiToolModel: "auto",
-      syncKeys: false,               // 雲端同步時要不要連 API 金鑰一起同步（預設不要；只在這台裝置有效）
+      syncKeys: false,               // 雲端同步時要不要連 API 金鑰一起同步（端對端加密，見 vault.js；這個開關本身會同步到每台裝置）
     },
     vocab: [],     // 單字本（含 FSRS 與 SM-2 間隔重複欄位）
     lookups: {},   // 查詢快取：查過的字永久留著，同一個字一輩子只查一次
