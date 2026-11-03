@@ -10,10 +10,11 @@
  * 留空（apiKey 或 projectId 是空字串）＝ 網站不顯示雲端同步，其他功能照常。
  */
 export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: "",
+  apiKey: "AIzaSyCtvfUiBeqVCbryGMV0Es4WabuGM4Cbi90",
+  authDomain: "englishtalk-32915.firebaseapp.com",
+  projectId: "englishtalk-32915",
+  storageBucket: "englishtalk-32915.firebasestorage.app",
+  messagingSenderId: "166978225035",
+  appId: "1:166978225035:web:6f44a56f63067ce733e58e",
+  measurementId: "G-REE5XPH1V2"
 };
