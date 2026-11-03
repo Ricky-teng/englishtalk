@@ -52,6 +52,8 @@ export function initLookup(h) {
     openLookup(phrase, { rect, context: bubble.dataset.context || "", anchor: null });
   });
 
+  // 按下去的那一刻就決定要查哪個字（capture：比按鈕自己的處理還早），放開時才真的查
+  document.addEventListener("pointerdown", onDown, true);
   document.addEventListener("click", onClick);
   document.addEventListener("mousemove", onMove, { passive: true });
   document.addEventListener("mouseup", onMouseUp);
@@ -125,6 +127,31 @@ function sentenceAround(node, word) {
    事件
    ========================================================================= */
 
+/*
+ * 為什麼不在 click 的時候才找字：
+ * 點「下一題」「翻面」這類按鈕時，按鈕自己的處理會先把畫面換掉，
+ * 等 click 事件傳到 document，同一個位置底下已經是「下一頁」的字了，結果就誤查了一個你根本沒點的字。
+ * 所以改成在 pointerdown（畫面還沒換）時記下手指底下的字，click 時只查那個字；
+ * 按下去時底下是按鈕、或剛按完按鈕畫面還在換，就不查。
+ */
+const UI_TAP = "button, a, input, select, textarea, label, summary, [role=button], [role=tab], [role=menuitem], [contenteditable]";
+const UI_COOLDOWN_MS = 400;   // 按完按鈕後這段時間內的點擊不查字（連點兩下時第二下常落在新畫面的字上）
+const TAP_SLOP_PX = 12;       // 按下到放開移動超過這個距離就當成拖曳／捲動
+let downHit = null;           // { hit, context, x, y, t }
+let lastUiTapAt = 0;
+
+function onDown(e) {
+  downHit = null;
+  if (e.button > 0 || !e.isPrimary) return;
+  const now = performance.now();
+  const t = e.target;
+  if (t && t.closest && t.closest(UI_TAP)) { lastUiTapAt = now; return; }
+  if (now - lastUiTapAt < UI_COOLDOWN_MS) return;
+  const hit = wordAtPoint(e.clientX, e.clientY);
+  downHit = { hit, context: hit ? sentenceAround(hit.node, hit.word) : "",
+              dlg: hit ? hit.node.parentElement.closest("dialog[open]") : null, x: e.clientX, y: e.clientY, t: now };
+}
+
 function onClick(e) {
   // 彈窗裡的按鈕自己處理
   if (e.target.closest("#wordPop button, .sel-bubble")) return;
@@ -133,17 +160,24 @@ function onClick(e) {
   const sel = window.getSelection();
   if (sel && !sel.isCollapsed && sel.toString().trim().includes(" ")) return;
 
-  const hit = wordAtPoint(e.clientX, e.clientY);
+  // 只認「按下去時就在手指底下」的字；鍵盤觸發的 click（沒有 pointerdown）不查字
+  const d = downHit;
+  downHit = null;
+  const sameTap = d && performance.now() - d.t < 1500
+    && Math.hypot(e.clientX - d.x, e.clientY - d.y) <= TAP_SLOP_PX;
+  const hit = sameTap ? d.hit : null;
   if (hit && pop.contains(hit.node.parentElement)) {
     // 在彈窗裡點例句的字：原地換內容，不要跳位置
-    openLookup(hit.word, { context: sentenceAround(hit.node, hit.word) });
+    openLookup(hit.word, { context: d.context });
     return;
   }
   if (hit) {
+    // 按住的期間文字被重畫了（例如 AI 還在打字）：字還是按下時那個，只是改用按下時的位置
+    const alive = hit.node.isConnected;
     openLookup(hit.word, {
       rect: hit.rect,
-      context: sentenceAround(hit.node, hit.word),
-      anchor: hit.node.parentElement,
+      context: d.context,
+      anchor: alive ? hit.node.parentElement : (d.dlg && d.dlg.open ? d.dlg : null),
     });
     return;
   }
