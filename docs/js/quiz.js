@@ -6,7 +6,7 @@
  *   🧩 例句填空   在句子裡用對（含詞形）
  *   ⌨️ 拼字       完全靠自己拼出來（最難）
  *   🎧 聽寫       聽得懂、拼得出來（要戴耳機）
- *   🔀 混合       依每個字的熟練度自動換題型 —— 新字先認、熟了再逼你拼
+ *   🔀 混合       優先考這個字還沒通過的能力（認得 → 想得起 → 拼得出），都過了再輪著考
  *   🎮 配對遊戲   暖身用，不影響複習排程
  *
  * 全部在本地判分，不呼叫 API。每一題都會寫進作答紀錄，給「個人分析」用。
@@ -18,7 +18,7 @@ import { vocab, lookups, settings, save } from "./store.js";
 import { openShadow } from "./shadow.js";
 
 export const QUIZ_MODES = {
-  mixed:  { icon: "🔀", name: "混合", tip: "依每個字的熟練度自動換題型：新字先「看英選中」，熟了改成填空和拼字。錯的字這輪最後會再考一次。（推薦）" },
+  mixed:  { icon: "🔀", name: "混合", tip: "優先考每個字還沒通過的能力：先「看英選中」，再「看中選英」，再填空／拼字／聽寫；三項都過了就輪著考。錯的字這輪最後會再考一次。（推薦）" },
   mcEn:   { icon: "✅", name: "看英選中", tip: "看英文，從四個中文裡選出意思。最輕鬆，適合剛加入的字。" },
   mcZh:   { icon: "🔁", name: "看中選英", tip: "看中文，從四個英文裡選出正確的字。" },
   cloze:  { icon: "🧩", name: "例句填空", tip: "例句挖掉一個字，打出正確的形態（例如 negotiated）。沒有例句的字會改成拼字題。" },
@@ -101,6 +101,12 @@ export function clozeOf(card) {
 
 /** 混合模式：依熟練度決定題型（由易到難的「漸進式回想」） */
 function pickType(card) {
+  // 先補還沒通過（或答錯退回）的能力：認得 → 想得起 → 拼得出
+  const sk = card.sk || {};
+  if (sk.see !== 1) return "mcEn";
+  if (sk.recall !== 1) return "mcZh";
+  if (sk.write !== 1) return clozeOf(card) ? "cloze" : "spell";   // 聽寫要開聲音，不主動出
+  // 三項都過了：照熟練度輪著考，維持住
   const r = card.reps || 0;
   const relapse = (card.lapses || 0) > 0 && (card.interval || 0) === 0;
   if (r === 0 && !relapse) return "mcEn";

@@ -25,6 +25,7 @@ import { initWhatsNew, maybeShowWhatsNew, openWhatsNew, APP_VERSION } from "./wh
 await Store.init();
 window.__etState = () => Store.load();   // 給自動測試與除錯用：目前記憶體中的資料
 Sync.init();                             // 雲端同步：網站沒設定 Firebase 或沒登入過就什麼都不做
+V.backfillSkills();                      // 舊單字從作答紀錄補上能力進度（只做一次）
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => {
@@ -703,7 +704,7 @@ function renderVocab() {
   $("vocabCounts").innerHTML = `
     <div class="tile"><div class="t-label">總單字</div><div class="t-value">${c.total}</div></div>
     <div class="tile"><div class="t-label">待複習</div><div class="t-value">${c.due}</div></div>
-    <div class="tile" title="卡片複習間隔 21 天以上"><div class="t-label">認得</div><div class="t-value">${c.mastered}</div></div>
+    <div class="tile" title="認得、想得起、拼得出三項都通過，而且複習間隔 21 天以上"><div class="t-label">OK</div><div class="t-value">${c.mastered}</div></div>
     <div class="tile" title="在對話中自己用過；${c.spokenOften} 個用過 3 次以上"><div class="t-label">說得出</div><div class="t-value">${c.spoken}</div></div>`;
 
   // 標籤下拉
@@ -757,9 +758,11 @@ function renderVocab() {
     const item = el("div", "vitem");
     const main = el("div", "vmain");
 
-    const line1 = el("div");
+    const line1 = el("div", "vline1");
     line1.appendChild(el("span", "vword", v.word));
     if (v.phonetic) line1.appendChild(el("span", "vipa", v.phonetic));
+    // 能力進度（認得／想得起／拼得出）
+    line1.insertAdjacentHTML("beforeend", V.skillBadgeHTML(v));
     main.appendChild(line1);
 
     const zhEl = sensesEl(v, "vzh");
@@ -1786,6 +1789,20 @@ function renderUsage() {
   Insights.attachTips(box);
 }
 
+/* ---------- 紀錄頁的小分頁（總覽／單字／口說／資料） ---------- */
+const STATS_SECS = ["overview", "vocab", "speak", "data"];
+let statsSec = (() => { try { const v = localStorage.getItem("englishtalk.statsSec"); return STATS_SECS.includes(v) ? v : "overview"; } catch (e) { return "overview"; } })();
+function showStatsSec(sec) {
+  statsSec = STATS_SECS.includes(sec) ? sec : "overview";
+  try { localStorage.setItem("englishtalk.statsSec", statsSec); } catch (e) {}
+  $("page-stats").dataset.sec = statsSec;
+  $("statsTabs").querySelectorAll("button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.sec === statsSec)));
+}
+$("statsTabs").querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+  showStatsSec(b.dataset.sec);
+  $("page-stats").querySelector(".scroll").scrollTop = 0;
+}));
+
 function renderStats() {
   renderStorage();
   renderSync();
@@ -1813,7 +1830,8 @@ function renderStats() {
 
   const dt = $("dailyTable");
   dt.innerHTML = "";
-  dt.appendChild(Stats.renderHeatmapTable(30));
+  dt.appendChild(Stats.renderHeatmapTable(14));
+  showStatsSec(statsSec);
 
   const box = $("sessionList");
   box.innerHTML = "";
@@ -2126,6 +2144,7 @@ window.addEventListener("sync:status", renderSync);
 setInterval(() => { if (Sync.status.user && $("page-stats").classList.contains("active")) renderSync(); }, 60000);
 $("badgeSync").addEventListener("click", () => {
   showTab("stats");
+  showStatsSec("data");
   $("syncCard").scrollIntoView({ behavior: "smooth", block: "center" });
 });
 

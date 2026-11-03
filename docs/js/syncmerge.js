@@ -98,7 +98,7 @@ function newerCard(l, r) {
 
 /** 兩邊都改過的對話紀錄：輪數多的（比較完整的）贏 */
 function newerSession(l, r) {
-  const n = (s) => (s.turns ? s.turns.length : 0) + (s.end || 0) / 1e13;
+  const n = (s) => (Array.isArray(s.messages) ? s.messages.length : (s.turns || 0)) + (s.end || 0) / 1e13;
   return n(r) > n(l) ? "r" : "l";
 }
 

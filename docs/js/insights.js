@@ -91,6 +91,12 @@ export function compute() {
     stable: vocab.filter(v => (v.interval || 0) >= 7).length,
     spoken: vocab.filter(v => (v.produced || 0) >= 1).length,
     fluent: vocab.filter(v => (v.produced || 0) >= 3).length,
+    // 能力進度（見 vocab.js 的 SKILLS）
+    see: vocab.filter(v => v.sk && v.sk.see === 1).length,
+    recall: vocab.filter(v => v.sk && v.sk.recall === 1).length,
+    write: vocab.filter(v => v.sk && v.sk.write === 1).length,
+    all3: vocab.filter(v => V.skillsDone(v) === 3).length,
+    ok: vocab.filter(V.isMastered).length,
   };
   const passiveGap = vocab.filter(v => (v.interval || 0) >= 7 && !(v.produced || 0));
 
@@ -105,7 +111,7 @@ export function compute() {
     const r = tagMap.get(t);
     r.total++;
     if (!(v.reps || 0)) r.fresh++;
-    else if ((v.interval || 0) >= 21) r.mastered++;
+    else if (V.isMastered(v)) r.mastered++;
     else r.learning++;
     if ((v.produced || 0) > 0) r.spoken++;
   }
@@ -313,15 +319,15 @@ export function render(container, d, act) {
 
   // 各課進度：三段有順序的堆疊條（新字 → 學習中 → 熟練）
   const tagBars = d.tags.length ? `
-    <div class="dv-legend"><span><i class="lv0"></i>新字</span><span><i class="lv1"></i>學習中</span><span><i class="lv2"></i>熟練（間隔 21 天以上）</span></div>
+    <div class="dv-legend"><span><i class="lv0"></i>新字</span><span><i class="lv1"></i>學習中</span><span><i class="lv2"></i>OK（三項能力＋間隔 21 天）</span></div>
     <div class="sb">${d.tags.map(t => {
       const seg = (n, cls, name) => n ? `<span class="sb-seg ${cls}" style="flex:${n}" data-tip="${esc(`${t.tag}・${name} ${n} 個`)}"></span>` : "";
-      return `<div class="sb-row" tabindex="0" data-tip="${esc(`${t.tag}：共 ${t.total} 個，熟練 ${t.mastered}、學習中 ${t.learning}、新字 ${t.fresh}；對話中說出過 ${t.spoken} 個`)}">
+      return `<div class="sb-row" tabindex="0" data-tip="${esc(`${t.tag}：共 ${t.total} 個，OK ${t.mastered}、學習中 ${t.learning}、新字 ${t.fresh}；對話中說出過 ${t.spoken} 個`)}">
         <span class="hb-label">${esc(t.tag)}</span>
-        <span class="sb-track">${seg(t.fresh, "lv0", "新字")}${seg(t.learning, "lv1", "學習中")}${seg(t.mastered, "lv2", "熟練")}</span>
+        <span class="sb-track">${seg(t.fresh, "lv0", "新字")}${seg(t.learning, "lv1", "學習中")}${seg(t.mastered, "lv2", "OK")}</span>
         <span class="hb-val">${Math.round(t.mastered / t.total * 100)}%</span></div>`;
     }).join("")}</div>
-    ${table(["標籤", "新字", "學習中", "熟練", "說出過", "總數"], d.tags.map(t => [t.tag, t.fresh, t.learning, t.mastered, t.spoken, t.total]))}`
+    ${table(["標籤", "新字", "學習中", "OK", "說出過", "總數"], d.tags.map(t => [t.tag, t.fresh, t.learning, t.mastered, t.spoken, t.total]))}`
     : `<p class="muted note">幫單字加上標籤（例如「第三課」）就能在這裡看到每一課的進度。</p>`;
 
   const fmax = Math.max(1, ...d.forecast.map(f => f.count));
@@ -343,7 +349,7 @@ export function render(container, d, act) {
     : `<p class="muted note">開始對話之後，這裡會顯示你每週平均每句說幾個字。</p>`;
 
   container.innerHTML = `
-    <div class="card ins-card">
+    <div class="card ins-card" data-sec="overview">
       <h3>給你的分析</h3>
       <div class="ins-list">${msgs.map((x, i) => `
         <div class="ins-item"><span class="ins-icon">${x.icon}</span>
@@ -360,24 +366,27 @@ export function render(container, d, act) {
     </div>
 
     <div class="dv-grid">
-      <div class="card">
+      <div class="card" data-sec="vocab">
         <h3>單字掌握度</h3>
-        <p class="dv-sub">從「收進單字本」到「對話中脫口而出」，你的字卡在哪一關？</p>
+        <p class="dv-sub">每項能力通過了幾個字。三項都過、複習間隔又滿 21 天，才算 OK。</p>
         ${hbars([
           { label: "單字本", value: m.total },
-          { label: "複習過", value: m.reviewed },
-          { label: "穩定認得", value: m.stable },
-          { label: "說出過", value: m.spoken },
-          { label: "說出 3 次+", value: m.fluent },
+          { label: "👀 認得", value: m.see },
+          { label: "💭 想得起", value: m.recall },
+          { label: "✍️ 拼得出", value: m.write },
+          { label: "三項都過", value: m.all3 },
+          { label: "OK", value: m.ok },
+          { label: "🗣️ 說出過", value: m.spoken },
         ], { max: m.total || 1, tip: (r) => ({
-          "單字本": "單字本裡的所有字", "複習過": "至少複習過一次",
-          "穩定認得": "複習間隔已經拉到 7 天以上", "說出過": "在對話或用說的複習中自己說出來過",
-          "說出 3 次+": "說出來 3 次以上，算是真的會用了" }[r.label] + `：${r.value} 個`) })}
+          "單字本": "單字本裡的所有字", "👀 認得": "翻卡或看英選中最近一次答對",
+          "💭 想得起": "看中選英或拼字最近一次答對", "✍️ 拼得出": "拼字、聽寫或例句填空最近一次答對",
+          "三項都過": "三項能力都通過（間隔還不一定滿 21 天）", "OK": "三項都過，而且複習間隔 21 天以上",
+          "🗣️ 說出過": "在對話或用說的複習中自己說出來過（加分）" }[r.label] + `：${r.value} 個`) })}
         ${d.recall ? `<div class="dv-foot">依遺忘曲線推算，複習過的 ${d.recall.n} 個字裡，你現在大約還記得 <b>${d.recall.sum}</b> 個（平均 ${pct(d.recall.avg)}）。</div>` : ""}
-        ${table(["階段", "字數"], [["單字本", m.total], ["複習過", m.reviewed], ["穩定認得（間隔 7 天+）", m.stable], ["說出過", m.spoken], ["說出 3 次+", m.fluent]])}
+        ${table(["階段", "字數"], [["單字本", m.total], ["認得", m.see], ["想得起", m.recall], ["拼得出", m.write], ["三項都過", m.all3], ["OK", m.ok], ["說出過", m.spoken]])}
       </div>
 
-      <div class="card">
+      <div class="card" data-sec="vocab">
         <h3>各題型答對率</h3>
         <p class="dv-sub">最近 30 天。哪種題型最弱，就是你卡住的地方。</p>
         ${d.byMode.length ? hbars(d.byMode.map(x => ({ label: x.name, value: x.rate, n: x.n, ms: x.ms })),
@@ -388,26 +397,26 @@ export function render(container, d, act) {
         ${d.retention.rate != null ? `<div class="dv-foot">記憶保持率 <b>${pct(d.retention.rate)}</b>（最近 30 天 ${d.retention.n} 次作答）</div>` : ""}
       </div>
 
-      <div class="card">
+      <div class="card" data-sec="vocab">
         <h3>各課進度</h3>
-        <p class="dv-sub">依標籤分組，看每一課離「熟練」還差多少。</p>
+        <p class="dv-sub">依標籤分組，看每一課離「OK」還差多少。</p>
         ${tagBars}
       </div>
 
-      <div class="card">
+      <div class="card" data-sec="overview">
         <h3>未來 7 天的複習量</h3>
         <p class="dv-sub">先知道哪天會比較多，就能提早分散。</p>
         ${forecast}
       </div>
 
-      <div class="card">
+      <div class="card" data-sec="speak">
         <h3>口說：平均每句幾個字</h3>
         <p class="dv-sub">最近 8 週。句子越長，代表你越敢多講。</p>
         ${speechChart}
         <div class="dv-foot">你在對話中總共用過 <b>${d.speech.activeVocab}</b> 個不同的英文字${d.speech.newThisWeek.length ? `，這週新用了 <b>${d.speech.newThisWeek.length}</b> 個` : ""}。</div>
       </div>
 
-      <div class="card">
+      <div class="card" data-sec="speak">
         <h3>常犯的文法錯誤</h3>
         <p class="dv-sub">最近 30 天，對話中被標出修正的句子，依錯誤類型分。</p>
         ${d.grammar.types.length ? hbars(d.grammar.types.slice(0, 6).map(t => ({ label: t.label, value: t.n, ex: t.examples })),
@@ -421,7 +430,7 @@ export function render(container, d, act) {
         ${d.grammar.checked ? `<div class="dv-foot">檢查了 <b>${d.grammar.checked}</b> 句，<b>${pct(d.grammar.rate)}</b> 完全沒問題。</div>` : ""}
       </div>
 
-      <div class="card">
+      <div class="card" data-sec="vocab">
         <h3>最難的字</h3>
         <p class="dv-sub">忘記兩次以上的字，忘越多次排越前面。</p>
         ${d.leeches.length ? `<div class="leech-list">${d.leeches.map(v => `
@@ -429,11 +438,15 @@ export function render(container, d, act) {
           <span class="lc" data-tip="${esc(`忘記 ${v.lapses} 次`)}">忘 ${v.lapses} 次</span></div>`).join("")}</div>
           <button class="btn sm" data-act="leeches" style="margin-top:10px">專攻這幾個字</button>`
           : `<p class="muted note">目前沒有反覆忘記的字 👍</p>`}
-        ${d.speech.overused.length ? `<h3 style="margin-top:18px">你最常用的「萬用字」</h3>
-          <div class="leech-list">${d.speech.overused.map(o => `
-            <div class="leech"><span class="lw">${esc(o.w)}</span><span class="lc">${o.n} 次</span>
-            <span class="muted">${o.alts.length ? "試試 " + esc(o.alts.join("、")) : "換成具體的名詞"}</span></div>`).join("")}</div>` : ""}
       </div>
+
+      ${d.speech.overused.length ? `<div class="card" data-sec="speak">
+        <h3>你最常用的「萬用字」</h3>
+        <p class="dv-sub">對話中用太多次的字，換個更具體的說法會更自然。</p>
+        <div class="leech-list">${d.speech.overused.map(o => `
+          <div class="leech"><span class="lw">${esc(o.w)}</span><span class="lc">${o.n} 次</span>
+          <span class="muted">${o.alts.length ? "試試 " + esc(o.alts.join("、")) : "換成具體的名詞"}</span></div>`).join("")}</div>
+      </div>` : ""}
     </div>`;
 
   container.querySelectorAll("[data-act]").forEach(b => b.addEventListener("click", () => act(b.dataset.act, b)));

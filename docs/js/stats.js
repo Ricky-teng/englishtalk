@@ -300,7 +300,8 @@ export function renderHeatmapTable(days = 30) {
     if (!row) continue;
     any = true;
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${k}</td><td>${fmtDuration(row.seconds)}</td>`
+    // 日期只顯示「月/日」，手機上一列放得下
+    tr.innerHTML = `<td title="${k}">${+k.slice(5, 7)}/${+k.slice(8, 10)}</td><td>${fmtDuration(row.seconds)}</td>`
                  + `<td>${row.turns || 0}</td><td>${row.userWords || 0}</td>`
                  + `<td>${row.produced || 0}</td><td>${row.reviews || 0}</td>`;
     tb.appendChild(tr);

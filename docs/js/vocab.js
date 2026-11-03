@@ -636,6 +636,81 @@ export function due(tag = "") {
     });
 }
 
+/* =========================================================================
+   能力進度：一個字要「認得、想得起、拼得出」三項都通過，再加上複習間隔 21 天以上，才算 OK。
+   每項記的是「最近一次相關題型的結果」：答對＝通過（1），之後又答錯＝退回（0），沒考過＝沒有這個欄位。
+   「說得出」是加分項目，不影響 OK。
+   ========================================================================= */
+
+export const SKILLS = [
+  { id: "see",    icon: "👀", name: "認得",   modes: ["flip", "mcEn"],            tip: "翻卡或看英選中答對" },
+  { id: "recall", icon: "💭", name: "想得起", modes: ["mcZh", "spell"],           tip: "看中選英或拼字答對" },
+  { id: "write",  icon: "✍️", name: "拼得出", modes: ["spell", "listen", "cloze"], tip: "拼字、聽寫或例句填空答對" },
+  { id: "say",    icon: "🗣️", name: "說得出", modes: ["speak"], optional: true,   tip: "用說的複習答對，或在對話中自己說出來（加分，不影響 OK）" },
+];
+export const REQUIRED_SKILLS = SKILLS.filter(x => !x.optional).map(x => x.id);
+export const MASTER_DAYS = 21;
+
+/** 依這次作答更新能力（同一個題型可能同時算兩項，例如拼字） */
+function applySkill(card, mode, ok) {
+  for (const sk of SKILLS) {
+    if (!sk.modes.includes(mode)) continue;
+    card.sk = card.sk || {};
+    card.sk[sk.id] = ok ? 1 : 0;
+  }
+}
+
+/** 三項必要能力過了幾項 */
+export function skillsDone(card) {
+  const sk = (card && card.sk) || {};
+  return REQUIRED_SKILLS.filter(id => sk[id] === 1).length;
+}
+
+/**
+ * 單字旁邊的進度標記：👀💭✍️ 三格（亮＝通過、紅框＝答錯退回、淡＝還沒考過）＋「2/3」或「OK」。
+ * 「說得出」通過時多一個 🗣️。
+ */
+export function skillBadgeHTML(card) {
+  const sk = (card && card.sk) || {};
+  const done = skillsDone(card);
+  const ok = isMastered(card);
+  const cells = SKILLS.filter(x => !x.optional).map(x => {
+    const st = sk[x.id] === 1 ? "on" : sk[x.id] === 0 ? "bad" : "";
+    return `<i class="${st}" title="${x.name}：${st === "on" ? "通過" : st === "bad" ? "最近一次答錯" : "還沒考過"}（${x.tip}）">${x.icon}</i>`;
+  }).join("");
+  const say = sk.say === 1 ? `<i class="on say" title="說得出：通過（加分）">🗣️</i>` : "";
+  let label, why;
+  if (ok) { label = "OK"; why = "三項都通過，而且複習間隔 21 天以上"; }
+  else if (done === REQUIRED_SKILLS.length) {
+    label = "3/3"; why = `三項都通過了，複習間隔還要拉到 ${MASTER_DAYS} 天以上才算 OK（目前 ${card.interval || 0} 天）`;
+  } else { label = `${done}/3`; why = "認得、想得起、拼得出三項都要通過才算 OK"; }
+  return `<span class="skp${ok ? " ok" : ""}" title="${why}">${cells}${say}<b>${label}</b></span>`;
+}
+
+/** OK = 三項都通過，而且複習間隔 21 天以上 */
+export function isMastered(card) {
+  return !!card && skillsDone(card) === REQUIRED_SKILLS.length && (card.interval || 0) >= MASTER_DAYS;
+}
+
+/**
+ * 舊資料補上能力進度：照作答紀錄的時間順序重播一次（只補還沒有 sk 欄位的卡）。
+ * 作答紀錄有上限，很久以前的可能已經被清掉，那些字就從現在開始累積。
+ */
+export function backfillSkills() {
+  const need = vocab().filter(v => !v.sk);
+  if (!need.length) return 0;
+  const byWord = new Map(need.map(v => [v.word.toLowerCase(), v]));
+  for (const v of need) v.sk = {};
+  const log = load().reviewLog || [];
+  for (const r of log) {
+    const c = byWord.get(String(r.w || "").toLowerCase());
+    if (c) applySkill(c, r.m || "flip", (r.q || 0) >= 3);
+  }
+  for (const v of need) if ((v.produced || 0) > 0) v.sk.say = 1;
+  save();
+  return need.length;
+}
+
 export function counts(tag = "") {
   const all = tag ? vocab().filter(v => (v.tags || []).includes(tag)) : vocab();
   const today = todayKey();
@@ -643,8 +718,8 @@ export function counts(tag = "") {
     total: all.length,
     due: all.filter(v => v.due <= today).length,
     fresh: all.filter(v => v.reps === 0).length,
-    learning: all.filter(v => v.reps > 0 && v.interval < 21).length,
-    mastered: all.filter(v => v.interval >= 21).length,
+    learning: all.filter(v => v.reps > 0 && !isMastered(v)).length,
+    mastered: all.filter(isMastered).length,
     // 「說得出來」是另一條線：在對話中自己用出來過的字
     spoken: all.filter(v => (v.produced || 0) > 0).length,
     spokenOften: all.filter(v => (v.produced || 0) >= 3).length,
@@ -716,6 +791,8 @@ export function grade(id, quality, meta = {}) {
   if (!card) return null;
   const repsBefore = card.reps || 0;
   const mode = meta.mode || "flip";
+  // 能力進度：練習（還沒到期）也算，答對過關、答錯退回
+  applySkill(card, mode, quality >= 3);
 
   // 還沒到期的字 = 練習：只記錄作答（給分析用），不動排程。
   // 間隔重複的效果來自「快忘的時候才複習」；提早複習再按「普通」會把間隔拉長，等於騙過演算法。
@@ -947,6 +1024,8 @@ export function markProduced(cards) {
   for (const c of cards) {
     c.produced = (c.produced || 0) + 1;
     c.lastProduced = now;
+    c.sk = c.sk || {};
+    c.sk.say = 1;          // 對話中自己說出來：「說得出」通過
   }
   save();
   return cards;

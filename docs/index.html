@@ -62,6 +62,7 @@
     <div class="scroll"><div class="wrap">
       <h2 class="title">單字本</h2>
       <p class="lede">在對話中點任何英文字就會收進來。到期的字會出現在複習，AI 也會在聊天中自然用出來。</p>
+      <p class="note sk-legend">每個字旁邊的 👀 認得・💭 想得起・✍️ 拼得出 是能力進度：三項都答對過、而且複習間隔 21 天以上才算 <b>OK</b>；之後又答錯會退回（紅框）。🗣️ 說得出是加分。</p>
 
       <!-- 動作：常用的兩個直接放，其他收進「更多」 -->
       <div class="vocab-actions">
@@ -119,37 +120,35 @@
       <h2 class="title">練習紀錄</h2>
       <p class="lede" id="statsLede">所有資料都存在這台裝置的瀏覽器裡，沒有上傳到任何地方。</p>
 
-      <div id="statTiles" class="tiles"></div>
+      <!-- 紀錄頁分成四個小分頁；每張卡片用 data-sec 標出屬於哪一頁 -->
+      <div class="subtabs" role="tablist" id="statsTabs">
+        <button type="button" role="tab" data-sec="overview">總覽</button>
+        <button type="button" role="tab" data-sec="vocab">單字</button>
+        <button type="button" role="tab" data-sec="speak">口說</button>
+        <button type="button" role="tab" data-sec="data">資料</button>
+      </div>
+
+      <div id="statTiles" class="tiles" data-sec="overview"></div>
 
       <div id="insights"></div>
 
-      <div class="card">
+      <div class="card" data-sec="overview">
         <h3>練習熱力圖</h3>
         <div id="heatmap"></div>
       </div>
 
-      <div class="card">
-        <h3>每日明細</h3>
-        <div class="table-scroll" id="dailyTable"></div>
-      </div>
-
-      <div class="card">
-        <h3>AI 用量</h3>
-        <div id="aiUsage"></div>
-      </div>
-
-      <div class="card">
+      <div class="card" data-sec="speak">
         <h3>對話紀錄</h3>
         <div id="sessionList"></div>
       </div>
 
       <!-- 雲端同步：網站有設定 Firebase 才會出現 -->
-      <div class="card" id="syncCard" hidden>
+      <div class="card" id="syncCard" data-sec="data" hidden>
         <h3>☁️ 雲端同步</h3>
         <div id="syncBox"></div>
       </div>
 
-      <div class="card">
+      <div class="card" data-sec="data">
         <h3>備份</h3>
         <p class="note" style="margin-top:0">匯出的檔案包含單字本、對話紀錄與統計，但<strong>不含 API 金鑰</strong>。換電腦時匯入即可延續進度。</p>
         <div id="storageInfo" class="storage-info"></div>
@@ -160,6 +159,17 @@
           <button class="btn danger" id="btnWipe">清除所有資料</button>
         </div>
         <input type="file" id="importFile" accept="application/json,.json" hidden>
+      </div>
+
+      <div class="card" data-sec="data">
+        <h3>AI 用量</h3>
+        <div id="aiUsage"></div>
+      </div>
+
+      <div class="card" data-sec="data">
+        <h3>每日明細</h3>
+        <p class="dv-sub">最近 14 天有練習的日子。</p>
+        <div class="table-scroll" id="dailyTable"></div>
       </div>
     </div></div>
   </section>

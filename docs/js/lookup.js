@@ -347,7 +347,7 @@ function paint(d, already) {
   }
   const card = V.find(d.word);
   const stats = card && (card.reps || card.produced)
-    ? `<div class="wp-stats">複習 ${card.reps || 0} 次 · 說出 ${card.produced || 0} 次${card.due ? ` · 下次 ${card.due}` : ""}</div>`
+    ? `<div class="wp-stats">${V.skillBadgeHTML(card)} 複習 ${card.reps || 0} 次 · 說出 ${card.produced || 0} 次${card.due ? ` · 下次 ${card.due}` : ""}</div>`
     : "";
 
   pop.innerHTML = `
