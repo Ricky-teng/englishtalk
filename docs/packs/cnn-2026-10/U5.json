@@ -7,127 +7,447 @@
   {
    "w": "humanoid",
    "pos": "adj.",
-   "zh": "人形的"
+   "zh": "人形的",
+   "f": [],
+   "fam": [
+    {
+     "w": "human",
+     "pos": "n.",
+     "zh": "人類"
+    }
+   ]
   },
   {
    "w": "wow",
    "pos": "v.",
-   "zh": "令人驚豔"
+   "zh": "令人驚豔",
+   "f": [
+    {
+     "k": "past",
+     "w": "wowed"
+    },
+    {
+     "k": "pp",
+     "w": "wowed"
+    },
+    {
+     "k": "ing",
+     "w": "wowing"
+    },
+    {
+     "k": "s3",
+     "w": "wows"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "ambition",
    "pos": "n.",
-   "zh": "抱負"
+   "zh": "抱負",
+   "f": [
+    {
+     "k": "plural",
+     "w": "ambitions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "ambitious",
+     "pos": "adj.",
+     "zh": "有野心的"
+    }
+   ]
   },
   {
    "w": "stretch",
    "pos": "v.",
-   "zh": "延伸"
+   "zh": "延伸",
+   "f": [
+    {
+     "k": "past",
+     "w": "stretched"
+    },
+    {
+     "k": "pp",
+     "w": "stretched"
+    },
+    {
+     "k": "ing",
+     "w": "stretching"
+    },
+    {
+     "k": "s3",
+     "w": "stretches"
+    }
+   ],
+   "fam": [
+    {
+     "w": "stretchy",
+     "pos": "adj.",
+     "zh": "有彈性的"
+    }
+   ]
   },
   {
    "w": "viral",
    "pos": "adj.",
-   "zh": "爆紅的"
+   "zh": "爆紅的",
+   "f": [],
+   "fam": [
+    {
+     "w": "virus",
+     "pos": "n.",
+     "zh": "病毒"
+    }
+   ]
   },
   {
    "w": "cargo bay",
    "pos": "n.",
-   "zh": "貨艙"
+   "zh": "貨艙",
+   "f": [
+    {
+     "k": "plural",
+     "w": "cargo bays"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "stunt",
    "pos": "n.",
-   "zh": "特技動作"
+   "zh": "特技動作",
+   "f": [
+    {
+     "k": "plural",
+     "w": "stunts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "economic",
    "pos": "adj.",
-   "zh": "經濟上的"
+   "zh": "經濟上的",
+   "f": [],
+   "fam": [
+    {
+     "w": "economy",
+     "pos": "n.",
+     "zh": "經濟"
+    },
+    {
+     "w": "economics",
+     "pos": "n.",
+     "zh": "經濟學"
+    },
+    {
+     "w": "economist",
+     "pos": "n.",
+     "zh": "經濟學家"
+    },
+    {
+     "w": "economically",
+     "pos": "adv.",
+     "zh": "經濟上"
+    }
+   ]
   },
   {
    "w": "industrial",
    "pos": "adj.",
-   "zh": "工業的"
+   "zh": "工業的",
+   "f": [],
+   "fam": [
+    {
+     "w": "industry",
+     "pos": "n.",
+     "zh": "產業；工業"
+    },
+    {
+     "w": "industrialize",
+     "pos": "v.",
+     "zh": "工業化"
+    }
+   ]
   },
   {
    "w": "fixed",
    "pos": "adj.",
-   "zh": "固定的"
+   "zh": "固定的",
+   "f": [],
+   "fam": [
+    {
+     "w": "fix",
+     "pos": "v.",
+     "zh": "固定；修理"
+    }
+   ]
   },
   {
    "w": "next-gen",
    "pos": "adj.",
-   "zh": "新世代的"
+   "zh": "新世代的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "manufacturing",
    "pos": "n.",
-   "zh": "製造業"
+   "zh": "製造業",
+   "f": [],
+   "fam": [
+    {
+     "w": "manufacture",
+     "pos": "v.",
+     "zh": "製造"
+    }
+   ]
   },
   {
    "w": "adapt",
    "pos": "v.",
-   "zh": "適應；調整"
+   "zh": "適應；調整",
+   "f": [
+    {
+     "k": "past",
+     "w": "adapted"
+    },
+    {
+     "k": "pp",
+     "w": "adapted"
+    },
+    {
+     "k": "ing",
+     "w": "adapting"
+    },
+    {
+     "k": "s3",
+     "w": "adapts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "adaptation",
+     "pos": "n.",
+     "zh": "適應；改編"
+    },
+    {
+     "w": "adaptability",
+     "pos": "n.",
+     "zh": "適應能力"
+    },
+    {
+     "w": "adaptable",
+     "pos": "adj.",
+     "zh": "適應力強的"
+    }
+   ]
   },
   {
    "w": "workforce",
    "pos": "n.",
-   "zh": "勞動人口"
+   "zh": "勞動人口",
+   "f": [
+    {
+     "k": "plural",
+     "w": "workforces"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "payload",
    "pos": "n.",
-   "zh": "載重量"
+   "zh": "載重量",
+   "f": [
+    {
+     "k": "plural",
+     "w": "payloads"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "demanding",
    "pos": "adj.",
-   "zh": "吃力的"
+   "zh": "吃力的",
+   "f": [],
+   "fam": [
+    {
+     "w": "demand",
+     "pos": "v.",
+     "zh": "要求"
+    },
+    {
+     "w": "demand",
+     "pos": "n.",
+     "zh": "需求；要求"
+    }
+   ]
   },
   {
    "w": "hurdle",
    "pos": "n.",
-   "zh": "障礙"
+   "zh": "障礙",
+   "f": [
+    {
+     "k": "plural",
+     "w": "hurdles"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "dedicated",
    "pos": "adj.",
-   "zh": "專用的"
+   "zh": "專用的",
+   "f": [],
+   "fam": [
+    {
+     "w": "dedicate",
+     "pos": "v.",
+     "zh": "奉獻；專用於"
+    },
+    {
+     "w": "dedication",
+     "pos": "n.",
+     "zh": "奉獻；專注"
+    }
+   ]
   },
   {
    "w": "pharmacy",
    "pos": "n.",
-   "zh": "藥局"
+   "zh": "藥局",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pharmacies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "pharmaceutical",
+     "pos": "adj.",
+     "zh": "製藥的"
+    }
+   ]
   },
   {
    "w": "aisle",
    "pos": "n.",
-   "zh": "走道"
+   "zh": "走道",
+   "f": [
+    {
+     "k": "plural",
+     "w": "aisles"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "enormous",
    "pos": "adj.",
-   "zh": "龐大的"
+   "zh": "龐大的",
+   "f": [],
+   "fam": [
+    {
+     "w": "enormously",
+     "pos": "adv.",
+     "zh": "極大地"
+    }
+   ]
   },
   {
    "w": "investment",
    "pos": "n.",
-   "zh": "投資"
+   "zh": "投資",
+   "f": [
+    {
+     "k": "plural",
+     "w": "investments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "invest",
+     "pos": "v.",
+     "zh": "投資"
+    }
+   ]
   },
   {
    "w": "scale",
    "pos": "v.",
-   "zh": "擴大規模"
+   "zh": "擴大規模",
+   "f": [
+    {
+     "k": "past",
+     "w": "scaled"
+    },
+    {
+     "k": "pp",
+     "w": "scaled"
+    },
+    {
+     "k": "ing",
+     "w": "scaling"
+    },
+    {
+     "k": "s3",
+     "w": "scales"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "entertain",
    "pos": "v.",
-   "zh": "娛樂（他人）"
+   "zh": "娛樂（他人）",
+   "f": [
+    {
+     "k": "past",
+     "w": "entertained"
+    },
+    {
+     "k": "pp",
+     "w": "entertained"
+    },
+    {
+     "k": "ing",
+     "w": "entertaining"
+    },
+    {
+     "k": "s3",
+     "w": "entertains"
+    }
+   ],
+   "fam": [
+    {
+     "w": "entertainment",
+     "pos": "n.",
+     "zh": "娛樂"
+    },
+    {
+     "w": "entertainer",
+     "pos": "n.",
+     "zh": "表演者；藝人"
+    }
+   ]
   },
   {
    "w": "assembly line",
    "pos": "n.",
-   "zh": "裝配線"
+   "zh": "裝配線",
+   "f": [
+    {
+     "k": "plural",
+     "w": "assembly lines"
+    }
+   ],
+   "fam": []
   }
  ]
 }

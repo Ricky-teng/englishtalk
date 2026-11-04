@@ -7,72 +7,269 @@
   {
    "w": "evolution",
    "pos": "n.",
-   "zh": "演化"
+   "zh": "演化",
+   "f": [],
+   "fam": [
+    {
+     "w": "evolve",
+     "pos": "v.",
+     "zh": "演化；逐步發展"
+    },
+    {
+     "w": "evolutionary",
+     "pos": "adj.",
+     "zh": "演化的"
+    }
+   ]
   },
   {
    "w": "astonishing",
    "pos": "adj.",
-   "zh": "驚人的"
+   "zh": "驚人的",
+   "f": [],
+   "fam": [
+    {
+     "w": "astonish",
+     "pos": "v.",
+     "zh": "使驚訝"
+    },
+    {
+     "w": "astonishment",
+     "pos": "n.",
+     "zh": "驚訝"
+    },
+    {
+     "w": "astonishingly",
+     "pos": "adv.",
+     "zh": "驚人地"
+    }
+   ]
   },
   {
    "w": "remarkable",
    "pos": "adj.",
-   "zh": "非凡的"
+   "zh": "非凡的",
+   "f": [],
+   "fam": [
+    {
+     "w": "remark",
+     "pos": "n.",
+     "zh": "評論"
+    },
+    {
+     "w": "remarkably",
+     "pos": "adv.",
+     "zh": "非常地；顯著地"
+    }
+   ]
   },
   {
    "w": "trait",
    "pos": "n.",
-   "zh": "特徵"
+   "zh": "特徵",
+   "f": [
+    {
+     "k": "plural",
+     "w": "traits"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "consume",
    "pos": "v.",
-   "zh": "吃；攝取"
+   "zh": "吃；攝取",
+   "f": [
+    {
+     "k": "past",
+     "w": "consumed"
+    },
+    {
+     "k": "pp",
+     "w": "consumed"
+    },
+    {
+     "k": "ing",
+     "w": "consuming"
+    },
+    {
+     "k": "s3",
+     "w": "consumes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "consumption",
+     "pos": "n.",
+     "zh": "消耗；攝取"
+    },
+    {
+     "w": "consumer",
+     "pos": "n.",
+     "zh": "消費者"
+    }
+   ]
   },
   {
    "w": "despite",
    "pos": "prep.",
-   "zh": "儘管"
+   "zh": "儘管",
+   "f": [],
+   "fam": []
   },
   {
    "w": "plunge",
    "pos": "v.",
-   "zh": "俯衝"
+   "zh": "俯衝",
+   "f": [
+    {
+     "k": "past",
+     "w": "plunged"
+    },
+    {
+     "k": "pp",
+     "w": "plunged"
+    },
+    {
+     "k": "ing",
+     "w": "plunging"
+    },
+    {
+     "k": "s3",
+     "w": "plunges"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "species",
    "pos": "n.",
-   "zh": "物種"
+   "zh": "物種",
+   "f": [
+    {
+     "k": "plural",
+     "w": "species"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "incredible",
    "pos": "adj.",
-   "zh": "難以置信的"
+   "zh": "難以置信的",
+   "f": [],
+   "fam": [
+    {
+     "w": "incredibly",
+     "pos": "adv.",
+     "zh": "難以置信地"
+    }
+   ]
   },
   {
    "w": "estimate",
    "pos": "v.",
-   "zh": "估算"
+   "zh": "估算",
+   "f": [
+    {
+     "k": "past",
+     "w": "estimated"
+    },
+    {
+     "k": "pp",
+     "w": "estimated"
+    },
+    {
+     "k": "ing",
+     "w": "estimating"
+    },
+    {
+     "k": "s3",
+     "w": "estimates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "estimation",
+     "pos": "n.",
+     "zh": "估計；判斷"
+    }
+   ]
   },
   {
    "w": "invention",
    "pos": "n.",
-   "zh": "發明"
+   "zh": "發明",
+   "f": [
+    {
+     "k": "plural",
+     "w": "inventions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "invent",
+     "pos": "v.",
+     "zh": "發明"
+    },
+    {
+     "w": "inventive",
+     "pos": "adj.",
+     "zh": "有創意的"
+    }
+   ]
   },
   {
    "w": "telescope",
    "pos": "n.",
-   "zh": "望遠鏡"
+   "zh": "望遠鏡",
+   "f": [
+    {
+     "k": "plural",
+     "w": "telescopes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "severe",
    "pos": "adj.",
-   "zh": "嚴重的；惡劣的"
+   "zh": "嚴重的；惡劣的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "severer"
+    },
+    {
+     "k": "sup",
+     "w": "severest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "severely",
+     "pos": "adv.",
+     "zh": "嚴重地"
+    },
+    {
+     "w": "severity",
+     "pos": "n.",
+     "zh": "嚴重性"
+    }
+   ]
   },
   {
    "w": "fragile",
    "pos": "adj.",
-   "zh": "脆弱的"
+   "zh": "脆弱的",
+   "f": [],
+   "fam": [
+    {
+     "w": "fragility",
+     "pos": "n.",
+     "zh": "脆弱"
+    }
+   ]
   }
  ]
 }

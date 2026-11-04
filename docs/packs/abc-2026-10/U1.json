@@ -7,62 +7,244 @@
   {
    "w": "pretty",
    "pos": "adv.",
-   "zh": "相當；很"
+   "zh": "相當；很",
+   "f": [],
+   "fam": []
   },
   {
    "w": "homework",
    "pos": "n.",
-   "zh": "功課"
+   "zh": "功課",
+   "f": [],
+   "fam": []
   },
   {
    "w": "space",
    "pos": "n.",
-   "zh": "空間"
+   "zh": "空間",
+   "f": [
+    {
+     "k": "plural",
+     "w": "spaces"
+    }
+   ],
+   "fam": [
+    {
+     "w": "spacious",
+     "pos": "adj.",
+     "zh": "寬敞的"
+    },
+    {
+     "w": "spatial",
+     "pos": "adj.",
+     "zh": "空間的"
+    }
+   ]
   },
   {
    "w": "lonely",
    "pos": "adj.",
-   "zh": "寂寞的"
+   "zh": "寂寞的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "lonelier"
+    },
+    {
+     "k": "sup",
+     "w": "loneliest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "loneliness",
+     "pos": "n.",
+     "zh": "寂寞"
+    }
+   ]
   },
   {
    "w": "relative",
    "pos": "n.",
-   "zh": "親戚"
+   "zh": "親戚",
+   "f": [
+    {
+     "k": "plural",
+     "w": "relatives"
+    }
+   ],
+   "fam": [
+    {
+     "w": "relatively",
+     "pos": "adv.",
+     "zh": "相對地"
+    },
+    {
+     "w": "relate",
+     "pos": "v.",
+     "zh": "有關聯"
+    }
+   ]
   },
   {
    "w": "different",
    "pos": "adj.",
-   "zh": "不一樣的"
+   "zh": "不一樣的",
+   "f": [],
+   "fam": [
+    {
+     "w": "difference",
+     "pos": "n.",
+     "zh": "差異"
+    },
+    {
+     "w": "differ",
+     "pos": "v.",
+     "zh": "不同；相異"
+    },
+    {
+     "w": "differently",
+     "pos": "adv.",
+     "zh": "不同地"
+    },
+    {
+     "w": "differentiate",
+     "pos": "v.",
+     "zh": "區分"
+    }
+   ]
   },
   {
    "w": "remember",
    "pos": "v.",
-   "zh": "記得"
+   "zh": "記得",
+   "f": [
+    {
+     "k": "past",
+     "w": "remembered"
+    },
+    {
+     "k": "pp",
+     "w": "remembered"
+    },
+    {
+     "k": "ing",
+     "w": "remembering"
+    },
+    {
+     "k": "s3",
+     "w": "remembers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "remembrance",
+     "pos": "n.",
+     "zh": "紀念；回憶"
+    }
+   ]
   },
   {
    "w": "born",
    "pos": "adj.",
-   "zh": "出生的"
+   "zh": "出生的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "dentist",
    "pos": "n.",
-   "zh": "牙醫師"
+   "zh": "牙醫師",
+   "f": [
+    {
+     "k": "plural",
+     "w": "dentists"
+    }
+   ],
+   "fam": [
+    {
+     "w": "dental",
+     "pos": "adj.",
+     "zh": "牙齒的"
+    }
+   ]
   },
   {
    "w": "clean",
    "pos": "v.",
-   "zh": "清潔"
+   "zh": "清潔",
+   "f": [
+    {
+     "k": "past",
+     "w": "cleaned"
+    },
+    {
+     "k": "pp",
+     "w": "cleaned"
+    },
+    {
+     "k": "ing",
+     "w": "cleaning"
+    },
+    {
+     "k": "s3",
+     "w": "cleans"
+    }
+   ],
+   "fam": [
+    {
+     "w": "cleaner",
+     "pos": "n.",
+     "zh": "清潔劑；清潔工"
+    },
+    {
+     "w": "cleanliness",
+     "pos": "n.",
+     "zh": "清潔"
+    }
+   ]
   },
   {
    "w": "tooth",
    "pos": "n.",
-   "zh": "牙齒"
+   "zh": "牙齒",
+   "f": [
+    {
+     "k": "plural",
+     "w": "teeth"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "choose",
    "pos": "v.",
-   "zh": "挑選"
+   "zh": "挑選",
+   "f": [
+    {
+     "k": "past",
+     "w": "chose"
+    },
+    {
+     "k": "pp",
+     "w": "chosen"
+    },
+    {
+     "k": "ing",
+     "w": "choosing"
+    },
+    {
+     "k": "s3",
+     "w": "chooses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "choice",
+     "pos": "n.",
+     "zh": "選擇"
+    }
+   ]
   }
  ]
 }

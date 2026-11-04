@@ -7,92 +7,366 @@
   {
    "w": "industrial",
    "pos": "adj.",
-   "zh": "工業的"
+   "zh": "工業的",
+   "f": [],
+   "fam": [
+    {
+     "w": "industry",
+     "pos": "n.",
+     "zh": "產業；工業"
+    },
+    {
+     "w": "industrialize",
+     "pos": "v.",
+     "zh": "工業化"
+    }
+   ]
   },
   {
    "w": "proof",
    "pos": "n.",
-   "zh": "證據；證明"
+   "zh": "證據；證明",
+   "f": [],
+   "fam": [
+    {
+     "w": "prove",
+     "pos": "v.",
+     "zh": "證明"
+    }
+   ]
   },
   {
    "w": "damage",
    "pos": "n.",
-   "zh": "損害"
+   "zh": "損害",
+   "f": [],
+   "fam": [
+    {
+     "w": "damaging",
+     "pos": "adj.",
+     "zh": "有害的"
+    }
+   ]
   },
   {
    "w": "prevent",
    "pos": "v.",
-   "zh": "預防；阻止"
+   "zh": "預防；阻止",
+   "f": [
+    {
+     "k": "past",
+     "w": "prevented"
+    },
+    {
+     "k": "pp",
+     "w": "prevented"
+    },
+    {
+     "k": "ing",
+     "w": "preventing"
+    },
+    {
+     "k": "s3",
+     "w": "prevents"
+    }
+   ],
+   "fam": [
+    {
+     "w": "prevention",
+     "pos": "n.",
+     "zh": "預防"
+    },
+    {
+     "w": "preventive",
+     "pos": "adj.",
+     "zh": "預防性的"
+    }
+   ]
   },
   {
    "w": "masterpiece",
    "pos": "n.",
-   "zh": "傑作"
+   "zh": "傑作",
+   "f": [
+    {
+     "k": "plural",
+     "w": "masterpieces"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "grateful",
    "pos": "adj.",
-   "zh": "感激的"
+   "zh": "感激的",
+   "f": [],
+   "fam": [
+    {
+     "w": "gratitude",
+     "pos": "n.",
+     "zh": "感激"
+    },
+    {
+     "w": "gratefully",
+     "pos": "adv.",
+     "zh": "感激地"
+    }
+   ]
   },
   {
    "w": "impact",
    "pos": "n.",
-   "zh": "影響；衝擊"
+   "zh": "影響；衝擊",
+   "f": [
+    {
+     "k": "plural",
+     "w": "impacts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "impactful",
+     "pos": "adj.",
+     "zh": "有影響力的"
+    }
+   ]
   },
   {
    "w": "tragic",
    "pos": "adj.",
-   "zh": "悲慘的；悲劇的"
+   "zh": "悲慘的；悲劇的",
+   "f": [],
+   "fam": [
+    {
+     "w": "tragedy",
+     "pos": "n.",
+     "zh": "悲劇"
+    },
+    {
+     "w": "tragically",
+     "pos": "adv.",
+     "zh": "悲慘地"
+    }
+   ]
   },
   {
    "w": "shed",
    "pos": "v.",
-   "zh": "流（淚）；脫落"
+   "zh": "流（淚）；脫落",
+   "f": [
+    {
+     "k": "past",
+     "w": "shed"
+    },
+    {
+     "k": "pp",
+     "w": "shed"
+    },
+    {
+     "k": "ing",
+     "w": "shedding"
+    },
+    {
+     "k": "s3",
+     "w": "sheds"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "disaster",
    "pos": "n.",
-   "zh": "災難"
+   "zh": "災難",
+   "f": [
+    {
+     "k": "plural",
+     "w": "disasters"
+    }
+   ],
+   "fam": [
+    {
+     "w": "disastrous",
+     "pos": "adj.",
+     "zh": "災難性的"
+    }
+   ]
   },
   {
    "w": "record",
    "pos": "v.",
-   "zh": "記錄"
+   "zh": "記錄",
+   "f": [
+    {
+     "k": "past",
+     "w": "recorded"
+    },
+    {
+     "k": "pp",
+     "w": "recorded"
+    },
+    {
+     "k": "ing",
+     "w": "recording"
+    },
+    {
+     "k": "s3",
+     "w": "records"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "conservation",
    "pos": "n.",
-   "zh": "保育；保護"
+   "zh": "保育；保護",
+   "f": [],
+   "fam": [
+    {
+     "w": "conserve",
+     "pos": "v.",
+     "zh": "保存；節約"
+    }
+   ]
   },
   {
    "w": "effective",
    "pos": "adj.",
-   "zh": "有效的"
+   "zh": "有效的",
+   "f": [],
+   "fam": [
+    {
+     "w": "effect",
+     "pos": "n.",
+     "zh": "效果"
+    },
+    {
+     "w": "effectiveness",
+     "pos": "n.",
+     "zh": "效力；效果"
+    },
+    {
+     "w": "effectively",
+     "pos": "adv.",
+     "zh": "有效地"
+    }
+   ]
   },
   {
    "w": "capture",
    "pos": "v.",
-   "zh": "捕捉；拍攝到"
+   "zh": "捕捉；拍攝到",
+   "f": [
+    {
+     "k": "past",
+     "w": "captured"
+    },
+    {
+     "k": "pp",
+     "w": "captured"
+    },
+    {
+     "k": "ing",
+     "w": "capturing"
+    },
+    {
+     "k": "s3",
+     "w": "captures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "captive",
+     "pos": "adj.",
+     "zh": "被俘的"
+    }
+   ]
   },
   {
    "w": "photographer",
    "pos": "n.",
-   "zh": "攝影師"
+   "zh": "攝影師",
+   "f": [
+    {
+     "k": "plural",
+     "w": "photographers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "photograph",
+     "pos": "v.",
+     "zh": "拍照"
+    },
+    {
+     "w": "photographic",
+     "pos": "adj.",
+     "zh": "攝影的"
+    }
+   ]
   },
   {
    "w": "documentary",
    "pos": "n.",
-   "zh": "紀錄片"
+   "zh": "紀錄片",
+   "f": [
+    {
+     "k": "plural",
+     "w": "documentaries"
+    }
+   ],
+   "fam": [
+    {
+     "w": "document",
+     "pos": "v.",
+     "zh": "記錄"
+    }
+   ]
   },
   {
    "w": "director",
    "pos": "n.",
-   "zh": "導演；主管"
+   "zh": "導演；主管",
+   "f": [
+    {
+     "k": "plural",
+     "w": "directors"
+    }
+   ],
+   "fam": [
+    {
+     "w": "direct",
+     "pos": "v.",
+     "zh": "導演；指揮"
+    },
+    {
+     "w": "direct",
+     "pos": "adj.",
+     "zh": "直接的"
+    },
+    {
+     "w": "directly",
+     "pos": "adv.",
+     "zh": "直接地"
+    }
+   ]
   },
   {
    "w": "gratitude",
    "pos": "n.",
-   "zh": "感激"
+   "zh": "感激",
+   "f": [],
+   "fam": [
+    {
+     "w": "grateful",
+     "pos": "adj.",
+     "zh": "感激的"
+    },
+    {
+     "w": "gratefully",
+     "pos": "adv.",
+     "zh": "感激地"
+    }
+   ]
   }
  ]
 }

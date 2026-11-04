@@ -7,62 +7,194 @@
   {
    "w": "scenic",
    "pos": "adj.",
-   "zh": "景色優美的"
+   "zh": "景色優美的",
+   "f": [],
+   "fam": [
+    {
+     "w": "scenery",
+     "pos": "n.",
+     "zh": "風景；景色"
+    },
+    {
+     "w": "scene",
+     "pos": "n.",
+     "zh": "景象；場景"
+    }
+   ]
   },
   {
    "w": "stall",
    "pos": "n.",
-   "zh": "攤子"
+   "zh": "攤子",
+   "f": [
+    {
+     "k": "plural",
+     "w": "stalls"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "cliff",
    "pos": "n.",
-   "zh": "懸崖"
+   "zh": "懸崖",
+   "f": [
+    {
+     "k": "plural",
+     "w": "cliffs"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "stunning",
    "pos": "adj.",
-   "zh": "美得驚人的"
+   "zh": "美得驚人的",
+   "f": [],
+   "fam": [
+    {
+     "w": "stun",
+     "pos": "v.",
+     "zh": "使震驚；使暈眩"
+    },
+    {
+     "w": "stunningly",
+     "pos": "adv.",
+     "zh": "驚人地"
+    }
+   ]
   },
   {
    "w": "bounce",
    "pos": "v.",
-   "zh": "彈跳；反彈"
+   "zh": "彈跳；反彈",
+   "f": [
+    {
+     "k": "past",
+     "w": "bounced"
+    },
+    {
+     "k": "pp",
+     "w": "bounced"
+    },
+    {
+     "k": "ing",
+     "w": "bouncing"
+    },
+    {
+     "k": "s3",
+     "w": "bounces"
+    }
+   ],
+   "fam": [
+    {
+     "w": "bouncy",
+     "pos": "adj.",
+     "zh": "有彈性的"
+    }
+   ]
   },
   {
    "w": "cluster",
    "pos": "n.",
-   "zh": "一群；一簇"
+   "zh": "一群；一簇",
+   "f": [
+    {
+     "k": "plural",
+     "w": "clusters"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "compact",
    "pos": "adj.",
-   "zh": "小巧緊湊的"
+   "zh": "小巧緊湊的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "overalls",
    "pos": "n.",
-   "zh": "吊帶工作褲"
+   "zh": "吊帶工作褲",
+   "f": [],
+   "fam": []
   },
   {
    "w": "theme",
    "pos": "n.",
-   "zh": "主題"
+   "zh": "主題",
+   "f": [
+    {
+     "k": "plural",
+     "w": "themes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "thematic",
+     "pos": "adj.",
+     "zh": "主題的"
+    }
+   ]
   },
   {
    "w": "tram",
    "pos": "n.",
-   "zh": "路面電車"
+   "zh": "路面電車",
+   "f": [
+    {
+     "k": "plural",
+     "w": "trams"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "departure",
    "pos": "n.",
-   "zh": "出發"
+   "zh": "出發",
+   "f": [
+    {
+     "k": "plural",
+     "w": "departures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "depart",
+     "pos": "v.",
+     "zh": "出發；離開"
+    }
+   ]
   },
   {
    "w": "extension",
    "pos": "n.",
-   "zh": "延伸；擴建"
+   "zh": "延伸；擴建",
+   "f": [
+    {
+     "k": "plural",
+     "w": "extensions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "extend",
+     "pos": "v.",
+     "zh": "延伸；擴大"
+    },
+    {
+     "w": "extensive",
+     "pos": "adj.",
+     "zh": "廣泛的"
+    },
+    {
+     "w": "extensively",
+     "pos": "adv.",
+     "zh": "廣泛地"
+    }
+   ]
   }
  ]
 }

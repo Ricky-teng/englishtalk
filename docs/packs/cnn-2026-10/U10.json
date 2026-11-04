@@ -7,77 +7,232 @@
   {
    "w": "route",
    "pos": "n.",
-   "zh": "路線"
+   "zh": "路線",
+   "f": [
+    {
+     "k": "plural",
+     "w": "routes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "journey",
    "pos": "v.",
-   "zh": "旅行"
+   "zh": "旅行",
+   "f": [
+    {
+     "k": "past",
+     "w": "journeyed"
+    },
+    {
+     "k": "pp",
+     "w": "journeyed"
+    },
+    {
+     "k": "ing",
+     "w": "journeying"
+    },
+    {
+     "k": "s3",
+     "w": "journeys"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "iconic",
    "pos": "adj.",
-   "zh": "具代表性的"
+   "zh": "具代表性的",
+   "f": [],
+   "fam": [
+    {
+     "w": "icon",
+     "pos": "n.",
+     "zh": "象徵；圖示"
+    }
+   ]
   },
   {
    "w": "road trip",
    "pos": "n.",
-   "zh": "公路旅行"
+   "zh": "公路旅行",
+   "f": [
+    {
+     "k": "plural",
+     "w": "road trips"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "physically",
    "pos": "adv.",
-   "zh": "實際上"
+   "zh": "實際上",
+   "f": [],
+   "fam": [
+    {
+     "w": "physical",
+     "pos": "adj.",
+     "zh": "身體的"
+    }
+   ]
   },
   {
    "w": "digital",
    "pos": "adj.",
-   "zh": "數位的"
+   "zh": "數位的",
+   "f": [],
+   "fam": [
+    {
+     "w": "digit",
+     "pos": "n.",
+     "zh": "數字；位數"
+    },
+    {
+     "w": "digitally",
+     "pos": "adv.",
+     "zh": "以數位方式"
+    },
+    {
+     "w": "digitize",
+     "pos": "v.",
+     "zh": "數位化"
+    }
+   ]
   },
   {
    "w": "version",
    "pos": "n.",
-   "zh": "版本"
+   "zh": "版本",
+   "f": [
+    {
+     "k": "plural",
+     "w": "versions"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "anniversary",
    "pos": "n.",
-   "zh": "週年"
+   "zh": "週年",
+   "f": [
+    {
+     "k": "plural",
+     "w": "anniversaries"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "fuel",
    "pos": "n.",
-   "zh": "燃料"
+   "zh": "燃料",
+   "f": [
+    {
+     "k": "plural",
+     "w": "fuels"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "petrol",
    "pos": "n.",
-   "zh": "汽油（英）"
+   "zh": "汽油（英）",
+   "f": [],
+   "fam": []
   },
   {
    "w": "concerned",
    "pos": "adj.",
-   "zh": "擔心的"
+   "zh": "擔心的",
+   "f": [],
+   "fam": [
+    {
+     "w": "concern",
+     "pos": "n.",
+     "zh": "擔心；關心"
+    },
+    {
+     "w": "concern",
+     "pos": "v.",
+     "zh": "使擔心"
+    }
+   ]
   },
   {
    "w": "cylinder",
    "pos": "n.",
-   "zh": "汽缸"
+   "zh": "汽缸",
+   "f": [
+    {
+     "k": "plural",
+     "w": "cylinders"
+    }
+   ],
+   "fam": [
+    {
+     "w": "cylindrical",
+     "pos": "adj.",
+     "zh": "圓柱形的"
+    }
+   ]
   },
   {
    "w": "weigh",
    "pos": "v.",
-   "zh": "重（若干）"
+   "zh": "重（若干）",
+   "f": [
+    {
+     "k": "past",
+     "w": "weighed"
+    },
+    {
+     "k": "pp",
+     "w": "weighed"
+    },
+    {
+     "k": "ing",
+     "w": "weighing"
+    },
+    {
+     "k": "s3",
+     "w": "weighs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "weight",
+     "pos": "n.",
+     "zh": "重量；體重"
+    },
+    {
+     "w": "weighty",
+     "pos": "adj.",
+     "zh": "重大的"
+    }
+   ]
   },
   {
    "w": "turbo",
    "pos": "n.",
-   "zh": "渦輪增壓"
+   "zh": "渦輪增壓",
+   "f": [
+    {
+     "k": "plural",
+     "w": "turbos"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "exotic",
    "pos": "adj.",
-   "zh": "異國的；奇特的"
+   "zh": "異國的；奇特的",
+   "f": [],
+   "fam": []
   }
  ]
 }

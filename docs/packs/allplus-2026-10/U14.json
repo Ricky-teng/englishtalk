@@ -7,32 +7,110 @@
   {
    "w": "preference",
    "pos": "n.",
-   "zh": "偏好"
+   "zh": "偏好",
+   "f": [
+    {
+     "k": "plural",
+     "w": "preferences"
+    }
+   ],
+   "fam": [
+    {
+     "w": "prefer",
+     "pos": "v.",
+     "zh": "偏好"
+    },
+    {
+     "w": "preferable",
+     "pos": "adj.",
+     "zh": "較好的"
+    }
+   ]
   },
   {
    "w": "beloved",
    "pos": "adj.",
-   "zh": "心愛的"
+   "zh": "心愛的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "affordable",
    "pos": "adj.",
-   "zh": "價格親民的"
+   "zh": "價格親民的",
+   "f": [],
+   "fam": [
+    {
+     "w": "afford",
+     "pos": "v.",
+     "zh": "負擔得起"
+    }
+   ]
   },
   {
    "w": "delightful",
    "pos": "adj.",
-   "zh": "令人愉快的"
+   "zh": "令人愉快的",
+   "f": [],
+   "fam": [
+    {
+     "w": "delight",
+     "pos": "n.",
+     "zh": "欣喜"
+    },
+    {
+     "w": "delight",
+     "pos": "v.",
+     "zh": "使高興"
+    },
+    {
+     "w": "delightfully",
+     "pos": "adv.",
+     "zh": "令人愉快地"
+    }
+   ]
   },
   {
    "w": "mash",
    "pos": "v.",
-   "zh": "搗成泥"
+   "zh": "搗成泥",
+   "f": [
+    {
+     "k": "past",
+     "w": "mashed"
+    },
+    {
+     "k": "pp",
+     "w": "mashed"
+    },
+    {
+     "k": "ing",
+     "w": "mashing"
+    },
+    {
+     "k": "s3",
+     "w": "mashes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "texture",
    "pos": "n.",
-   "zh": "口感"
+   "zh": "口感",
+   "f": [
+    {
+     "k": "plural",
+     "w": "textures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "textured",
+     "pos": "adj.",
+     "zh": "有紋理的"
+    }
+   ]
   }
  ]
 }

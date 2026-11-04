@@ -7,47 +7,208 @@
   {
    "w": "improve",
    "pos": "v.",
-   "zh": "進步；改善"
+   "zh": "進步；改善",
+   "f": [
+    {
+     "k": "past",
+     "w": "improved"
+    },
+    {
+     "k": "pp",
+     "w": "improved"
+    },
+    {
+     "k": "ing",
+     "w": "improving"
+    },
+    {
+     "k": "s3",
+     "w": "improves"
+    }
+   ],
+   "fam": [
+    {
+     "w": "improvement",
+     "pos": "n.",
+     "zh": "改善；進步"
+    }
+   ]
   },
   {
    "w": "skill",
    "pos": "n.",
-   "zh": "技能"
+   "zh": "技能",
+   "f": [
+    {
+     "k": "plural",
+     "w": "skills"
+    }
+   ],
+   "fam": [
+    {
+     "w": "skilled",
+     "pos": "adj.",
+     "zh": "熟練的"
+    },
+    {
+     "w": "skillful",
+     "pos": "adj.",
+     "zh": "有技巧的"
+    },
+    {
+     "w": "skillfully",
+     "pos": "adv.",
+     "zh": "熟練地"
+    }
+   ]
   },
   {
    "w": "perform",
    "pos": "v.",
-   "zh": "表演"
+   "zh": "表演",
+   "f": [
+    {
+     "k": "past",
+     "w": "performed"
+    },
+    {
+     "k": "pp",
+     "w": "performed"
+    },
+    {
+     "k": "ing",
+     "w": "performing"
+    },
+    {
+     "k": "s3",
+     "w": "performs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "performance",
+     "pos": "n.",
+     "zh": "表演"
+    },
+    {
+     "w": "performer",
+     "pos": "n.",
+     "zh": "表演者"
+    }
+   ]
   },
   {
    "w": "performance",
    "pos": "n.",
-   "zh": "演出"
+   "zh": "演出",
+   "f": [
+    {
+     "k": "plural",
+     "w": "performances"
+    }
+   ],
+   "fam": [
+    {
+     "w": "perform",
+     "pos": "v.",
+     "zh": "表演"
+    }
+   ]
   },
   {
    "w": "stage",
    "pos": "n.",
-   "zh": "舞台"
+   "zh": "舞台",
+   "f": [
+    {
+     "k": "plural",
+     "w": "stages"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "advanced",
    "pos": "adj.",
-   "zh": "進階的"
+   "zh": "進階的",
+   "f": [],
+   "fam": [
+    {
+     "w": "advance",
+     "pos": "v.",
+     "zh": "前進；進步"
+    },
+    {
+     "w": "advancement",
+     "pos": "n.",
+     "zh": "進步"
+    }
+   ]
   },
   {
    "w": "organize",
    "pos": "v.",
-   "zh": "籌辦"
+   "zh": "籌辦",
+   "f": [
+    {
+     "k": "past",
+     "w": "organized"
+    },
+    {
+     "k": "pp",
+     "w": "organized"
+    },
+    {
+     "k": "ing",
+     "w": "organizing"
+    },
+    {
+     "k": "s3",
+     "w": "organizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "organization",
+     "pos": "n.",
+     "zh": "組織"
+    },
+    {
+     "w": "organizer",
+     "pos": "n.",
+     "zh": "籌辦者"
+    },
+    {
+     "w": "organizational",
+     "pos": "adj.",
+     "zh": "組織的"
+    }
+   ]
   },
   {
    "w": "colorful",
    "pos": "adj.",
-   "zh": "色彩繽紛的"
+   "zh": "色彩繽紛的",
+   "f": [],
+   "fam": [
+    {
+     "w": "color",
+     "pos": "n.",
+     "zh": "顏色"
+    },
+    {
+     "w": "color",
+     "pos": "v.",
+     "zh": "著色"
+    }
+   ]
   },
   {
    "w": "expect to",
    "pos": "phr.",
-   "zh": "期待（做）…"
+   "zh": "期待（做）…",
+   "f": [],
+   "fam": []
   }
  ]
 }

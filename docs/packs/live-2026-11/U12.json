@@ -1,0 +1,211 @@
+{
+ "id": "U12",
+ "title": "用英語表達感謝",
+ "tag": "Live2611-U12",
+ "verified": true,
+ "items": [
+  {
+   "w": "appreciate",
+   "pos": "v.",
+   "zh": "感激；欣賞",
+   "f": [
+    {
+     "k": "past",
+     "w": "appreciated"
+    },
+    {
+     "k": "pp",
+     "w": "appreciated"
+    },
+    {
+     "k": "ing",
+     "w": "appreciating"
+    },
+    {
+     "k": "s3",
+     "w": "appreciates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "appreciation",
+     "pos": "n.",
+     "zh": "感激；欣賞"
+    },
+    {
+     "w": "appreciative",
+     "pos": "adj.",
+     "zh": "感激的"
+    }
+   ]
+  },
+  {
+   "w": "anytime",
+   "pos": "adv.",
+   "zh": "任何時候；（回謝）不客氣",
+   "f": [],
+   "fam": []
+  },
+  {
+   "w": "internal",
+   "pos": "adj.",
+   "zh": "內部的",
+   "f": [],
+   "fam": [
+    {
+     "w": "internally",
+     "pos": "adv.",
+     "zh": "內部地"
+    },
+    {
+     "w": "internalize",
+     "pos": "v.",
+     "zh": "內化"
+    }
+   ]
+  },
+  {
+   "w": "settle",
+   "pos": "v.",
+   "zh": "安頓；解決",
+   "f": [
+    {
+     "k": "past",
+     "w": "settled"
+    },
+    {
+     "k": "pp",
+     "w": "settled"
+    },
+    {
+     "k": "ing",
+     "w": "settling"
+    },
+    {
+     "k": "s3",
+     "w": "settles"
+    }
+   ],
+   "fam": [
+    {
+     "w": "settlement",
+     "pos": "n.",
+     "zh": "解決；定居點"
+    },
+    {
+     "w": "settler",
+     "pos": "n.",
+     "zh": "移居者"
+    }
+   ]
+  },
+  {
+   "w": "encouragement",
+   "pos": "n.",
+   "zh": "鼓勵",
+   "f": [],
+   "fam": [
+    {
+     "w": "encourage",
+     "pos": "v.",
+     "zh": "鼓勵"
+    },
+    {
+     "w": "encouraging",
+     "pos": "adj.",
+     "zh": "令人鼓舞的"
+    }
+   ]
+  },
+  {
+   "w": "presentation",
+   "pos": "n.",
+   "zh": "簡報；報告",
+   "f": [
+    {
+     "k": "plural",
+     "w": "presentations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "present",
+     "pos": "v.",
+     "zh": "呈現；報告"
+    }
+   ]
+  },
+  {
+   "w": "nervous",
+   "pos": "adj.",
+   "zh": "緊張的",
+   "f": [],
+   "fam": [
+    {
+     "w": "nerve",
+     "pos": "n.",
+     "zh": "神經"
+    },
+    {
+     "w": "nervously",
+     "pos": "adv.",
+     "zh": "緊張地"
+    },
+    {
+     "w": "nervousness",
+     "pos": "n.",
+     "zh": "緊張"
+    }
+   ]
+  },
+  {
+   "w": "calm",
+   "pos": "v.",
+   "zh": "使平靜",
+   "f": [
+    {
+     "k": "past",
+     "w": "calmed"
+    },
+    {
+     "k": "pp",
+     "w": "calmed"
+    },
+    {
+     "k": "ing",
+     "w": "calming"
+    },
+    {
+     "k": "s3",
+     "w": "calms"
+    }
+   ],
+   "fam": [
+    {
+     "w": "calmly",
+     "pos": "adv.",
+     "zh": "平靜地"
+    },
+    {
+     "w": "calmness",
+     "pos": "n.",
+     "zh": "平靜"
+    }
+   ]
+  },
+  {
+   "w": "settle in",
+   "pos": "phr.",
+   "zh": "安頓下來；適應",
+   "f": [],
+   "fam": []
+  },
+  {
+   "w": "calm down",
+   "pos": "phr.",
+   "zh": "冷靜下來",
+   "f": [],
+   "fam": []
+  }
+ ]
+}

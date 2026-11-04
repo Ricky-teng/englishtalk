@@ -7,52 +7,137 @@
   {
    "w": "statue",
    "pos": "n.",
-   "zh": "雕像"
+   "zh": "雕像",
+   "f": [
+    {
+     "k": "plural",
+     "w": "statues"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "sword",
    "pos": "n.",
-   "zh": "劍"
+   "zh": "劍",
+   "f": [
+    {
+     "k": "plural",
+     "w": "swords"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "palace",
    "pos": "n.",
-   "zh": "宮殿"
+   "zh": "宮殿",
+   "f": [
+    {
+     "k": "plural",
+     "w": "palaces"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "hunger",
    "pos": "n.",
-   "zh": "飢餓"
+   "zh": "飢餓",
+   "f": [],
+   "fam": [
+    {
+     "w": "hungry",
+     "pos": "adj.",
+     "zh": "飢餓的"
+    },
+    {
+     "w": "hungrily",
+     "pos": "adv.",
+     "zh": "飢餓地"
+    }
+   ]
   },
   {
    "w": "suffering",
    "pos": "n.",
-   "zh": "苦難；受苦"
+   "zh": "苦難；受苦",
+   "f": [],
+   "fam": [
+    {
+     "w": "suffer",
+     "pos": "v.",
+     "zh": "受苦；遭受"
+    }
+   ]
   },
   {
    "w": "strip",
    "pos": "v.",
-   "zh": "剝除；拿走"
+   "zh": "剝除；拿走",
+   "f": [
+    {
+     "k": "past",
+     "w": "stripped"
+    },
+    {
+     "k": "pp",
+     "w": "stripped"
+    },
+    {
+     "k": "ing",
+     "w": "stripping"
+    },
+    {
+     "k": "s3",
+     "w": "strips"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "jewel",
    "pos": "n.",
-   "zh": "寶石；珠寶"
+   "zh": "寶石；珠寶",
+   "f": [
+    {
+     "k": "plural",
+     "w": "jewels"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "angel",
    "pos": "n.",
-   "zh": "天使"
+   "zh": "天使",
+   "f": [
+    {
+     "k": "plural",
+     "w": "angels"
+    }
+   ],
+   "fam": [
+    {
+     "w": "angelic",
+     "pos": "adj.",
+     "zh": "天使般的"
+    }
+   ]
   },
   {
    "w": "precious",
    "pos": "adj.",
-   "zh": "珍貴的"
+   "zh": "珍貴的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "forever",
    "pos": "adv.",
-   "zh": "永遠"
+   "zh": "永遠",
+   "f": [],
+   "fam": []
   }
  ]
 }

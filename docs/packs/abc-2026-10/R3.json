@@ -7,32 +7,163 @@
   {
    "w": "build",
    "pos": "v.",
-   "zh": "建立"
+   "zh": "建立",
+   "f": [
+    {
+     "k": "past",
+     "w": "built"
+    },
+    {
+     "k": "pp",
+     "w": "built"
+    },
+    {
+     "k": "ing",
+     "w": "building"
+    },
+    {
+     "k": "s3",
+     "w": "builds"
+    }
+   ],
+   "fam": [
+    {
+     "w": "building",
+     "pos": "n.",
+     "zh": "建築物"
+    },
+    {
+     "w": "builder",
+     "pos": "n.",
+     "zh": "建造者"
+    }
+   ]
   },
   {
    "w": "talk",
    "pos": "n.",
-   "zh": "交談"
+   "zh": "交談",
+   "f": [
+    {
+     "k": "plural",
+     "w": "talks"
+    }
+   ],
+   "fam": [
+    {
+     "w": "talkative",
+     "pos": "adj.",
+     "zh": "健談的；多話的"
+    }
+   ]
   },
   {
    "w": "quiet",
    "pos": "adj.",
-   "zh": "安靜的"
+   "zh": "安靜的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "quieter"
+    },
+    {
+     "k": "sup",
+     "w": "quietest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "quietly",
+     "pos": "adv.",
+     "zh": "安靜地"
+    }
+   ]
   },
   {
    "w": "moment",
    "pos": "n.",
-   "zh": "片刻"
+   "zh": "片刻",
+   "f": [
+    {
+     "k": "plural",
+     "w": "moments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "momentary",
+     "pos": "adj.",
+     "zh": "短暫的"
+    },
+    {
+     "w": "momentarily",
+     "pos": "adv.",
+     "zh": "片刻地"
+    }
+   ]
   },
   {
    "w": "repeat",
    "pos": "v.",
-   "zh": "重複"
+   "zh": "重複",
+   "f": [
+    {
+     "k": "past",
+     "w": "repeated"
+    },
+    {
+     "k": "pp",
+     "w": "repeated"
+    },
+    {
+     "k": "ing",
+     "w": "repeating"
+    },
+    {
+     "k": "s3",
+     "w": "repeats"
+    }
+   ],
+   "fam": [
+    {
+     "w": "repetition",
+     "pos": "n.",
+     "zh": "重複"
+    },
+    {
+     "w": "repetitive",
+     "pos": "adj.",
+     "zh": "反覆的"
+    },
+    {
+     "w": "repeatedly",
+     "pos": "adv.",
+     "zh": "一再地"
+    }
+   ]
   },
   {
    "w": "care",
    "pos": "n.",
-   "zh": "關心"
+   "zh": "關心",
+   "f": [],
+   "fam": [
+    {
+     "w": "careful",
+     "pos": "adj.",
+     "zh": "小心的"
+    },
+    {
+     "w": "carefully",
+     "pos": "adv.",
+     "zh": "小心地"
+    },
+    {
+     "w": "careless",
+     "pos": "adj.",
+     "zh": "粗心的"
+    }
+   ]
   }
  ]
 }

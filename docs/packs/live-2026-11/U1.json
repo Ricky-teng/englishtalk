@@ -1,0 +1,169 @@
+{
+ "id": "U1",
+ "title": "〈班傑明的奇幻旅程〉",
+ "tag": "Live2611-U1",
+ "verified": true,
+ "items": [
+  {
+   "w": "immediately",
+   "pos": "adv.",
+   "zh": "立刻；馬上",
+   "f": [],
+   "fam": [
+    {
+     "w": "immediate",
+     "pos": "adj.",
+     "zh": "立即的"
+    }
+   ]
+  },
+  {
+   "w": "dye",
+   "pos": "v.",
+   "zh": "染（色）；染料",
+   "f": [
+    {
+     "k": "past",
+     "w": "dyed"
+    },
+    {
+     "k": "pp",
+     "w": "dyed"
+    },
+    {
+     "k": "ing",
+     "w": "dyeing"
+    },
+    {
+     "k": "s3",
+     "w": "dyes"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "appearance",
+   "pos": "n.",
+   "zh": "外表；出現",
+   "f": [
+    {
+     "k": "plural",
+     "w": "appearances"
+    }
+   ],
+   "fam": [
+    {
+     "w": "appear",
+     "pos": "v.",
+     "zh": "出現"
+    }
+   ]
+  },
+  {
+   "w": "ashamed",
+   "pos": "adj.",
+   "zh": "羞愧的",
+   "f": [],
+   "fam": [
+    {
+     "w": "shame",
+     "pos": "n.",
+     "zh": "羞恥"
+    }
+   ]
+  },
+  {
+   "w": "capable",
+   "pos": "adj.",
+   "zh": "有能力的",
+   "f": [],
+   "fam": [
+    {
+     "w": "capability",
+     "pos": "n.",
+     "zh": "能力"
+    }
+   ]
+  },
+  {
+   "w": "objection",
+   "pos": "n.",
+   "zh": "反對；異議",
+   "f": [
+    {
+     "k": "plural",
+     "w": "objections"
+    }
+   ],
+   "fam": [
+    {
+     "w": "object",
+     "pos": "v.",
+     "zh": "反對"
+    }
+   ]
+  },
+  {
+   "w": "drift",
+   "pos": "v.",
+   "zh": "漂流；飄移",
+   "f": [
+    {
+     "k": "past",
+     "w": "drifted"
+    },
+    {
+     "k": "pp",
+     "w": "drifted"
+    },
+    {
+     "k": "ing",
+     "w": "drifting"
+    },
+    {
+     "k": "s3",
+     "w": "drifts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "drifter",
+     "pos": "n.",
+     "zh": "流浪者"
+    }
+   ]
+  },
+  {
+   "w": "embarrassed",
+   "pos": "adj.",
+   "zh": "尷尬的；難為情的",
+   "f": [],
+   "fam": [
+    {
+     "w": "embarrass",
+     "pos": "v.",
+     "zh": "使尷尬"
+    },
+    {
+     "w": "embarrassment",
+     "pos": "n.",
+     "zh": "尷尬；難堪"
+    }
+   ]
+  },
+  {
+   "w": "be ashamed of sth.",
+   "pos": "phr.",
+   "zh": "以…為恥",
+   "f": [],
+   "fam": []
+  },
+  {
+   "w": "be capable of sth.",
+   "pos": "phr.",
+   "zh": "有能力做…",
+   "f": [],
+   "fam": []
+  }
+ ]
+}

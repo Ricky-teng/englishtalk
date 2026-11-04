@@ -7,107 +7,350 @@
   {
    "w": "plead",
    "pos": "v.",
-   "zh": "（為案件）辯護"
+   "zh": "（為案件）辯護",
+   "f": [
+    {
+     "k": "past",
+     "w": "pleaded"
+    },
+    {
+     "k": "pp",
+     "w": "pleaded"
+    },
+    {
+     "k": "ing",
+     "w": "pleading"
+    },
+    {
+     "k": "s3",
+     "w": "pleads"
+    }
+   ],
+   "fam": [
+    {
+     "w": "plea",
+     "pos": "n.",
+     "zh": "請求；抗辯"
+    }
+   ]
   },
   {
    "w": "prohibit",
    "pos": "v.",
-   "zh": "禁止"
+   "zh": "禁止",
+   "f": [
+    {
+     "k": "past",
+     "w": "prohibited"
+    },
+    {
+     "k": "pp",
+     "w": "prohibited"
+    },
+    {
+     "k": "ing",
+     "w": "prohibiting"
+    },
+    {
+     "k": "s3",
+     "w": "prohibits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "prohibition",
+     "pos": "n.",
+     "zh": "禁止"
+    }
+   ]
   },
   {
    "w": "initially",
    "pos": "adv.",
-   "zh": "起初"
+   "zh": "起初",
+   "f": [],
+   "fam": [
+    {
+     "w": "initial",
+     "pos": "adj.",
+     "zh": "最初的"
+    }
+   ]
   },
   {
    "w": "legalize",
    "pos": "v.",
-   "zh": "合法化"
+   "zh": "合法化",
+   "f": [
+    {
+     "k": "past",
+     "w": "legalized"
+    },
+    {
+     "k": "pp",
+     "w": "legalized"
+    },
+    {
+     "k": "ing",
+     "w": "legalizing"
+    },
+    {
+     "k": "s3",
+     "w": "legalizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "legal",
+     "pos": "adj.",
+     "zh": "合法的"
+    },
+    {
+     "w": "legalization",
+     "pos": "n.",
+     "zh": "合法化"
+    },
+    {
+     "w": "legally",
+     "pos": "adv.",
+     "zh": "合法地"
+    }
+   ]
   },
   {
    "w": "profession",
    "pos": "n.",
-   "zh": "專門職業"
+   "zh": "專門職業",
+   "f": [
+    {
+     "k": "plural",
+     "w": "professions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "professional",
+     "pos": "adj.",
+     "zh": "專業的"
+    },
+    {
+     "w": "professionally",
+     "pos": "adv.",
+     "zh": "專業地"
+    }
+   ]
   },
   {
    "w": "restriction",
    "pos": "n.",
-   "zh": "限制"
+   "zh": "限制",
+   "f": [
+    {
+     "k": "plural",
+     "w": "restrictions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "restrict",
+     "pos": "v.",
+     "zh": "限制"
+    },
+    {
+     "w": "restricted",
+     "pos": "adj.",
+     "zh": "受限制的"
+    },
+    {
+     "w": "restrictive",
+     "pos": "adj.",
+     "zh": "限制性的"
+    }
+   ]
   },
   {
    "w": "regarding",
    "pos": "prep.",
-   "zh": "關於"
+   "zh": "關於",
+   "f": [],
+   "fam": [
+    {
+     "w": "regard",
+     "pos": "v.",
+     "zh": "視為"
+    }
+   ]
   },
   {
    "w": "register",
    "pos": "v.",
-   "zh": "登記"
+   "zh": "登記",
+   "f": [
+    {
+     "k": "past",
+     "w": "registered"
+    },
+    {
+     "k": "pp",
+     "w": "registered"
+    },
+    {
+     "k": "ing",
+     "w": "registering"
+    },
+    {
+     "k": "s3",
+     "w": "registers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "registration",
+     "pos": "n.",
+     "zh": "登記；註冊"
+    }
+   ]
   },
   {
    "w": "entry",
    "pos": "n.",
-   "zh": "加入；進入"
+   "zh": "加入；進入",
+   "f": [
+    {
+     "k": "plural",
+     "w": "entries"
+    }
+   ],
+   "fam": [
+    {
+     "w": "enter",
+     "pos": "v.",
+     "zh": "進入；加入"
+    }
+   ]
   },
   {
    "w": "collapse",
    "pos": "v.",
-   "zh": "崩潰；瓦解"
+   "zh": "崩潰；瓦解",
+   "f": [
+    {
+     "k": "past",
+     "w": "collapsed"
+    },
+    {
+     "k": "pp",
+     "w": "collapsed"
+    },
+    {
+     "k": "ing",
+     "w": "collapsing"
+    },
+    {
+     "k": "s3",
+     "w": "collapses"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "incompetent",
    "pos": "adj.",
-   "zh": "不稱職的"
+   "zh": "不稱職的",
+   "f": [],
+   "fam": [
+    {
+     "w": "incompetence",
+     "pos": "n.",
+     "zh": "無能；不稱職"
+    }
+   ]
   },
   {
    "w": "reform",
    "pos": "n.",
-   "zh": "改革"
+   "zh": "改革",
+   "f": [
+    {
+     "k": "plural",
+     "w": "reforms"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "behalf",
    "pos": "n.",
-   "zh": "代表（某人）"
+   "zh": "代表（某人）",
+   "f": [],
+   "fam": []
   },
   {
    "w": "pursuit",
    "pos": "n.",
-   "zh": "追求"
+   "zh": "追求",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pursuits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "pursue",
+     "pos": "v.",
+     "zh": "追求"
+    }
+   ]
   },
   {
    "w": "an entry requirement",
    "pos": "phr.",
-   "zh": "入行門檻"
+   "zh": "入行門檻",
+   "f": [],
+   "fam": []
   },
   {
    "w": "land sb in trouble",
    "pos": "phr.",
-   "zh": "使某人惹麻煩"
+   "zh": "使某人惹麻煩",
+   "f": [],
+   "fam": []
   },
   {
    "w": "start out as",
    "pos": "phr.",
-   "zh": "起初是…"
+   "zh": "起初是…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in practice",
    "pos": "phr.",
-   "zh": "實際上"
+   "zh": "實際上",
+   "f": [],
+   "fam": []
   },
   {
    "w": "on behalf of",
    "pos": "phr.",
-   "zh": "代表…"
+   "zh": "代表…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in the pursuit of",
    "pos": "phr.",
-   "zh": "追求…"
+   "zh": "追求…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "give voice to",
    "pos": "phr.",
-   "zh": "為…發聲"
+   "zh": "為…發聲",
+   "f": [],
+   "fam": []
   }
  ]
 }

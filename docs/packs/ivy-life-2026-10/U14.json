@@ -7,82 +7,278 @@
   {
    "w": "hold",
    "pos": "v.",
-   "zh": "舉辦"
+   "zh": "舉辦",
+   "f": [
+    {
+     "k": "past",
+     "w": "held"
+    },
+    {
+     "k": "pp",
+     "w": "held"
+    },
+    {
+     "k": "ing",
+     "w": "holding"
+    },
+    {
+     "k": "s3",
+     "w": "holds"
+    }
+   ],
+   "fam": [
+    {
+     "w": "holder",
+     "pos": "n.",
+     "zh": "持有人"
+    }
+   ]
   },
   {
    "w": "theme",
    "pos": "n.",
-   "zh": "主題"
+   "zh": "主題",
+   "f": [
+    {
+     "k": "plural",
+     "w": "themes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "thematic",
+     "pos": "adj.",
+     "zh": "主題的"
+    }
+   ]
   },
   {
    "w": "classic",
    "pos": "adj.",
-   "zh": "經典的"
+   "zh": "經典的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "restricted",
    "pos": "adj.",
-   "zh": "受限制的"
+   "zh": "受限制的",
+   "f": [],
+   "fam": [
+    {
+     "w": "restrict",
+     "pos": "v.",
+     "zh": "限制"
+    },
+    {
+     "w": "restriction",
+     "pos": "n.",
+     "zh": "限制"
+    }
+   ]
   },
   {
    "w": "judge",
    "pos": "v.",
-   "zh": "評審"
+   "zh": "評審",
+   "f": [
+    {
+     "k": "past",
+     "w": "judged"
+    },
+    {
+     "k": "pp",
+     "w": "judged"
+    },
+    {
+     "k": "ing",
+     "w": "judging"
+    },
+    {
+     "k": "s3",
+     "w": "judges"
+    }
+   ],
+   "fam": [
+    {
+     "w": "judgment",
+     "pos": "n.",
+     "zh": "判斷"
+    },
+    {
+     "w": "judgmental",
+     "pos": "adj.",
+     "zh": "愛批判的"
+    }
+   ]
   },
   {
    "w": "plain",
    "pos": "adj.",
-   "zh": "素面的"
+   "zh": "素面的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "plainer"
+    },
+    {
+     "k": "sup",
+     "w": "plainest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "plainly",
+     "pos": "adv.",
+     "zh": "明白地；樸素地"
+    }
+   ]
   },
   {
    "w": "suit",
    "pos": "v.",
-   "zh": "適合"
+   "zh": "適合",
+   "f": [
+    {
+     "k": "past",
+     "w": "suited"
+    },
+    {
+     "k": "pp",
+     "w": "suited"
+    },
+    {
+     "k": "ing",
+     "w": "suiting"
+    },
+    {
+     "k": "s3",
+     "w": "suits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "suitable",
+     "pos": "adj.",
+     "zh": "適合的"
+    },
+    {
+     "w": "suitably",
+     "pos": "adv.",
+     "zh": "適當地"
+    },
+    {
+     "w": "suitability",
+     "pos": "n.",
+     "zh": "適合性"
+    }
+   ]
   },
   {
    "w": "closet",
    "pos": "n.",
-   "zh": "衣櫥"
+   "zh": "衣櫥",
+   "f": [
+    {
+     "k": "plural",
+     "w": "closets"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "cloth",
    "pos": "n.",
-   "zh": "布料"
+   "zh": "布料",
+   "f": [],
+   "fam": [
+    {
+     "w": "clothe",
+     "pos": "v.",
+     "zh": "給…穿衣"
+    }
+   ]
   },
   {
    "w": "pale",
    "pos": "adj.",
-   "zh": "蒼白的"
+   "zh": "蒼白的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "paler"
+    },
+    {
+     "k": "sup",
+     "w": "palest"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "wear",
    "pos": "v.",
-   "zh": "穿戴"
+   "zh": "穿戴",
+   "f": [
+    {
+     "k": "past",
+     "w": "wore"
+    },
+    {
+     "k": "pp",
+     "w": "worn"
+    },
+    {
+     "k": "ing",
+     "w": "wearing"
+    },
+    {
+     "k": "s3",
+     "w": "wears"
+    }
+   ],
+   "fam": [
+    {
+     "w": "wearable",
+     "pos": "adj.",
+     "zh": "可穿戴的"
+    }
+   ]
   },
   {
    "w": "dress up as",
    "pos": "phr.",
-   "zh": "打扮成…"
+   "zh": "打扮成…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "have... in mind",
    "pos": "phr.",
-   "zh": "心裡有想法"
+   "zh": "心裡有想法",
+   "f": [],
+   "fam": []
   },
   {
    "w": "put together",
    "pos": "phr.",
-   "zh": "搭配；湊成"
+   "zh": "搭配；湊成",
+   "f": [],
+   "fam": []
   },
   {
    "w": "go as",
    "pos": "phr.",
-   "zh": "扮成…出席"
+   "zh": "扮成…出席",
+   "f": [],
+   "fam": []
   },
   {
    "w": "plan on",
    "pos": "phr.",
-   "zh": "計劃（做）"
+   "zh": "計劃（做）",
+   "f": [],
+   "fam": []
   }
  ]
 }

@@ -7,52 +7,151 @@
   {
    "w": "relaxed",
    "pos": "adj.",
-   "zh": "悠閒的；放鬆的"
+   "zh": "悠閒的；放鬆的",
+   "f": [],
+   "fam": [
+    {
+     "w": "relax",
+     "pos": "v.",
+     "zh": "放鬆"
+    },
+    {
+     "w": "relaxation",
+     "pos": "n.",
+     "zh": "放鬆"
+    }
+   ]
   },
   {
    "w": "appeal",
    "pos": "n.",
-   "zh": "吸引力；魅力"
+   "zh": "吸引力；魅力",
+   "f": [
+    {
+     "k": "plural",
+     "w": "appeals"
+    }
+   ],
+   "fam": [
+    {
+     "w": "appealing",
+     "pos": "adj.",
+     "zh": "吸引人的"
+    }
+   ]
   },
   {
    "w": "tunnel",
    "pos": "n.",
-   "zh": "隧道"
+   "zh": "隧道",
+   "f": [
+    {
+     "k": "plural",
+     "w": "tunnels"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "farther",
    "pos": "adv.",
-   "zh": "更遠地"
+   "zh": "更遠地",
+   "f": [],
+   "fam": [
+    {
+     "w": "far",
+     "pos": "adj.",
+     "zh": "遠的"
+    }
+   ]
   },
   {
    "w": "electricity",
    "pos": "n.",
-   "zh": "電；電力"
+   "zh": "電；電力",
+   "f": [],
+   "fam": [
+    {
+     "w": "electric",
+     "pos": "adj.",
+     "zh": "電的；電動的"
+    },
+    {
+     "w": "electrical",
+     "pos": "adj.",
+     "zh": "電氣的"
+    },
+    {
+     "w": "electrify",
+     "pos": "v.",
+     "zh": "使通電；使振奮"
+    }
+   ]
   },
   {
    "w": "native",
    "pos": "adj.",
-   "zh": "原住民的；本地的"
+   "zh": "原住民的；本地的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "raw",
    "pos": "adj.",
-   "zh": "生的；未加工的"
+   "zh": "生的；未加工的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "rawer"
+    },
+    {
+     "k": "sup",
+     "w": "rawest"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "oven",
    "pos": "n.",
-   "zh": "烤箱"
+   "zh": "烤箱",
+   "f": [
+    {
+     "k": "plural",
+     "w": "ovens"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "avenue",
    "pos": "n.",
-   "zh": "大道；大街"
+   "zh": "大道；大街",
+   "f": [
+    {
+     "k": "plural",
+     "w": "avenues"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "shadow",
    "pos": "n.",
-   "zh": "陰影；影子"
+   "zh": "陰影；影子",
+   "f": [
+    {
+     "k": "plural",
+     "w": "shadows"
+    }
+   ],
+   "fam": [
+    {
+     "w": "shadowy",
+     "pos": "adj.",
+     "zh": "陰暗的；朦朧的"
+    }
+   ]
   }
  ]
 }

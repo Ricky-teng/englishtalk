@@ -7,62 +7,249 @@
   {
    "w": "video",
    "pos": "n.",
-   "zh": "影片"
+   "zh": "影片",
+   "f": [
+    {
+     "k": "plural",
+     "w": "videos"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "whole",
    "pos": "adj.",
-   "zh": "整個的"
+   "zh": "整個的",
+   "f": [],
+   "fam": [
+    {
+     "w": "wholly",
+     "pos": "adv.",
+     "zh": "完全地"
+    }
+   ]
   },
   {
    "w": "action",
    "pos": "n.",
-   "zh": "動作戲"
+   "zh": "動作戲",
+   "f": [],
+   "fam": [
+    {
+     "w": "act",
+     "pos": "v.",
+     "zh": "行動"
+    },
+    {
+     "w": "active",
+     "pos": "adj.",
+     "zh": "活躍的"
+    },
+    {
+     "w": "actively",
+     "pos": "adv.",
+     "zh": "積極地"
+    }
+   ]
   },
   {
    "w": "strange",
    "pos": "adj.",
-   "zh": "奇怪的"
+   "zh": "奇怪的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "stranger"
+    },
+    {
+     "k": "sup",
+     "w": "strangest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "strangely",
+     "pos": "adv.",
+     "zh": "奇怪地"
+    },
+    {
+     "w": "strangeness",
+     "pos": "n.",
+     "zh": "奇怪；陌生"
+    }
+   ]
   },
   {
    "w": "begin",
    "pos": "v.",
-   "zh": "開始"
+   "zh": "開始",
+   "f": [
+    {
+     "k": "past",
+     "w": "began"
+    },
+    {
+     "k": "pp",
+     "w": "begun"
+    },
+    {
+     "k": "ing",
+     "w": "beginning"
+    },
+    {
+     "k": "s3",
+     "w": "begins"
+    }
+   ],
+   "fam": [
+    {
+     "w": "beginning",
+     "pos": "n.",
+     "zh": "開始"
+    },
+    {
+     "w": "beginner",
+     "pos": "n.",
+     "zh": "初學者"
+    }
+   ]
   },
   {
    "w": "business",
    "pos": "n.",
-   "zh": "公司"
+   "zh": "公司",
+   "f": [
+    {
+     "k": "plural",
+     "w": "businesses"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "modern",
    "pos": "adj.",
-   "zh": "現代的"
+   "zh": "現代的",
+   "f": [],
+   "fam": [
+    {
+     "w": "modernize",
+     "pos": "v.",
+     "zh": "現代化"
+    },
+    {
+     "w": "modernization",
+     "pos": "n.",
+     "zh": "現代化"
+    }
+   ]
   },
   {
    "w": "language",
    "pos": "n.",
-   "zh": "語言"
+   "zh": "語言",
+   "f": [
+    {
+     "k": "plural",
+     "w": "languages"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "pay",
    "pos": "v.",
-   "zh": "付款"
+   "zh": "付款",
+   "f": [
+    {
+     "k": "past",
+     "w": "paid"
+    },
+    {
+     "k": "pp",
+     "w": "paid"
+    },
+    {
+     "k": "ing",
+     "w": "paying"
+    },
+    {
+     "k": "s3",
+     "w": "pays"
+    }
+   ],
+   "fam": [
+    {
+     "w": "payment",
+     "pos": "n.",
+     "zh": "付款"
+    }
+   ]
   },
   {
    "w": "cost",
    "pos": "v.",
-   "zh": "花費"
+   "zh": "花費",
+   "f": [
+    {
+     "k": "past",
+     "w": "cost"
+    },
+    {
+     "k": "pp",
+     "w": "cost"
+    },
+    {
+     "k": "ing",
+     "w": "costing"
+    },
+    {
+     "k": "s3",
+     "w": "costs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "costly",
+     "pos": "adj.",
+     "zh": "昂貴的"
+    }
+   ]
   },
   {
    "w": "price",
    "pos": "n.",
-   "zh": "價錢"
+   "zh": "價錢",
+   "f": [
+    {
+     "k": "plural",
+     "w": "prices"
+    }
+   ],
+   "fam": [
+    {
+     "w": "pricey",
+     "pos": "adj.",
+     "zh": "昂貴的"
+    },
+    {
+     "w": "priceless",
+     "pos": "adj.",
+     "zh": "無價的"
+    }
+   ]
   },
   {
    "w": "ticket",
    "pos": "n.",
-   "zh": "票"
+   "zh": "票",
+   "f": [
+    {
+     "k": "plural",
+     "w": "tickets"
+    }
+   ],
+   "fam": []
   }
  ]
 }

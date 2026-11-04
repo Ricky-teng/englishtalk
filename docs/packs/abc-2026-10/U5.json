@@ -7,42 +7,145 @@
   {
    "w": "finish",
    "pos": "v.",
-   "zh": "做完；完成"
+   "zh": "做完；完成",
+   "f": [
+    {
+     "k": "past",
+     "w": "finished"
+    },
+    {
+     "k": "pp",
+     "w": "finished"
+    },
+    {
+     "k": "ing",
+     "w": "finishing"
+    },
+    {
+     "k": "s3",
+     "w": "finishes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "excited",
    "pos": "adj.",
-   "zh": "興奮的"
+   "zh": "興奮的",
+   "f": [],
+   "fam": [
+    {
+     "w": "excite",
+     "pos": "v.",
+     "zh": "使興奮"
+    },
+    {
+     "w": "excitement",
+     "pos": "n.",
+     "zh": "興奮"
+    },
+    {
+     "w": "excitedly",
+     "pos": "adv.",
+     "zh": "興奮地"
+    }
+   ]
   },
   {
    "w": "bored",
    "pos": "adj.",
-   "zh": "無聊的"
+   "zh": "無聊的",
+   "f": [],
+   "fam": [
+    {
+     "w": "bore",
+     "pos": "v.",
+     "zh": "使厭煩"
+    },
+    {
+     "w": "boredom",
+     "pos": "n.",
+     "zh": "無聊"
+    }
+   ]
   },
   {
    "w": "choice",
    "pos": "n.",
-   "zh": "選擇"
+   "zh": "選擇",
+   "f": [
+    {
+     "k": "plural",
+     "w": "choices"
+    }
+   ],
+   "fam": [
+    {
+     "w": "choose",
+     "pos": "v.",
+     "zh": "選擇"
+    }
+   ]
   },
   {
    "w": "end",
    "pos": "n.",
-   "zh": "結尾"
+   "zh": "結尾",
+   "f": [
+    {
+     "k": "plural",
+     "w": "ends"
+    }
+   ],
+   "fam": [
+    {
+     "w": "endless",
+     "pos": "adj.",
+     "zh": "無止境的"
+    },
+    {
+     "w": "endlessly",
+     "pos": "adv.",
+     "zh": "無止境地"
+    }
+   ]
   },
   {
    "w": "between",
    "pos": "prep.",
-   "zh": "在…之間"
+   "zh": "在…之間",
+   "f": [],
+   "fam": []
   },
   {
    "w": "during",
    "pos": "prep.",
-   "zh": "在…期間"
+   "zh": "在…期間",
+   "f": [],
+   "fam": []
   },
   {
    "w": "habit",
    "pos": "n.",
-   "zh": "習慣"
+   "zh": "習慣",
+   "f": [
+    {
+     "k": "plural",
+     "w": "habits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "habitual",
+     "pos": "adj.",
+     "zh": "習慣性的"
+    },
+    {
+     "w": "habitually",
+     "pos": "adv.",
+     "zh": "習慣性地"
+    }
+   ]
   }
  ]
 }

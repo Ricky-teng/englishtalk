@@ -7,102 +7,351 @@
   {
    "w": "carbon",
    "pos": "n.",
-   "zh": "碳"
+   "zh": "碳",
+   "f": [],
+   "fam": []
   },
   {
    "w": "overlook",
    "pos": "v.",
-   "zh": "忽略"
+   "zh": "忽略",
+   "f": [
+    {
+     "k": "past",
+     "w": "overlooked"
+    },
+    {
+     "k": "pp",
+     "w": "overlooked"
+    },
+    {
+     "k": "ing",
+     "w": "overlooking"
+    },
+    {
+     "k": "s3",
+     "w": "overlooks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "analyze",
    "pos": "v.",
-   "zh": "分析"
+   "zh": "分析",
+   "f": [
+    {
+     "k": "past",
+     "w": "analyzed"
+    },
+    {
+     "k": "pp",
+     "w": "analyzed"
+    },
+    {
+     "k": "ing",
+     "w": "analyzing"
+    },
+    {
+     "k": "s3",
+     "w": "analyzes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "analysis",
+     "pos": "n.",
+     "zh": "分析"
+    },
+    {
+     "w": "analyst",
+     "pos": "n.",
+     "zh": "分析師"
+    },
+    {
+     "w": "analytical",
+     "pos": "adj.",
+     "zh": "分析的"
+    }
+   ]
   },
   {
    "w": "emission",
    "pos": "n.",
-   "zh": "排放量"
+   "zh": "排放量",
+   "f": [
+    {
+     "k": "plural",
+     "w": "emissions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "emit",
+     "pos": "v.",
+     "zh": "排放；發出"
+    }
+   ]
   },
   {
    "w": "composition",
    "pos": "n.",
-   "zh": "成分組成"
+   "zh": "成分組成",
+   "f": [
+    {
+     "k": "plural",
+     "w": "compositions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "compose",
+     "pos": "v.",
+     "zh": "組成；作曲"
+    }
+   ]
   },
   {
    "w": "format",
    "pos": "n.",
-   "zh": "型態；形式"
+   "zh": "型態；形式",
+   "f": [
+    {
+     "k": "plural",
+     "w": "formats"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "protein",
    "pos": "n.",
-   "zh": "蛋白質"
+   "zh": "蛋白質",
+   "f": [
+    {
+     "k": "plural",
+     "w": "proteins"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "transportation",
    "pos": "n.",
-   "zh": "運輸"
+   "zh": "運輸",
+   "f": [],
+   "fam": [
+    {
+     "w": "transport",
+     "pos": "v.",
+     "zh": "運送；運輸"
+    }
+   ]
   },
   {
    "w": "nutritional",
    "pos": "adj.",
-   "zh": "營養上的"
+   "zh": "營養上的",
+   "f": [],
+   "fam": [
+    {
+     "w": "nutrition",
+     "pos": "n.",
+     "zh": "營養"
+    },
+    {
+     "w": "nutritionally",
+     "pos": "adv.",
+     "zh": "在營養上"
+    }
+   ]
   },
   {
    "w": "nutrition",
    "pos": "n.",
-   "zh": "營養"
+   "zh": "營養",
+   "f": [],
+   "fam": [
+    {
+     "w": "nutritional",
+     "pos": "adj.",
+     "zh": "營養的"
+    },
+    {
+     "w": "nutritious",
+     "pos": "adj.",
+     "zh": "營養豐富的"
+    }
+   ]
   },
   {
    "w": "infection",
    "pos": "n.",
-   "zh": "感染"
+   "zh": "感染",
+   "f": [
+    {
+     "k": "plural",
+     "w": "infections"
+    }
+   ],
+   "fam": [
+    {
+     "w": "infect",
+     "pos": "v.",
+     "zh": "感染"
+    },
+    {
+     "w": "infectious",
+     "pos": "adj.",
+     "zh": "傳染性的"
+    },
+    {
+     "w": "infected",
+     "pos": "adj.",
+     "zh": "受感染的"
+    }
+   ]
   },
   {
    "w": "formulate",
    "pos": "v.",
-   "zh": "調配（配方）"
+   "zh": "調配（配方）",
+   "f": [
+    {
+     "k": "past",
+     "w": "formulated"
+    },
+    {
+     "k": "pp",
+     "w": "formulated"
+    },
+    {
+     "k": "ing",
+     "w": "formulating"
+    },
+    {
+     "k": "s3",
+     "w": "formulates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "formula",
+     "pos": "n.",
+     "zh": "公式；配方"
+    },
+    {
+     "w": "formulation",
+     "pos": "n.",
+     "zh": "制定；配方"
+    }
+   ]
   },
   {
    "w": "informed",
    "pos": "adj.",
-   "zh": "資訊充分的"
+   "zh": "資訊充分的",
+   "f": [],
+   "fam": [
+    {
+     "w": "inform",
+     "pos": "v.",
+     "zh": "通知；告知"
+    },
+    {
+     "w": "information",
+     "pos": "n.",
+     "zh": "資訊"
+    }
+   ]
   },
   {
    "w": "clarity",
    "pos": "n.",
-   "zh": "清晰度"
+   "zh": "清晰度",
+   "f": [],
+   "fam": [
+    {
+     "w": "clear",
+     "pos": "adj.",
+     "zh": "清楚的"
+    },
+    {
+     "w": "clarify",
+     "pos": "v.",
+     "zh": "澄清"
+    },
+    {
+     "w": "clearly",
+     "pos": "adv.",
+     "zh": "清楚地"
+    }
+   ]
   },
   {
    "w": "balance",
    "pos": "v.",
-   "zh": "權衡；兼顧"
+   "zh": "權衡；兼顧",
+   "f": [
+    {
+     "k": "past",
+     "w": "balanced"
+    },
+    {
+     "k": "pp",
+     "w": "balanced"
+    },
+    {
+     "k": "ing",
+     "w": "balancing"
+    },
+    {
+     "k": "s3",
+     "w": "balances"
+    }
+   ],
+   "fam": [
+    {
+     "w": "balanced",
+     "pos": "adj.",
+     "zh": "平衡的"
+    }
+   ]
   },
   {
    "w": "spare no effort to",
    "pos": "phr.",
-   "zh": "竭盡全力去…"
+   "zh": "竭盡全力去…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "shed light on",
    "pos": "phr.",
-   "zh": "揭示；說明"
+   "zh": "揭示；說明",
+   "f": [],
+   "fam": []
   },
   {
    "w": "by contrast",
    "pos": "phr.",
-   "zh": "相較之下"
+   "zh": "相較之下",
+   "f": [],
+   "fam": []
   },
   {
    "w": "compare with",
    "pos": "phr.",
-   "zh": "與…比較"
+   "zh": "與…比較",
+   "f": [],
+   "fam": []
   },
   {
    "w": "balance A with B",
    "pos": "phr.",
-   "zh": "兼顧A與B"
+   "zh": "兼顧A與B",
+   "f": [],
+   "fam": []
   }
  ]
 }

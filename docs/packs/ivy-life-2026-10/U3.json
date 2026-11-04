@@ -7,92 +7,307 @@
   {
    "w": "maintain",
    "pos": "v.",
-   "zh": "維持"
+   "zh": "維持",
+   "f": [
+    {
+     "k": "past",
+     "w": "maintained"
+    },
+    {
+     "k": "pp",
+     "w": "maintained"
+    },
+    {
+     "k": "ing",
+     "w": "maintaining"
+    },
+    {
+     "k": "s3",
+     "w": "maintains"
+    }
+   ],
+   "fam": [
+    {
+     "w": "maintenance",
+     "pos": "n.",
+     "zh": "維護；保養"
+    }
+   ]
   },
   {
    "w": "routine",
    "pos": "n.",
-   "zh": "例行作息"
+   "zh": "例行作息",
+   "f": [
+    {
+     "k": "plural",
+     "w": "routines"
+    }
+   ],
+   "fam": [
+    {
+     "w": "routinely",
+     "pos": "adv.",
+     "zh": "例行地；經常"
+    }
+   ]
   },
   {
    "w": "expert",
    "pos": "n.",
-   "zh": "專家"
+   "zh": "專家",
+   "f": [
+    {
+     "k": "plural",
+     "w": "experts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "expertly",
+     "pos": "adv.",
+     "zh": "熟練地"
+    }
+   ]
   },
   {
    "w": "equally",
    "pos": "adv.",
-   "zh": "同樣地"
+   "zh": "同樣地",
+   "f": [],
+   "fam": [
+    {
+     "w": "equal",
+     "pos": "adj.",
+     "zh": "相等的；平等的"
+    },
+    {
+     "w": "equal",
+     "pos": "v.",
+     "zh": "等於"
+    },
+    {
+     "w": "equality",
+     "pos": "n.",
+     "zh": "平等"
+    }
+   ]
   },
   {
    "w": "block",
    "pos": "v.",
-   "zh": "遮擋"
+   "zh": "遮擋",
+   "f": [
+    {
+     "k": "past",
+     "w": "blocked"
+    },
+    {
+     "k": "pp",
+     "w": "blocked"
+    },
+    {
+     "k": "ing",
+     "w": "blocking"
+    },
+    {
+     "k": "s3",
+     "w": "blocks"
+    }
+   ],
+   "fam": [
+    {
+     "w": "blockage",
+     "pos": "n.",
+     "zh": "阻塞"
+    }
+   ]
   },
   {
    "w": "mask",
    "pos": "n.",
-   "zh": "眼罩"
+   "zh": "眼罩",
+   "f": [
+    {
+     "k": "plural",
+     "w": "masks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "stuff",
    "pos": "n.",
-   "zh": "東西；物品"
+   "zh": "東西；物品",
+   "f": [],
+   "fam": [
+    {
+     "w": "stuffed",
+     "pos": "adj.",
+     "zh": "塞滿的；填餡的"
+    }
+   ]
   },
   {
    "w": "security",
    "pos": "n.",
-   "zh": "安全感"
+   "zh": "安全感",
+   "f": [],
+   "fam": [
+    {
+     "w": "secure",
+     "pos": "adj.",
+     "zh": "安全的；安心的"
+    },
+    {
+     "w": "secure",
+     "pos": "v.",
+     "zh": "取得；固定"
+    },
+    {
+     "w": "securely",
+     "pos": "adv.",
+     "zh": "牢固地；安全地"
+    }
+   ]
   },
   {
    "w": "wrap",
    "pos": "v.",
-   "zh": "包裹"
+   "zh": "包裹",
+   "f": [
+    {
+     "k": "past",
+     "w": "wrapped"
+    },
+    {
+     "k": "pp",
+     "w": "wrapped"
+    },
+    {
+     "k": "ing",
+     "w": "wrapping"
+    },
+    {
+     "k": "s3",
+     "w": "wraps"
+    }
+   ],
+   "fam": [
+    {
+     "w": "wrapper",
+     "pos": "n.",
+     "zh": "包裝紙"
+    }
+   ]
   },
   {
    "w": "properly",
    "pos": "adv.",
-   "zh": "正確地"
+   "zh": "正確地",
+   "f": [],
+   "fam": [
+    {
+     "w": "proper",
+     "pos": "adj.",
+     "zh": "正確的；適當的"
+    }
+   ]
   },
   {
    "w": "limit",
    "pos": "v.",
-   "zh": "限制"
+   "zh": "限制",
+   "f": [
+    {
+     "k": "past",
+     "w": "limited"
+    },
+    {
+     "k": "pp",
+     "w": "limited"
+    },
+    {
+     "k": "ing",
+     "w": "limiting"
+    },
+    {
+     "k": "s3",
+     "w": "limits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "limitation",
+     "pos": "n.",
+     "zh": "限制"
+    },
+    {
+     "w": "limitless",
+     "pos": "adj.",
+     "zh": "無限的"
+    }
+   ]
   },
   {
    "w": "support",
    "pos": "n.",
-   "zh": "支撐"
+   "zh": "支撐",
+   "f": [
+    {
+     "k": "plural",
+     "w": "supports"
+    }
+   ],
+   "fam": [
+    {
+     "w": "supportive",
+     "pos": "adj.",
+     "zh": "支持的"
+    }
+   ]
   },
   {
    "w": "struggle to",
    "pos": "phr.",
-   "zh": "費力地（做）…"
+   "zh": "費力地（做）…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "have an effect on",
    "pos": "phr.",
-   "zh": "對…有影響"
+   "zh": "對…有影響",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in spite of",
    "pos": "phr.",
-   "zh": "儘管"
+   "zh": "儘管",
+   "f": [],
+   "fam": []
   },
   {
    "w": "stuff A with B",
    "pos": "phr.",
-   "zh": "用B塞滿A"
+   "zh": "用B塞滿A",
+   "f": [],
+   "fam": []
   },
   {
    "w": "a sense of security",
    "pos": "phr.",
-   "zh": "安全感"
+   "zh": "安全感",
+   "f": [],
+   "fam": []
   },
   {
    "w": "be suitable for",
    "pos": "phr.",
-   "zh": "適合…"
+   "zh": "適合…",
+   "f": [],
+   "fam": []
   }
  ]
 }

@@ -7,62 +7,232 @@
   {
    "w": "rainbow",
    "pos": "n.",
-   "zh": "彩虹"
+   "zh": "彩虹",
+   "f": [
+    {
+     "k": "plural",
+     "w": "rainbows"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "mean",
    "pos": "v.",
-   "zh": "意思是"
+   "zh": "意思是",
+   "f": [
+    {
+     "k": "past",
+     "w": "meant"
+    },
+    {
+     "k": "pp",
+     "w": "meant"
+    },
+    {
+     "k": "ing",
+     "w": "meaning"
+    },
+    {
+     "k": "s3",
+     "w": "means"
+    }
+   ],
+   "fam": [
+    {
+     "w": "meaningful",
+     "pos": "adj.",
+     "zh": "有意義的"
+    },
+    {
+     "w": "meaningless",
+     "pos": "adj.",
+     "zh": "無意義的"
+    }
+   ]
   },
   {
    "w": "elementary school",
    "pos": "n.",
-   "zh": "小學"
+   "zh": "小學",
+   "f": [
+    {
+     "k": "plural",
+     "w": "elementary schools"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "order",
    "pos": "n.",
-   "zh": "順序"
+   "zh": "順序",
+   "f": [
+    {
+     "k": "plural",
+     "w": "orders"
+    }
+   ],
+   "fam": [
+    {
+     "w": "orderly",
+     "pos": "adj.",
+     "zh": "整齊的；有秩序的"
+    }
+   ]
   },
   {
    "w": "scared",
    "pos": "adj.",
-   "zh": "害怕的"
+   "zh": "害怕的",
+   "f": [],
+   "fam": [
+    {
+     "w": "scare",
+     "pos": "v.",
+     "zh": "使害怕；驚嚇"
+    },
+    {
+     "w": "scare",
+     "pos": "n.",
+     "zh": "驚嚇；恐慌"
+    }
+   ]
   },
   {
    "w": "joy",
    "pos": "n.",
-   "zh": "喜悅"
+   "zh": "喜悅",
+   "f": [
+    {
+     "k": "plural",
+     "w": "joys"
+    }
+   ],
+   "fam": [
+    {
+     "w": "joyful",
+     "pos": "adj.",
+     "zh": "快樂的"
+    },
+    {
+     "w": "joyfully",
+     "pos": "adv.",
+     "zh": "快樂地"
+    },
+    {
+     "w": "enjoy",
+     "pos": "v.",
+     "zh": "享受"
+    }
+   ]
   },
   {
    "w": "pleasure",
    "pos": "n.",
-   "zh": "樂趣"
+   "zh": "樂趣",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pleasures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "please",
+     "pos": "v.",
+     "zh": "使高興"
+    },
+    {
+     "w": "pleasant",
+     "pos": "adj.",
+     "zh": "宜人的"
+    }
+   ]
   },
   {
    "w": "queen",
    "pos": "n.",
-   "zh": "女王"
+   "zh": "女王",
+   "f": [
+    {
+     "k": "plural",
+     "w": "queens"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "spoon",
    "pos": "n.",
-   "zh": "湯匙"
+   "zh": "湯匙",
+   "f": [
+    {
+     "k": "plural",
+     "w": "spoons"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "lie",
    "pos": "n.",
-   "zh": "謊話"
+   "zh": "謊話",
+   "f": [
+    {
+     "k": "plural",
+     "w": "lies"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "treat",
    "pos": "v.",
-   "zh": "對待"
+   "zh": "對待",
+   "f": [
+    {
+     "k": "past",
+     "w": "treated"
+    },
+    {
+     "k": "pp",
+     "w": "treated"
+    },
+    {
+     "k": "ing",
+     "w": "treating"
+    },
+    {
+     "k": "s3",
+     "w": "treats"
+    }
+   ],
+   "fam": [
+    {
+     "w": "treatment",
+     "pos": "n.",
+     "zh": "對待；治療"
+    }
+   ]
   },
   {
    "w": "correct",
    "pos": "adj.",
-   "zh": "對的；正確的"
+   "zh": "對的；正確的",
+   "f": [],
+   "fam": [
+    {
+     "w": "correctly",
+     "pos": "adv.",
+     "zh": "正確地"
+    },
+    {
+     "w": "correction",
+     "pos": "n.",
+     "zh": "修正；改正"
+    }
+   ]
   }
  ]
 }

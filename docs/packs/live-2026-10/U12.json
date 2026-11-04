@@ -7,52 +7,218 @@
   {
    "w": "represent",
    "pos": "v.",
-   "zh": "代表；象徵"
+   "zh": "代表；象徵",
+   "f": [
+    {
+     "k": "past",
+     "w": "represented"
+    },
+    {
+     "k": "pp",
+     "w": "represented"
+    },
+    {
+     "k": "ing",
+     "w": "representing"
+    },
+    {
+     "k": "s3",
+     "w": "represents"
+    }
+   ],
+   "fam": [
+    {
+     "w": "representation",
+     "pos": "n.",
+     "zh": "代表；表現"
+    },
+    {
+     "w": "representative",
+     "pos": "n.",
+     "zh": "代表；代表人"
+    },
+    {
+     "w": "representative",
+     "pos": "adj.",
+     "zh": "有代表性的"
+    }
+   ]
   },
   {
    "w": "meanwhile",
    "pos": "adv.",
-   "zh": "同時；與此同時"
+   "zh": "同時；與此同時",
+   "f": [],
+   "fam": []
   },
   {
    "w": "excellence",
    "pos": "n.",
-   "zh": "卓越；傑出"
+   "zh": "卓越；傑出",
+   "f": [],
+   "fam": [
+    {
+     "w": "excel",
+     "pos": "v.",
+     "zh": "擅長；出眾"
+    },
+    {
+     "w": "excellent",
+     "pos": "adj.",
+     "zh": "優秀的"
+    }
+   ]
   },
   {
    "w": "visible",
    "pos": "adj.",
-   "zh": "看得見的"
+   "zh": "看得見的",
+   "f": [],
+   "fam": [
+    {
+     "w": "visibility",
+     "pos": "n.",
+     "zh": "能見度"
+    },
+    {
+     "w": "visibly",
+     "pos": "adv.",
+     "zh": "明顯地"
+    },
+    {
+     "w": "vision",
+     "pos": "n.",
+     "zh": "視力；願景"
+    }
+   ]
   },
   {
    "w": "sweat",
    "pos": "n.",
-   "zh": "汗水"
+   "zh": "汗水",
+   "f": [],
+   "fam": [
+    {
+     "w": "sweaty",
+     "pos": "adj.",
+     "zh": "汗流浹背的"
+    }
+   ]
   },
   {
    "w": "promote",
    "pos": "v.",
-   "zh": "推廣；促進"
+   "zh": "推廣；促進",
+   "f": [
+    {
+     "k": "past",
+     "w": "promoted"
+    },
+    {
+     "k": "pp",
+     "w": "promoted"
+    },
+    {
+     "k": "ing",
+     "w": "promoting"
+    },
+    {
+     "k": "s3",
+     "w": "promotes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "promotion",
+     "pos": "n.",
+     "zh": "推廣；升遷"
+    }
+   ]
   },
   {
    "w": "unity",
    "pos": "n.",
-   "zh": "團結"
+   "zh": "團結",
+   "f": [],
+   "fam": [
+    {
+     "w": "unite",
+     "pos": "v.",
+     "zh": "團結；聯合"
+    },
+    {
+     "w": "united",
+     "pos": "adj.",
+     "zh": "團結的；聯合的"
+    },
+    {
+     "w": "unify",
+     "pos": "v.",
+     "zh": "統一"
+    }
+   ]
   },
   {
    "w": "plastic",
    "pos": "n.",
-   "zh": "塑膠"
+   "zh": "塑膠",
+   "f": [
+    {
+     "k": "plural",
+     "w": "plastics"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "security",
    "pos": "n.",
-   "zh": "安全；防護"
+   "zh": "安全；防護",
+   "f": [],
+   "fam": [
+    {
+     "w": "secure",
+     "pos": "adj.",
+     "zh": "安全的；安心的"
+    },
+    {
+     "w": "secure",
+     "pos": "v.",
+     "zh": "取得；固定"
+    },
+    {
+     "w": "securely",
+     "pos": "adv.",
+     "zh": "牢固地；安全地"
+    }
+   ]
   },
   {
    "w": "shiny",
    "pos": "adj.",
-   "zh": "閃亮的"
+   "zh": "閃亮的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "shinier"
+    },
+    {
+     "k": "sup",
+     "w": "shiniest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "shine",
+     "pos": "v.",
+     "zh": "發光；照耀"
+    },
+    {
+     "w": "shine",
+     "pos": "n.",
+     "zh": "光澤；光亮"
+    }
+   ]
   }
  ]
 }

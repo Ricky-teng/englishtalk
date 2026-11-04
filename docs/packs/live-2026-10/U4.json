@@ -7,42 +7,152 @@
   {
    "w": "cart",
    "pos": "n.",
-   "zh": "購物車；手推車"
+   "zh": "購物車；手推車",
+   "f": [
+    {
+     "k": "plural",
+     "w": "carts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "customer",
    "pos": "n.",
-   "zh": "顧客"
+   "zh": "顧客",
+   "f": [
+    {
+     "k": "plural",
+     "w": "customers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "realize",
    "pos": "v.",
-   "zh": "發覺；意識到"
+   "zh": "發覺；意識到",
+   "f": [
+    {
+     "k": "past",
+     "w": "realized"
+    },
+    {
+     "k": "pp",
+     "w": "realized"
+    },
+    {
+     "k": "ing",
+     "w": "realizing"
+    },
+    {
+     "k": "s3",
+     "w": "realizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "realization",
+     "pos": "n.",
+     "zh": "領悟；察覺"
+    }
+   ]
   },
   {
    "w": "relief",
    "pos": "n.",
-   "zh": "鬆一口氣；寬慰"
+   "zh": "鬆一口氣；寬慰",
+   "f": [],
+   "fam": [
+    {
+     "w": "relieve",
+     "pos": "v.",
+     "zh": "減輕；緩解"
+    },
+    {
+     "w": "relieved",
+     "pos": "adj.",
+     "zh": "鬆了口氣的"
+    }
+   ]
   },
   {
    "w": "alley",
    "pos": "n.",
-   "zh": "巷子"
+   "zh": "巷子",
+   "f": [
+    {
+     "k": "plural",
+     "w": "alleys"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "patience",
    "pos": "n.",
-   "zh": "耐心"
+   "zh": "耐心",
+   "f": [],
+   "fam": [
+    {
+     "w": "patient",
+     "pos": "adj.",
+     "zh": "有耐心的"
+    },
+    {
+     "w": "patiently",
+     "pos": "adv.",
+     "zh": "耐心地"
+    }
+   ]
   },
   {
    "w": "include",
    "pos": "v.",
-   "zh": "包含"
+   "zh": "包含",
+   "f": [
+    {
+     "k": "past",
+     "w": "included"
+    },
+    {
+     "k": "pp",
+     "w": "included"
+    },
+    {
+     "k": "ing",
+     "w": "including"
+    },
+    {
+     "k": "s3",
+     "w": "includes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "inclusion",
+     "pos": "n.",
+     "zh": "納入；包容"
+    },
+    {
+     "w": "inclusive",
+     "pos": "adj.",
+     "zh": "包容的"
+    }
+   ]
   },
   {
    "w": "immediately",
    "pos": "adv.",
-   "zh": "立刻"
+   "zh": "立刻",
+   "f": [],
+   "fam": [
+    {
+     "w": "immediate",
+     "pos": "adj.",
+     "zh": "立即的"
+    }
+   ]
   }
  ]
 }

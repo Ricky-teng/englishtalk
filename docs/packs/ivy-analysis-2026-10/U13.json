@@ -7,82 +7,289 @@
   {
    "w": "solid",
    "pos": "adj.",
-   "zh": "固態的"
+   "zh": "固態的",
+   "f": [],
+   "fam": [
+    {
+     "w": "solidity",
+     "pos": "n.",
+     "zh": "堅固；可靠"
+    },
+    {
+     "w": "solidly",
+     "pos": "adv.",
+     "zh": "牢固地；扎實地"
+    },
+    {
+     "w": "solidify",
+     "pos": "v.",
+     "zh": "使凝固；鞏固"
+    }
+   ]
   },
   {
    "w": "charge",
    "pos": "v.",
-   "zh": "充電"
+   "zh": "充電",
+   "f": [
+    {
+     "k": "past",
+     "w": "charged"
+    },
+    {
+     "k": "pp",
+     "w": "charged"
+    },
+    {
+     "k": "ing",
+     "w": "charging"
+    },
+    {
+     "k": "s3",
+     "w": "charges"
+    }
+   ],
+   "fam": [
+    {
+     "w": "charger",
+     "pos": "n.",
+     "zh": "充電器"
+    }
+   ]
   },
   {
    "w": "discharge",
    "pos": "v.",
-   "zh": "放電"
+   "zh": "放電",
+   "f": [
+    {
+     "k": "past",
+     "w": "discharged"
+    },
+    {
+     "k": "pp",
+     "w": "discharged"
+    },
+    {
+     "k": "ing",
+     "w": "discharging"
+    },
+    {
+     "k": "s3",
+     "w": "discharges"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "innovation",
    "pos": "n.",
-   "zh": "創新"
+   "zh": "創新",
+   "f": [
+    {
+     "k": "plural",
+     "w": "innovations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "innovate",
+     "pos": "v.",
+     "zh": "創新"
+    },
+    {
+     "w": "innovative",
+     "pos": "adj.",
+     "zh": "創新的"
+    }
+   ]
   },
   {
    "w": "conventional",
    "pos": "adj.",
-   "zh": "傳統的"
+   "zh": "傳統的",
+   "f": [],
+   "fam": [
+    {
+     "w": "convention",
+     "pos": "n.",
+     "zh": "慣例；大會"
+    },
+    {
+     "w": "conventionally",
+     "pos": "adv.",
+     "zh": "傳統上"
+    }
+   ]
   },
   {
    "w": "dense",
    "pos": "adj.",
-   "zh": "密度高的"
+   "zh": "密度高的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "denser"
+    },
+    {
+     "k": "sup",
+     "w": "densest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "density",
+     "pos": "n.",
+     "zh": "密度"
+    },
+    {
+     "w": "densely",
+     "pos": "adv.",
+     "zh": "密集地"
+    }
+   ]
   },
   {
    "w": "flammable",
    "pos": "adj.",
-   "zh": "易燃的"
+   "zh": "易燃的",
+   "f": [],
+   "fam": [
+    {
+     "w": "flame",
+     "pos": "n.",
+     "zh": "火焰"
+    }
+   ]
   },
   {
    "w": "sustain",
    "pos": "v.",
-   "zh": "維持"
+   "zh": "維持",
+   "f": [
+    {
+     "k": "past",
+     "w": "sustained"
+    },
+    {
+     "k": "pp",
+     "w": "sustained"
+    },
+    {
+     "k": "ing",
+     "w": "sustaining"
+    },
+    {
+     "k": "s3",
+     "w": "sustains"
+    }
+   ],
+   "fam": [
+    {
+     "w": "sustainable",
+     "pos": "adj.",
+     "zh": "永續的"
+    },
+    {
+     "w": "sustainability",
+     "pos": "n.",
+     "zh": "永續性"
+    }
+   ]
   },
   {
    "w": "component",
    "pos": "n.",
-   "zh": "零組件"
+   "zh": "零組件",
+   "f": [
+    {
+     "k": "plural",
+     "w": "components"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "modification",
    "pos": "n.",
-   "zh": "修改；調整"
+   "zh": "修改；調整",
+   "f": [
+    {
+     "k": "plural",
+     "w": "modifications"
+    }
+   ],
+   "fam": [
+    {
+     "w": "modify",
+     "pos": "v.",
+     "zh": "修改"
+    }
+   ]
   },
   {
    "w": "manufacturer",
    "pos": "n.",
-   "zh": "製造商"
+   "zh": "製造商",
+   "f": [
+    {
+     "k": "plural",
+     "w": "manufacturers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "manufacture",
+     "pos": "v.",
+     "zh": "製造"
+    }
+   ]
   },
   {
    "w": "consistent",
    "pos": "adj.",
-   "zh": "穩定一致的"
+   "zh": "穩定一致的",
+   "f": [],
+   "fam": [
+    {
+     "w": "consistency",
+     "pos": "n.",
+     "zh": "一致性"
+    },
+    {
+     "w": "consistently",
+     "pos": "adv.",
+     "zh": "一貫地"
+    }
+   ]
   },
   {
    "w": "groundwork",
    "pos": "n.",
-   "zh": "基礎工作"
+   "zh": "基礎工作",
+   "f": [],
+   "fam": []
   },
   {
    "w": "catch fire",
    "pos": "phr.",
-   "zh": "起火"
+   "zh": "起火",
+   "f": [],
+   "fam": []
   },
   {
    "w": "come down to",
    "pos": "phr.",
-   "zh": "歸根究柢在於"
+   "zh": "歸根究柢在於",
+   "f": [],
+   "fam": []
   },
   {
    "w": "may well",
    "pos": "phr.",
-   "zh": "很可能"
+   "zh": "很可能",
+   "f": [],
+   "fam": []
   }
  ]
 }

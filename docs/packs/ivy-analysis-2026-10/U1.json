@@ -7,212 +7,722 @@
   {
    "w": "elusive",
    "pos": "adj.",
-   "zh": "難得一見的"
+   "zh": "難得一見的",
+   "f": [],
+   "fam": [
+    {
+     "w": "elude",
+     "pos": "v.",
+     "zh": "躲避；難倒"
+    }
+   ]
   },
   {
    "w": "ecosystem",
    "pos": "n.",
-   "zh": "生態體系"
+   "zh": "生態體系",
+   "f": [
+    {
+     "k": "plural",
+     "w": "ecosystems"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "characteristic",
    "pos": "n.",
-   "zh": "特點；特色"
+   "zh": "特點；特色",
+   "f": [
+    {
+     "k": "plural",
+     "w": "characteristics"
+    }
+   ],
+   "fam": [
+    {
+     "w": "characterize",
+     "pos": "v.",
+     "zh": "描述…的特徵"
+    },
+    {
+     "w": "characteristically",
+     "pos": "adv.",
+     "zh": "典型地"
+    }
+   ]
   },
   {
    "w": "identification",
    "pos": "n.",
-   "zh": "辨認；識別"
+   "zh": "辨認；識別",
+   "f": [],
+   "fam": [
+    {
+     "w": "identify",
+     "pos": "v.",
+     "zh": "辨認"
+    },
+    {
+     "w": "identifiable",
+     "pos": "adj.",
+     "zh": "可辨認的"
+    }
+   ]
   },
   {
    "w": "continuous",
    "pos": "adj.",
-   "zh": "不間斷的"
+   "zh": "不間斷的",
+   "f": [],
+   "fam": [
+    {
+     "w": "continue",
+     "pos": "v.",
+     "zh": "繼續"
+    },
+    {
+     "w": "continuously",
+     "pos": "adv.",
+     "zh": "不斷地"
+    },
+    {
+     "w": "continuity",
+     "pos": "n.",
+     "zh": "連續性"
+    }
+   ]
   },
   {
    "w": "camouflage",
    "pos": "n.",
-   "zh": "偽裝；保護色"
+   "zh": "偽裝；保護色",
+   "f": [],
+   "fam": []
   },
   {
    "w": "striking",
    "pos": "adj.",
-   "zh": "醒目的"
+   "zh": "醒目的",
+   "f": [],
+   "fam": [
+    {
+     "w": "strike",
+     "pos": "v.",
+     "zh": "打；打動"
+    },
+    {
+     "w": "strikingly",
+     "pos": "adv.",
+     "zh": "顯著地；驚人地"
+    }
+   ]
   },
   {
    "w": "prominent",
    "pos": "adj.",
-   "zh": "明顯突出的"
+   "zh": "明顯突出的",
+   "f": [],
+   "fam": [
+    {
+     "w": "prominence",
+     "pos": "n.",
+     "zh": "顯著；突出"
+    },
+    {
+     "w": "prominently",
+     "pos": "adv.",
+     "zh": "顯著地"
+    }
+   ]
   },
   {
    "w": "adaptable",
    "pos": "adj.",
-   "zh": "適應力強的"
+   "zh": "適應力強的",
+   "f": [],
+   "fam": [
+    {
+     "w": "adapt",
+     "pos": "v.",
+     "zh": "適應"
+    },
+    {
+     "w": "adaptability",
+     "pos": "n.",
+     "zh": "適應能力"
+    },
+    {
+     "w": "adaptation",
+     "pos": "n.",
+     "zh": "適應；改編"
+    }
+   ]
   },
   {
    "w": "adaptability",
    "pos": "n.",
-   "zh": "適應能力"
+   "zh": "適應能力",
+   "f": [],
+   "fam": [
+    {
+     "w": "adapt",
+     "pos": "v.",
+     "zh": "適應"
+    },
+    {
+     "w": "adaptable",
+     "pos": "adj.",
+     "zh": "適應力強的"
+    }
+   ]
   },
   {
    "w": "thrive",
    "pos": "v.",
-   "zh": "茁壯；興旺"
+   "zh": "茁壯；興旺",
+   "f": [
+    {
+     "k": "past",
+     "w": "thrived"
+    },
+    {
+     "k": "pp",
+     "w": "thrived"
+    },
+    {
+     "k": "ing",
+     "w": "thriving"
+    },
+    {
+     "k": "s3",
+     "w": "thrives"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "pronunciation",
    "pos": "n.",
-   "zh": "發音"
+   "zh": "發音",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pronunciations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "pronounce",
+     "pos": "v.",
+     "zh": "發音"
+    }
+   ]
   },
   {
    "w": "resemblance",
    "pos": "n.",
-   "zh": "相像之處"
+   "zh": "相像之處",
+   "f": [
+    {
+     "k": "plural",
+     "w": "resemblances"
+    }
+   ],
+   "fam": [
+    {
+     "w": "resemble",
+     "pos": "v.",
+     "zh": "像；相似"
+    }
+   ]
   },
   {
    "w": "mistake",
    "pos": "v.",
-   "zh": "誤認"
+   "zh": "誤認",
+   "f": [
+    {
+     "k": "past",
+     "w": "mistook"
+    },
+    {
+     "k": "pp",
+     "w": "mistaken"
+    },
+    {
+     "k": "ing",
+     "w": "mistaking"
+    },
+    {
+     "k": "s3",
+     "w": "mistakes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "mistakenly",
+     "pos": "adv.",
+     "zh": "錯誤地"
+    }
+   ]
   },
   {
    "w": "distinguish",
    "pos": "v.",
-   "zh": "區分；辨別"
+   "zh": "區分；辨別",
+   "f": [
+    {
+     "k": "past",
+     "w": "distinguished"
+    },
+    {
+     "k": "pp",
+     "w": "distinguished"
+    },
+    {
+     "k": "ing",
+     "w": "distinguishing"
+    },
+    {
+     "k": "s3",
+     "w": "distinguishes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "distinction",
+     "pos": "n.",
+     "zh": "區別"
+    },
+    {
+     "w": "distinct",
+     "pos": "adj.",
+     "zh": "截然不同的"
+    },
+    {
+     "w": "distinctive",
+     "pos": "adj.",
+     "zh": "獨特的"
+    },
+    {
+     "w": "distinctly",
+     "pos": "adv.",
+     "zh": "清楚地"
+    }
+   ]
   },
   {
    "w": "apart",
    "pos": "adv.",
-   "zh": "分開地"
+   "zh": "分開地",
+   "f": [],
+   "fam": []
   },
   {
    "w": "resemble",
    "pos": "v.",
-   "zh": "長得像"
+   "zh": "長得像",
+   "f": [
+    {
+     "k": "past",
+     "w": "resembled"
+    },
+    {
+     "k": "pp",
+     "w": "resembled"
+    },
+    {
+     "k": "ing",
+     "w": "resembling"
+    },
+    {
+     "k": "s3",
+     "w": "resembles"
+    }
+   ],
+   "fam": [
+    {
+     "w": "resemblance",
+     "pos": "n.",
+     "zh": "相似之處"
+    }
+   ]
   },
   {
    "w": "ecological",
    "pos": "adj.",
-   "zh": "生態的"
+   "zh": "生態的",
+   "f": [],
+   "fam": [
+    {
+     "w": "ecology",
+     "pos": "n.",
+     "zh": "生態；生態學"
+    },
+    {
+     "w": "ecologist",
+     "pos": "n.",
+     "zh": "生態學家"
+    },
+    {
+     "w": "ecologically",
+     "pos": "adv.",
+     "zh": "生態上"
+    }
+   ]
   },
   {
    "w": "endangered",
    "pos": "adj.",
-   "zh": "面臨滅絕的"
+   "zh": "面臨滅絕的",
+   "f": [],
+   "fam": [
+    {
+     "w": "endanger",
+     "pos": "v.",
+     "zh": "危及"
+    },
+    {
+     "w": "danger",
+     "pos": "n.",
+     "zh": "危險"
+    }
+   ]
   },
   {
    "w": "fragmentation",
    "pos": "n.",
-   "zh": "破碎化；分裂"
+   "zh": "破碎化；分裂",
+   "f": [],
+   "fam": [
+    {
+     "w": "fragment",
+     "pos": "v.",
+     "zh": "使碎裂"
+    },
+    {
+     "w": "fragmented",
+     "pos": "adj.",
+     "zh": "支離破碎的"
+    }
+   ]
   },
   {
    "w": "fragment",
    "pos": "v.",
-   "zh": "使分裂成塊"
+   "zh": "使分裂成塊",
+   "f": [
+    {
+     "k": "past",
+     "w": "fragmented"
+    },
+    {
+     "k": "pp",
+     "w": "fragmented"
+    },
+    {
+     "k": "ing",
+     "w": "fragmenting"
+    },
+    {
+     "k": "s3",
+     "w": "fragments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "fragmentation",
+     "pos": "n.",
+     "zh": "破碎化；分裂"
+    }
+   ]
   },
   {
    "w": "residential",
    "pos": "adj.",
-   "zh": "住宅區的"
+   "zh": "住宅區的",
+   "f": [],
+   "fam": [
+    {
+     "w": "resident",
+     "pos": "n.",
+     "zh": "居民"
+    },
+    {
+     "w": "residence",
+     "pos": "n.",
+     "zh": "住所；住宅"
+    },
+    {
+     "w": "reside",
+     "pos": "v.",
+     "zh": "居住"
+    }
+   ]
   },
   {
    "w": "territory",
    "pos": "n.",
-   "zh": "領域；地盤"
+   "zh": "領域；地盤",
+   "f": [
+    {
+     "k": "plural",
+     "w": "territories"
+    }
+   ],
+   "fam": [
+    {
+     "w": "territorial",
+     "pos": "adj.",
+     "zh": "領土的；地盤性的"
+    }
+   ]
   },
   {
    "w": "fatal",
    "pos": "adj.",
-   "zh": "致死的"
+   "zh": "致死的",
+   "f": [],
+   "fam": [
+    {
+     "w": "fatality",
+     "pos": "n.",
+     "zh": "死亡事故"
+    },
+    {
+     "w": "fatally",
+     "pos": "adv.",
+     "zh": "致命地"
+    }
+   ]
   },
   {
    "w": "collision",
    "pos": "n.",
-   "zh": "碰撞"
+   "zh": "碰撞",
+   "f": [
+    {
+     "k": "plural",
+     "w": "collisions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "collide",
+     "pos": "v.",
+     "zh": "碰撞"
+    }
+   ]
   },
   {
    "w": "transmit",
    "pos": "v.",
-   "zh": "傳染；傳播"
+   "zh": "傳染；傳播",
+   "f": [
+    {
+     "k": "past",
+     "w": "transmitted"
+    },
+    {
+     "k": "pp",
+     "w": "transmitted"
+    },
+    {
+     "k": "ing",
+     "w": "transmitting"
+    },
+    {
+     "k": "s3",
+     "w": "transmits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "transmission",
+     "pos": "n.",
+     "zh": "傳播；傳送"
+    }
+   ]
   },
   {
    "w": "underway",
    "pos": "adv.",
-   "zh": "進行中"
+   "zh": "進行中",
+   "f": [],
+   "fam": []
   },
   {
    "w": "initiative",
    "pos": "n.",
-   "zh": "倡議；計畫"
+   "zh": "倡議；計畫",
+   "f": [
+    {
+     "k": "plural",
+     "w": "initiatives"
+    }
+   ],
+   "fam": [
+    {
+     "w": "initiate",
+     "pos": "v.",
+     "zh": "發起；開始"
+    }
+   ]
   },
   {
    "w": "agricultural",
    "pos": "adj.",
-   "zh": "農業的"
+   "zh": "農業的",
+   "f": [],
+   "fam": [
+    {
+     "w": "agriculture",
+     "pos": "n.",
+     "zh": "農業"
+    }
+   ]
   },
   {
    "w": "agriculture",
    "pos": "n.",
-   "zh": "農業"
+   "zh": "農業",
+   "f": [],
+   "fam": [
+    {
+     "w": "agricultural",
+     "pos": "adj.",
+     "zh": "農業的"
+    }
+   ]
   },
   {
    "w": "classify",
    "pos": "v.",
-   "zh": "歸類"
+   "zh": "歸類",
+   "f": [
+    {
+     "k": "past",
+     "w": "classified"
+    },
+    {
+     "k": "pp",
+     "w": "classified"
+    },
+    {
+     "k": "ing",
+     "w": "classifying"
+    },
+    {
+     "k": "s3",
+     "w": "classifies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "classification",
+     "pos": "n.",
+     "zh": "分類"
+    },
+    {
+     "w": "class",
+     "pos": "n.",
+     "zh": "類別"
+    }
+   ]
   },
   {
    "w": "estimated",
    "pos": "adj.",
-   "zh": "估計的"
+   "zh": "估計的",
+   "f": [],
+   "fam": [
+    {
+     "w": "estimate",
+     "pos": "v.",
+     "zh": "估計"
+    },
+    {
+     "w": "estimate",
+     "pos": "n.",
+     "zh": "估計值"
+    },
+    {
+     "w": "estimation",
+     "pos": "n.",
+     "zh": "估計；判斷"
+    }
+   ]
   },
   {
    "w": "translate to",
    "pos": "phr.",
-   "zh": "意思相當於"
+   "zh": "意思相當於",
+   "f": [],
+   "fam": []
   },
   {
    "w": "mistake A for B",
    "pos": "phr.",
-   "zh": "把A誤認為B"
+   "zh": "把A誤認為B",
+   "f": [],
+   "fam": []
   },
   {
    "w": "distinguish A from B",
    "pos": "phr.",
-   "zh": "區分A與B"
+   "zh": "區分A與B",
+   "f": [],
+   "fam": []
   },
   {
    "w": "tell... apart",
    "pos": "phr.",
-   "zh": "分辨出差異"
+   "zh": "分辨出差異",
+   "f": [],
+   "fam": []
   },
   {
    "w": "at first glance",
    "pos": "phr.",
-   "zh": "乍看之下"
+   "zh": "乍看之下",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in terms of",
    "pos": "phr.",
-   "zh": "就…而言"
+   "zh": "就…而言",
+   "f": [],
+   "fam": []
   },
   {
    "w": "classify A as B",
    "pos": "phr.",
-   "zh": "把A歸為B"
+   "zh": "把A歸為B",
+   "f": [],
+   "fam": []
   },
   {
    "w": "be concentrated in",
    "pos": "phr.",
-   "zh": "集中在…"
+   "zh": "集中在…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in search of",
    "pos": "phr.",
-   "zh": "為了尋找"
+   "zh": "為了尋找",
+   "f": [],
+   "fam": []
   },
   {
    "w": "for generations to come",
    "pos": "phr.",
-   "zh": "留給後代"
+   "zh": "留給後代",
+   "f": [],
+   "fam": []
   }
  ]
 }

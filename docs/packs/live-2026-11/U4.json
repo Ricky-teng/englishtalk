@@ -1,0 +1,222 @@
+{
+ "id": "U4",
+ "title": "AI 真的省時嗎？「AI 保姆」的興起",
+ "tag": "Live2611-U4",
+ "verified": true,
+ "items": [
+  {
+   "w": "draft",
+   "pos": "v.",
+   "zh": "起草；草擬",
+   "f": [
+    {
+     "k": "past",
+     "w": "drafted"
+    },
+    {
+     "k": "pp",
+     "w": "drafted"
+    },
+    {
+     "k": "ing",
+     "w": "drafting"
+    },
+    {
+     "k": "s3",
+     "w": "drafts"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "summarize",
+   "pos": "v.",
+   "zh": "總結；摘要",
+   "f": [
+    {
+     "k": "past",
+     "w": "summarized"
+    },
+    {
+     "k": "pp",
+     "w": "summarized"
+    },
+    {
+     "k": "ing",
+     "w": "summarizing"
+    },
+    {
+     "k": "s3",
+     "w": "summarizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "summary",
+     "pos": "n.",
+     "zh": "摘要；總結"
+    }
+   ]
+  },
+  {
+   "w": "workplace",
+   "pos": "n.",
+   "zh": "職場；工作場所",
+   "f": [
+    {
+     "k": "plural",
+     "w": "workplaces"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "misunderstand",
+   "pos": "v.",
+   "zh": "誤解",
+   "f": [
+    {
+     "k": "past",
+     "w": "misunderstood"
+    },
+    {
+     "k": "pp",
+     "w": "misunderstood"
+    },
+    {
+     "k": "ing",
+     "w": "misunderstanding"
+    },
+    {
+     "k": "s3",
+     "w": "misunderstands"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "information",
+   "pos": "n.",
+   "zh": "資訊",
+   "f": [],
+   "fam": [
+    {
+     "w": "inform",
+     "pos": "v.",
+     "zh": "通知；告知"
+    },
+    {
+     "w": "informative",
+     "pos": "adj.",
+     "zh": "資訊豐富的"
+    }
+   ]
+  },
+  {
+   "w": "accomplish",
+   "pos": "v.",
+   "zh": "完成；達成",
+   "f": [
+    {
+     "k": "past",
+     "w": "accomplished"
+    },
+    {
+     "k": "pp",
+     "w": "accomplished"
+    },
+    {
+     "k": "ing",
+     "w": "accomplishing"
+    },
+    {
+     "k": "s3",
+     "w": "accomplishes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "accomplishment",
+     "pos": "n.",
+     "zh": "成就"
+    },
+    {
+     "w": "accomplished",
+     "pos": "adj.",
+     "zh": "有成就的"
+    }
+   ]
+  },
+  {
+   "w": "frustration",
+   "pos": "n.",
+   "zh": "挫折；沮喪",
+   "f": [],
+   "fam": [
+    {
+     "w": "frustrate",
+     "pos": "v.",
+     "zh": "使挫折"
+    },
+    {
+     "w": "frustrated",
+     "pos": "adj.",
+     "zh": "沮喪的"
+    },
+    {
+     "w": "frustrating",
+     "pos": "adj.",
+     "zh": "令人沮喪的"
+    }
+   ]
+  },
+  {
+   "w": "eventually",
+   "pos": "adv.",
+   "zh": "最後；終於",
+   "f": [],
+   "fam": [
+    {
+     "w": "eventual",
+     "pos": "adj.",
+     "zh": "最終的"
+    }
+   ]
+  },
+  {
+   "w": "content",
+   "pos": "n.",
+   "zh": "內容",
+   "f": [],
+   "fam": []
+  },
+  {
+   "w": "critical",
+   "pos": "adj.",
+   "zh": "關鍵的；批判性的",
+   "f": [],
+   "fam": [
+    {
+     "w": "critic",
+     "pos": "n.",
+     "zh": "評論家"
+    },
+    {
+     "w": "criticize",
+     "pos": "v.",
+     "zh": "批評"
+    },
+    {
+     "w": "criticism",
+     "pos": "n.",
+     "zh": "批評"
+    },
+    {
+     "w": "critically",
+     "pos": "adv.",
+     "zh": "嚴重地；批判地"
+    }
+   ]
+  }
+ ]
+}

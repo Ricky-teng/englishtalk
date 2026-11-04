@@ -215,6 +215,214 @@
    ]
   },
   {
+   "id": "live-2026-11",
+   "title": "LIVE 互動英語 2026 年 11 月號",
+   "subtitle": "雜誌｜2026 年 11 月號・每篇文章的重點單字",
+   "tagPrefix": "Live2611",
+   "note": "非 LiveABC 官方資料。單字依 LiveABC 官方「行動單字卡」網頁的各單元字表整理，中文解釋為依文章語境自行撰寫的簡短釋義。完整解說、例句與發音請看官方單字卡。",
+   "link": "https://voccard.liveabc.com/live/2026/11",
+   "linkText": "LiveABC 官方行動單字卡",
+   "units": [
+    {
+     "id": "U1",
+     "title": "〈班傑明的奇幻旅程〉",
+     "tag": "Live2611-U1",
+     "file": "live-2026-11/U1.json",
+     "verified": true,
+     "words": 8,
+     "phrases": 2,
+     "preview": [
+      "immediately",
+      "dye",
+      "appearance",
+      "ashamed",
+      "capable",
+      "objection"
+     ]
+    },
+    {
+     "id": "U2",
+     "title": "覺得自己學不好外語？你可能想錯了！",
+     "tag": "Live2611-U2",
+     "file": "live-2026-11/U2.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "doubt",
+      "fluent",
+      "accent",
+      "advantage",
+      "tutor",
+      "factor"
+     ]
+    },
+    {
+     "id": "U3",
+     "title": "在紐約搭地鐵",
+     "tag": "Live2611-U3",
+     "file": "live-2026-11/U3.json",
+     "verified": true,
+     "words": 4,
+     "phrases": 0,
+     "preview": [
+      "reload",
+      "agent",
+      "traveler",
+      "transfer"
+     ]
+    },
+    {
+     "id": "U4",
+     "title": "AI 真的省時嗎？「AI 保姆」的興起",
+     "tag": "Live2611-U4",
+     "file": "live-2026-11/U4.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "draft",
+      "summarize",
+      "workplace",
+      "misunderstand",
+      "information",
+      "accomplish"
+     ]
+    },
+    {
+     "id": "U5",
+     "title": "看圖寫作",
+     "tag": "Live2611-U5",
+     "file": "live-2026-11/U5.json",
+     "verified": true,
+     "words": 4,
+     "phrases": 0,
+     "preview": [
+      "generation",
+      "recycle",
+      "community",
+      "contribute"
+     ]
+    },
+    {
+     "id": "U6",
+     "title": "探索巨石陣",
+     "tag": "Live2611-U6",
+     "file": "live-2026-11/U6.json",
+     "verified": true,
+     "words": 5,
+     "phrases": 0,
+     "preview": [
+      "structure",
+      "surround",
+      "reference",
+      "calendar",
+      "transport"
+     ]
+    },
+    {
+     "id": "U7",
+     "title": "《寶可夢 GO》如何幫助機器人送貨",
+     "tag": "Live2611-U7",
+     "file": "live-2026-11/U7.json",
+     "verified": true,
+     "words": 4,
+     "phrases": 0,
+     "preview": [
+      "mobile",
+      "landmark",
+      "reward",
+      "identify"
+     ]
+    },
+    {
+     "id": "U8",
+     "title": "雅各．艾洛迪：新一代好萊塢明星的養成",
+     "tag": "Live2611-U8",
+     "file": "live-2026-11/U8.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "determined",
+      "pursue",
+      "professional",
+      "fame",
+      "idol",
+      "athlete"
+     ]
+    },
+    {
+     "id": "U9",
+     "title": "棘手危機：吞噬一個國家的植物",
+     "tag": "Live2611-U9",
+     "file": "live-2026-11/U9.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 1,
+     "preview": [
+      "consume",
+      "stem",
+      "dense",
+      "abandon",
+      "option",
+      "conclude"
+     ]
+    },
+    {
+     "id": "U11",
+     "title": "點亮夜空：十一月的清邁",
+     "tag": "Live2611-U11",
+     "file": "live-2026-11/U11.json",
+     "verified": true,
+     "words": 10,
+     "phrases": 0,
+     "preview": [
+      "atmosphere",
+      "preserve",
+      "carve",
+      "numerous",
+      "goods",
+      "memorable"
+     ]
+    },
+    {
+     "id": "U12",
+     "title": "用英語表達感謝",
+     "tag": "Live2611-U12",
+     "file": "live-2026-11/U12.json",
+     "verified": true,
+     "words": 8,
+     "phrases": 2,
+     "preview": [
+      "appreciate",
+      "anytime",
+      "internal",
+      "settle",
+      "encouragement",
+      "presentation"
+     ]
+    },
+    {
+     "id": "U13",
+     "title": "四種不用慢跑也能維持體能的方法",
+     "tag": "Live2611-U13",
+     "file": "live-2026-11/U13.json",
+     "verified": true,
+     "words": 12,
+     "phrases": 0,
+     "preview": [
+      "benefit",
+      "pace",
+      "calorie",
+      "involve",
+      "workout",
+      "impact"
+     ]
+    }
+   ]
+  },
+  {
    "id": "live-2026-10",
    "title": "LIVE 互動英語 2026 年 10 月號",
    "subtitle": "雜誌｜No.306・每篇文章的重點單字",

@@ -7,32 +7,141 @@
   {
    "w": "disorder",
    "pos": "n.",
-   "zh": "失調症"
+   "zh": "失調症",
+   "f": [
+    {
+     "k": "plural",
+     "w": "disorders"
+    }
+   ],
+   "fam": [
+    {
+     "w": "disordered",
+     "pos": "adj.",
+     "zh": "紊亂的；失調的"
+    },
+    {
+     "w": "disorderly",
+     "pos": "adj.",
+     "zh": "混亂的"
+    }
+   ]
   },
   {
    "w": "distinguish",
    "pos": "v.",
-   "zh": "分辨"
+   "zh": "分辨",
+   "f": [
+    {
+     "k": "past",
+     "w": "distinguished"
+    },
+    {
+     "k": "pp",
+     "w": "distinguished"
+    },
+    {
+     "k": "ing",
+     "w": "distinguishing"
+    },
+    {
+     "k": "s3",
+     "w": "distinguishes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "distinction",
+     "pos": "n.",
+     "zh": "區別"
+    },
+    {
+     "w": "distinct",
+     "pos": "adj.",
+     "zh": "截然不同的"
+    },
+    {
+     "w": "distinctive",
+     "pos": "adj.",
+     "zh": "獨特的"
+    },
+    {
+     "w": "distinctly",
+     "pos": "adv.",
+     "zh": "清楚地"
+    }
+   ]
   },
   {
    "w": "collector",
    "pos": "n.",
-   "zh": "收藏者"
+   "zh": "收藏者",
+   "f": [
+    {
+     "k": "plural",
+     "w": "collectors"
+    }
+   ],
+   "fam": [
+    {
+     "w": "collect",
+     "pos": "v.",
+     "zh": "收集"
+    }
+   ]
   },
   {
    "w": "antique",
    "pos": "n.",
-   "zh": "古董"
+   "zh": "古董",
+   "f": [
+    {
+     "k": "plural",
+     "w": "antiques"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "possession",
    "pos": "n.",
-   "zh": "所有物"
+   "zh": "所有物",
+   "f": [
+    {
+     "k": "plural",
+     "w": "possessions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "possess",
+     "pos": "v.",
+     "zh": "擁有"
+    },
+    {
+     "w": "possessive",
+     "pos": "adj.",
+     "zh": "占有慾強的"
+    }
+   ]
   },
   {
    "w": "therapy",
    "pos": "n.",
-   "zh": "治療"
+   "zh": "治療",
+   "f": [
+    {
+     "k": "plural",
+     "w": "therapies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "therapeutic",
+     "pos": "adj.",
+     "zh": "有療效的"
+    }
+   ]
   }
  ]
 }

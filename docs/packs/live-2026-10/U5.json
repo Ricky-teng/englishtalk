@@ -7,52 +7,228 @@
   {
    "w": "debate",
    "pos": "v.",
-   "zh": "爭論；辯論"
+   "zh": "爭論；辯論",
+   "f": [
+    {
+     "k": "past",
+     "w": "debated"
+    },
+    {
+     "k": "pp",
+     "w": "debated"
+    },
+    {
+     "k": "ing",
+     "w": "debating"
+    },
+    {
+     "k": "s3",
+     "w": "debates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "debatable",
+     "pos": "adj.",
+     "zh": "有爭議的"
+    }
+   ]
   },
   {
    "w": "flavor",
    "pos": "n.",
-   "zh": "味道；風味"
+   "zh": "味道；風味",
+   "f": [
+    {
+     "k": "plural",
+     "w": "flavors"
+    }
+   ],
+   "fam": [
+    {
+     "w": "flavorful",
+     "pos": "adj.",
+     "zh": "味道濃郁的"
+    }
+   ]
   },
   {
    "w": "specific",
    "pos": "adj.",
-   "zh": "特定的；明確的"
+   "zh": "特定的；明確的",
+   "f": [],
+   "fam": [
+    {
+     "w": "specifically",
+     "pos": "adv.",
+     "zh": "特別地；明確地"
+    },
+    {
+     "w": "specify",
+     "pos": "v.",
+     "zh": "具體說明"
+    },
+    {
+     "w": "specification",
+     "pos": "n.",
+     "zh": "規格；明細"
+    }
+   ]
   },
   {
    "w": "process",
    "pos": "v.",
-   "zh": "處理；理解"
+   "zh": "處理；理解",
+   "f": [
+    {
+     "k": "past",
+     "w": "processed"
+    },
+    {
+     "k": "pp",
+     "w": "processed"
+    },
+    {
+     "k": "ing",
+     "w": "processing"
+    },
+    {
+     "k": "s3",
+     "w": "processes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "reaction",
    "pos": "n.",
-   "zh": "反應"
+   "zh": "反應",
+   "f": [
+    {
+     "k": "plural",
+     "w": "reactions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "react",
+     "pos": "v.",
+     "zh": "反應"
+    }
+   ]
   },
   {
    "w": "stretch",
    "pos": "v.",
-   "zh": "延續；追溯（到）"
+   "zh": "延續；追溯（到）",
+   "f": [
+    {
+     "k": "past",
+     "w": "stretched"
+    },
+    {
+     "k": "pp",
+     "w": "stretched"
+    },
+    {
+     "k": "ing",
+     "w": "stretching"
+    },
+    {
+     "k": "s3",
+     "w": "stretches"
+    }
+   ],
+   "fam": [
+    {
+     "w": "stretchy",
+     "pos": "adj.",
+     "zh": "有彈性的"
+    }
+   ]
   },
   {
    "w": "spread",
    "pos": "v.",
-   "zh": "傳播；蔓延"
+   "zh": "傳播；蔓延",
+   "f": [
+    {
+     "k": "past",
+     "w": "spread"
+    },
+    {
+     "k": "pp",
+     "w": "spread"
+    },
+    {
+     "k": "ing",
+     "w": "spreading"
+    },
+    {
+     "k": "s3",
+     "w": "spreads"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "product",
    "pos": "n.",
-   "zh": "產品"
+   "zh": "產品",
+   "f": [
+    {
+     "k": "plural",
+     "w": "products"
+    }
+   ],
+   "fam": [
+    {
+     "w": "produce",
+     "pos": "v.",
+     "zh": "生產"
+    },
+    {
+     "w": "productive",
+     "pos": "adj.",
+     "zh": "有生產力的"
+    }
+   ]
   },
   {
    "w": "release",
    "pos": "v.",
-   "zh": "推出；發行"
+   "zh": "推出；發行",
+   "f": [
+    {
+     "k": "past",
+     "w": "released"
+    },
+    {
+     "k": "pp",
+     "w": "released"
+    },
+    {
+     "k": "ing",
+     "w": "releasing"
+    },
+    {
+     "k": "s3",
+     "w": "releases"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "chain",
    "pos": "n.",
-   "zh": "連鎖店"
+   "zh": "連鎖店",
+   "f": [
+    {
+     "k": "plural",
+     "w": "chains"
+    }
+   ],
+   "fam": []
   }
  ]
 }

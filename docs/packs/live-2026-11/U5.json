@@ -1,0 +1,108 @@
+{
+ "id": "U5",
+ "title": "看圖寫作",
+ "tag": "Live2611-U5",
+ "verified": true,
+ "items": [
+  {
+   "w": "generation",
+   "pos": "n.",
+   "zh": "世代",
+   "f": [
+    {
+     "k": "plural",
+     "w": "generations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "generate",
+     "pos": "v.",
+     "zh": "產生"
+    },
+    {
+     "w": "generational",
+     "pos": "adj.",
+     "zh": "世代的"
+    }
+   ]
+  },
+  {
+   "w": "recycle",
+   "pos": "v.",
+   "zh": "回收",
+   "f": [
+    {
+     "k": "past",
+     "w": "recycled"
+    },
+    {
+     "k": "pp",
+     "w": "recycled"
+    },
+    {
+     "k": "ing",
+     "w": "recycling"
+    },
+    {
+     "k": "s3",
+     "w": "recycles"
+    }
+   ],
+   "fam": [
+    {
+     "w": "recyclable",
+     "pos": "adj.",
+     "zh": "可回收的"
+    }
+   ]
+  },
+  {
+   "w": "community",
+   "pos": "n.",
+   "zh": "社區；社群",
+   "f": [
+    {
+     "k": "plural",
+     "w": "communities"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "contribute",
+   "pos": "v.",
+   "zh": "貢獻",
+   "f": [
+    {
+     "k": "past",
+     "w": "contributed"
+    },
+    {
+     "k": "pp",
+     "w": "contributed"
+    },
+    {
+     "k": "ing",
+     "w": "contributing"
+    },
+    {
+     "k": "s3",
+     "w": "contributes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "contribution",
+     "pos": "n.",
+     "zh": "貢獻"
+    },
+    {
+     "w": "contributor",
+     "pos": "n.",
+     "zh": "貢獻者"
+    }
+   ]
+  }
+ ]
+}

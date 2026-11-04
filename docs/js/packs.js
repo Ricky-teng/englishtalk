@@ -54,8 +54,11 @@ async function addUnit(u) {
   const unit = await loadUnit(u);
   let added = 0;
   for (const it of unit.items) {
-    const { isNew } = V.add(it.w, { pos: it.pos === "phr." ? "" : it.pos, zh: it.zh, tags: [unit.tag] });
+    const { card, isNew } = V.add(it.w, { pos: it.pos === "phr." ? "" : it.pos, zh: it.zh, tags: [unit.tag] });
     if (isNew) added++;
+    // 單字包附的詞形變化與同字根字：卡片還沒有（或是空的）才補，不蓋掉 AI 查過或你自己改過的
+    if (Array.isArray(it.f) && !(Array.isArray(card.forms) && card.forms.length)) card.forms = it.f;
+    if (Array.isArray(it.fam) && !(Array.isArray(card.family) && card.family.length)) card.family = it.fam;
   }
   Store.save(true);
   return { added, total: unit.items.length };

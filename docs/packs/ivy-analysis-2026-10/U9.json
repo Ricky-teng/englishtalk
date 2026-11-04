@@ -7,92 +7,310 @@
   {
    "w": "artificial",
    "pos": "adj.",
-   "zh": "人工的"
+   "zh": "人工的",
+   "f": [],
+   "fam": [
+    {
+     "w": "artificially",
+     "pos": "adv.",
+     "zh": "人工地"
+    }
+   ]
   },
   {
    "w": "intelligence",
    "pos": "n.",
-   "zh": "智慧"
+   "zh": "智慧",
+   "f": [],
+   "fam": [
+    {
+     "w": "intelligent",
+     "pos": "adj.",
+     "zh": "聰明的"
+    },
+    {
+     "w": "intelligently",
+     "pos": "adv.",
+     "zh": "聰明地"
+    }
+   ]
   },
   {
    "w": "reservation",
    "pos": "n.",
-   "zh": "訂位"
+   "zh": "訂位",
+   "f": [
+    {
+     "k": "plural",
+     "w": "reservations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "reserve",
+     "pos": "v.",
+     "zh": "預訂；保留"
+    },
+    {
+     "w": "reserved",
+     "pos": "adj.",
+     "zh": "預訂的；拘謹的"
+    }
+   ]
   },
   {
    "w": "bin",
    "pos": "n.",
-   "zh": "垃圾桶"
+   "zh": "垃圾桶",
+   "f": [
+    {
+     "k": "plural",
+     "w": "bins"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "discard",
    "pos": "v.",
-   "zh": "丟掉"
+   "zh": "丟掉",
+   "f": [
+    {
+     "k": "past",
+     "w": "discarded"
+    },
+    {
+     "k": "pp",
+     "w": "discarded"
+    },
+    {
+     "k": "ing",
+     "w": "discarding"
+    },
+    {
+     "k": "s3",
+     "w": "discards"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "ingredient",
    "pos": "n.",
-   "zh": "食材"
+   "zh": "食材",
+   "f": [
+    {
+     "k": "plural",
+     "w": "ingredients"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "identify",
    "pos": "v.",
-   "zh": "辨識出"
+   "zh": "辨識出",
+   "f": [
+    {
+     "k": "past",
+     "w": "identified"
+    },
+    {
+     "k": "pp",
+     "w": "identified"
+    },
+    {
+     "k": "ing",
+     "w": "identifying"
+    },
+    {
+     "k": "s3",
+     "w": "identifies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "identification",
+     "pos": "n.",
+     "zh": "識別；身分證明"
+    },
+    {
+     "w": "identity",
+     "pos": "n.",
+     "zh": "身分"
+    },
+    {
+     "w": "identifiable",
+     "pos": "adj.",
+     "zh": "可辨認的"
+    }
+   ]
   },
   {
    "w": "generate",
    "pos": "v.",
-   "zh": "產生"
+   "zh": "產生",
+   "f": [
+    {
+     "k": "past",
+     "w": "generated"
+    },
+    {
+     "k": "pp",
+     "w": "generated"
+    },
+    {
+     "k": "ing",
+     "w": "generating"
+    },
+    {
+     "k": "s3",
+     "w": "generates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "generation",
+     "pos": "n.",
+     "zh": "產生；世代"
+    },
+    {
+     "w": "generator",
+     "pos": "n.",
+     "zh": "發電機；產生器"
+    }
+   ]
   },
   {
    "w": "accurately",
    "pos": "adv.",
-   "zh": "準確地"
+   "zh": "準確地",
+   "f": [],
+   "fam": [
+    {
+     "w": "accurate",
+     "pos": "adj.",
+     "zh": "準確的"
+    },
+    {
+     "w": "accuracy",
+     "pos": "n.",
+     "zh": "準確度"
+    }
+   ]
   },
   {
    "w": "innovative",
    "pos": "adj.",
-   "zh": "創新的"
+   "zh": "創新的",
+   "f": [],
+   "fam": [
+    {
+     "w": "innovate",
+     "pos": "v.",
+     "zh": "創新"
+    },
+    {
+     "w": "innovation",
+     "pos": "n.",
+     "zh": "創新"
+    },
+    {
+     "w": "innovator",
+     "pos": "n.",
+     "zh": "創新者"
+    }
+   ]
   },
   {
    "w": "leftover",
    "pos": "adj.",
-   "zh": "吃剩的"
+   "zh": "吃剩的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "advanced",
    "pos": "adj.",
-   "zh": "先進的"
+   "zh": "先進的",
+   "f": [],
+   "fam": [
+    {
+     "w": "advance",
+     "pos": "v.",
+     "zh": "前進；進步"
+    },
+    {
+     "w": "advancement",
+     "pos": "n.",
+     "zh": "進步"
+    }
+   ]
   },
   {
    "w": "reduce",
    "pos": "v.",
-   "zh": "減少"
+   "zh": "減少",
+   "f": [
+    {
+     "k": "past",
+     "w": "reduced"
+    },
+    {
+     "k": "pp",
+     "w": "reduced"
+    },
+    {
+     "k": "ing",
+     "w": "reducing"
+    },
+    {
+     "k": "s3",
+     "w": "reduces"
+    }
+   ],
+   "fam": [
+    {
+     "w": "reduction",
+     "pos": "n.",
+     "zh": "減少"
+    }
+   ]
   },
   {
    "w": "artificial intelligence",
    "pos": "phr.",
-   "zh": "人工智慧"
+   "zh": "人工智慧",
+   "f": [],
+   "fam": []
   },
   {
    "w": "consist of",
    "pos": "phr.",
-   "zh": "由…組成"
+   "zh": "由…組成",
+   "f": [],
+   "fam": []
   },
   {
    "w": "throw away",
    "pos": "phr.",
-   "zh": "丟棄"
+   "zh": "丟棄",
+   "f": [],
+   "fam": []
   },
   {
    "w": "reduce... by half",
    "pos": "phr.",
-   "zh": "把…減半"
+   "zh": "把…減半",
+   "f": [],
+   "fam": []
   },
   {
    "w": "cut down on",
    "pos": "phr.",
-   "zh": "減少（用量）"
+   "zh": "減少（用量）",
+   "f": [],
+   "fam": []
   }
  ]
 }

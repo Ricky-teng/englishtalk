@@ -7,72 +7,271 @@
   {
    "w": "deadly",
    "pos": "adj.",
-   "zh": "致命的"
+   "zh": "致命的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "deadlier"
+    },
+    {
+     "k": "sup",
+     "w": "deadliest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "death",
+     "pos": "n.",
+     "zh": "死亡"
+    },
+    {
+     "w": "die",
+     "pos": "v.",
+     "zh": "死亡"
+    }
+   ]
   },
   {
    "w": "supposedly",
    "pos": "adv.",
-   "zh": "據說"
+   "zh": "據說",
+   "f": [],
+   "fam": [
+    {
+     "w": "suppose",
+     "pos": "v.",
+     "zh": "猜想；認為"
+    },
+    {
+     "w": "supposed",
+     "pos": "adj.",
+     "zh": "據稱的；應該的"
+    }
+   ]
   },
   {
    "w": "toxic",
    "pos": "adj.",
-   "zh": "有毒的"
+   "zh": "有毒的",
+   "f": [],
+   "fam": [
+    {
+     "w": "toxin",
+     "pos": "n.",
+     "zh": "毒素"
+    },
+    {
+     "w": "toxicity",
+     "pos": "n.",
+     "zh": "毒性"
+    }
+   ]
   },
   {
    "w": "genuine",
    "pos": "adj.",
-   "zh": "真正的"
+   "zh": "真正的",
+   "f": [],
+   "fam": [
+    {
+     "w": "genuinely",
+     "pos": "adv.",
+     "zh": "真正地；真誠地"
+    }
+   ]
   },
   {
    "w": "Indigenous",
    "pos": "adj.",
-   "zh": "原住民的"
+   "zh": "原住民的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "breed",
    "pos": "v.",
-   "zh": "培育；繁殖"
+   "zh": "培育；繁殖",
+   "f": [
+    {
+     "k": "past",
+     "w": "bred"
+    },
+    {
+     "k": "pp",
+     "w": "bred"
+    },
+    {
+     "k": "ing",
+     "w": "breeding"
+    },
+    {
+     "k": "s3",
+     "w": "breeds"
+    }
+   ],
+   "fam": [
+    {
+     "w": "breeder",
+     "pos": "n.",
+     "zh": "飼養者"
+    }
+   ]
   },
   {
    "w": "eventually",
    "pos": "adv.",
-   "zh": "最後；終於"
+   "zh": "最後；終於",
+   "f": [],
+   "fam": [
+    {
+     "w": "eventual",
+     "pos": "adj.",
+     "zh": "最終的"
+    }
+   ]
   },
   {
    "w": "declare",
    "pos": "v.",
-   "zh": "宣告"
+   "zh": "宣告",
+   "f": [
+    {
+     "k": "past",
+     "w": "declared"
+    },
+    {
+     "k": "pp",
+     "w": "declared"
+    },
+    {
+     "k": "ing",
+     "w": "declaring"
+    },
+    {
+     "k": "s3",
+     "w": "declares"
+    }
+   ],
+   "fam": [
+    {
+     "w": "declaration",
+     "pos": "n.",
+     "zh": "宣言；宣告"
+    }
+   ]
   },
   {
    "w": "reputation",
    "pos": "n.",
-   "zh": "名聲"
+   "zh": "名聲",
+   "f": [
+    {
+     "k": "plural",
+     "w": "reputations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "reputable",
+     "pos": "adj.",
+     "zh": "聲譽好的"
+    },
+    {
+     "w": "reputed",
+     "pos": "adj.",
+     "zh": "據稱的"
+    }
+   ]
   },
   {
    "w": "superstition",
    "pos": "n.",
-   "zh": "迷信"
+   "zh": "迷信",
+   "f": [
+    {
+     "k": "plural",
+     "w": "superstitions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "superstitious",
+     "pos": "adj.",
+     "zh": "迷信的"
+    }
+   ]
   },
   {
    "w": "misfortune",
    "pos": "n.",
-   "zh": "厄運"
+   "zh": "厄運",
+   "f": [
+    {
+     "k": "plural",
+     "w": "misfortunes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "perspective",
    "pos": "n.",
-   "zh": "觀點"
+   "zh": "觀點",
+   "f": [
+    {
+     "k": "plural",
+     "w": "perspectives"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "tremble",
    "pos": "v.",
-   "zh": "發抖"
+   "zh": "發抖",
+   "f": [
+    {
+     "k": "past",
+     "w": "trembled"
+    },
+    {
+     "k": "pp",
+     "w": "trembled"
+    },
+    {
+     "k": "ing",
+     "w": "trembling"
+    },
+    {
+     "k": "s3",
+     "w": "trembles"
+    }
+   ],
+   "fam": [
+    {
+     "w": "tremor",
+     "pos": "n.",
+     "zh": "顫抖；震動"
+    }
+   ]
   },
   {
    "w": "prejudice",
    "pos": "n.",
-   "zh": "偏見"
+   "zh": "偏見",
+   "f": [
+    {
+     "k": "plural",
+     "w": "prejudices"
+    }
+   ],
+   "fam": [
+    {
+     "w": "prejudiced",
+     "pos": "adj.",
+     "zh": "有偏見的"
+    }
+   ]
   }
  ]
 }

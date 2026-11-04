@@ -7,122 +7,412 @@
   {
    "w": "legendary",
    "pos": "adj.",
-   "zh": "傳奇的"
+   "zh": "傳奇的",
+   "f": [],
+   "fam": [
+    {
+     "w": "legend",
+     "pos": "n.",
+     "zh": "傳說"
+    }
+   ]
   },
   {
    "w": "retreat",
    "pos": "n.",
-   "zh": "休憩地"
+   "zh": "休憩地",
+   "f": [
+    {
+     "k": "plural",
+     "w": "retreats"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "presidential",
    "pos": "adj.",
-   "zh": "總統的"
+   "zh": "總統的",
+   "f": [],
+   "fam": [
+    {
+     "w": "president",
+     "pos": "n.",
+     "zh": "總統"
+    }
+   ]
   },
   {
    "w": "hot spot",
    "pos": "n.",
-   "zh": "熱點"
+   "zh": "熱點",
+   "f": [
+    {
+     "k": "plural",
+     "w": "hot spots"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "diplomacy",
    "pos": "n.",
-   "zh": "外交"
+   "zh": "外交",
+   "f": [],
+   "fam": [
+    {
+     "w": "diplomatic",
+     "pos": "adj.",
+     "zh": "外交的"
+    },
+    {
+     "w": "diplomatically",
+     "pos": "adv.",
+     "zh": "圓滑地"
+    }
+   ]
   },
   {
    "w": "chief executive",
    "pos": "n.",
-   "zh": "總統；最高首長"
+   "zh": "總統；最高首長",
+   "f": [
+    {
+     "k": "plural",
+     "w": "chief executives"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "bid",
    "pos": "v.",
-   "zh": "表示（問候）"
+   "zh": "表示（問候）",
+   "f": [
+    {
+     "k": "past",
+     "w": "bade"
+    },
+    {
+     "k": "pp",
+     "w": "bidden"
+    },
+    {
+     "k": "ing",
+     "w": "bidding"
+    },
+    {
+     "k": "s3",
+     "w": "bids"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "outing",
    "pos": "n.",
-   "zh": "出遊"
+   "zh": "出遊",
+   "f": [
+    {
+     "k": "plural",
+     "w": "outings"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "informal",
    "pos": "adj.",
-   "zh": "不拘禮的"
+   "zh": "不拘禮的",
+   "f": [],
+   "fam": [
+    {
+     "w": "informally",
+     "pos": "adv.",
+     "zh": "非正式地"
+    },
+    {
+     "w": "informality",
+     "pos": "n.",
+     "zh": "不拘禮節"
+    }
+   ]
   },
   {
    "w": "federal",
    "pos": "adj.",
-   "zh": "聯邦的"
+   "zh": "聯邦的",
+   "f": [],
+   "fam": [
+    {
+     "w": "federation",
+     "pos": "n.",
+     "zh": "聯邦；聯盟"
+    }
+   ]
   },
   {
    "w": "rustic",
    "pos": "adj.",
-   "zh": "鄉村風的"
+   "zh": "鄉村風的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "opt",
    "pos": "v.",
-   "zh": "選擇"
+   "zh": "選擇",
+   "f": [
+    {
+     "k": "past",
+     "w": "opted"
+    },
+    {
+     "k": "pp",
+     "w": "opted"
+    },
+    {
+     "k": "ing",
+     "w": "opting"
+    },
+    {
+     "k": "s3",
+     "w": "opts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "option",
+     "pos": "n.",
+     "zh": "選項"
+    },
+    {
+     "w": "optional",
+     "pos": "adj.",
+     "zh": "可選擇的"
+    }
+   ]
   },
   {
    "w": "skeet shooting",
    "pos": "n.",
-   "zh": "飛靶射擊"
+   "zh": "飛靶射擊",
+   "f": [],
+   "fam": []
   },
   {
    "w": "pony",
    "pos": "n.",
-   "zh": "小型馬"
+   "zh": "小型馬",
+   "f": [
+    {
+     "k": "plural",
+     "w": "ponies"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "storied",
    "pos": "adj.",
-   "zh": "富有歷史的"
+   "zh": "富有歷史的",
+   "f": [],
+   "fam": [
+    {
+     "w": "story",
+     "pos": "n.",
+     "zh": "故事；歷史"
+    }
+   ]
   },
   {
    "w": "predecessor",
    "pos": "n.",
-   "zh": "前任"
+   "zh": "前任",
+   "f": [
+    {
+     "k": "plural",
+     "w": "predecessors"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "spin",
    "pos": "n.",
-   "zh": "開車兜風"
+   "zh": "開車兜風",
+   "f": [
+    {
+     "k": "plural",
+     "w": "spins"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "golf cart",
    "pos": "n.",
-   "zh": "高爾夫球車"
+   "zh": "高爾夫球車",
+   "f": [
+    {
+     "k": "plural",
+     "w": "golf carts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "negotiation",
    "pos": "n.",
-   "zh": "談判"
+   "zh": "談判",
+   "f": [
+    {
+     "k": "plural",
+     "w": "negotiations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "negotiate",
+     "pos": "v.",
+     "zh": "談判"
+    }
+   ]
   },
   {
    "w": "equip",
    "pos": "v.",
-   "zh": "裝備"
+   "zh": "裝備",
+   "f": [
+    {
+     "k": "past",
+     "w": "equipped"
+    },
+    {
+     "k": "pp",
+     "w": "equipped"
+    },
+    {
+     "k": "ing",
+     "w": "equipping"
+    },
+    {
+     "k": "s3",
+     "w": "equips"
+    }
+   ],
+   "fam": [
+    {
+     "w": "equipment",
+     "pos": "n.",
+     "zh": "設備"
+    }
+   ]
   },
   {
    "w": "asset",
    "pos": "n.",
-   "zh": "資產；優勢"
+   "zh": "資產；優勢",
+   "f": [
+    {
+     "k": "plural",
+     "w": "assets"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "activate",
    "pos": "v.",
-   "zh": "啟動"
+   "zh": "啟動",
+   "f": [
+    {
+     "k": "past",
+     "w": "activated"
+    },
+    {
+     "k": "pp",
+     "w": "activated"
+    },
+    {
+     "k": "ing",
+     "w": "activating"
+    },
+    {
+     "k": "s3",
+     "w": "activates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "activation",
+     "pos": "n.",
+     "zh": "啟動"
+    },
+    {
+     "w": "active",
+     "pos": "adj.",
+     "zh": "活躍的"
+    }
+   ]
   },
   {
    "w": "identify",
    "pos": "v.",
-   "zh": "辨認"
+   "zh": "辨認",
+   "f": [
+    {
+     "k": "past",
+     "w": "identified"
+    },
+    {
+     "k": "pp",
+     "w": "identified"
+    },
+    {
+     "k": "ing",
+     "w": "identifying"
+    },
+    {
+     "k": "s3",
+     "w": "identifies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "identification",
+     "pos": "n.",
+     "zh": "識別；身分證明"
+    },
+    {
+     "w": "identity",
+     "pos": "n.",
+     "zh": "身分"
+    },
+    {
+     "w": "identifiable",
+     "pos": "adj.",
+     "zh": "可辨認的"
+    }
+   ]
   },
   {
    "w": "privacy",
    "pos": "n.",
-   "zh": "隱私"
+   "zh": "隱私",
+   "f": [],
+   "fam": [
+    {
+     "w": "private",
+     "pos": "adj.",
+     "zh": "私人的"
+    },
+    {
+     "w": "privately",
+     "pos": "adv.",
+     "zh": "私下地"
+    }
+   ]
   }
  ]
 }

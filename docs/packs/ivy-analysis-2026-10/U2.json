@@ -7,92 +7,248 @@
   {
    "w": "route",
    "pos": "n.",
-   "zh": "航線；路線"
+   "zh": "航線；路線",
+   "f": [
+    {
+     "k": "plural",
+     "w": "routes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "puzzling",
    "pos": "adj.",
-   "zh": "令人困惑的"
+   "zh": "令人困惑的",
+   "f": [],
+   "fam": [
+    {
+     "w": "puzzle",
+     "pos": "v.",
+     "zh": "使困惑"
+    },
+    {
+     "w": "puzzle",
+     "pos": "n.",
+     "zh": "謎題；拼圖"
+    }
+   ]
   },
   {
    "w": "pilot",
    "pos": "n.",
-   "zh": "機師"
+   "zh": "機師",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pilots"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "sphere",
    "pos": "n.",
-   "zh": "球體"
+   "zh": "球體",
+   "f": [
+    {
+     "k": "plural",
+     "w": "spheres"
+    }
+   ],
+   "fam": [
+    {
+     "w": "spherical",
+     "pos": "adj.",
+     "zh": "球形的"
+    }
+   ]
   },
   {
    "w": "globe",
    "pos": "n.",
-   "zh": "地球儀"
+   "zh": "地球儀",
+   "f": [
+    {
+     "k": "plural",
+     "w": "globes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "global",
+     "pos": "adj.",
+     "zh": "全球的"
+    },
+    {
+     "w": "globally",
+     "pos": "adv.",
+     "zh": "在全球"
+    },
+    {
+     "w": "globalize",
+     "pos": "v.",
+     "zh": "全球化"
+    }
+   ]
   },
   {
    "w": "location",
    "pos": "n.",
-   "zh": "位置；地點"
+   "zh": "位置；地點",
+   "f": [
+    {
+     "k": "plural",
+     "w": "locations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "locate",
+     "pos": "v.",
+     "zh": "找出位置"
+    }
+   ]
   },
   {
    "w": "curved",
    "pos": "adj.",
-   "zh": "彎曲的"
+   "zh": "彎曲的",
+   "f": [],
+   "fam": [
+    {
+     "w": "curve",
+     "pos": "n.",
+     "zh": "曲線"
+    },
+    {
+     "w": "curve",
+     "pos": "v.",
+     "zh": "彎曲"
+    }
+   ]
   },
   {
    "w": "overhead",
    "pos": "adv.",
-   "zh": "在頭頂上空"
+   "zh": "在頭頂上空",
+   "f": [],
+   "fam": []
   },
   {
    "w": "emergency",
    "pos": "n.",
-   "zh": "緊急狀況"
+   "zh": "緊急狀況",
+   "f": [
+    {
+     "k": "plural",
+     "w": "emergencies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "emerge",
+     "pos": "v.",
+     "zh": "浮現；出現"
+    }
+   ]
   },
   {
    "w": "oddly",
    "pos": "adv.",
-   "zh": "奇怪地"
+   "zh": "奇怪地",
+   "f": [],
+   "fam": [
+    {
+     "w": "odd",
+     "pos": "adj.",
+     "zh": "奇怪的"
+    }
+   ]
   },
   {
    "w": "shortcut",
    "pos": "n.",
-   "zh": "捷徑"
+   "zh": "捷徑",
+   "f": [
+    {
+     "k": "plural",
+     "w": "shortcuts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "prohibit",
    "pos": "v.",
-   "zh": "禁止"
+   "zh": "禁止",
+   "f": [
+    {
+     "k": "past",
+     "w": "prohibited"
+    },
+    {
+     "k": "pp",
+     "w": "prohibited"
+    },
+    {
+     "k": "ing",
+     "w": "prohibiting"
+    },
+    {
+     "k": "s3",
+     "w": "prohibits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "prohibition",
+     "pos": "n.",
+     "zh": "禁止"
+    }
+   ]
   },
   {
    "w": "take a shortcut",
    "pos": "phr.",
-   "zh": "抄近路"
+   "zh": "抄近路",
+   "f": [],
+   "fam": []
   },
   {
    "w": "steer clear of",
    "pos": "phr.",
-   "zh": "避開…"
+   "zh": "避開…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "prohibit sb from",
    "pos": "phr.",
-   "zh": "禁止某人做…"
+   "zh": "禁止某人做…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in case of",
    "pos": "phr.",
-   "zh": "萬一發生…"
+   "zh": "萬一發生…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "take advantage of",
    "pos": "phr.",
-   "zh": "利用…"
+   "zh": "利用…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "chances are",
    "pos": "phr.",
-   "zh": "很可能…"
+   "zh": "很可能…",
+   "f": [],
+   "fam": []
   }
  ]
 }

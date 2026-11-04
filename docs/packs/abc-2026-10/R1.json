@@ -7,62 +7,189 @@
   {
    "w": "piece",
    "pos": "n.",
-   "zh": "一塊；一個"
+   "zh": "一塊；一個",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pieces"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "winner",
    "pos": "n.",
-   "zh": "贏家"
+   "zh": "贏家",
+   "f": [
+    {
+     "k": "plural",
+     "w": "winners"
+    }
+   ],
+   "fam": [
+    {
+     "w": "win",
+     "pos": "v.",
+     "zh": "贏；獲勝"
+    }
+   ]
   },
   {
    "w": "cover",
    "pos": "v.",
-   "zh": "蓋住"
+   "zh": "蓋住",
+   "f": [
+    {
+     "k": "past",
+     "w": "covered"
+    },
+    {
+     "k": "pp",
+     "w": "covered"
+    },
+    {
+     "k": "ing",
+     "w": "covering"
+    },
+    {
+     "k": "s3",
+     "w": "covers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "coverage",
+     "pos": "n.",
+     "zh": "涵蓋範圍；報導"
+    }
+   ]
   },
   {
    "w": "cut",
    "pos": "v.",
-   "zh": "剪；切"
+   "zh": "剪；切",
+   "f": [
+    {
+     "k": "past",
+     "w": "cut"
+    },
+    {
+     "k": "pp",
+     "w": "cut"
+    },
+    {
+     "k": "ing",
+     "w": "cutting"
+    },
+    {
+     "k": "s3",
+     "w": "cuts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "thousand",
    "pos": "adj.",
-   "zh": "一千的"
+   "zh": "一千的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "frog",
    "pos": "n.",
-   "zh": "青蛙"
+   "zh": "青蛙",
+   "f": [
+    {
+     "k": "plural",
+     "w": "frogs"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "hundred",
    "pos": "adj.",
-   "zh": "一百的"
+   "zh": "一百的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "West",
    "pos": "n.",
-   "zh": "西方國家"
+   "zh": "西方國家",
+   "f": [],
+   "fam": [
+    {
+     "w": "western",
+     "pos": "adj.",
+     "zh": "西方的"
+    },
+    {
+     "w": "westward",
+     "pos": "adv.",
+     "zh": "向西"
+    }
+   ]
   },
   {
    "w": "newspaper",
    "pos": "n.",
-   "zh": "報紙"
+   "zh": "報紙",
+   "f": [
+    {
+     "k": "plural",
+     "w": "newspapers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "magazine",
    "pos": "n.",
-   "zh": "雜誌"
+   "zh": "雜誌",
+   "f": [
+    {
+     "k": "plural",
+     "w": "magazines"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "playground",
    "pos": "n.",
-   "zh": "遊樂場"
+   "zh": "遊樂場",
+   "f": [
+    {
+     "k": "plural",
+     "w": "playgrounds"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "office",
    "pos": "n.",
-   "zh": "辦公室"
+   "zh": "辦公室",
+   "f": [
+    {
+     "k": "plural",
+     "w": "offices"
+    }
+   ],
+   "fam": [
+    {
+     "w": "official",
+     "pos": "adj.",
+     "zh": "官方的；正式的"
+    },
+    {
+     "w": "officially",
+     "pos": "adv.",
+     "zh": "正式地"
+    }
+   ]
   }
  ]
 }

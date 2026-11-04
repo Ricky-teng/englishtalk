@@ -7,22 +7,80 @@
   {
    "w": "tasty",
    "pos": "adj.",
-   "zh": "好吃的"
+   "zh": "好吃的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "tastier"
+    },
+    {
+     "k": "sup",
+     "w": "tastiest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "taste",
+     "pos": "n.",
+     "zh": "味道；品味"
+    },
+    {
+     "w": "taste",
+     "pos": "v.",
+     "zh": "品嚐；嚐起來"
+    }
+   ]
   },
   {
    "w": "vitamin",
    "pos": "n.",
-   "zh": "維他命"
+   "zh": "維他命",
+   "f": [
+    {
+     "k": "plural",
+     "w": "vitamins"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "ripe",
    "pos": "adj.",
-   "zh": "成熟的（果實）"
+   "zh": "成熟的（果實）",
+   "f": [
+    {
+     "k": "comp",
+     "w": "riper"
+    },
+    {
+     "k": "sup",
+     "w": "ripest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "ripen",
+     "pos": "v.",
+     "zh": "成熟；催熟"
+    },
+    {
+     "w": "ripeness",
+     "pos": "n.",
+     "zh": "成熟度"
+    }
+   ]
   },
   {
    "w": "paradise",
    "pos": "n.",
-   "zh": "天堂；樂園"
+   "zh": "天堂；樂園",
+   "f": [
+    {
+     "k": "plural",
+     "w": "paradises"
+    }
+   ],
+   "fam": []
   }
  ]
 }

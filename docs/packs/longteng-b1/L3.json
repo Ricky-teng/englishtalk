@@ -7,122 +7,422 @@
   {
    "w": "wonder",
    "pos": "v.",
-   "zh": "想知道；納悶"
+   "zh": "想知道；納悶",
+   "f": [
+    {
+     "k": "past",
+     "w": "wondered"
+    },
+    {
+     "k": "pp",
+     "w": "wondered"
+    },
+    {
+     "k": "ing",
+     "w": "wondering"
+    },
+    {
+     "k": "s3",
+     "w": "wonders"
+    }
+   ],
+   "fam": [
+    {
+     "w": "wonderful",
+     "pos": "adj.",
+     "zh": "很棒的；美妙的"
+    }
+   ]
   },
   {
    "w": "amazing",
    "pos": "adj.",
-   "zh": "驚人的；令人驚奇的"
+   "zh": "驚人的；令人驚奇的",
+   "f": [],
+   "fam": [
+    {
+     "w": "amaze",
+     "pos": "v.",
+     "zh": "使驚奇"
+    },
+    {
+     "w": "amazement",
+     "pos": "n.",
+     "zh": "驚奇"
+    },
+    {
+     "w": "amazingly",
+     "pos": "adv.",
+     "zh": "驚人地"
+    }
+   ]
   },
   {
    "w": "average",
    "pos": "n.",
-   "zh": "平均"
+   "zh": "平均",
+   "f": [
+    {
+     "k": "plural",
+     "w": "averages"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "therefore",
    "pos": "adv.",
-   "zh": "因此"
+   "zh": "因此",
+   "f": [],
+   "fam": []
   },
   {
    "w": "nap",
    "pos": "n.",
-   "zh": "小睡；打盹"
+   "zh": "小睡；打盹",
+   "f": [
+    {
+     "k": "plural",
+     "w": "naps"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "float",
    "pos": "v.",
-   "zh": "漂浮"
+   "zh": "漂浮",
+   "f": [
+    {
+     "k": "past",
+     "w": "floated"
+    },
+    {
+     "k": "pp",
+     "w": "floated"
+    },
+    {
+     "k": "ing",
+     "w": "floating"
+    },
+    {
+     "k": "s3",
+     "w": "floats"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "avoid",
    "pos": "v.",
-   "zh": "避免；避開"
+   "zh": "避免；避開",
+   "f": [
+    {
+     "k": "past",
+     "w": "avoided"
+    },
+    {
+     "k": "pp",
+     "w": "avoided"
+    },
+    {
+     "k": "ing",
+     "w": "avoiding"
+    },
+    {
+     "k": "s3",
+     "w": "avoids"
+    }
+   ],
+   "fam": [
+    {
+     "w": "avoidance",
+     "pos": "n.",
+     "zh": "避免"
+    },
+    {
+     "w": "avoidable",
+     "pos": "adj.",
+     "zh": "可避免的"
+    }
+   ]
   },
   {
    "w": "surface",
    "pos": "n.",
-   "zh": "表面；水面"
+   "zh": "表面；水面",
+   "f": [
+    {
+     "k": "plural",
+     "w": "surfaces"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "breathe",
    "pos": "v.",
-   "zh": "呼吸"
+   "zh": "呼吸",
+   "f": [
+    {
+     "k": "past",
+     "w": "breathed"
+    },
+    {
+     "k": "pp",
+     "w": "breathed"
+    },
+    {
+     "k": "ing",
+     "w": "breathing"
+    },
+    {
+     "k": "s3",
+     "w": "breathes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "breath",
+     "pos": "n.",
+     "zh": "呼吸；氣息"
+    },
+    {
+     "w": "breathless",
+     "pos": "adj.",
+     "zh": "喘不過氣的"
+    }
+   ]
   },
   {
    "w": "awake",
    "pos": "adj.",
-   "zh": "醒著的"
+   "zh": "醒著的",
+   "f": [],
+   "fam": [
+    {
+     "w": "awaken",
+     "pos": "v.",
+     "zh": "喚醒"
+    }
+   ]
   },
   {
    "w": "impressive",
    "pos": "adj.",
-   "zh": "令人印象深刻的"
+   "zh": "令人印象深刻的",
+   "f": [],
+   "fam": [
+    {
+     "w": "impress",
+     "pos": "v.",
+     "zh": "使印象深刻"
+    },
+    {
+     "w": "impression",
+     "pos": "n.",
+     "zh": "印象"
+    },
+    {
+     "w": "impressively",
+     "pos": "adv.",
+     "zh": "令人讚嘆地"
+    }
+   ]
   },
   {
    "w": "distance",
    "pos": "n.",
-   "zh": "距離"
+   "zh": "距離",
+   "f": [
+    {
+     "k": "plural",
+     "w": "distances"
+    }
+   ],
+   "fam": [
+    {
+     "w": "distant",
+     "pos": "adj.",
+     "zh": "遙遠的"
+    },
+    {
+     "w": "distantly",
+     "pos": "adv.",
+     "zh": "遠遠地"
+    }
+   ]
   },
   {
    "w": "journey",
    "pos": "n.",
-   "zh": "旅程"
+   "zh": "旅程",
+   "f": [
+    {
+     "k": "plural",
+     "w": "journeys"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "flight",
    "pos": "n.",
-   "zh": "飛行；航班"
+   "zh": "飛行；航班",
+   "f": [
+    {
+     "k": "plural",
+     "w": "flights"
+    }
+   ],
+   "fam": [
+    {
+     "w": "fly",
+     "pos": "v.",
+     "zh": "飛"
+    }
+   ]
   },
   {
    "w": "variety",
    "pos": "n.",
-   "zh": "多樣；種類"
+   "zh": "多樣；種類",
+   "f": [
+    {
+     "k": "plural",
+     "w": "varieties"
+    }
+   ],
+   "fam": [
+    {
+     "w": "vary",
+     "pos": "v.",
+     "zh": "變化；不同"
+    },
+    {
+     "w": "various",
+     "pos": "adj.",
+     "zh": "各種的"
+    },
+    {
+     "w": "varied",
+     "pos": "adj.",
+     "zh": "多樣的"
+    }
+   ]
   },
   {
    "w": "creature",
    "pos": "n.",
-   "zh": "生物；動物"
+   "zh": "生物；動物",
+   "f": [
+    {
+     "k": "plural",
+     "w": "creatures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "create",
+     "pos": "v.",
+     "zh": "創造"
+    }
+   ]
   },
   {
    "w": "expert",
    "pos": "n.",
-   "zh": "專家"
+   "zh": "專家",
+   "f": [
+    {
+     "k": "plural",
+     "w": "experts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "expertly",
+     "pos": "adv.",
+     "zh": "熟練地"
+    }
+   ]
   },
   {
    "w": "survive",
    "pos": "v.",
-   "zh": "存活；倖存"
+   "zh": "存活；倖存",
+   "f": [
+    {
+     "k": "past",
+     "w": "survived"
+    },
+    {
+     "k": "pp",
+     "w": "survived"
+    },
+    {
+     "k": "ing",
+     "w": "surviving"
+    },
+    {
+     "k": "s3",
+     "w": "survives"
+    }
+   ],
+   "fam": [
+    {
+     "w": "survival",
+     "pos": "n.",
+     "zh": "生存；存活"
+    },
+    {
+     "w": "survivor",
+     "pos": "n.",
+     "zh": "倖存者"
+    }
+   ]
   },
   {
    "w": "hold on to",
    "pos": "phr.",
-   "zh": "抓住；緊握"
+   "zh": "抓住；緊握",
+   "f": [],
+   "fam": []
   },
   {
    "w": "look out for",
    "pos": "phr.",
-   "zh": "留意；提防"
+   "zh": "留意；提防",
+   "f": [],
+   "fam": []
   },
   {
    "w": "be on the lookout for",
    "pos": "phr.",
-   "zh": "留心尋找；警戒"
+   "zh": "留心尋找；警戒",
+   "f": [],
+   "fam": []
   },
   {
    "w": "for example",
    "pos": "phr.",
-   "zh": "例如"
+   "zh": "例如",
+   "f": [],
+   "fam": []
   },
   {
    "w": "according to",
    "pos": "phr.",
-   "zh": "根據"
+   "zh": "根據",
+   "f": [],
+   "fam": []
   },
   {
    "w": "up to",
    "pos": "phr.",
-   "zh": "多達；直到"
+   "zh": "多達；直到",
+   "f": [],
+   "fam": []
   }
  ]
 }

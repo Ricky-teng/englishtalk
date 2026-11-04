@@ -7,62 +7,284 @@
   {
    "w": "successful",
    "pos": "adj.",
-   "zh": "成功的"
+   "zh": "成功的",
+   "f": [],
+   "fam": [
+    {
+     "w": "success",
+     "pos": "n.",
+     "zh": "成功"
+    },
+    {
+     "w": "succeed",
+     "pos": "v.",
+     "zh": "成功"
+    },
+    {
+     "w": "successfully",
+     "pos": "adv.",
+     "zh": "成功地"
+    }
+   ]
   },
   {
    "w": "straight",
    "pos": "adj.",
-   "zh": "筆直的"
+   "zh": "筆直的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "straighter"
+    },
+    {
+     "k": "sup",
+     "w": "straightest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "straighten",
+     "pos": "v.",
+     "zh": "弄直；整理"
+    }
+   ]
   },
   {
    "w": "difficult",
    "pos": "adj.",
-   "zh": "困難的；難熬的"
+   "zh": "困難的；難熬的",
+   "f": [],
+   "fam": [
+    {
+     "w": "difficulty",
+     "pos": "n.",
+     "zh": "困難"
+    }
+   ]
   },
   {
    "w": "train",
    "pos": "v.",
-   "zh": "接受訓練"
+   "zh": "接受訓練",
+   "f": [
+    {
+     "k": "past",
+     "w": "trained"
+    },
+    {
+     "k": "pp",
+     "w": "trained"
+    },
+    {
+     "k": "ing",
+     "w": "training"
+    },
+    {
+     "k": "s3",
+     "w": "trains"
+    }
+   ],
+   "fam": [
+    {
+     "w": "trainer",
+     "pos": "n.",
+     "zh": "教練；訓練員"
+    },
+    {
+     "w": "trainee",
+     "pos": "n.",
+     "zh": "受訓者"
+    }
+   ]
   },
   {
    "w": "science",
    "pos": "n.",
-   "zh": "科學"
+   "zh": "科學",
+   "f": [
+    {
+     "k": "plural",
+     "w": "sciences"
+    }
+   ],
+   "fam": [
+    {
+     "w": "scientific",
+     "pos": "adj.",
+     "zh": "科學的"
+    },
+    {
+     "w": "scientifically",
+     "pos": "adv.",
+     "zh": "科學地"
+    }
+   ]
   },
   {
    "w": "law",
    "pos": "n.",
-   "zh": "法律"
+   "zh": "法律",
+   "f": [
+    {
+     "k": "plural",
+     "w": "laws"
+    }
+   ],
+   "fam": [
+    {
+     "w": "lawful",
+     "pos": "adj.",
+     "zh": "合法的"
+    }
+   ]
   },
   {
    "w": "cancer",
    "pos": "n.",
-   "zh": "癌症"
+   "zh": "癌症",
+   "f": [
+    {
+     "k": "plural",
+     "w": "cancers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "cancerous",
+     "pos": "adj.",
+     "zh": "癌性的"
+    }
+   ]
   },
   {
    "w": "energy",
    "pos": "n.",
-   "zh": "精力"
+   "zh": "精力",
+   "f": [],
+   "fam": [
+    {
+     "w": "energetic",
+     "pos": "adj.",
+     "zh": "精力充沛的"
+    },
+    {
+     "w": "energize",
+     "pos": "v.",
+     "zh": "使充滿活力"
+    },
+    {
+     "w": "energetically",
+     "pos": "adv.",
+     "zh": "精力充沛地"
+    }
+   ]
   },
   {
    "w": "safe",
    "pos": "adj.",
-   "zh": "安全的"
+   "zh": "安全的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "safer"
+    },
+    {
+     "k": "sup",
+     "w": "safest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "safety",
+     "pos": "n.",
+     "zh": "安全"
+    },
+    {
+     "w": "safely",
+     "pos": "adv.",
+     "zh": "安全地"
+    }
+   ]
   },
   {
    "w": "save",
    "pos": "v.",
-   "zh": "存（錢）"
+   "zh": "存（錢）",
+   "f": [
+    {
+     "k": "past",
+     "w": "saved"
+    },
+    {
+     "k": "pp",
+     "w": "saved"
+    },
+    {
+     "k": "ing",
+     "w": "saving"
+    },
+    {
+     "k": "s3",
+     "w": "saves"
+    }
+   ],
+   "fam": [
+    {
+     "w": "savings",
+     "pos": "n.",
+     "zh": "存款；儲蓄"
+    },
+    {
+     "w": "saver",
+     "pos": "n.",
+     "zh": "儲蓄者"
+    }
+   ]
   },
   {
    "w": "subject",
    "pos": "n.",
-   "zh": "主題"
+   "zh": "主題",
+   "f": [
+    {
+     "k": "plural",
+     "w": "subjects"
+    }
+   ],
+   "fam": [
+    {
+     "w": "subjective",
+     "pos": "adj.",
+     "zh": "主觀的"
+    }
+   ]
   },
   {
    "w": "wise",
    "pos": "adj.",
-   "zh": "有智慧的"
+   "zh": "有智慧的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "wiser"
+    },
+    {
+     "k": "sup",
+     "w": "wisest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "wisdom",
+     "pos": "n.",
+     "zh": "智慧"
+    },
+    {
+     "w": "wisely",
+     "pos": "adv.",
+     "zh": "明智地"
+    }
+   ]
   }
  ]
 }

@@ -7,137 +7,484 @@
   {
    "w": "calamity",
    "pos": "n.",
-   "zh": "災禍"
+   "zh": "災禍",
+   "f": [
+    {
+     "k": "plural",
+     "w": "calamities"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "broadcaster",
    "pos": "n.",
-   "zh": "廣播電視公司"
+   "zh": "廣播電視公司",
+   "f": [
+    {
+     "k": "plural",
+     "w": "broadcasters"
+    }
+   ],
+   "fam": [
+    {
+     "w": "broadcast",
+     "pos": "v.",
+     "zh": "廣播；播出"
+    }
+   ]
   },
   {
    "w": "rubble",
    "pos": "n.",
-   "zh": "瓦礫"
+   "zh": "瓦礫",
+   "f": [],
+   "fam": []
   },
   {
    "w": "partially",
    "pos": "adv.",
-   "zh": "部分地"
+   "zh": "部分地",
+   "f": [],
+   "fam": [
+    {
+     "w": "partial",
+     "pos": "adj.",
+     "zh": "部分的"
+    },
+    {
+     "w": "part",
+     "pos": "n.",
+     "zh": "部分"
+    }
+   ]
   },
   {
    "w": "collapse",
    "pos": "v.",
-   "zh": "倒塌"
+   "zh": "倒塌",
+   "f": [
+    {
+     "k": "past",
+     "w": "collapsed"
+    },
+    {
+     "k": "pp",
+     "w": "collapsed"
+    },
+    {
+     "k": "ing",
+     "w": "collapsing"
+    },
+    {
+     "k": "s3",
+     "w": "collapses"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "devastation",
    "pos": "n.",
-   "zh": "嚴重破壞"
+   "zh": "嚴重破壞",
+   "f": [],
+   "fam": [
+    {
+     "w": "devastate",
+     "pos": "v.",
+     "zh": "摧毀"
+    },
+    {
+     "w": "devastating",
+     "pos": "adj.",
+     "zh": "毀滅性的"
+    },
+    {
+     "w": "devastated",
+     "pos": "adj.",
+     "zh": "極度震驚的"
+    }
+   ]
   },
   {
    "w": "chaos",
    "pos": "n.",
-   "zh": "混亂"
+   "zh": "混亂",
+   "f": [],
+   "fam": [
+    {
+     "w": "chaotic",
+     "pos": "adj.",
+     "zh": "混亂的"
+    }
+   ]
   },
   {
    "w": "aftershock",
    "pos": "n.",
-   "zh": "餘震"
+   "zh": "餘震",
+   "f": [
+    {
+     "k": "plural",
+     "w": "aftershocks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "rattle",
    "pos": "v.",
-   "zh": "使嘎嘎作響"
+   "zh": "使嘎嘎作響",
+   "f": [
+    {
+     "k": "past",
+     "w": "rattled"
+    },
+    {
+     "k": "pp",
+     "w": "rattled"
+    },
+    {
+     "k": "ing",
+     "w": "rattling"
+    },
+    {
+     "k": "s3",
+     "w": "rattles"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "overturn",
    "pos": "v.",
-   "zh": "翻覆"
+   "zh": "翻覆",
+   "f": [
+    {
+     "k": "past",
+     "w": "overturned"
+    },
+    {
+     "k": "pp",
+     "w": "overturned"
+    },
+    {
+     "k": "ing",
+     "w": "overturning"
+    },
+    {
+     "k": "s3",
+     "w": "overturns"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "shrine",
    "pos": "n.",
-   "zh": "神社"
+   "zh": "神社",
+   "f": [
+    {
+     "k": "plural",
+     "w": "shrines"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "wreck",
    "pos": "v.",
-   "zh": "毀壞"
+   "zh": "毀壞",
+   "f": [
+    {
+     "k": "past",
+     "w": "wrecked"
+    },
+    {
+     "k": "pp",
+     "w": "wrecked"
+    },
+    {
+     "k": "ing",
+     "w": "wrecking"
+    },
+    {
+     "k": "s3",
+     "w": "wrecks"
+    }
+   ],
+   "fam": [
+    {
+     "w": "wreckage",
+     "pos": "n.",
+     "zh": "殘骸"
+    }
+   ]
   },
   {
    "w": "assess",
    "pos": "v.",
-   "zh": "評估"
+   "zh": "評估",
+   "f": [
+    {
+     "k": "past",
+     "w": "assessed"
+    },
+    {
+     "k": "pp",
+     "w": "assessed"
+    },
+    {
+     "k": "ing",
+     "w": "assessing"
+    },
+    {
+     "k": "s3",
+     "w": "assesses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "assessment",
+     "pos": "n.",
+     "zh": "評估；評量"
+    }
+   ]
   },
   {
    "w": "epicenter",
    "pos": "n.",
-   "zh": "震央"
+   "zh": "震央",
+   "f": [
+    {
+     "k": "plural",
+     "w": "epicenters"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "prefecture",
    "pos": "n.",
-   "zh": "（日本）縣"
+   "zh": "（日本）縣",
+   "f": [
+    {
+     "k": "plural",
+     "w": "prefectures"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "mangled",
    "pos": "adj.",
-   "zh": "損毀嚴重的"
+   "zh": "損毀嚴重的",
+   "f": [],
+   "fam": [
+    {
+     "w": "mangle",
+     "pos": "v.",
+     "zh": "損毀"
+    }
+   ]
   },
   {
    "w": "explosion",
    "pos": "n.",
-   "zh": "爆炸"
+   "zh": "爆炸",
+   "f": [
+    {
+     "k": "plural",
+     "w": "explosions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "explode",
+     "pos": "v.",
+     "zh": "爆炸"
+    },
+    {
+     "w": "explosive",
+     "pos": "adj.",
+     "zh": "爆炸性的"
+    }
+   ]
   },
   {
    "w": "attraction",
    "pos": "n.",
-   "zh": "觀光景點"
+   "zh": "觀光景點",
+   "f": [
+    {
+     "k": "plural",
+     "w": "attractions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "attract",
+     "pos": "v.",
+     "zh": "吸引"
+    },
+    {
+     "w": "attractive",
+     "pos": "adj.",
+     "zh": "吸引人的"
+    }
+   ]
   },
   {
    "w": "crumble",
    "pos": "v.",
-   "zh": "崩落；碎裂"
+   "zh": "崩落；碎裂",
+   "f": [
+    {
+     "k": "past",
+     "w": "crumbled"
+    },
+    {
+     "k": "pp",
+     "w": "crumbled"
+    },
+    {
+     "k": "ing",
+     "w": "crumbling"
+    },
+    {
+     "k": "s3",
+     "w": "crumbles"
+    }
+   ],
+   "fam": [
+    {
+     "w": "crumb",
+     "pos": "n.",
+     "zh": "碎屑"
+    }
+   ]
   },
   {
    "w": "hover",
    "pos": "v.",
-   "zh": "盤旋；懸停"
+   "zh": "盤旋；懸停",
+   "f": [
+    {
+     "k": "past",
+     "w": "hovered"
+    },
+    {
+     "k": "pp",
+     "w": "hovered"
+    },
+    {
+     "k": "ing",
+     "w": "hovering"
+    },
+    {
+     "k": "s3",
+     "w": "hovers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "midair",
    "pos": "n.",
-   "zh": "空中"
+   "zh": "空中",
+   "f": [],
+   "fam": []
   },
   {
    "w": "witness",
    "pos": "n.",
-   "zh": "目擊者"
+   "zh": "目擊者",
+   "f": [
+    {
+     "k": "plural",
+     "w": "witnesses"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "impact",
    "pos": "v.",
-   "zh": "衝擊；影響"
+   "zh": "衝擊；影響",
+   "f": [
+    {
+     "k": "past",
+     "w": "impacted"
+    },
+    {
+     "k": "pp",
+     "w": "impacted"
+    },
+    {
+     "k": "ing",
+     "w": "impacting"
+    },
+    {
+     "k": "s3",
+     "w": "impacts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "meteorological",
    "pos": "adj.",
-   "zh": "氣象的"
+   "zh": "氣象的",
+   "f": [],
+   "fam": [
+    {
+     "w": "meteorology",
+     "pos": "n.",
+     "zh": "氣象學"
+    }
+   ]
   },
   {
    "w": "agency",
    "pos": "n.",
-   "zh": "政府機關"
+   "zh": "政府機關",
+   "f": [
+    {
+     "k": "plural",
+     "w": "agencies"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "tremor",
    "pos": "n.",
-   "zh": "震動"
+   "zh": "震動",
+   "f": [
+    {
+     "k": "plural",
+     "w": "tremors"
+    }
+   ],
+   "fam": [
+    {
+     "w": "tremble",
+     "pos": "v.",
+     "zh": "發抖；顫抖"
+    }
+   ]
   },
   {
    "w": "landslide",
    "pos": "n.",
-   "zh": "山崩"
+   "zh": "山崩",
+   "f": [
+    {
+     "k": "plural",
+     "w": "landslides"
+    }
+   ],
+   "fam": []
   }
  ]
 }

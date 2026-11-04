@@ -7,37 +7,133 @@
   {
    "w": "marathon",
    "pos": "n.",
-   "zh": "馬拉松"
+   "zh": "馬拉松",
+   "f": [
+    {
+     "k": "plural",
+     "w": "marathons"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "workout",
    "pos": "n.",
-   "zh": "健身運動"
+   "zh": "健身運動",
+   "f": [
+    {
+     "k": "plural",
+     "w": "workouts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "hooked",
    "pos": "adj.",
-   "zh": "著迷的"
+   "zh": "著迷的",
+   "f": [],
+   "fam": [
+    {
+     "w": "hook",
+     "pos": "v.",
+     "zh": "鉤住；吸引"
+    },
+    {
+     "w": "hook",
+     "pos": "n.",
+     "zh": "鉤子"
+    }
+   ]
   },
   {
    "w": "exhausted",
    "pos": "adj.",
-   "zh": "累壞的"
+   "zh": "累壞的",
+   "f": [],
+   "fam": [
+    {
+     "w": "exhaust",
+     "pos": "v.",
+     "zh": "使精疲力竭"
+    },
+    {
+     "w": "exhaustion",
+     "pos": "n.",
+     "zh": "精疲力竭"
+    }
+   ]
   },
   {
    "w": "sustain",
    "pos": "v.",
-   "zh": "維持"
+   "zh": "維持",
+   "f": [
+    {
+     "k": "past",
+     "w": "sustained"
+    },
+    {
+     "k": "pp",
+     "w": "sustained"
+    },
+    {
+     "k": "ing",
+     "w": "sustaining"
+    },
+    {
+     "k": "s3",
+     "w": "sustains"
+    }
+   ],
+   "fam": [
+    {
+     "w": "sustainable",
+     "pos": "adj.",
+     "zh": "永續的"
+    },
+    {
+     "w": "sustainability",
+     "pos": "n.",
+     "zh": "永續性"
+    }
+   ]
   },
   {
    "w": "consistent",
    "pos": "adj.",
-   "zh": "持之以恆的"
+   "zh": "持之以恆的",
+   "f": [],
+   "fam": [
+    {
+     "w": "consistency",
+     "pos": "n.",
+     "zh": "一致性"
+    },
+    {
+     "w": "consistently",
+     "pos": "adv.",
+     "zh": "一貫地"
+    }
+   ]
   },
   {
    "w": "rewarding",
    "pos": "adj.",
-   "zh": "有收穫的"
+   "zh": "有收穫的",
+   "f": [],
+   "fam": [
+    {
+     "w": "reward",
+     "pos": "n.",
+     "zh": "獎勵；報酬"
+    },
+    {
+     "w": "reward",
+     "pos": "v.",
+     "zh": "獎勵；回報"
+    }
+   ]
   }
  ]
 }

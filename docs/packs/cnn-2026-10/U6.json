@@ -7,72 +7,272 @@
   {
    "w": "alter",
    "pos": "v.",
-   "zh": "改變"
+   "zh": "改變",
+   "f": [
+    {
+     "k": "past",
+     "w": "altered"
+    },
+    {
+     "k": "pp",
+     "w": "altered"
+    },
+    {
+     "k": "ing",
+     "w": "altering"
+    },
+    {
+     "k": "s3",
+     "w": "alters"
+    }
+   ],
+   "fam": [
+    {
+     "w": "alteration",
+     "pos": "n.",
+     "zh": "修改；改變"
+    }
+   ]
   },
   {
    "w": "footing",
    "pos": "n.",
-   "zh": "立足點；地位"
+   "zh": "立足點；地位",
+   "f": [],
+   "fam": []
   },
   {
    "w": "decline",
    "pos": "n.",
-   "zh": "衰退"
+   "zh": "衰退",
+   "f": [
+    {
+     "k": "plural",
+     "w": "declines"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "athletic",
    "pos": "adj.",
-   "zh": "運動的"
+   "zh": "運動的",
+   "f": [],
+   "fam": [
+    {
+     "w": "athlete",
+     "pos": "n.",
+     "zh": "運動員"
+    },
+    {
+     "w": "athletics",
+     "pos": "n.",
+     "zh": "田徑運動"
+    }
+   ]
   },
   {
    "w": "ambitious",
    "pos": "adj.",
-   "zh": "有野心的"
+   "zh": "有野心的",
+   "f": [],
+   "fam": [
+    {
+     "w": "ambition",
+     "pos": "n.",
+     "zh": "抱負；野心"
+    }
+   ]
   },
   {
    "w": "neuroscience",
    "pos": "n.",
-   "zh": "神經科學"
+   "zh": "神經科學",
+   "f": [],
+   "fam": []
   },
   {
    "w": "stimulate",
    "pos": "v.",
-   "zh": "刺激"
+   "zh": "刺激",
+   "f": [
+    {
+     "k": "past",
+     "w": "stimulated"
+    },
+    {
+     "k": "pp",
+     "w": "stimulated"
+    },
+    {
+     "k": "ing",
+     "w": "stimulating"
+    },
+    {
+     "k": "s3",
+     "w": "stimulates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "stimulation",
+     "pos": "n.",
+     "zh": "刺激；激勵"
+    },
+    {
+     "w": "stimulus",
+     "pos": "n.",
+     "zh": "刺激物；激勵"
+    }
+   ]
   },
   {
    "w": "segment",
    "pos": "n.",
-   "zh": "區塊；部分"
+   "zh": "區塊；部分",
+   "f": [
+    {
+     "k": "plural",
+     "w": "segments"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "wander",
    "pos": "v.",
-   "zh": "漫遊；遊走"
+   "zh": "漫遊；遊走",
+   "f": [
+    {
+     "k": "past",
+     "w": "wandered"
+    },
+    {
+     "k": "pp",
+     "w": "wandered"
+    },
+    {
+     "k": "ing",
+     "w": "wandering"
+    },
+    {
+     "k": "s3",
+     "w": "wanders"
+    }
+   ],
+   "fam": [
+    {
+     "w": "wanderer",
+     "pos": "n.",
+     "zh": "流浪者"
+    }
+   ]
   },
   {
    "w": "node",
    "pos": "n.",
-   "zh": "節點"
+   "zh": "節點",
+   "f": [
+    {
+     "k": "plural",
+     "w": "nodes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "competitive",
    "pos": "adj.",
-   "zh": "競爭的"
+   "zh": "競爭的",
+   "f": [],
+   "fam": [
+    {
+     "w": "compete",
+     "pos": "v.",
+     "zh": "競爭"
+    },
+    {
+     "w": "competition",
+     "pos": "n.",
+     "zh": "競爭；比賽"
+    },
+    {
+     "w": "competitor",
+     "pos": "n.",
+     "zh": "競爭者"
+    },
+    {
+     "w": "competitively",
+     "pos": "adv.",
+     "zh": "競爭地"
+    }
+   ]
   },
   {
    "w": "electronics",
    "pos": "n.",
-   "zh": "電子產品"
+   "zh": "電子產品",
+   "f": [],
+   "fam": [
+    {
+     "w": "electronic",
+     "pos": "adj.",
+     "zh": "電子的"
+    },
+    {
+     "w": "electronically",
+     "pos": "adv.",
+     "zh": "以電子方式"
+    }
+   ]
   },
   {
    "w": "passive",
    "pos": "adj.",
-   "zh": "被動的"
+   "zh": "被動的",
+   "f": [],
+   "fam": [
+    {
+     "w": "passively",
+     "pos": "adv.",
+     "zh": "被動地"
+    }
+   ]
   },
   {
    "w": "quantify",
    "pos": "v.",
-   "zh": "量化"
+   "zh": "量化",
+   "f": [
+    {
+     "k": "past",
+     "w": "quantified"
+    },
+    {
+     "k": "pp",
+     "w": "quantified"
+    },
+    {
+     "k": "ing",
+     "w": "quantifying"
+    },
+    {
+     "k": "s3",
+     "w": "quantifies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "quantity",
+     "pos": "n.",
+     "zh": "數量"
+    },
+    {
+     "w": "quantitative",
+     "pos": "adj.",
+     "zh": "定量的"
+    }
+   ]
   }
  ]
 }

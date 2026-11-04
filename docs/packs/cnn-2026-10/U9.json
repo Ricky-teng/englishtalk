@@ -7,72 +7,256 @@
   {
    "w": "prance",
    "pos": "v.",
-   "zh": "騰躍"
+   "zh": "騰躍",
+   "f": [
+    {
+     "k": "past",
+     "w": "pranced"
+    },
+    {
+     "k": "pp",
+     "w": "pranced"
+    },
+    {
+     "k": "ing",
+     "w": "prancing"
+    },
+    {
+     "k": "s3",
+     "w": "prances"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "criticism",
    "pos": "n.",
-   "zh": "批評"
+   "zh": "批評",
+   "f": [
+    {
+     "k": "plural",
+     "w": "criticisms"
+    }
+   ],
+   "fam": [
+    {
+     "w": "criticize",
+     "pos": "v.",
+     "zh": "批評"
+    },
+    {
+     "w": "critical",
+     "pos": "adj.",
+     "zh": "批判的"
+    }
+   ]
   },
   {
    "w": "surpass",
    "pos": "v.",
-   "zh": "超越"
+   "zh": "超越",
+   "f": [
+    {
+     "k": "past",
+     "w": "surpassed"
+    },
+    {
+     "k": "pp",
+     "w": "surpassed"
+    },
+    {
+     "k": "ing",
+     "w": "surpassing"
+    },
+    {
+     "k": "s3",
+     "w": "surpasses"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "luxury",
    "pos": "adj.",
-   "zh": "豪華的"
+   "zh": "豪華的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "hefty",
    "pos": "adj.",
-   "zh": "高額的"
+   "zh": "高額的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "heftier"
+    },
+    {
+     "k": "sup",
+     "w": "heftiest"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "automotive",
    "pos": "adj.",
-   "zh": "汽車的"
+   "zh": "汽車的",
+   "f": [],
+   "fam": [
+    {
+     "w": "automobile",
+     "pos": "n.",
+     "zh": "汽車"
+    }
+   ]
   },
   {
    "w": "illustrious",
    "pos": "adj.",
-   "zh": "輝煌的"
+   "zh": "輝煌的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "representation",
    "pos": "n.",
-   "zh": "象徵；表現"
+   "zh": "象徵；表現",
+   "f": [
+    {
+     "k": "plural",
+     "w": "representations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "represent",
+     "pos": "v.",
+     "zh": "代表；象徵"
+    },
+    {
+     "w": "representative",
+     "pos": "adj.",
+     "zh": "有代表性的"
+    }
+   ]
   },
   {
    "w": "regulation",
    "pos": "n.",
-   "zh": "法規"
+   "zh": "法規",
+   "f": [
+    {
+     "k": "plural",
+     "w": "regulations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "regulate",
+     "pos": "v.",
+     "zh": "調控；管理"
+    },
+    {
+     "w": "regulatory",
+     "pos": "adj.",
+     "zh": "監管的"
+    }
+   ]
   },
   {
    "w": "embrace",
    "pos": "v.",
-   "zh": "接受；擁抱"
+   "zh": "接受；擁抱",
+   "f": [
+    {
+     "k": "past",
+     "w": "embraced"
+    },
+    {
+     "k": "pp",
+     "w": "embraced"
+    },
+    {
+     "k": "ing",
+     "w": "embracing"
+    },
+    {
+     "k": "s3",
+     "w": "embraces"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "sleek",
    "pos": "adj.",
-   "zh": "線條流暢的"
+   "zh": "線條流暢的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "sleeker"
+    },
+    {
+     "k": "sup",
+     "w": "sleekest"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "trademark",
    "pos": "n.",
-   "zh": "招牌特色"
+   "zh": "招牌特色",
+   "f": [
+    {
+     "k": "plural",
+     "w": "trademarks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "uptick",
    "pos": "n.",
-   "zh": "小幅上升"
+   "zh": "小幅上升",
+   "f": [
+    {
+     "k": "plural",
+     "w": "upticks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "fulfill",
    "pos": "v.",
-   "zh": "實現；滿足"
+   "zh": "實現；滿足",
+   "f": [
+    {
+     "k": "past",
+     "w": "fulfilled"
+    },
+    {
+     "k": "pp",
+     "w": "fulfilled"
+    },
+    {
+     "k": "ing",
+     "w": "fulfilling"
+    },
+    {
+     "k": "s3",
+     "w": "fulfills"
+    }
+   ],
+   "fam": [
+    {
+     "w": "fulfillment",
+     "pos": "n.",
+     "zh": "實現；滿足感"
+    }
+   ]
   }
  ]
 }

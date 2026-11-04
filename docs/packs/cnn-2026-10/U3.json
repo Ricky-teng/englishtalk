@@ -7,67 +7,262 @@
   {
    "w": "device",
    "pos": "n.",
-   "zh": "裝置"
+   "zh": "裝置",
+   "f": [
+    {
+     "k": "plural",
+     "w": "devices"
+    }
+   ],
+   "fam": [
+    {
+     "w": "devise",
+     "pos": "v.",
+     "zh": "設計；想出"
+    }
+   ]
   },
   {
    "w": "ban",
    "pos": "n.",
-   "zh": "禁令"
+   "zh": "禁令",
+   "f": [
+    {
+     "k": "plural",
+     "w": "bans"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "inevitable",
    "pos": "adj.",
-   "zh": "無可避免的"
+   "zh": "無可避免的",
+   "f": [],
+   "fam": [
+    {
+     "w": "inevitably",
+     "pos": "adv.",
+     "zh": "不可避免地"
+    }
+   ]
   },
   {
    "w": "school district",
    "pos": "n.",
-   "zh": "學區"
+   "zh": "學區",
+   "f": [
+    {
+     "k": "plural",
+     "w": "school districts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "sociable",
    "pos": "adj.",
-   "zh": "愛交際的"
+   "zh": "愛交際的",
+   "f": [],
+   "fam": [
+    {
+     "w": "socialize",
+     "pos": "v.",
+     "zh": "交際；社交"
+    },
+    {
+     "w": "society",
+     "pos": "n.",
+     "zh": "社會"
+    }
+   ]
   },
   {
    "w": "distraction",
    "pos": "n.",
-   "zh": "令人分心之物"
+   "zh": "令人分心之物",
+   "f": [
+    {
+     "k": "plural",
+     "w": "distractions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "distract",
+     "pos": "v.",
+     "zh": "使分心"
+    },
+    {
+     "w": "distracted",
+     "pos": "adj.",
+     "zh": "分心的"
+    },
+    {
+     "w": "distracting",
+     "pos": "adj.",
+     "zh": "讓人分心的"
+    }
+   ]
   },
   {
    "w": "option",
    "pos": "n.",
-   "zh": "選項"
+   "zh": "選項",
+   "f": [
+    {
+     "k": "plural",
+     "w": "options"
+    }
+   ],
+   "fam": [
+    {
+     "w": "opt",
+     "pos": "v.",
+     "zh": "選擇"
+    },
+    {
+     "w": "optional",
+     "pos": "adj.",
+     "zh": "可選擇的"
+    }
+   ]
   },
   {
    "w": "skeptical",
    "pos": "adj.",
-   "zh": "持懷疑態度的"
+   "zh": "持懷疑態度的",
+   "f": [],
+   "fam": [
+    {
+     "w": "skepticism",
+     "pos": "n.",
+     "zh": "懷疑態度"
+    },
+    {
+     "w": "skeptic",
+     "pos": "n.",
+     "zh": "懷疑論者"
+    },
+    {
+     "w": "skeptically",
+     "pos": "adv.",
+     "zh": "懷疑地"
+    }
+   ]
   },
   {
    "w": "interact",
    "pos": "v.",
-   "zh": "互動"
+   "zh": "互動",
+   "f": [
+    {
+     "k": "past",
+     "w": "interacted"
+    },
+    {
+     "k": "pp",
+     "w": "interacted"
+    },
+    {
+     "k": "ing",
+     "w": "interacting"
+    },
+    {
+     "k": "s3",
+     "w": "interacts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "interaction",
+     "pos": "n.",
+     "zh": "互動"
+    },
+    {
+     "w": "interactive",
+     "pos": "adj.",
+     "zh": "互動的"
+    }
+   ]
   },
   {
    "w": "academics",
    "pos": "n.",
-   "zh": "課業"
+   "zh": "課業",
+   "f": [],
+   "fam": [
+    {
+     "w": "academic",
+     "pos": "adj.",
+     "zh": "學業的"
+    },
+    {
+     "w": "academically",
+     "pos": "adv.",
+     "zh": "學業上"
+    }
+   ]
   },
   {
    "w": "literacy",
    "pos": "n.",
-   "zh": "讀寫能力"
+   "zh": "讀寫能力",
+   "f": [],
+   "fam": [
+    {
+     "w": "literate",
+     "pos": "adj.",
+     "zh": "識字的"
+    }
+   ]
   },
   {
    "w": "collaborate",
    "pos": "v.",
-   "zh": "合作"
+   "zh": "合作",
+   "f": [
+    {
+     "k": "past",
+     "w": "collaborated"
+    },
+    {
+     "k": "pp",
+     "w": "collaborated"
+    },
+    {
+     "k": "ing",
+     "w": "collaborating"
+    },
+    {
+     "k": "s3",
+     "w": "collaborates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "collaboration",
+     "pos": "n.",
+     "zh": "合作"
+    },
+    {
+     "w": "collaborative",
+     "pos": "adj.",
+     "zh": "合作的"
+    }
+   ]
   },
   {
    "w": "bond",
    "pos": "n.",
-   "zh": "情誼；連結"
+   "zh": "情誼；連結",
+   "f": [
+    {
+     "k": "plural",
+     "w": "bonds"
+    }
+   ],
+   "fam": []
   }
  ]
 }

@@ -7,117 +7,375 @@
   {
    "w": "familiar",
    "pos": "adj.",
-   "zh": "熟悉的"
+   "zh": "熟悉的",
+   "f": [],
+   "fam": [
+    {
+     "w": "familiarity",
+     "pos": "n.",
+     "zh": "熟悉"
+    },
+    {
+     "w": "familiarize",
+     "pos": "v.",
+     "zh": "使熟悉"
+    }
+   ]
   },
   {
    "w": "urge",
    "pos": "n.",
-   "zh": "衝動"
+   "zh": "衝動",
+   "f": [
+    {
+     "k": "plural",
+     "w": "urges"
+    }
+   ],
+   "fam": [
+    {
+     "w": "urgent",
+     "pos": "adj.",
+     "zh": "緊急的"
+    }
+   ]
   },
   {
    "w": "strategy",
    "pos": "n.",
-   "zh": "策略"
+   "zh": "策略",
+   "f": [
+    {
+     "k": "plural",
+     "w": "strategies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "strategic",
+     "pos": "adj.",
+     "zh": "策略性的"
+    },
+    {
+     "w": "strategically",
+     "pos": "adv.",
+     "zh": "策略性地"
+    }
+   ]
   },
   {
    "w": "visible",
    "pos": "adj.",
-   "zh": "看得見的；顯眼的"
+   "zh": "看得見的；顯眼的",
+   "f": [],
+   "fam": [
+    {
+     "w": "visibility",
+     "pos": "n.",
+     "zh": "能見度"
+    },
+    {
+     "w": "visibly",
+     "pos": "adv.",
+     "zh": "明顯地"
+    },
+    {
+     "w": "vision",
+     "pos": "n.",
+     "zh": "視力；願景"
+    }
+   ]
   },
   {
    "w": "purchase",
    "pos": "v.",
-   "zh": "購買"
+   "zh": "購買",
+   "f": [
+    {
+     "k": "past",
+     "w": "purchased"
+    },
+    {
+     "k": "pp",
+     "w": "purchased"
+    },
+    {
+     "k": "ing",
+     "w": "purchasing"
+    },
+    {
+     "k": "s3",
+     "w": "purchases"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "profitable",
    "pos": "adj.",
-   "zh": "有利可圖的；賺錢的"
+   "zh": "有利可圖的；賺錢的",
+   "f": [],
+   "fam": [
+    {
+     "w": "profit",
+     "pos": "n.",
+     "zh": "利潤"
+    },
+    {
+     "w": "profitably",
+     "pos": "adv.",
+     "zh": "有利地"
+    }
+   ]
   },
   {
    "w": "similarly",
    "pos": "adv.",
-   "zh": "同樣地；類似地"
+   "zh": "同樣地；類似地",
+   "f": [],
+   "fam": [
+    {
+     "w": "similar",
+     "pos": "adj.",
+     "zh": "類似的"
+    },
+    {
+     "w": "similarity",
+     "pos": "n.",
+     "zh": "相似之處"
+    }
+   ]
   },
   {
    "w": "aim",
    "pos": "v.",
-   "zh": "瞄準；旨在"
+   "zh": "瞄準；旨在",
+   "f": [
+    {
+     "k": "past",
+     "w": "aimed"
+    },
+    {
+     "k": "pp",
+     "w": "aimed"
+    },
+    {
+     "k": "ing",
+     "w": "aiming"
+    },
+    {
+     "k": "s3",
+     "w": "aims"
+    }
+   ],
+   "fam": [
+    {
+     "w": "aimless",
+     "pos": "adj.",
+     "zh": "漫無目的的"
+    },
+    {
+     "w": "aimlessly",
+     "pos": "adv.",
+     "zh": "漫無目的地"
+    }
+   ]
   },
   {
    "w": "impulse",
    "pos": "n.",
-   "zh": "衝動"
+   "zh": "衝動",
+   "f": [
+    {
+     "k": "plural",
+     "w": "impulses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "impulsive",
+     "pos": "adj.",
+     "zh": "衝動的"
+    },
+    {
+     "w": "impulsively",
+     "pos": "adv.",
+     "zh": "衝動地"
+    }
+   ]
   },
   {
    "w": "display",
    "pos": "v.",
-   "zh": "陳列；展示"
+   "zh": "陳列；展示",
+   "f": [
+    {
+     "k": "past",
+     "w": "displayed"
+    },
+    {
+     "k": "pp",
+     "w": "displayed"
+    },
+    {
+     "k": "ing",
+     "w": "displaying"
+    },
+    {
+     "k": "s3",
+     "w": "displays"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "offer",
    "pos": "n.",
-   "zh": "優惠；提供"
+   "zh": "優惠；提供",
+   "f": [
+    {
+     "k": "plural",
+     "w": "offers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "customer",
    "pos": "n.",
-   "zh": "顧客"
+   "zh": "顧客",
+   "f": [
+    {
+     "k": "plural",
+     "w": "customers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "advantage",
    "pos": "n.",
-   "zh": "優勢；好處"
+   "zh": "優勢；好處",
+   "f": [
+    {
+     "k": "plural",
+     "w": "advantages"
+    }
+   ],
+   "fam": [
+    {
+     "w": "advantageous",
+     "pos": "adj.",
+     "zh": "有利的"
+    }
+   ]
   },
   {
    "w": "eventually",
    "pos": "adv.",
-   "zh": "最後；終於"
+   "zh": "最後；終於",
+   "f": [],
+   "fam": [
+    {
+     "w": "eventual",
+     "pos": "adj.",
+     "zh": "最終的"
+    }
+   ]
   },
   {
    "w": "trap",
    "pos": "n.",
-   "zh": "陷阱"
+   "zh": "陷阱",
+   "f": [
+    {
+     "k": "plural",
+     "w": "traps"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "aware",
    "pos": "adj.",
-   "zh": "察覺到的；意識到的"
+   "zh": "察覺到的；意識到的",
+   "f": [],
+   "fam": [
+    {
+     "w": "awareness",
+     "pos": "n.",
+     "zh": "意識；察覺"
+    }
+   ]
   },
   {
    "w": "clever",
    "pos": "adj.",
-   "zh": "聰明的；巧妙的"
+   "zh": "聰明的；巧妙的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "cleverer"
+    },
+    {
+     "k": "sup",
+     "w": "cleverest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "cleverly",
+     "pos": "adv.",
+     "zh": "巧妙地"
+    },
+    {
+     "w": "cleverness",
+     "pos": "n.",
+     "zh": "聰明"
+    }
+   ]
   },
   {
    "w": "be likely to",
    "pos": "phr.",
-   "zh": "很可能"
+   "zh": "很可能",
+   "f": [],
+   "fam": []
   },
   {
    "w": "within reach",
    "pos": "phr.",
-   "zh": "伸手可及"
+   "zh": "伸手可及",
+   "f": [],
+   "fam": []
   },
   {
    "w": "line up",
    "pos": "phr.",
-   "zh": "排隊"
+   "zh": "排隊",
+   "f": [],
+   "fam": []
   },
   {
    "w": "take advantage of",
    "pos": "phr.",
-   "zh": "利用"
+   "zh": "利用",
+   "f": [],
+   "fam": []
   },
   {
    "w": "set up",
    "pos": "phr.",
-   "zh": "設立；擺設"
+   "zh": "設立；擺設",
+   "f": [],
+   "fam": []
   },
   {
    "w": "start off",
    "pos": "phr.",
-   "zh": "開始；以……開始"
+   "zh": "開始；以……開始",
+   "f": [],
+   "fam": []
   }
  ]
 }

@@ -7,92 +7,330 @@
   {
    "w": "embrace",
    "pos": "v.",
-   "zh": "擁抱；欣然接受"
+   "zh": "擁抱；欣然接受",
+   "f": [
+    {
+     "k": "past",
+     "w": "embraced"
+    },
+    {
+     "k": "pp",
+     "w": "embraced"
+    },
+    {
+     "k": "ing",
+     "w": "embracing"
+    },
+    {
+     "k": "s3",
+     "w": "embraces"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "disappear",
    "pos": "v.",
-   "zh": "消失"
+   "zh": "消失",
+   "f": [
+    {
+     "k": "past",
+     "w": "disappeared"
+    },
+    {
+     "k": "pp",
+     "w": "disappeared"
+    },
+    {
+     "k": "ing",
+     "w": "disappearing"
+    },
+    {
+     "k": "s3",
+     "w": "disappears"
+    }
+   ],
+   "fam": [
+    {
+     "w": "disappearance",
+     "pos": "n.",
+     "zh": "消失"
+    }
+   ]
   },
   {
    "w": "custom",
    "pos": "n.",
-   "zh": "習俗"
+   "zh": "習俗",
+   "f": [
+    {
+     "k": "plural",
+     "w": "customs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "customary",
+     "pos": "adj.",
+     "zh": "習慣的；慣例的"
+    }
+   ]
   },
   {
    "w": "daily",
    "pos": "adj.",
-   "zh": "每天的；日常的"
+   "zh": "每天的；日常的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "grab",
    "pos": "v.",
-   "zh": "抓住；匆忙拿（吃）"
+   "zh": "抓住；匆忙拿（吃）",
+   "f": [
+    {
+     "k": "past",
+     "w": "grabbed"
+    },
+    {
+     "k": "pp",
+     "w": "grabbed"
+    },
+    {
+     "k": "ing",
+     "w": "grabbing"
+    },
+    {
+     "k": "s3",
+     "w": "grabs"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "culture",
    "pos": "n.",
-   "zh": "文化"
+   "zh": "文化",
+   "f": [
+    {
+     "k": "plural",
+     "w": "cultures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "cultural",
+     "pos": "adj.",
+     "zh": "文化的"
+    },
+    {
+     "w": "culturally",
+     "pos": "adv.",
+     "zh": "文化上"
+    }
+   ]
   },
   {
    "w": "afterward",
    "pos": "adv.",
-   "zh": "之後；後來"
+   "zh": "之後；後來",
+   "f": [],
+   "fam": []
   },
   {
    "w": "greet",
    "pos": "v.",
-   "zh": "問候；迎接"
+   "zh": "問候；迎接",
+   "f": [
+    {
+     "k": "past",
+     "w": "greeted"
+    },
+    {
+     "k": "pp",
+     "w": "greeted"
+    },
+    {
+     "k": "ing",
+     "w": "greeting"
+    },
+    {
+     "k": "s3",
+     "w": "greets"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "schedule",
    "pos": "n.",
-   "zh": "行程表；時間表"
+   "zh": "行程表；時間表",
+   "f": [
+    {
+     "k": "plural",
+     "w": "schedules"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "astonishment",
    "pos": "n.",
-   "zh": "驚訝"
+   "zh": "驚訝",
+   "f": [],
+   "fam": [
+    {
+     "w": "astonish",
+     "pos": "v.",
+     "zh": "使驚訝"
+    },
+    {
+     "w": "astonishing",
+     "pos": "adj.",
+     "zh": "驚人的"
+    },
+    {
+     "w": "astonished",
+     "pos": "adj.",
+     "zh": "吃驚的"
+    }
+   ]
   },
   {
    "w": "forever",
    "pos": "adv.",
-   "zh": "永遠"
+   "zh": "永遠",
+   "f": [],
+   "fam": []
   },
   {
    "w": "valuable",
    "pos": "adj.",
-   "zh": "寶貴的；有價值的"
+   "zh": "寶貴的；有價值的",
+   "f": [],
+   "fam": [
+    {
+     "w": "value",
+     "pos": "n.",
+     "zh": "價值"
+    },
+    {
+     "w": "value",
+     "pos": "v.",
+     "zh": "重視；評價"
+    },
+    {
+     "w": "valuables",
+     "pos": "n.",
+     "zh": "貴重物品"
+    }
+   ]
   },
   {
    "w": "include",
    "pos": "v.",
-   "zh": "包含；包括"
+   "zh": "包含；包括",
+   "f": [
+    {
+     "k": "past",
+     "w": "included"
+    },
+    {
+     "k": "pp",
+     "w": "included"
+    },
+    {
+     "k": "ing",
+     "w": "including"
+    },
+    {
+     "k": "s3",
+     "w": "includes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "inclusion",
+     "pos": "n.",
+     "zh": "納入；包容"
+    },
+    {
+     "w": "inclusive",
+     "pos": "adj.",
+     "zh": "包容的"
+    }
+   ]
   },
   {
    "w": "midday",
    "pos": "n.",
-   "zh": "正午；中午"
+   "zh": "正午；中午",
+   "f": [],
+   "fam": []
   },
   {
    "w": "sacred",
    "pos": "adj.",
-   "zh": "神聖的"
+   "zh": "神聖的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "dummy",
    "pos": "n.",
-   "zh": "假人；人體模型"
+   "zh": "假人；人體模型",
+   "f": [
+    {
+     "k": "plural",
+     "w": "dummies"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "monk",
    "pos": "n.",
-   "zh": "僧侶；修士"
+   "zh": "僧侶；修士",
+   "f": [
+    {
+     "k": "plural",
+     "w": "monks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "difference",
    "pos": "n.",
-   "zh": "差異；不同"
+   "zh": "差異；不同",
+   "f": [
+    {
+     "k": "plural",
+     "w": "differences"
+    }
+   ],
+   "fam": [
+    {
+     "w": "different",
+     "pos": "adj.",
+     "zh": "不同的"
+    },
+    {
+     "w": "differ",
+     "pos": "v.",
+     "zh": "不同；相異"
+    },
+    {
+     "w": "differently",
+     "pos": "adv.",
+     "zh": "不同地"
+    },
+    {
+     "w": "differentiate",
+     "pos": "v.",
+     "zh": "區分"
+    }
+   ]
   }
  ]
 }

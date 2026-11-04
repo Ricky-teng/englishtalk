@@ -7,22 +7,85 @@
   {
    "w": "monster",
    "pos": "n.",
-   "zh": "怪物"
+   "zh": "怪物",
+   "f": [
+    {
+     "k": "plural",
+     "w": "monsters"
+    }
+   ],
+   "fam": [
+    {
+     "w": "monstrous",
+     "pos": "adj.",
+     "zh": "可怕的；巨大的"
+    }
+   ]
   },
   {
    "w": "frightening",
    "pos": "adj.",
-   "zh": "嚇人的"
+   "zh": "嚇人的",
+   "f": [],
+   "fam": [
+    {
+     "w": "frighten",
+     "pos": "v.",
+     "zh": "使害怕"
+    },
+    {
+     "w": "fright",
+     "pos": "n.",
+     "zh": "驚嚇"
+    },
+    {
+     "w": "frighteningly",
+     "pos": "adv.",
+     "zh": "嚇人地"
+    }
+   ]
   },
   {
    "w": "flash",
    "pos": "v.",
-   "zh": "閃爍；閃光"
+   "zh": "閃爍；閃光",
+   "f": [
+    {
+     "k": "past",
+     "w": "flashed"
+    },
+    {
+     "k": "pp",
+     "w": "flashed"
+    },
+    {
+     "k": "ing",
+     "w": "flashing"
+    },
+    {
+     "k": "s3",
+     "w": "flashes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "flashy",
+     "pos": "adj.",
+     "zh": "浮誇的；俗豔的"
+    }
+   ]
   },
   {
    "w": "kilometer",
    "pos": "n.",
-   "zh": "公里"
+   "zh": "公里",
+   "f": [
+    {
+     "k": "plural",
+     "w": "kilometers"
+    }
+   ],
+   "fam": []
   }
  ]
 }

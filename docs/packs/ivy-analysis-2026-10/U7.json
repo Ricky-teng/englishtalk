@@ -7,92 +7,295 @@
   {
    "w": "anxious",
    "pos": "adj.",
-   "zh": "焦慮的"
+   "zh": "焦慮的",
+   "f": [],
+   "fam": [
+    {
+     "w": "anxiety",
+     "pos": "n.",
+     "zh": "焦慮"
+    },
+    {
+     "w": "anxiously",
+     "pos": "adv.",
+     "zh": "焦急地"
+    }
+   ]
   },
   {
    "w": "realize",
    "pos": "v.",
-   "zh": "察覺"
+   "zh": "察覺",
+   "f": [
+    {
+     "k": "past",
+     "w": "realized"
+    },
+    {
+     "k": "pp",
+     "w": "realized"
+    },
+    {
+     "k": "ing",
+     "w": "realizing"
+    },
+    {
+     "k": "s3",
+     "w": "realizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "realization",
+     "pos": "n.",
+     "zh": "領悟；察覺"
+    }
+   ]
   },
   {
    "w": "battery",
    "pos": "n.",
-   "zh": "電池"
+   "zh": "電池",
+   "f": [
+    {
+     "k": "plural",
+     "w": "batteries"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "fortunately",
    "pos": "adv.",
-   "zh": "幸好"
+   "zh": "幸好",
+   "f": [],
+   "fam": [
+    {
+     "w": "fortunate",
+     "pos": "adj.",
+     "zh": "幸運的"
+    },
+    {
+     "w": "fortune",
+     "pos": "n.",
+     "zh": "運氣；財富"
+    }
+   ]
   },
   {
    "w": "rental",
    "pos": "n.",
-   "zh": "租借"
+   "zh": "租借",
+   "f": [
+    {
+     "k": "plural",
+     "w": "rentals"
+    }
+   ],
+   "fam": [
+    {
+     "w": "rent",
+     "pos": "v.",
+     "zh": "租用；出租"
+    }
+   ]
   },
   {
    "w": "charge",
    "pos": "v.",
-   "zh": "充電"
+   "zh": "充電",
+   "f": [
+    {
+     "k": "past",
+     "w": "charged"
+    },
+    {
+     "k": "pp",
+     "w": "charged"
+    },
+    {
+     "k": "ing",
+     "w": "charging"
+    },
+    {
+     "k": "s3",
+     "w": "charges"
+    }
+   ],
+   "fam": [
+    {
+     "w": "charger",
+     "pos": "n.",
+     "zh": "充電器"
+    }
+   ]
   },
   {
    "w": "post",
    "pos": "v.",
-   "zh": "發布（貼文）"
+   "zh": "發布（貼文）",
+   "f": [
+    {
+     "k": "past",
+     "w": "posted"
+    },
+    {
+     "k": "pp",
+     "w": "posted"
+    },
+    {
+     "k": "ing",
+     "w": "posting"
+    },
+    {
+     "k": "s3",
+     "w": "posts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "complaint",
    "pos": "n.",
-   "zh": "抱怨"
+   "zh": "抱怨",
+   "f": [
+    {
+     "k": "plural",
+     "w": "complaints"
+    }
+   ],
+   "fam": [
+    {
+     "w": "complain",
+     "pos": "v.",
+     "zh": "抱怨"
+    }
+   ]
   },
   {
    "w": "algorithm",
    "pos": "n.",
-   "zh": "演算法"
+   "zh": "演算法",
+   "f": [
+    {
+     "k": "plural",
+     "w": "algorithms"
+    }
+   ],
+   "fam": [
+    {
+     "w": "algorithmic",
+     "pos": "adj.",
+     "zh": "演算法的"
+    }
+   ]
   },
   {
    "w": "content",
    "pos": "n.",
-   "zh": "（網路）內容"
+   "zh": "（網路）內容",
+   "f": [],
+   "fam": []
   },
   {
    "w": "mechanism",
    "pos": "n.",
-   "zh": "機制"
+   "zh": "機制",
+   "f": [
+    {
+     "k": "plural",
+     "w": "mechanisms"
+    }
+   ],
+   "fam": [
+    {
+     "w": "mechanical",
+     "pos": "adj.",
+     "zh": "機械的"
+    },
+    {
+     "w": "mechanically",
+     "pos": "adv.",
+     "zh": "機械地"
+    }
+   ]
   },
   {
    "w": "enable",
    "pos": "v.",
-   "zh": "使能夠"
+   "zh": "使能夠",
+   "f": [
+    {
+     "k": "past",
+     "w": "enabled"
+    },
+    {
+     "k": "pp",
+     "w": "enabled"
+    },
+    {
+     "k": "ing",
+     "w": "enabling"
+    },
+    {
+     "k": "s3",
+     "w": "enables"
+    }
+   ],
+   "fam": [
+    {
+     "w": "able",
+     "pos": "adj.",
+     "zh": "能夠的"
+    },
+    {
+     "w": "ability",
+     "pos": "n.",
+     "zh": "能力"
+    }
+   ]
   },
   {
    "w": "cannot help but",
    "pos": "phr.",
-   "zh": "忍不住"
+   "zh": "忍不住",
+   "f": [],
+   "fam": []
   },
   {
    "w": "a power bank",
    "pos": "phr.",
-   "zh": "行動電源"
+   "zh": "行動電源",
+   "f": [],
+   "fam": []
   },
   {
    "w": "even if",
    "pos": "phr.",
-   "zh": "即使"
+   "zh": "即使",
+   "f": [],
+   "fam": []
   },
   {
    "w": "common ground",
    "pos": "phr.",
-   "zh": "共同點"
+   "zh": "共同點",
+   "f": [],
+   "fam": []
   },
   {
    "w": "enable sb to",
    "pos": "phr.",
-   "zh": "讓某人能夠"
+   "zh": "讓某人能夠",
+   "f": [],
+   "fam": []
   },
   {
    "w": "connect with",
    "pos": "phr.",
-   "zh": "與…產生連結"
+   "zh": "與…產生連結",
+   "f": [],
+   "fam": []
   }
  ]
 }

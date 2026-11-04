@@ -7,67 +7,224 @@
   {
    "w": "endless",
    "pos": "adj.",
-   "zh": "無止境的"
+   "zh": "無止境的",
+   "f": [],
+   "fam": [
+    {
+     "w": "end",
+     "pos": "n.",
+     "zh": "結尾；盡頭"
+    },
+    {
+     "w": "end",
+     "pos": "v.",
+     "zh": "結束"
+    },
+    {
+     "w": "endlessly",
+     "pos": "adv.",
+     "zh": "無止境地"
+    }
+   ]
   },
   {
    "w": "imaginary",
    "pos": "adj.",
-   "zh": "虛構的"
+   "zh": "虛構的",
+   "f": [],
+   "fam": [
+    {
+     "w": "imagine",
+     "pos": "v.",
+     "zh": "想像"
+    },
+    {
+     "w": "imagination",
+     "pos": "n.",
+     "zh": "想像力"
+    }
+   ]
   },
   {
    "w": "mysterious",
    "pos": "adj.",
-   "zh": "神秘的"
+   "zh": "神秘的",
+   "f": [],
+   "fam": [
+    {
+     "w": "mystery",
+     "pos": "n.",
+     "zh": "謎"
+    },
+    {
+     "w": "mysteriously",
+     "pos": "adv.",
+     "zh": "神祕地"
+    }
+   ]
   },
   {
    "w": "routine",
    "pos": "n.",
-   "zh": "日常慣例"
+   "zh": "日常慣例",
+   "f": [
+    {
+     "k": "plural",
+     "w": "routines"
+    }
+   ],
+   "fam": [
+    {
+     "w": "routinely",
+     "pos": "adv.",
+     "zh": "例行地；經常"
+    }
+   ]
   },
   {
    "w": "unexpected",
    "pos": "adj.",
-   "zh": "出乎意料的"
+   "zh": "出乎意料的",
+   "f": [],
+   "fam": [
+    {
+     "w": "unexpectedly",
+     "pos": "adv.",
+     "zh": "意外地"
+    },
+    {
+     "w": "expect",
+     "pos": "v.",
+     "zh": "預期；期待"
+    },
+    {
+     "w": "expectation",
+     "pos": "n.",
+     "zh": "期望；預期"
+    }
+   ]
   },
   {
    "w": "confidence",
    "pos": "n.",
-   "zh": "自信"
+   "zh": "自信",
+   "f": [],
+   "fam": [
+    {
+     "w": "confident",
+     "pos": "adj.",
+     "zh": "有自信的"
+    },
+    {
+     "w": "confidently",
+     "pos": "adv.",
+     "zh": "自信地"
+    }
+   ]
   },
   {
    "w": "obstacle",
    "pos": "n.",
-   "zh": "阻礙"
+   "zh": "阻礙",
+   "f": [
+    {
+     "k": "plural",
+     "w": "obstacles"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "tackle",
    "pos": "v.",
-   "zh": "著手解決"
+   "zh": "著手解決",
+   "f": [
+    {
+     "k": "past",
+     "w": "tackled"
+    },
+    {
+     "k": "pp",
+     "w": "tackled"
+    },
+    {
+     "k": "ing",
+     "w": "tackling"
+    },
+    {
+     "k": "s3",
+     "w": "tackles"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "adapt",
    "pos": "v.",
-   "zh": "適應"
+   "zh": "適應",
+   "f": [
+    {
+     "k": "past",
+     "w": "adapted"
+    },
+    {
+     "k": "pp",
+     "w": "adapted"
+    },
+    {
+     "k": "ing",
+     "w": "adapting"
+    },
+    {
+     "k": "s3",
+     "w": "adapts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "adaptation",
+     "pos": "n.",
+     "zh": "適應；改編"
+    },
+    {
+     "w": "adaptability",
+     "pos": "n.",
+     "zh": "適應能力"
+    },
+    {
+     "w": "adaptable",
+     "pos": "adj.",
+     "zh": "適應力強的"
+    }
+   ]
   },
   {
    "w": "search for",
    "pos": "phr.",
-   "zh": "尋找"
+   "zh": "尋找",
+   "f": [],
+   "fam": []
   },
   {
    "w": "be full of",
    "pos": "phr.",
-   "zh": "充滿"
+   "zh": "充滿",
+   "f": [],
+   "fam": []
   },
   {
    "w": "lie ahead",
    "pos": "phr.",
-   "zh": "在未來等著"
+   "zh": "在未來等著",
+   "f": [],
+   "fam": []
   },
   {
    "w": "adapt to",
    "pos": "phr.",
-   "zh": "適應…"
+   "zh": "適應…",
+   "f": [],
+   "fam": []
   }
  ]
 }

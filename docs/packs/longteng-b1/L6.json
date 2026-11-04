@@ -7,102 +7,382 @@
   {
    "w": "freedom",
    "pos": "n.",
-   "zh": "自由"
+   "zh": "自由",
+   "f": [
+    {
+     "k": "plural",
+     "w": "freedoms"
+    }
+   ],
+   "fam": [
+    {
+     "w": "free",
+     "pos": "adj.",
+     "zh": "自由的"
+    },
+    {
+     "w": "free",
+     "pos": "v.",
+     "zh": "釋放"
+    },
+    {
+     "w": "freely",
+     "pos": "adv.",
+     "zh": "自由地"
+    }
+   ]
   },
   {
    "w": "statue",
    "pos": "n.",
-   "zh": "雕像"
+   "zh": "雕像",
+   "f": [
+    {
+     "k": "plural",
+     "w": "statues"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "remove",
    "pos": "v.",
-   "zh": "移除；拿掉"
+   "zh": "移除；拿掉",
+   "f": [
+    {
+     "k": "past",
+     "w": "removed"
+    },
+    {
+     "k": "pp",
+     "w": "removed"
+    },
+    {
+     "k": "ing",
+     "w": "removing"
+    },
+    {
+     "k": "s3",
+     "w": "removes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "removal",
+     "pos": "n.",
+     "zh": "移除"
+    },
+    {
+     "w": "removable",
+     "pos": "adj.",
+     "zh": "可拆卸的"
+    }
+   ]
   },
   {
    "w": "celebration",
    "pos": "n.",
-   "zh": "慶祝；慶典"
+   "zh": "慶祝；慶典",
+   "f": [
+    {
+     "k": "plural",
+     "w": "celebrations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "celebrate",
+     "pos": "v.",
+     "zh": "慶祝"
+    }
+   ]
   },
   {
    "w": "independence",
    "pos": "n.",
-   "zh": "獨立"
+   "zh": "獨立",
+   "f": [],
+   "fam": [
+    {
+     "w": "independent",
+     "pos": "adj.",
+     "zh": "獨立的"
+    },
+    {
+     "w": "independently",
+     "pos": "adv.",
+     "zh": "獨立地"
+    }
+   ]
   },
   {
    "w": "monument",
    "pos": "n.",
-   "zh": "紀念碑；紀念建築"
+   "zh": "紀念碑；紀念建築",
+   "f": [
+    {
+     "k": "plural",
+     "w": "monuments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "monumental",
+     "pos": "adj.",
+     "zh": "巨大的；不朽的"
+    }
+   ]
   },
   {
    "w": "symbolize",
    "pos": "v.",
-   "zh": "象徵"
+   "zh": "象徵",
+   "f": [
+    {
+     "k": "past",
+     "w": "symbolized"
+    },
+    {
+     "k": "pp",
+     "w": "symbolized"
+    },
+    {
+     "k": "ing",
+     "w": "symbolizing"
+    },
+    {
+     "k": "s3",
+     "w": "symbolizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "symbol",
+     "pos": "n.",
+     "zh": "象徵；符號"
+    },
+    {
+     "w": "symbolic",
+     "pos": "adj.",
+     "zh": "象徵性的"
+    }
+   ]
   },
   {
    "w": "firmly",
    "pos": "adv.",
-   "zh": "穩固地；堅定地"
+   "zh": "穩固地；堅定地",
+   "f": [],
+   "fam": [
+    {
+     "w": "firm",
+     "pos": "adj.",
+     "zh": "堅定的；穩固的"
+    }
+   ]
   },
   {
    "w": "represent",
    "pos": "v.",
-   "zh": "代表；象徵"
+   "zh": "代表；象徵",
+   "f": [
+    {
+     "k": "past",
+     "w": "represented"
+    },
+    {
+     "k": "pp",
+     "w": "represented"
+    },
+    {
+     "k": "ing",
+     "w": "representing"
+    },
+    {
+     "k": "s3",
+     "w": "represents"
+    }
+   ],
+   "fam": [
+    {
+     "w": "representation",
+     "pos": "n.",
+     "zh": "代表；表現"
+    },
+    {
+     "w": "representative",
+     "pos": "n.",
+     "zh": "代表；代表人"
+    },
+    {
+     "w": "representative",
+     "pos": "adj.",
+     "zh": "有代表性的"
+    }
+   ]
   },
   {
    "w": "ancient",
    "pos": "adj.",
-   "zh": "古代的；古老的"
+   "zh": "古代的；古老的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "unfair",
    "pos": "adj.",
-   "zh": "不公平的"
+   "zh": "不公平的",
+   "f": [],
+   "fam": [
+    {
+     "w": "unfairly",
+     "pos": "adv.",
+     "zh": "不公平地"
+    },
+    {
+     "w": "unfairness",
+     "pos": "n.",
+     "zh": "不公平"
+    }
+   ]
   },
   {
    "w": "slavery",
    "pos": "n.",
-   "zh": "奴隸制度"
+   "zh": "奴隸制度",
+   "f": [],
+   "fam": [
+    {
+     "w": "enslave",
+     "pos": "v.",
+     "zh": "奴役"
+    }
+   ]
   },
   {
    "w": "treatment",
    "pos": "n.",
-   "zh": "對待；待遇"
+   "zh": "對待；待遇",
+   "f": [
+    {
+     "k": "plural",
+     "w": "treatments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "treat",
+     "pos": "v.",
+     "zh": "對待；治療"
+    }
+   ]
   },
   {
    "w": "tourist",
    "pos": "n.",
-   "zh": "觀光客"
+   "zh": "觀光客",
+   "f": [
+    {
+     "k": "plural",
+     "w": "tourists"
+    }
+   ],
+   "fam": [
+    {
+     "w": "tour",
+     "pos": "v.",
+     "zh": "遊覽；巡迴"
+    },
+    {
+     "w": "touristy",
+     "pos": "adj.",
+     "zh": "觀光客多的"
+    }
+   ]
   },
   {
    "w": "attraction",
    "pos": "n.",
-   "zh": "景點；吸引力"
+   "zh": "景點；吸引力",
+   "f": [
+    {
+     "k": "plural",
+     "w": "attractions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "attract",
+     "pos": "v.",
+     "zh": "吸引"
+    },
+    {
+     "w": "attractive",
+     "pos": "adj.",
+     "zh": "吸引人的"
+    }
+   ]
   },
   {
    "w": "landmark",
    "pos": "n.",
-   "zh": "地標"
+   "zh": "地標",
+   "f": [
+    {
+     "k": "plural",
+     "w": "landmarks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "globe",
    "pos": "n.",
-   "zh": "地球；全世界"
+   "zh": "地球；全世界",
+   "f": [
+    {
+     "k": "plural",
+     "w": "globes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "global",
+     "pos": "adj.",
+     "zh": "全球的"
+    },
+    {
+     "w": "globally",
+     "pos": "adv.",
+     "zh": "在全球"
+    },
+    {
+     "w": "globalize",
+     "pos": "v.",
+     "zh": "全球化"
+    }
+   ]
   },
   {
    "w": "even though",
    "pos": "phr.",
-   "zh": "即使；雖然"
+   "zh": "即使；雖然",
+   "f": [],
+   "fam": []
   },
   {
    "w": "close to",
    "pos": "phr.",
-   "zh": "接近；將近"
+   "zh": "接近；將近",
+   "f": [],
+   "fam": []
   },
   {
    "w": "over time",
    "pos": "phr.",
-   "zh": "隨著時間"
+   "zh": "隨著時間",
+   "f": [],
+   "fam": []
   }
  ]
 }

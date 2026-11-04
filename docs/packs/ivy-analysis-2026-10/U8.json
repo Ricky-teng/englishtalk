@@ -7,187 +7,616 @@
   {
    "w": "tag",
    "pos": "v.",
-   "zh": "標記（某人）"
+   "zh": "標記（某人）",
+   "f": [
+    {
+     "k": "past",
+     "w": "tagged"
+    },
+    {
+     "k": "pp",
+     "w": "tagged"
+    },
+    {
+     "k": "ing",
+     "w": "tagging"
+    },
+    {
+     "k": "s3",
+     "w": "tags"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "assume",
    "pos": "v.",
-   "zh": "以為；假定"
+   "zh": "以為；假定",
+   "f": [
+    {
+     "k": "past",
+     "w": "assumed"
+    },
+    {
+     "k": "pp",
+     "w": "assumed"
+    },
+    {
+     "k": "ing",
+     "w": "assuming"
+    },
+    {
+     "k": "s3",
+     "w": "assumes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "assumption",
+     "pos": "n.",
+     "zh": "假設"
+    }
+   ]
   },
   {
    "w": "invention",
    "pos": "n.",
-   "zh": "發明"
+   "zh": "發明",
+   "f": [
+    {
+     "k": "plural",
+     "w": "inventions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "invent",
+     "pos": "v.",
+     "zh": "發明"
+    },
+    {
+     "w": "inventive",
+     "pos": "adj.",
+     "zh": "有創意的"
+    }
+   ]
   },
   {
    "w": "communication",
    "pos": "n.",
-   "zh": "通訊；交流"
+   "zh": "通訊；交流",
+   "f": [],
+   "fam": [
+    {
+     "w": "communicate",
+     "pos": "v.",
+     "zh": "溝通"
+    },
+    {
+     "w": "communicative",
+     "pos": "adj.",
+     "zh": "善於溝通的"
+    }
+   ]
   },
   {
    "w": "manuscript",
    "pos": "n.",
-   "zh": "手抄本"
+   "zh": "手抄本",
+   "f": [
+    {
+     "k": "plural",
+     "w": "manuscripts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "document",
    "pos": "n.",
-   "zh": "文件"
+   "zh": "文件",
+   "f": [
+    {
+     "k": "plural",
+     "w": "documents"
+    }
+   ],
+   "fam": [
+    {
+     "w": "documentary",
+     "pos": "adj.",
+     "zh": "文件的；紀實的"
+    }
+   ]
   },
   {
    "w": "merchant",
    "pos": "n.",
-   "zh": "商人"
+   "zh": "商人",
+   "f": [
+    {
+     "k": "plural",
+     "w": "merchants"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "abbreviation",
    "pos": "n.",
-   "zh": "縮寫"
+   "zh": "縮寫",
+   "f": [
+    {
+     "k": "plural",
+     "w": "abbreviations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "abbreviate",
+     "pos": "v.",
+     "zh": "縮寫"
+    }
+   ]
   },
   {
    "w": "vessel",
    "pos": "n.",
-   "zh": "容器"
+   "zh": "容器",
+   "f": [
+    {
+     "k": "plural",
+     "w": "vessels"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "transport",
    "pos": "v.",
-   "zh": "運送"
+   "zh": "運送",
+   "f": [
+    {
+     "k": "past",
+     "w": "transported"
+    },
+    {
+     "k": "pp",
+     "w": "transported"
+    },
+    {
+     "k": "ing",
+     "w": "transporting"
+    },
+    {
+     "k": "s3",
+     "w": "transports"
+    }
+   ],
+   "fam": [
+    {
+     "w": "transportation",
+     "pos": "n.",
+     "zh": "交通運輸"
+    }
+   ]
   },
   {
    "w": "widespread",
    "pos": "adj.",
-   "zh": "普遍的"
+   "zh": "普遍的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "accounting",
    "pos": "n.",
-   "zh": "會計"
+   "zh": "會計",
+   "f": [],
+   "fam": [
+    {
+     "w": "account",
+     "pos": "v.",
+     "zh": "說明；占（比例）"
+    },
+    {
+     "w": "accountable",
+     "pos": "adj.",
+     "zh": "須負責的"
+    }
+   ]
   },
   {
    "w": "ultimately",
    "pos": "adv.",
-   "zh": "最終"
+   "zh": "最終",
+   "f": [],
+   "fam": [
+    {
+     "w": "ultimate",
+     "pos": "adj.",
+     "zh": "最終的；終極的"
+    }
+   ]
   },
   {
    "w": "connect",
    "pos": "v.",
-   "zh": "連結"
+   "zh": "連結",
+   "f": [
+    {
+     "k": "past",
+     "w": "connected"
+    },
+    {
+     "k": "pp",
+     "w": "connected"
+    },
+    {
+     "k": "ing",
+     "w": "connecting"
+    },
+    {
+     "k": "s3",
+     "w": "connects"
+    }
+   ],
+   "fam": [
+    {
+     "w": "connection",
+     "pos": "n.",
+     "zh": "連接；關聯"
+    }
+   ]
   },
   {
    "w": "viable",
    "pos": "adj.",
-   "zh": "可行的"
+   "zh": "可行的",
+   "f": [],
+   "fam": [
+    {
+     "w": "viability",
+     "pos": "n.",
+     "zh": "可行性"
+    }
+   ]
   },
   {
    "w": "destination",
    "pos": "n.",
-   "zh": "目的地"
+   "zh": "目的地",
+   "f": [
+    {
+     "k": "plural",
+     "w": "destinations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "destined",
+     "pos": "adj.",
+     "zh": "注定的"
+    }
+   ]
   },
   {
    "w": "interfere",
    "pos": "v.",
-   "zh": "干擾"
+   "zh": "干擾",
+   "f": [
+    {
+     "k": "past",
+     "w": "interfered"
+    },
+    {
+     "k": "pp",
+     "w": "interfered"
+    },
+    {
+     "k": "ing",
+     "w": "interfering"
+    },
+    {
+     "k": "s3",
+     "w": "interferes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "interference",
+     "pos": "n.",
+     "zh": "干擾"
+    }
+   ]
   },
   {
    "w": "format",
    "pos": "n.",
-   "zh": "格式"
+   "zh": "格式",
+   "f": [
+    {
+     "k": "plural",
+     "w": "formats"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "popularity",
    "pos": "n.",
-   "zh": "受歡迎程度"
+   "zh": "受歡迎程度",
+   "f": [],
+   "fam": [
+    {
+     "w": "popular",
+     "pos": "adj.",
+     "zh": "受歡迎的"
+    },
+    {
+     "w": "popularize",
+     "pos": "v.",
+     "zh": "使普及"
+    }
+   ]
   },
   {
    "w": "imaginative",
    "pos": "adj.",
-   "zh": "富想像力的"
+   "zh": "富想像力的",
+   "f": [],
+   "fam": [
+    {
+     "w": "imagine",
+     "pos": "v.",
+     "zh": "想像"
+    },
+    {
+     "w": "imagination",
+     "pos": "n.",
+     "zh": "想像力"
+    },
+    {
+     "w": "imaginatively",
+     "pos": "adv.",
+     "zh": "富想像力地"
+    }
+   ]
   },
   {
    "w": "curly",
    "pos": "adj.",
-   "zh": "捲曲的"
+   "zh": "捲曲的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "curlier"
+    },
+    {
+     "k": "sup",
+     "w": "curliest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "curl",
+     "pos": "v.",
+     "zh": "捲曲"
+    },
+    {
+     "w": "curl",
+     "pos": "n.",
+     "zh": "捲髮"
+    }
+   ]
   },
   {
    "w": "elsewhere",
    "pos": "adv.",
-   "zh": "在其他地方"
+   "zh": "在其他地方",
+   "f": [],
+   "fam": []
   },
   {
    "w": "digital",
    "pos": "adj.",
-   "zh": "數位的"
+   "zh": "數位的",
+   "f": [],
+   "fam": [
+    {
+     "w": "digit",
+     "pos": "n.",
+     "zh": "數字；位數"
+    },
+    {
+     "w": "digitally",
+     "pos": "adv.",
+     "zh": "以數位方式"
+    },
+    {
+     "w": "digitize",
+     "pos": "v.",
+     "zh": "數位化"
+    }
+   ]
   },
   {
    "w": "separate",
    "pos": "adj.",
-   "zh": "分開的"
+   "zh": "分開的",
+   "f": [],
+   "fam": [
+    {
+     "w": "separately",
+     "pos": "adv.",
+     "zh": "分開地"
+    },
+    {
+     "w": "separation",
+     "pos": "n.",
+     "zh": "分離；分開"
+    }
+   ]
   },
   {
    "w": "associate",
    "pos": "v.",
-   "zh": "聯想"
+   "zh": "聯想",
+   "f": [
+    {
+     "k": "past",
+     "w": "associated"
+    },
+    {
+     "k": "pp",
+     "w": "associated"
+    },
+    {
+     "k": "ing",
+     "w": "associating"
+    },
+    {
+     "k": "s3",
+     "w": "associates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "association",
+     "pos": "n.",
+     "zh": "協會；關聯"
+    }
+   ]
   },
   {
    "w": "liken",
    "pos": "v.",
-   "zh": "比作"
+   "zh": "比作",
+   "f": [
+    {
+     "k": "past",
+     "w": "likened"
+    },
+    {
+     "k": "pp",
+     "w": "likened"
+    },
+    {
+     "k": "ing",
+     "w": "likening"
+    },
+    {
+     "k": "s3",
+     "w": "likens"
+    }
+   ],
+   "fam": [
+    {
+     "w": "likeness",
+     "pos": "n.",
+     "zh": "相似之處"
+    }
+   ]
   },
   {
    "w": "refer",
    "pos": "v.",
-   "zh": "提到；稱作"
+   "zh": "提到；稱作",
+   "f": [
+    {
+     "k": "past",
+     "w": "referred"
+    },
+    {
+     "k": "pp",
+     "w": "referred"
+    },
+    {
+     "k": "ing",
+     "w": "referring"
+    },
+    {
+     "k": "s3",
+     "w": "refers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "reference",
+     "pos": "n.",
+     "zh": "參考；提及"
+    }
+   ]
   },
   {
    "w": "stretch back",
    "pos": "phr.",
-   "zh": "追溯至"
+   "zh": "追溯至",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in place of",
    "pos": "phr.",
-   "zh": "代替"
+   "zh": "代替",
+   "f": [],
+   "fam": []
   },
   {
    "w": "at the rate of",
    "pos": "phr.",
-   "zh": "以…的比率"
+   "zh": "以…的比率",
+   "f": [],
+   "fam": []
   },
   {
    "w": "make one's way onto",
    "pos": "phr.",
-   "zh": "進入…（使用）"
+   "zh": "進入…（使用）",
+   "f": [],
+   "fam": []
   },
   {
    "w": "interfere with",
    "pos": "phr.",
-   "zh": "干擾…"
+   "zh": "干擾…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "rise in popularity",
    "pos": "phr.",
-   "zh": "越來越受歡迎"
+   "zh": "越來越受歡迎",
+   "f": [],
+   "fam": []
   },
   {
    "w": "separate A from B",
    "pos": "phr.",
-   "zh": "將A與B分開"
+   "zh": "將A與B分開",
+   "f": [],
+   "fam": []
   },
   {
    "w": "associate A with B",
    "pos": "phr.",
-   "zh": "把A和B聯想"
+   "zh": "把A和B聯想",
+   "f": [],
+   "fam": []
   },
   {
    "w": "liken A to B",
    "pos": "phr.",
-   "zh": "把A比作B"
+   "zh": "把A比作B",
+   "f": [],
+   "fam": []
   },
   {
    "w": "refer to A as B",
    "pos": "phr.",
-   "zh": "稱A為B"
+   "zh": "稱A為B",
+   "f": [],
+   "fam": []
   }
  ]
 }

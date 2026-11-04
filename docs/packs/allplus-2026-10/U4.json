@@ -7,52 +7,201 @@
   {
    "w": "apology",
    "pos": "n.",
-   "zh": "道歉"
+   "zh": "道歉",
+   "f": [
+    {
+     "k": "plural",
+     "w": "apologies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "apologize",
+     "pos": "v.",
+     "zh": "道歉"
+    },
+    {
+     "w": "apologetic",
+     "pos": "adj.",
+     "zh": "歉疚的"
+    }
+   ]
   },
   {
    "w": "fantastic",
    "pos": "adj.",
-   "zh": "棒極了的"
+   "zh": "棒極了的",
+   "f": [],
+   "fam": [
+    {
+     "w": "fantasy",
+     "pos": "n.",
+     "zh": "幻想"
+    },
+    {
+     "w": "fantasize",
+     "pos": "v.",
+     "zh": "幻想"
+    },
+    {
+     "w": "fantastically",
+     "pos": "adv.",
+     "zh": "極好地"
+    }
+   ]
   },
   {
    "w": "scan",
    "pos": "v.",
-   "zh": "瀏覽；掃描"
+   "zh": "瀏覽；掃描",
+   "f": [
+    {
+     "k": "past",
+     "w": "scanned"
+    },
+    {
+     "k": "pp",
+     "w": "scanned"
+    },
+    {
+     "k": "ing",
+     "w": "scanning"
+    },
+    {
+     "k": "s3",
+     "w": "scans"
+    }
+   ],
+   "fam": [
+    {
+     "w": "scanner",
+     "pos": "n.",
+     "zh": "掃描器"
+    }
+   ]
   },
   {
    "w": "minimum",
    "pos": "adj.",
-   "zh": "最低的"
+   "zh": "最低的",
+   "f": [],
+   "fam": [
+    {
+     "w": "minimize",
+     "pos": "v.",
+     "zh": "降到最低"
+    }
+   ]
   },
   {
    "w": "percent",
    "pos": "n.",
-   "zh": "百分比"
+   "zh": "百分比",
+   "f": [],
+   "fam": []
   },
   {
    "w": "recommend",
    "pos": "v.",
-   "zh": "推薦"
+   "zh": "推薦",
+   "f": [
+    {
+     "k": "past",
+     "w": "recommended"
+    },
+    {
+     "k": "pp",
+     "w": "recommended"
+    },
+    {
+     "k": "ing",
+     "w": "recommending"
+    },
+    {
+     "k": "s3",
+     "w": "recommends"
+    }
+   ],
+   "fam": [
+    {
+     "w": "recommendation",
+     "pos": "n.",
+     "zh": "推薦"
+    }
+   ]
   },
   {
    "w": "substantial",
    "pos": "adj.",
-   "zh": "份量足的"
+   "zh": "份量足的",
+   "f": [],
+   "fam": [
+    {
+     "w": "substance",
+     "pos": "n.",
+     "zh": "物質；實質"
+    },
+    {
+     "w": "substantially",
+     "pos": "adv.",
+     "zh": "大幅地；大體上"
+    }
+   ]
   },
   {
    "w": "mustard",
    "pos": "n.",
-   "zh": "芥末醬"
+   "zh": "芥末醬",
+   "f": [],
+   "fam": []
   },
   {
    "w": "adjust",
    "pos": "v.",
-   "zh": "調整"
+   "zh": "調整",
+   "f": [
+    {
+     "k": "past",
+     "w": "adjusted"
+    },
+    {
+     "k": "pp",
+     "w": "adjusted"
+    },
+    {
+     "k": "ing",
+     "w": "adjusting"
+    },
+    {
+     "k": "s3",
+     "w": "adjusts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "adjustment",
+     "pos": "n.",
+     "zh": "調整"
+    },
+    {
+     "w": "adjustable",
+     "pos": "adj.",
+     "zh": "可調整的"
+    }
+   ]
   },
   {
    "w": "absolutely",
    "pos": "adv.",
-   "zh": "當然"
+   "zh": "當然",
+   "f": [],
+   "fam": [
+    {
+     "w": "absolute",
+     "pos": "adj.",
+     "zh": "絕對的"
+    }
+   ]
   }
  ]
 }

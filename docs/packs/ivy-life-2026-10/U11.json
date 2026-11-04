@@ -7,92 +7,288 @@
   {
    "w": "motionless",
    "pos": "adj.",
-   "zh": "一動也不動的"
+   "zh": "一動也不動的",
+   "f": [],
+   "fam": [
+    {
+     "w": "motion",
+     "pos": "n.",
+     "zh": "動作；移動"
+    }
+   ]
   },
   {
    "w": "campus",
    "pos": "n.",
-   "zh": "校園"
+   "zh": "校園",
+   "f": [
+    {
+     "k": "plural",
+     "w": "campuses"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "patient",
    "pos": "adj.",
-   "zh": "有耐心的"
+   "zh": "有耐心的",
+   "f": [],
+   "fam": [
+    {
+     "w": "patience",
+     "pos": "n.",
+     "zh": "耐心"
+    },
+    {
+     "w": "patiently",
+     "pos": "adv.",
+     "zh": "耐心地"
+    }
+   ]
   },
   {
    "w": "freeze",
    "pos": "v.",
-   "zh": "僵住不動"
+   "zh": "僵住不動",
+   "f": [
+    {
+     "k": "past",
+     "w": "froze"
+    },
+    {
+     "k": "pp",
+     "w": "frozen"
+    },
+    {
+     "k": "ing",
+     "w": "freezing"
+    },
+    {
+     "k": "s3",
+     "w": "freezes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "freezer",
+     "pos": "n.",
+     "zh": "冷凍庫"
+    }
+   ]
   },
   {
    "w": "feather",
    "pos": "n.",
-   "zh": "羽毛"
+   "zh": "羽毛",
+   "f": [
+    {
+     "k": "plural",
+     "w": "feathers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "feathered",
+     "pos": "adj.",
+     "zh": "有羽毛的"
+    }
+   ]
   },
   {
    "w": "threatened",
    "pos": "adj.",
-   "zh": "感到威脅的"
+   "zh": "感到威脅的",
+   "f": [],
+   "fam": [
+    {
+     "w": "threaten",
+     "pos": "v.",
+     "zh": "威脅"
+    },
+    {
+     "w": "threat",
+     "pos": "n.",
+     "zh": "威脅"
+    }
+   ]
   },
   {
    "w": "remain",
    "pos": "v.",
-   "zh": "保持；仍是"
+   "zh": "保持；仍是",
+   "f": [
+    {
+     "k": "past",
+     "w": "remained"
+    },
+    {
+     "k": "pp",
+     "w": "remained"
+    },
+    {
+     "k": "ing",
+     "w": "remaining"
+    },
+    {
+     "k": "s3",
+     "w": "remains"
+    }
+   ],
+   "fam": [
+    {
+     "w": "remainder",
+     "pos": "n.",
+     "zh": "剩餘部分"
+    }
+   ]
   },
   {
    "w": "soil",
    "pos": "n.",
-   "zh": "土壤"
+   "zh": "土壤",
+   "f": [
+    {
+     "k": "plural",
+     "w": "soils"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "bend",
    "pos": "v.",
-   "zh": "彎（身）"
+   "zh": "彎（身）",
+   "f": [
+    {
+     "k": "past",
+     "w": "bent"
+    },
+    {
+     "k": "pp",
+     "w": "bent"
+    },
+    {
+     "k": "ing",
+     "w": "bending"
+    },
+    {
+     "k": "s3",
+     "w": "bends"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "active",
    "pos": "adj.",
-   "zh": "活躍的"
+   "zh": "活躍的",
+   "f": [],
+   "fam": [
+    {
+     "w": "act",
+     "pos": "v.",
+     "zh": "行動"
+    },
+    {
+     "w": "activity",
+     "pos": "n.",
+     "zh": "活動"
+    },
+    {
+     "w": "actively",
+     "pos": "adv.",
+     "zh": "積極地"
+    },
+    {
+     "w": "activate",
+     "pos": "v.",
+     "zh": "啟動"
+    }
+   ]
   },
   {
    "w": "development",
    "pos": "n.",
-   "zh": "開發"
+   "zh": "開發",
+   "f": [
+    {
+     "k": "plural",
+     "w": "developments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "develop",
+     "pos": "v.",
+     "zh": "開發；發展"
+    },
+    {
+     "w": "developed",
+     "pos": "adj.",
+     "zh": "已開發的"
+    },
+    {
+     "w": "developing",
+     "pos": "adj.",
+     "zh": "開發中的"
+    }
+   ]
   },
   {
    "w": "urban",
    "pos": "adj.",
-   "zh": "城市的"
+   "zh": "城市的",
+   "f": [],
+   "fam": [
+    {
+     "w": "urbanization",
+     "pos": "n.",
+     "zh": "都市化"
+    }
+   ]
   },
   {
    "w": "stand still",
    "pos": "phr.",
-   "zh": "站著不動"
+   "zh": "站著不動",
+   "f": [],
+   "fam": []
   },
   {
    "w": "run down",
    "pos": "phr.",
-   "zh": "流下"
+   "zh": "流下",
+   "f": [],
+   "fam": []
   },
   {
    "w": "be covered with",
    "pos": "phr.",
-   "zh": "覆蓋著…"
+   "zh": "覆蓋著…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "bend A into B",
    "pos": "phr.",
-   "zh": "把A彎成B"
+   "zh": "把A彎成B",
+   "f": [],
+   "fam": []
   },
   {
    "w": "from side to side",
    "pos": "phr.",
-   "zh": "左右搖擺"
+   "zh": "左右搖擺",
+   "f": [],
+   "fam": []
   },
   {
    "w": "feed on",
    "pos": "phr.",
-   "zh": "以…為食"
+   "zh": "以…為食",
+   "f": [],
+   "fam": []
   }
  ]
 }

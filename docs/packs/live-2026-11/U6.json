@@ -1,0 +1,127 @@
+{
+ "id": "U6",
+ "title": "探索巨石陣",
+ "tag": "Live2611-U6",
+ "verified": true,
+ "items": [
+  {
+   "w": "structure",
+   "pos": "n.",
+   "zh": "結構；建築物",
+   "f": [
+    {
+     "k": "plural",
+     "w": "structures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "structural",
+     "pos": "adj.",
+     "zh": "結構的"
+    },
+    {
+     "w": "structurally",
+     "pos": "adv.",
+     "zh": "結構上"
+    }
+   ]
+  },
+  {
+   "w": "surround",
+   "pos": "v.",
+   "zh": "圍繞；包圍",
+   "f": [
+    {
+     "k": "past",
+     "w": "surrounded"
+    },
+    {
+     "k": "pp",
+     "w": "surrounded"
+    },
+    {
+     "k": "ing",
+     "w": "surrounding"
+    },
+    {
+     "k": "s3",
+     "w": "surrounds"
+    }
+   ],
+   "fam": [
+    {
+     "w": "surroundings",
+     "pos": "n.",
+     "zh": "環境；周遭"
+    }
+   ]
+  },
+  {
+   "w": "reference",
+   "pos": "v.",
+   "zh": "提及；參考",
+   "f": [
+    {
+     "k": "past",
+     "w": "referenced"
+    },
+    {
+     "k": "pp",
+     "w": "referenced"
+    },
+    {
+     "k": "ing",
+     "w": "referencing"
+    },
+    {
+     "k": "s3",
+     "w": "references"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "calendar",
+   "pos": "n.",
+   "zh": "曆法；日曆",
+   "f": [
+    {
+     "k": "plural",
+     "w": "calendars"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "transport",
+   "pos": "v.",
+   "zh": "運送；運輸",
+   "f": [
+    {
+     "k": "past",
+     "w": "transported"
+    },
+    {
+     "k": "pp",
+     "w": "transported"
+    },
+    {
+     "k": "ing",
+     "w": "transporting"
+    },
+    {
+     "k": "s3",
+     "w": "transports"
+    }
+   ],
+   "fam": [
+    {
+     "w": "transportation",
+     "pos": "n.",
+     "zh": "交通運輸"
+    }
+   ]
+  }
+ ]
+}

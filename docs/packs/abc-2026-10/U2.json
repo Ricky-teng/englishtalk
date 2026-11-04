@@ -7,62 +7,277 @@
   {
    "w": "serious",
    "pos": "adj.",
-   "zh": "認真的；嚴肅的"
+   "zh": "認真的；嚴肅的",
+   "f": [],
+   "fam": [
+    {
+     "w": "seriously",
+     "pos": "adv.",
+     "zh": "認真地；嚴重地"
+    },
+    {
+     "w": "seriousness",
+     "pos": "n.",
+     "zh": "嚴重性；認真"
+    }
+   ]
   },
   {
    "w": "appear",
    "pos": "v.",
-   "zh": "出現"
+   "zh": "出現",
+   "f": [
+    {
+     "k": "past",
+     "w": "appeared"
+    },
+    {
+     "k": "pp",
+     "w": "appeared"
+    },
+    {
+     "k": "ing",
+     "w": "appearing"
+    },
+    {
+     "k": "s3",
+     "w": "appears"
+    }
+   ],
+   "fam": [
+    {
+     "w": "appearance",
+     "pos": "n.",
+     "zh": "外表；出現"
+    },
+    {
+     "w": "apparent",
+     "pos": "adj.",
+     "zh": "明顯的"
+    },
+    {
+     "w": "apparently",
+     "pos": "adv.",
+     "zh": "顯然"
+    }
+   ]
   },
   {
    "w": "surprised",
    "pos": "adj.",
-   "zh": "驚訝的"
+   "zh": "驚訝的",
+   "f": [],
+   "fam": [
+    {
+     "w": "surprise",
+     "pos": "n.",
+     "zh": "驚喜；驚訝"
+    },
+    {
+     "w": "surprise",
+     "pos": "v.",
+     "zh": "使驚訝"
+    },
+    {
+     "w": "surprisingly",
+     "pos": "adv.",
+     "zh": "出乎意料地"
+    }
+   ]
   },
   {
    "w": "unhappy",
    "pos": "adj.",
-   "zh": "不快樂的"
+   "zh": "不快樂的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "unhappier"
+    },
+    {
+     "k": "sup",
+     "w": "unhappiest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "unhappiness",
+     "pos": "n.",
+     "zh": "不快樂"
+    },
+    {
+     "w": "unhappily",
+     "pos": "adv.",
+     "zh": "不快樂地"
+    }
+   ]
   },
   {
    "w": "adult",
    "pos": "n.",
-   "zh": "大人"
+   "zh": "大人",
+   "f": [
+    {
+     "k": "plural",
+     "w": "adults"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "knowledge",
    "pos": "n.",
-   "zh": "知識"
+   "zh": "知識",
+   "f": [],
+   "fam": [
+    {
+     "w": "know",
+     "pos": "v.",
+     "zh": "知道"
+    },
+    {
+     "w": "knowledgeable",
+     "pos": "adj.",
+     "zh": "知識淵博的"
+    }
+   ]
   },
   {
    "w": "understand",
    "pos": "v.",
-   "zh": "了解"
+   "zh": "了解",
+   "f": [
+    {
+     "k": "past",
+     "w": "understood"
+    },
+    {
+     "k": "pp",
+     "w": "understood"
+    },
+    {
+     "k": "ing",
+     "w": "understanding"
+    },
+    {
+     "k": "s3",
+     "w": "understands"
+    }
+   ],
+   "fam": [
+    {
+     "w": "understandable",
+     "pos": "adj.",
+     "zh": "可理解的"
+    },
+    {
+     "w": "understandably",
+     "pos": "adv.",
+     "zh": "可以理解地"
+    }
+   ]
   },
   {
    "w": "arrive",
    "pos": "v.",
-   "zh": "抵達"
+   "zh": "抵達",
+   "f": [
+    {
+     "k": "past",
+     "w": "arrived"
+    },
+    {
+     "k": "pp",
+     "w": "arrived"
+    },
+    {
+     "k": "ing",
+     "w": "arriving"
+    },
+    {
+     "k": "s3",
+     "w": "arrives"
+    }
+   ],
+   "fam": [
+    {
+     "w": "arrival",
+     "pos": "n.",
+     "zh": "抵達"
+    }
+   ]
   },
   {
    "w": "fix",
    "pos": "v.",
-   "zh": "修理"
+   "zh": "修理",
+   "f": [
+    {
+     "k": "past",
+     "w": "fixed"
+    },
+    {
+     "k": "pp",
+     "w": "fixed"
+    },
+    {
+     "k": "ing",
+     "w": "fixing"
+    },
+    {
+     "k": "s3",
+     "w": "fixes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "fixture",
+     "pos": "n.",
+     "zh": "固定裝置"
+    }
+   ]
   },
   {
    "w": "plane",
    "pos": "n.",
-   "zh": "飛機"
+   "zh": "飛機",
+   "f": [
+    {
+     "k": "plural",
+     "w": "planes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "plan",
    "pos": "n.",
-   "zh": "計畫"
+   "zh": "計畫",
+   "f": [
+    {
+     "k": "plural",
+     "w": "plans"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "laugh",
    "pos": "n.",
-   "zh": "笑聲"
+   "zh": "笑聲",
+   "f": [
+    {
+     "k": "plural",
+     "w": "laughs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "laughable",
+     "pos": "adj.",
+     "zh": "可笑的"
+    }
+   ]
   }
  ]
 }

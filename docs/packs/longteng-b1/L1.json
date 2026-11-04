@@ -7,127 +7,435 @@
   {
    "w": "memorable",
    "pos": "adj.",
-   "zh": "難忘的"
+   "zh": "難忘的",
+   "f": [],
+   "fam": [
+    {
+     "w": "memory",
+     "pos": "n.",
+     "zh": "記憶"
+    },
+    {
+     "w": "memorize",
+     "pos": "v.",
+     "zh": "記住"
+    }
+   ]
   },
   {
    "w": "reply",
    "pos": "v.",
-   "zh": "回覆；回答"
+   "zh": "回覆；回答",
+   "f": [
+    {
+     "k": "past",
+     "w": "replied"
+    },
+    {
+     "k": "pp",
+     "w": "replied"
+    },
+    {
+     "k": "ing",
+     "w": "replying"
+    },
+    {
+     "k": "s3",
+     "w": "replies"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "yell",
    "pos": "v.",
-   "zh": "大叫；吼叫"
+   "zh": "大叫；吼叫",
+   "f": [
+    {
+     "k": "past",
+     "w": "yelled"
+    },
+    {
+     "k": "pp",
+     "w": "yelled"
+    },
+    {
+     "k": "ing",
+     "w": "yelling"
+    },
+    {
+     "k": "s3",
+     "w": "yells"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "perfect",
    "pos": "adj.",
-   "zh": "完美的"
+   "zh": "完美的",
+   "f": [],
+   "fam": [
+    {
+     "w": "perfection",
+     "pos": "n.",
+     "zh": "完美"
+    },
+    {
+     "w": "perfectly",
+     "pos": "adv.",
+     "zh": "完美地"
+    }
+   ]
   },
   {
    "w": "accidentally",
    "pos": "adv.",
-   "zh": "意外地；不小心地"
+   "zh": "意外地；不小心地",
+   "f": [],
+   "fam": [
+    {
+     "w": "accident",
+     "pos": "n.",
+     "zh": "意外"
+    },
+    {
+     "w": "accidental",
+     "pos": "adj.",
+     "zh": "意外的"
+    }
+   ]
   },
   {
    "w": "failure",
    "pos": "n.",
-   "zh": "失敗"
+   "zh": "失敗",
+   "f": [
+    {
+     "k": "plural",
+     "w": "failures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "fail",
+     "pos": "v.",
+     "zh": "失敗；不及格"
+    }
+   ]
   },
   {
    "w": "recall",
    "pos": "v.",
-   "zh": "回想起"
+   "zh": "回想起",
+   "f": [
+    {
+     "k": "past",
+     "w": "recalled"
+    },
+    {
+     "k": "pp",
+     "w": "recalled"
+    },
+    {
+     "k": "ing",
+     "w": "recalling"
+    },
+    {
+     "k": "s3",
+     "w": "recalls"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "presentation",
    "pos": "n.",
-   "zh": "報告；簡報"
+   "zh": "報告；簡報",
+   "f": [
+    {
+     "k": "plural",
+     "w": "presentations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "present",
+     "pos": "v.",
+     "zh": "呈現；報告"
+    }
+   ]
   },
   {
    "w": "skip",
    "pos": "v.",
-   "zh": "跳過；略過"
+   "zh": "跳過；略過",
+   "f": [
+    {
+     "k": "past",
+     "w": "skipped"
+    },
+    {
+     "k": "pp",
+     "w": "skipped"
+    },
+    {
+     "k": "ing",
+     "w": "skipping"
+    },
+    {
+     "k": "s3",
+     "w": "skips"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "ruin",
    "pos": "v.",
-   "zh": "毀掉；破壞"
+   "zh": "毀掉；破壞",
+   "f": [
+    {
+     "k": "past",
+     "w": "ruined"
+    },
+    {
+     "k": "pp",
+     "w": "ruined"
+    },
+    {
+     "k": "ing",
+     "w": "ruining"
+    },
+    {
+     "k": "s3",
+     "w": "ruins"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "depressed",
    "pos": "adj.",
-   "zh": "沮喪的；消沉的"
+   "zh": "沮喪的；消沉的",
+   "f": [],
+   "fam": [
+    {
+     "w": "depress",
+     "pos": "v.",
+     "zh": "使沮喪"
+    },
+    {
+     "w": "depression",
+     "pos": "n.",
+     "zh": "沮喪；憂鬱症"
+    }
+   ]
   },
   {
    "w": "embarrassed",
    "pos": "adj.",
-   "zh": "尷尬的；難為情的"
+   "zh": "尷尬的；難為情的",
+   "f": [],
+   "fam": [
+    {
+     "w": "embarrass",
+     "pos": "v.",
+     "zh": "使尷尬"
+    },
+    {
+     "w": "embarrassment",
+     "pos": "n.",
+     "zh": "尷尬；難堪"
+    }
+   ]
   },
   {
    "w": "upset",
    "pos": "adj.",
-   "zh": "難過的；心煩的"
+   "zh": "難過的；心煩的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "reflect",
    "pos": "v.",
-   "zh": "反思；回想"
+   "zh": "反思；回想",
+   "f": [
+    {
+     "k": "past",
+     "w": "reflected"
+    },
+    {
+     "k": "pp",
+     "w": "reflected"
+    },
+    {
+     "k": "ing",
+     "w": "reflecting"
+    },
+    {
+     "k": "s3",
+     "w": "reflects"
+    }
+   ],
+   "fam": [
+    {
+     "w": "reflection",
+     "pos": "n.",
+     "zh": "反思；倒影"
+    },
+    {
+     "w": "reflective",
+     "pos": "adj.",
+     "zh": "深思的"
+    }
+   ]
   },
   {
    "w": "remind",
    "pos": "v.",
-   "zh": "提醒；使想起"
+   "zh": "提醒；使想起",
+   "f": [
+    {
+     "k": "past",
+     "w": "reminded"
+    },
+    {
+     "k": "pp",
+     "w": "reminded"
+    },
+    {
+     "k": "ing",
+     "w": "reminding"
+    },
+    {
+     "k": "s3",
+     "w": "reminds"
+    }
+   ],
+   "fam": [
+    {
+     "w": "reminder",
+     "pos": "n.",
+     "zh": "提醒；提示"
+    }
+   ]
   },
   {
    "w": "realize",
    "pos": "v.",
-   "zh": "了解到；意識到"
+   "zh": "了解到；意識到",
+   "f": [
+    {
+     "k": "past",
+     "w": "realized"
+    },
+    {
+     "k": "pp",
+     "w": "realized"
+    },
+    {
+     "k": "ing",
+     "w": "realizing"
+    },
+    {
+     "k": "s3",
+     "w": "realizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "realization",
+     "pos": "n.",
+     "zh": "領悟；察覺"
+    }
+   ]
   },
   {
    "w": "traditional",
    "pos": "adj.",
-   "zh": "傳統的"
+   "zh": "傳統的",
+   "f": [],
+   "fam": [
+    {
+     "w": "tradition",
+     "pos": "n.",
+     "zh": "傳統"
+    },
+    {
+     "w": "traditionally",
+     "pos": "adv.",
+     "zh": "傳統上"
+    }
+   ]
   },
   {
    "w": "fortunately",
    "pos": "adv.",
-   "zh": "幸運地"
+   "zh": "幸運地",
+   "f": [],
+   "fam": [
+    {
+     "w": "fortunate",
+     "pos": "adj.",
+     "zh": "幸運的"
+    },
+    {
+     "w": "fortune",
+     "pos": "n.",
+     "zh": "運氣；財富"
+    }
+   ]
   },
   {
    "w": "the rest of",
    "pos": "phr.",
-   "zh": "其餘的；剩下的"
+   "zh": "其餘的；剩下的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in person",
    "pos": "phr.",
-   "zh": "親自；當面"
+   "zh": "親自；當面",
+   "f": [],
+   "fam": []
   },
   {
    "w": "take sth. seriously",
    "pos": "phr.",
-   "zh": "認真看待某事"
+   "zh": "認真看待某事",
+   "f": [],
+   "fam": []
   },
   {
    "w": "let sb. down",
    "pos": "phr.",
-   "zh": "讓某人失望"
+   "zh": "讓某人失望",
+   "f": [],
+   "fam": []
   },
   {
    "w": "make sure",
    "pos": "phr.",
-   "zh": "確定；確保"
+   "zh": "確定；確保",
+   "f": [],
+   "fam": []
   },
   {
    "w": "put sth. first",
    "pos": "phr.",
-   "zh": "把某事放在第一位"
+   "zh": "把某事放在第一位",
+   "f": [],
+   "fam": []
   },
   {
    "w": "dress up",
    "pos": "phr.",
-   "zh": "打扮；盛裝"
+   "zh": "打扮；盛裝",
+   "f": [],
+   "fam": []
   }
  ]
 }

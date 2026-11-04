@@ -7,82 +7,273 @@
   {
    "w": "yield",
    "pos": "v.",
-   "zh": "產生（成果）"
+   "zh": "產生（成果）",
+   "f": [
+    {
+     "k": "past",
+     "w": "yielded"
+    },
+    {
+     "k": "pp",
+     "w": "yielded"
+    },
+    {
+     "k": "ing",
+     "w": "yielding"
+    },
+    {
+     "k": "s3",
+     "w": "yields"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "experimental",
    "pos": "adj.",
-   "zh": "試驗性的"
+   "zh": "試驗性的",
+   "f": [],
+   "fam": [
+    {
+     "w": "experiment",
+     "pos": "n.",
+     "zh": "實驗"
+    },
+    {
+     "w": "experiment",
+     "pos": "v.",
+     "zh": "做實驗；嘗試"
+    },
+    {
+     "w": "experimentation",
+     "pos": "n.",
+     "zh": "實驗；嘗試"
+    }
+   ]
   },
   {
    "w": "experiment",
    "pos": "n.",
-   "zh": "實驗"
+   "zh": "實驗",
+   "f": [
+    {
+     "k": "plural",
+     "w": "experiments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "experimental",
+     "pos": "adj.",
+     "zh": "實驗的"
+    },
+    {
+     "w": "experimentally",
+     "pos": "adv.",
+     "zh": "以實驗方式"
+    }
+   ]
   },
   {
    "w": "progression",
    "pos": "n.",
-   "zh": "（病情）進展"
+   "zh": "（病情）進展",
+   "f": [],
+   "fam": [
+    {
+     "w": "progress",
+     "pos": "v.",
+     "zh": "進展"
+    },
+    {
+     "w": "progressive",
+     "pos": "adj.",
+     "zh": "漸進的"
+    }
+   ]
   },
   {
    "w": "lifespan",
    "pos": "n.",
-   "zh": "壽命"
+   "zh": "壽命",
+   "f": [
+    {
+     "k": "plural",
+     "w": "lifespans"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "regulate",
    "pos": "v.",
-   "zh": "調控"
+   "zh": "調控",
+   "f": [
+    {
+     "k": "past",
+     "w": "regulated"
+    },
+    {
+     "k": "pp",
+     "w": "regulated"
+    },
+    {
+     "k": "ing",
+     "w": "regulating"
+    },
+    {
+     "k": "s3",
+     "w": "regulates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "regulation",
+     "pos": "n.",
+     "zh": "法規"
+    },
+    {
+     "w": "regulatory",
+     "pos": "adj.",
+     "zh": "監管的"
+    }
+   ]
   },
   {
    "w": "eventually",
    "pos": "adv.",
-   "zh": "最終"
+   "zh": "最終",
+   "f": [],
+   "fam": [
+    {
+     "w": "eventual",
+     "pos": "adj.",
+     "zh": "最終的"
+    }
+   ]
   },
   {
    "w": "clump",
    "pos": "n.",
-   "zh": "團塊"
+   "zh": "團塊",
+   "f": [
+    {
+     "k": "plural",
+     "w": "clumps"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "conduct",
    "pos": "v.",
-   "zh": "進行"
+   "zh": "進行",
+   "f": [
+    {
+     "k": "past",
+     "w": "conducted"
+    },
+    {
+     "k": "pp",
+     "w": "conducted"
+    },
+    {
+     "k": "ing",
+     "w": "conducting"
+    },
+    {
+     "k": "s3",
+     "w": "conducts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "conductor",
+     "pos": "n.",
+     "zh": "指揮；導體"
+    }
+   ]
   },
   {
    "w": "biological",
    "pos": "adj.",
-   "zh": "生物的"
+   "zh": "生物的",
+   "f": [],
+   "fam": [
+    {
+     "w": "biology",
+     "pos": "n.",
+     "zh": "生物學"
+    },
+    {
+     "w": "biologically",
+     "pos": "adv.",
+     "zh": "生物學上"
+    }
+   ]
   },
   {
    "w": "symptom",
    "pos": "n.",
-   "zh": "症狀"
+   "zh": "症狀",
+   "f": [
+    {
+     "k": "plural",
+     "w": "symptoms"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "patent",
    "pos": "n.",
-   "zh": "專利"
+   "zh": "專利",
+   "f": [
+    {
+     "k": "plural",
+     "w": "patents"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "therapy",
    "pos": "n.",
-   "zh": "療法"
+   "zh": "療法",
+   "f": [
+    {
+     "k": "plural",
+     "w": "therapies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "therapeutic",
+     "pos": "adj.",
+     "zh": "有療效的"
+    }
+   ]
   },
   {
    "w": "conduct an experiment",
    "pos": "phr.",
-   "zh": "做實驗"
+   "zh": "做實驗",
+   "f": [],
+   "fam": []
   },
   {
    "w": "apply for",
    "pos": "phr.",
-   "zh": "申請"
+   "zh": "申請",
+   "f": [],
+   "fam": []
   },
   {
    "w": "interfere with",
    "pos": "phr.",
-   "zh": "干擾…"
+   "zh": "干擾…",
+   "f": [],
+   "fam": []
   }
  ]
 }

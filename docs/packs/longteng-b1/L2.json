@@ -7,122 +7,483 @@
   {
    "w": "relationship",
    "pos": "n.",
-   "zh": "戀愛關係；關係"
+   "zh": "戀愛關係；關係",
+   "f": [
+    {
+     "k": "plural",
+     "w": "relationships"
+    }
+   ],
+   "fam": [
+    {
+     "w": "relate",
+     "pos": "v.",
+     "zh": "有關聯"
+    }
+   ]
   },
   {
    "w": "satisfying",
    "pos": "adj.",
-   "zh": "令人滿意的"
+   "zh": "令人滿意的",
+   "f": [],
+   "fam": [
+    {
+     "w": "satisfy",
+     "pos": "v.",
+     "zh": "使滿意；滿足"
+    },
+    {
+     "w": "satisfaction",
+     "pos": "n.",
+     "zh": "滿足；滿意"
+    }
+   ]
   },
   {
    "w": "inspire",
    "pos": "v.",
-   "zh": "激勵；啟發"
+   "zh": "激勵；啟發",
+   "f": [
+    {
+     "k": "past",
+     "w": "inspired"
+    },
+    {
+     "k": "pp",
+     "w": "inspired"
+    },
+    {
+     "k": "ing",
+     "w": "inspiring"
+    },
+    {
+     "k": "s3",
+     "w": "inspires"
+    }
+   ],
+   "fam": [
+    {
+     "w": "inspiration",
+     "pos": "n.",
+     "zh": "靈感；啟發"
+    },
+    {
+     "w": "inspirational",
+     "pos": "adj.",
+     "zh": "激勵人心的"
+    }
+   ]
   },
   {
    "w": "connect",
    "pos": "v.",
-   "zh": "建立關係；連結"
+   "zh": "建立關係；連結",
+   "f": [
+    {
+     "k": "past",
+     "w": "connected"
+    },
+    {
+     "k": "pp",
+     "w": "connected"
+    },
+    {
+     "k": "ing",
+     "w": "connecting"
+    },
+    {
+     "k": "s3",
+     "w": "connects"
+    }
+   ],
+   "fam": [
+    {
+     "w": "connection",
+     "pos": "n.",
+     "zh": "連接；關聯"
+    }
+   ]
   },
   {
    "w": "communicate",
    "pos": "v.",
-   "zh": "溝通"
+   "zh": "溝通",
+   "f": [
+    {
+     "k": "past",
+     "w": "communicated"
+    },
+    {
+     "k": "pp",
+     "w": "communicated"
+    },
+    {
+     "k": "ing",
+     "w": "communicating"
+    },
+    {
+     "k": "s3",
+     "w": "communicates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "communication",
+     "pos": "n.",
+     "zh": "溝通；通訊"
+    },
+    {
+     "w": "communicative",
+     "pos": "adj.",
+     "zh": "善於溝通的"
+    }
+   ]
   },
   {
    "w": "introduce",
    "pos": "v.",
-   "zh": "引進；使初次接觸"
+   "zh": "引進；使初次接觸",
+   "f": [
+    {
+     "k": "past",
+     "w": "introduced"
+    },
+    {
+     "k": "pp",
+     "w": "introduced"
+    },
+    {
+     "k": "ing",
+     "w": "introducing"
+    },
+    {
+     "k": "s3",
+     "w": "introduces"
+    }
+   ],
+   "fam": [
+    {
+     "w": "introduction",
+     "pos": "n.",
+     "zh": "介紹；引進"
+    },
+    {
+     "w": "introductory",
+     "pos": "adj.",
+     "zh": "入門的"
+    }
+   ]
   },
   {
    "w": "throughout",
    "pos": "prep.",
-   "zh": "自始至終；遍及"
+   "zh": "自始至終；遍及",
+   "f": [],
+   "fam": []
   },
   {
    "w": "message",
    "pos": "n.",
-   "zh": "訊息"
+   "zh": "訊息",
+   "f": [
+    {
+     "k": "plural",
+     "w": "messages"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "refresh",
    "pos": "v.",
-   "zh": "重新整理（頁面）；使恢復精神"
+   "zh": "重新整理（頁面）；使恢復精神",
+   "f": [
+    {
+     "k": "past",
+     "w": "refreshed"
+    },
+    {
+     "k": "pp",
+     "w": "refreshed"
+    },
+    {
+     "k": "ing",
+     "w": "refreshing"
+    },
+    {
+     "k": "s3",
+     "w": "refreshes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "refreshment",
+     "pos": "n.",
+     "zh": "茶點；提神"
+    }
+   ]
   },
   {
    "w": "romantic",
    "pos": "adj.",
-   "zh": "浪漫的"
+   "zh": "浪漫的",
+   "f": [],
+   "fam": [
+    {
+     "w": "romance",
+     "pos": "n.",
+     "zh": "浪漫；戀情"
+    },
+    {
+     "w": "romantically",
+     "pos": "adv.",
+     "zh": "浪漫地"
+    },
+    {
+     "w": "romanticize",
+     "pos": "v.",
+     "zh": "浪漫化；美化"
+    }
+   ]
   },
   {
    "w": "focus",
    "pos": "v.",
-   "zh": "專注；集中"
+   "zh": "專注；集中",
+   "f": [
+    {
+     "k": "past",
+     "w": "focused"
+    },
+    {
+     "k": "pp",
+     "w": "focused"
+    },
+    {
+     "k": "ing",
+     "w": "focusing"
+    },
+    {
+     "k": "s3",
+     "w": "focuses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "focal",
+     "pos": "adj.",
+     "zh": "焦點的；中心的"
+    }
+   ]
   },
   {
    "w": "ignore",
    "pos": "v.",
-   "zh": "忽略；不理會"
+   "zh": "忽略；不理會",
+   "f": [
+    {
+     "k": "past",
+     "w": "ignored"
+    },
+    {
+     "k": "pp",
+     "w": "ignored"
+    },
+    {
+     "k": "ing",
+     "w": "ignoring"
+    },
+    {
+     "k": "s3",
+     "w": "ignores"
+    }
+   ],
+   "fam": [
+    {
+     "w": "ignorance",
+     "pos": "n.",
+     "zh": "無知"
+    },
+    {
+     "w": "ignorant",
+     "pos": "adj.",
+     "zh": "無知的"
+    }
+   ]
   },
   {
    "w": "attention",
    "pos": "n.",
-   "zh": "注意力"
+   "zh": "注意力",
+   "f": [],
+   "fam": [
+    {
+     "w": "attend",
+     "pos": "v.",
+     "zh": "注意；出席"
+    },
+    {
+     "w": "attentive",
+     "pos": "adj.",
+     "zh": "專注的"
+    },
+    {
+     "w": "attentively",
+     "pos": "adv.",
+     "zh": "專注地"
+    }
+   ]
   },
   {
    "w": "deny",
    "pos": "v.",
-   "zh": "否認"
+   "zh": "否認",
+   "f": [
+    {
+     "k": "past",
+     "w": "denied"
+    },
+    {
+     "k": "pp",
+     "w": "denied"
+    },
+    {
+     "k": "ing",
+     "w": "denying"
+    },
+    {
+     "k": "s3",
+     "w": "denies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "denial",
+     "pos": "n.",
+     "zh": "否認"
+    }
+   ]
   },
   {
    "w": "respond",
    "pos": "v.",
-   "zh": "回應；回覆"
+   "zh": "回應；回覆",
+   "f": [
+    {
+     "k": "past",
+     "w": "responded"
+    },
+    {
+     "k": "pp",
+     "w": "responded"
+    },
+    {
+     "k": "ing",
+     "w": "responding"
+    },
+    {
+     "k": "s3",
+     "w": "responds"
+    }
+   ],
+   "fam": [
+    {
+     "w": "response",
+     "pos": "n.",
+     "zh": "回應；反應"
+    },
+    {
+     "w": "responsive",
+     "pos": "adj.",
+     "zh": "反應靈敏的"
+    }
+   ]
   },
   {
    "w": "disappointed",
    "pos": "adj.",
-   "zh": "失望的"
+   "zh": "失望的",
+   "f": [],
+   "fam": [
+    {
+     "w": "disappoint",
+     "pos": "v.",
+     "zh": "使失望"
+    },
+    {
+     "w": "disappointment",
+     "pos": "n.",
+     "zh": "失望"
+    }
+   ]
   },
   {
    "w": "personally",
    "pos": "adv.",
-   "zh": "針對個人地；親自"
+   "zh": "針對個人地；親自",
+   "f": [],
+   "fam": [
+    {
+     "w": "person",
+     "pos": "n.",
+     "zh": "人"
+    },
+    {
+     "w": "personal",
+     "pos": "adj.",
+     "zh": "個人的"
+    }
+   ]
   },
   {
    "w": "in fact",
    "pos": "phr.",
-   "zh": "事實上"
+   "zh": "事實上",
+   "f": [],
+   "fam": []
   },
   {
    "w": "go through",
    "pos": "phr.",
-   "zh": "經歷；仔細查看"
+   "zh": "經歷；仔細查看",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in case",
    "pos": "phr.",
-   "zh": "以防萬一"
+   "zh": "以防萬一",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in addition",
    "pos": "phr.",
-   "zh": "此外"
+   "zh": "此外",
+   "f": [],
+   "fam": []
   },
   {
    "w": "hang out",
    "pos": "phr.",
-   "zh": "閒晃；一起出去玩"
+   "zh": "閒晃；一起出去玩",
+   "f": [],
+   "fam": []
   },
   {
    "w": "turn to",
    "pos": "phr.",
-   "zh": "求助於；轉向"
+   "zh": "求助於；轉向",
+   "f": [],
+   "fam": []
   },
   {
    "w": "take sth. personally",
    "pos": "phr.",
-   "zh": "認為是針對自己"
+   "zh": "認為是針對自己",
+   "f": [],
+   "fam": []
   }
  ]
 }

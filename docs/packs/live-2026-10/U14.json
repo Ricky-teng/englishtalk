@@ -7,52 +7,209 @@
   {
    "w": "goal",
    "pos": "n.",
-   "zh": "目標"
+   "zh": "目標",
+   "f": [
+    {
+     "k": "plural",
+     "w": "goals"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "maintain",
    "pos": "v.",
-   "zh": "維持；保持"
+   "zh": "維持；保持",
+   "f": [
+    {
+     "k": "past",
+     "w": "maintained"
+    },
+    {
+     "k": "pp",
+     "w": "maintained"
+    },
+    {
+     "k": "ing",
+     "w": "maintaining"
+    },
+    {
+     "k": "s3",
+     "w": "maintains"
+    }
+   ],
+   "fam": [
+    {
+     "w": "maintenance",
+     "pos": "n.",
+     "zh": "維護；保養"
+    }
+   ]
   },
   {
    "w": "task",
    "pos": "n.",
-   "zh": "任務；工作"
+   "zh": "任務；工作",
+   "f": [
+    {
+     "k": "plural",
+     "w": "tasks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "skip",
    "pos": "v.",
-   "zh": "跳過；略過"
+   "zh": "跳過；略過",
+   "f": [
+    {
+     "k": "past",
+     "w": "skipped"
+    },
+    {
+     "k": "pp",
+     "w": "skipped"
+    },
+    {
+     "k": "ing",
+     "w": "skipping"
+    },
+    {
+     "k": "s3",
+     "w": "skips"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "achievement",
    "pos": "n.",
-   "zh": "成就；完成"
+   "zh": "成就；完成",
+   "f": [
+    {
+     "k": "plural",
+     "w": "achievements"
+    }
+   ],
+   "fam": [
+    {
+     "w": "achieve",
+     "pos": "v.",
+     "zh": "達成"
+    },
+    {
+     "w": "achievable",
+     "pos": "adj.",
+     "zh": "可達成的"
+    }
+   ]
   },
   {
    "w": "memory",
    "pos": "n.",
-   "zh": "記憶；回憶"
+   "zh": "記憶；回憶",
+   "f": [
+    {
+     "k": "plural",
+     "w": "memories"
+    }
+   ],
+   "fam": [
+    {
+     "w": "memorize",
+     "pos": "v.",
+     "zh": "記住"
+    },
+    {
+     "w": "memorable",
+     "pos": "adj.",
+     "zh": "難忘的"
+    }
+   ]
   },
   {
    "w": "further",
    "pos": "adv.",
-   "zh": "進一步地"
+   "zh": "進一步地",
+   "f": [],
+   "fam": [
+    {
+     "w": "far",
+     "pos": "adj.",
+     "zh": "遠的"
+    }
+   ]
   },
   {
    "w": "brief",
    "pos": "adj.",
-   "zh": "簡短的；短暫的"
+   "zh": "簡短的；短暫的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "briefer"
+    },
+    {
+     "k": "sup",
+     "w": "briefest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "briefly",
+     "pos": "adv.",
+     "zh": "簡短地"
+    },
+    {
+     "w": "briefing",
+     "pos": "n.",
+     "zh": "簡報"
+    }
+   ]
   },
   {
    "w": "track",
    "pos": "v.",
-   "zh": "追蹤；記錄（進展）"
+   "zh": "追蹤；記錄（進展）",
+   "f": [
+    {
+     "k": "past",
+     "w": "tracked"
+    },
+    {
+     "k": "pp",
+     "w": "tracked"
+    },
+    {
+     "k": "ing",
+     "w": "tracking"
+    },
+    {
+     "k": "s3",
+     "w": "tracks"
+    }
+   ],
+   "fam": [
+    {
+     "w": "tracker",
+     "pos": "n.",
+     "zh": "追蹤器"
+    }
+   ]
   },
   {
    "w": "progress",
    "pos": "n.",
-   "zh": "進展；進步"
+   "zh": "進展；進步",
+   "f": [],
+   "fam": [
+    {
+     "w": "progressive",
+     "pos": "adj.",
+     "zh": "進步的"
+    }
+   ]
   }
  ]
 }

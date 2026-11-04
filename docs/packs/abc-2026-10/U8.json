@@ -7,22 +7,91 @@
   {
    "w": "shape",
    "pos": "n.",
-   "zh": "形狀"
+   "zh": "形狀",
+   "f": [
+    {
+     "k": "plural",
+     "w": "shapes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "allow",
    "pos": "v.",
-   "zh": "讓；允許"
+   "zh": "讓；允許",
+   "f": [
+    {
+     "k": "past",
+     "w": "allowed"
+    },
+    {
+     "k": "pp",
+     "w": "allowed"
+    },
+    {
+     "k": "ing",
+     "w": "allowing"
+    },
+    {
+     "k": "s3",
+     "w": "allows"
+    }
+   ],
+   "fam": [
+    {
+     "w": "allowance",
+     "pos": "n.",
+     "zh": "零用錢；津貼"
+    }
+   ]
   },
   {
    "w": "hide",
    "pos": "v.",
-   "zh": "隱藏"
+   "zh": "隱藏",
+   "f": [
+    {
+     "k": "past",
+     "w": "hid"
+    },
+    {
+     "k": "pp",
+     "w": "hidden"
+    },
+    {
+     "k": "ing",
+     "w": "hiding"
+    },
+    {
+     "k": "s3",
+     "w": "hides"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "comfortable",
    "pos": "adj.",
-   "zh": "舒適的"
+   "zh": "舒適的",
+   "f": [],
+   "fam": [
+    {
+     "w": "comfort",
+     "pos": "n.",
+     "zh": "舒適；安慰"
+    },
+    {
+     "w": "comfort",
+     "pos": "v.",
+     "zh": "安慰"
+    },
+    {
+     "w": "comfortably",
+     "pos": "adv.",
+     "zh": "舒適地"
+    }
+   ]
   }
  ]
 }

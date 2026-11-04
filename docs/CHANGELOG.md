@@ -1,5 +1,13 @@
 # 版本紀錄
 
+## v2.15 — 2026-11-04
+
+- 新增公共單字包：**LIVE 互動英語 2026 年 11 月號**（12 個單元、100 個單字＋5 個片語），依 LiveABC 官方行動單字卡整理
+- **所有單字包都附上詞形變化與同字根字**（例如 determined → determine v.、determination n.、determinedly adv.；dye → dyed／dyeing／dyes），加入單字本後馬上看得到，不用再按「補齊詞性變化」、也不花 API 額度
+  - 不規則變化、不可數名詞（information、research 等沒有複數）都照字典規則；動詞變化另外用 lemminflect 交叉檢查過
+  - 已經在單字本裡、但還沒有詞形資料的字，加入單字包時會一起補上；AI 查過或你自己改過的不會被蓋掉
+  - 資料在 `tools/packs/forms.json`，`build.py` 產生單字包時自動附上；新書裡沒有資料的字會列出來
+
 ## v2.14.1 — 2026-11-03
 
 **紀錄頁整理**

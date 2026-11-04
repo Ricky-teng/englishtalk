@@ -1,0 +1,237 @@
+{
+ "id": "U9",
+ "title": "棘手危機：吞噬一個國家的植物",
+ "tag": "Live2611-U9",
+ "verified": true,
+ "items": [
+  {
+   "w": "consume",
+   "pos": "v.",
+   "zh": "吞噬；消耗",
+   "f": [
+    {
+     "k": "past",
+     "w": "consumed"
+    },
+    {
+     "k": "pp",
+     "w": "consumed"
+    },
+    {
+     "k": "ing",
+     "w": "consuming"
+    },
+    {
+     "k": "s3",
+     "w": "consumes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "consumption",
+     "pos": "n.",
+     "zh": "消耗；攝取"
+    },
+    {
+     "w": "consumer",
+     "pos": "n.",
+     "zh": "消費者"
+    }
+   ]
+  },
+  {
+   "w": "stem",
+   "pos": "n.",
+   "zh": "莖；梗",
+   "f": [
+    {
+     "k": "plural",
+     "w": "stems"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "dense",
+   "pos": "adj.",
+   "zh": "茂密的；密集的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "denser"
+    },
+    {
+     "k": "sup",
+     "w": "densest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "density",
+     "pos": "n.",
+     "zh": "密度"
+    },
+    {
+     "w": "densely",
+     "pos": "adv.",
+     "zh": "密集地"
+    }
+   ]
+  },
+  {
+   "w": "abandon",
+   "pos": "v.",
+   "zh": "放棄；拋棄",
+   "f": [
+    {
+     "k": "past",
+     "w": "abandoned"
+    },
+    {
+     "k": "pp",
+     "w": "abandoned"
+    },
+    {
+     "k": "ing",
+     "w": "abandoning"
+    },
+    {
+     "k": "s3",
+     "w": "abandons"
+    }
+   ],
+   "fam": [
+    {
+     "w": "abandonment",
+     "pos": "n.",
+     "zh": "放棄；遺棄"
+    },
+    {
+     "w": "abandoned",
+     "pos": "adj.",
+     "zh": "被遺棄的"
+    }
+   ]
+  },
+  {
+   "w": "option",
+   "pos": "n.",
+   "zh": "選擇；選項",
+   "f": [
+    {
+     "k": "plural",
+     "w": "options"
+    }
+   ],
+   "fam": [
+    {
+     "w": "opt",
+     "pos": "v.",
+     "zh": "選擇"
+    },
+    {
+     "w": "optional",
+     "pos": "adj.",
+     "zh": "可選擇的"
+    }
+   ]
+  },
+  {
+   "w": "conclude",
+   "pos": "v.",
+   "zh": "下結論；結束",
+   "f": [
+    {
+     "k": "past",
+     "w": "concluded"
+    },
+    {
+     "k": "pp",
+     "w": "concluded"
+    },
+    {
+     "k": "ing",
+     "w": "concluding"
+    },
+    {
+     "k": "s3",
+     "w": "concludes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "conclusion",
+     "pos": "n.",
+     "zh": "結論"
+    },
+    {
+     "w": "conclusive",
+     "pos": "adj.",
+     "zh": "決定性的"
+    }
+   ]
+  },
+  {
+   "w": "percent",
+   "pos": "n.",
+   "zh": "百分比",
+   "f": [],
+   "fam": []
+  },
+  {
+   "w": "grateful",
+   "pos": "adj.",
+   "zh": "感激的",
+   "f": [],
+   "fam": [
+    {
+     "w": "gratitude",
+     "pos": "n.",
+     "zh": "感激"
+    },
+    {
+     "w": "gratefully",
+     "pos": "adv.",
+     "zh": "感激地"
+    }
+   ]
+  },
+  {
+   "w": "memorial",
+   "pos": "n.",
+   "zh": "紀念碑；紀念物",
+   "f": [
+    {
+     "k": "plural",
+     "w": "memorials"
+    }
+   ],
+   "fam": [
+    {
+     "w": "memorable",
+     "pos": "adj.",
+     "zh": "難忘的"
+    }
+   ]
+  },
+  {
+   "w": "pest",
+   "pos": "n.",
+   "zh": "害蟲；有害生物",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pests"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "be grateful for sth.",
+   "pos": "phr.",
+   "zh": "為…心存感激",
+   "f": [],
+   "fam": []
+  }
+ ]
+}

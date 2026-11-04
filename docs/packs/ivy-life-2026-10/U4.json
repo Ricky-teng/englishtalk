@@ -7,87 +7,207 @@
   {
    "w": "hiker",
    "pos": "n.",
-   "zh": "健行者"
+   "zh": "健行者",
+   "f": [
+    {
+     "k": "plural",
+     "w": "hikers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "hike",
+     "pos": "v.",
+     "zh": "健行"
+    }
+   ]
   },
   {
    "w": "hiking",
    "pos": "n.",
-   "zh": "健行"
+   "zh": "健行",
+   "f": [],
+   "fam": [
+    {
+     "w": "hike",
+     "pos": "v.",
+     "zh": "健行"
+    }
+   ]
   },
   {
    "w": "backpack",
    "pos": "n.",
-   "zh": "背包"
+   "zh": "背包",
+   "f": [
+    {
+     "k": "plural",
+     "w": "backpacks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "tent",
    "pos": "n.",
-   "zh": "帳篷"
+   "zh": "帳篷",
+   "f": [
+    {
+     "k": "plural",
+     "w": "tents"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "supplies",
    "pos": "n.",
-   "zh": "補給品"
+   "zh": "補給品",
+   "f": [],
+   "fam": [
+    {
+     "w": "supply",
+     "pos": "v.",
+     "zh": "供應；提供"
+    }
+   ]
   },
   {
    "w": "remote",
    "pos": "adj.",
-   "zh": "偏遠的"
+   "zh": "偏遠的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "remoter"
+    },
+    {
+     "k": "sup",
+     "w": "remotest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "remotely",
+     "pos": "adv.",
+     "zh": "遠距地；遙遠地"
+    }
+   ]
   },
   {
    "w": "hire",
    "pos": "v.",
-   "zh": "雇用"
+   "zh": "雇用",
+   "f": [
+    {
+     "k": "past",
+     "w": "hired"
+    },
+    {
+     "k": "pp",
+     "w": "hired"
+    },
+    {
+     "k": "ing",
+     "w": "hiring"
+    },
+    {
+     "k": "s3",
+     "w": "hires"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "hometown",
    "pos": "n.",
-   "zh": "家鄉"
+   "zh": "家鄉",
+   "f": [
+    {
+     "k": "plural",
+     "w": "hometowns"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "frozen",
    "pos": "adj.",
-   "zh": "結冰的"
+   "zh": "結冰的",
+   "f": [],
+   "fam": [
+    {
+     "w": "freeze",
+     "pos": "v.",
+     "zh": "結冰；冷凍"
+    },
+    {
+     "w": "freezer",
+     "pos": "n.",
+     "zh": "冷凍庫"
+    }
+   ]
   },
   {
    "w": "kilometer",
    "pos": "n.",
-   "zh": "公里"
+   "zh": "公里",
+   "f": [
+    {
+     "k": "plural",
+     "w": "kilometers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "aim to",
    "pos": "phr.",
-   "zh": "打算；目標是"
+   "zh": "打算；目標是",
+   "f": [],
+   "fam": []
   },
   {
    "w": "leave behind",
    "pos": "phr.",
-   "zh": "拋下"
+   "zh": "拋下",
+   "f": [],
+   "fam": []
   },
   {
    "w": "set out to",
    "pos": "phr.",
-   "zh": "著手去做"
+   "zh": "著手去做",
+   "f": [],
+   "fam": []
   },
   {
    "w": "on foot",
    "pos": "phr.",
-   "zh": "徒步"
+   "zh": "徒步",
+   "f": [],
+   "fam": []
   },
   {
    "w": "give up",
    "pos": "phr.",
-   "zh": "放棄"
+   "zh": "放棄",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in return",
    "pos": "phr.",
-   "zh": "作為回報"
+   "zh": "作為回報",
+   "f": [],
+   "fam": []
   },
   {
    "w": "come to realize",
    "pos": "phr.",
-   "zh": "逐漸明白"
+   "zh": "逐漸明白",
+   "f": [],
+   "fam": []
   }
  ]
 }

@@ -7,52 +7,207 @@
   {
    "w": "military",
    "pos": "adj.",
-   "zh": "軍事的；軍隊的"
+   "zh": "軍事的；軍隊的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "pilot",
    "pos": "n.",
-   "zh": "飛行員"
+   "zh": "飛行員",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pilots"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "introduce",
    "pos": "v.",
-   "zh": "推出；引進"
+   "zh": "推出；引進",
+   "f": [
+    {
+     "k": "past",
+     "w": "introduced"
+    },
+    {
+     "k": "pp",
+     "w": "introduced"
+    },
+    {
+     "k": "ing",
+     "w": "introducing"
+    },
+    {
+     "k": "s3",
+     "w": "introduces"
+    }
+   ],
+   "fam": [
+    {
+     "w": "introduction",
+     "pos": "n.",
+     "zh": "介紹；引進"
+    },
+    {
+     "w": "introductory",
+     "pos": "adj.",
+     "zh": "入門的"
+    }
+   ]
   },
   {
    "w": "originally",
    "pos": "adv.",
-   "zh": "原本；起初"
+   "zh": "原本；起初",
+   "f": [],
+   "fam": [
+    {
+     "w": "origin",
+     "pos": "n.",
+     "zh": "起源"
+    },
+    {
+     "w": "original",
+     "pos": "adj.",
+     "zh": "原本的"
+    },
+    {
+     "w": "originate",
+     "pos": "v.",
+     "zh": "起源於"
+    }
+   ]
   },
   {
    "w": "protect",
    "pos": "v.",
-   "zh": "保護"
+   "zh": "保護",
+   "f": [
+    {
+     "k": "past",
+     "w": "protected"
+    },
+    {
+     "k": "pp",
+     "w": "protected"
+    },
+    {
+     "k": "ing",
+     "w": "protecting"
+    },
+    {
+     "k": "s3",
+     "w": "protects"
+    }
+   ],
+   "fam": [
+    {
+     "w": "protection",
+     "pos": "n.",
+     "zh": "保護"
+    },
+    {
+     "w": "protective",
+     "pos": "adj.",
+     "zh": "保護的"
+    }
+   ]
   },
   {
    "w": "navy",
    "pos": "n.",
-   "zh": "海軍"
+   "zh": "海軍",
+   "f": [
+    {
+     "k": "plural",
+     "w": "navies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "naval",
+     "pos": "adj.",
+     "zh": "海軍的"
+    }
+   ]
   },
   {
    "w": "sleeve",
    "pos": "n.",
-   "zh": "袖子"
+   "zh": "袖子",
+   "f": [
+    {
+     "k": "plural",
+     "w": "sleeves"
+    }
+   ],
+   "fam": [
+    {
+     "w": "sleeveless",
+     "pos": "adj.",
+     "zh": "無袖的"
+    }
+   ]
   },
   {
    "w": "extra",
    "pos": "adj.",
-   "zh": "額外的"
+   "zh": "額外的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "loose",
    "pos": "adj.",
-   "zh": "寬鬆的"
+   "zh": "寬鬆的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "looser"
+    },
+    {
+     "k": "sup",
+     "w": "loosest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "loosen",
+     "pos": "v.",
+     "zh": "鬆開"
+    },
+    {
+     "w": "loosely",
+     "pos": "adv.",
+     "zh": "鬆散地"
+    }
+   ]
   },
   {
    "w": "significant",
    "pos": "adj.",
-   "zh": "重要的；顯著的"
+   "zh": "重要的；顯著的",
+   "f": [],
+   "fam": [
+    {
+     "w": "significance",
+     "pos": "n.",
+     "zh": "重要性；意義"
+    },
+    {
+     "w": "significantly",
+     "pos": "adv.",
+     "zh": "顯著地"
+    },
+    {
+     "w": "signify",
+     "pos": "v.",
+     "zh": "表示；意味"
+    }
+   ]
   }
  ]
 }

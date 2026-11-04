@@ -7,72 +7,177 @@
   {
    "w": "purchase",
    "pos": "v.",
-   "zh": "購買"
+   "zh": "購買",
+   "f": [
+    {
+     "k": "past",
+     "w": "purchased"
+    },
+    {
+     "k": "pp",
+     "w": "purchased"
+    },
+    {
+     "k": "ing",
+     "w": "purchasing"
+    },
+    {
+     "k": "s3",
+     "w": "purchases"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "fast-paced",
    "pos": "adj.",
-   "zh": "快節奏的"
+   "zh": "快節奏的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "groceries",
    "pos": "n.",
-   "zh": "食品雜貨"
+   "zh": "食品雜貨",
+   "f": [],
+   "fam": []
   },
   {
    "w": "produce",
    "pos": "n.",
-   "zh": "蔬果農產"
+   "zh": "蔬果農產",
+   "f": [],
+   "fam": []
   },
   {
    "w": "demanding",
    "pos": "adj.",
-   "zh": "費力的；吃重的"
+   "zh": "費力的；吃重的",
+   "f": [],
+   "fam": [
+    {
+     "w": "demand",
+     "pos": "v.",
+     "zh": "要求"
+    },
+    {
+     "w": "demand",
+     "pos": "n.",
+     "zh": "需求；要求"
+    }
+   ]
   },
   {
    "w": "tap",
    "pos": "v.",
-   "zh": "點按（螢幕）"
+   "zh": "點按（螢幕）",
+   "f": [
+    {
+     "k": "past",
+     "w": "tapped"
+    },
+    {
+     "k": "pp",
+     "w": "tapped"
+    },
+    {
+     "k": "ing",
+     "w": "tapping"
+    },
+    {
+     "k": "s3",
+     "w": "taps"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "vendor",
    "pos": "n.",
-   "zh": "攤販"
+   "zh": "攤販",
+   "f": [
+    {
+     "k": "plural",
+     "w": "vendors"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "dependability",
    "pos": "n.",
-   "zh": "可靠程度"
+   "zh": "可靠程度",
+   "f": [],
+   "fam": [
+    {
+     "w": "depend",
+     "pos": "v.",
+     "zh": "依靠"
+    },
+    {
+     "w": "dependable",
+     "pos": "adj.",
+     "zh": "可靠的"
+    }
+   ]
   },
   {
    "w": "household",
    "pos": "n.",
-   "zh": "家庭；住戶"
+   "zh": "家庭；住戶",
+   "f": [
+    {
+     "k": "plural",
+     "w": "households"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "smoothly",
    "pos": "adv.",
-   "zh": "順暢地"
+   "zh": "順暢地",
+   "f": [],
+   "fam": [
+    {
+     "w": "smooth",
+     "pos": "adj.",
+     "zh": "平滑的；順利的"
+    },
+    {
+     "w": "smoothness",
+     "pos": "n.",
+     "zh": "平滑；順暢"
+    }
+   ]
   },
   {
    "w": "at one's fingertips",
    "pos": "phr.",
-   "zh": "唾手可得"
+   "zh": "唾手可得",
+   "f": [],
+   "fam": []
   },
   {
    "w": "make a purchase",
    "pos": "phr.",
-   "zh": "購物"
+   "zh": "購物",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in contrast",
    "pos": "phr.",
-   "zh": "相較之下"
+   "zh": "相較之下",
+   "f": [],
+   "fam": []
   },
   {
    "w": "rely on",
    "pos": "phr.",
-   "zh": "依靠"
+   "zh": "依靠",
+   "f": [],
+   "fam": []
   }
  ]
 }

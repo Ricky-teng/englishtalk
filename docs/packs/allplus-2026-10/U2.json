@@ -7,72 +7,281 @@
   {
    "w": "inspire",
    "pos": "v.",
-   "zh": "啟發；激勵"
+   "zh": "啟發；激勵",
+   "f": [
+    {
+     "k": "past",
+     "w": "inspired"
+    },
+    {
+     "k": "pp",
+     "w": "inspired"
+    },
+    {
+     "k": "ing",
+     "w": "inspiring"
+    },
+    {
+     "k": "s3",
+     "w": "inspires"
+    }
+   ],
+   "fam": [
+    {
+     "w": "inspiration",
+     "pos": "n.",
+     "zh": "靈感；啟發"
+    },
+    {
+     "w": "inspirational",
+     "pos": "adj.",
+     "zh": "激勵人心的"
+    }
+   ]
   },
   {
    "w": "determination",
    "pos": "n.",
-   "zh": "決心"
+   "zh": "決心",
+   "f": [],
+   "fam": [
+    {
+     "w": "determine",
+     "pos": "v.",
+     "zh": "決定；下決心"
+    },
+    {
+     "w": "determined",
+     "pos": "adj.",
+     "zh": "堅決的"
+    }
+   ]
   },
   {
    "w": "financial",
    "pos": "adj.",
-   "zh": "財務的"
+   "zh": "財務的",
+   "f": [],
+   "fam": [
+    {
+     "w": "finance",
+     "pos": "n.",
+     "zh": "財務；金融"
+    },
+    {
+     "w": "finance",
+     "pos": "v.",
+     "zh": "資助"
+    },
+    {
+     "w": "financially",
+     "pos": "adv.",
+     "zh": "財務上"
+    }
+   ]
   },
   {
    "w": "illustrate",
    "pos": "v.",
-   "zh": "說明；顯示"
+   "zh": "說明；顯示",
+   "f": [
+    {
+     "k": "past",
+     "w": "illustrated"
+    },
+    {
+     "k": "pp",
+     "w": "illustrated"
+    },
+    {
+     "k": "ing",
+     "w": "illustrating"
+    },
+    {
+     "k": "s3",
+     "w": "illustrates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "illustration",
+     "pos": "n.",
+     "zh": "插圖；說明"
+    },
+    {
+     "w": "illustrator",
+     "pos": "n.",
+     "zh": "插畫家"
+    },
+    {
+     "w": "illustrative",
+     "pos": "adj.",
+     "zh": "說明性的"
+    }
+   ]
   },
   {
    "w": "potential",
    "pos": "n.",
-   "zh": "潛能"
+   "zh": "潛能",
+   "f": [],
+   "fam": [
+    {
+     "w": "potentially",
+     "pos": "adv.",
+     "zh": "可能地"
+    }
+   ]
   },
   {
    "w": "twig",
    "pos": "n.",
-   "zh": "小樹枝"
+   "zh": "小樹枝",
+   "f": [
+    {
+     "k": "plural",
+     "w": "twigs"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "bond",
    "pos": "n.",
-   "zh": "情感聯繫"
+   "zh": "情感聯繫",
+   "f": [
+    {
+     "k": "plural",
+     "w": "bonds"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "habitat",
    "pos": "n.",
-   "zh": "棲地"
+   "zh": "棲地",
+   "f": [
+    {
+     "k": "plural",
+     "w": "habitats"
+    }
+   ],
+   "fam": [
+    {
+     "w": "inhabit",
+     "pos": "v.",
+     "zh": "居住於"
+    },
+    {
+     "w": "habitable",
+     "pos": "adj.",
+     "zh": "適合居住的"
+    }
+   ]
   },
   {
    "w": "shift",
    "pos": "v.",
-   "zh": "轉變"
+   "zh": "轉變",
+   "f": [
+    {
+     "k": "past",
+     "w": "shifted"
+    },
+    {
+     "k": "pp",
+     "w": "shifted"
+    },
+    {
+     "k": "ing",
+     "w": "shifting"
+    },
+    {
+     "k": "s3",
+     "w": "shifts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "conservation",
    "pos": "n.",
-   "zh": "保育"
+   "zh": "保育",
+   "f": [],
+   "fam": [
+    {
+     "w": "conserve",
+     "pos": "v.",
+     "zh": "保存；節約"
+    }
+   ]
   },
   {
    "w": "wildlife",
    "pos": "n.",
-   "zh": "野生動物"
+   "zh": "野生動物",
+   "f": [],
+   "fam": []
   },
   {
    "w": "institute",
    "pos": "n.",
-   "zh": "研究機構"
+   "zh": "研究機構",
+   "f": [
+    {
+     "k": "plural",
+     "w": "institutes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "institutional",
+     "pos": "adj.",
+     "zh": "機構的"
+    }
+   ]
   },
   {
    "w": "sustainable",
    "pos": "adj.",
-   "zh": "永續的"
+   "zh": "永續的",
+   "f": [],
+   "fam": [
+    {
+     "w": "sustain",
+     "pos": "v.",
+     "zh": "維持；支撐"
+    },
+    {
+     "w": "sustainability",
+     "pos": "n.",
+     "zh": "永續性"
+    },
+    {
+     "w": "sustainably",
+     "pos": "adv.",
+     "zh": "永續地"
+    }
+   ]
   },
   {
    "w": "philosophy",
    "pos": "n.",
-   "zh": "理念"
+   "zh": "理念",
+   "f": [
+    {
+     "k": "plural",
+     "w": "philosophies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "philosophical",
+     "pos": "adj.",
+     "zh": "哲學的"
+    }
+   ]
   }
  ]
 }

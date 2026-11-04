@@ -7,27 +7,58 @@
   {
    "w": "alone",
    "pos": "adj.",
-   "zh": "孤單的；獨自"
+   "zh": "孤單的；獨自",
+   "f": [],
+   "fam": []
   },
   {
    "w": "message",
    "pos": "n.",
-   "zh": "訊息"
+   "zh": "訊息",
+   "f": [
+    {
+     "k": "plural",
+     "w": "messages"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "invitation",
    "pos": "n.",
-   "zh": "邀請"
+   "zh": "邀請",
+   "f": [
+    {
+     "k": "plural",
+     "w": "invitations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "invite",
+     "pos": "v.",
+     "zh": "邀請"
+    },
+    {
+     "w": "inviting",
+     "pos": "adj.",
+     "zh": "吸引人的"
+    }
+   ]
   },
   {
    "w": "be not alone",
    "pos": "phr.",
-   "zh": "不是只有你"
+   "zh": "不是只有你",
+   "f": [],
+   "fam": []
   },
   {
    "w": "keep an eye on",
    "pos": "phr.",
-   "zh": "留意"
+   "zh": "留意",
+   "f": [],
+   "fam": []
   }
  ]
 }

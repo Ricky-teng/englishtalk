@@ -7,22 +7,68 @@
   {
    "w": "item",
    "pos": "n.",
-   "zh": "物品"
+   "zh": "物品",
+   "f": [
+    {
+     "k": "plural",
+     "w": "items"
+    }
+   ],
+   "fam": [
+    {
+     "w": "itemize",
+     "pos": "v.",
+     "zh": "逐項列出"
+    }
+   ]
   },
   {
    "w": "perfect",
    "pos": "adj.",
-   "zh": "完美的；合適的"
+   "zh": "完美的；合適的",
+   "f": [],
+   "fam": [
+    {
+     "w": "perfection",
+     "pos": "n.",
+     "zh": "完美"
+    },
+    {
+     "w": "perfectly",
+     "pos": "adv.",
+     "zh": "完美地"
+    }
+   ]
   },
   {
    "w": "expensive",
    "pos": "adj.",
-   "zh": "昂貴的"
+   "zh": "昂貴的",
+   "f": [],
+   "fam": [
+    {
+     "w": "expense",
+     "pos": "n.",
+     "zh": "費用；開支"
+    },
+    {
+     "w": "expend",
+     "pos": "v.",
+     "zh": "花費；耗費"
+    }
+   ]
   },
   {
    "w": "mirror",
    "pos": "n.",
-   "zh": "鏡子"
+   "zh": "鏡子",
+   "f": [
+    {
+     "k": "plural",
+     "w": "mirrors"
+    }
+   ],
+   "fam": []
   }
  ]
 }

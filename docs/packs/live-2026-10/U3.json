@@ -7,27 +7,126 @@
   {
    "w": "advice",
    "pos": "n.",
-   "zh": "建議；忠告"
+   "zh": "建議；忠告",
+   "f": [],
+   "fam": [
+    {
+     "w": "advise",
+     "pos": "v.",
+     "zh": "建議；勸告"
+    },
+    {
+     "w": "advisable",
+     "pos": "adj.",
+     "zh": "明智的"
+    }
+   ]
   },
   {
    "w": "confident",
    "pos": "adj.",
-   "zh": "有自信的"
+   "zh": "有自信的",
+   "f": [],
+   "fam": [
+    {
+     "w": "confidence",
+     "pos": "n.",
+     "zh": "自信"
+    },
+    {
+     "w": "confidently",
+     "pos": "adv.",
+     "zh": "自信地"
+    }
+   ]
   },
   {
    "w": "apologize",
    "pos": "v.",
-   "zh": "道歉"
+   "zh": "道歉",
+   "f": [
+    {
+     "k": "past",
+     "w": "apologized"
+    },
+    {
+     "k": "pp",
+     "w": "apologized"
+    },
+    {
+     "k": "ing",
+     "w": "apologizing"
+    },
+    {
+     "k": "s3",
+     "w": "apologizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "apology",
+     "pos": "n.",
+     "zh": "道歉"
+    },
+    {
+     "w": "apologetic",
+     "pos": "adj.",
+     "zh": "歉疚的"
+    }
+   ]
   },
   {
    "w": "situation",
    "pos": "n.",
-   "zh": "情況；處境"
+   "zh": "情況；處境",
+   "f": [
+    {
+     "k": "plural",
+     "w": "situations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "situated",
+     "pos": "adj.",
+     "zh": "位於…的"
+    }
+   ]
   },
   {
    "w": "replace",
    "pos": "v.",
-   "zh": "取代"
+   "zh": "取代",
+   "f": [
+    {
+     "k": "past",
+     "w": "replaced"
+    },
+    {
+     "k": "pp",
+     "w": "replaced"
+    },
+    {
+     "k": "ing",
+     "w": "replacing"
+    },
+    {
+     "k": "s3",
+     "w": "replaces"
+    }
+   ],
+   "fam": [
+    {
+     "w": "replacement",
+     "pos": "n.",
+     "zh": "替代品；替換"
+    },
+    {
+     "w": "replaceable",
+     "pos": "adj.",
+     "zh": "可替換的"
+    }
+   ]
   }
  ]
 }

@@ -7,212 +7,718 @@
   {
    "w": "illustrated",
    "pos": "adj.",
-   "zh": "有插圖的"
+   "zh": "有插圖的",
+   "f": [],
+   "fam": [
+    {
+     "w": "illustrate",
+     "pos": "v.",
+     "zh": "畫插圖；說明"
+    },
+    {
+     "w": "illustration",
+     "pos": "n.",
+     "zh": "插圖"
+    },
+    {
+     "w": "illustrator",
+     "pos": "n.",
+     "zh": "插畫家"
+    }
+   ]
   },
   {
    "w": "confine",
    "pos": "v.",
-   "zh": "局限"
+   "zh": "局限",
+   "f": [
+    {
+     "k": "past",
+     "w": "confined"
+    },
+    {
+     "k": "pp",
+     "w": "confined"
+    },
+    {
+     "k": "ing",
+     "w": "confining"
+    },
+    {
+     "k": "s3",
+     "w": "confines"
+    }
+   ],
+   "fam": [
+    {
+     "w": "confinement",
+     "pos": "n.",
+     "zh": "限制；監禁"
+    }
+   ]
   },
   {
    "w": "beloved",
    "pos": "adj.",
-   "zh": "備受喜愛的"
+   "zh": "備受喜愛的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "format",
    "pos": "n.",
-   "zh": "形式"
+   "zh": "形式",
+   "f": [
+    {
+     "k": "plural",
+     "w": "formats"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "minimize",
    "pos": "v.",
-   "zh": "降到最低"
+   "zh": "降到最低",
+   "f": [
+    {
+     "k": "past",
+     "w": "minimized"
+    },
+    {
+     "k": "pp",
+     "w": "minimized"
+    },
+    {
+     "k": "ing",
+     "w": "minimizing"
+    },
+    {
+     "k": "s3",
+     "w": "minimizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "minimum",
+     "pos": "n.",
+     "zh": "最小值；最低限度"
+    },
+    {
+     "w": "minimal",
+     "pos": "adj.",
+     "zh": "極少的"
+    }
+   ]
   },
   {
    "w": "potential",
    "pos": "n.",
-   "zh": "潛力"
+   "zh": "潛力",
+   "f": [],
+   "fam": [
+    {
+     "w": "potentially",
+     "pos": "adv.",
+     "zh": "可能地"
+    }
+   ]
   },
   {
    "w": "familiarity",
    "pos": "n.",
-   "zh": "熟悉感"
+   "zh": "熟悉感",
+   "f": [],
+   "fam": [
+    {
+     "w": "familiar",
+     "pos": "adj.",
+     "zh": "熟悉的"
+    },
+    {
+     "w": "familiarize",
+     "pos": "v.",
+     "zh": "使熟悉"
+    }
+   ]
   },
   {
    "w": "leap",
    "pos": "n.",
-   "zh": "躍進"
+   "zh": "躍進",
+   "f": [
+    {
+     "k": "plural",
+     "w": "leaps"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "breakthrough",
    "pos": "n.",
-   "zh": "突破"
+   "zh": "突破",
+   "f": [
+    {
+     "k": "plural",
+     "w": "breakthroughs"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "convincing",
    "pos": "adj.",
-   "zh": "逼真可信的"
+   "zh": "逼真可信的",
+   "f": [],
+   "fam": [
+    {
+     "w": "convince",
+     "pos": "v.",
+     "zh": "說服"
+    },
+    {
+     "w": "convincingly",
+     "pos": "adv.",
+     "zh": "令人信服地"
+    }
+   ]
   },
   {
    "w": "blur",
    "pos": "v.",
-   "zh": "使模糊"
+   "zh": "使模糊",
+   "f": [
+    {
+     "k": "past",
+     "w": "blurred"
+    },
+    {
+     "k": "pp",
+     "w": "blurred"
+    },
+    {
+     "k": "ing",
+     "w": "blurring"
+    },
+    {
+     "k": "s3",
+     "w": "blurs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "blurry",
+     "pos": "adj.",
+     "zh": "模糊的"
+    }
+   ]
   },
   {
    "w": "tear",
    "pos": "v.",
-   "zh": "撕開；拆"
+   "zh": "撕開；拆",
+   "f": [
+    {
+     "k": "past",
+     "w": "tore"
+    },
+    {
+     "k": "pp",
+     "w": "torn"
+    },
+    {
+     "k": "ing",
+     "w": "tearing"
+    },
+    {
+     "k": "s3",
+     "w": "tears"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "appeal",
    "pos": "n.",
-   "zh": "吸引力"
+   "zh": "吸引力",
+   "f": [
+    {
+     "k": "plural",
+     "w": "appeals"
+    }
+   ],
+   "fam": [
+    {
+     "w": "appealing",
+     "pos": "adj.",
+     "zh": "吸引人的"
+    }
+   ]
   },
   {
    "w": "anticipate",
    "pos": "v.",
-   "zh": "期待；預期"
+   "zh": "期待；預期",
+   "f": [
+    {
+     "k": "past",
+     "w": "anticipated"
+    },
+    {
+     "k": "pp",
+     "w": "anticipated"
+    },
+    {
+     "k": "ing",
+     "w": "anticipating"
+    },
+    {
+     "k": "s3",
+     "w": "anticipates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "anticipation",
+     "pos": "n.",
+     "zh": "期待；預期"
+    }
+   ]
   },
   {
    "w": "disappointed",
    "pos": "adj.",
-   "zh": "失望的"
+   "zh": "失望的",
+   "f": [],
+   "fam": [
+    {
+     "w": "disappoint",
+     "pos": "v.",
+     "zh": "使失望"
+    },
+    {
+     "w": "disappointment",
+     "pos": "n.",
+     "zh": "失望"
+    }
+   ]
   },
   {
    "w": "disappoint",
    "pos": "v.",
-   "zh": "讓人失望"
+   "zh": "讓人失望",
+   "f": [
+    {
+     "k": "past",
+     "w": "disappointed"
+    },
+    {
+     "k": "pp",
+     "w": "disappointed"
+    },
+    {
+     "k": "ing",
+     "w": "disappointing"
+    },
+    {
+     "k": "s3",
+     "w": "disappoints"
+    }
+   ],
+   "fam": [
+    {
+     "w": "disappointment",
+     "pos": "n.",
+     "zh": "失望"
+    },
+    {
+     "w": "disappointingly",
+     "pos": "adv.",
+     "zh": "令人失望地"
+    }
+   ]
   },
   {
    "w": "transition",
    "pos": "n.",
-   "zh": "轉換；過渡"
+   "zh": "轉換；過渡",
+   "f": [
+    {
+     "k": "plural",
+     "w": "transitions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "transitional",
+     "pos": "adj.",
+     "zh": "過渡的"
+    }
+   ]
   },
   {
    "w": "betray",
    "pos": "v.",
-   "zh": "背叛"
+   "zh": "背叛",
+   "f": [
+    {
+     "k": "past",
+     "w": "betrayed"
+    },
+    {
+     "k": "pp",
+     "w": "betrayed"
+    },
+    {
+     "k": "ing",
+     "w": "betraying"
+    },
+    {
+     "k": "s3",
+     "w": "betrays"
+    }
+   ],
+   "fam": [
+    {
+     "w": "betrayal",
+     "pos": "n.",
+     "zh": "背叛"
+    }
+   ]
   },
   {
    "w": "condense",
    "pos": "v.",
-   "zh": "濃縮"
+   "zh": "濃縮",
+   "f": [
+    {
+     "k": "past",
+     "w": "condensed"
+    },
+    {
+     "k": "pp",
+     "w": "condensed"
+    },
+    {
+     "k": "ing",
+     "w": "condensing"
+    },
+    {
+     "k": "s3",
+     "w": "condenses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "condensation",
+     "pos": "n.",
+     "zh": "凝結"
+    }
+   ]
   },
   {
    "w": "episode",
    "pos": "n.",
-   "zh": "（影集）一集"
+   "zh": "（影集）一集",
+   "f": [
+    {
+     "k": "plural",
+     "w": "episodes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "essential",
    "pos": "adj.",
-   "zh": "必要的"
+   "zh": "必要的",
+   "f": [],
+   "fam": [
+    {
+     "w": "essence",
+     "pos": "n.",
+     "zh": "本質；精髓"
+    },
+    {
+     "w": "essentially",
+     "pos": "adv.",
+     "zh": "基本上"
+    }
+   ]
   },
   {
    "w": "essence",
    "pos": "n.",
-   "zh": "精髓"
+   "zh": "精髓",
+   "f": [],
+   "fam": [
+    {
+     "w": "essential",
+     "pos": "adj.",
+     "zh": "必要的；本質的"
+    },
+    {
+     "w": "essentially",
+     "pos": "adv.",
+     "zh": "基本上"
+    }
+   ]
   },
   {
    "w": "controversy",
    "pos": "n.",
-   "zh": "爭議"
+   "zh": "爭議",
+   "f": [
+    {
+     "k": "plural",
+     "w": "controversies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "controversial",
+     "pos": "adj.",
+     "zh": "有爭議的"
+    }
+   ]
   },
   {
    "w": "fierce",
    "pos": "adj.",
-   "zh": "激烈的"
+   "zh": "激烈的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "fiercer"
+    },
+    {
+     "k": "sup",
+     "w": "fiercest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "fiercely",
+     "pos": "adv.",
+     "zh": "激烈地；兇猛地"
+    }
+   ]
   },
   {
    "w": "departure",
    "pos": "n.",
-   "zh": "偏離；背離"
+   "zh": "偏離；背離",
+   "f": [
+    {
+     "k": "plural",
+     "w": "departures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "depart",
+     "pos": "v.",
+     "zh": "出發；離開"
+    }
+   ]
   },
   {
    "w": "spectacular",
    "pos": "adj.",
-   "zh": "壯觀的"
+   "zh": "壯觀的",
+   "f": [],
+   "fam": [
+    {
+     "w": "spectacle",
+     "pos": "n.",
+     "zh": "奇觀；壯觀場面"
+    },
+    {
+     "w": "spectacularly",
+     "pos": "adv.",
+     "zh": "壯觀地"
+    }
+   ]
   },
   {
    "w": "irony",
    "pos": "n.",
-   "zh": "諷刺之處"
+   "zh": "諷刺之處",
+   "f": [
+    {
+     "k": "plural",
+     "w": "ironies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "ironic",
+     "pos": "adj.",
+     "zh": "諷刺的"
+    },
+    {
+     "w": "ironically",
+     "pos": "adv.",
+     "zh": "諷刺的是"
+    }
+   ]
   },
   {
    "w": "trade",
    "pos": "v.",
-   "zh": "交換"
+   "zh": "交換",
+   "f": [
+    {
+     "k": "past",
+     "w": "traded"
+    },
+    {
+     "k": "pp",
+     "w": "traded"
+    },
+    {
+     "k": "ing",
+     "w": "trading"
+    },
+    {
+     "k": "s3",
+     "w": "trades"
+    }
+   ],
+   "fam": [
+    {
+     "w": "trader",
+     "pos": "n.",
+     "zh": "商人；交易者"
+    }
+   ]
   },
   {
    "w": "replace",
    "pos": "v.",
-   "zh": "取代"
+   "zh": "取代",
+   "f": [
+    {
+     "k": "past",
+     "w": "replaced"
+    },
+    {
+     "k": "pp",
+     "w": "replaced"
+    },
+    {
+     "k": "ing",
+     "w": "replacing"
+    },
+    {
+     "k": "s3",
+     "w": "replaces"
+    }
+   ],
+   "fam": [
+    {
+     "w": "replacement",
+     "pos": "n.",
+     "zh": "替代品；替換"
+    },
+    {
+     "w": "replaceable",
+     "pos": "adj.",
+     "zh": "可替換的"
+    }
+   ]
   },
   {
    "w": "be confined to",
    "pos": "phr.",
-   "zh": "僅限於…"
+   "zh": "僅限於…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "tear down",
    "pos": "phr.",
-   "zh": "拆掉"
+   "zh": "拆掉",
+   "f": [],
+   "fam": []
   },
   {
    "w": "sweep through",
    "pos": "phr.",
-   "zh": "席捲…"
+   "zh": "席捲…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "appeal to",
    "pos": "phr.",
-   "zh": "吸引…"
+   "zh": "吸引…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "tap into",
    "pos": "phr.",
-   "zh": "善用；打進"
+   "zh": "善用；打進",
+   "f": [],
+   "fam": []
   },
   {
    "w": "invest in",
    "pos": "phr.",
-   "zh": "投資於…"
+   "zh": "投資於…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "show no signs of",
    "pos": "phr.",
-   "zh": "毫無…跡象"
+   "zh": "毫無…跡象",
+   "f": [],
+   "fam": []
   },
   {
    "w": "condense A into B",
    "pos": "phr.",
-   "zh": "把A濃縮成B"
+   "zh": "把A濃縮成B",
+   "f": [],
+   "fam": []
   },
   {
    "w": "more often than not",
    "pos": "phr.",
-   "zh": "往往；多半"
+   "zh": "往往；多半",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in an effort to",
    "pos": "phr.",
-   "zh": "為了設法…"
+   "zh": "為了設法…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "trade A for B",
    "pos": "phr.",
-   "zh": "用A換B"
+   "zh": "用A換B",
+   "f": [],
+   "fam": []
   },
   {
    "w": "replace A with B",
    "pos": "phr.",
-   "zh": "用B取代A"
+   "zh": "用B取代A",
+   "f": [],
+   "fam": []
   },
   {
    "w": "the heart of",
    "pos": "phr.",
-   "zh": "…的核心"
+   "zh": "…的核心",
+   "f": [],
+   "fam": []
   }
  ]
 }

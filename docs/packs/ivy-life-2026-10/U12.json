@@ -7,47 +7,175 @@
   {
    "w": "edit",
    "pos": "v.",
-   "zh": "編修"
+   "zh": "編修",
+   "f": [
+    {
+     "k": "past",
+     "w": "edited"
+    },
+    {
+     "k": "pp",
+     "w": "edited"
+    },
+    {
+     "k": "ing",
+     "w": "editing"
+    },
+    {
+     "k": "s3",
+     "w": "edits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "editor",
+     "pos": "n.",
+     "zh": "編輯"
+    },
+    {
+     "w": "edition",
+     "pos": "n.",
+     "zh": "版本；版次"
+    },
+    {
+     "w": "editorial",
+     "pos": "adj.",
+     "zh": "編輯的"
+    }
+   ]
   },
   {
    "w": "cheat",
    "pos": "v.",
-   "zh": "欺騙"
+   "zh": "欺騙",
+   "f": [
+    {
+     "k": "past",
+     "w": "cheated"
+    },
+    {
+     "k": "pp",
+     "w": "cheated"
+    },
+    {
+     "k": "ing",
+     "w": "cheating"
+    },
+    {
+     "k": "s3",
+     "w": "cheats"
+    }
+   ],
+   "fam": [
+    {
+     "w": "cheater",
+     "pos": "n.",
+     "zh": "作弊者；騙子"
+    }
+   ]
   },
   {
    "w": "fake",
    "pos": "adj.",
-   "zh": "假的"
+   "zh": "假的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "headline",
    "pos": "n.",
-   "zh": "新聞標題"
+   "zh": "新聞標題",
+   "f": [
+    {
+     "k": "plural",
+     "w": "headlines"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "reliable",
    "pos": "adj.",
-   "zh": "可信的"
+   "zh": "可信的",
+   "f": [],
+   "fam": [
+    {
+     "w": "rely",
+     "pos": "v.",
+     "zh": "依賴"
+    },
+    {
+     "w": "reliability",
+     "pos": "n.",
+     "zh": "可靠性"
+    },
+    {
+     "w": "reliably",
+     "pos": "adv.",
+     "zh": "可靠地"
+    }
+   ]
   },
   {
    "w": "educational",
    "pos": "adj.",
-   "zh": "有教育意義的"
+   "zh": "有教育意義的",
+   "f": [],
+   "fam": [
+    {
+     "w": "educate",
+     "pos": "v.",
+     "zh": "教育"
+    },
+    {
+     "w": "education",
+     "pos": "n.",
+     "zh": "教育"
+    },
+    {
+     "w": "educator",
+     "pos": "n.",
+     "zh": "教育工作者"
+    }
+   ]
   },
   {
    "w": "spot",
    "pos": "v.",
-   "zh": "識破；察覺"
+   "zh": "識破；察覺",
+   "f": [
+    {
+     "k": "past",
+     "w": "spotted"
+    },
+    {
+     "k": "pp",
+     "w": "spotted"
+    },
+    {
+     "k": "ing",
+     "w": "spotting"
+    },
+    {
+     "k": "s3",
+     "w": "spots"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "cheat sb out of sth",
    "pos": "phr.",
-   "zh": "騙走某人的某物"
+   "zh": "騙走某人的某物",
+   "f": [],
+   "fam": []
   },
   {
    "w": "tell the difference between",
    "pos": "phr.",
-   "zh": "區分…的差異"
+   "zh": "區分…的差異",
+   "f": [],
+   "fam": []
   }
  ]
 }

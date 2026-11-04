@@ -7,27 +7,69 @@
   {
    "w": "toward",
    "pos": "prep.",
-   "zh": "朝向"
+   "zh": "朝向",
+   "f": [],
+   "fam": []
   },
   {
    "w": "courage",
    "pos": "n.",
-   "zh": "勇氣"
+   "zh": "勇氣",
+   "f": [],
+   "fam": [
+    {
+     "w": "courageous",
+     "pos": "adj.",
+     "zh": "勇敢的"
+    },
+    {
+     "w": "encourage",
+     "pos": "v.",
+     "zh": "鼓勵"
+    }
+   ]
   },
   {
    "w": "classic",
    "pos": "n.",
-   "zh": "經典作品"
+   "zh": "經典作品",
+   "f": [
+    {
+     "k": "plural",
+     "w": "classics"
+    }
+   ],
+   "fam": [
+    {
+     "w": "classical",
+     "pos": "adj.",
+     "zh": "古典的"
+    }
+   ]
   },
   {
    "w": "bar",
    "pos": "n.",
-   "zh": "條；塊"
+   "zh": "條；塊",
+   "f": [
+    {
+     "k": "plural",
+     "w": "bars"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "firework",
    "pos": "n.",
-   "zh": "煙火"
+   "zh": "煙火",
+   "f": [
+    {
+     "k": "plural",
+     "w": "fireworks"
+    }
+   ],
+   "fam": []
   }
  ]
 }

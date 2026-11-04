@@ -1,0 +1,224 @@
+{
+ "id": "U13",
+ "title": "四種不用慢跑也能維持體能的方法",
+ "tag": "Live2611-U13",
+ "verified": true,
+ "items": [
+  {
+   "w": "benefit",
+   "pos": "n.",
+   "zh": "好處；益處",
+   "f": [
+    {
+     "k": "plural",
+     "w": "benefits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "beneficial",
+     "pos": "adj.",
+     "zh": "有益的"
+    }
+   ]
+  },
+  {
+   "w": "pace",
+   "pos": "n.",
+   "zh": "步調；速度",
+   "f": [
+    {
+     "k": "plural",
+     "w": "paces"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "calorie",
+   "pos": "n.",
+   "zh": "卡路里",
+   "f": [
+    {
+     "k": "plural",
+     "w": "calories"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "involve",
+   "pos": "v.",
+   "zh": "涉及；包含",
+   "f": [
+    {
+     "k": "past",
+     "w": "involved"
+    },
+    {
+     "k": "pp",
+     "w": "involved"
+    },
+    {
+     "k": "ing",
+     "w": "involving"
+    },
+    {
+     "k": "s3",
+     "w": "involves"
+    }
+   ],
+   "fam": [
+    {
+     "w": "involvement",
+     "pos": "n.",
+     "zh": "參與；牽涉"
+    }
+   ]
+  },
+  {
+   "w": "workout",
+   "pos": "n.",
+   "zh": "運動；鍛鍊",
+   "f": [
+    {
+     "k": "plural",
+     "w": "workouts"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "impact",
+   "pos": "n.",
+   "zh": "衝擊；影響",
+   "f": [
+    {
+     "k": "plural",
+     "w": "impacts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "impactful",
+     "pos": "adj.",
+     "zh": "有影響力的"
+    }
+   ]
+  },
+  {
+   "w": "engage",
+   "pos": "v.",
+   "zh": "參與；吸引",
+   "f": [
+    {
+     "k": "past",
+     "w": "engaged"
+    },
+    {
+     "k": "pp",
+     "w": "engaged"
+    },
+    {
+     "k": "ing",
+     "w": "engaging"
+    },
+    {
+     "k": "s3",
+     "w": "engages"
+    }
+   ],
+   "fam": [
+    {
+     "w": "engagement",
+     "pos": "n.",
+     "zh": "參與；訂婚"
+    }
+   ]
+  },
+  {
+   "w": "research",
+   "pos": "n.",
+   "zh": "研究",
+   "f": [],
+   "fam": []
+  },
+  {
+   "w": "roughly",
+   "pos": "adv.",
+   "zh": "大約；粗略地",
+   "f": [],
+   "fam": [
+    {
+     "w": "rough",
+     "pos": "adj.",
+     "zh": "粗糙的；大致的"
+    },
+    {
+     "w": "roughness",
+     "pos": "n.",
+     "zh": "粗糙"
+    }
+   ]
+  },
+  {
+   "w": "resistance",
+   "pos": "n.",
+   "zh": "阻力；抵抗",
+   "f": [],
+   "fam": [
+    {
+     "w": "resist",
+     "pos": "v.",
+     "zh": "抵抗；抗拒"
+    },
+    {
+     "w": "resistant",
+     "pos": "adj.",
+     "zh": "有抵抗力的"
+    }
+   ]
+  },
+  {
+   "w": "injured",
+   "pos": "adj.",
+   "zh": "受傷的",
+   "f": [],
+   "fam": [
+    {
+     "w": "injure",
+     "pos": "v.",
+     "zh": "使受傷"
+    },
+    {
+     "w": "injury",
+     "pos": "n.",
+     "zh": "傷害；受傷"
+    }
+   ]
+  },
+  {
+   "w": "alternative",
+   "pos": "n.",
+   "zh": "替代方案；選擇",
+   "f": [
+    {
+     "k": "plural",
+     "w": "alternatives"
+    }
+   ],
+   "fam": [
+    {
+     "w": "alternatively",
+     "pos": "adv.",
+     "zh": "或者；另外"
+    },
+    {
+     "w": "alternate",
+     "pos": "v.",
+     "zh": "輪流；交替"
+    }
+   ]
+  }
+ ]
+}

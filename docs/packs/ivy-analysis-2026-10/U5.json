@@ -7,97 +7,290 @@
   {
    "w": "tremendous",
    "pos": "adj.",
-   "zh": "巨大的"
+   "zh": "巨大的",
+   "f": [],
+   "fam": [
+    {
+     "w": "tremendously",
+     "pos": "adv.",
+     "zh": "極大地；非常"
+    }
+   ]
   },
   {
    "w": "obsession",
    "pos": "n.",
-   "zh": "沉迷"
+   "zh": "沉迷",
+   "f": [
+    {
+     "k": "plural",
+     "w": "obsessions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "obsess",
+     "pos": "v.",
+     "zh": "使著迷"
+    },
+    {
+     "w": "obsessive",
+     "pos": "adj.",
+     "zh": "過分著迷的"
+    }
+   ]
   },
   {
    "w": "span",
    "pos": "n.",
-   "zh": "持續時間"
+   "zh": "持續時間",
+   "f": [
+    {
+     "k": "plural",
+     "w": "spans"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "sedentary",
    "pos": "adj.",
-   "zh": "久坐少動的"
+   "zh": "久坐少動的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "diminish",
    "pos": "v.",
-   "zh": "減弱"
+   "zh": "減弱",
+   "f": [
+    {
+     "k": "past",
+     "w": "diminished"
+    },
+    {
+     "k": "pp",
+     "w": "diminished"
+    },
+    {
+     "k": "ing",
+     "w": "diminishing"
+    },
+    {
+     "k": "s3",
+     "w": "diminishes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "accommodate",
    "pos": "v.",
-   "zh": "容納"
+   "zh": "容納",
+   "f": [
+    {
+     "k": "past",
+     "w": "accommodated"
+    },
+    {
+     "k": "pp",
+     "w": "accommodated"
+    },
+    {
+     "k": "ing",
+     "w": "accommodating"
+    },
+    {
+     "k": "s3",
+     "w": "accommodates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "accommodation",
+     "pos": "n.",
+     "zh": "住宿"
+    }
+   ]
   },
   {
    "w": "participant",
    "pos": "n.",
-   "zh": "參與者"
+   "zh": "參與者",
+   "f": [
+    {
+     "k": "plural",
+     "w": "participants"
+    }
+   ],
+   "fam": [
+    {
+     "w": "participate",
+     "pos": "v.",
+     "zh": "參與"
+    }
+   ]
   },
   {
    "w": "dormitory",
    "pos": "n.",
-   "zh": "宿舍"
+   "zh": "宿舍",
+   "f": [
+    {
+     "k": "plural",
+     "w": "dormitories"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "foster",
    "pos": "v.",
-   "zh": "培養"
+   "zh": "培養",
+   "f": [
+    {
+     "k": "past",
+     "w": "fostered"
+    },
+    {
+     "k": "pp",
+     "w": "fostered"
+    },
+    {
+     "k": "ing",
+     "w": "fostering"
+    },
+    {
+     "k": "s3",
+     "w": "fosters"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "addiction",
    "pos": "n.",
-   "zh": "成癮"
+   "zh": "成癮",
+   "f": [
+    {
+     "k": "plural",
+     "w": "addictions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "addicted",
+     "pos": "adj.",
+     "zh": "上癮的"
+    },
+    {
+     "w": "addictive",
+     "pos": "adj.",
+     "zh": "使人上癮的"
+    }
+   ]
   },
   {
    "w": "virtual",
    "pos": "adj.",
-   "zh": "虛擬的"
+   "zh": "虛擬的",
+   "f": [],
+   "fam": [
+    {
+     "w": "virtually",
+     "pos": "adv.",
+     "zh": "幾乎；虛擬地"
+    }
+   ]
   },
   {
    "w": "academic",
    "pos": "adj.",
-   "zh": "學業的"
+   "zh": "學業的",
+   "f": [],
+   "fam": [
+    {
+     "w": "academy",
+     "pos": "n.",
+     "zh": "學院"
+    },
+    {
+     "w": "academically",
+     "pos": "adv.",
+     "zh": "學業上"
+    }
+   ]
   },
   {
    "w": "peer",
    "pos": "n.",
-   "zh": "同儕"
+   "zh": "同儕",
+   "f": [
+    {
+     "k": "plural",
+     "w": "peers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "scroll",
    "pos": "v.",
-   "zh": "滑動（螢幕）"
+   "zh": "滑動（螢幕）",
+   "f": [
+    {
+     "k": "past",
+     "w": "scrolled"
+    },
+    {
+     "k": "pp",
+     "w": "scrolled"
+    },
+    {
+     "k": "ing",
+     "w": "scrolling"
+    },
+    {
+     "k": "s3",
+     "w": "scrolls"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "an attention span",
    "pos": "phr.",
-   "zh": "專注時長"
+   "zh": "專注時長",
+   "f": [],
+   "fam": []
   },
   {
    "w": "suffer from",
    "pos": "phr.",
-   "zh": "受…所苦"
+   "zh": "受…所苦",
+   "f": [],
+   "fam": []
   },
   {
    "w": "scroll through",
    "pos": "phr.",
-   "zh": "滑過（頁面）"
+   "zh": "滑過（頁面）",
+   "f": [],
+   "fam": []
   },
   {
    "w": "disconnect from",
    "pos": "phr.",
-   "zh": "脫離…"
+   "zh": "脫離…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "be intended for",
    "pos": "phr.",
-   "zh": "專為…設計"
+   "zh": "專為…設計",
+   "f": [],
+   "fam": []
   }
  ]
 }

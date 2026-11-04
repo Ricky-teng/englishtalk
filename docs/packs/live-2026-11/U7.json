@@ -1,0 +1,96 @@
+{
+ "id": "U7",
+ "title": "《寶可夢 GO》如何幫助機器人送貨",
+ "tag": "Live2611-U7",
+ "verified": true,
+ "items": [
+  {
+   "w": "mobile",
+   "pos": "adj.",
+   "zh": "行動的；可移動的",
+   "f": [],
+   "fam": [
+    {
+     "w": "mobility",
+     "pos": "n.",
+     "zh": "機動性"
+    },
+    {
+     "w": "mobilize",
+     "pos": "v.",
+     "zh": "動員"
+    }
+   ]
+  },
+  {
+   "w": "landmark",
+   "pos": "n.",
+   "zh": "地標",
+   "f": [
+    {
+     "k": "plural",
+     "w": "landmarks"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "reward",
+   "pos": "n.",
+   "zh": "獎勵；報酬",
+   "f": [
+    {
+     "k": "plural",
+     "w": "rewards"
+    }
+   ],
+   "fam": [
+    {
+     "w": "rewarding",
+     "pos": "adj.",
+     "zh": "有收穫的"
+    }
+   ]
+  },
+  {
+   "w": "identify",
+   "pos": "v.",
+   "zh": "辨認；識別",
+   "f": [
+    {
+     "k": "past",
+     "w": "identified"
+    },
+    {
+     "k": "pp",
+     "w": "identified"
+    },
+    {
+     "k": "ing",
+     "w": "identifying"
+    },
+    {
+     "k": "s3",
+     "w": "identifies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "identification",
+     "pos": "n.",
+     "zh": "識別；身分證明"
+    },
+    {
+     "w": "identity",
+     "pos": "n.",
+     "zh": "身分"
+    },
+    {
+     "w": "identifiable",
+     "pos": "adj.",
+     "zh": "可辨認的"
+    }
+   ]
+  }
+ ]
+}

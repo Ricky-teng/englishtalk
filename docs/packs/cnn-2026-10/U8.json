@@ -7,62 +7,214 @@
   {
    "w": "furry",
    "pos": "adj.",
-   "zh": "毛茸茸的"
+   "zh": "毛茸茸的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "furrier"
+    },
+    {
+     "k": "sup",
+     "w": "furriest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "fur",
+     "pos": "n.",
+     "zh": "毛皮；毛"
+    }
+   ]
   },
   {
    "w": "biotech",
    "pos": "n.",
-   "zh": "生技"
+   "zh": "生技",
+   "f": [],
+   "fam": []
   },
   {
    "w": "overweight",
    "pos": "adj.",
-   "zh": "超重的"
+   "zh": "超重的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "feline",
    "pos": "adj.",
-   "zh": "貓科的"
+   "zh": "貓科的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "deserve",
    "pos": "v.",
-   "zh": "應得"
+   "zh": "應得",
+   "f": [
+    {
+     "k": "past",
+     "w": "deserved"
+    },
+    {
+     "k": "pp",
+     "w": "deserved"
+    },
+    {
+     "k": "ing",
+     "w": "deserving"
+    },
+    {
+     "k": "s3",
+     "w": "deserves"
+    }
+   ],
+   "fam": [
+    {
+     "w": "deservedly",
+     "pos": "adv.",
+     "zh": "理所當然地"
+    }
+   ]
   },
   {
    "w": "groom",
    "pos": "v.",
-   "zh": "幫（動物）梳理"
+   "zh": "幫（動物）梳理",
+   "f": [
+    {
+     "k": "past",
+     "w": "groomed"
+    },
+    {
+     "k": "pp",
+     "w": "groomed"
+    },
+    {
+     "k": "ing",
+     "w": "grooming"
+    },
+    {
+     "k": "s3",
+     "w": "grooms"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "vet",
    "pos": "n.",
-   "zh": "獸醫"
+   "zh": "獸醫",
+   "f": [
+    {
+     "k": "plural",
+     "w": "vets"
+    }
+   ],
+   "fam": [
+    {
+     "w": "veterinary",
+     "pos": "adj.",
+     "zh": "獸醫的"
+    }
+   ]
   },
   {
    "w": "leash",
    "pos": "n.",
-   "zh": "牽繩"
+   "zh": "牽繩",
+   "f": [
+    {
+     "k": "plural",
+     "w": "leashes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "obese",
    "pos": "adj.",
-   "zh": "過度肥胖的"
+   "zh": "過度肥胖的",
+   "f": [],
+   "fam": [
+    {
+     "w": "obesity",
+     "pos": "n.",
+     "zh": "肥胖"
+    }
+   ]
   },
   {
    "w": "underdiagnose",
    "pos": "v.",
-   "zh": "低度診斷"
+   "zh": "低度診斷",
+   "f": [
+    {
+     "k": "past",
+     "w": "underdiagnosed"
+    },
+    {
+     "k": "pp",
+     "w": "underdiagnosed"
+    },
+    {
+     "k": "ing",
+     "w": "underdiagnosing"
+    },
+    {
+     "k": "s3",
+     "w": "underdiagnoses"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "spay",
    "pos": "v.",
-   "zh": "替母寵物結紮"
+   "zh": "替母寵物結紮",
+   "f": [
+    {
+     "k": "past",
+     "w": "spayed"
+    },
+    {
+     "k": "pp",
+     "w": "spayed"
+    },
+    {
+     "k": "ing",
+     "w": "spaying"
+    },
+    {
+     "k": "s3",
+     "w": "spays"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "neuter",
    "pos": "v.",
-   "zh": "替公寵物結紮"
+   "zh": "替公寵物結紮",
+   "f": [
+    {
+     "k": "past",
+     "w": "neutered"
+    },
+    {
+     "k": "pp",
+     "w": "neutered"
+    },
+    {
+     "k": "ing",
+     "w": "neutering"
+    },
+    {
+     "k": "s3",
+     "w": "neuters"
+    }
+   ],
+   "fam": []
   }
  ]
 }

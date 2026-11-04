@@ -7,67 +7,273 @@
   {
    "w": "pioneer",
    "pos": "v.",
-   "zh": "首創"
+   "zh": "首創",
+   "f": [
+    {
+     "k": "past",
+     "w": "pioneered"
+    },
+    {
+     "k": "pp",
+     "w": "pioneered"
+    },
+    {
+     "k": "ing",
+     "w": "pioneering"
+    },
+    {
+     "k": "s3",
+     "w": "pioneers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "halt",
    "pos": "v.",
-   "zh": "停止"
+   "zh": "停止",
+   "f": [
+    {
+     "k": "past",
+     "w": "halted"
+    },
+    {
+     "k": "pp",
+     "w": "halted"
+    },
+    {
+     "k": "ing",
+     "w": "halting"
+    },
+    {
+     "k": "s3",
+     "w": "halts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "widespread",
    "pos": "adj.",
-   "zh": "普遍的"
+   "zh": "普遍的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "skyscraper",
    "pos": "n.",
-   "zh": "摩天樓"
+   "zh": "摩天樓",
+   "f": [
+    {
+     "k": "plural",
+     "w": "skyscrapers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "architect",
    "pos": "n.",
-   "zh": "建築師"
+   "zh": "建築師",
+   "f": [
+    {
+     "k": "plural",
+     "w": "architects"
+    }
+   ],
+   "fam": [
+    {
+     "w": "architectural",
+     "pos": "adj.",
+     "zh": "建築的"
+    }
+   ]
   },
   {
    "w": "construct",
    "pos": "v.",
-   "zh": "建造"
+   "zh": "建造",
+   "f": [
+    {
+     "k": "past",
+     "w": "constructed"
+    },
+    {
+     "k": "pp",
+     "w": "constructed"
+    },
+    {
+     "k": "ing",
+     "w": "constructing"
+    },
+    {
+     "k": "s3",
+     "w": "constructs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "construction",
+     "pos": "n.",
+     "zh": "建造；建設"
+    },
+    {
+     "w": "constructive",
+     "pos": "adj.",
+     "zh": "建設性的"
+    }
+   ]
   },
   {
    "w": "soar",
    "pos": "v.",
-   "zh": "高聳；飆升"
+   "zh": "高聳；飆升",
+   "f": [
+    {
+     "k": "past",
+     "w": "soared"
+    },
+    {
+     "k": "pp",
+     "w": "soared"
+    },
+    {
+     "k": "ing",
+     "w": "soaring"
+    },
+    {
+     "k": "s3",
+     "w": "soars"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "enormous",
    "pos": "adj.",
-   "zh": "巨大的"
+   "zh": "巨大的",
+   "f": [],
+   "fam": [
+    {
+     "w": "enormously",
+     "pos": "adv.",
+     "zh": "極大地"
+    }
+   ]
   },
   {
    "w": "utilize",
    "pos": "v.",
-   "zh": "利用"
+   "zh": "利用",
+   "f": [
+    {
+     "k": "past",
+     "w": "utilized"
+    },
+    {
+     "k": "pp",
+     "w": "utilized"
+    },
+    {
+     "k": "ing",
+     "w": "utilizing"
+    },
+    {
+     "k": "s3",
+     "w": "utilizes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "utilization",
+     "pos": "n.",
+     "zh": "利用"
+    },
+    {
+     "w": "utility",
+     "pos": "n.",
+     "zh": "效用；公用事業"
+    }
+   ]
   },
   {
    "w": "distract",
    "pos": "v.",
-   "zh": "讓人分心"
+   "zh": "讓人分心",
+   "f": [
+    {
+     "k": "past",
+     "w": "distracted"
+    },
+    {
+     "k": "pp",
+     "w": "distracted"
+    },
+    {
+     "k": "ing",
+     "w": "distracting"
+    },
+    {
+     "k": "s3",
+     "w": "distracts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "distraction",
+     "pos": "n.",
+     "zh": "分心的事物"
+    }
+   ]
   },
   {
    "w": "illusion",
    "pos": "n.",
-   "zh": "錯覺"
+   "zh": "錯覺",
+   "f": [
+    {
+     "k": "plural",
+     "w": "illusions"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "grant",
    "pos": "v.",
-   "zh": "授予；給予"
+   "zh": "授予；給予",
+   "f": [
+    {
+     "k": "past",
+     "w": "granted"
+    },
+    {
+     "k": "pp",
+     "w": "granted"
+    },
+    {
+     "k": "ing",
+     "w": "granting"
+    },
+    {
+     "k": "s3",
+     "w": "grants"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "transportation",
    "pos": "n.",
-   "zh": "交通運輸"
+   "zh": "交通運輸",
+   "f": [],
+   "fam": [
+    {
+     "w": "transport",
+     "pos": "v.",
+     "zh": "運送；運輸"
+    }
+   ]
   }
  ]
 }

@@ -1,0 +1,202 @@
+{
+ "id": "U11",
+ "title": "點亮夜空：十一月的清邁",
+ "tag": "Live2611-U11",
+ "verified": true,
+ "items": [
+  {
+   "w": "atmosphere",
+   "pos": "n.",
+   "zh": "氣氛；大氣",
+   "f": [
+    {
+     "k": "plural",
+     "w": "atmospheres"
+    }
+   ],
+   "fam": [
+    {
+     "w": "atmospheric",
+     "pos": "adj.",
+     "zh": "大氣的；有氣氛的"
+    }
+   ]
+  },
+  {
+   "w": "preserve",
+   "pos": "v.",
+   "zh": "保存；保護",
+   "f": [
+    {
+     "k": "past",
+     "w": "preserved"
+    },
+    {
+     "k": "pp",
+     "w": "preserved"
+    },
+    {
+     "k": "ing",
+     "w": "preserving"
+    },
+    {
+     "k": "s3",
+     "w": "preserves"
+    }
+   ],
+   "fam": [
+    {
+     "w": "preservation",
+     "pos": "n.",
+     "zh": "保存；保護"
+    }
+   ]
+  },
+  {
+   "w": "carve",
+   "pos": "v.",
+   "zh": "雕刻",
+   "f": [
+    {
+     "k": "past",
+     "w": "carved"
+    },
+    {
+     "k": "pp",
+     "w": "carved"
+    },
+    {
+     "k": "ing",
+     "w": "carving"
+    },
+    {
+     "k": "s3",
+     "w": "carves"
+    }
+   ],
+   "fam": [
+    {
+     "w": "carving",
+     "pos": "n.",
+     "zh": "雕刻品"
+    }
+   ]
+  },
+  {
+   "w": "numerous",
+   "pos": "adj.",
+   "zh": "許多的",
+   "f": [],
+   "fam": [
+    {
+     "w": "number",
+     "pos": "n.",
+     "zh": "數目"
+    }
+   ]
+  },
+  {
+   "w": "goods",
+   "pos": "n.",
+   "zh": "商品；貨物",
+   "f": [],
+   "fam": []
+  },
+  {
+   "w": "memorable",
+   "pos": "adj.",
+   "zh": "難忘的",
+   "f": [],
+   "fam": [
+    {
+     "w": "memory",
+     "pos": "n.",
+     "zh": "記憶"
+    },
+    {
+     "w": "memorize",
+     "pos": "v.",
+     "zh": "記住"
+    }
+   ]
+  },
+  {
+   "w": "glowing",
+   "pos": "adj.",
+   "zh": "發光的；發亮的",
+   "f": [],
+   "fam": [
+    {
+     "w": "glow",
+     "pos": "v.",
+     "zh": "發光"
+    },
+    {
+     "w": "glow",
+     "pos": "n.",
+     "zh": "光芒；光澤"
+    }
+   ]
+  },
+  {
+   "w": "guardian",
+   "pos": "n.",
+   "zh": "守護者；監護人",
+   "f": [
+    {
+     "k": "plural",
+     "w": "guardians"
+    }
+   ],
+   "fam": [
+    {
+     "w": "guard",
+     "pos": "v.",
+     "zh": "看守；保衛"
+    }
+   ]
+  },
+  {
+   "w": "legend",
+   "pos": "n.",
+   "zh": "傳說",
+   "f": [
+    {
+     "k": "plural",
+     "w": "legends"
+    }
+   ],
+   "fam": [
+    {
+     "w": "legendary",
+     "pos": "adj.",
+     "zh": "傳奇的"
+    }
+   ]
+  },
+  {
+   "w": "overlook",
+   "pos": "v.",
+   "zh": "俯瞰；忽略",
+   "f": [
+    {
+     "k": "past",
+     "w": "overlooked"
+    },
+    {
+     "k": "pp",
+     "w": "overlooked"
+    },
+    {
+     "k": "ing",
+     "w": "overlooking"
+    },
+    {
+     "k": "s3",
+     "w": "overlooks"
+    }
+   ],
+   "fam": []
+  }
+ ]
+}

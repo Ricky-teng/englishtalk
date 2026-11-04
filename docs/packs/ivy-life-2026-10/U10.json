@@ -7,42 +7,142 @@
   {
    "w": "tourist",
    "pos": "n.",
-   "zh": "遊客"
+   "zh": "遊客",
+   "f": [
+    {
+     "k": "plural",
+     "w": "tourists"
+    }
+   ],
+   "fam": [
+    {
+     "w": "tour",
+     "pos": "v.",
+     "zh": "遊覽；巡迴"
+    },
+    {
+     "w": "touristy",
+     "pos": "adj.",
+     "zh": "觀光客多的"
+    }
+   ]
   },
   {
    "w": "blame",
    "pos": "v.",
-   "zh": "怪罪"
+   "zh": "怪罪",
+   "f": [
+    {
+     "k": "past",
+     "w": "blamed"
+    },
+    {
+     "k": "pp",
+     "w": "blamed"
+    },
+    {
+     "k": "ing",
+     "w": "blaming"
+    },
+    {
+     "k": "s3",
+     "w": "blames"
+    }
+   ],
+   "fam": [
+    {
+     "w": "blameless",
+     "pos": "adj.",
+     "zh": "無可指責的"
+    }
+   ]
   },
   {
    "w": "deny",
    "pos": "v.",
-   "zh": "否認"
+   "zh": "否認",
+   "f": [
+    {
+     "k": "past",
+     "w": "denied"
+    },
+    {
+     "k": "pp",
+     "w": "denied"
+    },
+    {
+     "k": "ing",
+     "w": "denying"
+    },
+    {
+     "k": "s3",
+     "w": "denies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "denial",
+     "pos": "n.",
+     "zh": "否認"
+    }
+   ]
   },
   {
    "w": "peaceful",
    "pos": "adj.",
-   "zh": "寧靜的"
+   "zh": "寧靜的",
+   "f": [],
+   "fam": [
+    {
+     "w": "peace",
+     "pos": "n.",
+     "zh": "和平；寧靜"
+    },
+    {
+     "w": "peacefully",
+     "pos": "adv.",
+     "zh": "平靜地"
+    }
+   ]
   },
   {
    "w": "local",
    "pos": "n.",
-   "zh": "當地人"
+   "zh": "當地人",
+   "f": [
+    {
+     "k": "plural",
+     "w": "locals"
+    }
+   ],
+   "fam": [
+    {
+     "w": "locally",
+     "pos": "adv.",
+     "zh": "在當地"
+    }
+   ]
   },
   {
    "w": "be crowded with",
    "pos": "phr.",
-   "zh": "擠滿…"
+   "zh": "擠滿…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "come across",
    "pos": "phr.",
-   "zh": "偶然發現"
+   "zh": "偶然發現",
+   "f": [],
+   "fam": []
   },
   {
    "w": "at least",
    "pos": "phr.",
-   "zh": "至少"
+   "zh": "至少",
+   "f": [],
+   "fam": []
   }
  ]
 }

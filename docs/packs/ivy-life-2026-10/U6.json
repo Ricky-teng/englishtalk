@@ -7,47 +7,104 @@
   {
    "w": "furniture",
    "pos": "n.",
-   "zh": "家具"
+   "zh": "家具",
+   "f": [],
+   "fam": [
+    {
+     "w": "furnish",
+     "pos": "v.",
+     "zh": "布置家具"
+    },
+    {
+     "w": "furnished",
+     "pos": "adj.",
+     "zh": "附家具的"
+    }
+   ]
   },
   {
    "w": "stuff",
    "pos": "n.",
-   "zh": "東西"
+   "zh": "東西",
+   "f": [],
+   "fam": [
+    {
+     "w": "stuffed",
+     "pos": "adj.",
+     "zh": "塞滿的；填餡的"
+    }
+   ]
   },
   {
    "w": "item",
    "pos": "n.",
-   "zh": "物件；品項"
+   "zh": "物件；品項",
+   "f": [
+    {
+     "k": "plural",
+     "w": "items"
+    }
+   ],
+   "fam": [
+    {
+     "w": "itemize",
+     "pos": "v.",
+     "zh": "逐項列出"
+    }
+   ]
   },
   {
    "w": "reasonable",
    "pos": "adj.",
-   "zh": "（價格）合理的"
+   "zh": "（價格）合理的",
+   "f": [],
+   "fam": [
+    {
+     "w": "reason",
+     "pos": "n.",
+     "zh": "理由"
+    },
+    {
+     "w": "reasonably",
+     "pos": "adv.",
+     "zh": "合理地"
+    }
+   ]
   },
   {
    "w": "a selection of",
    "pos": "phr.",
-   "zh": "各式精選的"
+   "zh": "各式精選的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "quite a few",
    "pos": "phr.",
-   "zh": "相當多"
+   "zh": "相當多",
+   "f": [],
+   "fam": []
   },
   {
    "w": "could use",
    "pos": "phr.",
-   "zh": "很需要"
+   "zh": "很需要",
+   "f": [],
+   "fam": []
   },
   {
    "w": "hold off on",
    "pos": "phr.",
-   "zh": "暫緩（做）"
+   "zh": "暫緩（做）",
+   "f": [],
+   "fam": []
   },
   {
    "w": "for the time being",
    "pos": "phr.",
-   "zh": "目前暫時"
+   "zh": "目前暫時",
+   "f": [],
+   "fam": []
   }
  ]
 }

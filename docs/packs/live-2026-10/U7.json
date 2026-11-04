@@ -7,52 +7,201 @@
   {
    "w": "award",
    "pos": "n.",
-   "zh": "獎項"
+   "zh": "獎項",
+   "f": [
+    {
+     "k": "plural",
+     "w": "awards"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "quit",
    "pos": "v.",
-   "zh": "放棄；退出"
+   "zh": "放棄；退出",
+   "f": [
+    {
+     "k": "past",
+     "w": "quit"
+    },
+    {
+     "k": "pp",
+     "w": "quit"
+    },
+    {
+     "k": "ing",
+     "w": "quitting"
+    },
+    {
+     "k": "s3",
+     "w": "quits"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "bomb",
    "pos": "n.",
-   "zh": "炸彈"
+   "zh": "炸彈",
+   "f": [
+    {
+     "k": "plural",
+     "w": "bombs"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "stadium",
    "pos": "n.",
-   "zh": "體育場"
+   "zh": "體育場",
+   "f": [
+    {
+     "k": "plural",
+     "w": "stadiums"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "engagement",
    "pos": "n.",
-   "zh": "訂婚；婚約"
+   "zh": "訂婚；婚約",
+   "f": [
+    {
+     "k": "plural",
+     "w": "engagements"
+    }
+   ],
+   "fam": [
+    {
+     "w": "engage",
+     "pos": "v.",
+     "zh": "參與；吸引"
+    },
+    {
+     "w": "engaged",
+     "pos": "adj.",
+     "zh": "已訂婚的"
+    }
+   ]
   },
   {
    "w": "admit",
    "pos": "v.",
-   "zh": "承認"
+   "zh": "承認",
+   "f": [
+    {
+     "k": "past",
+     "w": "admitted"
+    },
+    {
+     "k": "pp",
+     "w": "admitted"
+    },
+    {
+     "k": "ing",
+     "w": "admitting"
+    },
+    {
+     "k": "s3",
+     "w": "admits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "admission",
+     "pos": "n.",
+     "zh": "入場；承認"
+    },
+    {
+     "w": "admittedly",
+     "pos": "adv.",
+     "zh": "誠然"
+    }
+   ]
   },
   {
    "w": "creative",
    "pos": "adj.",
-   "zh": "有創意的；創作的"
+   "zh": "有創意的；創作的",
+   "f": [],
+   "fam": [
+    {
+     "w": "create",
+     "pos": "v.",
+     "zh": "創造"
+    },
+    {
+     "w": "creativity",
+     "pos": "n.",
+     "zh": "創造力"
+    },
+    {
+     "w": "creatively",
+     "pos": "adv.",
+     "zh": "有創意地"
+    }
+   ]
   },
   {
    "w": "focus",
    "pos": "n.",
-   "zh": "焦點；重點"
+   "zh": "焦點；重點",
+   "f": [
+    {
+     "k": "plural",
+     "w": "focuses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "focal",
+     "pos": "adj.",
+     "zh": "焦點的；中心的"
+    }
+   ]
   },
   {
    "w": "bold",
    "pos": "adj.",
-   "zh": "大膽的；有魄力的"
+   "zh": "大膽的；有魄力的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "bolder"
+    },
+    {
+     "k": "sup",
+     "w": "boldest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "boldly",
+     "pos": "adv.",
+     "zh": "大膽地"
+    },
+    {
+     "w": "boldness",
+     "pos": "n.",
+     "zh": "大膽"
+    }
+   ]
   },
   {
    "w": "daring",
    "pos": "adj.",
-   "zh": "大膽創新的；敢冒險的"
+   "zh": "大膽創新的；敢冒險的",
+   "f": [],
+   "fam": [
+    {
+     "w": "dare",
+     "pos": "v.",
+     "zh": "敢"
+    }
+   ]
   }
  ]
 }

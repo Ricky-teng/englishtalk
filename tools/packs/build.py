@@ -6,6 +6,10 @@
 
 新增一本書：在 tools/packs/data/ 放一個 .py（格式照 longteng_b1.py 的 UNITS），
 再到下面的 BOOKS 加一筆設定，重新執行就好。網站不用改程式。
+
+詞形變化與同字根字：tools/packs/forms.json，鍵是「單字|詞性」，值是 {f: 詞形, fam: 同字根字}，
+格式跟網站查字時 AI 回傳的 forms／family 一樣。新書裡 forms.json 沒有的字，執行時會列出來；
+沒補的話網站照樣能用，使用者可以在單字本「⋯ → 補齊詞性變化」用 AI 補。
 """
 import importlib.util
 import json
@@ -14,6 +18,7 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 OUT = os.path.join(ROOT, "docs", "packs")
+FORMS = os.path.join(HERE, "forms.json")
 
 # 每一本書的說明。module 是 data/ 裡的檔名（不含 .py）
 BOOKS = [
@@ -26,6 +31,17 @@ BOOKS = [
         "note": "非龍騰官方資料。L1–L9 的單字與片語依均一教育平台的各課單字清單整理；"
                 "Review 1–3 找不到現行版本的官方字表，是從舊版同名單元整理的，可能不完整。"
                 "中文解釋為依課文語境自行撰寫的簡短釋義，考試請以課本為準。",
+    },
+    {
+        "id": "live-2026-11",
+        "module": "live_2026_11",
+        "title": "LIVE 互動英語 2026 年 11 月號",
+        "subtitle": "雜誌｜2026 年 11 月號・每篇文章的重點單字",
+        "tagPrefix": "Live2611",
+        "note": "非 LiveABC 官方資料。單字依 LiveABC 官方「行動單字卡」網頁的各單元字表整理，"
+                "中文解釋為依文章語境自行撰寫的簡短釋義。完整解說、例句與發音請看官方單字卡。",
+        "link": "https://voccard.liveabc.com/live/2026/11",
+        "linkText": "LiveABC 官方行動單字卡",
     },
     {
         "id": "live-2026-10",
@@ -113,7 +129,16 @@ def load_units(module):
     return mod.UNITS
 
 
+def load_forms():
+    if not os.path.exists(FORMS):
+        return {}
+    with open(FORMS, encoding="utf-8") as f:
+        return json.load(f)
+
+
 def main():
+    forms = load_forms()
+    missing = set()
     index = {"version": 1, "packs": []}
     for book in BOOKS:
         units_meta = []
@@ -122,8 +147,19 @@ def main():
             phrases = [(w, z) for w, p, z in words if p == "phr."] + list(phrases)
             words = [x for x in words if x[1] != "phr."]
             tag = f'{book["tagPrefix"]}-{code}'
-            items = [{"w": w, "pos": p, "zh": z} for w, p, z in words] + \
-                    [{"w": w, "pos": "phr.", "zh": z} for w, z in phrases]
+            items = []
+            for w, p, z in words:
+                it = {"w": w, "pos": p, "zh": z}
+                fx = forms.get(f"{w}|{p}")
+                if fx is not None:
+                    # 有資料就附上（空陣列也附：代表「查過了，這個字沒有變化」，網站就不會再要 AI 補）
+                    it["f"] = fx.get("f", [])
+                    it["fam"] = fx.get("fam", [])
+                else:
+                    missing.add(f"{w}|{p}")
+                items.append(it)
+            # 片語沒有詞形變化，也不列同字根字
+            items += [{"w": w, "pos": "phr.", "zh": z, "f": [], "fam": []} for w, z in phrases]
             rel = f'{book["id"]}/{code}.json'
             atomic_write(os.path.join(OUT, rel), {
                 "id": code, "title": title, "tag": tag, "verified": verified, "items": items,
@@ -138,6 +174,8 @@ def main():
     atomic_write(os.path.join(OUT, "index.json"), index)
     total = sum(u["words"] + u["phrases"] for p in index["packs"] for u in p["units"])
     print(f"ok：{len(index['packs'])} 本書、{sum(len(p['units']) for p in index['packs'])} 個單元、{total} 筆")
+    if missing:
+        print(f"forms.json 還沒有詞形資料的字（{len(missing)} 個）：" + "、".join(sorted(missing)[:40]))
 
 
 if __name__ == "__main__":

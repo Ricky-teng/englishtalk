@@ -7,117 +7,419 @@
   {
    "w": "diagnose",
    "pos": "v.",
-   "zh": "診斷"
+   "zh": "診斷",
+   "f": [
+    {
+     "k": "past",
+     "w": "diagnosed"
+    },
+    {
+     "k": "pp",
+     "w": "diagnosed"
+    },
+    {
+     "k": "ing",
+     "w": "diagnosing"
+    },
+    {
+     "k": "s3",
+     "w": "diagnoses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "diagnosis",
+     "pos": "n.",
+     "zh": "診斷"
+    },
+    {
+     "w": "diagnostic",
+     "pos": "adj.",
+     "zh": "診斷的"
+    }
+   ]
   },
   {
    "w": "physician",
    "pos": "n.",
-   "zh": "醫師"
+   "zh": "醫師",
+   "f": [
+    {
+     "k": "plural",
+     "w": "physicians"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "overwhelming",
    "pos": "adj.",
-   "zh": "難以承受的"
+   "zh": "難以承受的",
+   "f": [],
+   "fam": [
+    {
+     "w": "overwhelm",
+     "pos": "v.",
+     "zh": "壓倒；使不知所措"
+    },
+    {
+     "w": "overwhelmingly",
+     "pos": "adv.",
+     "zh": "壓倒性地"
+    }
+   ]
   },
   {
    "w": "specialty",
    "pos": "n.",
-   "zh": "專科；專長"
+   "zh": "專科；專長",
+   "f": [
+    {
+     "k": "plural",
+     "w": "specialties"
+    }
+   ],
+   "fam": [
+    {
+     "w": "special",
+     "pos": "adj.",
+     "zh": "特別的"
+    },
+    {
+     "w": "specialize",
+     "pos": "v.",
+     "zh": "專攻；專門從事"
+    },
+    {
+     "w": "specially",
+     "pos": "adv.",
+     "zh": "特別地；專門地"
+    }
+   ]
   },
   {
    "w": "essentially",
    "pos": "adv.",
-   "zh": "基本上"
+   "zh": "基本上",
+   "f": [],
+   "fam": [
+    {
+     "w": "essence",
+     "pos": "n.",
+     "zh": "本質；精髓"
+    },
+    {
+     "w": "essential",
+     "pos": "adj.",
+     "zh": "必要的；本質的"
+    }
+   ]
   },
   {
    "w": "ultimately",
    "pos": "adv.",
-   "zh": "最終"
+   "zh": "最終",
+   "f": [],
+   "fam": [
+    {
+     "w": "ultimate",
+     "pos": "adj.",
+     "zh": "最終的；終極的"
+    }
+   ]
   },
   {
    "w": "complex",
    "pos": "adj.",
-   "zh": "複雜的"
+   "zh": "複雜的",
+   "f": [],
+   "fam": [
+    {
+     "w": "complexity",
+     "pos": "n.",
+     "zh": "複雜性"
+    }
+   ]
   },
   {
    "w": "generate",
    "pos": "v.",
-   "zh": "產生"
+   "zh": "產生",
+   "f": [
+    {
+     "k": "past",
+     "w": "generated"
+    },
+    {
+     "k": "pp",
+     "w": "generated"
+    },
+    {
+     "k": "ing",
+     "w": "generating"
+    },
+    {
+     "k": "s3",
+     "w": "generates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "generation",
+     "pos": "n.",
+     "zh": "產生；世代"
+    },
+    {
+     "w": "generator",
+     "pos": "n.",
+     "zh": "發電機；產生器"
+    }
+   ]
   },
   {
    "w": "reference",
    "pos": "n.",
-   "zh": "參考"
+   "zh": "參考",
+   "f": [
+    {
+     "k": "plural",
+     "w": "references"
+    }
+   ],
+   "fam": [
+    {
+     "w": "refer",
+     "pos": "v.",
+     "zh": "提到；參考"
+    }
+   ]
   },
   {
    "w": "snippet",
    "pos": "n.",
-   "zh": "片段"
+   "zh": "片段",
+   "f": [
+    {
+     "k": "plural",
+     "w": "snippets"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "scenario",
    "pos": "n.",
-   "zh": "情境；狀況"
+   "zh": "情境；狀況",
+   "f": [
+    {
+     "k": "plural",
+     "w": "scenarios"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "perforated",
    "pos": "adj.",
-   "zh": "穿孔的"
+   "zh": "穿孔的",
+   "f": [],
+   "fam": [
+    {
+     "w": "perforate",
+     "pos": "v.",
+     "zh": "打孔"
+    }
+   ]
   },
   {
    "w": "appendix",
    "pos": "n.",
-   "zh": "闌尾"
+   "zh": "闌尾",
+   "f": [
+    {
+     "k": "plural",
+     "w": "appendixes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "viral",
    "pos": "adj.",
-   "zh": "病毒性的"
+   "zh": "病毒性的",
+   "f": [],
+   "fam": [
+    {
+     "w": "virus",
+     "pos": "n.",
+     "zh": "病毒"
+    }
+   ]
   },
   {
    "w": "infection",
    "pos": "n.",
-   "zh": "感染"
+   "zh": "感染",
+   "f": [
+    {
+     "k": "plural",
+     "w": "infections"
+    }
+   ],
+   "fam": [
+    {
+     "w": "infect",
+     "pos": "v.",
+     "zh": "感染"
+    },
+    {
+     "w": "infectious",
+     "pos": "adj.",
+     "zh": "傳染性的"
+    },
+    {
+     "w": "infected",
+     "pos": "adj.",
+     "zh": "受感染的"
+    }
+   ]
   },
   {
    "w": "theoretically",
    "pos": "adv.",
-   "zh": "理論上"
+   "zh": "理論上",
+   "f": [],
+   "fam": [
+    {
+     "w": "theory",
+     "pos": "n.",
+     "zh": "理論"
+    },
+    {
+     "w": "theoretical",
+     "pos": "adj.",
+     "zh": "理論上的"
+    }
+   ]
   },
   {
    "w": "presentation",
    "pos": "n.",
-   "zh": "（症狀）表現"
+   "zh": "（症狀）表現",
+   "f": [
+    {
+     "k": "plural",
+     "w": "presentations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "present",
+     "pos": "v.",
+     "zh": "呈現；報告"
+    }
+   ]
   },
   {
    "w": "symptom",
    "pos": "n.",
-   "zh": "症狀"
+   "zh": "症狀",
+   "f": [
+    {
+     "k": "plural",
+     "w": "symptoms"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "nudge",
    "pos": "n.",
-   "zh": "輕推；提醒"
+   "zh": "輕推；提醒",
+   "f": [
+    {
+     "k": "plural",
+     "w": "nudges"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "overburden",
    "pos": "v.",
-   "zh": "使負擔過重"
+   "zh": "使負擔過重",
+   "f": [
+    {
+     "k": "past",
+     "w": "overburdened"
+    },
+    {
+     "k": "pp",
+     "w": "overburdened"
+    },
+    {
+     "k": "ing",
+     "w": "overburdening"
+    },
+    {
+     "k": "s3",
+     "w": "overburdens"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "colleague",
    "pos": "n.",
-   "zh": "同事"
+   "zh": "同事",
+   "f": [
+    {
+     "k": "plural",
+     "w": "colleagues"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "sanity",
    "pos": "n.",
-   "zh": "理智"
+   "zh": "理智",
+   "f": [],
+   "fam": [
+    {
+     "w": "sane",
+     "pos": "adj.",
+     "zh": "神智正常的"
+    }
+   ]
   },
   {
    "w": "critical",
    "pos": "adj.",
-   "zh": "情況危急的"
+   "zh": "情況危急的",
+   "f": [],
+   "fam": [
+    {
+     "w": "critic",
+     "pos": "n.",
+     "zh": "評論家"
+    },
+    {
+     "w": "criticize",
+     "pos": "v.",
+     "zh": "批評"
+    },
+    {
+     "w": "criticism",
+     "pos": "n.",
+     "zh": "批評"
+    },
+    {
+     "w": "critically",
+     "pos": "adv.",
+     "zh": "嚴重地；批判地"
+    }
+   ]
   }
  ]
 }

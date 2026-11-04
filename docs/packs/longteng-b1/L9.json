@@ -7,107 +7,367 @@
   {
    "w": "detailed",
    "pos": "adj.",
-   "zh": "詳細的；精緻的"
+   "zh": "詳細的；精緻的",
+   "f": [],
+   "fam": [
+    {
+     "w": "detail",
+     "pos": "n.",
+     "zh": "細節"
+    },
+    {
+     "w": "detail",
+     "pos": "v.",
+     "zh": "詳細說明"
+    }
+   ]
   },
   {
    "w": "mess",
    "pos": "n.",
-   "zh": "一團亂；髒亂"
+   "zh": "一團亂；髒亂",
+   "f": [
+    {
+     "k": "plural",
+     "w": "messes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "messy",
+     "pos": "adj.",
+     "zh": "凌亂的"
+    }
+   ]
   },
   {
    "w": "express",
    "pos": "v.",
-   "zh": "表達"
+   "zh": "表達",
+   "f": [
+    {
+     "k": "past",
+     "w": "expressed"
+    },
+    {
+     "k": "pp",
+     "w": "expressed"
+    },
+    {
+     "k": "ing",
+     "w": "expressing"
+    },
+    {
+     "k": "s3",
+     "w": "expresses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "expression",
+     "pos": "n.",
+     "zh": "表達；表情"
+    },
+    {
+     "w": "expressive",
+     "pos": "adj.",
+     "zh": "富表現力的"
+    }
+   ]
   },
   {
    "w": "opinion",
    "pos": "n.",
-   "zh": "意見；看法"
+   "zh": "意見；看法",
+   "f": [
+    {
+     "k": "plural",
+     "w": "opinions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "opinionated",
+     "pos": "adj.",
+     "zh": "固執己見的"
+    }
+   ]
   },
   {
    "w": "contrast",
    "pos": "n.",
-   "zh": "對比；對照"
+   "zh": "對比；對照",
+   "f": [
+    {
+     "k": "plural",
+     "w": "contrasts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "horror",
    "pos": "n.",
-   "zh": "恐懼；恐怖"
+   "zh": "恐懼；恐怖",
+   "f": [
+    {
+     "k": "plural",
+     "w": "horrors"
+    }
+   ],
+   "fam": [
+    {
+     "w": "horrify",
+     "pos": "v.",
+     "zh": "使驚恐"
+    },
+    {
+     "w": "horrible",
+     "pos": "adj.",
+     "zh": "可怕的"
+    },
+    {
+     "w": "horrific",
+     "pos": "adj.",
+     "zh": "駭人的"
+    },
+    {
+     "w": "horribly",
+     "pos": "adv.",
+     "zh": "可怕地"
+    }
+   ]
   },
   {
    "w": "innocence",
    "pos": "n.",
-   "zh": "天真；無辜"
+   "zh": "天真；無辜",
+   "f": [],
+   "fam": [
+    {
+     "w": "innocent",
+     "pos": "adj.",
+     "zh": "無辜的；天真的"
+    },
+    {
+     "w": "innocently",
+     "pos": "adv.",
+     "zh": "天真地"
+    }
+   ]
   },
   {
    "w": "violence",
    "pos": "n.",
-   "zh": "暴力"
+   "zh": "暴力",
+   "f": [],
+   "fam": [
+    {
+     "w": "violent",
+     "pos": "adj.",
+     "zh": "暴力的；猛烈的"
+    },
+    {
+     "w": "violently",
+     "pos": "adv.",
+     "zh": "猛烈地"
+    }
+   ]
   },
   {
    "w": "visual",
    "pos": "adj.",
-   "zh": "視覺的"
+   "zh": "視覺的",
+   "f": [],
+   "fam": [
+    {
+     "w": "visualize",
+     "pos": "v.",
+     "zh": "想像；視覺化"
+    },
+    {
+     "w": "visually",
+     "pos": "adv.",
+     "zh": "視覺上"
+    },
+    {
+     "w": "vision",
+     "pos": "n.",
+     "zh": "視力；願景"
+    }
+   ]
   },
   {
    "w": "pollution",
    "pos": "n.",
-   "zh": "汙染"
+   "zh": "汙染",
+   "f": [],
+   "fam": [
+    {
+     "w": "pollute",
+     "pos": "v.",
+     "zh": "汙染"
+    },
+    {
+     "w": "polluted",
+     "pos": "adj.",
+     "zh": "受汙染的"
+    }
+   ]
   },
   {
    "w": "permission",
    "pos": "n.",
-   "zh": "許可；允許"
+   "zh": "許可；允許",
+   "f": [],
+   "fam": [
+    {
+     "w": "permit",
+     "pos": "v.",
+     "zh": "允許"
+    },
+    {
+     "w": "permissive",
+     "pos": "adj.",
+     "zh": "放任的"
+    }
+   ]
   },
   {
    "w": "effort",
    "pos": "n.",
-   "zh": "努力；心力"
+   "zh": "努力；心力",
+   "f": [
+    {
+     "k": "plural",
+     "w": "efforts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "effortless",
+     "pos": "adj.",
+     "zh": "不費力的"
+    },
+    {
+     "w": "effortlessly",
+     "pos": "adv.",
+     "zh": "輕鬆地"
+    }
+   ]
   },
   {
    "w": "community",
    "pos": "n.",
-   "zh": "社區；社群"
+   "zh": "社區；社群",
+   "f": [
+    {
+     "k": "plural",
+     "w": "communities"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "associate",
    "pos": "v.",
-   "zh": "把……聯想在一起"
+   "zh": "把……聯想在一起",
+   "f": [
+    {
+     "k": "past",
+     "w": "associated"
+    },
+    {
+     "k": "pp",
+     "w": "associated"
+    },
+    {
+     "k": "ing",
+     "w": "associating"
+    },
+    {
+     "k": "s3",
+     "w": "associates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "association",
+     "pos": "n.",
+     "zh": "協會；關聯"
+    }
+   ]
   },
   {
    "w": "criminal",
    "pos": "adj.",
-   "zh": "犯罪的"
+   "zh": "犯罪的",
+   "f": [],
+   "fam": [
+    {
+     "w": "crime",
+     "pos": "n.",
+     "zh": "犯罪"
+    }
+   ]
   },
   {
    "w": "destructive",
    "pos": "adj.",
-   "zh": "破壞性的"
+   "zh": "破壞性的",
+   "f": [],
+   "fam": [
+    {
+     "w": "destroy",
+     "pos": "v.",
+     "zh": "破壞；摧毀"
+    },
+    {
+     "w": "destruction",
+     "pos": "n.",
+     "zh": "破壞"
+    },
+    {
+     "w": "destructively",
+     "pos": "adv.",
+     "zh": "破壞性地"
+    }
+   ]
   },
   {
    "w": "come in",
    "pos": "phr.",
-   "zh": "有（某種形式、顏色）；進來"
+   "zh": "有（某種形式、顏色）；進來",
+   "f": [],
+   "fam": []
   },
   {
    "w": "stand for",
    "pos": "phr.",
-   "zh": "代表；象徵"
+   "zh": "代表；象徵",
+   "f": [],
+   "fam": []
   },
   {
    "w": "nothing but",
    "pos": "phr.",
-   "zh": "只不過；只有"
+   "zh": "只不過；只有",
+   "f": [],
+   "fam": []
   },
   {
    "w": "get rid of",
    "pos": "phr.",
-   "zh": "擺脫；除去"
+   "zh": "擺脫；除去",
+   "f": [],
+   "fam": []
   },
   {
    "w": "when it comes to",
    "pos": "phr.",
-   "zh": "說到；談到"
+   "zh": "說到；談到",
+   "f": [],
+   "fam": []
   }
  ]
 }

@@ -7,102 +7,399 @@
   {
    "w": "literature",
    "pos": "n.",
-   "zh": "文學"
+   "zh": "文學",
+   "f": [],
+   "fam": [
+    {
+     "w": "literary",
+     "pos": "adj.",
+     "zh": "文學的"
+    }
+   ]
   },
   {
    "w": "accompany",
    "pos": "v.",
-   "zh": "陪同"
+   "zh": "陪同",
+   "f": [
+    {
+     "k": "past",
+     "w": "accompanied"
+    },
+    {
+     "k": "pp",
+     "w": "accompanied"
+    },
+    {
+     "k": "ing",
+     "w": "accompanying"
+    },
+    {
+     "k": "s3",
+     "w": "accompanies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "accompaniment",
+     "pos": "n.",
+     "zh": "伴奏"
+    }
+   ]
   },
   {
    "w": "delicacy",
    "pos": "n.",
-   "zh": "佳餚"
+   "zh": "佳餚",
+   "f": [
+    {
+     "k": "plural",
+     "w": "delicacies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "delicate",
+     "pos": "adj.",
+     "zh": "精緻的；脆弱的"
+    }
+   ]
   },
   {
    "w": "boundary",
    "pos": "n.",
-   "zh": "界線"
+   "zh": "界線",
+   "f": [
+    {
+     "k": "plural",
+     "w": "boundaries"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "colonial",
    "pos": "adj.",
-   "zh": "殖民時期的"
+   "zh": "殖民時期的",
+   "f": [],
+   "fam": [
+    {
+     "w": "colony",
+     "pos": "n.",
+     "zh": "殖民地"
+    },
+    {
+     "w": "colonize",
+     "pos": "v.",
+     "zh": "殖民"
+    }
+   ]
   },
   {
    "w": "preserve",
    "pos": "v.",
-   "zh": "保護；保存"
+   "zh": "保護；保存",
+   "f": [
+    {
+     "k": "past",
+     "w": "preserved"
+    },
+    {
+     "k": "pp",
+     "w": "preserved"
+    },
+    {
+     "k": "ing",
+     "w": "preserving"
+    },
+    {
+     "k": "s3",
+     "w": "preserves"
+    }
+   ],
+   "fam": [
+    {
+     "w": "preservation",
+     "pos": "n.",
+     "zh": "保存；保護"
+    }
+   ]
   },
   {
    "w": "present",
    "pos": "v.",
-   "zh": "頒（獎）"
+   "zh": "頒（獎）",
+   "f": [
+    {
+     "k": "past",
+     "w": "presented"
+    },
+    {
+     "k": "pp",
+     "w": "presented"
+    },
+    {
+     "k": "ing",
+     "w": "presenting"
+    },
+    {
+     "k": "s3",
+     "w": "presents"
+    }
+   ],
+   "fam": [
+    {
+     "w": "presentation",
+     "pos": "n.",
+     "zh": "簡報；呈現"
+    },
+    {
+     "w": "presenter",
+     "pos": "n.",
+     "zh": "主持人"
+    }
+   ]
   },
   {
    "w": "navigate",
    "pos": "v.",
-   "zh": "穿行；移動"
+   "zh": "穿行；移動",
+   "f": [
+    {
+     "k": "past",
+     "w": "navigated"
+    },
+    {
+     "k": "pp",
+     "w": "navigated"
+    },
+    {
+     "k": "ing",
+     "w": "navigating"
+    },
+    {
+     "k": "s3",
+     "w": "navigates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "navigation",
+     "pos": "n.",
+     "zh": "導航"
+    },
+    {
+     "w": "navigator",
+     "pos": "n.",
+     "zh": "領航員"
+    }
+   ]
   },
   {
    "w": "construct",
    "pos": "v.",
-   "zh": "建造"
+   "zh": "建造",
+   "f": [
+    {
+     "k": "past",
+     "w": "constructed"
+    },
+    {
+     "k": "pp",
+     "w": "constructed"
+    },
+    {
+     "k": "ing",
+     "w": "constructing"
+    },
+    {
+     "k": "s3",
+     "w": "constructs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "construction",
+     "pos": "n.",
+     "zh": "建造；建設"
+    },
+    {
+     "w": "constructive",
+     "pos": "adj.",
+     "zh": "建設性的"
+    }
+   ]
   },
   {
    "w": "remote",
    "pos": "adj.",
-   "zh": "偏遠的"
+   "zh": "偏遠的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "remoter"
+    },
+    {
+     "k": "sup",
+     "w": "remotest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "remotely",
+     "pos": "adv.",
+     "zh": "遠距地；遙遠地"
+    }
+   ]
   },
   {
    "w": "isolated",
    "pos": "adj.",
-   "zh": "與外界隔離的"
+   "zh": "與外界隔離的",
+   "f": [],
+   "fam": [
+    {
+     "w": "isolate",
+     "pos": "v.",
+     "zh": "隔離"
+    },
+    {
+     "w": "isolation",
+     "pos": "n.",
+     "zh": "隔離；孤立"
+    }
+   ]
   },
   {
    "w": "cautious",
    "pos": "adj.",
-   "zh": "謹慎的"
+   "zh": "謹慎的",
+   "f": [],
+   "fam": [
+    {
+     "w": "caution",
+     "pos": "n.",
+     "zh": "謹慎"
+    },
+    {
+     "w": "cautiously",
+     "pos": "adv.",
+     "zh": "謹慎地"
+    }
+   ]
   },
   {
    "w": "pioneering",
    "pos": "adj.",
-   "zh": "首創的"
+   "zh": "首創的",
+   "f": [],
+   "fam": [
+    {
+     "w": "pioneer",
+     "pos": "n.",
+     "zh": "先驅；開拓者"
+    }
+   ]
   },
   {
    "w": "connect",
    "pos": "v.",
-   "zh": "連接"
+   "zh": "連接",
+   "f": [
+    {
+     "k": "past",
+     "w": "connected"
+    },
+    {
+     "k": "pp",
+     "w": "connected"
+    },
+    {
+     "k": "ing",
+     "w": "connecting"
+    },
+    {
+     "k": "s3",
+     "w": "connects"
+    }
+   ],
+   "fam": [
+    {
+     "w": "connection",
+     "pos": "n.",
+     "zh": "連接；關聯"
+    }
+   ]
   },
   {
    "w": "divide",
    "pos": "v.",
-   "zh": "分隔"
+   "zh": "分隔",
+   "f": [
+    {
+     "k": "past",
+     "w": "divided"
+    },
+    {
+     "k": "pp",
+     "w": "divided"
+    },
+    {
+     "k": "ing",
+     "w": "dividing"
+    },
+    {
+     "k": "s3",
+     "w": "divides"
+    }
+   ],
+   "fam": [
+    {
+     "w": "division",
+     "pos": "n.",
+     "zh": "劃分；部門"
+    },
+    {
+     "w": "divisive",
+     "pos": "adj.",
+     "zh": "造成分歧的"
+    }
+   ]
   },
   {
    "w": "against the backdrop of",
    "pos": "phr.",
-   "zh": "以…為背景"
+   "zh": "以…為背景",
+   "f": [],
+   "fam": []
   },
   {
    "w": "present A as B",
    "pos": "phr.",
-   "zh": "把A呈現為B"
+   "zh": "把A呈現為B",
+   "f": [],
+   "fam": []
   },
   {
    "w": "be central to",
    "pos": "phr.",
-   "zh": "是…的核心"
+   "zh": "是…的核心",
+   "f": [],
+   "fam": []
   },
   {
    "w": "connect A to B",
    "pos": "phr.",
-   "zh": "把A連到B"
+   "zh": "把A連到B",
+   "f": [],
+   "fam": []
   },
   {
    "w": "divide A into B",
    "pos": "phr.",
-   "zh": "把A分成B"
+   "zh": "把A分成B",
+   "f": [],
+   "fam": []
   }
  ]
 }

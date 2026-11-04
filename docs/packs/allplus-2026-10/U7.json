@@ -7,67 +7,286 @@
   {
    "w": "accidental",
    "pos": "adj.",
-   "zh": "意外的"
+   "zh": "意外的",
+   "f": [],
+   "fam": [
+    {
+     "w": "accident",
+     "pos": "n.",
+     "zh": "意外"
+    },
+    {
+     "w": "accidentally",
+     "pos": "adv.",
+     "zh": "意外地"
+    }
+   ]
   },
   {
    "w": "subtle",
    "pos": "adj.",
-   "zh": "細微的"
+   "zh": "細微的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "subtler"
+    },
+    {
+     "k": "sup",
+     "w": "subtlest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "subtly",
+     "pos": "adv.",
+     "zh": "微妙地"
+    },
+    {
+     "w": "subtlety",
+     "pos": "n.",
+     "zh": "微妙之處"
+    }
+   ]
   },
   {
    "w": "psychology",
    "pos": "n.",
-   "zh": "心理作用"
+   "zh": "心理作用",
+   "f": [],
+   "fam": [
+    {
+     "w": "psychological",
+     "pos": "adj.",
+     "zh": "心理的"
+    },
+    {
+     "w": "psychologically",
+     "pos": "adv.",
+     "zh": "心理上"
+    }
+   ]
   },
   {
    "w": "stimulate",
    "pos": "v.",
-   "zh": "刺激"
+   "zh": "刺激",
+   "f": [
+    {
+     "k": "past",
+     "w": "stimulated"
+    },
+    {
+     "k": "pp",
+     "w": "stimulated"
+    },
+    {
+     "k": "ing",
+     "w": "stimulating"
+    },
+    {
+     "k": "s3",
+     "w": "stimulates"
+    }
+   ],
+   "fam": [
+    {
+     "w": "stimulation",
+     "pos": "n.",
+     "zh": "刺激；激勵"
+    },
+    {
+     "w": "stimulus",
+     "pos": "n.",
+     "zh": "刺激物；激勵"
+    }
+   ]
   },
   {
    "w": "placement",
    "pos": "n.",
-   "zh": "擺放位置"
+   "zh": "擺放位置",
+   "f": [
+    {
+     "k": "plural",
+     "w": "placements"
+    }
+   ],
+   "fam": [
+    {
+     "w": "place",
+     "pos": "v.",
+     "zh": "放置"
+    }
+   ]
   },
   {
    "w": "profitable",
    "pos": "adj.",
-   "zh": "賺錢的"
+   "zh": "賺錢的",
+   "f": [],
+   "fam": [
+    {
+     "w": "profit",
+     "pos": "n.",
+     "zh": "利潤"
+    },
+    {
+     "w": "profitably",
+     "pos": "adv.",
+     "zh": "有利地"
+    }
+   ]
   },
   {
    "w": "boost",
    "pos": "v.",
-   "zh": "提高"
+   "zh": "提高",
+   "f": [
+    {
+     "k": "past",
+     "w": "boosted"
+    },
+    {
+     "k": "pp",
+     "w": "boosted"
+    },
+    {
+     "k": "ing",
+     "w": "boosting"
+    },
+    {
+     "k": "s3",
+     "w": "boosts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "booster",
+     "pos": "n.",
+     "zh": "增強劑；推進器"
+    }
+   ]
   },
   {
    "w": "pace",
    "pos": "n.",
-   "zh": "節奏"
+   "zh": "節奏",
+   "f": [
+    {
+     "k": "plural",
+     "w": "paces"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "physically",
    "pos": "adv.",
-   "zh": "身體上"
+   "zh": "身體上",
+   "f": [],
+   "fam": [
+    {
+     "w": "physical",
+     "pos": "adj.",
+     "zh": "身體的"
+    }
+   ]
   },
   {
    "w": "cushion",
    "pos": "v.",
-   "zh": "加軟墊；緩衝"
+   "zh": "加軟墊；緩衝",
+   "f": [
+    {
+     "k": "past",
+     "w": "cushioned"
+    },
+    {
+     "k": "pp",
+     "w": "cushioned"
+    },
+    {
+     "k": "ing",
+     "w": "cushioning"
+    },
+    {
+     "k": "s3",
+     "w": "cushions"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "linger",
    "pos": "v.",
-   "zh": "逗留"
+   "zh": "逗留",
+   "f": [
+    {
+     "k": "past",
+     "w": "lingered"
+    },
+    {
+     "k": "pp",
+     "w": "lingered"
+    },
+    {
+     "k": "ing",
+     "w": "lingering"
+    },
+    {
+     "k": "s3",
+     "w": "lingers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "calorie",
    "pos": "n.",
-   "zh": "卡路里"
+   "zh": "卡路里",
+   "f": [
+    {
+     "k": "plural",
+     "w": "calories"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "indulge",
    "pos": "v.",
-   "zh": "放縱（自己）"
+   "zh": "放縱（自己）",
+   "f": [
+    {
+     "k": "past",
+     "w": "indulged"
+    },
+    {
+     "k": "pp",
+     "w": "indulged"
+    },
+    {
+     "k": "ing",
+     "w": "indulging"
+    },
+    {
+     "k": "s3",
+     "w": "indulges"
+    }
+   ],
+   "fam": [
+    {
+     "w": "indulgence",
+     "pos": "n.",
+     "zh": "放縱；嗜好"
+    },
+    {
+     "w": "indulgent",
+     "pos": "adj.",
+     "zh": "縱容的"
+    }
+   ]
   }
  ]
 }

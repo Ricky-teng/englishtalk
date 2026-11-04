@@ -7,97 +7,276 @@
   {
    "w": "effect",
    "pos": "n.",
-   "zh": "效果"
+   "zh": "效果",
+   "f": [
+    {
+     "k": "plural",
+     "w": "effects"
+    }
+   ],
+   "fam": [
+    {
+     "w": "effective",
+     "pos": "adj.",
+     "zh": "有效的"
+    },
+    {
+     "w": "effectively",
+     "pos": "adv.",
+     "zh": "有效地"
+    }
+   ]
   },
   {
    "w": "solid",
    "pos": "adj.",
-   "zh": "結實的；實心"
+   "zh": "結實的；實心",
+   "f": [],
+   "fam": [
+    {
+     "w": "solidity",
+     "pos": "n.",
+     "zh": "堅固；可靠"
+    },
+    {
+     "w": "solidly",
+     "pos": "adv.",
+     "zh": "牢固地；扎實地"
+    },
+    {
+     "w": "solidify",
+     "pos": "v.",
+     "zh": "使凝固；鞏固"
+    }
+   ]
   },
   {
    "w": "vivid",
    "pos": "adj.",
-   "zh": "鮮豔的"
+   "zh": "鮮豔的",
+   "f": [],
+   "fam": [
+    {
+     "w": "vividly",
+     "pos": "adv.",
+     "zh": "生動地；鮮明地"
+    }
+   ]
   },
   {
    "w": "cloudy",
    "pos": "adj.",
-   "zh": "混濁不透明的"
+   "zh": "混濁不透明的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "cloudier"
+    },
+    {
+     "k": "sup",
+     "w": "cloudiest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "cloud",
+     "pos": "n.",
+     "zh": "雲"
+    }
+   ]
   },
   {
    "w": "jewelry",
    "pos": "n.",
-   "zh": "珠寶首飾"
+   "zh": "珠寶首飾",
+   "f": [],
+   "fam": []
   },
   {
    "w": "glow",
    "pos": "n.",
-   "zh": "光澤；光芒"
+   "zh": "光澤；光芒",
+   "f": [],
+   "fam": []
   },
   {
    "w": "glowing",
    "pos": "adj.",
-   "zh": "發光的"
+   "zh": "發光的",
+   "f": [],
+   "fam": [
+    {
+     "w": "glow",
+     "pos": "v.",
+     "zh": "發光"
+    },
+    {
+     "w": "glow",
+     "pos": "n.",
+     "zh": "光芒；光澤"
+    }
+   ]
   },
   {
    "w": "indoor",
    "pos": "adj.",
-   "zh": "室內的"
+   "zh": "室內的",
+   "f": [],
+   "fam": [
+    {
+     "w": "indoors",
+     "pos": "adv.",
+     "zh": "在室內"
+    }
+   ]
   },
   {
    "w": "attractive",
    "pos": "adj.",
-   "zh": "吸引人的"
+   "zh": "吸引人的",
+   "f": [],
+   "fam": [
+    {
+     "w": "attract",
+     "pos": "v.",
+     "zh": "吸引"
+    },
+    {
+     "w": "attraction",
+     "pos": "n.",
+     "zh": "吸引力；景點"
+    }
+   ]
   },
   {
    "w": "appealing",
    "pos": "adj.",
-   "zh": "討喜的"
+   "zh": "討喜的",
+   "f": [],
+   "fam": [
+    {
+     "w": "appeal",
+     "pos": "n.",
+     "zh": "吸引力"
+    },
+    {
+     "w": "appeal",
+     "pos": "v.",
+     "zh": "吸引；呼籲"
+    }
+   ]
   },
   {
    "w": "variety",
    "pos": "n.",
-   "zh": "種類"
+   "zh": "種類",
+   "f": [
+    {
+     "k": "plural",
+     "w": "varieties"
+    }
+   ],
+   "fam": [
+    {
+     "w": "vary",
+     "pos": "v.",
+     "zh": "變化；不同"
+    },
+    {
+     "w": "various",
+     "pos": "adj.",
+     "zh": "各種的"
+    },
+    {
+     "w": "varied",
+     "pos": "adj.",
+     "zh": "多樣的"
+    }
+   ]
   },
   {
    "w": "value",
    "pos": "n.",
-   "zh": "價值"
+   "zh": "價值",
+   "f": [
+    {
+     "k": "plural",
+     "w": "values"
+    }
+   ],
+   "fam": [
+    {
+     "w": "valuable",
+     "pos": "adj.",
+     "zh": "有價值的"
+    }
+   ]
   },
   {
    "w": "claim",
    "pos": "v.",
-   "zh": "聲稱"
+   "zh": "聲稱",
+   "f": [
+    {
+     "k": "past",
+     "w": "claimed"
+    },
+    {
+     "k": "pp",
+     "w": "claimed"
+    },
+    {
+     "k": "ing",
+     "w": "claiming"
+    },
+    {
+     "k": "s3",
+     "w": "claims"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "stand out from",
    "pos": "phr.",
-   "zh": "從…中脫穎而出"
+   "zh": "從…中脫穎而出",
+   "f": [],
+   "fam": []
   },
   {
    "w": "dry up",
    "pos": "phr.",
-   "zh": "乾涸"
+   "zh": "乾涸",
+   "f": [],
+   "fam": []
   },
   {
    "w": "leave behind",
    "pos": "phr.",
-   "zh": "留下"
+   "zh": "留下",
+   "f": [],
+   "fam": []
   },
   {
    "w": "in terms of",
    "pos": "phr.",
-   "zh": "就…而言"
+   "zh": "就…而言",
+   "f": [],
+   "fam": []
   },
   {
    "w": "take on",
    "pos": "phr.",
-   "zh": "呈現（特徵）"
+   "zh": "呈現（特徵）",
+   "f": [],
+   "fam": []
   },
   {
    "w": "a variety of",
    "pos": "phr.",
-   "zh": "各種"
+   "zh": "各種",
+   "f": [],
+   "fam": []
   }
  ]
 }

@@ -1,0 +1,92 @@
+{
+ "id": "U3",
+ "title": "在紐約搭地鐵",
+ "tag": "Live2611-U3",
+ "verified": true,
+ "items": [
+  {
+   "w": "reload",
+   "pos": "v.",
+   "zh": "重新加值；重新裝填",
+   "f": [
+    {
+     "k": "past",
+     "w": "reloaded"
+    },
+    {
+     "k": "pp",
+     "w": "reloaded"
+    },
+    {
+     "k": "ing",
+     "w": "reloading"
+    },
+    {
+     "k": "s3",
+     "w": "reloads"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "agent",
+   "pos": "n.",
+   "zh": "（售票）服務員；代理人",
+   "f": [
+    {
+     "k": "plural",
+     "w": "agents"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "traveler",
+   "pos": "n.",
+   "zh": "旅客",
+   "f": [
+    {
+     "k": "plural",
+     "w": "travelers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "travel",
+     "pos": "v.",
+     "zh": "旅行"
+    }
+   ]
+  },
+  {
+   "w": "transfer",
+   "pos": "v.",
+   "zh": "轉乘；轉移",
+   "f": [
+    {
+     "k": "past",
+     "w": "transferred"
+    },
+    {
+     "k": "pp",
+     "w": "transferred"
+    },
+    {
+     "k": "ing",
+     "w": "transferring"
+    },
+    {
+     "k": "s3",
+     "w": "transfers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "transferable",
+     "pos": "adj.",
+     "zh": "可轉移的"
+    }
+   ]
+  }
+ ]
+}

@@ -7,32 +7,105 @@
   {
    "w": "beverage",
    "pos": "n.",
-   "zh": "飲品"
+   "zh": "飲品",
+   "f": [
+    {
+     "k": "plural",
+     "w": "beverages"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "fatigue",
    "pos": "n.",
-   "zh": "疲勞"
+   "zh": "疲勞",
+   "f": [],
+   "fam": [
+    {
+     "w": "fatigued",
+     "pos": "adj.",
+     "zh": "疲憊的"
+    }
+   ]
   },
   {
    "w": "ingredient",
    "pos": "n.",
-   "zh": "成分"
+   "zh": "成分",
+   "f": [
+    {
+     "k": "plural",
+     "w": "ingredients"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "inevitable",
    "pos": "adj.",
-   "zh": "必然的"
+   "zh": "必然的",
+   "f": [],
+   "fam": [
+    {
+     "w": "inevitably",
+     "pos": "adv.",
+     "zh": "不可避免地"
+    }
+   ]
   },
   {
    "w": "disrupt",
    "pos": "v.",
-   "zh": "打亂"
+   "zh": "打亂",
+   "f": [
+    {
+     "k": "past",
+     "w": "disrupted"
+    },
+    {
+     "k": "pp",
+     "w": "disrupted"
+    },
+    {
+     "k": "ing",
+     "w": "disrupting"
+    },
+    {
+     "k": "s3",
+     "w": "disrupts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "disruption",
+     "pos": "n.",
+     "zh": "中斷；擾亂"
+    },
+    {
+     "w": "disruptive",
+     "pos": "adj.",
+     "zh": "擾亂的"
+    }
+   ]
   },
   {
    "w": "cautious",
    "pos": "adj.",
-   "zh": "小心的"
+   "zh": "小心的",
+   "f": [],
+   "fam": [
+    {
+     "w": "caution",
+     "pos": "n.",
+     "zh": "謹慎"
+    },
+    {
+     "w": "cautiously",
+     "pos": "adv.",
+     "zh": "謹慎地"
+    }
+   ]
   }
  ]
 }

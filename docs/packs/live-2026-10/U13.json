@@ -7,22 +7,63 @@
   {
    "w": "leisure",
    "pos": "n.",
-   "zh": "空閒；休閒"
+   "zh": "空閒；休閒",
+   "f": [],
+   "fam": [
+    {
+     "w": "leisurely",
+     "pos": "adj.",
+     "zh": "悠閒的"
+    }
+   ]
   },
   {
    "w": "anxious",
    "pos": "adj.",
-   "zh": "焦慮的；擔心的"
+   "zh": "焦慮的；擔心的",
+   "f": [],
+   "fam": [
+    {
+     "w": "anxiety",
+     "pos": "n.",
+     "zh": "焦慮"
+    },
+    {
+     "w": "anxiously",
+     "pos": "adv.",
+     "zh": "焦急地"
+    }
+   ]
   },
   {
    "w": "afterward",
    "pos": "adv.",
-   "zh": "之後"
+   "zh": "之後",
+   "f": [],
+   "fam": []
   },
   {
    "w": "passion",
    "pos": "n.",
-   "zh": "熱情；熱愛"
+   "zh": "熱情；熱愛",
+   "f": [
+    {
+     "k": "plural",
+     "w": "passions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "passionate",
+     "pos": "adj.",
+     "zh": "熱情的"
+    },
+    {
+     "w": "passionately",
+     "pos": "adv.",
+     "zh": "熱情地"
+    }
+   ]
   }
  ]
 }

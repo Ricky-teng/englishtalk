@@ -7,92 +7,331 @@
   {
    "w": "signal",
    "pos": "n.",
-   "zh": "訊號；信號"
+   "zh": "訊號；信號",
+   "f": [
+    {
+     "k": "plural",
+     "w": "signals"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "improvement",
    "pos": "n.",
-   "zh": "改善；進步"
+   "zh": "改善；進步",
+   "f": [
+    {
+     "k": "plural",
+     "w": "improvements"
+    }
+   ],
+   "fam": [
+    {
+     "w": "improve",
+     "pos": "v.",
+     "zh": "改善；進步"
+    }
+   ]
   },
   {
    "w": "routine",
    "pos": "n.",
-   "zh": "例行公事；日常"
+   "zh": "例行公事；日常",
+   "f": [
+    {
+     "k": "plural",
+     "w": "routines"
+    }
+   ],
+   "fam": [
+    {
+     "w": "routinely",
+     "pos": "adv.",
+     "zh": "例行地；經常"
+    }
+   ]
   },
   {
    "w": "promote",
    "pos": "v.",
-   "zh": "推廣；促進"
+   "zh": "推廣；促進",
+   "f": [
+    {
+     "k": "past",
+     "w": "promoted"
+    },
+    {
+     "k": "pp",
+     "w": "promoted"
+    },
+    {
+     "k": "ing",
+     "w": "promoting"
+    },
+    {
+     "k": "s3",
+     "w": "promotes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "promotion",
+     "pos": "n.",
+     "zh": "推廣；升遷"
+    }
+   ]
   },
   {
    "w": "actually",
    "pos": "adv.",
-   "zh": "實際上；其實"
+   "zh": "實際上；其實",
+   "f": [],
+   "fam": [
+    {
+     "w": "actual",
+     "pos": "adj.",
+     "zh": "實際的"
+    }
+   ]
   },
   {
    "w": "twist",
    "pos": "n.",
-   "zh": "轉折；扭轉"
+   "zh": "轉折；扭轉",
+   "f": [
+    {
+     "k": "plural",
+     "w": "twists"
+    }
+   ],
+   "fam": [
+    {
+     "w": "twisted",
+     "pos": "adj.",
+     "zh": "扭曲的"
+    }
+   ]
   },
   {
    "w": "goal",
    "pos": "n.",
-   "zh": "目標"
+   "zh": "目標",
+   "f": [
+    {
+     "k": "plural",
+     "w": "goals"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "accidentally",
    "pos": "adv.",
-   "zh": "意外地；不小心地"
+   "zh": "意外地；不小心地",
+   "f": [],
+   "fam": [
+    {
+     "w": "accident",
+     "pos": "n.",
+     "zh": "意外"
+    },
+    {
+     "w": "accidental",
+     "pos": "adj.",
+     "zh": "意外的"
+    }
+   ]
   },
   {
    "w": "escalator",
    "pos": "n.",
-   "zh": "電扶梯"
+   "zh": "電扶梯",
+   "f": [
+    {
+     "k": "plural",
+     "w": "escalators"
+    }
+   ],
+   "fam": [
+    {
+     "w": "escalate",
+     "pos": "v.",
+     "zh": "逐步升級"
+    }
+   ]
   },
   {
    "w": "positive",
    "pos": "adj.",
-   "zh": "正面的；積極的"
+   "zh": "正面的；積極的",
+   "f": [],
+   "fam": [
+    {
+     "w": "positively",
+     "pos": "adv.",
+     "zh": "正面地；積極地"
+    }
+   ]
   },
   {
    "w": "booth",
    "pos": "n.",
-   "zh": "攤位；亭子"
+   "zh": "攤位；亭子",
+   "f": [
+    {
+     "k": "plural",
+     "w": "booths"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "motivation",
    "pos": "n.",
-   "zh": "動機；動力"
+   "zh": "動機；動力",
+   "f": [
+    {
+     "k": "plural",
+     "w": "motivations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "motivate",
+     "pos": "v.",
+     "zh": "激勵"
+    },
+    {
+     "w": "motivated",
+     "pos": "adj.",
+     "zh": "積極的"
+    }
+   ]
   },
   {
    "w": "experiment",
    "pos": "n.",
-   "zh": "實驗"
+   "zh": "實驗",
+   "f": [
+    {
+     "k": "plural",
+     "w": "experiments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "experimental",
+     "pos": "adj.",
+     "zh": "實驗的"
+    },
+    {
+     "w": "experimentally",
+     "pos": "adv.",
+     "zh": "以實驗方式"
+    }
+   ]
   },
   {
    "w": "ordinary",
    "pos": "adj.",
-   "zh": "平凡的；普通的"
+   "zh": "平凡的；普通的",
+   "f": [],
+   "fam": [
+    {
+     "w": "ordinarily",
+     "pos": "adv.",
+     "zh": "通常"
+    }
+   ]
   },
   {
    "w": "pedestrian",
    "pos": "n.",
-   "zh": "行人"
+   "zh": "行人",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pedestrians"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "activity",
    "pos": "n.",
-   "zh": "活動"
+   "zh": "活動",
+   "f": [
+    {
+     "k": "plural",
+     "w": "activities"
+    }
+   ],
+   "fam": [
+    {
+     "w": "active",
+     "pos": "adj.",
+     "zh": "活躍的"
+    },
+    {
+     "w": "actively",
+     "pos": "adv.",
+     "zh": "積極地"
+    },
+    {
+     "w": "activate",
+     "pos": "v.",
+     "zh": "啟動"
+    }
+   ]
   },
   {
    "w": "conduct",
    "pos": "v.",
-   "zh": "進行；實施"
+   "zh": "進行；實施",
+   "f": [
+    {
+     "k": "past",
+     "w": "conducted"
+    },
+    {
+     "k": "pp",
+     "w": "conducted"
+    },
+    {
+     "k": "ing",
+     "w": "conducting"
+    },
+    {
+     "k": "s3",
+     "w": "conducts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "conductor",
+     "pos": "n.",
+     "zh": "指揮；導體"
+    }
+   ]
   },
   {
    "w": "intersection",
    "pos": "n.",
-   "zh": "十字路口"
+   "zh": "十字路口",
+   "f": [
+    {
+     "k": "plural",
+     "w": "intersections"
+    }
+   ],
+   "fam": [
+    {
+     "w": "intersect",
+     "pos": "v.",
+     "zh": "相交；交叉"
+    }
+   ]
   }
  ]
 }

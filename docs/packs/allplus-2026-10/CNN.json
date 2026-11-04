@@ -7,47 +7,158 @@
   {
    "w": "companion",
    "pos": "n.",
-   "zh": "同伴；陪伴者"
+   "zh": "同伴；陪伴者",
+   "f": [
+    {
+     "k": "plural",
+     "w": "companions"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "confidential",
    "pos": "adj.",
-   "zh": "可傾訴的；保密的"
+   "zh": "可傾訴的；保密的",
+   "f": [],
+   "fam": [
+    {
+     "w": "confide",
+     "pos": "v.",
+     "zh": "吐露（祕密）"
+    },
+    {
+     "w": "confidentiality",
+     "pos": "n.",
+     "zh": "保密"
+    },
+    {
+     "w": "confidentially",
+     "pos": "adv.",
+     "zh": "祕密地"
+    }
+   ]
   },
   {
    "w": "lawsuit",
    "pos": "n.",
-   "zh": "訴訟"
+   "zh": "訴訟",
+   "f": [
+    {
+     "k": "plural",
+     "w": "lawsuits"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "reinforce",
    "pos": "v.",
-   "zh": "強化"
+   "zh": "強化",
+   "f": [
+    {
+     "k": "past",
+     "w": "reinforced"
+    },
+    {
+     "k": "pp",
+     "w": "reinforced"
+    },
+    {
+     "k": "ing",
+     "w": "reinforcing"
+    },
+    {
+     "k": "s3",
+     "w": "reinforces"
+    }
+   ],
+   "fam": [
+    {
+     "w": "reinforcement",
+     "pos": "n.",
+     "zh": "強化"
+    }
+   ]
   },
   {
    "w": "disapprove",
    "pos": "v.",
-   "zh": "不贊同"
+   "zh": "不贊同",
+   "f": [
+    {
+     "k": "past",
+     "w": "disapproved"
+    },
+    {
+     "k": "pp",
+     "w": "disapproved"
+    },
+    {
+     "k": "ing",
+     "w": "disapproving"
+    },
+    {
+     "k": "s3",
+     "w": "disapproves"
+    }
+   ],
+   "fam": [
+    {
+     "w": "disapproval",
+     "pos": "n.",
+     "zh": "不贊成"
+    }
+   ]
   },
   {
    "w": "context",
    "pos": "n.",
-   "zh": "背景脈絡"
+   "zh": "背景脈絡",
+   "f": [
+    {
+     "k": "plural",
+     "w": "contexts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "tendency",
    "pos": "n.",
-   "zh": "傾向"
+   "zh": "傾向",
+   "f": [
+    {
+     "k": "plural",
+     "w": "tendencies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "tend",
+     "pos": "v.",
+     "zh": "往往會；傾向"
+    }
+   ]
   },
   {
    "w": "drift",
    "pos": "n.",
-   "zh": "逐漸偏移"
+   "zh": "逐漸偏移",
+   "f": [
+    {
+     "k": "plural",
+     "w": "drifts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "consensus",
    "pos": "n.",
-   "zh": "共識"
+   "zh": "共識",
+   "f": [],
+   "fam": []
   }
  ]
 }

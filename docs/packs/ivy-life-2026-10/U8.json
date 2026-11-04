@@ -7,47 +7,147 @@
   {
    "w": "relationship",
    "pos": "n.",
-   "zh": "人際關係"
+   "zh": "人際關係",
+   "f": [
+    {
+     "k": "plural",
+     "w": "relationships"
+    }
+   ],
+   "fam": [
+    {
+     "w": "relate",
+     "pos": "v.",
+     "zh": "有關聯"
+    }
+   ]
   },
   {
    "w": "explore",
    "pos": "v.",
-   "zh": "探索"
+   "zh": "探索",
+   "f": [
+    {
+     "k": "past",
+     "w": "explored"
+    },
+    {
+     "k": "pp",
+     "w": "explored"
+    },
+    {
+     "k": "ing",
+     "w": "exploring"
+    },
+    {
+     "k": "s3",
+     "w": "explores"
+    }
+   ],
+   "fam": [
+    {
+     "w": "exploration",
+     "pos": "n.",
+     "zh": "探索"
+    },
+    {
+     "w": "explorer",
+     "pos": "n.",
+     "zh": "探險家"
+    },
+    {
+     "w": "exploratory",
+     "pos": "adj.",
+     "zh": "探索性的"
+    }
+   ]
   },
   {
    "w": "environment",
    "pos": "n.",
-   "zh": "環境"
+   "zh": "環境",
+   "f": [
+    {
+     "k": "plural",
+     "w": "environments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "environmental",
+     "pos": "adj.",
+     "zh": "環境的"
+    },
+    {
+     "w": "environmentally",
+     "pos": "adv.",
+     "zh": "在環境方面"
+    }
+   ]
   },
   {
    "w": "unforgettable",
    "pos": "adj.",
-   "zh": "難忘的"
+   "zh": "難忘的",
+   "f": [],
+   "fam": [
+    {
+     "w": "forget",
+     "pos": "v.",
+     "zh": "忘記"
+    }
+   ]
   },
   {
    "w": "memory",
    "pos": "n.",
-   "zh": "回憶"
+   "zh": "回憶",
+   "f": [
+    {
+     "k": "plural",
+     "w": "memories"
+    }
+   ],
+   "fam": [
+    {
+     "w": "memorize",
+     "pos": "v.",
+     "zh": "記住"
+    },
+    {
+     "w": "memorable",
+     "pos": "adj.",
+     "zh": "難忘的"
+    }
+   ]
   },
   {
    "w": "show respect for",
    "pos": "phr.",
-   "zh": "尊重…"
+   "zh": "尊重…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "be willing to",
    "pos": "phr.",
-   "zh": "願意…"
+   "zh": "願意…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "one another",
    "pos": "phr.",
-   "zh": "彼此"
+   "zh": "彼此",
+   "f": [],
+   "fam": []
   },
   {
    "w": "a field trip",
    "pos": "phr.",
-   "zh": "校外教學"
+   "zh": "校外教學",
+   "f": [],
+   "fam": []
   }
  ]
 }

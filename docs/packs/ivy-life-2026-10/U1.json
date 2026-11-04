@@ -7,97 +7,344 @@
   {
    "w": "territory",
    "pos": "n.",
-   "zh": "地盤"
+   "zh": "地盤",
+   "f": [
+    {
+     "k": "plural",
+     "w": "territories"
+    }
+   ],
+   "fam": [
+    {
+     "w": "territorial",
+     "pos": "adj.",
+     "zh": "領土的；地盤性的"
+    }
+   ]
   },
   {
    "w": "tame",
    "pos": "v.",
-   "zh": "馴服"
+   "zh": "馴服",
+   "f": [
+    {
+     "k": "past",
+     "w": "tamed"
+    },
+    {
+     "k": "pp",
+     "w": "tamed"
+    },
+    {
+     "k": "ing",
+     "w": "taming"
+    },
+    {
+     "k": "s3",
+     "w": "tames"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "cruel",
    "pos": "adj.",
-   "zh": "殘酷的"
+   "zh": "殘酷的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "crueler"
+    },
+    {
+     "k": "sup",
+     "w": "cruelest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "cruelty",
+     "pos": "n.",
+     "zh": "殘忍"
+    },
+    {
+     "w": "cruelly",
+     "pos": "adv.",
+     "zh": "殘忍地"
+    }
+   ]
   },
   {
    "w": "faith",
    "pos": "n.",
-   "zh": "信任"
+   "zh": "信任",
+   "f": [],
+   "fam": [
+    {
+     "w": "faithful",
+     "pos": "adj.",
+     "zh": "忠實的"
+    },
+    {
+     "w": "faithfully",
+     "pos": "adv.",
+     "zh": "忠實地"
+    }
+   ]
   },
   {
    "w": "patience",
    "pos": "n.",
-   "zh": "耐性"
+   "zh": "耐性",
+   "f": [],
+   "fam": [
+    {
+     "w": "patient",
+     "pos": "adj.",
+     "zh": "有耐心的"
+    },
+    {
+     "w": "patiently",
+     "pos": "adv.",
+     "zh": "耐心地"
+    }
+   ]
   },
   {
    "w": "character",
    "pos": "n.",
-   "zh": "性格"
+   "zh": "性格",
+   "f": [
+    {
+     "k": "plural",
+     "w": "characters"
+    }
+   ],
+   "fam": [
+    {
+     "w": "characteristic",
+     "pos": "adj.",
+     "zh": "獨特的"
+    },
+    {
+     "w": "characterize",
+     "pos": "v.",
+     "zh": "具有…的特徵"
+    }
+   ]
   },
   {
    "w": "struggle",
    "pos": "v.",
-   "zh": "掙扎"
+   "zh": "掙扎",
+   "f": [
+    {
+     "k": "past",
+     "w": "struggled"
+    },
+    {
+     "k": "pp",
+     "w": "struggled"
+    },
+    {
+     "k": "ing",
+     "w": "struggling"
+    },
+    {
+     "k": "s3",
+     "w": "struggles"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "guard",
    "pos": "v.",
-   "zh": "看守"
+   "zh": "看守",
+   "f": [
+    {
+     "k": "past",
+     "w": "guarded"
+    },
+    {
+     "k": "pp",
+     "w": "guarded"
+    },
+    {
+     "k": "ing",
+     "w": "guarding"
+    },
+    {
+     "k": "s3",
+     "w": "guards"
+    }
+   ],
+   "fam": [
+    {
+     "w": "guardian",
+     "pos": "n.",
+     "zh": "守護者；監護人"
+    }
+   ]
   },
   {
    "w": "drive",
    "pos": "n.",
-   "zh": "本能；衝勁"
+   "zh": "本能；衝勁",
+   "f": [
+    {
+     "k": "plural",
+     "w": "drives"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "respond",
    "pos": "v.",
-   "zh": "回應"
+   "zh": "回應",
+   "f": [
+    {
+     "k": "past",
+     "w": "responded"
+    },
+    {
+     "k": "pp",
+     "w": "responded"
+    },
+    {
+     "k": "ing",
+     "w": "responding"
+    },
+    {
+     "k": "s3",
+     "w": "responds"
+    }
+   ],
+   "fam": [
+    {
+     "w": "response",
+     "pos": "n.",
+     "zh": "回應；反應"
+    },
+    {
+     "w": "responsive",
+     "pos": "adj.",
+     "zh": "反應靈敏的"
+    }
+   ]
   },
   {
    "w": "tend",
    "pos": "v.",
-   "zh": "往往會"
+   "zh": "往往會",
+   "f": [
+    {
+     "k": "past",
+     "w": "tended"
+    },
+    {
+     "k": "pp",
+     "w": "tended"
+    },
+    {
+     "k": "ing",
+     "w": "tending"
+    },
+    {
+     "k": "s3",
+     "w": "tends"
+    }
+   ],
+   "fam": [
+    {
+     "w": "tendency",
+     "pos": "n.",
+     "zh": "傾向；趨勢"
+    }
+   ]
   },
   {
    "w": "nervous",
    "pos": "adj.",
-   "zh": "緊張的"
+   "zh": "緊張的",
+   "f": [],
+   "fam": [
+    {
+     "w": "nerve",
+     "pos": "n.",
+     "zh": "神經"
+    },
+    {
+     "w": "nervously",
+     "pos": "adv.",
+     "zh": "緊張地"
+    },
+    {
+     "w": "nervousness",
+     "pos": "n.",
+     "zh": "緊張"
+    }
+   ]
   },
   {
    "w": "intelligent",
    "pos": "adj.",
-   "zh": "聰明的"
+   "zh": "聰明的",
+   "f": [],
+   "fam": [
+    {
+     "w": "intelligence",
+     "pos": "n.",
+     "zh": "智慧；情報"
+    },
+    {
+     "w": "intelligently",
+     "pos": "adv.",
+     "zh": "聰明地"
+    }
+   ]
   },
   {
    "w": "average",
    "pos": "adj.",
-   "zh": "一般的"
+   "zh": "一般的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "pick on sb",
    "pos": "phr.",
-   "zh": "欺負某人"
+   "zh": "欺負某人",
+   "f": [],
+   "fam": []
   },
   {
    "w": "fall into the hands of",
    "pos": "phr.",
-   "zh": "落入…手中"
+   "zh": "落入…手中",
+   "f": [],
+   "fam": []
   },
   {
    "w": "lose faith in",
    "pos": "phr.",
-   "zh": "對…失去信心"
+   "zh": "對…失去信心",
+   "f": [],
+   "fam": []
   },
   {
    "w": "respond to",
    "pos": "phr.",
-   "zh": "對…回應"
+   "zh": "對…回應",
+   "f": [],
+   "fam": []
   },
   {
    "w": "tend to",
    "pos": "phr.",
-   "zh": "容易…；往往"
+   "zh": "容易…；往往",
+   "f": [],
+   "fam": []
   }
  ]
 }

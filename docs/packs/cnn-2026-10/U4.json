@@ -7,82 +7,285 @@
   {
    "w": "sleep-deprived",
    "pos": "adj.",
-   "zh": "缺乏睡眠的"
+   "zh": "缺乏睡眠的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "predicate",
    "pos": "v.",
-   "zh": "以…為基礎"
+   "zh": "以…為基礎",
+   "f": [
+    {
+     "k": "past",
+     "w": "predicated"
+    },
+    {
+     "k": "pp",
+     "w": "predicated"
+    },
+    {
+     "k": "ing",
+     "w": "predicating"
+    },
+    {
+     "k": "s3",
+     "w": "predicates"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "monitor",
    "pos": "v.",
-   "zh": "監測"
+   "zh": "監測",
+   "f": [
+    {
+     "k": "past",
+     "w": "monitored"
+    },
+    {
+     "k": "pp",
+     "w": "monitored"
+    },
+    {
+     "k": "ing",
+     "w": "monitoring"
+    },
+    {
+     "k": "s3",
+     "w": "monitors"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "pulse",
    "pos": "n.",
-   "zh": "脈搏"
+   "zh": "脈搏",
+   "f": [
+    {
+     "k": "plural",
+     "w": "pulses"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "lullaby",
    "pos": "n.",
-   "zh": "搖籃曲"
+   "zh": "搖籃曲",
+   "f": [
+    {
+     "k": "plural",
+     "w": "lullabies"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "refresh",
    "pos": "v.",
-   "zh": "恢復精神"
+   "zh": "恢復精神",
+   "f": [
+    {
+     "k": "past",
+     "w": "refreshed"
+    },
+    {
+     "k": "pp",
+     "w": "refreshed"
+    },
+    {
+     "k": "ing",
+     "w": "refreshing"
+    },
+    {
+     "k": "s3",
+     "w": "refreshes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "refreshment",
+     "pos": "n.",
+     "zh": "茶點；提神"
+    }
+   ]
   },
   {
    "w": "tackle",
    "pos": "v.",
-   "zh": "處理（問題）"
+   "zh": "處理（問題）",
+   "f": [
+    {
+     "k": "past",
+     "w": "tackled"
+    },
+    {
+     "k": "pp",
+     "w": "tackled"
+    },
+    {
+     "k": "ing",
+     "w": "tackling"
+    },
+    {
+     "k": "s3",
+     "w": "tackles"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "obesity",
    "pos": "n.",
-   "zh": "肥胖"
+   "zh": "肥胖",
+   "f": [],
+   "fam": [
+    {
+     "w": "obese",
+     "pos": "adj.",
+     "zh": "過度肥胖的"
+    }
+   ]
   },
   {
    "w": "estimated",
    "pos": "adj.",
-   "zh": "估計的"
+   "zh": "估計的",
+   "f": [],
+   "fam": [
+    {
+     "w": "estimate",
+     "pos": "v.",
+     "zh": "估計"
+    },
+    {
+     "w": "estimate",
+     "pos": "n.",
+     "zh": "估計值"
+    },
+    {
+     "w": "estimation",
+     "pos": "n.",
+     "zh": "估計；判斷"
+    }
+   ]
   },
   {
    "w": "gadget",
    "pos": "n.",
-   "zh": "小裝置"
+   "zh": "小裝置",
+   "f": [
+    {
+     "k": "plural",
+     "w": "gadgets"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "infrared",
    "pos": "adj.",
-   "zh": "紅外線的"
+   "zh": "紅外線的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "snore",
    "pos": "v.",
-   "zh": "打鼾"
+   "zh": "打鼾",
+   "f": [
+    {
+     "k": "past",
+     "w": "snored"
+    },
+    {
+     "k": "pp",
+     "w": "snored"
+    },
+    {
+     "k": "ing",
+     "w": "snoring"
+    },
+    {
+     "k": "s3",
+     "w": "snores"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "mattress",
    "pos": "n.",
-   "zh": "床墊"
+   "zh": "床墊",
+   "f": [
+    {
+     "k": "plural",
+     "w": "mattresses"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "accessory",
    "pos": "n.",
-   "zh": "配件"
+   "zh": "配件",
+   "f": [
+    {
+     "k": "plural",
+     "w": "accessories"
+    }
+   ],
+   "fam": [
+    {
+     "w": "accessorize",
+     "pos": "v.",
+     "zh": "搭配配件"
+    }
+   ]
   },
   {
    "w": "solid",
    "pos": "adj.",
-   "zh": "可靠的；扎實的"
+   "zh": "可靠的；扎實的",
+   "f": [],
+   "fam": [
+    {
+     "w": "solidity",
+     "pos": "n.",
+     "zh": "堅固；可靠"
+    },
+    {
+     "w": "solidly",
+     "pos": "adv.",
+     "zh": "牢固地；扎實地"
+    },
+    {
+     "w": "solidify",
+     "pos": "v.",
+     "zh": "使凝固；鞏固"
+    }
+   ]
   },
   {
    "w": "unfortunately",
    "pos": "adv.",
-   "zh": "遺憾的是"
+   "zh": "遺憾的是",
+   "f": [],
+   "fam": [
+    {
+     "w": "unfortunate",
+     "pos": "adj.",
+     "zh": "不幸的；遺憾的"
+    },
+    {
+     "w": "fortune",
+     "pos": "n.",
+     "zh": "運氣；財富"
+    }
+   ]
   }
  ]
 }

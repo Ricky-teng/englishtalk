@@ -7,107 +7,367 @@
   {
    "w": "plastic",
    "pos": "adj.",
-   "zh": "塑膠的"
+   "zh": "塑膠的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "convenience",
    "pos": "n.",
-   "zh": "方便；便利"
+   "zh": "方便；便利",
+   "f": [],
+   "fam": [
+    {
+     "w": "convenient",
+     "pos": "adj.",
+     "zh": "方便的"
+    },
+    {
+     "w": "conveniently",
+     "pos": "adv.",
+     "zh": "方便地"
+    }
+   ]
   },
   {
    "w": "eagerly",
    "pos": "adv.",
-   "zh": "熱切地；渴望地"
+   "zh": "熱切地；渴望地",
+   "f": [],
+   "fam": [
+    {
+     "w": "eager",
+     "pos": "adj.",
+     "zh": "渴望的"
+    },
+    {
+     "w": "eagerness",
+     "pos": "n.",
+     "zh": "渴望；熱切"
+    }
+   ]
   },
   {
    "w": "surround",
    "pos": "v.",
-   "zh": "圍繞；包圍"
+   "zh": "圍繞；包圍",
+   "f": [
+    {
+     "k": "past",
+     "w": "surrounded"
+    },
+    {
+     "k": "pp",
+     "w": "surrounded"
+    },
+    {
+     "k": "ing",
+     "w": "surrounding"
+    },
+    {
+     "k": "s3",
+     "w": "surrounds"
+    }
+   ],
+   "fam": [
+    {
+     "w": "surroundings",
+     "pos": "n.",
+     "zh": "環境；周遭"
+    }
+   ]
   },
   {
    "w": "drift",
    "pos": "v.",
-   "zh": "漂流；飄移"
+   "zh": "漂流；飄移",
+   "f": [
+    {
+     "k": "past",
+     "w": "drifted"
+    },
+    {
+     "k": "pp",
+     "w": "drifted"
+    },
+    {
+     "k": "ing",
+     "w": "drifting"
+    },
+    {
+     "k": "s3",
+     "w": "drifts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "drifter",
+     "pos": "n.",
+     "zh": "流浪者"
+    }
+   ]
   },
   {
    "w": "envy",
    "pos": "v.",
-   "zh": "羨慕；忌妒"
+   "zh": "羨慕；忌妒",
+   "f": [
+    {
+     "k": "past",
+     "w": "envied"
+    },
+    {
+     "k": "pp",
+     "w": "envied"
+    },
+    {
+     "k": "ing",
+     "w": "envying"
+    },
+    {
+     "k": "s3",
+     "w": "envies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "envious",
+     "pos": "adj.",
+     "zh": "羨慕的"
+    },
+    {
+     "w": "enviable",
+     "pos": "adj.",
+     "zh": "令人羨慕的"
+    }
+   ]
   },
   {
    "w": "crowded",
    "pos": "adj.",
-   "zh": "擁擠的"
+   "zh": "擁擠的",
+   "f": [],
+   "fam": [
+    {
+     "w": "crowd",
+     "pos": "n.",
+     "zh": "人群"
+    },
+    {
+     "w": "crowd",
+     "pos": "v.",
+     "zh": "擠滿"
+    }
+   ]
   },
   {
    "w": "obviously",
    "pos": "adv.",
-   "zh": "顯然地"
+   "zh": "顯然地",
+   "f": [],
+   "fam": [
+    {
+     "w": "obvious",
+     "pos": "adj.",
+     "zh": "明顯的"
+    }
+   ]
   },
   {
    "w": "product",
    "pos": "n.",
-   "zh": "產品"
+   "zh": "產品",
+   "f": [
+    {
+     "k": "plural",
+     "w": "products"
+    }
+   ],
+   "fam": [
+    {
+     "w": "produce",
+     "pos": "v.",
+     "zh": "生產"
+    },
+    {
+     "w": "productive",
+     "pos": "adj.",
+     "zh": "有生產力的"
+    }
+   ]
   },
   {
    "w": "consume",
    "pos": "v.",
-   "zh": "消耗；食用；消費"
+   "zh": "消耗；食用；消費",
+   "f": [
+    {
+     "k": "past",
+     "w": "consumed"
+    },
+    {
+     "k": "pp",
+     "w": "consumed"
+    },
+    {
+     "k": "ing",
+     "w": "consuming"
+    },
+    {
+     "k": "s3",
+     "w": "consumes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "consumption",
+     "pos": "n.",
+     "zh": "消耗；攝取"
+    },
+    {
+     "w": "consumer",
+     "pos": "n.",
+     "zh": "消費者"
+    }
+   ]
   },
   {
    "w": "poisonous",
    "pos": "adj.",
-   "zh": "有毒的"
+   "zh": "有毒的",
+   "f": [],
+   "fam": [
+    {
+     "w": "poison",
+     "pos": "n.",
+     "zh": "毒藥；毒物"
+    }
+   ]
   },
   {
    "w": "substance",
    "pos": "n.",
-   "zh": "物質"
+   "zh": "物質",
+   "f": [
+    {
+     "k": "plural",
+     "w": "substances"
+    }
+   ],
+   "fam": [
+    {
+     "w": "substantial",
+     "pos": "adj.",
+     "zh": "大量的；實質的"
+    }
+   ]
   },
   {
    "w": "recycling",
    "pos": "n.",
-   "zh": "回收"
+   "zh": "回收",
+   "f": [],
+   "fam": [
+    {
+     "w": "recycle",
+     "pos": "v.",
+     "zh": "回收"
+    },
+    {
+     "w": "recyclable",
+     "pos": "adj.",
+     "zh": "可回收的"
+    }
+   ]
   },
   {
    "w": "harm",
    "pos": "n.",
-   "zh": "傷害；危害"
+   "zh": "傷害；危害",
+   "f": [],
+   "fam": [
+    {
+     "w": "harmful",
+     "pos": "adj.",
+     "zh": "有害的"
+    },
+    {
+     "w": "harmless",
+     "pos": "adj.",
+     "zh": "無害的"
+    }
+   ]
   },
   {
    "w": "environment",
    "pos": "n.",
-   "zh": "環境"
+   "zh": "環境",
+   "f": [
+    {
+     "k": "plural",
+     "w": "environments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "environmental",
+     "pos": "adj.",
+     "zh": "環境的"
+    },
+    {
+     "w": "environmentally",
+     "pos": "adv.",
+     "zh": "在環境方面"
+    }
+   ]
   },
   {
    "w": "properly",
    "pos": "adv.",
-   "zh": "適當地；正確地"
+   "zh": "適當地；正確地",
+   "f": [],
+   "fam": [
+    {
+     "w": "proper",
+     "pos": "adj.",
+     "zh": "正確的；適當的"
+    }
+   ]
   },
   {
    "w": "pack up",
    "pos": "phr.",
-   "zh": "打包；收拾"
+   "zh": "打包；收拾",
+   "f": [],
+   "fam": []
   },
   {
    "w": "come along",
    "pos": "phr.",
-   "zh": "出現；跟著來"
+   "zh": "出現；跟著來",
+   "f": [],
+   "fam": []
   },
   {
    "w": "on one's own",
    "pos": "phr.",
-   "zh": "獨自；靠自己"
+   "zh": "獨自；靠自己",
+   "f": [],
+   "fam": []
   },
   {
    "w": "for a while",
    "pos": "phr.",
-   "zh": "一陣子"
+   "zh": "一陣子",
+   "f": [],
+   "fam": []
   },
   {
    "w": "end up",
    "pos": "phr.",
-   "zh": "最後落得；結果"
+   "zh": "最後落得；結果",
+   "f": [],
+   "fam": []
   }
  ]
 }

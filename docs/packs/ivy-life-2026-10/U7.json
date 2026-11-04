@@ -7,117 +7,396 @@
   {
    "w": "discuss",
    "pos": "v.",
-   "zh": "討論"
+   "zh": "討論",
+   "f": [
+    {
+     "k": "past",
+     "w": "discussed"
+    },
+    {
+     "k": "pp",
+     "w": "discussed"
+    },
+    {
+     "k": "ing",
+     "w": "discussing"
+    },
+    {
+     "k": "s3",
+     "w": "discusses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "discussion",
+     "pos": "n.",
+     "zh": "討論"
+    }
+   ]
   },
   {
    "w": "discussion",
    "pos": "n.",
-   "zh": "討論"
+   "zh": "討論",
+   "f": [
+    {
+     "k": "plural",
+     "w": "discussions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "discuss",
+     "pos": "v.",
+     "zh": "討論"
+    }
+   ]
   },
   {
    "w": "review",
    "pos": "n.",
-   "zh": "評論；書評"
+   "zh": "評論；書評",
+   "f": [
+    {
+     "k": "plural",
+     "w": "reviews"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "creator",
    "pos": "n.",
-   "zh": "創作者"
+   "zh": "創作者",
+   "f": [
+    {
+     "k": "plural",
+     "w": "creators"
+    }
+   ],
+   "fam": [
+    {
+     "w": "create",
+     "pos": "v.",
+     "zh": "創造"
+    },
+    {
+     "w": "creative",
+     "pos": "adj.",
+     "zh": "有創意的"
+    }
+   ]
   },
   {
    "w": "career",
    "pos": "n.",
-   "zh": "職涯"
+   "zh": "職涯",
+   "f": [
+    {
+     "k": "plural",
+     "w": "careers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "collection",
    "pos": "n.",
-   "zh": "收藏"
+   "zh": "收藏",
+   "f": [
+    {
+     "k": "plural",
+     "w": "collections"
+    }
+   ],
+   "fam": [
+    {
+     "w": "collect",
+     "pos": "v.",
+     "zh": "收集"
+    },
+    {
+     "w": "collective",
+     "pos": "adj.",
+     "zh": "集體的"
+    }
+   ]
   },
   {
    "w": "exactly",
    "pos": "adv.",
-   "zh": "正好；確切地"
+   "zh": "正好；確切地",
+   "f": [],
+   "fam": [
+    {
+     "w": "exact",
+     "pos": "adj.",
+     "zh": "確切的"
+    }
+   ]
   },
   {
    "w": "emotion",
    "pos": "n.",
-   "zh": "情緒"
+   "zh": "情緒",
+   "f": [
+    {
+     "k": "plural",
+     "w": "emotions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "emotional",
+     "pos": "adj.",
+     "zh": "情緒的"
+    },
+    {
+     "w": "emotionally",
+     "pos": "adv.",
+     "zh": "情緒上"
+    }
+   ]
   },
   {
    "w": "activity",
    "pos": "n.",
-   "zh": "活動"
+   "zh": "活動",
+   "f": [
+    {
+     "k": "plural",
+     "w": "activities"
+    }
+   ],
+   "fam": [
+    {
+     "w": "active",
+     "pos": "adj.",
+     "zh": "活躍的"
+    },
+    {
+     "w": "actively",
+     "pos": "adv.",
+     "zh": "積極地"
+    },
+    {
+     "w": "activate",
+     "pos": "v.",
+     "zh": "啟動"
+    }
+   ]
   },
   {
    "w": "thought",
    "pos": "n.",
-   "zh": "想法"
+   "zh": "想法",
+   "f": [
+    {
+     "k": "plural",
+     "w": "thoughts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "think",
+     "pos": "v.",
+     "zh": "想；認為"
+    },
+    {
+     "w": "thoughtful",
+     "pos": "adj.",
+     "zh": "體貼的；深思的"
+    },
+    {
+     "w": "thoughtfully",
+     "pos": "adv.",
+     "zh": "若有所思地"
+    }
+   ]
   },
   {
    "w": "exchange",
    "pos": "v.",
-   "zh": "交流；交換"
+   "zh": "交流；交換",
+   "f": [
+    {
+     "k": "past",
+     "w": "exchanged"
+    },
+    {
+     "k": "pp",
+     "w": "exchanged"
+    },
+    {
+     "k": "ing",
+     "w": "exchanging"
+    },
+    {
+     "k": "s3",
+     "w": "exchanges"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "marketing",
    "pos": "n.",
-   "zh": "行銷"
+   "zh": "行銷",
+   "f": [],
+   "fam": [
+    {
+     "w": "market",
+     "pos": "v.",
+     "zh": "推銷；行銷"
+    }
+   ]
   },
   {
    "w": "industry",
    "pos": "n.",
-   "zh": "產業"
+   "zh": "產業",
+   "f": [
+    {
+     "k": "plural",
+     "w": "industries"
+    }
+   ],
+   "fam": [
+    {
+     "w": "industrial",
+     "pos": "adj.",
+     "zh": "工業的"
+    },
+    {
+     "w": "industrialize",
+     "pos": "v.",
+     "zh": "工業化"
+    },
+    {
+     "w": "industrious",
+     "pos": "adj.",
+     "zh": "勤奮的"
+    }
+   ]
   },
   {
    "w": "title",
    "pos": "n.",
-   "zh": "書；書名"
+   "zh": "書；書名",
+   "f": [
+    {
+     "k": "plural",
+     "w": "titles"
+    }
+   ],
+   "fam": [
+    {
+     "w": "titled",
+     "pos": "adj.",
+     "zh": "名為…的"
+    }
+   ]
   },
   {
    "w": "section",
    "pos": "n.",
-   "zh": "專區"
+   "zh": "專區",
+   "f": [
+    {
+     "k": "plural",
+     "w": "sections"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "judge",
    "pos": "v.",
-   "zh": "評斷"
+   "zh": "評斷",
+   "f": [
+    {
+     "k": "past",
+     "w": "judged"
+    },
+    {
+     "k": "pp",
+     "w": "judged"
+    },
+    {
+     "k": "ing",
+     "w": "judging"
+    },
+    {
+     "k": "s3",
+     "w": "judges"
+    }
+   ],
+   "fam": [
+    {
+     "w": "judgment",
+     "pos": "n.",
+     "zh": "判斷"
+    },
+    {
+     "w": "judgmental",
+     "pos": "adj.",
+     "zh": "愛批判的"
+    }
+   ]
   },
   {
    "w": "audience",
    "pos": "n.",
-   "zh": "受眾"
+   "zh": "受眾",
+   "f": [
+    {
+     "k": "plural",
+     "w": "audiences"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "relate to",
    "pos": "phr.",
-   "zh": "產生共鳴"
+   "zh": "產生共鳴",
+   "f": [],
+   "fam": []
   },
   {
    "w": "at the thought of",
    "pos": "phr.",
-   "zh": "一想到…"
+   "zh": "一想到…",
+   "f": [],
+   "fam": []
   },
   {
    "w": "exchange A with B",
    "pos": "phr.",
-   "zh": "與B交換A"
+   "zh": "與B交換A",
+   "f": [],
+   "fam": []
   },
   {
    "w": "judge A by B",
    "pos": "phr.",
-   "zh": "依B評斷A"
+   "zh": "依B評斷A",
+   "f": [],
+   "fam": []
   },
   {
    "w": "a wider audience",
    "pos": "phr.",
-   "zh": "更廣的受眾"
+   "zh": "更廣的受眾",
+   "f": [],
+   "fam": []
   },
   {
    "w": "gain popularity",
    "pos": "phr.",
-   "zh": "變得受歡迎"
+   "zh": "變得受歡迎",
+   "f": [],
+   "fam": []
   }
  ]
 }

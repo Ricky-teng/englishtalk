@@ -7,122 +7,387 @@
   {
    "w": "triumph",
    "pos": "n.",
-   "zh": "勝利；成功"
+   "zh": "勝利；成功",
+   "f": [
+    {
+     "k": "plural",
+     "w": "triumphs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "triumphant",
+     "pos": "adj.",
+     "zh": "勝利的；得意的"
+    }
+   ]
   },
   {
    "w": "apply",
    "pos": "v.",
-   "zh": "申請；應用"
+   "zh": "申請；應用",
+   "f": [
+    {
+     "k": "past",
+     "w": "applied"
+    },
+    {
+     "k": "pp",
+     "w": "applied"
+    },
+    {
+     "k": "ing",
+     "w": "applying"
+    },
+    {
+     "k": "s3",
+     "w": "applies"
+    }
+   ],
+   "fam": [
+    {
+     "w": "application",
+     "pos": "n.",
+     "zh": "申請；應用"
+    },
+    {
+     "w": "applicant",
+     "pos": "n.",
+     "zh": "申請人"
+    },
+    {
+     "w": "applicable",
+     "pos": "adj.",
+     "zh": "適用的"
+    }
+   ]
   },
   {
    "w": "instrument",
    "pos": "n.",
-   "zh": "樂器；器具"
+   "zh": "樂器；器具",
+   "f": [
+    {
+     "k": "plural",
+     "w": "instruments"
+    }
+   ],
+   "fam": [
+    {
+     "w": "instrumental",
+     "pos": "adj.",
+     "zh": "起關鍵作用的"
+    }
+   ]
   },
   {
    "w": "somehow",
    "pos": "adv.",
-   "zh": "不知怎麼地；以某種方式"
+   "zh": "不知怎麼地；以某種方式",
+   "f": [],
+   "fam": []
   },
   {
    "w": "barely",
    "pos": "adv.",
-   "zh": "幾乎不；勉強"
+   "zh": "幾乎不；勉強",
+   "f": [],
+   "fam": [
+    {
+     "w": "bare",
+     "pos": "adj.",
+     "zh": "赤裸的；光禿的"
+    }
+   ]
   },
   {
    "w": "invaluable",
    "pos": "adj.",
-   "zh": "非常寶貴的"
+   "zh": "非常寶貴的",
+   "f": [],
+   "fam": [
+    {
+     "w": "value",
+     "pos": "n.",
+     "zh": "價值"
+    }
+   ]
   },
   {
    "w": "encouragement",
    "pos": "n.",
-   "zh": "鼓勵"
+   "zh": "鼓勵",
+   "f": [],
+   "fam": [
+    {
+     "w": "encourage",
+     "pos": "v.",
+     "zh": "鼓勵"
+    },
+    {
+     "w": "encouraging",
+     "pos": "adj.",
+     "zh": "令人鼓舞的"
+    }
+   ]
   },
   {
    "w": "concert",
    "pos": "n.",
-   "zh": "音樂會；演唱會"
+   "zh": "音樂會；演唱會",
+   "f": [
+    {
+     "k": "plural",
+     "w": "concerts"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "receive",
    "pos": "v.",
-   "zh": "收到；接受"
+   "zh": "收到；接受",
+   "f": [
+    {
+     "k": "past",
+     "w": "received"
+    },
+    {
+     "k": "pp",
+     "w": "received"
+    },
+    {
+     "k": "ing",
+     "w": "receiving"
+    },
+    {
+     "k": "s3",
+     "w": "receives"
+    }
+   ],
+   "fam": [
+    {
+     "w": "receipt",
+     "pos": "n.",
+     "zh": "收據"
+    },
+    {
+     "w": "reception",
+     "pos": "n.",
+     "zh": "接待；歡迎會"
+    }
+   ]
   },
   {
    "w": "dazzle",
    "pos": "v.",
-   "zh": "使驚豔；使目眩"
+   "zh": "使驚豔；使目眩",
+   "f": [
+    {
+     "k": "past",
+     "w": "dazzled"
+    },
+    {
+     "k": "pp",
+     "w": "dazzled"
+    },
+    {
+     "k": "ing",
+     "w": "dazzling"
+    },
+    {
+     "k": "s3",
+     "w": "dazzles"
+    }
+   ],
+   "fam": [
+    {
+     "w": "dazzling",
+     "pos": "adj.",
+     "zh": "耀眼的"
+    }
+   ]
   },
   {
    "w": "potential",
    "pos": "n.",
-   "zh": "潛力"
+   "zh": "潛力",
+   "f": [],
+   "fam": [
+    {
+     "w": "potentially",
+     "pos": "adv.",
+     "zh": "可能地"
+    }
+   ]
   },
   {
    "w": "scream",
    "pos": "v.",
-   "zh": "尖叫"
+   "zh": "尖叫",
+   "f": [
+    {
+     "k": "past",
+     "w": "screamed"
+    },
+    {
+     "k": "pp",
+     "w": "screamed"
+    },
+    {
+     "k": "ing",
+     "w": "screaming"
+    },
+    {
+     "k": "s3",
+     "w": "screams"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "dizzy",
    "pos": "adj.",
-   "zh": "頭暈的"
+   "zh": "頭暈的",
+   "f": [
+    {
+     "k": "comp",
+     "w": "dizzier"
+    },
+    {
+     "k": "sup",
+     "w": "dizziest"
+    }
+   ],
+   "fam": [
+    {
+     "w": "dizziness",
+     "pos": "n.",
+     "zh": "頭暈"
+    }
+   ]
   },
   {
    "w": "overseas",
    "pos": "adv.",
-   "zh": "在海外；到國外"
+   "zh": "在海外；到國外",
+   "f": [],
+   "fam": []
   },
   {
    "w": "determination",
    "pos": "n.",
-   "zh": "決心"
+   "zh": "決心",
+   "f": [],
+   "fam": [
+    {
+     "w": "determine",
+     "pos": "v.",
+     "zh": "決定；下決心"
+    },
+    {
+     "w": "determined",
+     "pos": "adj.",
+     "zh": "堅決的"
+    }
+   ]
   },
   {
    "w": "faith",
    "pos": "n.",
-   "zh": "信心；信念"
+   "zh": "信心；信念",
+   "f": [],
+   "fam": [
+    {
+     "w": "faithful",
+     "pos": "adj.",
+     "zh": "忠實的"
+    },
+    {
+     "w": "faithfully",
+     "pos": "adv.",
+     "zh": "忠實地"
+    }
+   ]
   },
   {
    "w": "pursue",
    "pos": "v.",
-   "zh": "追求"
+   "zh": "追求",
+   "f": [
+    {
+     "k": "past",
+     "w": "pursued"
+    },
+    {
+     "k": "pp",
+     "w": "pursued"
+    },
+    {
+     "k": "ing",
+     "w": "pursuing"
+    },
+    {
+     "k": "s3",
+     "w": "pursues"
+    }
+   ],
+   "fam": [
+    {
+     "w": "pursuit",
+     "pos": "n.",
+     "zh": "追求"
+    }
+   ]
   },
   {
    "w": "tons of",
    "pos": "phr.",
-   "zh": "大量的"
+   "zh": "大量的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "look for",
    "pos": "phr.",
-   "zh": "尋找"
+   "zh": "尋找",
+   "f": [],
+   "fam": []
   },
   {
    "w": "make a living",
    "pos": "phr.",
-   "zh": "謀生"
+   "zh": "謀生",
+   "f": [],
+   "fam": []
   },
   {
    "w": "look forward to",
    "pos": "phr.",
-   "zh": "期待"
+   "zh": "期待",
+   "f": [],
+   "fam": []
   },
   {
    "w": "get carried away",
    "pos": "phr.",
-   "zh": "得意忘形；過於興奮"
+   "zh": "得意忘形；過於興奮",
+   "f": [],
+   "fam": []
   },
   {
    "w": "come out of",
    "pos": "phr.",
-   "zh": "從……出來；產生自"
+   "zh": "從……出來；產生自",
+   "f": [],
+   "fam": []
   },
   {
    "w": "as soon as",
    "pos": "phr.",
-   "zh": "一……就"
+   "zh": "一……就",
+   "f": [],
+   "fam": []
   }
  ]
 }

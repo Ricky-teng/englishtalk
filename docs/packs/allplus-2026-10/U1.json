@@ -7,37 +7,172 @@
   {
    "w": "researcher",
    "pos": "n.",
-   "zh": "研究員"
+   "zh": "研究員",
+   "f": [
+    {
+     "k": "plural",
+     "w": "researchers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "research",
+     "pos": "v.",
+     "zh": "研究"
+    }
+   ]
   },
   {
    "w": "artificial",
    "pos": "adj.",
-   "zh": "人造的"
+   "zh": "人造的",
+   "f": [],
+   "fam": [
+    {
+     "w": "artificially",
+     "pos": "adv.",
+     "zh": "人工地"
+    }
+   ]
   },
   {
    "w": "intelligence",
    "pos": "n.",
-   "zh": "智慧"
+   "zh": "智慧",
+   "f": [],
+   "fam": [
+    {
+     "w": "intelligent",
+     "pos": "adj.",
+     "zh": "聰明的"
+    },
+    {
+     "w": "intelligently",
+     "pos": "adv.",
+     "zh": "聰明地"
+    }
+   ]
   },
   {
    "w": "intend",
    "pos": "v.",
-   "zh": "打算；意圖"
+   "zh": "打算；意圖",
+   "f": [
+    {
+     "k": "past",
+     "w": "intended"
+    },
+    {
+     "k": "pp",
+     "w": "intended"
+    },
+    {
+     "k": "ing",
+     "w": "intending"
+    },
+    {
+     "k": "s3",
+     "w": "intends"
+    }
+   ],
+   "fam": [
+    {
+     "w": "intention",
+     "pos": "n.",
+     "zh": "意圖"
+    },
+    {
+     "w": "intent",
+     "pos": "n.",
+     "zh": "意圖；目的"
+    },
+    {
+     "w": "intentional",
+     "pos": "adj.",
+     "zh": "故意的"
+    },
+    {
+     "w": "intentionally",
+     "pos": "adv.",
+     "zh": "故意地"
+    }
+   ]
   },
   {
    "w": "virus",
    "pos": "n.",
-   "zh": "病毒"
+   "zh": "病毒",
+   "f": [
+    {
+     "k": "plural",
+     "w": "viruses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "viral",
+     "pos": "adj.",
+     "zh": "病毒的"
+    }
+   ]
   },
   {
    "w": "volunteer",
    "pos": "n.",
-   "zh": "志願者"
+   "zh": "志願者",
+   "f": [
+    {
+     "k": "plural",
+     "w": "volunteers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "voluntary",
+     "pos": "adj.",
+     "zh": "自願的"
+    },
+    {
+     "w": "voluntarily",
+     "pos": "adv.",
+     "zh": "自願地"
+    }
+   ]
   },
   {
    "w": "caution",
    "pos": "v.",
-   "zh": "告誡；提醒"
+   "zh": "告誡；提醒",
+   "f": [
+    {
+     "k": "past",
+     "w": "cautioned"
+    },
+    {
+     "k": "pp",
+     "w": "cautioned"
+    },
+    {
+     "k": "ing",
+     "w": "cautioning"
+    },
+    {
+     "k": "s3",
+     "w": "cautions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "cautious",
+     "pos": "adj.",
+     "zh": "小心的"
+    },
+    {
+     "w": "cautiously",
+     "pos": "adv.",
+     "zh": "謹慎地"
+    }
+   ]
   }
  ]
 }

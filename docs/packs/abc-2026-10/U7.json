@@ -7,42 +7,134 @@
   {
    "w": "country",
    "pos": "n.",
-   "zh": "國家"
+   "zh": "國家",
+   "f": [
+    {
+     "k": "plural",
+     "w": "countries"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "ahead",
    "pos": "adv.",
-   "zh": "預先；提早"
+   "zh": "預先；提早",
+   "f": [],
+   "fam": []
   },
   {
    "w": "set",
    "pos": "v.",
-   "zh": "（太陽）下山"
+   "zh": "（太陽）下山",
+   "f": [
+    {
+     "k": "past",
+     "w": "set"
+    },
+    {
+     "k": "pp",
+     "w": "set"
+    },
+    {
+     "k": "ing",
+     "w": "setting"
+    },
+    {
+     "k": "s3",
+     "w": "sets"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "pleasant",
    "pos": "adj.",
-   "zh": "宜人的"
+   "zh": "宜人的",
+   "f": [],
+   "fam": [
+    {
+     "w": "please",
+     "pos": "v.",
+     "zh": "使高興"
+    },
+    {
+     "w": "pleasure",
+     "pos": "n.",
+     "zh": "樂趣"
+    },
+    {
+     "w": "pleasantly",
+     "pos": "adv.",
+     "zh": "愉快地"
+    }
+   ]
   },
   {
    "w": "main",
    "pos": "adj.",
-   "zh": "主要的"
+   "zh": "主要的",
+   "f": [],
+   "fam": [
+    {
+     "w": "mainly",
+     "pos": "adv.",
+     "zh": "主要地"
+    }
+   ]
   },
   {
    "w": "social",
    "pos": "adj.",
-   "zh": "社交的"
+   "zh": "社交的",
+   "f": [],
+   "fam": [
+    {
+     "w": "society",
+     "pos": "n.",
+     "zh": "社會"
+    },
+    {
+     "w": "socially",
+     "pos": "adv.",
+     "zh": "社交上；社會上"
+    },
+    {
+     "w": "socialize",
+     "pos": "v.",
+     "zh": "交際；社交"
+    }
+   ]
   },
   {
    "w": "experience",
    "pos": "n.",
-   "zh": "體驗"
+   "zh": "體驗",
+   "f": [
+    {
+     "k": "plural",
+     "w": "experiences"
+    }
+   ],
+   "fam": [
+    {
+     "w": "experienced",
+     "pos": "adj.",
+     "zh": "有經驗的"
+    }
+   ]
   },
   {
    "w": "restaurant",
    "pos": "n.",
-   "zh": "餐廳"
+   "zh": "餐廳",
+   "f": [
+    {
+     "k": "plural",
+     "w": "restaurants"
+    }
+   ],
+   "fam": []
   }
  ]
 }

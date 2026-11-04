@@ -7,67 +7,263 @@
   {
    "w": "application",
    "pos": "n.",
-   "zh": "申請"
+   "zh": "申請",
+   "f": [
+    {
+     "k": "plural",
+     "w": "applications"
+    }
+   ],
+   "fam": [
+    {
+     "w": "apply",
+     "pos": "v.",
+     "zh": "申請；應用"
+    },
+    {
+     "w": "applicable",
+     "pos": "adj.",
+     "zh": "適用的"
+    }
+   ]
   },
   {
    "w": "portfolio",
    "pos": "n.",
-   "zh": "作品集"
+   "zh": "作品集",
+   "f": [
+    {
+     "k": "plural",
+     "w": "portfolios"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "admission",
    "pos": "n.",
-   "zh": "入學許可"
+   "zh": "入學許可",
+   "f": [
+    {
+     "k": "plural",
+     "w": "admissions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "admit",
+     "pos": "v.",
+     "zh": "承認；准許進入"
+    }
+   ]
   },
   {
    "w": "competitive",
    "pos": "adj.",
-   "zh": "競爭激烈的"
+   "zh": "競爭激烈的",
+   "f": [],
+   "fam": [
+    {
+     "w": "compete",
+     "pos": "v.",
+     "zh": "競爭"
+    },
+    {
+     "w": "competition",
+     "pos": "n.",
+     "zh": "競爭；比賽"
+    },
+    {
+     "w": "competitor",
+     "pos": "n.",
+     "zh": "競爭者"
+    },
+    {
+     "w": "competitively",
+     "pos": "adv.",
+     "zh": "競爭地"
+    }
+   ]
   },
   {
    "w": "disclose",
    "pos": "v.",
-   "zh": "揭露；公開"
+   "zh": "揭露；公開",
+   "f": [
+    {
+     "k": "past",
+     "w": "disclosed"
+    },
+    {
+     "k": "pp",
+     "w": "disclosed"
+    },
+    {
+     "k": "ing",
+     "w": "disclosing"
+    },
+    {
+     "k": "s3",
+     "w": "discloses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "disclosure",
+     "pos": "n.",
+     "zh": "揭露；公開"
+    }
+   ]
   },
   {
    "w": "excessive",
    "pos": "adj.",
-   "zh": "過度的"
+   "zh": "過度的",
+   "f": [],
+   "fam": [
+    {
+     "w": "excess",
+     "pos": "n.",
+     "zh": "過量"
+    },
+    {
+     "w": "exceed",
+     "pos": "v.",
+     "zh": "超過"
+    },
+    {
+     "w": "excessively",
+     "pos": "adv.",
+     "zh": "過度地"
+    }
+   ]
   },
   {
    "w": "evaluation",
    "pos": "n.",
-   "zh": "評估"
+   "zh": "評估",
+   "f": [
+    {
+     "k": "plural",
+     "w": "evaluations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "evaluate",
+     "pos": "v.",
+     "zh": "評估"
+    }
+   ]
   },
   {
    "w": "polish",
    "pos": "v.",
-   "zh": "潤飾"
+   "zh": "潤飾",
+   "f": [
+    {
+     "k": "past",
+     "w": "polished"
+    },
+    {
+     "k": "pp",
+     "w": "polished"
+    },
+    {
+     "k": "ing",
+     "w": "polishing"
+    },
+    {
+     "k": "s3",
+     "w": "polishes"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "consequence",
    "pos": "n.",
-   "zh": "後果"
+   "zh": "後果",
+   "f": [
+    {
+     "k": "plural",
+     "w": "consequences"
+    }
+   ],
+   "fam": [
+    {
+     "w": "consequently",
+     "pos": "adv.",
+     "zh": "因此"
+    }
+   ]
   },
   {
    "w": "counselor",
    "pos": "n.",
-   "zh": "輔導老師"
+   "zh": "輔導老師",
+   "f": [
+    {
+     "k": "plural",
+     "w": "counselors"
+    }
+   ],
+   "fam": [
+    {
+     "w": "counsel",
+     "pos": "v.",
+     "zh": "輔導；勸告"
+    }
+   ]
   },
   {
    "w": "rural",
    "pos": "adj.",
-   "zh": "鄉下的"
+   "zh": "鄉下的",
+   "f": [],
+   "fam": []
   },
   {
    "w": "slot",
    "pos": "n.",
-   "zh": "名額"
+   "zh": "名額",
+   "f": [
+    {
+     "k": "plural",
+     "w": "slots"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "assess",
    "pos": "v.",
-   "zh": "評量"
+   "zh": "評量",
+   "f": [
+    {
+     "k": "past",
+     "w": "assessed"
+    },
+    {
+     "k": "pp",
+     "w": "assessed"
+    },
+    {
+     "k": "ing",
+     "w": "assessing"
+    },
+    {
+     "k": "s3",
+     "w": "assesses"
+    }
+   ],
+   "fam": [
+    {
+     "w": "assessment",
+     "pos": "n.",
+     "zh": "評估；評量"
+    }
+   ]
   }
  ]
 }

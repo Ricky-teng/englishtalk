@@ -1,0 +1,181 @@
+{
+ "id": "U2",
+ "title": "覺得自己學不好外語？你可能想錯了！",
+ "tag": "Live2611-U2",
+ "verified": true,
+ "items": [
+  {
+   "w": "doubt",
+   "pos": "n.",
+   "zh": "懷疑",
+   "f": [
+    {
+     "k": "plural",
+     "w": "doubts"
+    }
+   ],
+   "fam": [
+    {
+     "w": "doubtful",
+     "pos": "adj.",
+     "zh": "懷疑的；不確定"
+    },
+    {
+     "w": "undoubtedly",
+     "pos": "adv.",
+     "zh": "無疑地"
+    }
+   ]
+  },
+  {
+   "w": "fluent",
+   "pos": "adj.",
+   "zh": "流利的",
+   "f": [],
+   "fam": [
+    {
+     "w": "fluency",
+     "pos": "n.",
+     "zh": "流利"
+    },
+    {
+     "w": "fluently",
+     "pos": "adv.",
+     "zh": "流利地"
+    }
+   ]
+  },
+  {
+   "w": "accent",
+   "pos": "n.",
+   "zh": "口音",
+   "f": [
+    {
+     "k": "plural",
+     "w": "accents"
+    }
+   ],
+   "fam": [
+    {
+     "w": "accented",
+     "pos": "adj.",
+     "zh": "有口音的"
+    }
+   ]
+  },
+  {
+   "w": "advantage",
+   "pos": "n.",
+   "zh": "優勢；好處",
+   "f": [
+    {
+     "k": "plural",
+     "w": "advantages"
+    }
+   ],
+   "fam": [
+    {
+     "w": "advantageous",
+     "pos": "adj.",
+     "zh": "有利的"
+    }
+   ]
+  },
+  {
+   "w": "tutor",
+   "pos": "n.",
+   "zh": "家教；指導老師",
+   "f": [
+    {
+     "k": "plural",
+     "w": "tutors"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "factor",
+   "pos": "n.",
+   "zh": "因素",
+   "f": [
+    {
+     "k": "plural",
+     "w": "factors"
+    }
+   ],
+   "fam": []
+  },
+  {
+   "w": "method",
+   "pos": "n.",
+   "zh": "方法",
+   "f": [
+    {
+     "k": "plural",
+     "w": "methods"
+    }
+   ],
+   "fam": [
+    {
+     "w": "methodical",
+     "pos": "adj.",
+     "zh": "有條理的"
+    }
+   ]
+  },
+  {
+   "w": "population",
+   "pos": "n.",
+   "zh": "人口",
+   "f": [
+    {
+     "k": "plural",
+     "w": "populations"
+    }
+   ],
+   "fam": [
+    {
+     "w": "populate",
+     "pos": "v.",
+     "zh": "居住於"
+    }
+   ]
+  },
+  {
+   "w": "patient",
+   "pos": "adj.",
+   "zh": "有耐心的",
+   "f": [],
+   "fam": [
+    {
+     "w": "patience",
+     "pos": "n.",
+     "zh": "耐心"
+    },
+    {
+     "w": "patiently",
+     "pos": "adv.",
+     "zh": "耐心地"
+    }
+   ]
+  },
+  {
+   "w": "challenge",
+   "pos": "n.",
+   "zh": "挑戰",
+   "f": [
+    {
+     "k": "plural",
+     "w": "challenges"
+    }
+   ],
+   "fam": [
+    {
+     "w": "challenging",
+     "pos": "adj.",
+     "zh": "有挑戰性的"
+    }
+   ]
+  }
+ ]
+}

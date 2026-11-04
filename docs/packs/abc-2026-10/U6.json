@@ -7,42 +7,175 @@
   {
    "w": "restroom",
    "pos": "n.",
-   "zh": "洗手間"
+   "zh": "洗手間",
+   "f": [
+    {
+     "k": "plural",
+     "w": "restrooms"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "check",
    "pos": "v.",
-   "zh": "查看；檢查"
+   "zh": "查看；檢查",
+   "f": [
+    {
+     "k": "past",
+     "w": "checked"
+    },
+    {
+     "k": "pp",
+     "w": "checked"
+    },
+    {
+     "k": "ing",
+     "w": "checking"
+    },
+    {
+     "k": "s3",
+     "w": "checks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "list",
    "pos": "n.",
-   "zh": "清單"
+   "zh": "清單",
+   "f": [
+    {
+     "k": "plural",
+     "w": "lists"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "hang",
    "pos": "v.",
-   "zh": "掛"
+   "zh": "掛",
+   "f": [
+    {
+     "k": "past",
+     "w": "hung"
+    },
+    {
+     "k": "pp",
+     "w": "hung"
+    },
+    {
+     "k": "ing",
+     "w": "hanging"
+    },
+    {
+     "k": "s3",
+     "w": "hangs"
+    }
+   ],
+   "fam": [
+    {
+     "w": "hanger",
+     "pos": "n.",
+     "zh": "衣架"
+    }
+   ]
   },
   {
    "w": "ring",
    "pos": "v.",
-   "zh": "（鈴）響"
+   "zh": "（鈴）響",
+   "f": [
+    {
+     "k": "past",
+     "w": "rang"
+    },
+    {
+     "k": "pp",
+     "w": "rung"
+    },
+    {
+     "k": "ing",
+     "w": "ringing"
+    },
+    {
+     "k": "s3",
+     "w": "rings"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "answer",
    "pos": "v.",
-   "zh": "接（電話）"
+   "zh": "接（電話）",
+   "f": [
+    {
+     "k": "past",
+     "w": "answered"
+    },
+    {
+     "k": "pp",
+     "w": "answered"
+    },
+    {
+     "k": "ing",
+     "w": "answering"
+    },
+    {
+     "k": "s3",
+     "w": "answers"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "number",
    "pos": "n.",
-   "zh": "電話號碼"
+   "zh": "電話號碼",
+   "f": [
+    {
+     "k": "plural",
+     "w": "numbers"
+    }
+   ],
+   "fam": [
+    {
+     "w": "numerous",
+     "pos": "adj.",
+     "zh": "許多的"
+    },
+    {
+     "w": "numerical",
+     "pos": "adj.",
+     "zh": "數字的"
+    }
+   ]
   },
   {
    "w": "miss",
    "pos": "v.",
-   "zh": "錯過"
+   "zh": "錯過",
+   "f": [
+    {
+     "k": "past",
+     "w": "missed"
+    },
+    {
+     "k": "pp",
+     "w": "missed"
+    },
+    {
+     "k": "ing",
+     "w": "missing"
+    },
+    {
+     "k": "s3",
+     "w": "misses"
+    }
+   ],
+   "fam": []
   }
  ]
 }

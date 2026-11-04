@@ -7,42 +7,169 @@
   {
    "w": "movie theater",
    "pos": "n.",
-   "zh": "電影院"
+   "zh": "電影院",
+   "f": [
+    {
+     "k": "plural",
+     "w": "movie theaters"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "truck",
    "pos": "n.",
-   "zh": "卡車"
+   "zh": "卡車",
+   "f": [
+    {
+     "k": "plural",
+     "w": "trucks"
+    }
+   ],
+   "fam": []
   },
   {
    "w": "television",
    "pos": "n.",
-   "zh": "電視"
+   "zh": "電視",
+   "f": [
+    {
+     "k": "plural",
+     "w": "televisions"
+    }
+   ],
+   "fam": [
+    {
+     "w": "televise",
+     "pos": "v.",
+     "zh": "以電視播出"
+    }
+   ]
   },
   {
    "w": "nature",
    "pos": "n.",
-   "zh": "大自然"
+   "zh": "大自然",
+   "f": [],
+   "fam": [
+    {
+     "w": "natural",
+     "pos": "adj.",
+     "zh": "天然的"
+    },
+    {
+     "w": "naturally",
+     "pos": "adv.",
+     "zh": "自然地"
+    }
+   ]
   },
   {
    "w": "visit",
    "pos": "v.",
-   "zh": "拜訪；參觀"
+   "zh": "拜訪；參觀",
+   "f": [
+    {
+     "k": "past",
+     "w": "visited"
+    },
+    {
+     "k": "pp",
+     "w": "visited"
+    },
+    {
+     "k": "ing",
+     "w": "visiting"
+    },
+    {
+     "k": "s3",
+     "w": "visits"
+    }
+   ],
+   "fam": [
+    {
+     "w": "visitor",
+     "pos": "n.",
+     "zh": "訪客；遊客"
+    }
+   ]
   },
   {
    "w": "dream",
    "pos": "v.",
-   "zh": "夢想"
+   "zh": "夢想",
+   "f": [
+    {
+     "k": "past",
+     "w": "dreamed"
+    },
+    {
+     "k": "pp",
+     "w": "dreamed"
+    },
+    {
+     "k": "ing",
+     "w": "dreaming"
+    },
+    {
+     "k": "s3",
+     "w": "dreams"
+    }
+   ],
+   "fam": [
+    {
+     "w": "dreamer",
+     "pos": "n.",
+     "zh": "夢想家"
+    },
+    {
+     "w": "dreamy",
+     "pos": "adj.",
+     "zh": "夢幻的"
+    }
+   ]
   },
   {
    "w": "future",
    "pos": "n.",
-   "zh": "未來"
+   "zh": "未來",
+   "f": [
+    {
+     "k": "plural",
+     "w": "futures"
+    }
+   ],
+   "fam": [
+    {
+     "w": "futuristic",
+     "pos": "adj.",
+     "zh": "未來感的"
+    }
+   ]
   },
   {
    "w": "matter",
    "pos": "v.",
-   "zh": "重要"
+   "zh": "重要",
+   "f": [
+    {
+     "k": "past",
+     "w": "mattered"
+    },
+    {
+     "k": "pp",
+     "w": "mattered"
+    },
+    {
+     "k": "ing",
+     "w": "mattering"
+    },
+    {
+     "k": "s3",
+     "w": "matters"
+    }
+   ],
+   "fam": []
   }
  ]
 }

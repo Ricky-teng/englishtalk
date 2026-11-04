@@ -1,0 +1,210 @@
+{
+ "id": "U8",
+ "title": "雅各．艾洛迪：新一代好萊塢明星的養成",
+ "tag": "Live2611-U8",
+ "verified": true,
+ "items": [
+  {
+   "w": "determined",
+   "pos": "adj.",
+   "zh": "下定決心的；堅決的",
+   "f": [],
+   "fam": [
+    {
+     "w": "determine",
+     "pos": "v.",
+     "zh": "決定；下決心"
+    },
+    {
+     "w": "determination",
+     "pos": "n.",
+     "zh": "決心"
+    },
+    {
+     "w": "determinedly",
+     "pos": "adv.",
+     "zh": "堅決地"
+    }
+   ]
+  },
+  {
+   "w": "pursue",
+   "pos": "v.",
+   "zh": "追求；從事",
+   "f": [
+    {
+     "k": "past",
+     "w": "pursued"
+    },
+    {
+     "k": "pp",
+     "w": "pursued"
+    },
+    {
+     "k": "ing",
+     "w": "pursuing"
+    },
+    {
+     "k": "s3",
+     "w": "pursues"
+    }
+   ],
+   "fam": [
+    {
+     "w": "pursuit",
+     "pos": "n.",
+     "zh": "追求"
+    }
+   ]
+  },
+  {
+   "w": "professional",
+   "pos": "adj.",
+   "zh": "職業的；專業的",
+   "f": [],
+   "fam": [
+    {
+     "w": "profession",
+     "pos": "n.",
+     "zh": "職業"
+    },
+    {
+     "w": "professionally",
+     "pos": "adv.",
+     "zh": "專業地"
+    }
+   ]
+  },
+  {
+   "w": "fame",
+   "pos": "n.",
+   "zh": "名聲",
+   "f": [],
+   "fam": [
+    {
+     "w": "famous",
+     "pos": "adj.",
+     "zh": "有名的"
+    }
+   ]
+  },
+  {
+   "w": "idol",
+   "pos": "n.",
+   "zh": "偶像",
+   "f": [
+    {
+     "k": "plural",
+     "w": "idols"
+    }
+   ],
+   "fam": [
+    {
+     "w": "idolize",
+     "pos": "v.",
+     "zh": "崇拜"
+    }
+   ]
+  },
+  {
+   "w": "athlete",
+   "pos": "n.",
+   "zh": "運動員",
+   "f": [
+    {
+     "k": "plural",
+     "w": "athletes"
+    }
+   ],
+   "fam": [
+    {
+     "w": "athletic",
+     "pos": "adj.",
+     "zh": "運動的"
+    }
+   ]
+  },
+  {
+   "w": "demanding",
+   "pos": "adj.",
+   "zh": "要求高的；吃力的",
+   "f": [],
+   "fam": [
+    {
+     "w": "demand",
+     "pos": "v.",
+     "zh": "要求"
+    },
+    {
+     "w": "demand",
+     "pos": "n.",
+     "zh": "需求；要求"
+    }
+   ]
+  },
+  {
+   "w": "performance",
+   "pos": "n.",
+   "zh": "表演；表現",
+   "f": [
+    {
+     "k": "plural",
+     "w": "performances"
+    }
+   ],
+   "fam": [
+    {
+     "w": "perform",
+     "pos": "v.",
+     "zh": "表演"
+    }
+   ]
+  },
+  {
+   "w": "critic",
+   "pos": "n.",
+   "zh": "評論家",
+   "f": [
+    {
+     "k": "plural",
+     "w": "critics"
+    }
+   ],
+   "fam": [
+    {
+     "w": "critical",
+     "pos": "adj.",
+     "zh": "批判的"
+    },
+    {
+     "w": "criticize",
+     "pos": "v.",
+     "zh": "批評"
+    },
+    {
+     "w": "critically",
+     "pos": "adv.",
+     "zh": "批判地"
+    }
+   ]
+  },
+  {
+   "w": "rumor",
+   "pos": "n.",
+   "zh": "謠言；傳聞",
+   "f": [
+    {
+     "k": "plural",
+     "w": "rumors"
+    }
+   ],
+   "fam": [
+    {
+     "w": "rumored",
+     "pos": "adj.",
+     "zh": "謠傳的"
+    }
+   ]
+  }
+ ]
+}
