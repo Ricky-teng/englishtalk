@@ -16,6 +16,7 @@ import * as V from "./vocab.js";
 import * as TTS from "./tts.js";
 import { vocab, lookups, settings, save } from "./store.js";
 import { openShadow } from "./shadow.js";
+import { complete } from "./llm.js";
 
 export const QUIZ_MODES = {
   mixed:  { icon: "🔀", name: "混合", tip: "優先考每個字還沒通過的能力：先「看英選中」，再「看中選英」，再填空／拼字／聽寫；三項都過了就輪著考。錯的字這輪最後會再考一次。（推薦）" },
@@ -168,12 +169,14 @@ function next() {
   if (S.item.type === "listen") TTS.speak(q.card.word, undefined, null);
 }
 
-function record(ok, q, note = "") {
+function record(ok, q, note = "", why = "") {
   const it = S.item;
   const cur = S.queue[S.idx];
   S.answered = true;
+  S.judging = false;
   S.lastOk = ok;
   S.note = note;
+  S.why = why;
   cur.result = ok;
   // 「這輪最後再考一次」的題目只是加強，不重複計分，避免同一個字一天被扣兩次
   if (!cur.retry) {
@@ -199,10 +202,10 @@ function advance() {
   next();
 }
 
-function submitTyped(raw) {
+async function submitTyped(raw) {
   const it = S.item;
   const v = norm(raw);
-  if (!v) return;
+  if (!v || S.judging) return;
   const ans = norm(it.answer);
   if (v === ans) return record(true, S.hints ? 3 : 5);
   if (it.type === "cloze" && it.base && v === norm(it.base) && ans !== norm(it.base)) {
@@ -211,8 +214,75 @@ function submitTyped(raw) {
   if (ans.length >= 5 && lev(v, ans) === 1) {
     return record(true, 3, `差一個字母：你打 ${raw.trim()}，正確是 ${it.answer}`);
   }
+  // 打了別的字：意思一樣（近義詞）也算對。先查本機，查不到再問 AI
+  if (it.type === "spell" || it.type === "cloze") {
+    const myIdx = S.idx;
+    S.judging = true;
+    paint();
+    let syn = null;
+    try { syn = await sameMeaning(it, v); } catch (e) { syn = null; }
+    if (!S || S.idx !== myIdx || S.answered) return;   // 等待期間離開了測驗
+    S.judging = false;
+    if (syn && syn.ok) {
+      // 算對（三項能力照樣過關），但給「困難」：你沒想到目標字，排程不要拉太長
+      return record(true, 3, `「${raw.trim()}」${syn.zh ? `（${syn.zh}）` : ""}意思也對！這題的目標字是 ${it.answer}`, "syn");
+    }
+  }
   S.wrongTyped = raw.trim();
   record(false, 0);
+}
+
+/* ---------- 近義詞判斷 ---------- */
+
+const judgeCache = new Map();   // "目標字|你打的字|題型" → {ok, zh}
+
+/** 中文解釋切成一段一段（去掉括號說明），比對兩個字有沒有共同的意思 */
+function zhSegs(zh) {
+  return String(zh || "").split(/[；;，,、/／]/)
+    .map(x => x.replace(/[（(][^）)]*[）)]/g, "").trim()).filter(x => x.length >= 2);
+}
+
+/** 不用 AI 就能確定的：卡片上列的近義詞、或單字本裡另一個字有一樣的中文意思（只用在拼字題） */
+function localSynonym(card, v) {
+  if ((card.synonyms || []).some(x => norm(x && (x.w || x)) === v)) return { ok: true, zh: "" };
+  const other = vocab().find(o => o.id !== card.id && norm(o.word) === v);
+  if (other) {
+    const mine = new Set(zhSegs(card.zh));
+    if (zhSegs(other.zh).some(z => mine.has(z))) return { ok: true, zh: other.zh.split(/[；;]/)[0] };
+  }
+  return null;
+}
+
+async function sameMeaning(it, v) {
+  const card = it.card;
+  if (!/^[a-z][a-z' -]{0,39}$/.test(v)) return null;          // 不是英文字，不用問
+  const key = `${norm(it.answer)}|${v}|${it.type}`;
+  if (judgeCache.has(key)) return judgeCache.get(key);
+  if (it.type === "spell") {
+    const local = localSynonym(card, v);
+    if (local) { judgeCache.set(key, local); return local; }
+  }
+  const s = settings();
+  if (!(s.provider === "groq" ? s.groqKey : s.geminiKey) || !navigator.onLine) return null;
+  const task = it.type === "cloze"
+    ? `The learner must fill the blank in this sentence: "${it.cloze.before}____${it.cloze.after}"
+The expected answer is "${it.answer}" (meaning: ${card.zh || "?"}). The learner typed "${v}".
+Is "${v}" a correctly spelled English word (in the right grammatical form) that fits the blank with essentially the same meaning?`
+    : `The learner sees the Traditional Chinese meaning "${card.zh || ""}"${card.pos ? ` (${card.pos})` : ""} and must type the English word.
+The expected answer is "${it.answer}". The learner typed "${v}".
+Is "${v}" a correctly spelled, real English word or phrase that expresses essentially the same meaning (a valid synonym, same part of speech)?`;
+  const prompt = `${task}
+Be strict: misspellings, related-but-different meanings, or a different part of speech are NOT correct.
+Reply with JSON only: {"ok": true or false, "zh": "short Traditional Chinese meaning of \"${v}\" (8 characters or fewer)"}`;
+  const raw = await Promise.race([
+    complete(prompt, { json: true, maxTokens: 120, priority: "fg", purpose: "lookup" }),
+    new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 8000)),
+  ]);
+  let r = null;
+  try { r = JSON.parse(String(raw).replace(/^```(json)?|```$/g, "").trim()); } catch (e) { r = null; }
+  const out = r ? { ok: r.ok === true, zh: String(r.zh || "").slice(0, 12) } : null;
+  if (out) judgeCache.set(key, out);
+  return out;
 }
 
 function onKey(e) {
@@ -307,8 +377,9 @@ function paint() {
       : (it.type === "cloze" ? "填入空格的字，按 Enter" : "輸入英文，按 Enter");
     body = `<form class="qz-form">
         <input type="text" class="qz-input" autocomplete="off" autocapitalize="off" spellcheck="false"
-               placeholder="${ph}" ${S.answered && S.lastOk ? "disabled" : ""}>
+               placeholder="${ph}" ${(S.answered && S.lastOk) || S.judging ? "disabled" : ""} value="${S.judging ? esc(S.typed || "") : ""}">
       </form>
+      ${S.judging ? `<div class="qz-note qz-judging">🤔 不是目標字，正在確認意思對不對…</div>` : ""}
       ${!S.answered ? `<div class="sr-sub"><button class="mini qz-hint" type="button">💡 提示</button>
         <button class="mini qz-giveup" type="button">不會，看答案</button></div>` : ""}
       ${!S.answered ? hintHTML(it) : ""}`;
@@ -316,7 +387,7 @@ function paint() {
 
   let result = "";
   if (S.answered) {
-    const verdict = S.lastOk ? (S.note ? "✓ 差一點，算你對" : "✓ 答對了") : "✗ 這題沒答對";
+    const verdict = S.lastOk ? (S.why === "syn" ? "✓ 意思也對，算你對" : S.note ? "✓ 差一點，算你對" : "✓ 答對了") : "✗ 這題沒答對";
     result = `
       <div class="qz-result ${S.lastOk ? "pass" : "fail"}">
         <div class="sr-verdict">${verdict}</div>
@@ -357,7 +428,7 @@ function paint() {
     const input = $(".qz-input");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      if (!S.answered) return submitTyped(input.value);
+      if (!S.answered) { S.typed = input.value; return submitTyped(input.value); }
       // 答錯後照打一次：對了就綠一下再前進；空白直接前進
       if (!input.value.trim() || norm(input.value) === norm(it.answer)) {
         if (input.value.trim()) input.classList.add("ok");

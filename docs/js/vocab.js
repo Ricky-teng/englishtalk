@@ -479,6 +479,76 @@ function storeForms(word, forms, family) {
   }
 }
 
+/* ---------- 補齊：例句、音標、詞性變化 ---------- */
+
+const isPhrase = (c) => /\s/.test(String(c.word || "").trim()) || c.pos === "phr.";
+
+/** 這張卡還缺什麼（單字包加進來的字通常沒有例句和音標） */
+function needs(c) {
+  const out = [];
+  if (!c.example) out.push("example");
+  if (!c.phonetic && !isPhrase(c)) out.push("phonetic");
+  if (!Array.isArray(c.forms) || !Array.isArray(c.family)) out.push("forms");
+  return out;
+}
+
+/** 單字本裡還有欄位沒補齊的卡（例句、例句翻譯、音標、詞性變化） */
+export function missingDetails() {
+  return vocab().filter(c => needs(c).length);
+}
+
+export const DETAIL_BATCH = 12;   // 一次請求幾個字：含例句輸出比較長，12 個剛好不會超過 Groq 免費版的每分鐘額度
+
+/**
+ * 一次幫一批卡補齊空白欄位。只填空的，你自己寫過或 AI 查過的不會被蓋掉。
+ * 用卡片上的中文解釋當語境，例句才會是同一個意思。
+ * @param {Array<Object>} cards  單字卡（最多 DETAIL_BATCH 張）
+ * @returns {Promise<number>} 補到幾張卡
+ */
+export async function fetchDetails(cards) {
+  const list = cards.filter(Boolean).slice(0, DETAIL_BATCH);
+  if (!list.length) return 0;
+  const lines = list.map((c, i) => `${i + 1}. "${c.word}"${c.pos ? ` (${c.pos})` : ""}${c.zh ? ` — meaning: ${c.zh}` : ""}`).join("\n");
+  const prompt = `For each English word or phrase below, fill in learner-dictionary details for a Traditional Chinese speaker \
+(CEFR B1–B2). Use the given Chinese meaning to choose the right sense.
+${lines}
+
+Return ONLY a JSON array, no markdown fence, one element per item, same order:
+[{"word":"decide","phonetic":"/dɪˈsaɪd/","example":"She decided to study abroad next year.","exampleZh":"她決定明年出國念書。",\
+"forms":[{"k":"past","w":"decided"},{"k":"pp","w":"decided"},{"k":"ing","w":"deciding"},{"k":"s3","w":"decides"}],\
+"family":[{"w":"decision","pos":"n.","zh":"決定"}]}]
+
+Rules:
+- "phonetic": American IPA between slashes; "" for multi-word phrases
+- "example": ONE natural, everyday sentence (8–16 words) that uses the word in THIS meaning; it MUST contain the word itself or one of its inflected forms (for phrases with sb./sth./one's, fill them in naturally)
+- "exampleZh": natural Traditional Chinese translation of the example
+- for multi-word phrases: "forms" and "family" are []
+${FORMS_RULES}
+"zh" is Traditional Chinese (never Simplified), 8 characters or fewer.`;
+  const raw = await complete(prompt, { maxTokens: 300 + list.length * 260, geminiJson: true, priority: "bg" });
+  const arr = parseJSON(raw);
+  if (!Array.isArray(arr)) throw new Error("模型沒有回傳陣列");
+  let n = 0;
+  list.forEach((c, i) => {
+    const d = arr.find(x => x && String(x.word || "").toLowerCase() === c.word.toLowerCase()) || arr[i];
+    if (!d) return;
+    let changed = false;
+    const ex = String(d.example || "").trim(), exZh = String(d.exampleZh || "").trim();
+    if (!c.example && ex) { c.example = ex; if (!c.exampleZh && exZh) c.exampleZh = exZh; changed = true; }
+    const ipa = String(d.phonetic || "").trim();
+    if (!c.phonetic && ipa && !isPhrase(c)) { c.phonetic = ipa; changed = true; }
+    if (!Array.isArray(c.forms) || !Array.isArray(c.family)) {
+      const forms = isPhrase(c) ? [] : normForms(d.forms, c.word);
+      const family = isPhrase(c) ? [] : normFamily(d.family, c.word);
+      storeForms(c.word, forms, family);
+      changed = true;
+    }
+    if (changed) n++;
+  });
+  save();
+  return n;
+}
+
 /** 單字本裡還沒有詞性變化資料的字 */
 export function missingForms() {
   return vocab().filter(v => !Array.isArray(v.family) || !Array.isArray(v.forms)).map(v => v.word);

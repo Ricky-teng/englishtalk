@@ -698,7 +698,7 @@ function esc(s) {
 function renderVocab() {
   refreshPills();
   // 「更多」上的小藍點：有字還沒查詞性變化
-  $("vocabMoreDot").hidden = !V.missingForms().length;
+  $("vocabMoreDot").hidden = !V.missingDetails().length;
   const c = V.counts();
   // 說明文字放在 title（滑鼠移上去／長按才看得到），畫面上只留數字
   $("vocabCounts").innerHTML = `
@@ -888,11 +888,12 @@ function exportVocabCSV() {
 
 // 單字本右上「⋯」：比較少用的動作
 $("btnVocabMore").addEventListener("click", () => {
-  const miss = V.missingForms().length;
+  const miss = V.missingDetails().length;
   popMenu($("btnVocabMore"), [
     { label: "📋 批次貼上單字表", run: openBulk },
-    { label: "🔤 補齊詞性變化", hint: fillingForms ? "補查中…" : miss ? `${miss} 個字` : "都有了",
-      disabled: !miss || fillingForms, run: fillForms },
+    fill.on
+      ? { label: "⏹ 停止補齊", hint: `${fill.done}/${fill.total}`, run: () => { fill.stop = true; toast("這一批補完就停"); } }
+      : { label: "✨ 補齊例句與詞性變化", hint: miss ? `${miss} 個字` : "都有了", disabled: !miss, run: fillDetails },
     { label: "⬇ 匯出 CSV", run: exportVocabCSV },
   ]);
 });
@@ -1188,25 +1189,30 @@ dlgWord.addEventListener("close", () => {
   if (dlgAdd.open) $("addResults").querySelectorAll(".cand").forEach(c => c._paint && c._paint());
 });
 
-// 舊單字一次補齊詞性變化：每 25 個字一個請求；進度用提示訊息顯示
-let fillingForms = false;
-async function fillForms() {
-  const todo = V.missingForms();
-  if (!todo.length) { toast("每個字都已經有詞性變化了"); return; }
-  if (fillingForms) return;
-  fillingForms = true;
-  let done = 0;
+// 一次補齊單字本裡缺的例句、例句翻譯、音標、詞性變化：每 12 個字一個請求，進度用提示訊息顯示。
+// 補到一半可以在「⋯」按停止；每一批補完就存檔，下次會從還沒補的字繼續。
+const fill = { on: false, stop: false, done: 0, total: 0 };
+async function fillDetails() {
+  const todo = V.missingDetails();
+  if (!todo.length) { toast("每個字的例句和詞性變化都齊了"); return; }
+  if (fill.on) return;
+  const s = Store.settings();
+  if (!(s.provider === "groq" ? s.groqKey : s.geminiKey)) { toast("要先到設定填 API 金鑰"); return; }
+  if (todo.length > 60 && !confirm(`有 ${todo.length} 個字要補，大約要送 ${Math.ceil(todo.length / V.DETAIL_BATCH)} 次 AI 請求（會用到你的免費額度）。開始嗎？中途可以在「⋯」停止。`)) return;
+  Object.assign(fill, { on: true, stop: false, done: 0, total: todo.length });
+  let filled = 0;
   try {
-    for (let i = 0; i < todo.length; i += 25) {
-      toast(`補查詞性變化中 ${Math.min(i + 25, todo.length)}/${todo.length}…`, 60000);
-      done += await V.fetchForms(todo.slice(i, i + 25));
-      renderVocab();
+    for (let i = 0; i < todo.length && !fill.stop; i += V.DETAIL_BATCH) {
+      toast(`補齊例句與詞性變化中 ${Math.min(i + V.DETAIL_BATCH, todo.length)}/${todo.length}…`, 120000);
+      filled += await V.fetchDetails(todo.slice(i, i + V.DETAIL_BATCH));
+      fill.done = Math.min(i + V.DETAIL_BATCH, todo.length);
+      if ($("page-vocab").classList.contains("active")) renderVocab();
     }
-    toast(`已補上 ${done} 個字的詞性變化`);
+    toast(fill.stop ? `已停止：補好 ${filled} 個字，剩下的下次再補` : `已補好 ${filled} 個字的例句與詞性變化`, 4000);
   } catch (e) {
-    toast("補查失敗：" + e.message);
+    toast(`補到一半失敗（已補好 ${filled} 個）：${e.message}`, 5000);
   } finally {
-    fillingForms = false;
+    fill.on = false;
     renderVocab();
   }
 }
