@@ -25,7 +25,8 @@
      "pos": "n.",
      "zh": "插畫家"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "confine",
@@ -55,14 +56,16 @@
      "pos": "n.",
      "zh": "限制；監禁"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "beloved",
    "pos": "adj.",
    "zh": "備受喜愛的",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "format",
@@ -74,7 +77,13 @@
      "w": "formats"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "格式化；編排"
+    }
+   ]
   },
   {
    "w": "minimize",
@@ -109,7 +118,8 @@
      "pos": "adj.",
      "zh": "極少的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "potential",
@@ -121,6 +131,12 @@
      "w": "potentially",
      "pos": "adv.",
      "zh": "可能地"
+    }
+   ],
+   "alt": [
+    {
+     "pos": "adj.",
+     "zh": "潛在的"
     }
    ]
   },
@@ -140,7 +156,8 @@
      "pos": "v.",
      "zh": "使熟悉"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "leap",
@@ -152,7 +169,13 @@
      "w": "leaps"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "跳躍"
+    }
+   ]
   },
   {
    "w": "breakthrough",
@@ -164,7 +187,8 @@
      "w": "breakthroughs"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "convincing",
@@ -182,7 +206,8 @@
      "pos": "adv.",
      "zh": "令人信服地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "blur",
@@ -212,6 +237,12 @@
      "pos": "adj.",
      "zh": "模糊的"
     }
+   ],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "模糊的景象"
+    }
    ]
   },
   {
@@ -236,7 +267,13 @@
      "w": "tears"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "裂縫；破洞"
+    }
+   ]
   },
   {
    "w": "appeal",
@@ -253,6 +290,12 @@
      "w": "appealing",
      "pos": "adj.",
      "zh": "吸引人的"
+    }
+   ],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "呼籲；吸引；上訴"
     }
    ]
   },
@@ -284,7 +327,8 @@
      "pos": "n.",
      "zh": "期待；預期"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "disappointed",
@@ -302,7 +346,8 @@
      "pos": "n.",
      "zh": "失望"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "disappoint",
@@ -337,7 +382,8 @@
      "pos": "adv.",
      "zh": "令人失望地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "transition",
@@ -355,7 +401,8 @@
      "pos": "adj.",
      "zh": "過渡的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "betray",
@@ -385,7 +432,8 @@
      "pos": "n.",
      "zh": "背叛"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "condense",
@@ -415,7 +463,8 @@
      "pos": "n.",
      "zh": "凝結"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "episode",
@@ -427,7 +476,8 @@
      "w": "episodes"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "essential",
@@ -444,6 +494,12 @@
      "w": "essentially",
      "pos": "adv.",
      "zh": "基本上"
+    }
+   ],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "必需品；要素"
     }
    ]
   },
@@ -463,7 +519,8 @@
      "pos": "adv.",
      "zh": "基本上"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "controversy",
@@ -481,7 +538,8 @@
      "pos": "adj.",
      "zh": "有爭議的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "fierce",
@@ -503,7 +561,8 @@
      "pos": "adv.",
      "zh": "激烈地；兇猛地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "departure",
@@ -521,7 +580,8 @@
      "pos": "v.",
      "zh": "出發；離開"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "spectacular",
@@ -539,7 +599,8 @@
      "pos": "adv.",
      "zh": "壯觀地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "irony",
@@ -562,7 +623,8 @@
      "pos": "adv.",
      "zh": "諷刺的是"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "trade",
@@ -591,6 +653,12 @@
      "w": "trader",
      "pos": "n.",
      "zh": "商人；交易者"
+    }
+   ],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "貿易；交易"
     }
    ]
   },
@@ -627,98 +695,112 @@
      "pos": "adj.",
      "zh": "可替換的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "be confined to",
    "pos": "phr.",
    "zh": "僅限於…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "tear down",
    "pos": "phr.",
    "zh": "拆掉",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "sweep through",
    "pos": "phr.",
    "zh": "席捲…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "appeal to",
    "pos": "phr.",
    "zh": "吸引…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "tap into",
    "pos": "phr.",
    "zh": "善用；打進",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "invest in",
    "pos": "phr.",
    "zh": "投資於…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "show no signs of",
    "pos": "phr.",
    "zh": "毫無…跡象",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "condense A into B",
    "pos": "phr.",
    "zh": "把A濃縮成B",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "more often than not",
    "pos": "phr.",
    "zh": "往往；多半",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "in an effort to",
    "pos": "phr.",
    "zh": "為了設法…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "trade A for B",
    "pos": "phr.",
    "zh": "用A換B",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "replace A with B",
    "pos": "phr.",
    "zh": "用B取代A",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "the heart of",
    "pos": "phr.",
    "zh": "…的核心",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

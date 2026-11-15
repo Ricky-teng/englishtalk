@@ -7,7 +7,7 @@
 新增一本書：在 tools/packs/data/ 放一個 .py（格式照 longteng_b1.py 的 UNITS），
 再到下面的 BOOKS 加一筆設定，重新執行就好。網站不用改程式。
 
-詞形變化與同字根字：tools/packs/forms.json，鍵是「單字|詞性」，值是 {f: 詞形, fam: 同字根字}，
+詞形變化與同字根字：tools/packs/forms.json，鍵是「單字|詞性」，值是 {f: 詞形, fam: 同字根字, alt: 同拼法的其他詞性}，
 格式跟網站查字時 AI 回傳的 forms／family 一樣。新書裡 forms.json 沒有的字，執行時會列出來；
 沒補的話網站照樣能用，使用者可以在單字本「⋯ → 補齊詞性變化」用 AI 補。
 """
@@ -155,11 +155,13 @@ def main():
                     # 有資料就附上（空陣列也附：代表「查過了，這個字沒有變化」，網站就不會再要 AI 補）
                     it["f"] = fx.get("f", [])
                     it["fam"] = fx.get("fam", [])
+                    # 同一個拼法的其他詞性（challenge n. 也當 v.）
+                    it["alt"] = fx.get("alt", [])
                 else:
                     missing.add(f"{w}|{p}")
                 items.append(it)
             # 片語沒有詞形變化，也不列同字根字
-            items += [{"w": w, "pos": "phr.", "zh": z, "f": [], "fam": []} for w, z in phrases]
+            items += [{"w": w, "pos": "phr.", "zh": z, "f": [], "fam": [], "alt": []} for w, z in phrases]
             rel = f'{book["id"]}/{code}.json'
             atomic_write(os.path.join(OUT, rel), {
                 "id": code, "title": title, "tag": tag, "verified": verified, "items": items,

@@ -22,7 +22,7 @@ const DAY = 86400000;
 const RECOGNIZE = ["flip", "mcEn", "mcZh"];                    // 認得型題目
 const PRODUCE = ["spell", "cloze", "listen", "speak"];          // 自己產出型題目
 const MODE_NAME = { flip: "翻卡", mcEn: "看英選中", mcZh: "看中選英", cloze: "例句填空",
-                    spell: "拼字", listen: "聽寫", speak: "用說的" };
+                    spell: "拼字", listen: "聽寫", pos: "詞性變化", speak: "用說的" };
 
 // 對話裡常被過度使用的字，以及可以換的說法
 const OVERUSED = {

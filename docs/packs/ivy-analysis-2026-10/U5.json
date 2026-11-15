@@ -15,7 +15,8 @@
      "pos": "adv.",
      "zh": "極大地；非常"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "obsession",
@@ -38,7 +39,8 @@
      "pos": "adj.",
      "zh": "過分著迷的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "span",
@@ -50,14 +52,21 @@
      "w": "spans"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "橫跨；持續"
+    }
+   ]
   },
   {
    "w": "sedentary",
    "pos": "adj.",
    "zh": "久坐少動的",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "diminish",
@@ -81,7 +90,8 @@
      "w": "diminishes"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "accommodate",
@@ -111,7 +121,8 @@
      "pos": "n.",
      "zh": "住宿"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "participant",
@@ -129,7 +140,8 @@
      "pos": "v.",
      "zh": "參與"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "dormitory",
@@ -141,7 +153,8 @@
      "w": "dormitories"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "foster",
@@ -165,7 +178,13 @@
      "w": "fosters"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "adj.",
+     "zh": "寄養的"
+    }
+   ]
   },
   {
    "w": "addiction",
@@ -188,7 +207,8 @@
      "pos": "adj.",
      "zh": "使人上癮的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "virtual",
@@ -201,7 +221,8 @@
      "pos": "adv.",
      "zh": "幾乎；虛擬地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "academic",
@@ -219,6 +240,12 @@
      "pos": "adv.",
      "zh": "學業上"
     }
+   ],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "學者"
+    }
    ]
   },
   {
@@ -231,7 +258,13 @@
      "w": "peers"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "凝視"
+    }
+   ]
   },
   {
    "w": "scroll",
@@ -255,42 +288,53 @@
      "w": "scrolls"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "卷軸"
+    }
+   ]
   },
   {
    "w": "an attention span",
    "pos": "phr.",
    "zh": "專注時長",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "suffer from",
    "pos": "phr.",
    "zh": "受…所苦",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "scroll through",
    "pos": "phr.",
    "zh": "滑過（頁面）",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "disconnect from",
    "pos": "phr.",
    "zh": "脫離…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "be intended for",
    "pos": "phr.",
    "zh": "專為…設計",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

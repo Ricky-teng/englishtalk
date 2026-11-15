@@ -26,7 +26,8 @@
      "w": "prances"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "criticism",
@@ -49,7 +50,8 @@
      "pos": "adj.",
      "zh": "批判的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "surpass",
@@ -73,14 +75,21 @@
      "w": "surpasses"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "luxury",
    "pos": "adj.",
    "zh": "豪華的",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "奢侈；奢華"
+    }
+   ]
   },
   {
    "w": "hefty",
@@ -96,7 +105,8 @@
      "w": "heftiest"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "automotive",
@@ -109,14 +119,16 @@
      "pos": "n.",
      "zh": "汽車"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "illustrious",
    "pos": "adj.",
    "zh": "輝煌的",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "representation",
@@ -139,7 +151,8 @@
      "pos": "adj.",
      "zh": "有代表性的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "regulation",
@@ -162,7 +175,8 @@
      "pos": "adj.",
      "zh": "監管的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "embrace",
@@ -186,7 +200,13 @@
      "w": "embraces"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "擁抱"
+    }
+   ]
   },
   {
    "w": "sleek",
@@ -202,7 +222,8 @@
      "w": "sleekest"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "trademark",
@@ -214,7 +235,8 @@
      "w": "trademarks"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "uptick",
@@ -226,7 +248,8 @@
      "w": "upticks"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "fulfill",
@@ -256,7 +279,8 @@
      "pos": "n.",
      "zh": "實現；滿足感"
     }
-   ]
+   ],
+   "alt": []
   }
  ]
 }

@@ -20,7 +20,8 @@
      "pos": "v.",
      "zh": "健行"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "hiking",
@@ -33,7 +34,8 @@
      "pos": "v.",
      "zh": "健行"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "backpack",
@@ -45,7 +47,13 @@
      "w": "backpacks"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "背包旅行"
+    }
+   ]
   },
   {
    "w": "tent",
@@ -57,7 +65,8 @@
      "w": "tents"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "supplies",
@@ -70,7 +79,8 @@
      "pos": "v.",
      "zh": "供應；提供"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "remote",
@@ -91,6 +101,12 @@
      "w": "remotely",
      "pos": "adv.",
      "zh": "遠距地；遙遠地"
+    }
+   ],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "遙控器"
     }
    ]
   },
@@ -116,7 +132,13 @@
      "w": "hires"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "新聘員工"
+    }
+   ]
   },
   {
    "w": "hometown",
@@ -128,7 +150,8 @@
      "w": "hometowns"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "frozen",
@@ -146,7 +169,8 @@
      "pos": "n.",
      "zh": "冷凍庫"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "kilometer",
@@ -158,56 +182,64 @@
      "w": "kilometers"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "aim to",
    "pos": "phr.",
    "zh": "打算；目標是",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "leave behind",
    "pos": "phr.",
    "zh": "拋下",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "set out to",
    "pos": "phr.",
    "zh": "著手去做",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "on foot",
    "pos": "phr.",
    "zh": "徒步",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "give up",
    "pos": "phr.",
    "zh": "放棄",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "in return",
    "pos": "phr.",
    "zh": "作為回報",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "come to realize",
    "pos": "phr.",
    "zh": "逐漸明白",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

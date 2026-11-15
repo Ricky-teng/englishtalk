@@ -14,7 +14,8 @@
      "w": "calamities"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "broadcaster",
@@ -32,14 +33,16 @@
      "pos": "v.",
      "zh": "廣播；播出"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "rubble",
    "pos": "n.",
    "zh": "瓦礫",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "partially",
@@ -57,7 +60,8 @@
      "pos": "n.",
      "zh": "部分"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "collapse",
@@ -81,7 +85,13 @@
      "w": "collapses"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "倒塌；崩潰"
+    }
+   ]
   },
   {
    "w": "devastation",
@@ -104,7 +114,8 @@
      "pos": "adj.",
      "zh": "極度震驚的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "chaos",
@@ -117,7 +128,8 @@
      "pos": "adj.",
      "zh": "混亂的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "aftershock",
@@ -129,7 +141,8 @@
      "w": "aftershocks"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "rattle",
@@ -153,7 +166,13 @@
      "w": "rattles"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "搖鈴；嘎嘎聲"
+    }
+   ]
   },
   {
    "w": "overturn",
@@ -177,7 +196,8 @@
      "w": "overturns"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "shrine",
@@ -189,7 +209,8 @@
      "w": "shrines"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "wreck",
@@ -216,6 +237,12 @@
    "fam": [
     {
      "w": "wreckage",
+     "pos": "n.",
+     "zh": "殘骸"
+    }
+   ],
+   "alt": [
+    {
      "pos": "n.",
      "zh": "殘骸"
     }
@@ -249,7 +276,8 @@
      "pos": "n.",
      "zh": "評估；評量"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "epicenter",
@@ -261,7 +289,8 @@
      "w": "epicenters"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "prefecture",
@@ -273,7 +302,8 @@
      "w": "prefectures"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "mangled",
@@ -286,7 +316,8 @@
      "pos": "v.",
      "zh": "損毀"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "explosion",
@@ -309,7 +340,8 @@
      "pos": "adj.",
      "zh": "爆炸性的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "attraction",
@@ -332,7 +364,8 @@
      "pos": "adj.",
      "zh": "吸引人的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "crumble",
@@ -362,7 +395,8 @@
      "pos": "n.",
      "zh": "碎屑"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "hover",
@@ -386,14 +420,16 @@
      "w": "hovers"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "midair",
    "pos": "n.",
    "zh": "空中",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "witness",
@@ -405,7 +441,13 @@
      "w": "witnesses"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "目擊；見證"
+    }
+   ]
   },
   {
    "w": "impact",
@@ -429,7 +471,13 @@
      "w": "impacts"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "衝擊；影響"
+    }
+   ]
   },
   {
    "w": "meteorological",
@@ -442,7 +490,8 @@
      "pos": "n.",
      "zh": "氣象學"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "agency",
@@ -454,7 +503,8 @@
      "w": "agencies"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "tremor",
@@ -472,7 +522,8 @@
      "pos": "v.",
      "zh": "發抖；顫抖"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "landslide",
@@ -484,7 +535,8 @@
      "w": "landslides"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

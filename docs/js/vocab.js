@@ -106,7 +106,11 @@ Rules for "family" (word family: other COMMON words from the same root with a DI
 - at most 4, e.g. decide → decision (n.), decisive (adj.), decisively (adv.)
 - "pos" is one of: n. v. adj. adv.
 - only real, common words a learner would meet; never invent a word; empty array if none
-- do not repeat the word itself or its inflections`;
+- do not repeat the word itself or its inflections
+
+Rules for "alt" (OTHER parts of speech of the EXACT SAME spelling, e.g. challenge n. → [{"pos":"v.","zh":"挑戰；質疑"}]):
+- only uses a learner would meet in a learner's dictionary; skip rare ones; empty array if none (most words)
+- never the same part of speech as above; "pos" is one of: n. v. adj. adv. prep. conj.; at most 3; "zh" 10 characters or fewer`;
 
 const LOOKUP_PROMPT = (word, context) => `You are a bilingual dictionary for a Traditional \
 Chinese speaker learning English. Look up the word "${word}".
@@ -123,7 +127,8 @@ Return ONLY a JSON object, no markdown fence, with exactly these keys:
   "synonyms": [{"w": "an English near-synonym", "zh": "其繁體中文意思(10字內)"}],
   "antonyms": [{"w": "an English antonym", "zh": "其繁體中文意思(10字內)"}],
   "forms": [{"k": "past", "w": "decided"}],
-  "family": [{"w": "decision", "pos": "n.", "zh": "決定"}]
+  "family": [{"w": "decision", "pos": "n.", "zh": "決定"}],
+  "alt": [{"pos": "n.", "zh": "染料"}]
 }
 
 Rules for synonyms and antonyms:
@@ -156,7 +161,7 @@ export async function lookup(word, context = "", force = false) {
         example: card.example, exampleZh: card.exampleZh,
         synonyms: card.synonyms || [], antonyms: card.antonyms || [],
         forms: card.forms || (hit && hit.forms), family: card.family || (hit && hit.family),
-        senses: card.senses,
+        alt: card.alt || (hit && hit.alt), senses: card.senses,
       };
     }
     // 2. 再看查詢快取
@@ -166,7 +171,7 @@ export async function lookup(word, context = "", force = false) {
         word: hit.word, phonetic: hit.phonetic, pos: hit.pos, zh: hit.zh,
         example: hit.example, exampleZh: hit.exampleZh,
         synonyms: hit.synonyms || [], antonyms: hit.antonyms || [],
-        forms: hit.forms, family: hit.family,
+        forms: hit.forms, family: hit.family, alt: hit.alt,
       };
     }
   }
@@ -184,6 +189,7 @@ export async function lookup(word, context = "", force = false) {
     antonyms: normRelated(d.antonyms),
     forms: normForms(d.forms, d.word || word),
     family: normFamily(d.family, d.word || word),
+    alt: normAlt(d.alt, d.pos),
   };
   cacheSet(result.word, result);
   if (result.word.toLowerCase() !== key.toLowerCase()) cacheSet(key, result);  // 變化形也記
@@ -270,6 +276,7 @@ Traditional Chinese only (never Simplified). Keep every field short.`;
     antonyms: normRelated(d.antonyms).slice(0, 2),
     forms: normForms(d.forms, d.word),
     family: normFamily(d.family, d.word),
+    alt: normAlt(d.alt, d.pos),
   })).filter(r => /^[A-Za-z]/.test(r.word) && r.zh);
   if (results.length) {
     cacheSet(key, { results });
@@ -319,7 +326,7 @@ export function groupResults(results) {
     const k = r.word.toLowerCase();
     let g = groups.find(x => x.word.toLowerCase() === k);
     if (!g) {
-      g = { word: r.word, phonetic: r.phonetic, forms: r.forms, family: r.family,
+      g = { word: r.word, phonetic: r.phonetic, forms: r.forms, family: r.family, alt: r.alt,
             synonyms: r.synonyms, antonyms: r.antonyms, senses: [] };
       groups.push(g);
     }
@@ -346,6 +353,7 @@ export function addSenses(group, picked, tags = []) {
       synonyms: first.synonyms && first.synonyms.length ? first.synonyms : (group.synonyms || []),
       antonyms: first.antonyms && first.antonyms.length ? first.antonyms : (group.antonyms || []),
       ...(Array.isArray(group.family) ? { forms: group.forms || [], family: group.family } : {}),
+      ...(Array.isArray(group.alt) ? { alt: group.alt } : {}),
       senses: clean.length > 1 ? clean : undefined,
       tags,
     });
@@ -403,6 +411,34 @@ export function normFamily(arr, base = "") {
     out.push({ w, pos: POS_SHORT[p] || (p ? p + "." : ""), zh: String(x.zh || "").trim().slice(0, 12) });
   }
   return out.slice(0, 4);
+}
+
+/**
+ * 同一個拼法的其他詞性：[{pos:"v.", zh:"挑戰"}]，最多 3 個；跟主要詞性一樣的拿掉。
+ * （dye 是 v. 也是 n.；跟 family 不同，family 是拼法不同的同字根字）
+ */
+export function normAlt(arr, mainPos = "") {
+  if (!Array.isArray(arr)) return [];
+  const main = new Set(String(mainPos || "").split(/[\/,，\s]+/).map(p => POS_SHORT[p.toLowerCase().replace(/\.$/, "")] || "").filter(Boolean));
+  const out = [];
+  for (const x of arr) {
+    const p = String(x && x.pos || "").toLowerCase().replace(/\.$/, "").trim();
+    const pos = POS_SHORT[p] || (["prep", "conj", "pron"].includes(p) ? p + "." : "");
+    const zh = String(x && x.zh || "").trim().slice(0, 14);
+    if (!pos || !zh || main.has(pos) || out.some(o => o.pos === pos)) continue;
+    out.push({ pos, zh });
+  }
+  return out.slice(0, 3);
+}
+
+/**
+ * 其他詞性接在同一行意思後面：「n. · 挑戰 ｜ v. 挑戰；質疑」
+ * （HTML 字串；單字本、翻卡、查字彈窗共用）
+ */
+export function altInlineHTML(alt) {
+  if (!Array.isArray(alt) || !alt.length) return "";
+  const e = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return alt.map(a => `<span class="alt-inline"><span class="alt-sep">｜</span><span class="sense-pos">${e(a.pos)}</span>${e(a.zh)}</span>`).join("");
 }
 
 /** 詞性縮寫（顯示用）：verb → v. */
@@ -488,7 +524,7 @@ function needs(c) {
   const out = [];
   if (!c.example) out.push("example");
   if (!c.phonetic && !isPhrase(c)) out.push("phonetic");
-  if (!Array.isArray(c.forms) || !Array.isArray(c.family)) out.push("forms");
+  if (!Array.isArray(c.forms) || !Array.isArray(c.family) || (!isPhrase(c) && !Array.isArray(c.alt))) out.push("forms");
   return out;
 }
 
@@ -516,13 +552,13 @@ ${lines}
 Return ONLY a JSON array, no markdown fence, one element per item, same order:
 [{"word":"decide","phonetic":"/dɪˈsaɪd/","example":"She decided to study abroad next year.","exampleZh":"她決定明年出國念書。",\
 "forms":[{"k":"past","w":"decided"},{"k":"pp","w":"decided"},{"k":"ing","w":"deciding"},{"k":"s3","w":"decides"}],\
-"family":[{"w":"decision","pos":"n.","zh":"決定"}]}]
+"family":[{"w":"decision","pos":"n.","zh":"決定"}],"alt":[]}]
 
 Rules:
 - "phonetic": American IPA between slashes; "" for multi-word phrases
 - "example": ONE natural, everyday sentence (8–16 words) that uses the word in THIS meaning; it MUST contain the word itself or one of its inflected forms (for phrases with sb./sth./one's, fill them in naturally)
 - "exampleZh": natural Traditional Chinese translation of the example
-- for multi-word phrases: "forms" and "family" are []
+- for multi-word phrases: "forms", "family" and "alt" are []
 ${FORMS_RULES}
 "zh" is Traditional Chinese (never Simplified), 8 characters or fewer.`;
   const raw = await complete(prompt, { maxTokens: 300 + list.length * 260, geminiJson: true, priority: "bg" });
@@ -543,6 +579,7 @@ ${FORMS_RULES}
       storeForms(c.word, forms, family);
       changed = true;
     }
+    if (!Array.isArray(c.alt)) { c.alt = isPhrase(c) ? [] : normAlt(d.alt, c.pos); changed = true; }
     if (changed) n++;
   });
   save();
@@ -591,6 +628,7 @@ export async function lookupBatchCached(words) {
       antonyms: normRelated(d.antonyms),
       forms: normForms(d.forms, d.word || w),
       family: normFamily(d.family, d.word || w),
+      alt: normAlt(d.alt, d.pos),
     };
     byWord[w.trim().toLowerCase()] = norm;
     cacheSet(w, norm);

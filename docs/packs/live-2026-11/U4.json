@@ -26,7 +26,13 @@
      "w": "drafts"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "草稿"
+    }
+   ]
   },
   {
    "w": "summarize",
@@ -56,7 +62,8 @@
      "pos": "n.",
      "zh": "摘要；總結"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "workplace",
@@ -68,7 +75,8 @@
      "w": "workplaces"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "misunderstand",
@@ -92,7 +100,8 @@
      "w": "misunderstands"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "information",
@@ -110,7 +119,8 @@
      "pos": "adj.",
      "zh": "資訊豐富的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "accomplish",
@@ -145,7 +155,8 @@
      "pos": "adj.",
      "zh": "有成就的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "frustration",
@@ -168,7 +179,8 @@
      "pos": "adj.",
      "zh": "令人沮喪的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "eventually",
@@ -181,14 +193,21 @@
      "pos": "adj.",
      "zh": "最終的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "content",
    "pos": "n.",
    "zh": "內容",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "adj.",
+     "zh": "滿足的"
+    }
+   ]
   },
   {
    "w": "critical",
@@ -216,7 +235,8 @@
      "pos": "adv.",
      "zh": "嚴重地；批判地"
     }
-   ]
+   ],
+   "alt": []
   }
  ]
 }

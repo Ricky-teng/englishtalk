@@ -20,7 +20,8 @@
      "pos": "v.",
      "zh": "有關聯"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "explore",
@@ -60,7 +61,8 @@
      "pos": "adj.",
      "zh": "探索性的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "environment",
@@ -83,7 +85,8 @@
      "pos": "adv.",
      "zh": "在環境方面"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "unforgettable",
@@ -96,7 +99,8 @@
      "pos": "v.",
      "zh": "忘記"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "memory",
@@ -119,35 +123,40 @@
      "pos": "adj.",
      "zh": "難忘的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "show respect for",
    "pos": "phr.",
    "zh": "尊重…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "be willing to",
    "pos": "phr.",
    "zh": "願意…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "one another",
    "pos": "phr.",
    "zh": "彼此",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "a field trip",
    "pos": "phr.",
    "zh": "校外教學",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

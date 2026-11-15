@@ -32,7 +32,8 @@
      "pos": "n.",
      "zh": "討論"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "discussion",
@@ -50,7 +51,8 @@
      "pos": "v.",
      "zh": "討論"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "review",
@@ -62,7 +64,13 @@
      "w": "reviews"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "複習；評論"
+    }
+   ]
   },
   {
    "w": "creator",
@@ -85,7 +93,8 @@
      "pos": "adj.",
      "zh": "有創意的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "career",
@@ -97,7 +106,8 @@
      "w": "careers"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "collection",
@@ -120,7 +130,8 @@
      "pos": "adj.",
      "zh": "集體的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "exactly",
@@ -133,7 +144,8 @@
      "pos": "adj.",
      "zh": "確切的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "emotion",
@@ -156,7 +168,8 @@
      "pos": "adv.",
      "zh": "情緒上"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "activity",
@@ -184,7 +197,8 @@
      "pos": "v.",
      "zh": "啟動"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "thought",
@@ -212,7 +226,8 @@
      "pos": "adv.",
      "zh": "若有所思地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "exchange",
@@ -236,7 +251,13 @@
      "w": "exchanges"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "交換；交流"
+    }
+   ]
   },
   {
    "w": "marketing",
@@ -249,7 +270,8 @@
      "pos": "v.",
      "zh": "推銷；行銷"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "industry",
@@ -277,7 +299,8 @@
      "pos": "adj.",
      "zh": "勤奮的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "title",
@@ -295,7 +318,8 @@
      "pos": "adj.",
      "zh": "名為…的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "section",
@@ -307,7 +331,8 @@
      "w": "sections"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "judge",
@@ -342,6 +367,12 @@
      "pos": "adj.",
      "zh": "愛批判的"
     }
+   ],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "法官；裁判"
+    }
    ]
   },
   {
@@ -354,49 +385,56 @@
      "w": "audiences"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "relate to",
    "pos": "phr.",
    "zh": "產生共鳴",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "at the thought of",
    "pos": "phr.",
    "zh": "一想到…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "exchange A with B",
    "pos": "phr.",
    "zh": "與B交換A",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "judge A by B",
    "pos": "phr.",
    "zh": "依B評斷A",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "a wider audience",
    "pos": "phr.",
    "zh": "更廣的受眾",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "gain popularity",
    "pos": "phr.",
    "zh": "變得受歡迎",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

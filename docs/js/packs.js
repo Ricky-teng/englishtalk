@@ -59,6 +59,7 @@ async function addUnit(u) {
     // 單字包附的詞形變化與同字根字：卡片還沒有（或是空的）才補，不蓋掉 AI 查過或你自己改過的
     if (Array.isArray(it.f) && !(Array.isArray(card.forms) && card.forms.length)) card.forms = it.f;
     if (Array.isArray(it.fam) && !(Array.isArray(card.family) && card.family.length)) card.family = it.fam;
+    if (Array.isArray(it.alt) && !(Array.isArray(card.alt) && card.alt.length)) card.alt = it.alt;
   }
   Store.save(true);
   return { added, total: unit.items.length };

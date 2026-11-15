@@ -9,7 +9,13 @@
    "pos": "adj.",
    "zh": "孤單的；獨自",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "adv.",
+     "zh": "獨自地"
+    }
+   ]
   },
   {
    "w": "message",
@@ -21,7 +27,13 @@
      "w": "messages"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "傳訊息給"
+    }
+   ]
   },
   {
    "w": "invitation",
@@ -44,21 +56,24 @@
      "pos": "adj.",
      "zh": "吸引人的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "be not alone",
    "pos": "phr.",
    "zh": "不是只有你",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "keep an eye on",
    "pos": "phr.",
    "zh": "留意",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

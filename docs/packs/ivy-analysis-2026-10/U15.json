@@ -32,7 +32,8 @@
      "pos": "n.",
      "zh": "請求；抗辯"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "prohibit",
@@ -62,7 +63,8 @@
      "pos": "n.",
      "zh": "禁止"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "initially",
@@ -75,7 +77,8 @@
      "pos": "adj.",
      "zh": "最初的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "legalize",
@@ -115,7 +118,8 @@
      "pos": "adv.",
      "zh": "合法地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "profession",
@@ -138,7 +142,8 @@
      "pos": "adv.",
      "zh": "專業地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "restriction",
@@ -166,7 +171,8 @@
      "pos": "adj.",
      "zh": "限制性的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "regarding",
@@ -179,7 +185,8 @@
      "pos": "v.",
      "zh": "視為"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "register",
@@ -209,6 +216,12 @@
      "pos": "n.",
      "zh": "登記；註冊"
     }
+   ],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "登記簿"
+    }
    ]
   },
   {
@@ -227,7 +240,8 @@
      "pos": "v.",
      "zh": "進入；加入"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "collapse",
@@ -251,7 +265,13 @@
      "w": "collapses"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "倒塌；崩潰"
+    }
+   ]
   },
   {
    "w": "incompetent",
@@ -264,7 +284,8 @@
      "pos": "n.",
      "zh": "無能；不稱職"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "reform",
@@ -276,14 +297,21 @@
      "w": "reforms"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "改革"
+    }
+   ]
   },
   {
    "w": "behalf",
    "pos": "n.",
    "zh": "代表（某人）",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "pursuit",
@@ -301,56 +329,64 @@
      "pos": "v.",
      "zh": "追求"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "an entry requirement",
    "pos": "phr.",
    "zh": "入行門檻",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "land sb in trouble",
    "pos": "phr.",
    "zh": "使某人惹麻煩",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "start out as",
    "pos": "phr.",
    "zh": "起初是…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "in practice",
    "pos": "phr.",
    "zh": "實際上",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "on behalf of",
    "pos": "phr.",
    "zh": "代表…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "in the pursuit of",
    "pos": "phr.",
    "zh": "追求…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "give voice to",
    "pos": "phr.",
    "zh": "為…發聲",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

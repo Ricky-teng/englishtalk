@@ -20,7 +20,8 @@
      "pos": "v.",
      "zh": "追求"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "endure",
@@ -50,7 +51,8 @@
      "pos": "n.",
      "zh": "耐力；忍耐"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "undertake",
@@ -74,7 +76,8 @@
      "w": "undertakes"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "anchor",
@@ -86,7 +89,13 @@
      "w": "anchors"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "下錨；固定；主播"
+    }
+   ]
   },
   {
    "w": "latitude",
@@ -98,7 +107,8 @@
      "w": "latitudes"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "longitude",
@@ -110,7 +120,8 @@
      "w": "longitudes"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "stage",
@@ -134,14 +145,21 @@
      "w": "stages"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "舞台；階段"
+    }
+   ]
   },
   {
    "w": "morale",
    "pos": "n.",
    "zh": "士氣",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "adapt",
@@ -181,7 +199,8 @@
      "pos": "adj.",
      "zh": "適應力強的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "voyage",
@@ -193,7 +212,8 @@
      "w": "voyages"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "boredom",
@@ -216,7 +236,8 @@
      "pos": "adj.",
      "zh": "無趣的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "orchestra",
@@ -234,7 +255,8 @@
      "pos": "adj.",
      "zh": "管弦樂的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "wreck",
@@ -246,14 +268,21 @@
      "w": "wrecks"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "毀壞"
+    }
+   ]
   },
   {
    "w": "indigenous",
    "pos": "adj.",
    "zh": "原住民的",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "conquer",
@@ -288,7 +317,8 @@
      "pos": "n.",
      "zh": "征服者"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "conqueror",
@@ -306,7 +336,8 @@
      "pos": "v.",
      "zh": "征服"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "immense",
@@ -319,7 +350,8 @@
      "pos": "adv.",
      "zh": "極其；非常"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "utilize",
@@ -354,7 +386,8 @@
      "pos": "n.",
      "zh": "效用；公用事業"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "unload",
@@ -378,7 +411,8 @@
      "w": "unloads"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "provisions",
@@ -391,7 +425,8 @@
      "pos": "v.",
      "zh": "提供"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "controversy",
@@ -409,7 +444,8 @@
      "pos": "adj.",
      "zh": "有爭議的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "navigation",
@@ -422,7 +458,8 @@
      "pos": "v.",
      "zh": "導航"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "analysis",
@@ -445,7 +482,8 @@
      "pos": "adj.",
      "zh": "分析的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "remarkably",
@@ -468,7 +506,8 @@
      "pos": "v.",
      "zh": "說；評論"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "fiercely",
@@ -481,7 +520,8 @@
      "pos": "adj.",
      "zh": "激烈的；兇猛的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "credit",
@@ -505,7 +545,13 @@
      "w": "credits"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "信用；學分"
+    }
+   ]
   },
   {
    "w": "recognize",
@@ -540,70 +586,80 @@
      "pos": "adj.",
      "zh": "可辨識的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "lock away",
    "pos": "phr.",
    "zh": "與外界隔絕",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "in search of",
    "pos": "phr.",
    "zh": "為了尋找",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "close in",
    "pos": "phr.",
    "zh": "逼近",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "bring sth to an end",
    "pos": "phr.",
    "zh": "結束某事",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "set out on",
    "pos": "phr.",
    "zh": "展開（旅程）",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "be credited as",
    "pos": "phr.",
    "zh": "被認為是…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "be met with",
    "pos": "phr.",
    "zh": "遭遇…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "recognize A as B",
    "pos": "phr.",
    "zh": "公認A為B",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "fall short of",
    "pos": "phr.",
    "zh": "未達到…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

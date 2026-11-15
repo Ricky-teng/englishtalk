@@ -966,7 +966,16 @@ function openWordEditor(card, prefill = null) {
 /** 卡片上的意思清單（多個意思時一行一個；只有一個就照舊顯示「詞性 · 中文」） */
 function sensesEl(card, cls) {
   const ss = V.sensesOf(card);
-  if (ss.length <= 1) return card.zh ? el("div", cls, (card.pos ? card.pos + " · " : "") + card.zh) : null;
+  if (ss.length <= 1) {
+    if (!card.zh) return null;
+    // 其他詞性（challenge n. 也當 v.）接在同一行；這時主要詞性也用同樣的藍色標籤，兩邊對得齊
+    if (!(Array.isArray(card.alt) && card.alt.length)) return el("div", cls, (card.pos ? card.pos + " · " : "") + card.zh);
+    const d = el("div", cls);
+    if (card.pos) d.appendChild(el("span", "sense-pos", V.posShort(card.pos)));
+    d.appendChild(document.createTextNode(card.zh));
+    d.insertAdjacentHTML("beforeend", V.altInlineHTML(card.alt));
+    return d;
+  }
   const ol = el("ol", cls + " senses");
   ss.forEach(x => {
     const li = el("li");
@@ -974,6 +983,8 @@ function sensesEl(card, cls) {
     li.appendChild(document.createTextNode(x.zh));
     ol.appendChild(li);
   });
+  // 多個意思時，其他詞性接在最後一個意思後面
+  if (ol.lastChild) ol.lastChild.insertAdjacentHTML("beforeend", V.altInlineHTML(card.alt));
   return ol;
 }
 
@@ -1006,7 +1017,7 @@ function renderCands(box, results, mode, onPick) {
       return { word: g.word, phonetic: g.phonetic, pos: j.pos, zh: j.zh,
                example: ss[0].example, exampleZh: ss[0].exampleZh,
                synonyms: ss[0].synonyms, antonyms: ss[0].antonyms,
-               forms: g.forms, family: g.family, senses: ss.length > 1 ? ss : undefined };
+               forms: g.forms, family: g.family, alt: g.alt, senses: ss.length > 1 ? ss : undefined };
     };
     const senseHTML = (x) => `
       <span class="sense-pos">${esc(V.posShort(x.pos))}</span><span class="sense-zh">${esc(x.zh)}</span>
@@ -1377,6 +1388,7 @@ $("btnDoBulk").addEventListener("click", async () => {
         synonyms: d.synonyms || [],
         antonyms: d.antonyms || [],
         ...(Array.isArray(d.family) ? { forms: d.forms || [], family: d.family } : {}),
+        ...(Array.isArray(d.alt) ? { alt: d.alt } : {}),
         tags: tag ? [tag] : [],
       };
       const res = V.add(r.word, merged);
@@ -1469,7 +1481,7 @@ const REVIEW_MODES = {
   ...QUIZ_MODES,
   speak: { icon: "🎤", name: "用說的", tip: "畫面給你中文，AI 用語音問一個問題，你要想出英文單字並用它說一句話回答。需要開口。" },
 };
-const MODE_ORDER = ["flip", "mixed", "mcEn", "mcZh", "cloze", "spell", "listen", "speak", "match"];
+const MODE_ORDER = ["flip", "mixed", "mcEn", "mcZh", "cloze", "spell", "listen", "pos", "speak", "match"];
 
 function reviewMode() {
   const m = Store.settings().reviewMode;

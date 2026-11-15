@@ -14,7 +14,8 @@
      "w": "beverages"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "fatigue",
@@ -27,7 +28,8 @@
      "pos": "adj.",
      "zh": "疲憊的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "ingredient",
@@ -39,7 +41,8 @@
      "w": "ingredients"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "inevitable",
@@ -52,7 +55,8 @@
      "pos": "adv.",
      "zh": "不可避免地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "disrupt",
@@ -87,7 +91,8 @@
      "pos": "adj.",
      "zh": "擾亂的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "cautious",
@@ -105,7 +110,8 @@
      "pos": "adv.",
      "zh": "謹慎地"
     }
-   ]
+   ],
+   "alt": []
   }
  ]
 }

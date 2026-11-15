@@ -1025,3 +1025,8 @@ dialog.packs .m-body { overflow-x: hidden; }
 #page-stats #syncCard[hidden] { display: none !important; }
 /* 每日明細：日期、時間不要折行 */
 #dailyTable td, #dailyTable th { white-space: nowrap; }
+
+/* 其他詞性接在同一行：n. · 挑戰 ｜ v. 挑戰；質疑 */
+.alt-inline { white-space: nowrap; }
+.alt-inline .alt-sep { color: var(--muted); margin: 0 6px; }
+.alt-inline .sense-pos { margin-right: 4px; }

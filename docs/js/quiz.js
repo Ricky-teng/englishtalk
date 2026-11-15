@@ -6,6 +6,7 @@
  *   🧩 例句填空   在句子裡用對（含詞形）
  *   ⌨️ 拼字       完全靠自己拼出來（最難）
  *   🎧 聽寫       聽得懂、拼得出來（要戴耳機）
+ *   🌿 詞性變化   同一個字的其他詞性：decide 的名詞是？（打字）、dye 當名詞是什麼意思？（選擇）；答錯算在原本那個字
  *   🔀 混合       優先考這個字還沒通過的能力（認得 → 想得起 → 拼得出），都過了再輪著考
  *   🎮 配對遊戲   暖身用，不影響複習排程
  *
@@ -25,6 +26,7 @@ export const QUIZ_MODES = {
   cloze:  { icon: "🧩", name: "例句填空", tip: "例句挖掉一個字，打出正確的形態（例如 negotiated）。沒有例句的字會改成拼字題。" },
   spell:  { icon: "⌨️", name: "拼字", tip: "看中文，自己拼出英文。卡住可以按提示一次多給一個字母。" },
   listen: { icon: "🎧", name: "聽寫", tip: "聽發音，拼出單字。要開聲音或戴耳機。" },
+  pos:    { icon: "🌿", name: "詞性變化", tip: "考同一個字的其他詞性：「decide 的名詞是？」要打出 decision；「dye 當名詞是什麼意思？」從四個中文選。答錯算在原本那個字上。沒有詞性資料的字會改出拼字題。" },
   match:  { icon: "🎮", name: "配對遊戲", tip: "把英文和中文配成對，越快越好。只是暖身，不會影響複習排程。" },
 };
 
@@ -107,7 +109,9 @@ function pickType(card) {
   if (sk.see !== 1) return "mcEn";
   if (sk.recall !== 1) return "mcZh";
   if (sk.write !== 1) return clozeOf(card) ? "cloze" : "spell";   // 聽寫要開聲音，不主動出
-  // 三項都過了：照熟練度輪著考，維持住
+  // 三項都過了：有詞性變化資料的字，四成機率考詞性變化
+  if (posTargets(card).length && Math.random() < 0.4) return "pos";
+  // 照熟練度輪著考，維持住
   const r = card.reps || 0;
   const relapse = (card.lapses || 0) > 0 && (card.interval || 0) === 0;
   if (r === 0 && !relapse) return "mcEn";
@@ -116,8 +120,56 @@ function pickType(card) {
   return clozeOf(card) && Math.random() < 0.5 ? "cloze" : "spell";
 }
 
+/* ---------- 詞性變化題 ---------- */
+
+const POS_NAME = { "n.": "名詞", "v.": "動詞", "adj.": "形容詞", "adv.": "副詞", "prep.": "介系詞", "conj.": "連接詞", "pron.": "代名詞" };
+
+/**
+ * 這個字可以出哪些詞性變化題：
+ *   fam：拼法不同的同字根字（decide → decision n.），打字作答
+ *   alt：同一個拼法的其他詞性（dye v. → n. 染料），選中文
+ */
+function posTargets(card) {
+  const out = [];
+  for (const f of card.family || []) {
+    if (f && f.w && /^[A-Za-z][A-Za-z'-]*$/.test(f.w) && POS_NAME[f.pos]) out.push({ sub: "fam", ...f });
+  }
+  for (const a of card.alt || []) if (a && a.zh && POS_NAME[a.pos]) out.push({ sub: "alt", ...a });
+  return out;
+}
+
+/** 「也當」題的錯誤選項：其他字的中文（優先同詞性），跟正解太像的不要 */
+function altDistractors(right, pos, exceptId) {
+  const r = norm(right), seen = new Set([r]), pool = [];
+  const push = (z, p) => {
+    const k = norm(z);
+    if (!k || seen.has(k) || r.includes(k) || k.includes(r)) return;
+    seen.add(k);
+    pool.push({ z, same: p === pos ? 0 : 1, r: Math.random() });
+  };
+  for (const v of vocab()) {
+    if (v.id === exceptId) continue;
+    push(v.zh, V.posShort(v.pos));
+    for (const a of v.alt || []) push(a.zh, a.pos);
+  }
+  return pool.sort((a, b) => a.same - b.same || a.r - b.r).slice(0, 3).map(x => x.z);
+}
+
+function buildPosItem(card) {
+  const ts = shuffle(posTargets(card).slice());
+  for (const t of ts) {
+    if (t.sub === "fam") return { type: "pos", sub: "fam", card, target: t, answer: t.w };
+    const ds = altDistractors(t.zh, t.pos, card.id);
+    if (ds.length < 3) continue;
+    const options = shuffle([t.zh, ...ds]);
+    return { type: "pos", sub: "alt", card, target: t, options, answer: options.indexOf(t.zh) };
+  }
+  return null;
+}
+
 /** 依題型建立一題；條件不夠（例如選項湊不滿、沒有例句）就換一個做得出來的題型 */
 function buildItem(card, type) {
+  if (type === "pos") return buildPosItem(card) || buildItem(card, "spell");
   if (type === "mcEn" || type === "mcZh") {
     const field = type === "mcEn" ? "zh" : "word";
     if (!card.zh) return buildItem(card, "spell");
@@ -189,7 +241,7 @@ function record(ok, q, note = "", why = "") {
   }
   paint();
   hooks.onGraded && hooks.onGraded();
-  if (ok && (it.type === "mcEn" || it.type === "mcZh")) {
+  if (ok && isChoice(it)) {
     // 選擇題答對就快速跳下一題，保持節奏
     const myIdx = S.idx;
     setTimeout(() => { if (S && S.idx === myIdx && S.answered) advance(); }, 750);
@@ -290,7 +342,7 @@ function onKey(e) {
   if (document.querySelector("dialog[open]")) return;
   const typing = e.target.matches("input, textarea");
   const it = S.item;
-  if (!S.answered && (it.type === "mcEn" || it.type === "mcZh") && /^[1-4]$/.test(e.key) && !typing) {
+  if (!S.answered && isChoice(it) && /^[1-4]$/.test(e.key) && !typing) {
     e.preventDefault();
     choose(Number(e.key) - 1);
   } else if (S.answered && e.key === "Enter" && !typing) {
@@ -323,7 +375,8 @@ function topHTML() {
           <button class="btn sm ghost qz-quit" type="button">結束</button></div>`;
 }
 
-const TYPE_LABEL = { mcEn: "看英選中", mcZh: "看中選英", cloze: "例句填空", spell: "拼字", listen: "聽寫" };
+const TYPE_LABEL = { mcEn: "看英選中", mcZh: "看中選英", cloze: "例句填空", spell: "拼字", listen: "聽寫", pos: "詞性變化" };
+const isChoice = (it) => it.type === "mcEn" || it.type === "mcZh" || (it.type === "pos" && it.sub === "alt");
 
 function promptHTML(it) {
   const c = it.card;
@@ -332,6 +385,15 @@ function promptHTML(it) {
       ${c.phonetic ? `<div class="qz-sub">${esc(c.phonetic)}</div>` : ""}
       <button class="mini qz-say" type="button">🔊 聽發音</button>`;
   if (it.type === "mcZh" || it.type === "spell") return `<div class="qz-big zh">${esc(c.zh || "（沒有中文）")}${pos}</div>`;
+  if (it.type === "pos") {
+    const t = it.target, base = `<span class="qz-posbase">${esc(c.word)}${pos}<small>${esc(c.zh || "")}</small></span>`;
+    if (it.sub === "alt") return `<div class="qz-sub">同一個字，換個詞性</div>
+      <div class="qz-big">${esc(c.word)} <span class="sr-pos">${esc(t.pos)}</span></div>
+      <div class="qz-sub">當<b>${esc(POS_NAME[t.pos])}</b>時是什麼意思？</div>`;
+    return `<div class="qz-sub">${base}</div>
+      <div class="qz-big zh">${esc(POS_NAME[t.pos])}是？<span class="sr-pos">${esc(t.pos)}</span></div>
+      ${t.zh ? `<div class="qz-sub">意思：${esc(t.zh)}</div>` : ""}`;
+  }
   if (it.type === "listen") return `<div class="qz-sub">聽發音，拼出這個字</div>
       <div class="qz-listen"><button class="sr-mic qz-say" type="button">🔊 再聽一次</button>
       <button class="mini qz-slow" type="button">🐢 慢速</button></div>`;
@@ -360,7 +422,7 @@ function hintHTML(it) {
 function paint() {
   const it = S.item;
   const c = it.card;
-  const isMC = it.type === "mcEn" || it.type === "mcZh";
+  const isMC = isChoice(it);
   const retryTag = S.queue[S.idx].retry ? `<span class="qz-retry">再考一次</span>` : "";
 
   let body = "";
@@ -393,9 +455,12 @@ function paint() {
         <div class="sr-verdict">${verdict}</div>
         ${S.note ? `<div class="qz-note">${esc(S.note)}</div>` : ""}
         ${!S.lastOk && S.wrongTyped ? `<div class="qz-note">你打的是：<s>${esc(S.wrongTyped)}</s></div>` : ""}
-        <div class="sr-answer"><span class="sr-word">${esc(c.word)}</span>
+        ${it.type === "pos" ? `<div class="sr-answer"><span class="muted">${esc(c.word)} ${esc(c.pos || "")} →</span>
+          <span class="sr-word">${esc(it.sub === "fam" ? it.target.w : c.word)}</span><span class="sr-pos">${esc(it.target.pos)}</span>
+          <span class="sr-zh">${esc(it.target.zh || "")}</span></div>`
+        : `<div class="sr-answer"><span class="sr-word">${esc(c.word)}</span>
           ${c.phonetic ? `<span class="wp-ipa">${esc(c.phonetic)}</span>` : ""}
-          <span class="sr-zh">${esc(c.zh || "")}</span></div>
+          <span class="sr-zh">${esc(c.zh || "")}</span></div>`}
         ${c.example && it.type !== "cloze" ? `<div class="sr-ex">${esc(c.example)}</div>` : ""}
         <div class="sr-actions">
           <button class="mini qz-say2" type="button">🔊</button>

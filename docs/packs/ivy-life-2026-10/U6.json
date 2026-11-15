@@ -20,7 +20,8 @@
      "pos": "adj.",
      "zh": "附家具的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "stuff",
@@ -32,6 +33,12 @@
      "w": "stuffed",
      "pos": "adj.",
      "zh": "塞滿的；填餡的"
+    }
+   ],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "塞滿；填塞"
     }
    ]
   },
@@ -51,7 +58,8 @@
      "pos": "v.",
      "zh": "逐項列出"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "reasonable",
@@ -69,42 +77,48 @@
      "pos": "adv.",
      "zh": "合理地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "a selection of",
    "pos": "phr.",
    "zh": "各式精選的",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "quite a few",
    "pos": "phr.",
    "zh": "相當多",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "could use",
    "pos": "phr.",
    "zh": "很需要",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "hold off on",
    "pos": "phr.",
    "zh": "暫緩（做）",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "for the time being",
    "pos": "phr.",
    "zh": "目前暫時",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

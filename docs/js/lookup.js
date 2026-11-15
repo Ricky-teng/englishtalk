@@ -346,6 +346,7 @@ function paint(d, already) {
     if (hit && Array.isArray(hit.family)) d = { ...d, forms: hit.forms, family: hit.family };
   }
   const card = V.find(d.word);
+  if (card && Array.isArray(card.alt) && !Array.isArray(d.alt)) d = { ...d, alt: card.alt };
   const stats = card && (card.reps || card.produced)
     ? `<div class="wp-stats">${V.skillBadgeHTML(card)} 複習 ${card.reps || 0} 次 · 說出 ${card.produced || 0} 次${card.due ? ` · 下次 ${card.due}` : ""}</div>`
     : "";
@@ -357,8 +358,8 @@ function paint(d, already) {
       ${d.pos ? `<span class="wp-pos">${esc(d.pos)}</span>` : ""}
     </div>
     ${(card && V.sensesOf(card).length > 1)
-      ? `<ol class="wp-zh senses">${V.sensesOf(card).map(x => `<li>${x.pos ? `<span class="sense-pos">${esc(V.posShort(x.pos))}</span>` : ""}${esc(x.zh)}</li>`).join("")}</ol>`
-      : d.zh ? `<p class="wp-zh">${esc(d.zh)}</p>` : ""}
+      ? `<ol class="wp-zh senses">${V.sensesOf(card).map((x, i, all) => `<li>${x.pos ? `<span class="sense-pos">${esc(V.posShort(x.pos))}</span>` : ""}${esc(x.zh)}${i === all.length - 1 ? V.altInlineHTML(d.alt) : ""}</li>`).join("")}</ol>`
+      : d.zh ? `<p class="wp-zh">${esc(d.zh)}${V.altInlineHTML(d.alt)}</p>` : ""}
     ${Array.isArray(d.family) ? formsHTML(d) : `<div class="wp-forms wp-forms-wait muted">詞性變化查詢中…</div>`}
     ${d.example ? `<div class="wp-ex">${esc(d.example)}<br><span class="muted">${esc(d.exampleZh || "")}</span></div>` : ""}
     ${relatedHTML("近義", "syn", d.synonyms)}

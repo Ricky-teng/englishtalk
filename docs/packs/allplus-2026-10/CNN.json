@@ -14,7 +14,8 @@
      "w": "companions"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "confidential",
@@ -37,7 +38,8 @@
      "pos": "adv.",
      "zh": "祕密地"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "lawsuit",
@@ -49,7 +51,8 @@
      "w": "lawsuits"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "reinforce",
@@ -79,7 +82,8 @@
      "pos": "n.",
      "zh": "強化"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "disapprove",
@@ -109,7 +113,8 @@
      "pos": "n.",
      "zh": "不贊成"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "context",
@@ -121,7 +126,8 @@
      "w": "contexts"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "tendency",
@@ -139,7 +145,8 @@
      "pos": "v.",
      "zh": "往往會；傾向"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "drift",
@@ -151,14 +158,21 @@
      "w": "drifts"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "漂流；飄移"
+    }
+   ]
   },
   {
    "w": "consensus",
    "pos": "n.",
    "zh": "共識",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

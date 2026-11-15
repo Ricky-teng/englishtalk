@@ -26,28 +26,42 @@
      "w": "purchases"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "購買；購買物"
+    }
+   ]
   },
   {
    "w": "fast-paced",
    "pos": "adj.",
    "zh": "快節奏的",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "groceries",
    "pos": "n.",
    "zh": "食品雜貨",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "produce",
    "pos": "n.",
    "zh": "蔬果農產",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "生產；製造"
+    }
+   ]
   },
   {
    "w": "demanding",
@@ -65,7 +79,8 @@
      "pos": "n.",
      "zh": "需求；要求"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "tap",
@@ -89,7 +104,13 @@
      "w": "taps"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "n.",
+     "zh": "水龍頭；輕拍"
+    }
+   ]
   },
   {
    "w": "vendor",
@@ -101,7 +122,8 @@
      "w": "vendors"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "dependability",
@@ -119,7 +141,8 @@
      "pos": "adj.",
      "zh": "可靠的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "household",
@@ -131,7 +154,13 @@
      "w": "households"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "adj.",
+     "zh": "家用的；家喻戶曉的"
+    }
+   ]
   },
   {
    "w": "smoothly",
@@ -149,35 +178,40 @@
      "pos": "n.",
      "zh": "平滑；順暢"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "at one's fingertips",
    "pos": "phr.",
    "zh": "唾手可得",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "make a purchase",
    "pos": "phr.",
    "zh": "購物",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "in contrast",
    "pos": "phr.",
    "zh": "相較之下",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "rely on",
    "pos": "phr.",
    "zh": "依靠",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }

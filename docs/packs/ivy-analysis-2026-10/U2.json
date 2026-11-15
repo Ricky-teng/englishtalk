@@ -14,7 +14,8 @@
      "w": "routes"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "puzzling",
@@ -32,7 +33,8 @@
      "pos": "n.",
      "zh": "謎題；拼圖"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "pilot",
@@ -44,7 +46,17 @@
      "w": "pilots"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "v.",
+     "zh": "駕駛；試行"
+    },
+    {
+     "pos": "adj.",
+     "zh": "試驗性的"
+    }
+   ]
   },
   {
    "w": "sphere",
@@ -62,7 +74,8 @@
      "pos": "adj.",
      "zh": "球形的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "globe",
@@ -90,7 +103,8 @@
      "pos": "v.",
      "zh": "全球化"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "location",
@@ -108,7 +122,8 @@
      "pos": "v.",
      "zh": "找出位置"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "curved",
@@ -126,14 +141,25 @@
      "pos": "v.",
      "zh": "彎曲"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "overhead",
    "pos": "adv.",
    "zh": "在頭頂上空",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": [
+    {
+     "pos": "adj.",
+     "zh": "頭頂上的"
+    },
+    {
+     "pos": "n.",
+     "zh": "經常性開支"
+    }
+   ]
   },
   {
    "w": "emergency",
@@ -151,7 +177,8 @@
      "pos": "v.",
      "zh": "浮現；出現"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "oddly",
@@ -164,7 +191,8 @@
      "pos": "adj.",
      "zh": "奇怪的"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "shortcut",
@@ -176,7 +204,8 @@
      "w": "shortcuts"
     }
    ],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "prohibit",
@@ -206,49 +235,56 @@
      "pos": "n.",
      "zh": "禁止"
     }
-   ]
+   ],
+   "alt": []
   },
   {
    "w": "take a shortcut",
    "pos": "phr.",
    "zh": "抄近路",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "steer clear of",
    "pos": "phr.",
    "zh": "避開…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "prohibit sb from",
    "pos": "phr.",
    "zh": "禁止某人做…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "in case of",
    "pos": "phr.",
    "zh": "萬一發生…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "take advantage of",
    "pos": "phr.",
    "zh": "利用…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   },
   {
    "w": "chances are",
    "pos": "phr.",
    "zh": "很可能…",
    "f": [],
-   "fam": []
+   "fam": [],
+   "alt": []
   }
  ]
 }
