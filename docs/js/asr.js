@@ -98,7 +98,7 @@ export class Listener {
   _build() {
     if (!SR) {
       if (this.cb.onError) {
-        this.cb.onError("這個瀏覽器不支援語音辨識，請改用 Chrome 或 Edge。你仍可以打字練習。");
+        this.cb.onError("這個瀏覽器不支援語音辨識，請改用 Chrome 或 Edge，或打字練習。");
       }
       return null;
     }

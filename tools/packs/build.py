@@ -19,6 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 OUT = os.path.join(ROOT, "docs", "packs")
 FORMS = os.path.join(HERE, "forms.json")
+ALT_VERSION = 2   # 改了 forms.json 的 alt 就加 1，網站會重新套用到單字本
 
 # 每一本書的說明。module 是 data/ 裡的檔名（不含 .py）
 BOOKS = [
@@ -174,6 +175,17 @@ def main():
         meta = {k: book[k] for k in ("id", "title", "subtitle", "tagPrefix", "note", "link", "linkText") if k in book}
         index["packs"].append(meta | {"units": units_meta})
     atomic_write(os.path.join(OUT, "index.json"), index)
+    # 同拼法的其他詞性總表：網站更新這份資料後，已經加進單字本的字也能自動補上（見 packs.js 的 refreshAlt）
+    alt_all = {}
+    for key, fx in forms.items():
+        w = key.split("|")[0].lower()
+        if " " in w:
+            continue
+        alt_all.setdefault(w, [])
+        for a in fx.get("alt", []):
+            if not any(x["pos"] == a["pos"] for x in alt_all[w]):
+                alt_all[w].append(a)
+    atomic_write(os.path.join(OUT, "alt.json"), {"version": ALT_VERSION, "words": alt_all})
     total = sum(u["words"] + u["phrases"] for p in index["packs"] for u in p["units"])
     print(f"ok：{len(index['packs'])} 本書、{sum(len(p['units']) for p in index['packs'])} 個單元、{total} 筆")
     if missing:

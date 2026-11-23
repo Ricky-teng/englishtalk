@@ -180,7 +180,7 @@ async function listen() {
   if (listening !== mine) return;
   listening = null;
   if (!S || S.phase !== "listening") return;
-  if (!text) { S.phase = "asking"; paintAsk("沒有聽到聲音，按麥克風再試一次，或直接打字。"); return; }
+  if (!text) { S.phase = "asking"; paintAsk("沒聽到聲音。請按麥克風再試，或打字回答。"); return; }
   check(text);
 }
 
@@ -257,7 +257,7 @@ function bindTop() {
 
 function paintLoading(n) {
   hooks.stage.innerHTML = `<div class="sr-card"><div class="sr-task muted">準備 ${n} 題…</div>
-    <p class="muted" style="margin:6px 0 0">第一次複習的字要先請 AI 出題，之後就直接用存好的題目。</p></div>`;
+    <p class="muted" style="margin:6px 0 0">第一次複習的字由 AI 出題，之後沿用。</p></div>`;
 }
 
 function paintAsk(msg = "") {
@@ -270,19 +270,19 @@ function paintAsk(msg = "") {
       <div class="sr-task no-lookup">用<b>「${esc(c.zh || "？")}」</b>這個字回答${c.pos ? `<span class="sr-pos">${esc(c.pos)}</span>` : ""}</div>
       <div class="sr-q">${esc(S.question)}</div>
       ${hint ? `<div class="sr-hint no-lookup">提示：<code>${esc(hint)}</code></div>` : ""}
-      ${S.attempt === 2 ? `<div class="sr-hint">提示：剛剛唸給你聽的那個字 <button class="mini sr-replay" type="button">🔊 再聽一次</button></div>` : ""}
-      ${S.heard && S.attempt ? `<div class="sr-miss">你說：「${esc(S.heard)}」—— 還沒用到那個字，再試一次</div>` : ""}
+      ${S.attempt === 2 ? `<div class="sr-hint">提示：剛才唸的那個字 <button class="mini sr-replay" type="button">🔊 再聽一次</button></div>` : ""}
+      ${S.heard && S.attempt ? `<div class="sr-miss">你說：「${esc(S.heard)}」。還沒用到那個字，再試一次。</div>` : ""}
       <div class="sr-heard">${msg ? esc(msg) : ""}</div>
       <div class="sr-actions">
         <button class="sr-mic ${listeningNow ? "on" : ""}" type="button" ${listeningNow ? "disabled" : ""}
           title="按下開始說（空白鍵）">${listeningNow ? "🎙️ 聆聽中…" : "🎤 按下說話"}</button>
       </div>
       <form class="sr-type">
-        <input type="text" placeholder="或直接打字回答，按 Enter" autocomplete="off">
+        <input type="text" placeholder="或打字回答，按 Enter" autocomplete="off">
       </form>
       <div class="sr-sub">
         <button class="mini sr-askagain" type="button">🔊 再聽題目</button>
-        ${S.heard && S.attempt ? `<button class="mini sr-override" type="button" title="語音辨識偶爾會聽錯">我有說對，是辨識錯了</button>` : ""}
+        ${S.heard && S.attempt ? `<button class="mini sr-override" type="button" title="語音辨識偶爾會聽錯">我說對了，是辨識錯誤</button>` : ""}
         <button class="mini sr-giveup" type="button">不會，看答案</button>
       </div>
     </div>`;
@@ -320,7 +320,7 @@ function paintResult(ok) {
   hooks.stage.innerHTML = `
     ${progressHTML()}
     <div class="sr-card ${ok ? "pass" : "fail"}">
-      <div class="sr-verdict">${ok ? (S.attempt ? "✓ 說出來了（有用提示）" : "✓ 一次就說出來！") : "這次沒想起來，沒關係"}</div>
+      <div class="sr-verdict">${ok ? (S.attempt ? "✓ 說出來了（有用提示）" : "✓ 一次就說出來！") : "這次沒想起來"}</div>
       ${ok && S.heard ? `<div class="sr-said">「${highlightWord(S.heard, c.word)}」</div>` : ""}
       <div class="sr-answer">
         <span class="sr-word">${esc(c.word)}</span>
@@ -334,7 +334,7 @@ function paintResult(ok) {
         <div class="spacer"></div>
         <button class="btn primary sr-next" type="button">${S.idx + 1 >= S.cards.length ? "看結果" : "下一題"} ⏎</button>
       </div>
-      <div class="note" style="margin-top:10px">${ok ? "已記一次複習與一次「說出來」。" : "今天稍後會再出現一次。"}</div>
+      <div class="note" style="margin-top:10px">${ok ? "已記一次複習與一次「說得出」。" : "今天稍後會再出現一次。"}</div>
     </div>`;
   bindTop();
   const $ = (s) => hooks.stage.querySelector(s);
@@ -362,7 +362,7 @@ function finish(early = false) {
       </div>
       ${res.length ? `<div class="sr-list">${res.map(r =>
         `<span class="chip ${r.ok ? (r.hints ? "" : "syn") : "ant"}">${esc(r.word)}<i>${esc(r.zh || "")}</i></span>`).join("")}</div>` : ""}
-      ${missed.length ? `<p class="note">沒想起來的字已排在今天稍後再出現，對話時 AI 也會更常用到它們。</p>` : ""}
+      ${missed.length ? `<p class="note">沒想起來的字今天稍後會再出現，AI 在對話中也會多用。</p>` : ""}
       <div class="sr-actions">
         <button class="btn primary sr-again" type="button">再來一輪</button>
         <button class="btn ghost sr-home" type="button">回複習首頁</button>

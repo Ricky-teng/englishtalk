@@ -1030,3 +1030,18 @@ dialog.packs .m-body { overflow-x: hidden; }
 .alt-inline { white-space: nowrap; }
 .alt-inline .alt-sep { color: var(--muted); margin: 0 6px; }
 .alt-inline .sense-pos { margin-right: 4px; }
+
+/* 答對後的「按住可停在這題」提示 */
+.qz-hold { margin-left: 10px; font-size: 12px; font-weight: 400; color: var(--muted); }
+.qz-hold.on { color: var(--accent); font-weight: 600; }
+
+/* 打字題的內建鍵盤（觸控螢幕才出現，避免系統鍵盤的建議字洩漏答案） */
+.qz-kb { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; user-select: none; -webkit-user-select: none; touch-action: manipulation; }
+.kb-row { display: flex; justify-content: center; gap: 5px; }
+.kb-k { flex: 1 1 0; max-width: 40px; min-width: 0; height: 44px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--surface); color: var(--text); font: inherit; font-size: 17px; padding: 0; cursor: pointer; }
+.kb-k:active { background: var(--surface-2); }
+.kb-k.sm { max-width: 32px; }
+.kb-k.wide { max-width: 80px; flex-grow: 1.6; font-size: 15px; }
+.kb-k.space { max-width: none; flex-grow: 4; font-size: 14px; color: var(--muted); }
+.kb-k.go { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }

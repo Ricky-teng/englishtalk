@@ -193,31 +193,31 @@ export function messages(d) {
     out.push({ icon: "✏️", text:
       `最近 30 天你最常錯的是「${t.label}」（${t.n} 句）` +
       (ex ? `，例如 ${ex.from || "（漏掉）"} → ${ex.to || "（刪掉）"}${ex.zh ? `：${ex.zh}` : ""}` : "") +
-      `。對話時多留意這一類，會進步最快。` });
+      `。對話時多留意這一類。` });
   }
   if (d.dueToday > 25) out.push({ icon: "📚", text:
-    `今天有 ${d.dueToday} 個字待複習，有點多。先用「混合」做 15 個就好，其餘明天再說 —— 一次硬清完反而容易忘。`,
+    `今天有 ${d.dueToday} 個字待複習。先用「混合」做 15 個，其餘明天再做。`,
     action: { label: "混合複習 15 個", do: "mixed" } });
 
   if (d.passiveGap.length >= 3) out.push({ icon: "🗣️", text:
-    `有 ${d.passiveGap.length} 個字你已經穩定認得（一週以上沒忘），但從沒在對話中說出口：${list(d.passiveGap)}。` +
-    `認得不等於會用 —— 這批是最該開口練的。`,
-    action: { label: "用拼字和填空逼自己想出來", do: "produce-gap" }, action2: { label: "把對話單字頻率調到「常常」", do: "freq" } });
+    `有 ${d.passiveGap.length} 個字你已穩定認得一週以上，但從沒在對話中說出口：${list(d.passiveGap)}。` +
+    `這批最該開口練。`,
+    action: { label: "用拼字和填空練", do: "produce-gap" }, action2: { label: "對話單字頻率調到「常常」", do: "freq" } });
 
   if (d.recogN >= 8 && d.prodN >= 8 && d.recogRate - d.prodRate >= 0.2) out.push({ icon: "⌨️", text:
-    `你看得懂（認得型題目答對 ${pct(d.recogRate)}），但自己寫不出來（拼字、填空類 ${pct(d.prodRate)}）。` +
-    `差距 ${Math.round((d.recogRate - d.prodRate) * 100)} 個百分點 —— 多做「拼字」和「例句填空」。`,
+    `認得型題目答對 ${pct(d.recogRate)}，拼字、填空類只有 ${pct(d.prodRate)}。` +
+    `差 ${Math.round((d.recogRate - d.prodRate) * 100)} 個百分點，多做「拼字」和「例句填空」。`,
     action: { label: "來一輪拼字", do: "spell" } });
 
   if (d.leeches.length >= 2) out.push({ icon: "🔁", text:
-    `這 ${d.leeches.length} 個字你忘了好幾次：${list(d.leeches)}。反覆忘記通常代表要換個記法 —— 試試例句填空，或幫它們補上近義詞。`,
+    `這 ${d.leeches.length} 個字忘了好幾次：${list(d.leeches)}。試試例句填空，或補上近義詞。`,
     action: { label: "專攻這幾個字", do: "leeches" } });
 
   if (d.speech.overused.length) {
     const o = d.speech.overused[0];
     out.push({ icon: "💬", text: o.alts.length
       ? `你在對話中說了 ${o.n} 次「${o.w}」。下次試試 ${o.alts.join("、")}。`
-      : `你在對話中說了 ${o.n} 次「${o.w}」—— 試著直接講出具體的名詞，句子會更清楚。` });
+      : `你在對話中說了 ${o.n} 次「${o.w}」。試著改用具體的名詞。` });
   }
 
   const w = d.speech.weekly;
@@ -226,7 +226,7 @@ export function messages(d) {
     const avg = prev.reduce((s, x) => s + x.wpt, 0) / prev.length;
     const diff = cur.wpt - avg;
     if (Math.abs(diff) >= 0.8) out.push({ icon: diff > 0 ? "📈" : "📉", text: diff > 0
-      ? `這週你平均每句說 ${cur.wpt} 個字，比前幾週多 ${diff.toFixed(1)} 個 —— 句子越講越完整了。`
+      ? `這週平均每句 ${cur.wpt} 個字，比前幾週多 ${diff.toFixed(1)} 個。`
       : `這週平均每句 ${cur.wpt} 個字，比前幾週少 ${Math.abs(diff).toFixed(1)} 個。試著多回答一個「為什麼」。` });
   }
 
@@ -235,16 +235,16 @@ export function messages(d) {
 
   if (d.retention.rate != null && d.retention.n >= 20) {
     if (d.retention.rate < 0.8) out.push({ icon: "🧠", text:
-      `最近 30 天的記憶保持率 ${pct(d.retention.rate)}，低於理想的 85–90%。每天少量複習比幾天一次大量有效得多。` });
+      `最近 30 天記憶保持率 ${pct(d.retention.rate)}，低於 85–90%。建議每天複習一點。` });
     else if (d.retention.rate >= 0.9) out.push({ icon: "🧠", text:
-      `最近 30 天的記憶保持率 ${pct(d.retention.rate)}，記得很牢。可以放心多加一些新字。` });
+      `最近 30 天記憶保持率 ${pct(d.retention.rate)}，可以多加一些新字。` });
   }
 
   if (d.bestHour != null) out.push({ icon: "🕘", text:
-    `你最常在 ${d.bestHour}:00–${d.bestHour + 1}:00 練習。固定在同一個時段，最容易養成習慣。` });
+    `你最常在 ${d.bestHour}:00–${d.bestHour + 1}:00 練習，可以固定在這個時段。` });
 
   if (!out.length) out.push({ icon: "👋", text:
-    "多聊幾場、多複習幾輪之後，這裡會出現專屬於你的分析：哪些字認得卻講不出來、哪種題型最弱、句子有沒有越講越長。" });
+    "多聊幾場、多複習幾輪後，這裡會出現你的個人分析。" });
   return out.slice(0, 6);
 }
 
@@ -322,13 +322,13 @@ export function render(container, d, act) {
     <div class="dv-legend"><span><i class="lv0"></i>新字</span><span><i class="lv1"></i>學習中</span><span><i class="lv2"></i>OK（三項能力＋間隔 21 天）</span></div>
     <div class="sb">${d.tags.map(t => {
       const seg = (n, cls, name) => n ? `<span class="sb-seg ${cls}" style="flex:${n}" data-tip="${esc(`${t.tag}・${name} ${n} 個`)}"></span>` : "";
-      return `<div class="sb-row" tabindex="0" data-tip="${esc(`${t.tag}：共 ${t.total} 個，OK ${t.mastered}、學習中 ${t.learning}、新字 ${t.fresh}；對話中說出過 ${t.spoken} 個`)}">
+      return `<div class="sb-row" tabindex="0" data-tip="${esc(`${t.tag}：共 ${t.total} 個，OK ${t.mastered}、學習中 ${t.learning}、新字 ${t.fresh}，說出過 ${t.spoken} 個`)}">
         <span class="hb-label">${esc(t.tag)}</span>
         <span class="sb-track">${seg(t.fresh, "lv0", "新字")}${seg(t.learning, "lv1", "學習中")}${seg(t.mastered, "lv2", "OK")}</span>
         <span class="hb-val">${Math.round(t.mastered / t.total * 100)}%</span></div>`;
     }).join("")}</div>
     ${table(["標籤", "新字", "學習中", "OK", "說出過", "總數"], d.tags.map(t => [t.tag, t.fresh, t.learning, t.mastered, t.spoken, t.total]))}`
-    : `<p class="muted note">幫單字加上標籤（例如「第三課」）就能在這裡看到每一課的進度。</p>`;
+    : `<p class="muted note">幫單字加上標籤，例如「第三課」，就能看到各課進度。</p>`;
 
   const fmax = Math.max(1, ...d.forecast.map(f => f.count));
   const forecast = `<div class="vb">${d.forecast.map(f => `
@@ -346,11 +346,11 @@ export function render(container, d, act) {
         <span class="vb-bar" style="${w.wpt ? `height:${w.wpt / wmax * 100}%` : "height:0;min-height:0"}"></span>
         <span class="vb-label">${esc(w.label)}</span></div>`).join("")}</div>
     ${table(["週（起始日）", "平均每句字數", "句數"], wk.map(w => [w.label, w.wpt ?? "—", w.turns]))}`
-    : `<p class="muted note">開始對話之後，這裡會顯示你每週平均每句說幾個字。</p>`;
+    : `<p class="muted note">開始對話後，這裡會顯示每週平均每句字數。</p>`;
 
   container.innerHTML = `
     <div class="card ins-card" data-sec="overview">
-      <h3>給你的分析</h3>
+      <h3>你的分析</h3>
       <div class="ins-list">${msgs.map((x, i) => `
         <div class="ins-item"><span class="ins-icon">${x.icon}</span>
           <div><p>${esc(x.text)}</p>
@@ -360,15 +360,15 @@ export function render(container, d, act) {
           </div>` : ""}</div></div>`).join("")}</div>
       <div class="coach">
         <div class="coach-head"><b>🤖 AI 教練週報</b>
-          <button class="btn sm" data-act="coach">${cached ? "重新產生" : "產生這週的週報"}</button></div>
-        <div class="coach-body">${cached ? esc(cached) : `<span class="muted">根據上面的數據和你這週說過的句子，給你具體的建議和幾句「更自然的說法」。每週一次，只花一次 API。</span>`}</div>
+          <button class="btn sm" data-act="coach">${cached ? "重新產生" : "產生本週週報"}</button></div>
+        <div class="coach-body">${cached ? esc(cached) : `<span class="muted">依上方數據和你本週說過的句子，給你建議和更自然的說法。每週一次，用一次 API。</span>`}</div>
       </div>
     </div>
 
     <div class="dv-grid">
       <div class="card" data-sec="vocab">
         <h3>單字掌握度</h3>
-        <p class="dv-sub">每項能力通過了幾個字。三項都過、複習間隔又滿 21 天，才算 OK。</p>
+        <p class="dv-sub">各項能力通過的字數。三項都過且複習間隔達 21 天，就是 OK。</p>
         ${hbars([
           { label: "單字本", value: m.total },
           { label: "👀 認得", value: m.see },
@@ -380,45 +380,45 @@ export function render(container, d, act) {
         ], { max: m.total || 1, tip: (r) => ({
           "單字本": "單字本裡的所有字", "👀 認得": "翻卡或看英選中最近一次答對",
           "💭 想得起": "看中選英或拼字最近一次答對", "✍️ 拼得出": "拼字、聽寫或例句填空最近一次答對",
-          "三項都過": "三項能力都通過（間隔還不一定滿 21 天）", "OK": "三項都過，而且複習間隔 21 天以上",
-          "🗣️ 說出過": "在對話或用說的複習中自己說出來過（加分）" }[r.label] + `：${r.value} 個`) })}
-        ${d.recall ? `<div class="dv-foot">依遺忘曲線推算，複習過的 ${d.recall.n} 個字裡，你現在大約還記得 <b>${d.recall.sum}</b> 個（平均 ${pct(d.recall.avg)}）。</div>` : ""}
+          "三項都過": "三項能力都通過，間隔未必達 21 天", "OK": "三項都過，且複習間隔達 21 天",
+          "🗣️ 說出過": "在對話或用說的複習中說出過（加分）" }[r.label] + `：${r.value} 個`) })}
+        ${d.recall ? `<div class="dv-foot">依遺忘曲線推算，複習過的 ${d.recall.n} 個字中，現在約記得 <b>${d.recall.sum}</b> 個（平均 ${pct(d.recall.avg)}）。</div>` : ""}
         ${table(["階段", "字數"], [["單字本", m.total], ["認得", m.see], ["想得起", m.recall], ["拼得出", m.write], ["三項都過", m.all3], ["OK", m.ok], ["說出過", m.spoken]])}
       </div>
 
       <div class="card" data-sec="vocab">
         <h3>各題型答對率</h3>
-        <p class="dv-sub">最近 30 天。哪種題型最弱，就是你卡住的地方。</p>
+        <p class="dv-sub">最近 30 天。</p>
         ${d.byMode.length ? hbars(d.byMode.map(x => ({ label: x.name, value: x.rate, n: x.n, ms: x.ms })),
           { max: 1, fmt: (v) => Math.round(v * 100) + "%",
             tip: (r) => `${r.label}：${r.n} 題，答對 ${Math.round(r.value * 100)}%，平均 ${(r.ms / 1000).toFixed(1)} 秒` })
           + table(["題型", "題數", "答對率", "平均秒數"], d.byMode.map(x => [x.name, x.n, Math.round(x.rate * 100) + "%", (x.ms / 1000).toFixed(1)]))
-          : `<p class="muted note">複習幾輪之後就會出現。</p>`}
+          : `<p class="muted note">複習幾輪後就會出現。</p>`}
         ${d.retention.rate != null ? `<div class="dv-foot">記憶保持率 <b>${pct(d.retention.rate)}</b>（最近 30 天 ${d.retention.n} 次作答）</div>` : ""}
       </div>
 
       <div class="card" data-sec="vocab">
         <h3>各課進度</h3>
-        <p class="dv-sub">依標籤分組，看每一課離「OK」還差多少。</p>
+        <p class="dv-sub">依標籤分組，各課離 OK 還差多少。</p>
         ${tagBars}
       </div>
 
       <div class="card" data-sec="overview">
         <h3>未來 7 天的複習量</h3>
-        <p class="dv-sub">先知道哪天會比較多，就能提早分散。</p>
+        <p class="dv-sub">每天到期的字數。</p>
         ${forecast}
       </div>
 
       <div class="card" data-sec="speak">
         <h3>口說：平均每句幾個字</h3>
-        <p class="dv-sub">最近 8 週。句子越長，代表你越敢多講。</p>
+        <p class="dv-sub">最近 8 週。</p>
         ${speechChart}
-        <div class="dv-foot">你在對話中總共用過 <b>${d.speech.activeVocab}</b> 個不同的英文字${d.speech.newThisWeek.length ? `，這週新用了 <b>${d.speech.newThisWeek.length}</b> 個` : ""}。</div>
+        <div class="dv-foot">你在對話中共用過 <b>${d.speech.activeVocab}</b> 個不同的英文字${d.speech.newThisWeek.length ? `，這週新用了 <b>${d.speech.newThisWeek.length}</b> 個` : ""}。</div>
       </div>
 
       <div class="card" data-sec="speak">
         <h3>常犯的文法錯誤</h3>
-        <p class="dv-sub">最近 30 天，對話中被標出修正的句子，依錯誤類型分。</p>
+        <p class="dv-sub">最近 30 天被標出修正的句子，依類型分。</p>
         ${d.grammar.types.length ? hbars(d.grammar.types.slice(0, 6).map(t => ({ label: t.label, value: t.n, ex: t.examples })),
             { max: Math.max(...d.grammar.types.map(t => t.n)),
               tip: (r) => `${r.label}：${r.value} 句` + (r.ex[0] ? `，例如 ${r.ex[0].from || "（漏掉）"} → ${r.ex[0].to || "（刪掉）"}` : "") })
@@ -426,13 +426,13 @@ export function render(container, d, act) {
               <div class="gx"><span class="fx-type">${esc(t.label)}</span>${t.examples.slice(0, 2).map(e => `
                 <span class="fx-ft"><s>${esc(e.from || "—")}</s> → <b>${esc(e.to || "—")}</b></span>`).join("")}</div>`).join("")}</div>`
           + table(["類型", "句數"], d.grammar.types.map(t => [t.label, t.n]))
-          : `<p class="muted note">${d.grammar.checked ? "最近 30 天沒有被標出文法錯誤 👍" : "開始對話之後，這裡會統計你最常犯哪一類錯。"}</p>`}
-        ${d.grammar.checked ? `<div class="dv-foot">檢查了 <b>${d.grammar.checked}</b> 句，<b>${pct(d.grammar.rate)}</b> 完全沒問題。</div>` : ""}
+          : `<p class="muted note">${d.grammar.checked ? "最近 30 天沒有被標出文法錯誤 👍" : "開始對話後，這裡會統計常犯的錯誤類型。"}</p>`}
+        ${d.grammar.checked ? `<div class="dv-foot">檢查了 <b>${d.grammar.checked}</b> 句，<b>${pct(d.grammar.rate)}</b> 沒有問題。</div>` : ""}
       </div>
 
       <div class="card" data-sec="vocab">
         <h3>最難的字</h3>
-        <p class="dv-sub">忘記兩次以上的字，忘越多次排越前面。</p>
+        <p class="dv-sub">忘記兩次以上的字，依次數排序。</p>
         ${d.leeches.length ? `<div class="leech-list">${d.leeches.map(v => `
           <div class="leech"><span class="lw">${esc(v.word)}</span><span class="muted">${esc(v.zh || "")}</span>
           <span class="lc" data-tip="${esc(`忘記 ${v.lapses} 次`)}">忘 ${v.lapses} 次</span></div>`).join("")}</div>
@@ -442,7 +442,7 @@ export function render(container, d, act) {
 
       ${d.speech.overused.length ? `<div class="card" data-sec="speak">
         <h3>你最常用的「萬用字」</h3>
-        <p class="dv-sub">對話中用太多次的字，換個更具體的說法會更自然。</p>
+        <p class="dv-sub">對話中用太多次的字。</p>
         <div class="leech-list">${d.speech.overused.map(o => `
           <div class="leech"><span class="lw">${esc(o.w)}</span><span class="lc">${o.n} 次</span>
           <span class="muted">${o.alts.length ? "試試 " + esc(o.alts.join("、")) : "換成具體的名詞"}</span></div>`).join("")}</div>

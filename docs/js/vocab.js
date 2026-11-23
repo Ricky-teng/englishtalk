@@ -754,7 +754,7 @@ export const SKILLS = [
   { id: "see",    icon: "👀", name: "認得",   modes: ["flip", "mcEn"],            tip: "翻卡或看英選中答對" },
   { id: "recall", icon: "💭", name: "想得起", modes: ["mcZh", "spell"],           tip: "看中選英或拼字答對" },
   { id: "write",  icon: "✍️", name: "拼得出", modes: ["spell", "listen", "cloze"], tip: "拼字、聽寫或例句填空答對" },
-  { id: "say",    icon: "🗣️", name: "說得出", modes: ["speak"], optional: true,   tip: "用說的複習答對，或在對話中自己說出來（加分，不影響 OK）" },
+  { id: "say",    icon: "🗣️", name: "說得出", modes: ["speak"], optional: true,   tip: "用說的複習答對，或在對話中說出（加分，不影響 OK）" },
 ];
 export const REQUIRED_SKILLS = SKILLS.filter(x => !x.optional).map(x => x.id);
 export const MASTER_DAYS = 21;
@@ -788,10 +788,10 @@ export function skillBadgeHTML(card) {
   }).join("");
   const say = sk.say === 1 ? `<i class="on say" title="說得出：通過（加分）">🗣️</i>` : "";
   let label, why;
-  if (ok) { label = "OK"; why = "三項都通過，而且複習間隔 21 天以上"; }
+  if (ok) { label = "OK"; why = "三項都通過，且複習間隔達 21 天"; }
   else if (done === REQUIRED_SKILLS.length) {
-    label = "3/3"; why = `三項都通過了，複習間隔還要拉到 ${MASTER_DAYS} 天以上才算 OK（目前 ${card.interval || 0} 天）`;
-  } else { label = `${done}/3`; why = "認得、想得起、拼得出三項都要通過才算 OK"; }
+    label = "3/3"; why = `三項都通過，複習間隔達 ${MASTER_DAYS} 天就是 OK（目前 ${card.interval || 0} 天）`;
+  } else { label = `${done}/3`; why = "認得、想得起、拼得出都通過才算 OK"; }
   return `<span class="skp${ok ? " ok" : ""}" title="${why}">${cells}${say}<b>${label}</b></span>`;
 }
 
@@ -882,16 +882,13 @@ export function previewIntervals(card) {
 export function isDue(card) { return !!card && (!card.due || card.due <= todayKey()); }
 
 /**
- * 還沒到期、但想多練的字：依「此刻記得的機率」由低到高排，最快會忘的先練。
+ * 今天到期的都複習完之後，繼續練習用的字：從範圍內的所有單字隨機抽 n 個。
  * 練習不會改變複習排程（見 grade）。
  */
 export function practicePool(tag = "", n = 20) {
-  return vocab()
-    .filter(v => (!tag || (v.tags || []).includes(tag)) && !isDue(v))
-    .map(v => ({ v, r: recallNow(v) ?? 1 }))
-    .sort((a, b) => a.r - b.r)
-    .slice(0, n)
-    .map(x => x.v);
+  const all = vocab().filter(v => (!tag || (v.tags || []).includes(tag)) && !isDue(v));
+  for (let i = all.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [all[i], all[j]] = [all[j], all[i]]; }
+  return all.slice(0, n);
 }
 
 export function grade(id, quality, meta = {}) {

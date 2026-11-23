@@ -21,10 +21,10 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
 /** 網路層失敗（Failed to fetch / NetworkError / Load failed）時給的說明 */
 function networkMessage(who) {
-  if (typeof navigator !== "undefined" && navigator.onLine === false) return "目前沒有網路連線，連上之後再試一次。";
+  if (typeof navigator !== "undefined" && navigator.onLine === false) return "沒有網路連線，連上後再試。";
   return who === "Groq"
-    ? "連不上 Groq（已自動重試）。最常見的原因是這一分鐘的免費額度用完了 —— Groq 擋下請求時，瀏覽器常常只顯示「Failed to fetch」。等 30 秒到 1 分鐘再試；一直發生的話，到設定把「查字用的模型」設成自動，或改用 Gemini。"
-    : `連不上 ${who}（已自動重試）。通常是網路一時不穩；如果一直發生，檢查廣告封鎖等擴充功能是否擋了 googleapis.com。`;
+    ? "連不上 Groq（已自動重試）。通常是這一分鐘的免費額度用完，瀏覽器會顯示「Failed to fetch」。請等 30 秒到 1 分鐘再試。一直發生的話，到設定把查字模型設成自動，或改用 Gemini。"
+    : `連不上 ${who}（已自動重試），可能是網路不穩。一直發生的話，請檢查廣告封鎖等擴充功能是否擋了 googleapis.com。`;
 }
 
 /* ---------- Groq：免費額度很緊，要自己排隊 ---------- */
@@ -205,12 +205,12 @@ function announce(kind, c, backup, why) {
 async function runWithFailover(kind, attempt, { purpose, noFailover = false } = {}) {
   const list = ordered(kind, { noFailover });
   if (!list.length || !hasKey(list[0].provider)) {
-    throw new Error("尚未設定 API 金鑰。到右上角「設定」貼上 Groq 或 Gemini 的免費金鑰。");
+    throw new Error("尚未設定 API 金鑰。請到右上角「設定」貼上 Groq 或 Gemini 的金鑰。");
   }
   const primary = candidates(kind, { noFailover })[0];
   let firstErr = null;
   // 主要的還在休息 → 提示裡說的是它為什麼不能用，不是第一個試的備援
-  let why = isDown(primary) ? `${nameOf(primary)}：${downWhy.get(keyOf(primary)) || "暫時不能用"}` : "";
+  let why = isDown(primary) ? `${nameOf(primary)}：${downWhy.get(keyOf(primary)) || "暫時無法使用"}` : "";
   for (let i = 0; i < list.length; i++) {
     const c = list[i];
     const isBackup = keyOf(c) !== keyOf(primary);
@@ -231,7 +231,7 @@ async function runWithFailover(kind, attempt, { purpose, noFailover = false } = 
     }
   }
   if (list.length > 1) {
-    const e = new Error(`${firstErr.message}（備援的 AI 也都連不上，等一下再試）`);
+    const e = new Error(`${firstErr.message}（備援 AI 也連不上，請稍後再試）`);
     e.status = firstErr.status;
     throw e;
   }
@@ -279,7 +279,7 @@ async function fetchRetry(url, init, { who = "Gemini", tries = 3, timeoutMs = 30
       if (outer) outer.removeEventListener("abort", onAbort);
       if (outer && outer.aborted) throw e;                 // 使用者自己中止，直接往外丟
       if (i === tries - 1) {
-        const err = new Error(timedOut ? `${who} 太久沒有回應（已重試）。網路慢或伺服器忙，等一下再試。` : networkMessage(who));
+        const err = new Error(timedOut ? `${who} 沒有回應（已重試）。可能是網路慢或伺服器忙，請稍後再試。` : networkMessage(who));
         err.net = true;
         throw err;
       }
@@ -554,7 +554,7 @@ async function geminiCall(model, prompt, { json, maxTokens, geminiJson }) {
     const tokens = (d.usageMetadata && d.usageMetadata.totalTokenCount) || estTokens(prompt + text);
     return { text, tokens };
   }
-  throw new Error("回應太長被截斷了，再試一次。");
+  throw new Error("回應太長被截斷，請再試一次。");
 }
 
 /**
@@ -604,7 +604,7 @@ async function groqCall(model, prompt, { json, maxTokens, geminiJson, priority }
       const err = await httpError(resp, "Groq");
       if (resp.status === 400 && /reasoning/i.test(err.message) && !noReasonCfg.has(model)) { noReasonCfg.add(model); continue; }
       if (resp.status === 400 && useJson && /json/i.test(err.message)) { useJson = false; continue; }
-      if (resp.status === 413) err.message = "這次要查的內容太長，超過 Groq 免費方案單次上限。分成少一點再試。";
+      if (resp.status === 413) err.message = "內容太長，超過 Groq 免費方案的單次上限。請減少數量再試。";
       throw err;
     }
     const d = await resp.json();
@@ -671,19 +671,19 @@ async function describeError(resp, who) {
   try { detail = (await resp.text()).slice(0, 400); } catch (e) {}
   const code = resp.status;
   if (code === 401 || code === 403) {
-    return `${who} 金鑰無效或沒有權限（${code}）。請到設定重新貼一次金鑰。`;
+    return `${who} 金鑰無效或沒有權限（${code}）。請到設定重新貼上金鑰。`;
   }
   if (code === 404) {
-    return `${who} 找不到這個模型（404）。請到設定按「抓取可用清單」重選一個。`;
+    return `${who} 找不到這個模型（404）。請到設定按「載入我帳號可用的模型」重新選擇。`;
   }
   if (code === 429) {
-    return `${who} 免費額度暫時用完了（429）。等一分鐘再試，或到設定切換另一個供應商。`;
+    return `${who} 免費額度暫時用完（429）。請等一分鐘再試，或到設定切換供應商。`;
   }
   if (code >= 500) {
-    return `${who} 伺服器暫時忙碌（${code}），已自動重試仍失敗。等一下再試。`;
+    return `${who} 伺服器忙碌（${code}），重試後仍失敗。請稍後再試。`;
   }
   if (code === 400 && /API key/i.test(detail)) {
-    return `${who} 金鑰格式不對（400）。請到設定重新貼一次金鑰。`;
+    return `${who} 金鑰格式錯誤（400）。請到設定重新貼上金鑰。`;
   }
   return `${who} 回應 ${code}：${detail}`;
 }

@@ -36,7 +36,7 @@ export function listenOnce(opt = {}) {
   };
 
   if (!SR) {
-    rejectFn(new Error("這個瀏覽器不支援語音辨識，請改用 Chrome 或 Edge，或直接打字。"));
+    rejectFn(new Error("這個瀏覽器不支援語音辨識，請改用 Chrome 或 Edge，或改用打字。"));
     return { promise, stop: () => {} };
   }
 

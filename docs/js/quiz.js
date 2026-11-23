@@ -20,21 +20,73 @@ import { openShadow } from "./shadow.js";
 import { complete } from "./llm.js";
 
 export const QUIZ_MODES = {
-  mixed:  { icon: "🔀", name: "混合", tip: "優先考每個字還沒通過的能力：先「看英選中」，再「看中選英」，再填空／拼字／聽寫；三項都過了就輪著考。錯的字這輪最後會再考一次。（推薦）" },
-  mcEn:   { icon: "✅", name: "看英選中", tip: "看英文，從四個中文裡選出意思。最輕鬆，適合剛加入的字。" },
-  mcZh:   { icon: "🔁", name: "看中選英", tip: "看中文，從四個英文裡選出正確的字。" },
-  cloze:  { icon: "🧩", name: "例句填空", tip: "例句挖掉一個字，打出正確的形態（例如 negotiated）。沒有例句的字會改成拼字題。" },
-  spell:  { icon: "⌨️", name: "拼字", tip: "看中文，自己拼出英文。卡住可以按提示一次多給一個字母。" },
-  listen: { icon: "🎧", name: "聽寫", tip: "聽發音，拼出單字。要開聲音或戴耳機。" },
-  pos:    { icon: "🌿", name: "詞性變化", tip: "考同一個字的其他詞性：「decide 的名詞是？」要打出 decision；「dye 當名詞是什麼意思？」從四個中文選。答錯算在原本那個字上。沒有詞性資料的字會改出拼字題。" },
-  match:  { icon: "🎮", name: "配對遊戲", tip: "把英文和中文配成對，越快越好。只是暖身，不會影響複習排程。" },
+  mixed:  { icon: "🔀", name: "混合", tip: "依序考還沒通過的能力：看英選中、看中選英、填空／拼字／聽寫。答錯的字在這輪最後再考一次。（推薦）" },
+  mcEn:   { icon: "✅", name: "看英選中", tip: "看英文，從四個中文選出意思。適合新字。" },
+  mcZh:   { icon: "🔁", name: "看中選英", tip: "看中文，從四個英文選出正確的字。" },
+  cloze:  { icon: "🧩", name: "例句填空", tip: "在例句空格打出正確字形，例如 negotiated。沒有例句的字改考拼字。" },
+  spell:  { icon: "⌨️", name: "拼字", tip: "看中文，拼出英文。按提示可多看一個字母。" },
+  listen: { icon: "🎧", name: "聽寫", tip: "聽發音，拼出單字。需要開聲音。" },
+  pos:    { icon: "🌿", name: "詞性變化", tip: "考同一個字的其他詞性，例如「decide 的名詞是？」答 decision。答錯算在原本的字上。沒有詞性資料的字改考拼字。" },
+  match:  { icon: "🎮", name: "配對遊戲", tip: "把英文和中文配對，越快越好。暖身用，不影響複習排程。" },
 };
 
 const ROUND = 15;
 let hooks = { stage: null, onDone: () => {}, toast: () => {} };
 let S = null;
 
-export function initQuiz(h) { hooks = { ...hooks, ...h }; }
+export function initQuiz(h) {
+  hooks = { ...hooks, ...h };
+  // 答對後會自動跳下一題；手指按住畫面不放 = 留在這題（看例句、聽發音）
+  const st = hooks.stage;
+  if (!st || st._holdBound) return;
+  st._holdBound = true;
+  st.addEventListener("pointerdown", (e) => {
+    if (!S || !S.answered || !S.lastOk || S.hold || S.match) return;
+    if (e.target.closest("button, a, input")) return;   // 點按鈕照常
+    press.down = true;
+    clearTimeout(press.t);
+    press.t = setTimeout(() => { if (S && S.answered) { S.hold = true; paint(); } }, HOLD_MS);
+  });
+  const up = () => {
+    if (!press.down) return;
+    press.down = false;
+    clearTimeout(press.t);
+    // 按住期間剛好到了自動跳題的時間，但沒按滿：放開就跳
+    if (S && S.answered && !S.hold && press.due) advance();
+    press.due = false;
+  };
+  st.addEventListener("pointerup", up);
+  st.addEventListener("pointercancel", up);
+  st.addEventListener("pointerleave", up);
+}
+/*
+ * 手機打字題用內建鍵盤：系統鍵盤會跳出「建議字」，等於直接給答案。
+ * 觸控螢幕（pointer: coarse）就把輸入框設成唯讀、不叫出系統鍵盤，改用畫面上的字母鍵；
+ * 電腦用實體鍵盤照常打字（實體鍵盤沒有建議字）。
+ */
+const useKb = () => !!(window.matchMedia && matchMedia("(pointer: coarse)").matches);
+const KB_ROWS = ["qwertyuiop", "asdfghjkl", "zxcvbnm"];
+function kbHTML() {
+  const key = (k, label = k, cls = "") => `<button type="button" class="kb-k ${cls}" data-k="${k}">${label}</button>`;
+  return `<div class="qz-kb no-lookup" aria-label="字母鍵盤">
+    <div class="kb-row">${[...KB_ROWS[0]].map(c => key(c)).join("")}</div>
+    <div class="kb-row">${[...KB_ROWS[1]].map(c => key(c)).join("")}</div>
+    <div class="kb-row">${key("'", "'", "sm")}${[...KB_ROWS[2]].map(c => key(c)).join("")}${key("-", "-", "sm")}</div>
+    <div class="kb-row">${key("back", "⌫", "wide")}${key("space", "空格", "space")}${key("enter", "確定", "wide go")}</div>
+  </div>`;
+}
+/** 內建鍵盤／實體鍵盤打進唯讀輸入框 */
+function kbType(input, k) {
+  if (k === "back") input.value = input.value.slice(0, -1);
+  else if (k === "space") input.value += " ";
+  else if (k === "enter") return input.form && input.form.requestSubmit();
+  else input.value += k;
+  input.classList.remove("shake");
+}
+
+const HOLD_MS = 350;          // 按住多久算「長按」
+const AUTO_NEXT_MS = 900;     // 答對後幾毫秒自動下一題
+const press = { down: false, t: 0, due: false };
 export function isQuizActive() { return !!S; }
 
 /* =========================================================================
@@ -216,6 +268,7 @@ function next() {
   S.item = buildItem(q.card, type);
   S.answered = false;
   S.hints = 0;
+  S.hold = false;
   S.shownAt = Date.now();
   paint();
   if (S.item.type === "listen") TTS.speak(q.card.word, undefined, null);
@@ -242,9 +295,13 @@ function record(ok, q, note = "", why = "") {
   paint();
   hooks.onGraded && hooks.onGraded();
   if (ok && isChoice(it)) {
-    // 選擇題答對就快速跳下一題，保持節奏
+    // 選擇題答對就自動跳下一題；長按畫面可以停在這題
     const myIdx = S.idx;
-    setTimeout(() => { if (S && S.idx === myIdx && S.answered) advance(); }, 750);
+    setTimeout(() => {
+      if (!S || S.idx !== myIdx || !S.answered || S.hold) return;
+      if (press.down) { press.due = true; return; }   // 手指還按著，放開再決定
+      advance();
+    }, AUTO_NEXT_MS);
   }
 }
 
@@ -261,7 +318,7 @@ async function submitTyped(raw) {
   const ans = norm(it.answer);
   if (v === ans) return record(true, S.hints ? 3 : 5);
   if (it.type === "cloze" && it.base && v === norm(it.base) && ans !== norm(it.base)) {
-    return record(true, 4, `意思對了！不過這句要用 ${it.answer}`);
+    return record(true, 4, `意思對了，這句要用 ${it.answer}`);
   }
   if (ans.length >= 5 && lev(v, ans) === 1) {
     return record(true, 3, `差一個字母：你打 ${raw.trim()}，正確是 ${it.answer}`);
@@ -277,7 +334,7 @@ async function submitTyped(raw) {
     S.judging = false;
     if (syn && syn.ok) {
       // 算對（三項能力照樣過關），但給「困難」：你沒想到目標字，排程不要拉太長
-      return record(true, 3, `「${raw.trim()}」${syn.zh ? `（${syn.zh}）` : ""}意思也對！這題的目標字是 ${it.answer}`, "syn");
+      return record(true, 3, `「${raw.trim()}」${syn.zh ? `（${syn.zh}）` : ""}意思也對，目標字是 ${it.answer}`, "syn");
     }
   }
   S.wrongTyped = raw.trim();
@@ -435,13 +492,15 @@ function paint() {
     }).join("")}</div>`;
   } else {
     const ph = S.answered
-      ? (S.lastOk ? "" : "照著正確答案打一次，加深印象（可略過）")
+      ? (S.lastOk ? "" : "照正確答案打一次（可略過）")
       : (it.type === "cloze" ? "填入空格的字，按 Enter" : "輸入英文，按 Enter");
     body = `<form class="qz-form">
-        <input type="text" class="qz-input" autocomplete="off" autocapitalize="off" spellcheck="false"
+        <input type="text" class="qz-input" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
+               ${useKb() ? `readonly inputmode="none"` : ""}
                placeholder="${ph}" ${(S.answered && S.lastOk) || S.judging ? "disabled" : ""} value="${S.judging ? esc(S.typed || "") : ""}">
       </form>
-      ${S.judging ? `<div class="qz-note qz-judging">🤔 不是目標字，正在確認意思對不對…</div>` : ""}
+      ${useKb() && !(S.answered && S.lastOk) && !S.judging ? kbHTML() : ""}
+      ${S.judging ? `<div class="qz-note qz-judging">🤔 不是目標字，確認意思中…</div>` : ""}
       ${!S.answered ? `<div class="sr-sub"><button class="mini qz-hint" type="button">💡 提示</button>
         <button class="mini qz-giveup" type="button">不會，看答案</button></div>` : ""}
       ${!S.answered ? hintHTML(it) : ""}`;
@@ -449,10 +508,10 @@ function paint() {
 
   let result = "";
   if (S.answered) {
-    const verdict = S.lastOk ? (S.why === "syn" ? "✓ 意思也對，算你對" : S.note ? "✓ 差一點，算你對" : "✓ 答對了") : "✗ 這題沒答對";
+    const verdict = S.lastOk ? (S.why === "syn" ? "✓ 意思也對，算你對" : S.note ? "✓ 差一點，算你對" : "✓ 答對了") : "✗ 答錯了";
     result = `
       <div class="qz-result ${S.lastOk ? "pass" : "fail"}">
-        <div class="sr-verdict">${verdict}</div>
+        <div class="sr-verdict">${verdict}${S.lastOk && isChoice(it) ? (S.hold ? `<span class="qz-hold on">已停在這題</span>` : `<span class="qz-hold">按住畫面可停在這題</span>`) : ""}</div>
         ${S.note ? `<div class="qz-note">${esc(S.note)}</div>` : ""}
         ${!S.lastOk && S.wrongTyped ? `<div class="qz-note">你打的是：<s>${esc(S.wrongTyped)}</s></div>` : ""}
         ${it.type === "pos" ? `<div class="sr-answer"><span class="muted">${esc(c.word)} ${esc(c.pos || "")} →</span>
@@ -503,7 +562,20 @@ function paint() {
         setTimeout(() => input.classList.remove("shake"), 400);
       }
     });
-    if (!input.disabled) setTimeout(() => input.focus(), 30);
+    if (useKb()) {
+      // 畫面上的字母鍵；pointerdown 先擋掉，按鍵才不會把焦點搶走、也不會觸發雙擊放大
+      hooks.stage.querySelectorAll(".kb-k").forEach(b => {
+        b.addEventListener("pointerdown", (e) => e.preventDefault());
+        b.addEventListener("click", () => kbType(input, b.dataset.k));
+      });
+      // 平板接實體鍵盤時，唯讀輸入框也要能打字
+      input.addEventListener("keydown", (e) => {
+        if (e.isComposing || e.ctrlKey || e.metaKey || e.altKey) return;
+        if (/^[a-zA-Z'\- ]$/.test(e.key)) { e.preventDefault(); kbType(input, e.key === " " ? "space" : e.key.toLowerCase()); }
+        else if (e.key === "Backspace") { e.preventDefault(); kbType(input, "back"); }
+      });
+    }
+    if (!input.disabled) setTimeout(() => input.focus({ preventScroll: true }), 30);
   }
   const hint = $(".qz-hint");
   if (hint) hint.addEventListener("click", () => {
@@ -628,7 +700,7 @@ function finishMatch() {
   stopQuiz();
   hooks.stage.innerHTML = `
     <div class="sr-card sr-summary">
-      <div class="sr-verdict">${isBest ? "🏆 新紀錄！" : "完成！"}</div>
+      <div class="sr-verdict">${isBest ? "🏆 新紀錄！" : "完成"}</div>
       <div class="sr-nums">
         <div><b>${secs.toFixed(1)}</b><span>秒（含罰秒）</span></div>
         <div><b>${mistakes}</b><span>配錯</span></div>

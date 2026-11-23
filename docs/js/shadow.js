@@ -80,7 +80,7 @@ function build() {
   dlg.innerHTML = `
     <div class="m-head">
       <h2>跟讀練習</h2>
-      <p class="note" style="margin:0">先聽，再跟著唸一次。紅色的字是語音辨識沒聽出來的 —— 通常就是要多練的發音。</p>
+      <p class="note" style="margin:0">先聽，再跟著唸。紅字是沒被辨識出來的字，要多練。</p>
     </div>
     <div class="m-body">
       <div class="sh-target" id="shTarget"></div>
@@ -130,7 +130,7 @@ async function play(slow) {
   if (listening) { listening.stop(); listening = null; }
   status(slow ? "慢速播放中…" : "播放中…");
   await TTS.speak(sentence, undefined, null, slow ? 0.7 : undefined);
-  status("輪到你了，按「跟讀」然後唸一次。");
+  status("按「跟讀」，唸一次。");
 }
 
 async function record() {
@@ -144,7 +144,7 @@ async function record() {
   $("shScore").hidden = true;
   $("shHeard").textContent = "";
   paintTarget(null);
-  status("🎙️ 請唸…（停頓一下就會自動結束）");
+  status("🎙️ 請唸…（停頓後自動結束）");
   $("shRec").disabled = true;
 
   listening = listenOnce({
@@ -166,7 +166,7 @@ async function record() {
   $("shRec").disabled = false;
 
   if (!spoken) {
-    status("沒有聽到聲音。確認麥克風有開，再試一次。");
+    status("沒聽到聲音。請確認麥克風已開啟，再試一次。");
     return;
   }
 
@@ -177,9 +177,9 @@ async function record() {
   sc.hidden = false;
   sc.className = "sh-score " + (r.score >= 90 ? "great" : r.score >= 70 ? "good" : "try");
   sc.innerHTML = `<b>${r.score}%</b> ` + (
-    r.score >= 90 ? "太好了，幾乎每個字都被聽懂了。" :
-    r.score >= 70 ? "很接近了，把紅色的字再唸清楚一點。" :
-    "先按「慢速」聽一次，特別注意紅色的字。");
+    r.score >= 90 ? "很好，幾乎每個字都辨識出來了。" :
+    r.score >= 70 ? "很接近了，紅字再唸清楚一點。" :
+    "先按「慢速」聽一次，注意紅字。");
   status("");
   bumpDaily({ shadows: 1 });
 }

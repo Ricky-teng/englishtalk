@@ -284,7 +284,7 @@ async function syncOnce() {
     if (payload.vault) { Vault.markUploaded(); lsSet(VSEEN, M.hashOf(payload.vault)); }
     return pulled;
   }
-  throw new Error("雲端資料一直在變動，等一下再試");
+  throw new Error("雲端資料持續變動，請稍後再試");
 }
 
 function addRes(a, b) {
@@ -429,14 +429,14 @@ function friendly(e) {
   const code = (e && e.code) || "";
   const map = {
     "auth/unauthorized-domain": "這個網址還沒加進 Firebase 的「授權網域」",
-    "auth/network-request-failed": "網路連不上，等一下再試",
+    "auth/network-request-failed": "網路連不上，請稍後再試",
     "auth/operation-not-allowed": "Firebase 還沒開啟 Google 登入",
-    "auth/popup-blocked": "瀏覽器擋住了登入視窗，請允許這個網站的彈出視窗",
+    "auth/popup-blocked": "瀏覽器擋住登入視窗，請允許本站彈出視窗",
     "permission-denied": "雲端拒絕存取（Firestore 安全規則沒設好）",
-    "unavailable": "目前離線，連上網路後會自動同步",
-    "resource-exhausted": "雲端今天的免費額度用完了，明天會恢復",
+    "unavailable": "離線中，連上網路後會同步",
+    "resource-exhausted": "雲端今日免費額度已用完，明天恢復",
   };
   for (const [k, v] of Object.entries(map)) if (code === k || code.endsWith("/" + k)) return v;
-  if (/Failed to fetch|dynamically imported module/i.test(String(e && e.message))) return "載入 Firebase 失敗，請確認有連上網路";
+  if (/Failed to fetch|dynamically imported module/i.test(String(e && e.message))) return "載入 Firebase 失敗，請確認網路連線";
   return (e && e.message) || String(e);
 }

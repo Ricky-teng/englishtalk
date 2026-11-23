@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="用嘴巴跟 AI 即時練英文對話，可以隨時插話打斷。內建單字本與間隔重複複習。">
+<meta name="description" content="開口跟 AI 練英文會話，AI 說話時也能插話。內建單字本和間隔複習。">
 <meta name="theme-color" content="#2a78d6">
 <title>English Talk — 雙工英文對話練習</title>
 <link rel="icon" type="image/png" href="icons/favicon-64.png">
@@ -28,7 +28,7 @@
   <span class="badge" id="badgeEngine">—</span>
   <span class="badge" id="badgeTTS">—</span>
   <button class="badge sync-badge" id="badgeSync" type="button" hidden title="雲端同步">☁︎</button>
-  <button class="btn sm" id="btnInstall" hidden title="安裝到桌面，像 App 一樣使用">📲 安裝</button>
+  <button class="btn sm" id="btnInstall" hidden title="安裝成 App">📲 安裝</button>
   <button class="btn sm ghost" id="btnTheme" title="切換深淺色">🌓</button>
   <button class="btn sm" id="btnSettings">設定</button>
 </header>
@@ -51,8 +51,8 @@
       <div class="footer-inner">
         <button class="btn primary" id="btnStart">開始對話</button>
         <button class="btn danger" id="btnStop" disabled>結束</button>
-        <input type="text" id="textInput" placeholder="也可以直接打字送出（Enter）" autocomplete="off">
-        <div id="hint">建議戴耳機。AI 說話時你隨時可以插話打斷；點 AI 訊息裡的任何單字即可查詢並收進單字本。</div>
+        <input type="text" id="textInput" placeholder="或打字，按 Enter 送出" autocomplete="off">
+        <div id="hint">建議戴耳機。AI 說話時也能插話。點 AI 訊息裡的單字可以查詢、加入單字本。</div>
       </div>
     </footer>
   </section>
@@ -61,8 +61,8 @@
   <section class="page" id="page-vocab">
     <div class="scroll"><div class="wrap">
       <h2 class="title">單字本</h2>
-      <p class="lede">在對話中點任何英文字就會收進來。到期的字會出現在複習，AI 也會在聊天中自然用出來。</p>
-      <p class="note sk-legend">每個字旁邊的 👀 認得・💭 想得起・✍️ 拼得出 是能力進度：三項都答對過、而且複習間隔 21 天以上才算 <b>OK</b>；之後又答錯會退回（紅框）。🗣️ 說得出是加分。</p>
+      <p class="lede">在對話裡點英文字就會加進來。到期的字會出現在複習，AI 也會在對話中用到。</p>
+      <p class="note sk-legend">👀 認得・💭 想得起・✍️ 拼得出 三項都答對過，且複習間隔達 21 天，就是 <b>OK</b>。之後答錯會退回，以紅框標示。🗣️ 說得出另外加分。</p>
 
       <!-- 動作：常用的兩個直接放，其他收進「更多」 -->
       <div class="vocab-actions">
@@ -94,7 +94,7 @@
   <section class="page" id="page-review">
     <div class="scroll"><div class="wrap">
       <h2 class="title">複習</h2>
-      <p class="lede">間隔重複：記得越牢，下次出現得越晚。答錯的會今天再出現一次。</p>
+      <p class="lede">記得越牢，下次越晚出現。答錯的字今天會再考一次。</p>
 
       <div class="review-controls">
         <label class="field" style="margin-top:0">複習方式</label>
@@ -118,7 +118,7 @@
   <section class="page" id="page-stats">
     <div class="scroll"><div class="wrap">
       <h2 class="title">練習紀錄</h2>
-      <p class="lede" id="statsLede">所有資料都存在這台裝置的瀏覽器裡，沒有上傳到任何地方。</p>
+      <p class="lede" id="statsLede">資料都存在這台裝置的瀏覽器裡，不會上傳。</p>
 
       <!-- 紀錄頁分成四個小分頁；每張卡片用 data-sec 標出屬於哪一頁 -->
       <div class="subtabs" role="tablist" id="statsTabs">
@@ -150,7 +150,7 @@
 
       <div class="card" data-sec="data">
         <h3>備份</h3>
-        <p class="note" style="margin-top:0">匯出的檔案包含單字本、對話紀錄與統計，但<strong>不含 API 金鑰</strong>。換電腦時匯入即可延續進度。</p>
+        <p class="note" style="margin-top:0">備份檔包含單字本、對話紀錄和統計，<strong>不含 API 金鑰</strong>。換電腦時匯入就能接著用。</p>
         <div id="storageInfo" class="storage-info"></div>
         <div class="row" style="margin-top:12px">
           <button class="btn" id="btnExportAll">匯出備份</button>
@@ -184,15 +184,15 @@
   <div class="m-head">
     <h2>設定</h2>
     <p class="note" style="margin-bottom:0">
-      金鑰只存在你自己的瀏覽器，不會傳給這個網站（它沒有自己的伺服器）。在雲端同步打開「API 金鑰同步」時，金鑰會先用你自己設的同步密碼加密才上傳，網站管理者也解不開。
+      金鑰只存在你的瀏覽器。本站沒有伺服器，不會收到金鑰。開啟雲端同步的「API 金鑰同步」後，金鑰會先用你的同步密碼加密再上傳，網站管理者也無法解開。
     </p>
   </div>
   <div class="m-body">
 
     <label class="field" for="cfgProvider">對話模型供應商</label>
     <select id="cfgProvider">
-      <option value="gemini">Google Gemini（推薦：免費額度大、瀏覽器直連最穩）</option>
-      <option value="groq">Groq（回應最快，少數瀏覽器可能被跨來源政策擋下）</option>
+      <option value="gemini">Google Gemini（推薦，免費額度大、連線穩）</option>
+      <option value="groq">Groq（回應最快，少數瀏覽器會擋）</option>
     </select>
     <div class="row" style="margin-top:8px;align-items:center">
       <button class="btn sm" id="btnTestKey" type="button">🔌 測試連線</button>
@@ -201,13 +201,13 @@
 
     <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-top:12px">
       <input type="checkbox" id="cfgFallback" style="width:auto">
-      主要的 AI 出問題時，自動換備援（對話不會斷）
+      主要 AI 出錯時改用備援，對話不中斷
     </label>
     <div class="note" id="fallbackChain" style="margin-left:26px"></div>
 
     <div id="grpGemini">
       <label class="field" for="cfgGeminiKey">Gemini API 金鑰 <span class="badge" id="stGemini">未設定</span></label>
-      <input type="password" id="cfgGeminiKey" placeholder="AIza…（留空表示不更動）" autocomplete="off">
+      <input type="password" id="cfgGeminiKey" placeholder="AIza…（留空則不變更）" autocomplete="off">
       <div class="note">免費申請：<a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></div>
       <label class="field" for="cfgGeminiModel">對話用的模型</label>
       <select id="cfgGeminiModel"></select>
@@ -220,14 +220,14 @@
       <div id="descGeminiTool"></div>
 
       <div class="row" style="margin-top:10px">
-        <button class="btn sm" id="btnFetchGemini" type="button">抓取我帳號可用的模型</button>
+        <button class="btn sm" id="btnFetchGemini" type="button">載入我帳號可用的模型</button>
         <span class="note" id="noteGemini" style="margin:0"></span>
       </div>
     </div>
 
     <div id="grpGroq">
       <label class="field" for="cfgGroqKey">Groq API 金鑰 <span class="badge" id="stGroq">未設定</span></label>
-      <input type="password" id="cfgGroqKey" placeholder="gsk_…（留空表示不更動）" autocomplete="off">
+      <input type="password" id="cfgGroqKey" placeholder="gsk_…（留空則不變更）" autocomplete="off">
       <div class="note">免費申請：<a href="https://console.groq.com/keys" target="_blank" rel="noopener">console.groq.com/keys</a></div>
       <label class="field" for="cfgGroqModel">對話用的模型</label>
       <select id="cfgGroqModel"></select>
@@ -238,10 +238,10 @@
       <select id="cfgGroqTool"></select>
       <input type="text" id="cfgGroqToolCustom" placeholder="輸入模型 ID" hidden>
       <div id="descGroqTool"></div>
-      <div class="note">兩個用途分開選，額度就各算各的：背景的查字和文法檢查不會把對話的額度用光。選的模型不能用時，會自動退回對話用的模型。</div>
+      <div class="note">兩種用途額度分開算，查字和文法檢查不會用掉對話的額度。選的模型無法使用時，改用對話模型。</div>
 
       <div class="row" style="margin-top:10px">
-        <button class="btn sm" id="btnFetchGroq" type="button">抓取我帳號可用的模型</button>
+        <button class="btn sm" id="btnFetchGroq" type="button">載入我帳號可用的模型</button>
         <span class="note" id="noteGroq" style="margin:0"></span>
       </div>
     </div>
@@ -250,14 +250,14 @@
 
     <label class="field" for="cfgTTSEngine">AI 語音引擎</label>
     <select id="cfgTTSEngine">
-      <option value="browser">瀏覽器內建（免費無限、零延遲，建議用 Edge 取得神經語音）</option>
-      <option value="edge">微軟 Edge 朗讀服務（音質最好，但可能被擋，失敗會自動退回）</option>
+      <option value="browser">瀏覽器內建（免費、無延遲，用 Edge 開語音較自然）</option>
+      <option value="edge">微軟 Edge 朗讀服務（音質最好，連不上時改用瀏覽器語音）</option>
     </select>
 
     <div id="grpBrowserVoice">
       <label class="field" for="cfgBrowserVoice">瀏覽器語音</label>
       <select id="cfgBrowserVoice"></select>
-      <div class="note">名字含 Natural / Online 的是神經語音，音質最接近真人。在 Microsoft Edge 開啟本站可以拿到最多這類語音。</div>
+      <div class="note">名稱有 Natural 或 Online 的語音最像真人。用 Microsoft Edge 開啟本站，這類語音最多。</div>
     </div>
 
     <div id="grpEdgeVoice" hidden>
@@ -289,7 +289,7 @@
 
     <label class="field" for="cfgGoal">練習目標</label>
     <select id="cfgGoal"></select>
-    <div class="note">換目標會一起換掉下面的 AI 角色（如果你沒有自己改過角色的話）。</div>
+    <div class="note">沒改過 AI 角色的話，換目標時角色會跟著換。</div>
 
     <label class="field" for="cfgPersona">AI 角色設定（英文描述）</label>
     <input type="text" id="cfgPersona">
@@ -309,58 +309,56 @@
         <select id="cfgSilence">
           <option value="700">0.7 秒（反應快）</option>
           <option value="1000">1.0 秒（推薦）</option>
-          <option value="1500">1.5 秒（想慢慢講）</option>
+          <option value="1500">1.5 秒（慢慢講）</option>
         </select>
       </div>
     </div>
 
-    <label class="field" for="cfgVocabFreq">AI 在對話中用到我的單字的頻率</label>
+    <label class="field" for="cfgVocabFreq">AI 在對話中用我單字的頻率</label>
     <select id="cfgVocabFreq">
-      <option value="0">不要（純自然對話）</option>
-      <option value="0.25">很少 — 大約每四輪一次</option>
-      <option value="0.5">適中 — 大約每三輪一次（推薦）</option>
-      <option value="0.75">常常 — 大約每四輪三次，而且會引導你也用出來</option>
-      <option value="1">每一輪都要 — 考前衝刺用，會明顯刻意</option>
+      <option value="0">關閉</option>
+      <option value="0.25">很少：每四輪約一次</option>
+      <option value="0.5">適中：每三輪約一次（推薦）</option>
+      <option value="0.75">常常：每四輪約三次，並引導你用出來</option>
+      <option value="1">每輪都用：考前衝刺，會很刻意</option>
     </select>
     <div class="note">
-      覺得太刻意就往下調。每場對話的前兩輪一定不會塞單字，讓話題先自然建立。
-      「很少」和「適中」不會連續兩輪都塞。
+      太刻意就調低。每場對話的前兩輪不放單字，「很少」和「適中」不會連續兩輪都放。
     </div>
 
     <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-top:8px">
       <input type="checkbox" id="cfgPromoteHeard" style="width:auto">
-      AI 用了、我卻沒跟著用的字，自動提前到明天複習
+      AI 用過、我沒跟著用的字，提前到明天複習
     </label>
-    <div class="note" style="margin-left:26px">不花 API 額度，純本地判斷。</div>
+    <div class="note" style="margin-left:26px">不耗 API 額度。</div>
 
     <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-top:8px">
       <input type="checkbox" id="cfgAnalyzeGaps" style="width:auto">
-      對話結束後，找出我「想講但講不出來」的字
+      對話結束後，找出我想講卻講不出來的字
     </label>
-    <div class="note" style="margin-left:26px">一整場對話只會多呼叫一次 API。關掉可以更省額度。</div>
+    <div class="note" style="margin-left:26px">每場對話多用一次 API。</div>
 
     <label class="field" for="cfgGrammar">文法修正</label>
     <select id="cfgGrammar">
-      <option value="live">即時 — 每句說完就標在那句底下（推薦）</option>
-      <option value="end">對話結束後 — 一次檢查全部，最省額度</option>
+      <option value="live">即時：每句說完就標在句子下方（推薦）</option>
+      <option value="end">對話結束後：一次檢查全部，最省額度</option>
       <option value="off">關閉</option>
     </select>
-    <div class="note">AI 不會在對話中糾正你，修正只會安靜地寫在你那句話底下。
-      即時模式會把排隊中的句子合併成一次送出，平均每 1–3 句才多一次 API；
-      Gemini 用的是額度另計的 flash-lite 模型，不會吃掉對話的額度。</div>
+    <div class="note">AI 不會在對話中糾正你，修正會標在你那句話下方。
+      即時模式約每 1–3 句多用一次 API。Gemini 用額度另計的 flash-lite，不占對話額度。</div>
 
     <label class="field" for="cfgScheduler">複習排程演算法</label>
     <select id="cfgScheduler">
-      <option value="fsrs">FSRS — Anki 現行的演算法，同樣記得牢、複習次數更少（推薦）</option>
-      <option value="sm2">SM-2 — 傳統演算法</option>
+      <option value="fsrs">FSRS：Anki 現用的演算法，複習次數較少（推薦）</option>
+      <option value="sm2">SM-2：傳統演算法</option>
     </select>
     <label class="field" for="cfgRetention">目標記憶率（FSRS）</label>
     <select id="cfgRetention">
-      <option value="0.85">85% — 複習量最少，偶爾會忘</option>
-      <option value="0.9">90% — 標準（推薦）</option>
-      <option value="0.95">95% — 考前衝刺，複習量約多一倍</option>
+      <option value="0.85">85%：複習量最少，偶爾會忘</option>
+      <option value="0.9">90%：標準（推薦）</option>
+      <option value="0.95">95%：考前衝刺，複習量約多一倍</option>
     </select>
-    <div class="note">切換後會依新規則重排所有字的複習日。兩種演算法的紀錄會一直同步保存，隨時可以換回來。</div>
+    <div class="note">切換後會重排所有字的複習日。兩種演算法的紀錄都會保留，可以再換回來。</div>
 
     <div class="note" id="cacheInfo" style="margin-top:14px"></div>
 
@@ -381,7 +379,7 @@
 <dialog class="modal" id="dlgAdd">
   <div class="m-head">
     <h2>新增單字</h2>
-    <p class="note" style="margin-bottom:0">輸入英文或中文都可以，會列出所有可能的字或意思讓你挑。</p>
+    <p class="note" style="margin-bottom:0">輸入英文或中文，再從結果中挑選。</p>
   </div>
   <div class="m-body">
     <div class="row add-search">
@@ -390,11 +388,11 @@
     </div>
     <div class="add-tagrow">
       <label for="addTag">加到標籤</label>
-      <input type="text" id="addTag" list="tagOptions" placeholder="可留空，例如：第三課" autocomplete="off">
+      <input type="text" id="addTag" list="tagOptions" placeholder="選填，例如：第三課" autocomplete="off">
       <datalist id="tagOptions"></datalist>
     </div>
     <div id="addResults" class="add-results" aria-live="polite"></div>
-    <button class="btn sm ghost" id="btnAddManual" type="button">課本的定義要一字不差？手動填寫全部欄位</button>
+    <button class="btn sm ghost" id="btnAddManual" type="button">要和課本一字不差？改用手動填寫</button>
   </div>
   <div class="m-foot">
     <button class="btn" id="btnAddDone">完成</button>
@@ -405,7 +403,7 @@
   <div class="m-head">
     <h2 id="wordDlgTitle">新增單字</h2>
     <p class="note" style="margin-bottom:0">
-      英文或中文填一個就好，按「用 AI 補齊」會列出候選讓你挑，而且只補空白的欄位，不會改你自己填的內容。
+      英文或中文填一個即可。「用 AI 補齊」會列出候選，只補空白欄位，不改你填的內容。
     </p>
   </div>
   <div class="m-body">
@@ -433,7 +431,7 @@
       </div>
     </div>
 
-    <label class="field" for="wfTags">標籤（用空白分隔，例如課次）</label>
+    <label class="field" for="wfTags">標籤（以空白分隔）</label>
     <input type="text" id="wfTags" list="tagOptions" placeholder="例：第三課 期中考">
 
     <details id="wfMore" class="wf-more">
@@ -450,9 +448,9 @@
       <label class="field" for="wfAnt">反義詞</label>
       <input type="text" id="wfAnt" placeholder="例：refuse(拒絕)">
 
-      <label class="field" for="wfFam">詞性變化（同字根、不同詞性）</label>
+      <label class="field" for="wfFam">詞性變化（同字根的其他詞性）</label>
       <input type="text" id="wfFam" placeholder="例：decision n. 決定, decisive adj. 果斷的">
-      <div class="note">用逗號分隔，中文放在括號裡（可省略）。</div>
+      <div class="note">用逗號分隔，中文可寫在括號內。</div>
     </details>
 
     <div class="note" id="wordDlgNote"></div>
@@ -468,12 +466,12 @@
   <div class="m-head">
     <h2>批次貼上單字</h2>
     <p class="note" style="margin-bottom:0">
-      直接貼課本的單字表。每行一個，支援 <code>單字</code>、<code>單字 中文</code>、
+      貼上課本的單字表，每行一個字。支援 <code>單字</code>、<code>單字 中文</code>、
       <code>單字,中文</code>、<code>單字&lt;tab&gt;中文</code>。
     </p>
   </div>
   <div class="m-body">
-    <label class="field" for="bulkTag">標籤（選填，用來分組複習）</label>
+    <label class="field" for="bulkTag">標籤（選填，可依標籤複習）</label>
     <input type="text" id="bulkTag" placeholder="例如：第三課、期中考、商用英文">
 
     <label class="field" for="bulkText">單字</label>
@@ -484,9 +482,8 @@
       用 AI 補齊音標、詞性與例句
     </label>
     <div class="note">
-      不勾選的話就完全照你貼的內容存，一個字都不改，也不會用到 API 額度 ——
-      課本上的中文跟老師給的定義要一模一樣時選這個。<br>
-      勾選時：你自己填的中文會被保留，AI 只補空白的欄位；一次最多 20 個字。
+      不勾選就照原樣存，不用 API 額度，適合要和課本定義一致時。<br>
+      勾選時會保留你填的中文，AI 只補空白欄位，一次最多 20 個字。
     </div>
     <div class="note" id="bulkNote"></div>
   </div>

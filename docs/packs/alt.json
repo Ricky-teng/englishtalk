@@ -1,0 +1,2858 @@
+{
+ "version": 2,
+ "words": {
+  "abandon": [
+   {
+    "pos": "n.",
+    "zh": "放縱；盡情"
+   }
+  ],
+  "abbreviation": [],
+  "ability": [],
+  "absolutely": [],
+  "academics": [],
+  "academic": [
+   {
+    "pos": "n.",
+    "zh": "學者"
+   }
+  ],
+  "accent": [
+   {
+    "pos": "v.",
+    "zh": "強調；突顯"
+   }
+  ],
+  "accessory": [],
+  "accidentally": [],
+  "accidental": [],
+  "accommodate": [],
+  "accompany": [],
+  "accomplish": [],
+  "accounting": [],
+  "accurately": [],
+  "achievement": [],
+  "action": [],
+  "activate": [],
+  "active": [],
+  "activity": [],
+  "actually": [],
+  "adaptability": [],
+  "adaptable": [],
+  "adapt": [],
+  "addiction": [],
+  "adjust": [],
+  "admission": [],
+  "admit": [],
+  "adult": [
+   {
+    "pos": "adj.",
+    "zh": "成年的；成人的"
+   }
+  ],
+  "advanced": [],
+  "advantage": [],
+  "advice": [],
+  "affordable": [],
+  "aftershock": [],
+  "afterward": [],
+  "agency": [],
+  "agent": [],
+  "agricultural": [],
+  "agriculture": [],
+  "ahead": [],
+  "aid": [
+   {
+    "pos": "n.",
+    "zh": "援助；輔助器具"
+   }
+  ],
+  "aim": [
+   {
+    "pos": "n.",
+    "zh": "目標；瞄準"
+   }
+  ],
+  "aisle": [],
+  "alert": [
+   {
+    "pos": "adj.",
+    "zh": "警覺的"
+   },
+   {
+    "pos": "n.",
+    "zh": "警報"
+   }
+  ],
+  "algorithm": [],
+  "alley": [],
+  "allow": [],
+  "alone": [
+   {
+    "pos": "adv.",
+    "zh": "獨自地"
+   }
+  ],
+  "alternative": [
+   {
+    "pos": "adj.",
+    "zh": "替代的；另類的"
+   }
+  ],
+  "alter": [],
+  "amazing": [],
+  "ambition": [],
+  "ambitious": [],
+  "analysis": [],
+  "analyze": [],
+  "anchor": [
+   {
+    "pos": "v.",
+    "zh": "下錨；固定；主持"
+   }
+  ],
+  "ancient": [],
+  "angel": [],
+  "anniversary": [],
+  "answer": [
+   {
+    "pos": "n.",
+    "zh": "答案；回應"
+   }
+  ],
+  "anticipate": [],
+  "antique": [
+   {
+    "pos": "adj.",
+    "zh": "古董的"
+   }
+  ],
+  "anxious": [],
+  "anytime": [],
+  "apart": [],
+  "apologize": [],
+  "apology": [],
+  "appealing": [],
+  "appeal": [
+   {
+    "pos": "v.",
+    "zh": "呼籲；吸引；上訴"
+   }
+  ],
+  "appearance": [],
+  "appear": [],
+  "appendix": [],
+  "application": [],
+  "apply": [],
+  "appreciate": [],
+  "architect": [],
+  "arrive": [],
+  "artificial": [],
+  "ashamed": [],
+  "assess": [],
+  "asset": [],
+  "assign": [],
+  "associate": [
+   {
+    "pos": "n.",
+    "zh": "夥伴；同事"
+   },
+   {
+    "pos": "adj.",
+    "zh": "副的"
+   }
+  ],
+  "assume": [],
+  "astonishing": [],
+  "astonishment": [],
+  "athlete": [],
+  "athletic": [],
+  "atmosphere": [],
+  "attention": [],
+  "attraction": [],
+  "attractive": [],
+  "audience": [],
+  "automotive": [],
+  "avenue": [],
+  "average": [
+   {
+    "pos": "n.",
+    "zh": "平均；平均數"
+   },
+   {
+    "pos": "v.",
+    "zh": "平均為"
+   },
+   {
+    "pos": "adj.",
+    "zh": "平均的；一般的"
+   }
+  ],
+  "avoid": [],
+  "awake": [
+   {
+    "pos": "v.",
+    "zh": "醒來；喚醒"
+   }
+  ],
+  "award": [
+   {
+    "pos": "v.",
+    "zh": "頒發；授予"
+   }
+  ],
+  "aware": [],
+  "backpack": [
+   {
+    "pos": "v.",
+    "zh": "背包旅行"
+   }
+  ],
+  "balance": [
+   {
+    "pos": "n.",
+    "zh": "平衡；餘額"
+   }
+  ],
+  "ban": [
+   {
+    "pos": "v.",
+    "zh": "禁止"
+   }
+  ],
+  "barely": [],
+  "bar": [
+   {
+    "pos": "v.",
+    "zh": "禁止；阻擋"
+   }
+  ],
+  "battery": [],
+  "begin": [],
+  "behalf": [],
+  "behavior": [],
+  "beloved": [
+   {
+    "pos": "n.",
+    "zh": "心愛的人"
+   }
+  ],
+  "bend": [
+   {
+    "pos": "n.",
+    "zh": "彎道；轉彎"
+   }
+  ],
+  "benefit": [
+   {
+    "pos": "v.",
+    "zh": "有益於；受益"
+   }
+  ],
+  "betray": [],
+  "between": [
+   {
+    "pos": "adv.",
+    "zh": "在中間"
+   }
+  ],
+  "beverage": [],
+  "bid": [
+   {
+    "pos": "n.",
+    "zh": "出價；嘗試"
+   }
+  ],
+  "bin": [],
+  "biological": [],
+  "biotech": [],
+  "blame": [
+   {
+    "pos": "n.",
+    "zh": "責備；責任"
+   }
+  ],
+  "block": [
+   {
+    "pos": "n.",
+    "zh": "街區；塊"
+   }
+  ],
+  "blur": [
+   {
+    "pos": "n.",
+    "zh": "模糊的景象"
+   }
+  ],
+  "bold": [],
+  "bomb": [
+   {
+    "pos": "v.",
+    "zh": "轟炸"
+   }
+  ],
+  "bond": [
+   {
+    "pos": "v.",
+    "zh": "建立感情"
+   }
+  ],
+  "boost": [
+   {
+    "pos": "n.",
+    "zh": "提升；激勵"
+   }
+  ],
+  "booth": [],
+  "boredom": [],
+  "bored": [],
+  "born": [],
+  "bounce": [
+   {
+    "pos": "n.",
+    "zh": "彈跳；反彈"
+   }
+  ],
+  "boundary": [],
+  "breakthrough": [],
+  "breathe": [],
+  "breed": [
+   {
+    "pos": "n.",
+    "zh": "品種"
+   }
+  ],
+  "brief": [
+   {
+    "pos": "v.",
+    "zh": "向…簡報"
+   },
+   {
+    "pos": "n.",
+    "zh": "任務指示"
+   }
+  ],
+  "broadcaster": [],
+  "build": [
+   {
+    "pos": "n.",
+    "zh": "體格"
+   }
+  ],
+  "business": [],
+  "calamity": [],
+  "calendar": [],
+  "calm": [
+   {
+    "pos": "adj.",
+    "zh": "平靜的"
+   },
+   {
+    "pos": "n.",
+    "zh": "平靜"
+   }
+  ],
+  "calorie": [],
+  "camouflage": [
+   {
+    "pos": "v.",
+    "zh": "偽裝"
+   }
+  ],
+  "campus": [],
+  "cancer": [],
+  "capable": [],
+  "capture": [
+   {
+    "pos": "n.",
+    "zh": "捕獲"
+   }
+  ],
+  "carbon": [],
+  "career": [],
+  "care": [
+   {
+    "pos": "v.",
+    "zh": "在乎；關心"
+   }
+  ],
+  "cart": [
+   {
+    "pos": "v.",
+    "zh": "用車運送；搬運"
+   }
+  ],
+  "carve": [],
+  "caution": [
+   {
+    "pos": "n.",
+    "zh": "小心；謹慎"
+   }
+  ],
+  "cautious": [],
+  "celebration": [],
+  "chain": [
+   {
+    "pos": "v.",
+    "zh": "用鏈子拴住"
+   }
+  ],
+  "challenge": [
+   {
+    "pos": "v.",
+    "zh": "挑戰；質疑"
+   }
+  ],
+  "chaos": [],
+  "characteristic": [
+   {
+    "pos": "adj.",
+    "zh": "特有的；典型的"
+   }
+  ],
+  "character": [],
+  "charge": [
+   {
+    "pos": "n.",
+    "zh": "費用；充電"
+   }
+  ],
+  "cheat": [
+   {
+    "pos": "n.",
+    "zh": "作弊者；騙子"
+   }
+  ],
+  "check": [
+   {
+    "pos": "n.",
+    "zh": "檢查；帳單"
+   }
+  ],
+  "choice": [
+   {
+    "pos": "adj.",
+    "zh": "上等的；精選的"
+   }
+  ],
+  "choose": [],
+  "claim": [
+   {
+    "pos": "n.",
+    "zh": "聲稱；索賠"
+   }
+  ],
+  "clarity": [],
+  "classic": [
+   {
+    "pos": "n.",
+    "zh": "經典作品"
+   },
+   {
+    "pos": "adj.",
+    "zh": "經典的"
+   }
+  ],
+  "classify": [],
+  "clean": [
+   {
+    "pos": "adj.",
+    "zh": "乾淨的"
+   }
+  ],
+  "clever": [],
+  "cliff": [],
+  "closet": [],
+  "cloth": [],
+  "cloudy": [],
+  "clump": [
+   {
+    "pos": "v.",
+    "zh": "聚成一團"
+   }
+  ],
+  "cluster": [
+   {
+    "pos": "v.",
+    "zh": "聚集"
+   }
+  ],
+  "collaborate": [],
+  "collapse": [
+   {
+    "pos": "n.",
+    "zh": "倒塌；崩潰"
+   }
+  ],
+  "colleague": [],
+  "collection": [],
+  "collector": [],
+  "collision": [],
+  "colonial": [],
+  "colorful": [],
+  "comfortable": [],
+  "communicate": [],
+  "communication": [],
+  "community": [],
+  "compact": [
+   {
+    "pos": "n.",
+    "zh": "小型車；粉餅盒"
+   },
+   {
+    "pos": "v.",
+    "zh": "壓實；壓縮"
+   }
+  ],
+  "companion": [],
+  "competitive": [],
+  "complaint": [],
+  "complete": [
+   {
+    "pos": "adj.",
+    "zh": "完整的；完全的"
+   }
+  ],
+  "complex": [
+   {
+    "pos": "n.",
+    "zh": "建築群；情結"
+   }
+  ],
+  "component": [],
+  "composition": [],
+  "concerned": [],
+  "concert": [],
+  "conclude": [],
+  "condense": [],
+  "conduct": [
+   {
+    "pos": "n.",
+    "zh": "行為；品行"
+   }
+  ],
+  "confidence": [],
+  "confidential": [],
+  "confident": [],
+  "confine": [],
+  "connect": [],
+  "conqueror": [],
+  "conquer": [],
+  "consensus": [],
+  "consequence": [],
+  "conservation": [],
+  "consistent": [],
+  "construct": [
+   {
+    "pos": "n.",
+    "zh": "構想；概念"
+   }
+  ],
+  "consume": [],
+  "content": [
+   {
+    "pos": "adj.",
+    "zh": "滿足的"
+   },
+   {
+    "pos": "v.",
+    "zh": "使滿足"
+   }
+  ],
+  "context": [],
+  "continuous": [],
+  "contrast": [
+   {
+    "pos": "v.",
+    "zh": "對比；形成對照"
+   }
+  ],
+  "contribute": [],
+  "controversy": [],
+  "convenience": [],
+  "conventional": [],
+  "convincing": [],
+  "correct": [
+   {
+    "pos": "v.",
+    "zh": "糾正；改正"
+   }
+  ],
+  "cost": [
+   {
+    "pos": "n.",
+    "zh": "費用；成本"
+   }
+  ],
+  "counselor": [],
+  "country": [],
+  "courage": [],
+  "cover": [
+   {
+    "pos": "n.",
+    "zh": "封面；蓋子"
+   }
+  ],
+  "create": [],
+  "creative": [],
+  "creator": [],
+  "creature": [],
+  "credit": [
+   {
+    "pos": "n.",
+    "zh": "信用；學分"
+   }
+  ],
+  "criminal": [
+   {
+    "pos": "n.",
+    "zh": "罪犯"
+   }
+  ],
+  "critical": [],
+  "criticism": [],
+  "critic": [],
+  "crowded": [],
+  "cruel": [],
+  "crumble": [],
+  "culture": [],
+  "curly": [],
+  "curved": [],
+  "cushion": [
+   {
+    "pos": "n.",
+    "zh": "坐墊；靠墊"
+   }
+  ],
+  "customer": [],
+  "custom": [
+   {
+    "pos": "adj.",
+    "zh": "訂製的"
+   }
+  ],
+  "cut": [
+   {
+    "pos": "n.",
+    "zh": "傷口；削減"
+   }
+  ],
+  "cylinder": [],
+  "daily": [
+   {
+    "pos": "adv.",
+    "zh": "每天"
+   },
+   {
+    "pos": "n.",
+    "zh": "日報"
+   }
+  ],
+  "damage": [
+   {
+    "pos": "v.",
+    "zh": "損害；損壞"
+   }
+  ],
+  "daring": [
+   {
+    "pos": "n.",
+    "zh": "膽量；勇氣"
+   }
+  ],
+  "dazzle": [],
+  "deadly": [
+   {
+    "pos": "adv.",
+    "zh": "極其；非常"
+   }
+  ],
+  "debate": [
+   {
+    "pos": "n.",
+    "zh": "辯論；爭論"
+   }
+  ],
+  "declare": [],
+  "decline": [
+   {
+    "pos": "v.",
+    "zh": "下降；婉拒"
+   }
+  ],
+  "dedicated": [],
+  "delicacy": [],
+  "delightful": [],
+  "demanding": [],
+  "dense": [],
+  "dentist": [],
+  "deny": [],
+  "departure": [],
+  "dependability": [],
+  "depressed": [],
+  "deserve": [],
+  "despite": [],
+  "destination": [],
+  "destructive": [],
+  "detailed": [],
+  "detect": [],
+  "determination": [],
+  "determined": [],
+  "devastation": [],
+  "development": [],
+  "device": [],
+  "diagnose": [],
+  "difference": [],
+  "different": [],
+  "difficult": [],
+  "digital": [],
+  "diminish": [],
+  "diplomacy": [],
+  "director": [],
+  "disappear": [],
+  "disappointed": [],
+  "disappoint": [],
+  "disapprove": [],
+  "disaster": [],
+  "discard": [],
+  "discharge": [
+   {
+    "pos": "n.",
+    "zh": "排放；出院"
+   }
+  ],
+  "disclose": [],
+  "discussion": [],
+  "discuss": [],
+  "disease": [],
+  "disorder": [],
+  "display": [
+   {
+    "pos": "n.",
+    "zh": "展示；顯示器"
+   }
+  ],
+  "disrupt": [],
+  "distance": [
+   {
+    "pos": "v.",
+    "zh": "疏遠；保持距離"
+   }
+  ],
+  "distinguish": [],
+  "distraction": [],
+  "distract": [],
+  "divide": [
+   {
+    "pos": "n.",
+    "zh": "分歧；差距"
+   }
+  ],
+  "dizzy": [],
+  "documentary": [
+   {
+    "pos": "adj.",
+    "zh": "文件的；紀實的"
+   }
+  ],
+  "document": [
+   {
+    "pos": "v.",
+    "zh": "記錄"
+   }
+  ],
+  "dormitory": [],
+  "doubt": [
+   {
+    "pos": "v.",
+    "zh": "懷疑"
+   }
+  ],
+  "draft": [
+   {
+    "pos": "n.",
+    "zh": "草稿"
+   }
+  ],
+  "dream": [
+   {
+    "pos": "n.",
+    "zh": "夢；夢想"
+   },
+   {
+    "pos": "adj.",
+    "zh": "夢寐以求的"
+   }
+  ],
+  "drift": [
+   {
+    "pos": "v.",
+    "zh": "漂流；飄移"
+   },
+   {
+    "pos": "n.",
+    "zh": "漂流；趨勢"
+   }
+  ],
+  "drive": [
+   {
+    "pos": "v.",
+    "zh": "開車；驅使"
+   }
+  ],
+  "dummy": [
+   {
+    "pos": "adj.",
+    "zh": "假的；仿造的"
+   }
+  ],
+  "during": [],
+  "dye": [
+   {
+    "pos": "n.",
+    "zh": "染料"
+   }
+  ],
+  "eagerly": [],
+  "ecological": [],
+  "economic": [],
+  "ecosystem": [],
+  "edit": [
+   {
+    "pos": "n.",
+    "zh": "編輯；修改"
+   }
+  ],
+  "educational": [],
+  "effective": [],
+  "effect": [
+   {
+    "pos": "v.",
+    "zh": "促成；實現"
+   }
+  ],
+  "effort": [],
+  "electricity": [],
+  "electronics": [],
+  "elsewhere": [],
+  "elusive": [],
+  "embarrassed": [],
+  "embrace": [
+   {
+    "pos": "n.",
+    "zh": "擁抱"
+   }
+  ],
+  "emergency": [],
+  "emission": [],
+  "emotion": [],
+  "enable": [],
+  "encouragement": [],
+  "endangered": [],
+  "endless": [],
+  "endure": [],
+  "end": [
+   {
+    "pos": "v.",
+    "zh": "結束"
+   }
+  ],
+  "energy": [],
+  "engagement": [],
+  "engage": [],
+  "enormous": [],
+  "entertain": [],
+  "entry": [],
+  "environment": [],
+  "envy": [
+   {
+    "pos": "n.",
+    "zh": "羨慕；嫉妒"
+   }
+  ],
+  "epicenter": [],
+  "episode": [],
+  "equally": [],
+  "equip": [],
+  "escalator": [],
+  "essence": [],
+  "essentially": [],
+  "essential": [
+   {
+    "pos": "n.",
+    "zh": "必需品；要素"
+   }
+  ],
+  "estimated": [],
+  "estimate": [
+   {
+    "pos": "n.",
+    "zh": "估計；估價"
+   }
+  ],
+  "evaluation": [],
+  "eventually": [],
+  "evolution": [],
+  "exactly": [],
+  "excellence": [],
+  "excessive": [],
+  "exchange": [
+   {
+    "pos": "n.",
+    "zh": "交換；交流"
+   }
+  ],
+  "excited": [],
+  "exhausted": [],
+  "exotic": [],
+  "expensive": [],
+  "experience": [
+   {
+    "pos": "v.",
+    "zh": "經歷；體驗"
+   }
+  ],
+  "experimental": [],
+  "experiment": [
+   {
+    "pos": "v.",
+    "zh": "做實驗；嘗試"
+   }
+  ],
+  "expert": [
+   {
+    "pos": "adj.",
+    "zh": "專業的；熟練的"
+   }
+  ],
+  "explore": [],
+  "explosion": [],
+  "expose": [],
+  "express": [
+   {
+    "pos": "adj.",
+    "zh": "快遞的；直達的"
+   },
+   {
+    "pos": "n.",
+    "zh": "快車"
+   }
+  ],
+  "extension": [],
+  "extra": [
+   {
+    "pos": "adv.",
+    "zh": "額外地"
+   },
+   {
+    "pos": "n.",
+    "zh": "額外項目；臨演"
+   }
+  ],
+  "factor": [
+   {
+    "pos": "v.",
+    "zh": "納入考量"
+   }
+  ],
+  "failure": [],
+  "faith": [],
+  "fake": [
+   {
+    "pos": "n.",
+    "zh": "假貨"
+   },
+   {
+    "pos": "v.",
+    "zh": "假裝；偽造"
+   }
+  ],
+  "fame": [],
+  "familiarity": [],
+  "familiar": [],
+  "fantastic": [],
+  "farther": [
+   {
+    "pos": "adj.",
+    "zh": "更遠的"
+   }
+  ],
+  "fast-paced": [],
+  "fatal": [],
+  "fatigue": [],
+  "feather": [],
+  "federal": [],
+  "feline": [
+   {
+    "pos": "n.",
+    "zh": "貓科動物"
+   }
+  ],
+  "fiercely": [],
+  "fierce": [],
+  "financial": [],
+  "finish": [
+   {
+    "pos": "n.",
+    "zh": "結尾；終點"
+   }
+  ],
+  "firework": [],
+  "firmly": [],
+  "fixed": [],
+  "fix": [
+   {
+    "pos": "n.",
+    "zh": "解決辦法"
+   }
+  ],
+  "flammable": [],
+  "flash": [
+   {
+    "pos": "n.",
+    "zh": "閃光；閃光燈"
+   }
+  ],
+  "flavor": [
+   {
+    "pos": "v.",
+    "zh": "調味"
+   }
+  ],
+  "flight": [],
+  "float": [
+   {
+    "pos": "n.",
+    "zh": "浮板；花車"
+   }
+  ],
+  "fluent": [],
+  "focus": [
+   {
+    "pos": "v.",
+    "zh": "專注；集中"
+   },
+   {
+    "pos": "n.",
+    "zh": "焦點；重點"
+   }
+  ],
+  "footing": [],
+  "forever": [],
+  "format": [
+   {
+    "pos": "v.",
+    "zh": "格式化；編排"
+   }
+  ],
+  "formulate": [],
+  "fortunately": [],
+  "foster": [
+   {
+    "pos": "adj.",
+    "zh": "寄養的"
+   }
+  ],
+  "fragile": [],
+  "fragmentation": [],
+  "fragment": [
+   {
+    "pos": "n.",
+    "zh": "碎片；片段"
+   }
+  ],
+  "freedom": [],
+  "freeze": [
+   {
+    "pos": "n.",
+    "zh": "凍結；嚴寒"
+   }
+  ],
+  "frightening": [],
+  "frog": [],
+  "frozen": [],
+  "frustration": [],
+  "fuel": [
+   {
+    "pos": "v.",
+    "zh": "加燃料；助長"
+   }
+  ],
+  "fulfill": [],
+  "furniture": [],
+  "furry": [],
+  "further": [
+   {
+    "pos": "adj.",
+    "zh": "進一步的"
+   },
+   {
+    "pos": "v.",
+    "zh": "促進"
+   }
+  ],
+  "future": [
+   {
+    "pos": "adj.",
+    "zh": "未來的"
+   }
+  ],
+  "gadget": [],
+  "generate": [],
+  "generation": [],
+  "genuine": [],
+  "globe": [],
+  "glowing": [],
+  "glow": [
+   {
+    "pos": "v.",
+    "zh": "發光；發亮"
+   }
+  ],
+  "goal": [],
+  "goods": [],
+  "grab": [
+   {
+    "pos": "n.",
+    "zh": "抓取"
+   }
+  ],
+  "grant": [
+   {
+    "pos": "n.",
+    "zh": "補助金；撥款"
+   }
+  ],
+  "grateful": [],
+  "gratitude": [],
+  "greet": [],
+  "groceries": [],
+  "groom": [
+   {
+    "pos": "n.",
+    "zh": "新郎"
+   }
+  ],
+  "groundwork": [],
+  "guardian": [],
+  "guard": [
+   {
+    "pos": "n.",
+    "zh": "警衛；守衛"
+   }
+  ],
+  "habitat": [],
+  "habit": [],
+  "halt": [
+   {
+    "pos": "n.",
+    "zh": "停止"
+   }
+  ],
+  "hang": [
+   {
+    "pos": "n.",
+    "zh": "訣竅"
+   }
+  ],
+  "harm": [
+   {
+    "pos": "v.",
+    "zh": "傷害；損害"
+   }
+  ],
+  "headline": [
+   {
+    "pos": "v.",
+    "zh": "擔任主秀"
+   }
+  ],
+  "hefty": [],
+  "hide": [
+   {
+    "pos": "n.",
+    "zh": "獸皮"
+   }
+  ],
+  "hiker": [],
+  "hiking": [],
+  "hire": [
+   {
+    "pos": "n.",
+    "zh": "新聘員工"
+   }
+  ],
+  "hold": [
+   {
+    "pos": "n.",
+    "zh": "握；抓"
+   }
+  ],
+  "hometown": [],
+  "homework": [],
+  "hooked": [],
+  "horror": [],
+  "household": [
+   {
+    "pos": "adj.",
+    "zh": "家用的；家喻戶曉的"
+   }
+  ],
+  "hover": [],
+  "humanoid": [
+   {
+    "pos": "n.",
+    "zh": "人形機器人"
+   }
+  ],
+  "humble": [
+   {
+    "pos": "v.",
+    "zh": "使謙卑"
+   }
+  ],
+  "hundred": [
+   {
+    "pos": "n.",
+    "zh": "一百"
+   }
+  ],
+  "hunger": [
+   {
+    "pos": "v.",
+    "zh": "渴望"
+   }
+  ],
+  "hurdle": [
+   {
+    "pos": "v.",
+    "zh": "跨欄；跳過"
+   }
+  ],
+  "iconic": [],
+  "identification": [],
+  "identify": [],
+  "idol": [],
+  "ignore": [],
+  "illusion": [],
+  "illustrated": [],
+  "illustrate": [],
+  "illustrious": [],
+  "imaginary": [],
+  "imaginative": [],
+  "immediately": [],
+  "immense": [],
+  "impact": [
+   {
+    "pos": "v.",
+    "zh": "衝擊；影響"
+   },
+   {
+    "pos": "n.",
+    "zh": "衝擊；影響"
+   }
+  ],
+  "impressive": [],
+  "improvement": [],
+  "improve": [],
+  "impulse": [],
+  "include": [],
+  "incompetent": [],
+  "incredible": [],
+  "independence": [],
+  "indigenous": [],
+  "indoor": [],
+  "indulge": [],
+  "industrial": [],
+  "industry": [],
+  "inevitable": [],
+  "infected": [],
+  "infection": [],
+  "informal": [],
+  "information": [],
+  "informed": [],
+  "infrared": [],
+  "ingredient": [],
+  "initially": [],
+  "initiative": [],
+  "injured": [],
+  "innocence": [],
+  "innovation": [],
+  "innovative": [],
+  "inspire": [],
+  "institute": [
+   {
+    "pos": "v.",
+    "zh": "制定；實施"
+   }
+  ],
+  "instrument": [],
+  "intelligence": [],
+  "intelligent": [],
+  "intend": [],
+  "interact": [],
+  "interfere": [],
+  "internal": [],
+  "intersection": [],
+  "introduce": [],
+  "invaluable": [],
+  "invention": [],
+  "investment": [],
+  "invitation": [],
+  "involve": [],
+  "irony": [],
+  "isolated": [],
+  "item": [],
+  "jewelry": [],
+  "jewel": [],
+  "journey": [
+   {
+    "pos": "v.",
+    "zh": "旅行"
+   },
+   {
+    "pos": "n.",
+    "zh": "旅程"
+   }
+  ],
+  "joy": [],
+  "judge": [
+   {
+    "pos": "n.",
+    "zh": "法官；裁判"
+   }
+  ],
+  "keen": [],
+  "kilometer": [],
+  "knowledge": [],
+  "landmark": [],
+  "landslide": [],
+  "language": [],
+  "latitude": [],
+  "laugh": [
+   {
+    "pos": "v.",
+    "zh": "笑"
+   }
+  ],
+  "lawsuit": [],
+  "law": [],
+  "leap": [
+   {
+    "pos": "v.",
+    "zh": "跳躍"
+   }
+  ],
+  "leash": [
+   {
+    "pos": "v.",
+    "zh": "用繩拴住"
+   }
+  ],
+  "leftover": [
+   {
+    "pos": "n.",
+    "zh": "剩菜；剩餘物"
+   }
+  ],
+  "legalize": [],
+  "legendary": [],
+  "legend": [],
+  "leisure": [],
+  "lie": [
+   {
+    "pos": "v.",
+    "zh": "說謊；躺"
+   }
+  ],
+  "lifespan": [],
+  "liken": [],
+  "limit": [
+   {
+    "pos": "n.",
+    "zh": "限制；極限"
+   }
+  ],
+  "linger": [],
+  "list": [
+   {
+    "pos": "v.",
+    "zh": "列出"
+   }
+  ],
+  "literacy": [],
+  "literature": [],
+  "local": [
+   {
+    "pos": "adj.",
+    "zh": "當地的"
+   }
+  ],
+  "locate": [],
+  "location": [],
+  "lonely": [],
+  "longitude": [],
+  "loose": [],
+  "lullaby": [],
+  "luxury": [
+   {
+    "pos": "n.",
+    "zh": "奢侈；奢華"
+   }
+  ],
+  "magazine": [],
+  "maintain": [],
+  "main": [
+   {
+    "pos": "n.",
+    "zh": "總管線"
+   }
+  ],
+  "manage": [],
+  "mangled": [],
+  "manufacturer": [],
+  "manufacturing": [],
+  "manuscript": [],
+  "marathon": [],
+  "marketing": [],
+  "mash": [
+   {
+    "pos": "n.",
+    "zh": "泥狀物；薯泥"
+   }
+  ],
+  "mask": [
+   {
+    "pos": "v.",
+    "zh": "掩蓋；遮住"
+   }
+  ],
+  "masterpiece": [],
+  "matter": [
+   {
+    "pos": "n.",
+    "zh": "事情；問題"
+   }
+  ],
+  "mattress": [],
+  "meanwhile": [],
+  "mean": [
+   {
+    "pos": "adj.",
+    "zh": "吝嗇的；刻薄的"
+   },
+   {
+    "pos": "n.",
+    "zh": "平均值"
+   }
+  ],
+  "mechanism": [],
+  "memorable": [],
+  "memorial": [
+   {
+    "pos": "adj.",
+    "zh": "紀念的"
+   }
+  ],
+  "memory": [],
+  "merchant": [],
+  "message": [
+   {
+    "pos": "v.",
+    "zh": "傳訊息給"
+   }
+  ],
+  "mess": [
+   {
+    "pos": "v.",
+    "zh": "弄亂"
+   }
+  ],
+  "meteorological": [],
+  "method": [],
+  "midair": [
+   {
+    "pos": "adj.",
+    "zh": "空中的"
+   }
+  ],
+  "midday": [],
+  "military": [
+   {
+    "pos": "n.",
+    "zh": "軍隊"
+   }
+  ],
+  "minimize": [],
+  "minimum": [
+   {
+    "pos": "n.",
+    "zh": "最低限度"
+   }
+  ],
+  "mirror": [
+   {
+    "pos": "v.",
+    "zh": "反映"
+   }
+  ],
+  "misfortune": [],
+  "miss": [
+   {
+    "pos": "n.",
+    "zh": "失誤；未命中"
+   }
+  ],
+  "mistake": [
+   {
+    "pos": "n.",
+    "zh": "錯誤"
+   }
+  ],
+  "misunderstand": [],
+  "mobile": [
+   {
+    "pos": "n.",
+    "zh": "手機"
+   }
+  ],
+  "modern": [],
+  "modification": [],
+  "moment": [],
+  "monitor": [
+   {
+    "pos": "n.",
+    "zh": "螢幕；監測器"
+   }
+  ],
+  "monk": [],
+  "monster": [],
+  "monument": [],
+  "morale": [],
+  "motionless": [],
+  "motivation": [],
+  "mustard": [],
+  "mysterious": [],
+  "nap": [
+   {
+    "pos": "v.",
+    "zh": "小睡"
+   }
+  ],
+  "native": [
+   {
+    "pos": "n.",
+    "zh": "本地人"
+   }
+  ],
+  "natural": [
+   {
+    "pos": "n.",
+    "zh": "天生好手"
+   }
+  ],
+  "nature": [],
+  "navigate": [],
+  "navigation": [],
+  "navy": [
+   {
+    "pos": "adj.",
+    "zh": "深藍色的"
+   }
+  ],
+  "negotiation": [],
+  "nervous": [],
+  "neuroscience": [],
+  "neuter": [
+   {
+    "pos": "adj.",
+    "zh": "中性的"
+   }
+  ],
+  "newspaper": [],
+  "next-gen": [],
+  "node": [],
+  "nudge": [
+   {
+    "pos": "v.",
+    "zh": "輕推；推動"
+   }
+  ],
+  "number": [
+   {
+    "pos": "v.",
+    "zh": "編號"
+   }
+  ],
+  "numerous": [],
+  "nutritional": [],
+  "nutrition": [],
+  "obese": [],
+  "obesity": [],
+  "objection": [],
+  "obsession": [],
+  "obstacle": [],
+  "obviously": [],
+  "oddly": [],
+  "offer": [
+   {
+    "pos": "v.",
+    "zh": "提供"
+   }
+  ],
+  "office": [],
+  "opinion": [],
+  "option": [],
+  "opt": [],
+  "orchestra": [],
+  "order": [
+   {
+    "pos": "v.",
+    "zh": "點餐；命令"
+   }
+  ],
+  "ordinary": [],
+  "organize": [],
+  "originally": [],
+  "outing": [],
+  "oven": [],
+  "overalls": [],
+  "overburden": [],
+  "overhead": [
+   {
+    "pos": "adj.",
+    "zh": "頭頂上的"
+   },
+   {
+    "pos": "n.",
+    "zh": "經常性開支"
+   }
+  ],
+  "overlook": [
+   {
+    "pos": "n.",
+    "zh": "觀景點"
+   }
+  ],
+  "overseas": [
+   {
+    "pos": "adj.",
+    "zh": "海外的"
+   }
+  ],
+  "overturn": [],
+  "overweight": [],
+  "overwhelming": [],
+  "pace": [
+   {
+    "pos": "v.",
+    "zh": "踱步"
+   }
+  ],
+  "palace": [],
+  "pale": [
+   {
+    "pos": "v.",
+    "zh": "變蒼白"
+   }
+  ],
+  "paradise": [],
+  "partially": [],
+  "participant": [],
+  "passion": [],
+  "passive": [
+   {
+    "pos": "n.",
+    "zh": "被動語態"
+   }
+  ],
+  "patent": [
+   {
+    "pos": "v.",
+    "zh": "取得專利"
+   }
+  ],
+  "patience": [],
+  "patient": [
+   {
+    "pos": "n.",
+    "zh": "病人"
+   }
+  ],
+  "payload": [],
+  "pay": [
+   {
+    "pos": "n.",
+    "zh": "薪水"
+   }
+  ],
+  "peaceful": [],
+  "pedestrian": [
+   {
+    "pos": "adj.",
+    "zh": "行人的；乏味的"
+   }
+  ],
+  "peer": [
+   {
+    "pos": "v.",
+    "zh": "凝視"
+   }
+  ],
+  "percent": [
+   {
+    "pos": "adj.",
+    "zh": "百分之…的"
+   },
+   {
+    "pos": "adv.",
+    "zh": "百分之…地"
+   }
+  ],
+  "perfect": [
+   {
+    "pos": "v.",
+    "zh": "使完美"
+   }
+  ],
+  "perforated": [],
+  "performance": [],
+  "perform": [],
+  "permission": [],
+  "personally": [],
+  "perspective": [],
+  "pest": [],
+  "petrol": [],
+  "pharmacy": [],
+  "philosophy": [],
+  "photographer": [],
+  "physically": [],
+  "physician": [],
+  "piece": [
+   {
+    "pos": "v.",
+    "zh": "拼湊"
+   }
+  ],
+  "pilot": [
+   {
+    "pos": "v.",
+    "zh": "駕駛；試行"
+   },
+   {
+    "pos": "adj.",
+    "zh": "試驗性的"
+   }
+  ],
+  "pioneering": [],
+  "pioneer": [
+   {
+    "pos": "n.",
+    "zh": "先驅"
+   }
+  ],
+  "placement": [],
+  "plain": [
+   {
+    "pos": "n.",
+    "zh": "平原"
+   },
+   {
+    "pos": "adv.",
+    "zh": "簡直；完全"
+   }
+  ],
+  "plane": [],
+  "plan": [
+   {
+    "pos": "v.",
+    "zh": "計畫"
+   }
+  ],
+  "plastic": [
+   {
+    "pos": "n.",
+    "zh": "塑膠"
+   },
+   {
+    "pos": "adj.",
+    "zh": "塑膠的"
+   }
+  ],
+  "playground": [],
+  "plead": [],
+  "pleasant": [],
+  "pleasure": [],
+  "plunge": [
+   {
+    "pos": "n.",
+    "zh": "驟降；跳入"
+   }
+  ],
+  "poisonous": [],
+  "polish": [
+   {
+    "pos": "n.",
+    "zh": "亮光劑"
+   }
+  ],
+  "pollution": [],
+  "pony": [],
+  "popularity": [],
+  "population": [],
+  "portfolio": [],
+  "positive": [
+   {
+    "pos": "n.",
+    "zh": "優點；陽性"
+   }
+  ],
+  "possession": [],
+  "post": [
+   {
+    "pos": "n.",
+    "zh": "貼文；職位"
+   }
+  ],
+  "potential": [
+   {
+    "pos": "adj.",
+    "zh": "潛在的"
+   }
+  ],
+  "prance": [],
+  "precious": [],
+  "predecessor": [],
+  "predicate": [
+   {
+    "pos": "n.",
+    "zh": "述語"
+   }
+  ],
+  "predict": [],
+  "prefecture": [],
+  "preference": [],
+  "prejudice": [
+   {
+    "pos": "v.",
+    "zh": "使有偏見"
+   }
+  ],
+  "presentation": [],
+  "present": [
+   {
+    "pos": "n.",
+    "zh": "禮物；現在"
+   },
+   {
+    "pos": "adj.",
+    "zh": "出席的；目前的"
+   }
+  ],
+  "preserve": [
+   {
+    "pos": "n.",
+    "zh": "果醬；保護區"
+   }
+  ],
+  "presidential": [],
+  "pretty": [
+   {
+    "pos": "adj.",
+    "zh": "漂亮的"
+   }
+  ],
+  "prevent": [],
+  "price": [
+   {
+    "pos": "v.",
+    "zh": "定價"
+   }
+  ],
+  "privacy": [],
+  "process": [
+   {
+    "pos": "n.",
+    "zh": "過程"
+   }
+  ],
+  "produce": [
+   {
+    "pos": "v.",
+    "zh": "生產；製造"
+   }
+  ],
+  "product": [],
+  "professional": [
+   {
+    "pos": "n.",
+    "zh": "專業人士"
+   }
+  ],
+  "profession": [],
+  "profitable": [],
+  "progression": [],
+  "progress": [
+   {
+    "pos": "v.",
+    "zh": "進展"
+   }
+  ],
+  "prohibit": [],
+  "prominent": [],
+  "promote": [],
+  "pronunciation": [],
+  "proof": [],
+  "properly": [],
+  "protect": [],
+  "protein": [],
+  "provisions": [],
+  "psychology": [],
+  "pulse": [
+   {
+    "pos": "v.",
+    "zh": "跳動；搏動"
+   }
+  ],
+  "purchase": [
+   {
+    "pos": "n.",
+    "zh": "購買；購買物"
+   }
+  ],
+  "pursue": [],
+  "pursuit": [],
+  "puzzling": [],
+  "quantify": [],
+  "queen": [],
+  "quiet": [
+   {
+    "pos": "n.",
+    "zh": "安靜"
+   },
+   {
+    "pos": "v.",
+    "zh": "使安靜"
+   }
+  ],
+  "quit": [],
+  "rainbow": [],
+  "rattle": [
+   {
+    "pos": "n.",
+    "zh": "搖鈴；嘎嘎聲"
+   }
+  ],
+  "raw": [],
+  "reaction": [],
+  "realize": [],
+  "reasonable": [],
+  "recall": [
+   {
+    "pos": "n.",
+    "zh": "記憶力；召回"
+   }
+  ],
+  "receive": [],
+  "recognize": [],
+  "recommend": [],
+  "record": [
+   {
+    "pos": "n.",
+    "zh": "紀錄；唱片"
+   },
+   {
+    "pos": "adj.",
+    "zh": "創紀錄的"
+   }
+  ],
+  "recycle": [],
+  "recycling": [],
+  "reduce": [],
+  "reference": [
+   {
+    "pos": "v.",
+    "zh": "提及；引用"
+   },
+   {
+    "pos": "n.",
+    "zh": "參考"
+   }
+  ],
+  "refer": [],
+  "reflect": [],
+  "reform": [
+   {
+    "pos": "v.",
+    "zh": "改革"
+   }
+  ],
+  "refresh": [],
+  "regarding": [],
+  "register": [
+   {
+    "pos": "n.",
+    "zh": "登記簿"
+   }
+  ],
+  "regulate": [],
+  "regulation": [],
+  "reinforce": [],
+  "relationship": [],
+  "relative": [
+   {
+    "pos": "adj.",
+    "zh": "相對的"
+   }
+  ],
+  "relaxed": [],
+  "release": [
+   {
+    "pos": "n.",
+    "zh": "發行；釋放"
+   }
+  ],
+  "reliable": [],
+  "relief": [],
+  "reload": [],
+  "remaining": [],
+  "remain": [],
+  "remarkable": [],
+  "remarkably": [],
+  "remember": [],
+  "remind": [],
+  "remote": [
+   {
+    "pos": "n.",
+    "zh": "遙控器"
+   }
+  ],
+  "remove": [],
+  "rental": [
+   {
+    "pos": "adj.",
+    "zh": "出租的"
+   }
+  ],
+  "repeat": [
+   {
+    "pos": "n.",
+    "zh": "重播；重複"
+   }
+  ],
+  "replace": [],
+  "reply": [
+   {
+    "pos": "n.",
+    "zh": "回覆"
+   }
+  ],
+  "representation": [],
+  "represent": [],
+  "reputation": [],
+  "researcher": [],
+  "research": [
+   {
+    "pos": "v.",
+    "zh": "研究"
+   }
+  ],
+  "resemblance": [],
+  "resemble": [],
+  "reservation": [],
+  "residential": [],
+  "resistance": [],
+  "respond": [],
+  "restaurant": [],
+  "restricted": [],
+  "restriction": [],
+  "restroom": [],
+  "result": [
+   {
+    "pos": "n.",
+    "zh": "結果"
+   }
+  ],
+  "retreat": [
+   {
+    "pos": "v.",
+    "zh": "撤退"
+   }
+  ],
+  "review": [
+   {
+    "pos": "v.",
+    "zh": "複習；評論"
+   }
+  ],
+  "rewarding": [],
+  "reward": [
+   {
+    "pos": "v.",
+    "zh": "獎勵"
+   },
+   {
+    "pos": "n.",
+    "zh": "獎勵；報酬"
+   }
+  ],
+  "ring": [
+   {
+    "pos": "n.",
+    "zh": "戒指；鈴聲"
+   }
+  ],
+  "ripe": [],
+  "roast": [
+   {
+    "pos": "n.",
+    "zh": "烤肉"
+   },
+   {
+    "pos": "adj.",
+    "zh": "烤的"
+   }
+  ],
+  "romantic": [
+   {
+    "pos": "n.",
+    "zh": "浪漫的人"
+   }
+  ],
+  "roughly": [],
+  "route": [
+   {
+    "pos": "v.",
+    "zh": "按路線發送"
+   }
+  ],
+  "routine": [
+   {
+    "pos": "adj.",
+    "zh": "例行的"
+   }
+  ],
+  "rubble": [],
+  "ruin": [
+   {
+    "pos": "n.",
+    "zh": "廢墟；毀滅"
+   }
+  ],
+  "rumor": [
+   {
+    "pos": "v.",
+    "zh": "謠傳"
+   }
+  ],
+  "rural": [],
+  "rustic": [],
+  "sacred": [],
+  "safe": [
+   {
+    "pos": "n.",
+    "zh": "保險箱"
+   }
+  ],
+  "sanity": [],
+  "satisfying": [],
+  "save": [
+   {
+    "pos": "n.",
+    "zh": "（球賽）救球"
+   }
+  ],
+  "scale": [
+   {
+    "pos": "n.",
+    "zh": "規模；秤"
+   }
+  ],
+  "scan": [
+   {
+    "pos": "n.",
+    "zh": "掃描檢查"
+   }
+  ],
+  "scared": [],
+  "scenario": [],
+  "scenic": [],
+  "schedule": [
+   {
+    "pos": "v.",
+    "zh": "安排；預定"
+   }
+  ],
+  "science": [],
+  "scream": [
+   {
+    "pos": "n.",
+    "zh": "尖叫聲"
+   }
+  ],
+  "scroll": [
+   {
+    "pos": "n.",
+    "zh": "卷軸"
+   }
+  ],
+  "section": [
+   {
+    "pos": "v.",
+    "zh": "劃分"
+   }
+  ],
+  "security": [],
+  "sedentary": [],
+  "seek": [],
+  "segment": [
+   {
+    "pos": "v.",
+    "zh": "分割"
+   }
+  ],
+  "sensitive": [],
+  "separate": [
+   {
+    "pos": "v.",
+    "zh": "分開；分離"
+   }
+  ],
+  "serious": [],
+  "settle": [],
+  "set": [
+   {
+    "pos": "n.",
+    "zh": "一套；布景"
+   },
+   {
+    "pos": "adj.",
+    "zh": "固定的；準備好的"
+   }
+  ],
+  "severe": [],
+  "shadow": [
+   {
+    "pos": "v.",
+    "zh": "跟隨；尾隨"
+   }
+  ],
+  "shape": [
+   {
+    "pos": "v.",
+    "zh": "塑造"
+   }
+  ],
+  "shed": [
+   {
+    "pos": "n.",
+    "zh": "棚子；小屋"
+   }
+  ],
+  "shift": [
+   {
+    "pos": "n.",
+    "zh": "轉變；輪班"
+   }
+  ],
+  "shiny": [],
+  "shortcut": [],
+  "shrine": [],
+  "signal": [
+   {
+    "pos": "v.",
+    "zh": "示意；發信號"
+   }
+  ],
+  "significantly": [],
+  "significant": [],
+  "similarly": [],
+  "situation": [],
+  "skeptical": [],
+  "skill": [],
+  "skip": [
+   {
+    "pos": "n.",
+    "zh": "跳；大型垃圾箱"
+   }
+  ],
+  "skyscraper": [],
+  "slavery": [],
+  "sleek": [],
+  "sleep-deprived": [],
+  "sleeve": [],
+  "slot": [
+   {
+    "pos": "v.",
+    "zh": "放入；插入"
+   }
+  ],
+  "smoothly": [],
+  "snippet": [],
+  "snore": [
+   {
+    "pos": "n.",
+    "zh": "鼾聲"
+   }
+  ],
+  "soar": [],
+  "sociable": [],
+  "social": [],
+  "soil": [
+   {
+    "pos": "v.",
+    "zh": "弄髒"
+   }
+  ],
+  "solid": [
+   {
+    "pos": "n.",
+    "zh": "固體"
+   }
+  ],
+  "somehow": [],
+  "space": [
+   {
+    "pos": "v.",
+    "zh": "隔開"
+   }
+  ],
+  "span": [
+   {
+    "pos": "v.",
+    "zh": "橫跨；持續"
+   }
+  ],
+  "spay": [],
+  "specialty": [],
+  "species": [],
+  "specific": [
+   {
+    "pos": "n.",
+    "zh": "細節"
+   }
+  ],
+  "spectacular": [
+   {
+    "pos": "n.",
+    "zh": "盛大表演"
+   }
+  ],
+  "sphere": [],
+  "spin": [
+   {
+    "pos": "v.",
+    "zh": "旋轉"
+   }
+  ],
+  "spoon": [
+   {
+    "pos": "v.",
+    "zh": "用湯匙舀"
+   }
+  ],
+  "spot": [
+   {
+    "pos": "n.",
+    "zh": "地點；斑點"
+   }
+  ],
+  "spread": [
+   {
+    "pos": "n.",
+    "zh": "擴散；抹醬"
+   }
+  ],
+  "stadium": [],
+  "stage": [
+   {
+    "pos": "v.",
+    "zh": "舉辦；上演"
+   },
+   {
+    "pos": "n.",
+    "zh": "舞台；階段"
+   }
+  ],
+  "stall": [
+   {
+    "pos": "v.",
+    "zh": "熄火；拖延"
+   }
+  ],
+  "statue": [],
+  "steam": [
+   {
+    "pos": "n.",
+    "zh": "蒸氣"
+   }
+  ],
+  "stem": [
+   {
+    "pos": "v.",
+    "zh": "源於；阻止"
+   }
+  ],
+  "stimulate": [],
+  "stomach": [
+   {
+    "pos": "v.",
+    "zh": "忍受"
+   }
+  ],
+  "storied": [],
+  "straight": [
+   {
+    "pos": "adv.",
+    "zh": "直直地；直接"
+   }
+  ],
+  "strange": [],
+  "strategy": [],
+  "stretch": [
+   {
+    "pos": "n.",
+    "zh": "一段；伸展"
+   }
+  ],
+  "striking": [],
+  "strip": [
+   {
+    "pos": "n.",
+    "zh": "條；帶"
+   }
+  ],
+  "structure": [
+   {
+    "pos": "v.",
+    "zh": "組織；安排"
+   }
+  ],
+  "struggle": [
+   {
+    "pos": "n.",
+    "zh": "奮鬥；掙扎"
+   }
+  ],
+  "stuff": [
+   {
+    "pos": "v.",
+    "zh": "塞滿；填塞"
+   }
+  ],
+  "stunning": [],
+  "stunt": [
+   {
+    "pos": "v.",
+    "zh": "阻礙發育"
+   }
+  ],
+  "subject": [
+   {
+    "pos": "adj.",
+    "zh": "易受…影響的"
+   },
+   {
+    "pos": "v.",
+    "zh": "使遭受"
+   }
+  ],
+  "substance": [],
+  "substantial": [],
+  "subtle": [],
+  "successful": [],
+  "suffering": [],
+  "suit": [
+   {
+    "pos": "n.",
+    "zh": "西裝"
+   }
+  ],
+  "summarize": [],
+  "superstition": [],
+  "supplies": [],
+  "support": [
+   {
+    "pos": "v.",
+    "zh": "支持；支撐"
+   }
+  ],
+  "supposedly": [],
+  "surface": [
+   {
+    "pos": "v.",
+    "zh": "浮出；浮現"
+   },
+   {
+    "pos": "adj.",
+    "zh": "表面的"
+   }
+  ],
+  "surpass": [],
+  "surprised": [],
+  "surround": [],
+  "survive": [],
+  "sustainable": [],
+  "sustain": [],
+  "sweat": [
+   {
+    "pos": "v.",
+    "zh": "流汗"
+   }
+  ],
+  "sword": [],
+  "symbolize": [],
+  "symptom": [],
+  "tackle": [
+   {
+    "pos": "n.",
+    "zh": "擒抱；鏟球"
+   }
+  ],
+  "tag": [
+   {
+    "pos": "n.",
+    "zh": "標籤"
+   }
+  ],
+  "talk": [
+   {
+    "pos": "v.",
+    "zh": "說話；交談"
+   }
+  ],
+  "tame": [
+   {
+    "pos": "adj.",
+    "zh": "溫馴的"
+   }
+  ],
+  "tap": [
+   {
+    "pos": "n.",
+    "zh": "水龍頭；輕拍"
+   }
+  ],
+  "task": [
+   {
+    "pos": "v.",
+    "zh": "指派任務"
+   }
+  ],
+  "tasty": [],
+  "tear": [
+   {
+    "pos": "n.",
+    "zh": "眼淚；裂縫"
+   }
+  ],
+  "telescope": [],
+  "television": [],
+  "tendency": [],
+  "tend": [],
+  "tent": [],
+  "territory": [],
+  "texture": [],
+  "theme": [],
+  "theoretically": [],
+  "therapy": [],
+  "therefore": [],
+  "thought": [],
+  "thousand": [
+   {
+    "pos": "n.",
+    "zh": "一千"
+   }
+  ],
+  "threatened": [],
+  "thrive": [],
+  "throughout": [
+   {
+    "pos": "adv.",
+    "zh": "從頭到尾；到處"
+   }
+  ],
+  "ticket": [
+   {
+    "pos": "v.",
+    "zh": "開罰單"
+   }
+  ],
+  "title": [
+   {
+    "pos": "v.",
+    "zh": "加標題"
+   }
+  ],
+  "tooth": [],
+  "tourist": [],
+  "toward": [],
+  "toxic": [],
+  "track": [
+   {
+    "pos": "n.",
+    "zh": "軌道；足跡"
+   }
+  ],
+  "trademark": [],
+  "trade": [
+   {
+    "pos": "n.",
+    "zh": "貿易；交易"
+   }
+  ],
+  "traditional": [],
+  "tragic": [],
+  "train": [
+   {
+    "pos": "n.",
+    "zh": "火車"
+   }
+  ],
+  "trait": [],
+  "tram": [],
+  "transfer": [
+   {
+    "pos": "n.",
+    "zh": "轉移；轉乘"
+   }
+  ],
+  "transition": [
+   {
+    "pos": "v.",
+    "zh": "轉變；過渡"
+   }
+  ],
+  "transmit": [],
+  "transportation": [],
+  "transport": [
+   {
+    "pos": "n.",
+    "zh": "運輸；交通工具"
+   }
+  ],
+  "trap": [
+   {
+    "pos": "v.",
+    "zh": "困住；誘捕"
+   }
+  ],
+  "traveler": [],
+  "treatment": [],
+  "treat": [
+   {
+    "pos": "n.",
+    "zh": "款待；點心"
+   }
+  ],
+  "tremble": [],
+  "tremendous": [],
+  "tremor": [],
+  "triumph": [
+   {
+    "pos": "v.",
+    "zh": "獲勝"
+   }
+  ],
+  "truck": [
+   {
+    "pos": "v.",
+    "zh": "用卡車運送"
+   }
+  ],
+  "tunnel": [
+   {
+    "pos": "v.",
+    "zh": "挖隧道"
+   }
+  ],
+  "turbo": [],
+  "tutor": [
+   {
+    "pos": "v.",
+    "zh": "當家教；輔導"
+   }
+  ],
+  "twig": [],
+  "twist": [
+   {
+    "pos": "v.",
+    "zh": "扭轉；扭傷"
+   }
+  ],
+  "ultimately": [],
+  "underdiagnose": [],
+  "understand": [],
+  "undertake": [],
+  "underway": [
+   {
+    "pos": "adj.",
+    "zh": "進行中的"
+   }
+  ],
+  "unexpected": [],
+  "unfair": [],
+  "unforgettable": [],
+  "unfortunately": [],
+  "unhappy": [],
+  "unity": [],
+  "unload": [],
+  "upset": [
+   {
+    "pos": "v.",
+    "zh": "使難過；打亂"
+   },
+   {
+    "pos": "n.",
+    "zh": "爆冷門；不適"
+   }
+  ],
+  "uptick": [],
+  "urban": [],
+  "urge": [
+   {
+    "pos": "v.",
+    "zh": "敦促；力勸"
+   }
+  ],
+  "utilize": [],
+  "valuable": [],
+  "value": [
+   {
+    "pos": "v.",
+    "zh": "重視；估價"
+   }
+  ],
+  "variety": [],
+  "vendor": [],
+  "version": [],
+  "vessel": [],
+  "vet": [
+   {
+    "pos": "v.",
+    "zh": "審查"
+   }
+  ],
+  "viable": [],
+  "video": [
+   {
+    "pos": "v.",
+    "zh": "錄影"
+   }
+  ],
+  "violence": [],
+  "viral": [],
+  "virtual": [],
+  "virus": [],
+  "visible": [],
+  "visit": [
+   {
+    "pos": "n.",
+    "zh": "拜訪；參觀"
+   }
+  ],
+  "visual": [
+   {
+    "pos": "n.",
+    "zh": "視覺圖像"
+   }
+  ],
+  "vitamin": [],
+  "vivid": [],
+  "volunteer": [
+   {
+    "pos": "v.",
+    "zh": "自願；當志工"
+   }
+  ],
+  "voyage": [
+   {
+    "pos": "v.",
+    "zh": "航行"
+   }
+  ],
+  "wander": [
+   {
+    "pos": "n.",
+    "zh": "漫步；閒逛"
+   }
+  ],
+  "wear": [
+   {
+    "pos": "n.",
+    "zh": "磨損；服裝"
+   }
+  ],
+  "weigh": [],
+  "west": [
+   {
+    "pos": "adj.",
+    "zh": "西方的"
+   },
+   {
+    "pos": "adv.",
+    "zh": "向西"
+   }
+  ],
+  "whole": [
+   {
+    "pos": "n.",
+    "zh": "整體"
+   }
+  ],
+  "widespread": [],
+  "wildlife": [],
+  "winner": [],
+  "wise": [],
+  "witness": [
+   {
+    "pos": "v.",
+    "zh": "目擊；見證"
+   }
+  ],
+  "wonder": [
+   {
+    "pos": "n.",
+    "zh": "驚奇；奇蹟"
+   }
+  ],
+  "workforce": [],
+  "workout": [],
+  "workplace": [],
+  "worth": [
+   {
+    "pos": "n.",
+    "zh": "價值"
+   }
+  ],
+  "wow": [],
+  "wrap": [
+   {
+    "pos": "n.",
+    "zh": "包裝紙；捲餅"
+   }
+  ],
+  "wreck": [
+   {
+    "pos": "v.",
+    "zh": "毀壞"
+   },
+   {
+    "pos": "n.",
+    "zh": "殘骸"
+   }
+  ],
+  "yell": [
+   {
+    "pos": "n.",
+    "zh": "叫喊"
+   }
+  ],
+  "yield": [
+   {
+    "pos": "n.",
+    "zh": "產量；收益"
+   }
+  ]
+ }
+}

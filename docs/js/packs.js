@@ -65,6 +65,31 @@ async function addUnit(u) {
   return { added, total: unit.items.length };
 }
 
+/**
+ * 單字包的「同拼法其他詞性」資料更新後，套用到已經在單字本裡的字（每個資料版本只做一次）。
+ * 例如 reward 原本只標 n.，資料補上 v. 之後，舊卡也會顯示「n. 獎勵 ｜ v. 獎勵」。
+ * @returns {Promise<number>} 更新了幾張卡
+ */
+export async function refreshAlt() {
+  // 記在資料本身（不是 localStorage）：換了一份資料（匯入、清除重來）就會重新套用一次
+  const st = Store.load();
+  if (!Store.vocab().length) return 0;
+  let data;
+  try { data = await getJSON("packs/alt.json"); } catch (e) { return 0; }   // 離線就下次再說
+  if (!data || st.packAltV === data.version) return 0;
+  let n = 0;
+  for (const card of Store.vocab()) {
+    const extra = data.words[String(card.word || "").trim().toLowerCase()];
+    if (!extra) continue;
+    const before = JSON.stringify(card.alt || null);
+    const merged = V.normAlt([...(Array.isArray(card.alt) ? card.alt : []), ...extra], card.pos);
+    if (JSON.stringify(merged) !== before) { card.alt = merged; n++; }
+  }
+  st.packAltV = data.version;
+  Store.save(true);
+  return n;
+}
+
 export async function openPacks() {
   if (!dlg) build();
   dlg.showModal();
@@ -78,9 +103,9 @@ function build() {
   dlg.id = "dlgPacks";
   dlg.innerHTML = `
     <div class="m-head">
-      <h2>📦 公共單字包</h2>
-      <p class="note" style="margin:0">課本單字整理好了，一鍵加進單字本。免費、不用 API。
-        加入的字會帶上課次標籤，複習時可以只練某一課。</p>
+      <h2>📦 單字包</h2>
+      <p class="note" style="margin:0">整理好的課本單字，可加入單字本，不用 API。
+        加入的字會標上課次，可以只複習某一課。</p>
     </div>
     <div class="m-body pk-body"></div>
     <div class="m-foot"><button class="btn primary" type="button" data-close autofocus>完成</button></div>`;
@@ -94,7 +119,7 @@ async function paint() {
   try {
     await loadIndex();
   } catch (e) {
-    body.innerHTML = `<p class="note">單字包載入失敗：${esc(e.message)}。請確認有連上網路後再試一次。</p>`;
+    body.innerHTML = `<p class="note">單字包載入失敗：${esc(e.message)}。請確認網路連線後再試。</p>`;
     return;
   }
   if (!openBook) return paintBooks(body);
@@ -112,7 +137,7 @@ function paintBooks(body) {
         ${done ? `<small class="pk-done">已加入 ${done} 個</small>` : ""}</span>
       <span class="pk-go">›</span></button>`;
   }).join("")}</div>
-  <p class="note">想要其他版本或其他冊？之後會陸續加上。也可以用「＋ 新增單字」或「⋯ → 批次貼上」自己加。</p>`;
+  <p class="note">其他版本和冊數會陸續加入。也可以用「＋ 新增單字」或「⋯ → 批次貼上」自己加。</p>`;
   body.querySelectorAll("[data-book]").forEach(b => b.addEventListener("click", () => { openBook = b.dataset.book; paint(); }));
 }
 
@@ -123,7 +148,7 @@ function paintUnits(body, p) {
     <div class="pk-head"><b>${esc(p.title)}</b><span class="muted">${esc(p.subtitle || "")}</span></div>
     <p class="note pk-note">${esc(p.note || "")}
       ${p.link ? `<a href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.linkText || "原始資料")} ↗</a>` : ""}</p>
-    <div class="pk-all"><button class="btn sm" type="button" data-all>全部 ${p.units.length} 課一次加入</button></div>
+    <div class="pk-all"><button class="btn sm" type="button" data-all>加入全部 ${p.units.length} 課</button></div>
     <div class="pk-units"></div>`;
   body.querySelector(".pk-back").addEventListener("click", () => { openBook = null; paint(); });
 
@@ -141,7 +166,7 @@ function paintUnits(body, p) {
     let added = 0;
     try {
       for (const u of p.units) added += (await addUnit(u)).added;
-      hooks.toast(`已加入 ${added} 個新字（已經有的字只補上課次標籤）`);
+      hooks.toast(`已加入 ${added} 個新字，已有的字補上課次標籤`);
       hooks.onChanged();
     } catch (err) {
       hooks.toast("加入失敗：" + err.message);
@@ -172,7 +197,7 @@ function paintUnit(row, u) {
     btn.textContent = "加入中…";
     try {
       const r = await addUnit(u);
-      hooks.toast(r.added ? `「${u.id} ${u.title}」加入了 ${r.added} 個新字` : `「${u.id}」的字本來就都在單字本裡了，已補上課次標籤`);
+      hooks.toast(r.added ? `「${u.id} ${u.title}」加入了 ${r.added} 個新字` : `「${u.id}」的字都已在單字本，已補上課次標籤`);
       hooks.onChanged();
     } catch (err) {
       hooks.toast("加入失敗：" + err.message);

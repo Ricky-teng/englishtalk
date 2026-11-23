@@ -16,58 +16,58 @@ const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</
 export const CATALOG = {
   groq: [
     { id: "llama-3.1-8b-instant", name: "Llama 3.1 8B Instant", fit: ["chat"], speed: 3, brain: 1,
-      pros: ["回話最快，幾乎沒有延遲，對話最順", "每天可用次數最多，聊很久也不容易用完"],
-      cons: ["小模型：中文和格式比較不穩，拿來查字偶爾會「查詢失敗」", "每分鐘可用的量少，跟查字共用很容易被擋"],
+      pros: ["回應最快，對話最順", "每日次數最多"],
+      cons: ["小模型，中文和格式較不穩，查字偶爾失敗", "每分鐘額度少，和查字共用易被擋"],
       best: "對話（推薦）" },
     { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B Versatile", fit: ["chat", "tool"], speed: 2, brain: 2,
-      pros: ["中文、例句、JSON 格式都穩很多，查字幾乎不會出錯", "英文自然，對話品質比 8B 好一截"],
-      cons: ["比 8B 慢一點", "每天可用次數比 8B 少，整天聊天可能會用完"],
+      pros: ["中文、例句、JSON 格式穩定，查字少出錯", "英文自然，對話品質優於 8B"],
+      cons: ["比 8B 慢", "每日次數少於 8B，整天聊可能用完"],
       best: "查字、新增單字、文法檢查（推薦）" },
     { id: "openai/gpt-oss-20b", name: "GPT-OSS 20B", fit: ["tool"], speed: 2, brain: 2,
       limits: "每分鐘 30 次・每分鐘 8K token・每天 1,000 次", rpd: 1000,
-      pros: ["推理能力好，文法說明比較有條理", "速度還算快"],
-      cons: ["回答前會先「思考」，延遲較高、也比較吃額度", "對話用會覺得慢半拍"],
+      pros: ["推理好，文法說明有條理", "速度尚可"],
+      cons: ["回答前會先思考，延遲高、較耗額度", "對話時反應慢"],
       best: "文法檢查" },
     { id: "openai/gpt-oss-120b", name: "GPT-OSS 120B", fit: ["tool"], speed: 1, brain: 3,
       limits: "每分鐘 30 次・每分鐘 8K token・每天 1,000 次", rpd: 1000,
-      pros: ["Groq 上最聰明的模型之一，文法判斷和多義字最準"],
-      cons: ["最慢，而且會先思考", "每天只有 1,000 次，不適合拿來即時對話"],
-      best: "想要最準的查字與文法" },
+      pros: ["Groq 上數一數二聰明，文法和多義字判斷最準"],
+      cons: ["最慢，會先思考", "每日僅 1,000 次，不適合即時對話"],
+      best: "最準的查字與文法" },
     { id: "qwen/qwen3.8-27b", name: "Qwen 3.8 27B（預覽版）", fit: ["tool"], speed: 2, brain: 2, preview: true,
       limits: "每分鐘 30 次・每分鐘 8K token・每天 1,000 次", rpd: 1000,
-      pros: ["中文能力很強，繁中解釋最自然"],
-      cons: ["預覽版：Groq 可能隨時下架", "可能會先思考，速度不穩定"],
-      best: "中文解釋（可以試試）" },
+      pros: ["中文能力強，繁中解釋最自然"],
+      cons: ["預覽版，Groq 可能隨時下架", "可能先思考，速度不穩"],
+      best: "中文解釋（可試用）" },
   ],
   gemini: [
     { id: "gemini-3.5-flash-lite", name: "Gemini 3.5 Flash-Lite", fit: ["chat", "tool"], speed: 3, brain: 1,
-      pros: ["最快、最省額度，預設幾乎不思考，對話第一句很快", "Google 建議新專案用這個"],
-      cons: ["解釋比較簡短，難字的細微差別偶爾講不清楚"],
+      pros: ["最快、最省額度，幾乎不思考", "Google 建議新專案使用"],
+      cons: ["解釋較簡短，難字細微差別偶爾說不清"],
       best: "對話、文法檢查（推薦）" },
     { id: "gemini-3.5-flash", name: "Gemini 3.5 Flash", fit: ["chat", "tool"], speed: 2, brain: 2,
       pros: ["速度與品質平衡，查字和例句品質好"],
-      cons: ["比 Flash-Lite 慢一點，免費額度通常也比較少"],
+      cons: ["比 Flash-Lite 慢，免費額度通常較少"],
       best: "查字、新增單字" },
     { id: "gemini-3.8-flash", name: "Gemini 3.8 Flash", fit: ["chat", "tool"], speed: 2, brain: 3,
-      pros: ["最新、最聰明的 Flash，多義字、用法差別講得最清楚"],
-      cons: ["會先思考（這裡已設成最低程度），回話比 Lite 慢", "免費額度可能比較緊"],
-      best: "想要最好的查字品質" },
+      pros: ["最新最聰明的 Flash，多義字和用法差別解釋最清楚"],
+      cons: ["會先思考（已設最低程度），比 Lite 慢", "免費額度可能較緊"],
+      best: "最好的查字品質" },
     { id: "gemini-3.1-flash-lite", name: "Gemini 3.1 Flash-Lite", fit: ["chat", "tool"], speed: 3, brain: 1,
       pros: ["很快、很省"],
       cons: ["比 3.5 Flash-Lite 舊一代"],
-      best: "3.5 Flash-Lite 不能用時的備案" },
+      best: "3.5 Flash-Lite 的備案" },
     { id: "gemini-2.5-flash", name: "Gemini 2.5 Flash（舊版）", fit: ["chat", "tool"], speed: 2, brain: 2,
-      pros: ["以前的預設，穩定"],
-      cons: ["Google 已限制：只有最近用過的帳號才能用，新金鑰可能直接被拒"],
-      best: "已經在用而且正常的人" },
+      pros: ["舊預設，穩定"],
+      cons: ["Google 已限制，僅近期用過的帳號可用，新金鑰可能被拒"],
+      best: "已在使用且正常的帳號" },
     { id: "gemini-2.5-flash-lite", name: "Gemini 2.5 Flash-Lite（舊版）", fit: ["chat", "tool"], speed: 3, brain: 1,
       pros: ["很快"],
-      cons: ["同上，新帳號可能不能用"],
-      best: "已經在用而且正常的人" },
+      cons: ["新帳號可能無法使用"],
+      best: "已在使用且正常的帳號" },
     { id: "gemini-3.1-pro-preview", name: "Gemini 3.1 Pro（預覽版）", fit: ["tool"], speed: 1, brain: 3, preview: true,
       pros: ["推理最強"],
-      cons: ["很慢、會深度思考；免費額度很少甚至沒有", "完全不適合即時對話"],
-      best: "不建議用在這個網站" },
+      cons: ["很慢、會深度思考，免費額度很少或沒有", "不適合即時對話"],
+      best: "不建議用於本站" },
   ],
 };
 
@@ -86,7 +86,7 @@ function cardHTML(provider, id, { kind, auto } = {}) {
   const m = info(provider, id);
   if (!m) {
     return id ? `<div class="mc"><div class="mc-head"><b>${esc(id)}</b></div>
-      <p class="mc-none">這個模型不在整理過的清單裡（可能是新的或你自己輸入的）。可以先按「🔌 測試連線」確認能不能用。</p></div>` : "";
+      <p class="mc-none">這個模型不在清單中。請按「🔌 測試連線」確認能否使用。</p></div>` : "";
   }
   const warnChat = kind === "chat" && !m.fit.includes("chat");
   return `<div class="mc">
@@ -94,7 +94,7 @@ function cardHTML(provider, id, { kind, auto } = {}) {
       ${auto ? `<span class="mc-tag">自動選用</span>` : ""}</div>
     <div class="mc-meters">${dots(m.speed, "速度")}${dots(m.brain, "聰明")}</div>
     <div class="mc-best">適合：${esc(m.best)}</div>
-    ${warnChat ? `<div class="mc-warn">⚠️ 這個模型比較慢，拿來即時對話會覺得卡。</div>` : ""}
+    ${warnChat ? `<div class="mc-warn">⚠️ 這個模型較慢，對話會卡頓。</div>` : ""}
     <ul class="mc-list pros">${m.pros.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
     <ul class="mc-list cons">${m.cons.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
     ${m.limits ? `<div class="mc-lim">免費額度：${esc(m.limits)}</div>` : ""}
@@ -119,21 +119,21 @@ export function mountPicker(o) {
     const extra = fetched.filter(id => !info(o.provider, id));
     let html = "";
     if (o.kind === "tool") {
-      html += `<option value="auto">自動（推薦）— ${esc(info(o.provider, AUTO_TOOL[o.provider]).name)}</option>
-               <option value="same">跟對話用同一個模型</option>`;
+      html += `<option value="auto">自動（推薦）：${esc(info(o.provider, AUTO_TOOL[o.provider]).name)}</option>
+               <option value="same">同對話模型</option>`;
     }
     const opt = (m) => `<option value="${esc(m.id)}">${esc(m.name)} — ${esc(m.best)}</option>`;
     const good = sorted.filter(m => m.fit.includes(o.kind)), rest = sorted.filter(m => !m.fit.includes(o.kind));
     html += `<optgroup label="${o.kind === "chat" ? "適合即時對話" : "適合查字、文法"}">${good.map(opt).join("")}</optgroup>`;
-    if (rest.length) html += `<optgroup label="${o.kind === "chat" ? "比較慢，不建議拿來對話" : "其他"}">${rest.map(opt).join("")}</optgroup>`;
+    if (rest.length) html += `<optgroup label="${o.kind === "chat" ? "較慢，不建議用於對話" : "其他"}">${rest.map(opt).join("")}</optgroup>`;
     if (extra.length) {
-      html += `<optgroup label="你的帳號還可以用的模型">`
+      html += `<optgroup label="你帳號可用的其他模型">`
         + extra.map(id => `<option value="${esc(id)}">${esc(id)}</option>`).join("") + `</optgroup>`;
     }
     if (current && current !== "auto" && current !== "same" && !info(o.provider, current) && !extra.includes(current)) {
       html += `<optgroup label="目前設定"><option value="${esc(current)}">${esc(current)}</option></optgroup>`;
     }
-    html += `<option value="__custom">其他：自己輸入模型 ID…</option>`;
+    html += `<option value="__custom">其他：自行輸入模型 ID…</option>`;
     o.select.innerHTML = html;
   };
   const paint = () => {

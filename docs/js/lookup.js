@@ -368,7 +368,7 @@ function paint(d, already) {
     <div class="wp-actions">
       <button class="btn sm ghost" data-act="speak" title="唸這個字">🔊</button>
       ${d.example ? `<button class="btn sm ghost" data-act="shadow" title="跟讀例句">🎤 跟讀</button>` : ""}
-      <button class="btn sm ghost" data-act="refetch" title="這不是這句話裡的意思？重新查一次">↻</button>
+      <button class="btn sm ghost" data-act="refetch" title="不是這句的意思？重查">↻</button>
       ${already ? `<button class="btn sm" disabled>已在單字本</button>`
                 : `<button class="btn sm primary" data-act="add">加入單字本</button>`}
     </div>`;
@@ -394,7 +394,7 @@ function paint(d, already) {
     V.add(d.word, d);
     closeLookup();
     hooks.onVocabChanged(d.word);
-    hooks.toast(`已加入「${d.word}」，之後會出現在複習`);
+    hooks.toast(`已加入「${d.word}」`);
   });
 
   // 近義／反義詞、詞性變化：原地換成那個字，可以一路探索下去

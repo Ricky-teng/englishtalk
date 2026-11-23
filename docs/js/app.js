@@ -26,6 +26,8 @@ await Store.init();
 window.__etState = () => Store.load();   // 給自動測試與除錯用：目前記憶體中的資料
 Sync.init();                             // 雲端同步：網站沒設定 Firebase 或沒登入過就什麼都不做
 V.backfillSkills();                      // 舊單字從作答紀錄補上能力進度（只做一次）
+// 單字包的詞性資料更新過：已經在單字本裡的字也補上（背景做，不擋畫面）
+import("./packs.js").then(m => m.refreshAlt()).then(n => { if (n && document.getElementById("page-vocab").classList.contains("active")) renderVocab(); }).catch(() => {});
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => {
@@ -97,7 +99,7 @@ function refreshBadges() {
   if (LLM.route.backup && LLM.route.chat) {
     $("badgeEngine").textContent = "備援中";
     $("badgeEngine").className = "badge warn";
-    $("badgeEngine").title = `主要的 AI 暫時不能用，現在由 ${LLM.route.lastName} 接手；恢復後會自動切回。`;
+    $("badgeEngine").title = `主要 AI 暫時無法使用，由 ${LLM.route.lastName} 代替。恢復後自動切回。`;
   } else {
     $("badgeEngine").textContent = s.provider === "groq" ? "Groq" : "Gemini";
     $("badgeEngine").className = "badge" + (hasKey ? " on" : " warn");
@@ -144,7 +146,7 @@ function setState(st) {
     idle: "尚未開始",
     listening: "聆聽中… 請說英文",
     thinking: "思考中…",
-    speaking: "AI 說話中（可直接插話）",
+    speaking: "AI 說話中（可插話）",
   }[st] || st;
 }
 
@@ -168,7 +170,7 @@ function addMsg(kind, text) {
       if (t) { pauseConversationAudio(); TTS.speak(t, undefined, null).then(resumeConversationAudio); }
     });
     const bShadow = el("button", "mini", "🎤 跟讀");
-    bShadow.title = "跟著唸這句，看哪些字發音不清楚";
+    bShadow.title = "跟著唸，檢查發音";
     bShadow.addEventListener("click", () => {
       const t = body.textContent.trim();
       if (t) openShadow(t);
@@ -410,7 +412,7 @@ async function startChat() {
   const s = Store.settings();
   // 任一家有金鑰就能聊（主要的那家沒有，備援會接手）
   if (!(s.groqKey || s.geminiKey)) {
-    sysMsg("還沒有 AI 金鑰。申請免費的只要 1 分鐘。");
+    sysMsg("還沒有 AI 金鑰。免費申請約 1 分鐘。");
     openOnboarding(2);
     return;
   }
@@ -496,10 +498,10 @@ function renderRecap(done, moved) {
     <div class="recap-grammar"></div>
     ${produced.length ? `<div class="recap-sec"><span class="recap-label">你自己用出來的</span>
       <div class="chips">${produced.map(w => `<span class="chip syn">${esc(w)}</span>`).join("")}</div></div>` : ""}
-    ${moved.length ? `<div class="recap-sec"><span class="recap-label">AI 用了、你還沒接 → 已排進明天複習</span>
+    ${moved.length ? `<div class="recap-sec"><span class="recap-label">AI 用過、你還沒用 → 明天複習</span>
       <div class="chips">${moved.map(c => `<span class="chip ant">${esc(c.word)}${c.zh ? `<i>${esc(c.zh)}</i>` : ""}</span>`).join("")}</div></div>` : ""}
     ${!produced.length && Store.vocab().length
-      ? `<p class="note" style="margin:10px 0 0">這次還沒用到單字本的字。下次試著把正在背的字用進對話裡 —— 說出口的那一刻才是真正記住的時候。</p>` : ""}
+      ? `<p class="note" style="margin:10px 0 0">這次沒用到單字本的字。下次試著把正在背的字用進對話。</p>` : ""}
     <div class="recap-acts"></div>`;
 
   const acts = card.querySelector(".recap-acts");
@@ -533,7 +535,7 @@ function updateRecapGrammar(done) {
   if (!checked.length) { box.innerHTML = ""; return; }
   box.innerHTML = `<div class="recap-sec"><span class="recap-label">✏️ 文法</span>
     <p class="note" style="margin:4px 0 0">${bad.length
-      ? `檢查了 ${checked.length} 句，其中 <b>${bad.length}</b> 句有更好的說法，已經標在那幾句底下。試著用「🎤 跟讀」把正確的說法唸一遍。`
+      ? `檢查了 ${checked.length} 句，<b>${bad.length}</b> 句有更好的說法，已標在句子下方。可以用「🎤 跟讀」唸一遍正確說法。`
       : `檢查了 ${checked.length} 句，都沒有文法問題 👍`}</p></div>`;
 }
 
@@ -552,12 +554,12 @@ function renderWelcome() {
   box.innerHTML = `
     <div class="wl-hello">${hello} 👋</div>
     <div class="wl-stats">
-      ${streak ? `<span>🔥 連續 ${streak} 天</span>` : `<span>今天是新的開始</span>`}
+      ${streak ? `<span>🔥 連續 ${streak} 天</span>` : `<span>今天開始累積天數</span>`}
       <span>${(today.seconds || 0) >= 60 ? `今天練了 ${Stats.fmtDuration(today.seconds)}` : "今天還沒開口"}</span>
-      <span>單字本 ${c.total} 字 · 說得出來 ${c.spoken} 字</span>
+      <span>單字本 ${c.total} 字 · 說得出 ${c.spoken} 字</span>
     </div>
     <div class="wl-acts"></div>
-    <div class="wl-tip">小技巧：網站上任何一個英文字都可以點來查，AI 說的每句話都能「跟讀」。</div>`;
+    <div class="wl-tip">小技巧：點英文字可以查詢，AI 的每句話都能「跟讀」。</div>`;
 
   const acts = box.querySelector(".wl-acts");
   if (!hasKey) {
@@ -598,14 +600,14 @@ $("textInput").addEventListener("keydown", (e) => {
 
 window.addEventListener("tts:fallback", (e) => {
   refreshBadges();
-  sysMsg("微軟語音服務連不上，已自動改用瀏覽器內建語音。");
+  sysMsg("微軟語音連不上，已改用瀏覽器語音。");
 });
 
 window.addEventListener("beforeunload", () => { if (C.running) stopChat(); });
 
 /** 對話結束後，把「你想講但講不出來」的字列出來，可一鍵加入單字本 */
 async function renderGaps(session) {
-  const node = addMsg("sys", "正在看看有沒有你想講但沒講出來的字…");
+  const node = addMsg("sys", "正在找你想講卻沒講出來的字…");
   let gaps = [];
   try {
     gaps = await V.findGaps(session.messages, Store.settings().level);
@@ -614,13 +616,13 @@ async function renderGaps(session) {
     return;                      // 失敗就安靜跳過，不要用錯誤訊息打擾練習心情
   }
   if (!gaps.length) {
-    node.body.textContent = "這次表達得很順，沒有明顯卡住的地方。";
+    node.body.textContent = "這次講得很順，沒有卡住的地方。";
     return;
   }
 
   node.body.textContent = "";
   node.root.classList.add("gaps");
-  node.body.appendChild(el("div", "gaps-title", "你可能想講的是這幾個字"));
+  node.body.appendChild(el("div", "gaps-title", "你想講的可能是這些字"));
 
   for (const g of gaps) {
     const row = el("div", "gap");
@@ -704,8 +706,8 @@ function renderVocab() {
   $("vocabCounts").innerHTML = `
     <div class="tile"><div class="t-label">總單字</div><div class="t-value">${c.total}</div></div>
     <div class="tile"><div class="t-label">待複習</div><div class="t-value">${c.due}</div></div>
-    <div class="tile" title="認得、想得起、拼得出三項都通過，而且複習間隔 21 天以上"><div class="t-label">OK</div><div class="t-value">${c.mastered}</div></div>
-    <div class="tile" title="在對話中自己用過；${c.spokenOften} 個用過 3 次以上"><div class="t-label">說得出</div><div class="t-value">${c.spoken}</div></div>`;
+    <div class="tile" title="認得、想得起、拼得出都通過，且複習間隔達 21 天"><div class="t-label">OK</div><div class="t-value">${c.mastered}</div></div>
+    <div class="tile" title="在對話中用過，其中 ${c.spokenOften} 個用過 3 次以上"><div class="t-label">說得出</div><div class="t-value">${c.spoken}</div></div>`;
 
   // 標籤下拉
   const tagSel = $("vocabTag");
@@ -744,9 +746,9 @@ function renderVocab() {
     box.appendChild(makeEmpty(
       Store.vocab().length ? "沒有符合條件的單字" : "單字本還是空的",
       Store.vocab().length ? "換個搜尋條件試試。"
-        : "在對話中點任何一個英文字就會收進來；也可以直接加入整課的課本單字包。"));
+        : "在對話中點英文字就會加進來，也可以加入課本單字包。"));
     if (!Store.vocab().length) {
-      const b = el("button", "btn primary", "📦 看看有哪些單字包");
+      const b = el("button", "btn primary", "📦 瀏覽單字包");
       b.style.marginTop = "12px";
       b.addEventListener("click", openPacks);
       box.lastElementChild.appendChild(b);
@@ -1146,7 +1148,7 @@ async function runAddSearch(force = false) {
     const { results, cached, zh } = await V.search(q, { force, level: Store.settings().level });
     if (seq !== addSeq) return;
     if (!results.length) {
-      box.innerHTML = `<p class="note">找不到「${esc(q)}」。換個說法，或用下面的「手動填寫」。</p>`;
+      box.innerHTML = `<p class="note">找不到「${esc(q)}」。換個說法，或改用「手動填寫」。</p>`;
       return;
     }
     box.innerHTML = "";
@@ -1155,7 +1157,7 @@ async function runAddSearch(force = false) {
     head.innerHTML = `<span>${zh ? `「${esc(q)}」可以說成 ${groups.length} 種：`
       : groups.length === 1 && groups[0].senses.length > 1 ? `「${esc(groups[0].word)}」有 ${groups[0].senses.length} 個意思，勾選你要的：`
       : "查到了："}</span>
-      ${cached ? `<span class="muted">（查過的，沒有花 API）</span>` : ""}`;
+      ${cached ? `<span class="muted">（已查過，未用 API）</span>` : ""}`;
     if (cached) {
       const again = el("button", "mini", "↻ 重查");
       again.addEventListener("click", () => runAddSearch(true));
@@ -1167,7 +1169,7 @@ async function runAddSearch(force = false) {
     renderCands(list, results, "add");
   } catch (e) {
     if (seq !== addSeq) return;
-    box.innerHTML = `<p class="note">查詢失敗：${esc(e.message)}<br>可以再試一次，或先用下面的「手動填寫」加入，之後再補。</p>`;
+    box.innerHTML = `<p class="note">查詢失敗：${esc(e.message)}<br>請再試一次，或改用「手動填寫」。</p>`;
     const again = el("button", "btn sm primary", "↻ 再試一次");
     again.addEventListener("click", () => runAddSearch(true));
     box.appendChild(again);
@@ -1208,8 +1210,8 @@ async function fillDetails() {
   if (!todo.length) { toast("每個字的例句和詞性變化都齊了"); return; }
   if (fill.on) return;
   const s = Store.settings();
-  if (!(s.provider === "groq" ? s.groqKey : s.geminiKey)) { toast("要先到設定填 API 金鑰"); return; }
-  if (todo.length > 60 && !confirm(`有 ${todo.length} 個字要補，大約要送 ${Math.ceil(todo.length / V.DETAIL_BATCH)} 次 AI 請求（會用到你的免費額度）。開始嗎？中途可以在「⋯」停止。`)) return;
+  if (!(s.provider === "groq" ? s.groqKey : s.geminiKey)) { toast("請先到設定填 API 金鑰"); return; }
+  if (todo.length > 60 && !confirm(`有 ${todo.length} 個字要補，約需 ${Math.ceil(todo.length / V.DETAIL_BATCH)} 次 AI 請求，會用到免費額度。要開始嗎？可以在「⋯」中途停止。`)) return;
   Object.assign(fill, { on: true, stop: false, done: 0, total: todo.length });
   let filled = 0;
   try {
@@ -1219,9 +1221,9 @@ async function fillDetails() {
       fill.done = Math.min(i + V.DETAIL_BATCH, todo.length);
       if ($("page-vocab").classList.contains("active")) renderVocab();
     }
-    toast(fill.stop ? `已停止：補好 ${filled} 個字，剩下的下次再補` : `已補好 ${filled} 個字的例句與詞性變化`, 4000);
+    toast(fill.stop ? `已停止，補好 ${filled} 個字` : `已補好 ${filled} 個字的例句與詞性變化`, 4000);
   } catch (e) {
-    toast(`補到一半失敗（已補好 ${filled} 個）：${e.message}`, 5000);
+    toast(`補齊失敗，已補好 ${filled} 個：${e.message}`, 5000);
   } finally {
     fill.on = false;
     renderVocab();
@@ -1243,7 +1245,7 @@ function applyCand(r) {
   fill("wfFam", V.familyToText(r.family));
   if (Array.isArray(r.forms)) editingForms = r.forms;
   editingSenses = r.senses || null;
-  $("wordDlgNote").textContent = "已補上空白欄位，你原本填的內容沒有被改動。例句、近義詞在「更多欄位」裡。";
+  $("wordDlgNote").textContent = "已補上空白欄位。例句、近義詞在「更多欄位」。";
 }
 
 $("btnAutoFill").addEventListener("click", async () => {
@@ -1261,16 +1263,16 @@ $("btnAutoFill").addEventListener("click", async () => {
     // 填了英文：只留這個字的各個意思；填了中文：全部候選都給你挑
     let list = word ? results.filter(r => r.word.toLowerCase() === word.toLowerCase()) : results;
     if (!list.length) list = results;
-    if (!list.length) { note.textContent = "查不到，請直接自己填。"; return; }
+    if (!list.length) { note.textContent = "查不到，請自行填寫。"; return; }
     if (list.length === 1) { applyCand(list[0]); return; }
     const nGroups = V.groupResults(list).length;
     note.textContent = "";
     renderCands(pick, list, "pick", (r) => { applyCand(r); });
     // 說明放在候選清單正上方，不要放在最底下看不到
-    pick.prepend(el("div", "add-head", word ? `「${word}」有 ${list.length} 個意思，選你要的那個：`
-                                            : `「${zh}」可以說成 ${nGroups} 種，選你要的那個：`));
+    pick.prepend(el("div", "add-head", word ? `「${word}」有 ${list.length} 個意思，請選一個：`
+                                            : `「${zh}」有 ${nGroups} 種說法，請選一個：`));
   } catch (e) {
-    note.textContent = "查詢失敗：" + e.message + "（可以直接自己填）";
+    note.textContent = "查詢失敗：" + e.message + "（可自行填寫）";
   } finally {
     btn.disabled = false;
   }
@@ -1280,7 +1282,7 @@ $("btnSaveWord").addEventListener("click", () => {
   const word = $("wfWord").value.trim();
   if (!word) {
     $("wordDlgNote").textContent = $("wfZh").value.trim()
-      ? "還沒有英文 —— 按「✨ 用 AI 補齊」從中文找英文，或自己填。" : "英文單字不能空白。";
+      ? "還沒填英文。按「✨ 用 AI 補齊」從中文找，或自行填寫。" : "英文單字不能空白。";
     $("wfWord").focus();
     return;
   }
@@ -1309,10 +1311,10 @@ $("btnSaveWord").addEventListener("click", () => {
       // 同一個字、不同意思 → 併成同一張卡的另一個意思，不會變兩張
       const ss = data.senses || [{ pos: data.pos, zh: data.zh, example: data.example, exampleZh: data.exampleZh }];
       V.addSenses({ word: dup.word, phonetic: data.phonetic, forms: data.forms, family: data.family }, ss, data.tags);
-      toast(`「${word}」已經在單字本，已把「${data.zh}」併進去成為另一個意思`);
+      toast(`「${word}」已在單字本，已新增意思「${data.zh}」`);
     } else if (dup) {
       V.add(word, data);           // 同一個意思：只補空白欄位、合併標籤
-      toast(`「${word}」已經在單字本，已補上空白欄位`);
+      toast(`「${word}」已在單字本，已補上空白欄位`);
     } else {
       V.add(word, data);
       toast(`已加入「${word}」`);
@@ -1366,7 +1368,7 @@ $("btnDoBulk").addEventListener("click", async () => {
   }
 
   if (rows.length > 20) {
-    note.textContent = `一次最多 20 個（現在有 ${rows.length} 個）。請分批，或取消勾選 AI 補齊。`;
+    note.textContent = `一次最多 20 個，目前 ${rows.length} 個。請分批，或取消勾選 AI 補齊。`;
     return;
   }
 
@@ -1396,13 +1398,13 @@ $("btnDoBulk").addEventListener("click", async () => {
     });
     const cached = rows.length - asked;
     note.textContent = `完成：新增 ${added} 個，${rows.length - added} 個已存在。`
-                     + (cached > 0 ? `（其中 ${cached} 個直接用快取，沒有呼叫 API）` : "");
+                     + (cached > 0 ? `（${cached} 個用快取，未用 API）` : "");
     toast(`已加入 ${added} 個單字`);
     $("bulkText").value = "";
     refreshPills();
     renderVocab();
   } catch (e) {
-    note.textContent = "AI 查詢失敗：" + e.message + "　可以取消勾選「用 AI 補齊」直接存。";
+    note.textContent = "AI 查詢失敗：" + e.message + "　可取消勾選「用 AI 補齊」後再存。";
   } finally {
     btn.disabled = false;
   }
@@ -1423,14 +1425,14 @@ function setPracticeBanner(on) {
     $("reviewStage").before(b);
   }
   b.hidden = !on;
-  b.innerHTML = on ? `<b>練習模式</b><span>這些字還沒到複習時間。可以盡量練，作答會記進分析，但<b>不會改變複習排程</b> —— 間隔重複要在「快忘的時候」複習才有效。</span>` : "";
+  b.innerHTML = on ? `<b>練習模式</b><span>今天的複習已完成，這輪從所有單字隨機抽，不影響複習排程。</span>` : "";
 }
 
 /** 「繼續練習」按鈕（今天的複習做完之後） */
 function practiceButton(tag) {
   const n = V.practicePool(tag, 20).length;
   if (!n) return null;
-  const b = el("button", "btn", `繼續練習 ${n} 個最快會忘的字（不影響排程）`);
+  const b = el("button", "btn", `再隨機練 ${n} 個字`);
   b.addEventListener("click", () => startReviewRound());
   return b;
 }
@@ -1456,19 +1458,19 @@ function renderReviewHome() {
   stage.innerHTML = "";
   if (!Store.vocab().length) {
     stage.appendChild(makeEmpty("還沒有單字可以複習",
-      "先在對話中點幾個單字，或到「單字本」批次加入整課單字表。"));
+      "在對話中點單字，或到「單字本」加入單字。"));
     return;
   }
   if (!c.due) {
     stage.appendChild(makeEmpty("今天的複習做完了 🎉",
-      `這組共 ${c.total} 個單字，已掌握 ${c.mastered} 個。明天再來，或先去對話練幾句。`));
+      `這組 ${c.total} 個字，OK ${c.mastered} 個。明天再來吧。`));
     const pb = practiceButton(cur);
     if (pb) { pb.style.marginTop = "12px"; stage.lastElementChild.appendChild(pb); }
     $("btnStartReview").textContent = "開始練習";
     return;
   }
   $("btnStartReview").textContent = "開始複習";
-  stage.appendChild(makeEmpty(`有 ${c.due} 個單字等著複習`, "按上面的「開始複習」。"));
+  stage.appendChild(makeEmpty(`${c.due} 個字待複習`, "按上面的「開始複習」。"));
 }
 
 $("reviewTag").addEventListener("change", renderReviewHome);
@@ -1477,9 +1479,9 @@ $("reviewTag").addEventListener("change", renderReviewHome);
 
 /* 所有複習方式。翻卡是預設；「用說的」要能語音辨識；其餘都是不用出聲的題型（quiz.js） */
 const REVIEW_MODES = {
-  flip:  { icon: "🃏", name: "翻卡", tip: "看英文想中文，翻面後自己評分。最快刷過一輪，也能離線用。" },
+  flip:  { icon: "🃏", name: "翻卡", tip: "看英文想中文，翻面後自評。最快，可離線。" },
   ...QUIZ_MODES,
-  speak: { icon: "🎤", name: "用說的", tip: "畫面給你中文，AI 用語音問一個問題，你要想出英文單字並用它說一句話回答。需要開口。" },
+  speak: { icon: "🎤", name: "用說的", tip: "看中文，聽 AI 提問，用那個英文字說一句話回答。" },
 };
 const MODE_ORDER = ["flip", "mixed", "mcEn", "mcZh", "cloze", "spell", "listen", "pos", "speak", "match"];
 
@@ -1564,7 +1566,7 @@ function startReviewRound(override, forceMode) {
     R.queue = Store.vocab().filter(v => !R.tag || (v.tags || []).includes(R.tag));
   } else {
     R.queue = V.due(R.tag);
-    // 到期的都複習完了 → 自動接「練習」：挑最快會忘的字，作答不改變排程
+    // 到期的都複習完了 → 自動接「練習」：從所有單字隨機抽，作答不改變排程
     if (!R.queue.length) {
       R.queue = V.practicePool(R.tag, 20);   // 上方會出現「練習模式」說明，不另外跳通知
     }
@@ -1601,7 +1603,7 @@ function paintCard() {
       setPracticeBanner(false);
       $("page-review").classList.remove("reviewing");
       const end = makeEmpty(R.practice ? "這輪練習完成 💪" : "這輪複習完成 🎉",
-        R.practice ? `練習了 ${R.done} 次，複習排程沒有變動。` : `總共複習了 ${R.done} 次。`);
+        R.practice ? `練習了 ${R.done} 次，複習排程沒有變動。` : `共複習 ${R.done} 次。`);
       const row = el("div", "row");
       row.style.cssText = "justify-content:center;margin-top:12px";
       const more = practiceButton(R.tag);
@@ -1639,7 +1641,7 @@ function paintCard() {
       fc.appendChild(el("div", "fc-ex", card.example));
       if (card.exampleZh) fc.appendChild(el("div", "fc-exzh", card.exampleZh));
     }
-    if (!card.zh) fc.appendChild(el("div", "fc-zh muted", "（這張卡還沒有中文意思）"));
+    if (!card.zh) fc.appendChild(el("div", "fc-zh muted", "（還沒有中文意思）"));
 
     // 背面才顯示近義／反義 —— 正面看到就變成提示，失去回想的效果
     const relBox = el("div", "fc-rel");
@@ -1663,7 +1665,7 @@ function paintCard() {
     if (fm) { const box = el("div", "fc-forms"); box.innerHTML = fm; fc.appendChild(box); }
     if (relBox.children.length) fc.appendChild(relBox);
   } else {
-    fc.appendChild(el("div", "muted", "想想看意思，再按下面顯示答案"));
+    fc.appendChild(el("div", "muted", "想一想意思，再按「顯示答案」"));
   }
   stage.appendChild(fc);
 
@@ -1746,8 +1748,8 @@ async function renderStorage() {
     <div class="si-head"><b>儲存空間</b><span class="muted">${idb ? "瀏覽器資料庫（IndexedDB）" : "localStorage（上限約 5MB）"}</span></div>
     ${ratio != null ? `<div class="si-bar" role="img" aria-label="已使用 ${Math.round(ratio * 100)}%"><span style="width:${Math.max(ratio * 100, 1)}%"></span></div>` : ""}
     <div class="si-text">已用 <b>${mb(u.used)}</b>${u.quota ? `，這台裝置還能用約 <b>${mb(u.quota - (u.used || 0))}</b>` : ""}。${counts}。</div>
-    ${idb ? `<div class="si-text muted">${u.persisted ? "✓ 已設定為不會被瀏覽器自動清除。" : "瀏覽器在空間很緊張時可能會清掉網站資料；安裝成 App 後通常就不會。"}一般使用好幾年都用不完。</div>`
-          : `<div class="si-text warn">這個瀏覽器不能用資料庫（可能是無痕模式），只能存約 5MB。${ratio > 0.7 ? "<b>快滿了</b>，請先匯出備份。" : "建議定期匯出備份。"}</div>`}`;
+    ${idb ? `<div class="si-text muted">${u.persisted ? "✓ 瀏覽器不會自動清除。" : "空間不足時瀏覽器可能清掉網站資料，安裝成 App 通常可避免。"}一般用好幾年都夠。</div>`
+          : `<div class="si-text warn">這個瀏覽器無法使用資料庫，可能是無痕模式，只能存約 5MB。${ratio > 0.7 ? "<b>快滿了</b>，請先匯出備份。" : "建議定期匯出備份。"}</div>`}`;
 }
 
 /** 一個模型的顯示名稱 */
@@ -1779,7 +1781,7 @@ function renderUsage() {
     return `<div class="au-row">
       <div class="au-name"><b>${esc(modelName(r.provider, r.model))}</b>
         ${r.backup ? `<span class="au-tag">備援接手 ${r.backup} 次</span>` : ""}</div>
-      <div class="au-bar" data-tip="${esc(lim ? `今天 ${r.req} 次／每天上限 ${lim.rpd} 次（${lim.from}）` : `今天 ${r.req} 次（不知道這個模型的每日上限）`)}" tabindex="0">
+      <div class="au-bar" data-tip="${esc(lim ? `今天 ${r.req} 次／每天上限 ${lim.rpd} 次（${lim.from}）` : `今天 ${r.req} 次（每日上限不明）`)}" tabindex="0">
         <span style="width:${Math.max(2, (lim ? Math.min(1, pct) : r.req / maxReq) * 100)}%" class="${pct > 0.8 ? "hot" : ""}"></span></div>
       <div class="au-meta">
         <span>${r.req} 次${lim ? ` / ${lim.rpd}` : ""}</span>
@@ -1792,7 +1794,7 @@ function renderUsage() {
 
   const dmax = Math.max(1, ...days.map(d => d.req));
   const week = days.some(d => d.req) ? `
-    <div class="au-sub">最近 7 天（每天呼叫幾次 AI）</div>
+    <div class="au-sub">最近 7 天的 AI 呼叫次數</div>
     <div class="vb au-week">${days.map(d => `
       <div class="vb-col" data-tip="${esc(`${d.label}：${d.req} 次、${fmt(d.tok)} token${d.fail ? `、失敗 ${d.fail} 次` : ""}${d.backup ? `、備援接手 ${d.backup} 次` : ""}`)}" tabindex="0">
         <span class="vb-val">${d.req || ""}</span>
@@ -1801,8 +1803,8 @@ function renderUsage() {
     <details class="dv-table"><summary>看數字</summary><table><thead><tr><th>日期</th><th>次數</th><th>token</th><th>失敗</th><th>備援</th></tr></thead>
       <tbody>${days.map(d => `<tr><td>${d.key}</td><td>${d.req}</td><td>${d.tok}</td><td>${d.fail}</td><td>${d.backup}</td></tr>`).join("")}</tbody></table></details>` : "";
 
-  box.innerHTML = `<p class="note" style="margin-top:0">只算這個瀏覽器送出的請求。token 是供應商回報的實際用量（拿不到時用估計）。
-    每日上限：Groq 有回報就用它的數字，否則用官方公布的免費額度；兩個都沒有就只顯示次數。</p>
+  box.innerHTML = `<p class="note" style="margin-top:0">只計算這個瀏覽器送出的請求。token 以供應商回報為準，沒有回報時用估計值。
+    每日上限優先用 Groq 回報的數字，其次是官方免費額度。</p>
     <div class="au-list">${list}</div>${week}`;
   Insights.attachTips(box);
 }
@@ -1832,12 +1834,12 @@ function renderStats() {
 
   $("statTiles").innerHTML = `
     <div class="tile"><div class="t-label">連續練習</div><div class="t-value">${s}<span style="font-size:15px"> 天</span></div>
-      <div class="t-sub">今天練了就會 +1</div></div>
+      <div class="t-sub">今天練習就 +1</div></div>
     <div class="tile"><div class="t-label">本週練習</div><div class="t-value">${Stats.fmtDuration(w.seconds)}</div>
       <div class="t-sub">開口 ${w.userWords} 個字</div></div>
     <div class="tile"><div class="t-label">累計練習</div><div class="t-value">${Stats.fmtDuration(t.seconds)}</div>
       <div class="t-sub">${t.days} 天、${t.sessions} 場對話</div></div>
-    <div class="tile"><div class="t-label">說得出來的單字</div><div class="t-value">${c.spoken}<span style="font-size:15px"> / ${c.total}</span></div>
+    <div class="tile"><div class="t-label">說得出的單字</div><div class="t-value">${c.spoken}<span style="font-size:15px"> / ${c.total}</span></div>
       <div class="t-sub">本週在對話中用出 ${w.produced} 次</div></div>`;
 
   renderInsights();
@@ -1855,7 +1857,7 @@ function renderStats() {
   box.innerHTML = "";
   const list = Store.sessions().slice().reverse().slice(0, 30);
   if (!list.length) {
-    box.appendChild(makeEmpty("還沒有對話紀錄", "到「對話」聊幾句，結束後就會存在這裡。"));
+    box.appendChild(makeEmpty("還沒有對話紀錄", "到「對話」聊幾句，結束後會存在這裡。"));
     return;
   }
   for (const sess of list) {
@@ -1909,7 +1911,7 @@ function renderInsights() {
     }
     if (act === "coach") {
       const s = Store.settings();
-      if (!(s.provider === "groq" ? s.groqKey : s.geminiKey)) { toast("要先到設定填 API 金鑰"); return; }
+      if (!(s.provider === "groq" ? s.groqKey : s.geminiKey)) { toast("請先到設定填 API 金鑰"); return; }
       btn.disabled = true;
       btn.textContent = "產生中…";
       const body = $("insights").querySelector(".coach-body");
@@ -1962,8 +1964,8 @@ $("importFile").addEventListener("change", async (e) => {
 });
 
 $("btnWipe").addEventListener("click", async () => {
-  const cloud = Sync.status.user ? "\n\n（只清這台裝置，雲端的資料不會刪；同時會登出雲端同步。）" : "";
-  if (!confirm("這會刪掉單字本、對話紀錄、統計與金鑰設定，且無法復原。確定嗎？" + cloud)) return;
+  const cloud = Sync.status.user ? "\n\n只清除這台裝置，雲端資料會保留，並登出雲端同步。" : "";
+  if (!confirm("將刪除單字本、對話紀錄、統計和金鑰設定，無法復原。確定嗎？" + cloud)) return;
   // 先登出、忘掉同步紀錄：不然清空後的本機會被當成「全部刪掉」同步到雲端
   await Sync.forget();
   await Store.wipe();
@@ -1986,7 +1988,7 @@ function agoText(t) {
 const SYNC_TEXT = {
   idle: (st) => `✓ 已同步・${agoText(st.lastSync)}`,
   syncing: () => "同步中…",
-  offline: () => "目前離線，連上網路後會自動同步",
+  offline: () => "離線中，連上網路後會同步",
   error: (st) => `⚠ 同步失敗：${st.error}`,
   off: () => "",
 };
@@ -2001,17 +2003,17 @@ function renderSync() {
   badge.textContent = st.state === "syncing" ? "☁︎ …" : st.state === "error" ? "☁︎ !" : st.state === "offline" ? "☁︎ ✕" : "☁︎";
   badge.title = "雲端同步：" + (SYNC_TEXT[st.state] || SYNC_TEXT.off)(st);
   $("statsLede").textContent = st.user
-    ? "資料存在這台裝置，也會同步到雲端（跟著你的 Google 帳號）。"
-    : "所有資料都存在這台裝置的瀏覽器裡，沒有上傳到任何地方。";
+    ? "資料存在這台裝置，並同步到你 Google 帳號的雲端。"
+    : "資料都存在這台裝置的瀏覽器裡，不會上傳。";
   if (!st.configured) return;
 
   const box = $("syncBox");
   if (!st.user) {
     box.innerHTML = `
-      <p class="note" style="margin-top:0">用 Google 帳號登入後，單字本、複習進度、對話紀錄和設定會自動存到雲端；
-        換手機或電腦登入同一個帳號就能接著用。不登入也能照常使用，資料只存在這台裝置。</p>
-      <p class="note">雲端資料存在本網站的 Firebase 專案：其他使用者讀不到你的資料，但網站管理者技術上看得到單字本與對話紀錄。
-        API 金鑰不會以明文上傳（要同步金鑰時會先用你自己設的密碼加密）。</p>
+      <p class="note" style="margin-top:0">用 Google 帳號登入後，單字本、複習進度、對話紀錄和設定會存到雲端。
+        換裝置登入同一帳號就能接著用。不登入也能使用，資料只存在這台裝置。</p>
+      <p class="note">雲端資料存在本站的 Firebase 專案。其他使用者讀不到你的資料，但網站管理者技術上看得到單字本與對話紀錄。
+        API 金鑰不會以明文上傳，同步前會用你設的同步密碼加密。</p>
       <div class="row"><button class="btn primary" type="button" id="btnSyncIn" ${st.loading ? "disabled" : ""}>
         ${st.loading ? "載入中…" : "用 Google 登入"}</button></div>
       ${st.state === "error" ? `<p class="note sync-err">${esc(st.error)}</p>` : ""}`;
@@ -2026,7 +2028,7 @@ function renderSync() {
     </div>
     <p class="note sync-state ${st.state}" style="margin:10px 0 0">${esc((SYNC_TEXT[st.state] || SYNC_TEXT.off)(st))}</p>
     ${vaultHTML(st.vault)}
-    <p class="note" style="margin-top:12px">其他使用者讀不到你的資料；網站管理者技術上看得到單字本與對話紀錄，但看不到加密過的 API 金鑰。</p>
+    <p class="note" style="margin-top:12px">其他使用者讀不到你的資料。網站管理者技術上看得到單字本與對話紀錄，看不到加密的 API 金鑰。</p>
     <div class="row" style="margin-top:12px">
       <button class="btn" type="button" id="btnSyncNow" ${st.state === "syncing" ? "disabled" : ""}>立即同步</button>
       <div class="spacer"></div>
@@ -2034,7 +2036,7 @@ function renderSync() {
     </div>`;
   $("btnSyncNow").addEventListener("click", () => Sync.syncNow());
   $("btnSyncOut").addEventListener("click", async () => {
-    if (!confirm("登出雲端同步？這台裝置上的資料會保留，之後登入會再合併。")) return;
+    if (!confirm("登出雲端同步？這台裝置的資料會保留，下次登入時合併。")) return;
     await Sync.signOut();
     toast("已登出雲端同步");
   });
@@ -2045,37 +2047,37 @@ function renderSync() {
 
 function vaultHTML(state) {
   if (state === "unsupported") {
-    return `<div class="vault"><b>🔐 API 金鑰同步</b><p class="note">這個瀏覽器不支援加密功能（需要 https），金鑰不會同步。</p></div>`;
+    return `<div class="vault"><b>🔐 API 金鑰同步</b><p class="note">這個瀏覽器無法加密（需要 https），金鑰不會同步。</p></div>`;
   }
   if (state === "off") {
     return `<div class="vault"><b>🔐 API 金鑰同步：關閉</b>
-      <p class="note">金鑰只存在這台裝置，換裝置要重新貼一次。打開後，金鑰會先用你自己設的「同步密碼」在瀏覽器裡加密才上傳，
-        雲端只存密文，網站管理者也解不開；新裝置輸入同一組密碼就能取回。</p>
+      <p class="note">金鑰只存在這台裝置，換裝置要重新貼上。開啟後，金鑰會在瀏覽器裡用你的同步密碼加密再上傳，
+        網站管理者也無法解開。新裝置輸入同一組密碼即可取回。</p>
       <button class="btn sm" type="button" data-vault="enable">設定同步密碼並開啟</button></div>`;
   }
   if (state === "locked") {
     return `<div class="vault locked"><b>🔒 雲端有加密的 API 金鑰</b>
-      <p class="note">輸入你在其他裝置設定的同步密碼，就能把金鑰取回這台裝置。</p>
+      <p class="note">輸入在其他裝置設定的同步密碼，取回金鑰。</p>
       <div class="row"><button class="btn sm primary" type="button" data-vault="unlock">輸入同步密碼</button>
         <button class="btn sm ghost" type="button" data-vault="reset">忘記密碼？</button>
         <div class="spacer"></div><button class="btn sm ghost" type="button" data-vault="disable">關閉金鑰同步</button></div></div>`;
   }
   return `<div class="vault on"><b>🔐 API 金鑰同步：開啟（端對端加密）</b>
-    <p class="note">金鑰用你的同步密碼加密後才上傳，網站管理者也解不開。同一帳號的每台裝置都要輸入同一組密碼才能取回。</p>
+    <p class="note">金鑰以你的同步密碼加密後上傳，網站管理者無法解開。每台裝置都要輸入同一組密碼才能取回。</p>
     <div class="row"><button class="btn sm" type="button" data-vault="reset">更改同步密碼</button>
       <div class="spacer"></div><button class="btn sm ghost" type="button" data-vault="disable">關閉金鑰同步</button></div></div>`;
 }
 
 async function vaultAction(act) {
   if (act === "disable") {
-    if (!confirm("關閉金鑰同步？雲端的加密金鑰會刪除，每台裝置上已經有的金鑰會保留。")) return;
+    if (!confirm("關閉金鑰同步？雲端的加密金鑰會刪除，各裝置上的金鑰會保留。")) return;
     await Sync.disableKeySync();
     toast("已關閉金鑰同步");
     return;
   }
   if (act === "unlock") return openVaultDialog("unlock");
   if (act === "reset") {
-    if (Sync.status.vault === "locked" && !confirm("重設同步密碼會用「這台裝置」的金鑰建立新的加密保險箱，蓋掉雲端舊的；其他裝置之後要輸入新密碼。繼續嗎？")) return;
+    if (Sync.status.vault === "locked" && !confirm("重設後會用這台裝置的金鑰重新加密，取代雲端的舊資料。其他裝置要輸入新密碼。繼續嗎？")) return;
     return openVaultDialog("set", true);
   }
   return openVaultDialog("set");
@@ -2095,15 +2097,15 @@ function openVaultDialog(mode, isReset = false) {
     <form method="dialog">
       <div class="m-head"><h2>${set ? (isReset ? "設定新的同步密碼" : "設定同步密碼") : "輸入同步密碼"}</h2>
         <p class="note" style="margin:0">${set
-          ? "這組密碼只用來在你的瀏覽器裡加密 API 金鑰，不會上傳，網站管理者也不知道。<b>忘記密碼就解不開</b>，只能重設並在每台裝置重新輸入。"
+          ? "這組密碼只在你的瀏覽器裡加密 API 金鑰，不會上傳。<b>忘記密碼就無法解開</b>，只能重設，並在每台裝置重新輸入。"
           : "輸入你在其他裝置設定的同步密碼。"}</p></div>
       <div class="m-body">
-        ${noKey ? `<p class="note sync-err">這台裝置還沒有 API 金鑰，加密的保險箱會是空的。可以先到設定貼上金鑰再來開啟。</p>` : ""}
+        ${noKey ? `<p class="note sync-err">這台裝置還沒有 API 金鑰，加密後會是空的。請先到設定貼上金鑰。</p>` : ""}
         <label class="field" for="vPass">同步密碼</label>
         <input type="password" id="vPass" autocomplete="${set ? "new-password" : "current-password"}" minlength="8" required>
         ${set ? `<label class="field" for="vPass2">再輸入一次</label>
         <input type="password" id="vPass2" autocomplete="new-password" minlength="8" required>
-        <div class="note">至少 8 個字元；跟 Google 帳號密碼不同比較安全。</div>` : ""}
+        <div class="note">至少 8 個字元。建議別用 Google 密碼。</div>` : ""}
         <p class="note vault-msg" aria-live="polite"></p>
       </div>
       <div class="m-foot">
@@ -2118,9 +2120,9 @@ function openVaultDialog(mode, isReset = false) {
     const p1 = dlgVault.querySelector("#vPass").value;
     const btn = dlgVault.querySelector('button[type="submit"]');
     if (p1.length < 8) { msg.textContent = "密碼至少要 8 個字元。"; return; }
-    if (set && p1 !== dlgVault.querySelector("#vPass2").value) { msg.textContent = "兩次輸入的密碼不一樣。"; return; }
+    if (set && p1 !== dlgVault.querySelector("#vPass2").value) { msg.textContent = "兩次密碼不一致。"; return; }
     btn.disabled = true;
-    msg.textContent = set ? "加密中…" : "解鎖中…（需要一兩秒）";
+    msg.textContent = set ? "加密中…" : "解鎖中…";
     try {
       if (set) {
         await Sync.setKeyPassphrase(p1);
@@ -2130,7 +2132,7 @@ function openVaultDialog(mode, isReset = false) {
         dlgVault.close();
         toast("已取回 API 金鑰");
       } else {
-        msg.textContent = "密碼不對，再試一次。";
+        msg.textContent = "密碼錯誤，請再試一次。";
       }
     } catch (err) {
       msg.textContent = "失敗：" + err.message;
@@ -2145,7 +2147,7 @@ function openVaultDialog(mode, isReset = false) {
 // 新裝置同步完發現雲端有加密金鑰：在引導畫面就直接問密碼，其他時候提示一下
 window.addEventListener("sync:locked", () => {
   if (document.getElementById("dlgOnboard")?.open) openVaultDialog("unlock");
-  else toast("雲端有加密的 API 金鑰：到「紀錄 → 雲端同步」輸入同步密碼就能取回", 5000);
+  else toast("雲端有加密的 API 金鑰，到「紀錄 → 雲端同步」輸入同步密碼即可取回", 5000);
 });
 
 async function syncSignIn() {
@@ -2184,7 +2186,7 @@ window.addEventListener("sync:pulled", (e) => {
   if ((s.geminiKey || s.groqKey) && document.getElementById("dlgOnboard")?.open) {
     finishOnboarding();
     refreshBadges();
-    toast("已從雲端取回你的資料和金鑰，可以直接開始了", 4000);
+    toast("已從雲端取回資料和金鑰", 4000);
   }
 });
 
@@ -2198,13 +2200,13 @@ const dlg = $("dlgSettings");
 function paintFallbackChain() {
   const s = Store.settings();
   const box = $("fallbackChain");
-  if (!$("cfgFallback").checked) { box.textContent = "關閉時，主要的 AI 不能用就會直接顯示錯誤。"; return; }
+  if (!$("cfgFallback").checked) { box.textContent = "關閉時，主要 AI 出錯會顯示錯誤訊息。"; return; }
   const chain = LLM.candidates("chat").map(c => modelName(c.provider, c.model));
   const other = s.provider === "groq" ? "Gemini" : "Groq";
   const hasOther = s.provider === "groq" ? !!s.geminiKey : !!s.groqKey;
-  box.innerHTML = `對話的接手順序：${chain.map(esc).join(" → ")}。`
-    + (hasOther ? "" : `<br>再填一組 <b>${other}</b> 的免費金鑰，連 ${s.provider === "groq" ? "Groq" : "Gemini"} 整個不能用時也接得上。`)
-    + `<br>換到備援時對話裡會出現一行提示，主要的恢復後自動切回。`;
+  box.innerHTML = `備援順序：${chain.map(esc).join(" → ")}。`
+    + (hasOther ? "" : `<br>再加一組 <b>${other}</b> 免費金鑰，${s.provider === "groq" ? "Groq" : "Gemini"} 全部無法使用時也能接手。`)
+    + `<br>改用備援時對話中會提示，主要 AI 恢復後自動切回。`;
 }
 $("cfgFallback").addEventListener("change", paintFallbackChain);
 
@@ -2212,8 +2214,8 @@ $("cfgFallback").addEventListener("change", paintFallbackChain);
 window.addEventListener("llm:route", (e) => {
   const d = e.detail;
   sysMsg(d.backup
-    ? `🔁 主要的 AI 暫時不能用（${d.why || "連不上"}），這次改由 ${d.name} 回答，對話繼續。`
-    : `✅ 主要的 AI 恢復了，已切回 ${d.name}。`);
+    ? `🔁 主要 AI 暫時無法使用（${d.why || "連不上"}），改由 ${d.name} 回答。`
+    : `✅ 主要 AI 已恢復，切回 ${d.name}。`);
   refreshBadges();
 });
 
@@ -2257,7 +2259,7 @@ function openSettings() {
   $("cfgScheduler").value = s.scheduler || "fsrs";
   $("cfgRetention").value = String(s.retention || 0.9);
   $("cfgRetention").disabled = $("cfgScheduler").value !== "fsrs";
-  $("cacheInfo").textContent = `目前已快取 ${Store.cacheSize()} 個單字的查詢結果，這些字不會再呼叫 API。`;
+  $("cacheInfo").textContent = `已快取 ${Store.cacheSize()} 個單字的查詢結果，再查不用 API。`;
   $("cfgGeminiKey").value = "";
   $("cfgGroqKey").value = "";
   setKeyBadge($("stGemini"), !!s.geminiKey);
@@ -2358,7 +2360,7 @@ $("btnSaveSettings").addEventListener("click", () => {
   Store.save(true);
   if (schedChanged) {
     const n = V.rescheduleAll();
-    if (n) setTimeout(() => toast(`已依新的排程重新安排 ${n} 個字的複習日`), 2700);
+    if (n) setTimeout(() => toast(`已重排 ${n} 個字的複習日`), 2700);
     refreshPills();
   }
 
@@ -2393,7 +2395,7 @@ async function fetchModelsInto(provider) {
     const models = await LLM.listModels(provider);
     pick[provider + "Chat"].addFetched(models);
     pick[provider + "Tool"].addFetched(models);
-    note.textContent = `你的帳號可以用 ${models.length} 個模型；清單外的已經加到下拉選單最下面。`;
+    note.textContent = `你的帳號可用 ${models.length} 個模型，清單外的已加到選單最下方。`;
   } catch (e) {
     note.textContent = "查詢失敗：" + e.message;
   } finally {
@@ -2430,7 +2432,7 @@ $("btnTestKey").addEventListener("click", async () => {
     const t0 = performance.now();
     await LLM.complete("Reply with the single word OK.", { maxTokens: 10, kind: "chat", noFailover: true });
     const ms = Math.round(performance.now() - t0);
-    note.textContent = `✅ 可以用！回應時間 ${ms} 毫秒。記得按「儲存」。`;
+    note.textContent = `✅ 連線成功，回應 ${ms} 毫秒。記得按「儲存」。`;
   } catch (e) {
     note.textContent = "❌ " + e.message;
   } finally {
@@ -2470,7 +2472,7 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
   setState("idle");
 
   if (!isSupported()) {
-    sysMsg("這個瀏覽器不支援語音辨識，請改用 Chrome 或 Edge。下方輸入框仍可打字練習。");
+    sysMsg("這個瀏覽器不支援語音辨識，請改用 Chrome 或 Edge，或在下方打字練習。");
   }
 
   const s = Store.settings();
@@ -2506,6 +2508,6 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
 
   TTS.loadVoices();
   window.addEventListener("store:error", () => {
-    toast("資料存不進去（瀏覽器儲存空間不足）。請到「紀錄」匯出備份，再清理舊資料。", 6000);
+    toast("瀏覽器儲存空間不足，資料無法儲存。請到「紀錄」匯出備份，再清理舊資料。", 6000);
   });
 })();
