@@ -140,6 +140,11 @@
 
       <div id="insights"></div>
 
+      <div class="card" data-sec="overview" id="newsStatsCard" hidden>
+        <h3>📰 每日新聞</h3>
+        <div id="newsStatsBody"></div>
+      </div>
+
       <div class="card" data-sec="overview">
         <h3>練習熱力圖</h3>
         <div id="heatmap"></div>
@@ -339,6 +344,12 @@
       AI 用過、我沒跟著用的字，提前到明天複習
     </label>
     <div class="note" style="margin-left:26px">不耗 API 額度。</div>
+
+    <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-top:8px">
+      <input type="checkbox" id="cfgAutoFill" style="width:auto">
+      每天自動補齊例句與詞性變化
+    </label>
+    <div class="note" style="margin-left:26px">打開網站時在背景補，每天最多 36 個字（3 次 AI 請求）。</div>
 
     <label class="field" style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-top:8px">
       <input type="checkbox" id="cfgAnalyzeGaps" style="width:auto">

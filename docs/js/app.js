@@ -18,7 +18,7 @@ import { mountPicker, info as modelInfo, CATALOG } from "./models.js";
 import { initPacks, openPacks } from "./packs.js";
 import * as Usage from "./usage.js";
 import * as Sync from "./sync.js";
-import { initNews, renderNews, hasUnread as newsUnread } from "./news.js";
+import { initNews, renderNews, hasUnread as newsUnread, leaveNews, newsStats } from "./news.js";
 import { initOnboarding, needsOnboarding, openOnboarding, finishOnboarding, GOALS } from "./onboarding.js";
 import { initWhatsNew, maybeShowWhatsNew, openWhatsNew, APP_VERSION } from "./whatsnew.js";
 
@@ -79,7 +79,7 @@ function showTab(name) {
   if (name === "vocab") renderVocab();
   if (name === "review") renderReviewHome();
   if (name === "stats") renderStats();
-  if (name === "news") renderNews();
+  if (name === "news") renderNews(); else leaveNews();
 }
 
 document.querySelectorAll("nav.tabs button").forEach(b => {
@@ -129,6 +129,7 @@ const C = {
   interimNode: null,
   secondsTimer: null,
   turnCount: 0,        // 這場對話進行到第幾輪
+  topic: null,         // 聊新聞時的話題 {title, text, words}；結束對話就清掉
   lastVocabTurn: -99,  // 上次注入單字是第幾輪
 };
 
@@ -368,13 +369,14 @@ async function sendTurn(userText) {
   C.turnCount++;
   const s = Store.settings();
   const inject = shouldInjectVocab();
-  const dueWords = inject ? V.wordsForChat(8) : [];
+  // 聊新聞時，今天的生字優先
+  const dueWords = inject ? [...new Set([...(C.topic ? C.topic.words : []), ...V.wordsForChat(8)])].slice(0, 10) : [];
   // 只有在最高的兩檔頻率，才額外要求 AI 問「會誘使你用到那個字」的問題
   const invite = inject && Number(s.vocabFrequency) >= 0.75;
 
   let full = "", pending = "";
   try {
-    full = await LLM.chatStream(C.history, { dueWords, invite, signal: ctrl.signal }, (delta) => {
+    full = await LLM.chatStream(C.history, { dueWords, invite, topic: C.topic, signal: ctrl.signal }, (delta) => {
       pending += delta;
       if (!C.aiNode) C.aiNode = addMsg("ai", "");
       renderClickableWords(C.aiNode.body, (C.aiNode._raw = (C.aiNode._raw || "") + delta));
@@ -459,6 +461,7 @@ function stopChat() {
   clearInterim();
   if (C.secondsTimer) { clearInterval(C.secondsTimer); C.secondsTimer = null; }
   const done = Stats.endSession();
+  C.topic = null;
   $("btnStart").disabled = false;
   $("btnStop").disabled = true;
   setState("idle");
@@ -1231,6 +1234,39 @@ async function fillDetails() {
     renderVocab();
   }
 }
+/*
+ * 每天自動補齊：打開網站一陣子後在背景補，一天一次、最多 AUTO_FILL_MAX 個字（新加的字優先）。
+ * 設定裡可以關。失敗就安靜地等下次打開再試，不跳錯誤。
+ */
+const AUTO_FILL_MAX = 36;
+async function autoFillDaily() {
+  const s = Store.settings();
+  if (s.autoFill === false || fill.on || !navigator.onLine) return;
+  if (!(s.provider === "groq" ? s.groqKey : s.geminiKey)) return;
+  const today = Store.todayKey();
+  let last = "";
+  try { last = localStorage.getItem("englishtalk.autoFillDay") || ""; } catch (e) {}
+  if (last === today) return;
+  const todo = V.missingDetails().sort((a, b) => (b.created || 0) - (a.created || 0)).slice(0, AUTO_FILL_MAX);
+  const done = () => { try { localStorage.setItem("englishtalk.autoFillDay", today); } catch (e) {} };
+  if (!todo.length) { done(); return; }
+  Object.assign(fill, { on: true, stop: false, done: 0, total: todo.length });
+  let filled = 0;
+  try {
+    for (let i = 0; i < todo.length && !fill.stop; i += V.DETAIL_BATCH) {
+      filled += await V.fetchDetails(todo.slice(i, i + V.DETAIL_BATCH));
+      fill.done = Math.min(i + V.DETAIL_BATCH, todo.length);
+    }
+    done();
+    if (filled) toast(`已自動補齊 ${filled} 個字的例句與詞性變化`);
+  } catch (e) {
+    console.warn("[autoFill] 這次沒補完，下次打開再試", e);
+  } finally {
+    fill.on = false;
+    if ($("page-vocab").classList.contains("active")) renderVocab();
+  }
+}
+
 $("btnCloseWord").addEventListener("click", () => dlgWord.close());
 
 /** 把選中的候選填進編輯器：只補空白欄位，你自己打的不動 */
@@ -1828,6 +1864,16 @@ $("statsTabs").querySelectorAll("button").forEach(b => b.addEventListener("click
 function renderStats() {
   renderStorage();
   renderSync();
+  // 每日新聞的閱讀統計（讀過才顯示）
+  const ns = newsStats();
+  $("newsStatsCard").hidden = !ns.total;
+  if (ns.total) $("newsStatsBody").innerHTML = `
+    <div class="tiles compact">
+      <div class="tile"><div class="t-label">連續閱讀</div><div class="t-value">${ns.streak}<span style="font-size:13px"> 天</span></div></div>
+      <div class="tile"><div class="t-label">讀過</div><div class="t-value">${ns.total}<span style="font-size:13px"> 篇</span></div></div>
+      <div class="tile"><div class="t-label">測驗答對率</div><div class="t-value">${ns.rate == null ? "—" : Math.round(ns.rate * 100) + "%"}</div></div>
+      <div class="tile"><div class="t-label">做過測驗</div><div class="t-value">${ns.quizzes}<span style="font-size:13px"> 次</span></div></div>
+    </div>`;
   renderUsage();
   const t = Stats.totals();
   const w = Stats.thisWeek();
@@ -2256,6 +2302,7 @@ function openSettings() {
   $("cfgSilence").value = String(s.silenceMs);
   $("cfgVocabFreq").value = String(s.vocabFrequency);
   $("cfgPromoteHeard").checked = !!s.promoteHeard;
+  $("cfgAutoFill").checked = s.autoFill !== false;
   $("cfgAnalyzeGaps").checked = !!s.analyzeGaps;
   $("cfgGrammar").value = s.grammarCheck || "live";
   $("cfgScheduler").value = s.scheduler || "fsrs";
@@ -2353,6 +2400,7 @@ $("btnSaveSettings").addEventListener("click", () => {
   s.silenceMs = Number($("cfgSilence").value);
   s.vocabFrequency = Number($("cfgVocabFreq").value);
   s.promoteHeard = $("cfgPromoteHeard").checked;
+  s.autoFill = $("cfgAutoFill").checked;
   s.analyzeGaps = $("cfgAnalyzeGaps").checked;
   s.grammarCheck = $("cfgGrammar").value;
   const schedChanged = s.scheduler !== $("cfgScheduler").value
@@ -2505,8 +2553,25 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
     root: $("newsRoot"),
     toast,
     onVocabChanged: () => { refreshPills(); refreshNewsPill(); },
+    // 讀完跟 AI 聊這則新聞：開一場新的對話
+    chatAbout: (topic) => {
+      if (C.running) { toast("請先結束目前的對話"); showTab("chat"); return; }
+      C.history = [];
+      Grammar.reset();
+      chatInner.innerHTML = "";
+      C.topic = topic;
+      showTab("chat");
+      sysMsg(`聊今天的新聞：${topic.title}`);
+      startChat().then(() => {
+        const sess = Stats.currentSession();
+        if (sess && !sess.scenario) sess.scenario = "news:" + topic.title;
+      });
+    },
   });
   refreshNewsPill();
+
+  // 打開 8 秒後（畫面穩定、使用者還沒開始講話時）背景補齊
+  setTimeout(() => { if (document.visibilityState === "visible") autoFillDaily(); }, 8000);
 
   // 從桌面捷徑打開（?tab=review 之類）
   const tab = new URLSearchParams(location.search).get("tab");

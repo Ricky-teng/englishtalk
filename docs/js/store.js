@@ -43,6 +43,7 @@ function emptyState() {
       // 但「這一輪根本沒拿到單字」是確定的。
       vocabFrequency: 0.5,
       autoLookup: true,              // 點單字自動查詢
+      autoFill: true,                // 每天自動補齊例句、音標、詞性變化（背景進行，每天最多 36 個字）
       reviewMode: "flip",            // flip = 翻卡（預設，搭捷運也能用），speak = 用說的複習
       promoteHeard: true,            // AI 用了但你沒接的字，自動提前複習
       analyzeGaps: true,             // 對話結束後挖出「想講但講不出來」的字

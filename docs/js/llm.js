@@ -329,7 +329,7 @@ async function thinkingRejected(model, resp) {
 
 /* ---------- 系統提示 ---------- */
 
-function systemPrompt({ level, persona, scenario, dueWords, invite }) {
+function systemPrompt({ level, persona, scenario, topic, dueWords, invite }) {
   let p = `You are ${persona}. You are having a REAL-TIME SPOKEN conversation with a language \
 learner whose English level is roughly ${level} (CEFR). Your output is read aloud by a \
 text-to-speech engine, so it must sound like natural speech.
@@ -348,6 +348,14 @@ flowing. Never comment on their grammar, never correct them, never mention that 
 
   if (scenario) {
     p += `\n\nRole-play setting: ${scenario} Stay in that role for the whole conversation.`;
+  }
+  if (topic) {
+    // 聊今天的新聞：只能用文章裡的事實，不知道的就說不知道，不要自己補細節
+    p += `\n\nTOPIC: The learner has just read this news article and wants to talk about it.
+Title: ${topic.title}
+Article:
+"""${topic.text}"""
+Open by asking what caught their attention or what they think about it. Keep the talk about this story and related everyday experiences or opinions. Only state facts that are in the article; if they ask about something the article doesn't say, say you're not sure rather than guessing.`;
   }
   if (dueWords && dueWords.length) {
     // 注意這裡的語氣：是「剛好合適才用」，不是「想辦法用進去」。
@@ -384,6 +392,7 @@ export async function chatStream(messages, opts, onDelta) {
     level: s.level,
     persona: s.persona,
     scenario: opts.scenario,
+    topic: opts.topic,
     dueWords: opts.dueWords,
     invite: opts.invite,
   });

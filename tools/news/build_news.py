@@ -237,12 +237,21 @@ def has_word(text, w):
     return re.search(r"(?<![A-Za-z])" + re.escape(w) + r"(?![A-Za-z])", text, flags=re.I) is not None
 
 
-def sentence_with(text, w):
-    """文章裡含這個字的第一句（加進單字本時當例句；原文照抄）"""
-    for s in re.split(r"(?<=[.!?])\s+(?=[A-Z\"“])", text):
-        if has_word(s, w):
-            return s.strip()
-    return ""
+def uses_word(sentence, w, lemma):
+    """例句有沒有用到這個字（原形、文中的形態，或常見的字尾變化）"""
+    if has_word(sentence, w) or has_word(sentence, lemma):
+        return True
+    stem = re.escape(lemma.lower().rstrip("e")[:max(3, len(lemma) - 2)])
+    return re.search(r"(?<![A-Za-z])" + stem + r"[a-z]{0,4}(?![A-Za-z])", sentence.lower()) is not None
+
+
+def own_example(x, text, w, lemma):
+    """AI 另外造的例句：要用到這個字、不能是文章裡的句子；不合格就留空（之後網站的自動補齊會補）"""
+    ex = norm_space(str(x.get("ex", "")))
+    ex_zh = norm_space(str(x.get("exZh", "")))
+    if not ex or not uses_word(ex, w, lemma) or ex in norm_space(text) or len(ex.split()) > 25:
+        return "", ""
+    return ex, ex_zh
 
 
 VOCAB_PROMPT = """You are preparing a reading lesson for Taiwanese learners of English.
@@ -257,8 +266,11 @@ Rules:
 - "lemma": dictionary form (e.g. "negotiated" -> "negotiate")
 - "pos": n. v. adj. adv. prep. conj. or phr.
 - "zh": short Traditional Chinese meaning IN THIS CONTEXT (Taiwan usage, never Simplified), 12 characters or fewer
+- "ex": a NEW, simple, everyday example sentence (8–16 words) using the word in the same meaning.
+  It must NOT come from or be about this news story (no names, places or events from the text), and must contain the word or one of its forms.
+- "exZh": natural Traditional Chinese translation of "ex"
 - Higher levels get harder words; levels may share a few words.
-Return JSON: {{"A2":[{{"w":"","lemma":"","pos":"","zh":""}}],"B1":[...],"B2":[...],"C1":[...]}}"""
+Return JSON: {{"A2":[{{"w":"","lemma":"","pos":"","zh":"","ex":"","exZh":""}}],"B1":[...],"B2":[...],"C1":[...]}}"""
 
 QUIZ_PROMPT = """Write a 3-question multiple-choice reading test for this news text (B1–B2 learners):
 <<<
@@ -293,8 +305,10 @@ def make_vocab(text, key, model):
             if not w or w.lower() in seen or not has_word(text, w):
                 continue   # AI 挑了文章裡沒有的字：丟掉
             seen.add(w.lower())
-            items.append({"w": w, "lemma": str(x.get("lemma") or w).strip(), "pos": str(x.get("pos", "")).strip(),
-                          "zh": str(x.get("zh", "")).strip()[:16], "ex": sentence_with(text, w)})
+            lemma = str(x.get("lemma") or w).strip()
+            ex, ex_zh = own_example(x, text, w, lemma)
+            items.append({"w": w, "lemma": lemma, "pos": str(x.get("pos", "")).strip(),
+                          "zh": str(x.get("zh", "")).strip()[:16], "ex": ex, "exZh": ex_zh})
         out[lv] = items[:6]
     return out
 
