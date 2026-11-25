@@ -1,0 +1,216 @@
+{
+ "title": "Ukhnaagiin Khürelsükh",
+ "region": "world",
+ "paragraphs": [
+  "Ukhnaagiin Khürelsükh (born 14 June 1968) is a Mongolian politician who served as the country's president from 2021 to 2026. He previously served as the prime minister from 2017 to 2021 and was elected to the Parliament of Mongolia four times – in 2000, 2004, 2012, and 2020.",
+  "Before his premiership, Khürelsükh served in the Mongolian government as Minister for Emergency Situations from 2004 to 2006, Minister for Professional Inspection from 2006 to 2008, and two stints as deputy prime minister between 2014 and 2017. He was the secretary-general of the Mongolian People's Party from 2008 to 2012 and its chairman from 2017 to 2021.",
+  "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026. He was succeeded by Sandagiin Byambatsogt, the Chairman of the State Great Khural, as acting officeholder until a new president is elected within four months.",
+  "Cite error: There are <ref group=lower-alpha> tags or {{efn}} templates on this page, but the references will not show without a {{reflist|group=lower-alpha}} template or {{notelist}} template (see the help page)."
+ ],
+ "words": 190,
+ "source": {
+  "name": "Wikipedia",
+  "title": "Ukhnaagiin Khürelsükh",
+  "revid": 1387580134,
+  "revisedAt": "2026-11-24T17:17:47Z",
+  "url": "https://en.wikipedia.org/w/index.php?title=Ukhnaagiin_Kh%C3%BCrels%C3%BCkh&oldid=1387580134",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+ },
+ "vocab": {
+  "A2": [
+   {
+    "w": "served",
+    "lemma": "serve",
+    "pos": "v.",
+    "zh": "任職",
+    "ex": "Ukhnaagiin Khürelsükh (born 14 June 1968) is a Mongolian politician who served as the country's president from 2021 to 2026."
+   },
+   {
+    "w": "government",
+    "lemma": "government",
+    "pos": "n.",
+    "zh": "政府",
+    "ex": "Before his premiership, Khürelsükh served in the Mongolian government as Minister for Emergency Situations from 2004 to 2006, Minister for Professional Inspection from 2006 to 2008, and two stints as deputy prime minister between 2014 and 2017."
+   },
+   {
+    "w": "duties",
+    "lemma": "duty",
+    "pos": "n.",
+    "zh": "職責",
+    "ex": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026."
+   },
+   {
+    "w": "announced",
+    "lemma": "announce",
+    "pos": "v.",
+    "zh": "宣布",
+    "ex": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026."
+   },
+   {
+    "w": "defend",
+    "lemma": "defend",
+    "pos": "v.",
+    "zh": "捍衛",
+    "ex": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026."
+   }
+  ],
+  "B1": [
+   {
+    "w": "politician",
+    "lemma": "politician",
+    "pos": "n.",
+    "zh": "政治人物",
+    "ex": "Ukhnaagiin Khürelsükh (born 14 June 1968) is a Mongolian politician who served as the country's president from 2021 to 2026."
+   },
+   {
+    "w": "previously",
+    "lemma": "previously",
+    "pos": "adv.",
+    "zh": "先前",
+    "ex": "He previously served as the prime minister from 2017 to 2021 and was elected to the Parliament of Mongolia four times – in 2000, 2004, 2012, and 2020."
+   },
+   {
+    "w": "reputation",
+    "lemma": "reputation",
+    "pos": "n.",
+    "zh": "聲譽",
+    "ex": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026."
+   },
+   {
+    "w": "succeeded",
+    "lemma": "succeed",
+    "pos": "v.",
+    "zh": "繼任",
+    "ex": "He was succeeded by Sandagiin Byambatsogt, the Chairman of the State Great Khural, as acting officeholder until a new president is elected within four months."
+   },
+   {
+    "w": "deputy",
+    "lemma": "deputy",
+    "pos": "adj.",
+    "zh": "副的",
+    "ex": "Before his premiership, Khürelsükh served in the Mongolian government as Minister for Emergency Situations from 2004 to 2006, Minister for Professional Inspection from 2006 to 2008, and two stints as deputy prime minister between 2014 and 2017."
+   }
+  ],
+  "B2": [
+   {
+    "w": "resignation",
+    "lemma": "resignation",
+    "pos": "n.",
+    "zh": "辭職",
+    "ex": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026."
+   },
+   {
+    "w": "corruption",
+    "lemma": "corruption",
+    "pos": "n.",
+    "zh": "貪腐",
+    "ex": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026."
+   },
+   {
+    "w": "allegations",
+    "lemma": "allegation",
+    "pos": "n.",
+    "zh": "指控",
+    "ex": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026."
+   },
+   {
+    "w": "acting",
+    "lemma": "acting",
+    "pos": "adj.",
+    "zh": "代理的",
+    "ex": "He was succeeded by Sandagiin Byambatsogt, the Chairman of the State Great Khural, as acting officeholder until a new president is elected within four months."
+   },
+   {
+    "w": "relieved",
+    "lemma": "relieve",
+    "pos": "v.",
+    "zh": "免除",
+    "ex": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026."
+   }
+  ],
+  "C1": [
+   {
+    "w": "premiership",
+    "lemma": "premiership",
+    "pos": "n.",
+    "zh": "總理職位",
+    "ex": "Before his premiership, Khürelsükh served in the Mongolian government as Minister for Emergency Situations from 2004 to 2006, Minister for Professional Inspection from 2006 to 2008, and two stints as deputy prime minister between 2014 and 2017."
+   },
+   {
+    "w": "stints",
+    "lemma": "stint",
+    "pos": "n.",
+    "zh": "任期",
+    "ex": "Before his premiership, Khürelsükh served in the Mongolian government as Minister for Emergency Situations from 2004 to 2006, Minister for Professional Inspection from 2006 to 2008, and two stints as deputy prime minister between 2014 and 2017."
+   },
+   {
+    "w": "refute",
+    "lemma": "refute",
+    "pos": "v.",
+    "zh": "駁斥",
+    "ex": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026."
+   },
+   {
+    "w": "officeholder",
+    "lemma": "officeholder",
+    "pos": "n.",
+    "zh": "公職人員",
+    "ex": "He was succeeded by Sandagiin Byambatsogt, the Chairman of the State Great Khural, as acting officeholder until a new president is elected within four months."
+   },
+   {
+    "w": "secretary-general",
+    "lemma": "secretary-general",
+    "pos": "n.",
+    "zh": "秘書長",
+    "ex": "He was the secretary-general of the Mongolian People's Party from 2008 to 2012 and its chairman from 2017 to 2021."
+   }
+  ]
+ },
+ "questions": [
+  {
+   "type": "main",
+   "q": "What is the main focus of the text?",
+   "options": [
+    "To present an overview of Ukhnaagiin Khürelsükh's political career and his resignation.",
+    "To explain the election procedures of the Parliament of Mongolia.",
+    "To discuss the history and rules of the Mongolian People's Party.",
+    "To report on a major corruption investigation involving several government ministers."
+   ],
+   "answer": 0,
+   "evidence": "Ukhnaagiin Khürelsükh (born 14 June 1968) is a Mongolian politician who served as the country's president from 2021 to 2026.",
+   "why": "文章主要介紹呼日勒蘇赫的政治生涯履歷，並說明他最終辭去總統職務的事件。"
+  },
+  {
+   "type": "detail",
+   "q": "Who took over as the acting president after Khürelsükh resigned?",
+   "options": [
+    "The former Minister for Emergency Situations.",
+    "The Secretary-General of the Mongolian People's Party.",
+    "Sandagiin Byambatsogt, who held the post of Chairman of the State Great Khural.",
+    "An officially elected prime minister from the 2020 parliament."
+   ],
+   "answer": 2,
+   "evidence": "He was succeeded by Sandagiin Byambatsogt, the Chairman of the State Great Khural, as acting officeholder until a new president is elected within four months.",
+   "why": "根據文中細節，呼日勒蘇赫卸任後，由國家大呼拉爾主席揚巴特蘇格代理總統職務。"
+  },
+  {
+   "type": "inference",
+   "q": "According to the text, why did Khürelsükh decide to resign in November 2026?",
+   "options": [
+    "He wanted to prepare for an upcoming parliamentary election.",
+    "He intended to reject claims of wrongdoing and protect his honor.",
+    "He reached the end of his mandatory legal term limit.",
+    "He was appointed to serve as the chairman of a new party."
+   ],
+   "answer": 1,
+   "evidence": "On 19 November 2026, President Khürelsükh was relieved of his duties, two days after he announced his resignation to refute corruption allegations and \"defend his reputation\" on 17 November 2026.",
+   "why": "文中提及他辭職是為了駁斥貪腐指控並捍衛名譽，意即否定不實指控以維護自身聲譽。"
+  }
+ ],
+ "date": "2026-11-25",
+ "generatedBy": {
+  "vocabAndQuiz": "gemini-3.5-flash",
+  "text": "original Wikipedia text, unchanged"
+ }
+}
