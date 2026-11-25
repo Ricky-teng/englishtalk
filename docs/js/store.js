@@ -61,6 +61,7 @@ function emptyState() {
     coach: {},     // AI 週報快取 { "2026-W41": "…" }，同一週只呼叫一次
     sessions: [],  // 對話紀錄
     daily: {},     // { "YYYY-MM-DD": {seconds, turns, userWords, reviews} }
+    news: {},      // 每日新聞的閱讀紀錄 { "YYYY-MM-DD": {read, answers, score} }
   };
 }
 

@@ -22,6 +22,7 @@
     <button role="tab" data-tab="chat" aria-selected="true">對話</button>
     <button role="tab" data-tab="vocab" aria-selected="false">單字本 <span class="pill zero" id="pillVocab">0</span></button>
     <button role="tab" data-tab="review" aria-selected="false">複習 <span class="pill zero" id="pillDue">0</span></button>
+    <button role="tab" data-tab="news" aria-selected="false">新聞 <span class="pill" id="pillNews" hidden>新</span></button>
     <button role="tab" data-tab="stats" aria-selected="false">紀錄</button>
   </nav>
   <div class="spacer"></div>
@@ -55,6 +56,13 @@
         <div id="hint">建議戴耳機。AI 說話時也能插話。點 AI 訊息裡的單字可以查詢、加入單字本。</div>
       </div>
     </footer>
+  </section>
+
+  <!-- ============================ 每日新聞 ============================ -->
+  <section class="page" id="page-news">
+    <div class="scroll"><div class="wrap">
+      <div id="newsRoot"></div>
+    </div></div>
   </section>
 
   <!-- ============================ 單字本 ============================ -->

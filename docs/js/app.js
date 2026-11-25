@@ -18,6 +18,7 @@ import { mountPicker, info as modelInfo, CATALOG } from "./models.js";
 import { initPacks, openPacks } from "./packs.js";
 import * as Usage from "./usage.js";
 import * as Sync from "./sync.js";
+import { initNews, renderNews, hasUnread as newsUnread } from "./news.js";
 import { initOnboarding, needsOnboarding, openOnboarding, finishOnboarding, GOALS } from "./onboarding.js";
 import { initWhatsNew, maybeShowWhatsNew, openWhatsNew, APP_VERSION } from "./whatsnew.js";
 
@@ -78,6 +79,7 @@ function showTab(name) {
   if (name === "vocab") renderVocab();
   if (name === "review") renderReviewHome();
   if (name === "stats") renderStats();
+  if (name === "news") renderNews();
 }
 
 document.querySelectorAll("nav.tabs button").forEach(b => {
@@ -2496,6 +2498,15 @@ $("btnFetchGroq").addEventListener("click", () => fetchModelsInto("groq"));
   });
   const shown = maybeShowWhatsNew(returning);
   if (!shown && needsOnboarding()) setTimeout(() => openOnboarding(0), 300);
+
+  // 每日新聞：有今天還沒讀的就在分頁上標「新」
+  const refreshNewsPill = () => newsUnread().then(u => { $("pillNews").hidden = !u; });
+  initNews({
+    root: $("newsRoot"),
+    toast,
+    onVocabChanged: () => { refreshPills(); refreshNewsPill(); },
+  });
+  refreshNewsPill();
 
   // 從桌面捷徑打開（?tab=review 之類）
   const tab = new URLSearchParams(location.search).get("tab");

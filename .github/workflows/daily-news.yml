@@ -1,0 +1,51 @@
+# 每天台灣時間早上 6 點產生一篇「每日新聞」，存到 docs/news/ 並推回 main。
+# 需要在 repo 的 Settings → Secrets and variables → Actions 新增 GEMINI_API_KEY。
+# 也可以在 Actions 頁面手動按「Run workflow」立刻產生一篇。
+name: daily-news
+
+on:
+  schedule:
+    - cron: "7 22 * * *"        # UTC 22:07 = 台灣 06:07（避開整點排隊）
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "今天已經有了也重做"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: daily-news
+  cancel-in-progress: false
+
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 產生今天的新聞
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: python tools/news/build_news.py ${{ inputs.force && '--force' || '' }}
+      - name: 推回 main
+        run: |
+          git config user.name "daily-news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/news
+          if git diff --cached --quiet; then echo "沒有新檔案"; exit 0; fi
+          git commit -m "news: $(TZ=Asia/Taipei date +%F)"
+          git pull --rebase origin main
+          git push origin HEAD:main
+      - name: 請 GitHub Pages 重新部署（機器人推的 commit 有時不會自動觸發）
+        if: success()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || true

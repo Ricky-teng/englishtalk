@@ -1045,3 +1045,36 @@ dialog.packs .m-body { overflow-x: hidden; }
 .kb-k.wide { max-width: 80px; flex-grow: 1.6; font-size: 15px; }
 .kb-k.space { max-width: none; flex-grow: 4; font-size: 14px; color: var(--muted); }
 .kb-k.go { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* ---------- 每日新聞 ---------- */
+.nw-head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+.nw-date { font-weight: 600; color: var(--muted); font-size: 13px; }
+.nw-title { margin: 8px 0 10px; font-size: 22px; line-height: 1.3; }
+.nw-tools { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.nw-lv { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--muted); }
+.nw-lv select { width: auto; padding: 4px 8px; }
+.nw-warn { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--warn); color: var(--warn); font-size: 13px; margin-bottom: 10px; }
+.nw-body { font-size: 17px; line-height: 1.75; }
+.nw-body p { margin: 0 0 14px; }
+.nw-body.simple { border-left: 3px solid var(--warn); padding-left: 12px; }
+.nw-body mark.nw { background: color-mix(in srgb, var(--accent) 18%, transparent); color: inherit; border-radius: 4px; padding: 0 2px; }
+.nw-src { font-size: 12.5px; color: var(--muted); margin: 4px 0 16px; }
+.nw-sec-head { display: flex; align-items: center; justify-content: space-between; }
+.nw-sec-head h3 { margin: 0; }
+.nw-word { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 0; border-top: 1px solid var(--line); }
+.nw-word:first-of-type { border-top: 0; }
+.nw-quiz .nq { padding: 10px 0 14px; border-top: 1px solid var(--line); }
+.nw-quiz .nq:first-of-type { border-top: 0; }
+.nq-q { margin: 0 0 8px; font-weight: 500; }
+.nq-opts { display: grid; gap: 6px; }
+.nq-why { margin-top: 8px; font-size: 14px; }
+.nq.ok .nq-why { color: var(--good); }
+.nq.bad .nq-why { color: var(--danger); }
+.nq-why blockquote { margin: 6px 0 0; padding: 6px 10px; border-left: 3px solid var(--line); color: var(--text-2); font-size: 13.5px; }
+.nq-score { font-weight: 700; margin: 10px 0 0; }
+.nw-past summary { cursor: pointer; font-weight: 600; }
+.nw-list { display: grid; gap: 4px; margin-top: 10px; }
+.nw-item { all: unset; box-sizing: border-box; display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center;
+  padding: 8px 10px; border-radius: 8px; cursor: pointer; font-size: 14px; }
+.nw-item:hover, .nw-item.on { background: var(--surface-2); }
+.nw-item .nw-t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
