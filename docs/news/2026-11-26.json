@@ -1,0 +1,227 @@
+{
+ "title": "2025 Africa Cup of Nations final",
+ "region": "world",
+ "paragraphs": [
+  "The 2025 Africa Cup of Nations final was a football match played on 18 January 2026 at the Prince Moulay Abdellah Stadium in Rabat, Morocco. It determined the winners of the 2025 Africa Cup of Nations (AFCON), the 35th edition of the biennial African tournament organised by the Confederation of African Football (CAF), and was contested between Senegal and hosts Morocco.",
+  "The match was marred by controversies, most notably Senegal's decision to walk off the field in protest at a disallowed goal and detrimental VAR decision in stoppage time. Senegal later returned to the pitch, and played out the match, winning 1–0 after extra time. The walk-off and subsequent fan violence were described as \"unacceptable\" by FIFA president Gianni Infantino, and drew legal action from the Royal Moroccan Football Federation as well as disciplinary investigations by the CAF.",
+  "On 17 March 2026, the CAF Appeal Board ruled that, when Senegal left the field and repeatedly refused to return from their dressing room, they had forfeited the game; per the rules for forfeited games, the match was deemed a 3–0 win for Morocco. The following day, the Senegalese Football Federation announced it would appeal the decision to the Court of Arbitration for Sport. On 24 November 2026, CAS ruled in favour of Senegal, reinstating them as the winners of the tournament."
+ ],
+ "words": 220,
+ "source": {
+  "name": "Wikipedia",
+  "title": "2025 Africa Cup of Nations final",
+  "revid": 1387622688,
+  "revisedAt": "2026-11-24T21:44:08Z",
+  "url": "https://en.wikipedia.org/w/index.php?title=2025_Africa_Cup_of_Nations_final&oldid=1387622688",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+ },
+ "vocab": {
+  "A2": [
+   {
+    "w": "determined",
+    "lemma": "determine",
+    "pos": "v.",
+    "zh": "決定；確定",
+    "ex": "The weather will determine whether we can go on a picnic tomorrow.",
+    "exZh": "天氣將決定我們明天是否能去野餐。"
+   },
+   {
+    "w": "decision",
+    "lemma": "decision",
+    "pos": "n.",
+    "zh": "決定",
+    "ex": "Making a big decision about your future can be very difficult.",
+    "exZh": "對自己的未來做出重大決定可能會非常困難。"
+   },
+   {
+    "w": "refused",
+    "lemma": "refuse",
+    "pos": "v.",
+    "zh": "拒絕",
+    "ex": "The little boy refused to eat his vegetables during dinner.",
+    "exZh": "那個小男孩在晚餐時拒絕吃蔬菜。"
+   },
+   {
+    "w": "announced",
+    "lemma": "announce",
+    "pos": "v.",
+    "zh": "宣布",
+    "ex": "The teacher announced the date of the final exam this morning.",
+    "exZh": "老師今天早上宣布了期末考的日期。"
+   },
+   {
+    "w": "winners",
+    "lemma": "winner",
+    "pos": "n.",
+    "zh": "贏家；獲勝者",
+    "ex": "All the winners received a prize at the end of the game.",
+    "exZh": "所有獲勝者在遊戲結束時都收到了一份獎品。"
+   }
+  ],
+  "B1": [
+   {
+    "w": "biennial",
+    "lemma": "biennial",
+    "pos": "adj.",
+    "zh": "每兩年一次的",
+    "ex": "This city hosts a biennial art festival that attracts many tourists.",
+    "exZh": "這座城市舉辦每兩年一次的藝術節，吸引許多遊客。"
+   },
+   {
+    "w": "controversies",
+    "lemma": "controversy",
+    "pos": "n.",
+    "zh": "爭議",
+    "ex": "The new policy caused a lot of controversies among local residents.",
+    "exZh": "這項新政策在當地居民之間引起了許多爭議。"
+   },
+   {
+    "w": "detrimental",
+    "lemma": "detrimental",
+    "pos": "adj.",
+    "zh": "不利的；有害的",
+    "ex": "Staying up late every night is detrimental to your health.",
+    "exZh": "每天熬夜對你的健康是有害的。"
+   },
+   {
+    "w": "forfeited",
+    "lemma": "forfeit",
+    "pos": "v.",
+    "zh": "（因違規而）放棄",
+    "ex": "The team forfeited the game because they did not have enough players.",
+    "exZh": "該隊因為球員人數不足而放棄了比賽。"
+   },
+   {
+    "w": "appeal",
+    "lemma": "appeal",
+    "pos": "v.",
+    "zh": "提出上訴；申訴",
+    "ex": "The driver decided to appeal against the heavy traffic fine.",
+    "exZh": "該司機決定對高額的交通罰款提出申訴。"
+   }
+  ],
+  "B2": [
+   {
+    "w": "marred",
+    "lemma": "mar",
+    "pos": "v.",
+    "zh": "毀損、毀壞",
+    "ex": "The terrible weather marred our long-awaited weekend beach trip completely.",
+    "exZh": "糟糕的天氣完全毀了我們期待已久的週末海灘之旅。"
+   },
+   {
+    "w": "protest",
+    "lemma": "protest",
+    "pos": "n.",
+    "zh": "抗議",
+    "ex": "The students held a peaceful protest against the sudden fee increase.",
+    "exZh": "學生們針對突然上調費用舉行了一場和平抗議。"
+   },
+   {
+    "w": "subsequent",
+    "lemma": "subsequent",
+    "pos": "adj.",
+    "zh": "隨後的、後來的",
+    "ex": "The initial mistake caused many subsequent problems for the entire project team.",
+    "exZh": "最初的錯誤給整個專案團隊帶來了許多隨後的問題。"
+   },
+   {
+    "w": "disciplinary",
+    "lemma": "disciplinary",
+    "pos": "adj.",
+    "zh": "懲戒的、紀律的",
+    "ex": "The manager took disciplinary action against the employee who was constantly late.",
+    "exZh": "經理對那名經常遲到的員工採取了懲戒行動。"
+   }
+  ],
+  "C1": [
+   {
+    "w": "biennial",
+    "lemma": "biennial",
+    "pos": "adj.",
+    "zh": "兩年一次的",
+    "ex": "The international art fair is a biennial festival held in this city.",
+    "exZh": "這項國際藝術博覽會是在這座城市舉辦的兩年一次的盛會。"
+   },
+   {
+    "w": "detrimental",
+    "lemma": "detrimental",
+    "pos": "adj.",
+    "zh": "有害的、不利的",
+    "ex": "Lack of sleep can have a detrimental effect on your physical health.",
+    "exZh": "睡眠不足可能會對你的身體健康產生有害的影響。"
+   },
+   {
+    "w": "forfeited",
+    "lemma": "forfeit",
+    "pos": "v.",
+    "zh": "（因違規）喪失",
+    "ex": "The team forfeited their chance to win by failing to show up.",
+    "exZh": "該隊因未能到場而喪失了獲勝的機會。"
+   },
+   {
+    "w": "deemed",
+    "lemma": "deem",
+    "pos": "v.",
+    "zh": "視為、認為",
+    "ex": "The old building was deemed unsafe and scheduled for immediate demolition.",
+    "exZh": "這棟老舊建築被視為不安全，並排定立即拆除。"
+   },
+   {
+    "w": "reinstating",
+    "lemma": "reinstate",
+    "pos": "v.",
+    "zh": "恢復（職務、身分）",
+    "ex": "The board decided on reinstating the manager after clearing all false charges.",
+    "exZh": "在澄清所有不實指控後，董事會決定恢復該經理的職務。"
+   }
+  ]
+ },
+ "questions": [
+  {
+   "type": "detail",
+   "q": "According to the passage, why did the Senegalese team briefly leave the pitch during the match?",
+   "options": [
+    "They were unhappy with a canceled goal and a bad VAR ruling.",
+    "The stadium lights suddenly went out during stoppage time.",
+    "They refused to play because of physical violence from the fans.",
+    "The CAF officials ordered both teams to take an early break."
+   ],
+   "answer": 0,
+   "evidence": "The match was marred by controversies, most notably Senegal's decision to walk off the field in protest at a disallowed goal and detrimental VAR decision in stoppage time.",
+   "why": "文本明確指出塞內加爾隊離場是為了抗議被判無效的進球和不利的VAR判決。"
+  },
+  {
+   "type": "inference",
+   "q": "What can be inferred from the final paragraph about the ultimate outcome of the tournament?",
+   "options": [
+    "Morocco remained the official winner of the 2025 AFCON trophy forever.",
+    "The Court of Arbitration for Sport overturned the CAF Appeal Board's ruling.",
+    "The tournament was completely canceled, and no champion was declared.",
+    "Senegal was banned from participating in future African football events."
+   ],
+   "answer": 1,
+   "evidence": "On 24 November 2026, CAS ruled in favour of Senegal, reinstating them as the winners of the tournament.",
+   "why": "CAF原本判定摩洛哥獲勝，但體育仲裁法院（CAS）最終做出了有利於塞內加爾的判決並恢復其冠軍身份，推翻了之前的決定。"
+  },
+  {
+   "type": "main",
+   "q": "What is the main topic of the text?",
+   "options": [
+    "The history and expansion of the Africa Cup of Nations tournament",
+    "Morocco's success in hosting international football events",
+    "The dramatic events and legal dispute surrounding the 2025 AFCON final",
+    "The introduction of new VAR rules by the Confederation of African Football"
+   ],
+   "answer": 2,
+   "evidence": "The 2025 Africa Cup of Nations final was a football match played on 18 January 2026 at the Prince Moulay Abdellah Stadium in Rabat, Morocco. It determined the winners of the 2025 Africa Cup of Nations (AFCON), the 35th edition of the biennial African tournament organised by the Confederation of African Football (CAF), and was contested between Senegal and hosts Morocco. The match was marred by controversies, most notably Senegal's decision to walk off the field in protest at a disallowed goal and detrimental VAR decision in stoppage time. Senegal later returned to the pitch, and played out the match, winning 1–0 after extra time. The walk-off and subsequent fan violence were described as \"unacceptable\" by FIFA president Gianni Infantino, and drew legal action from the Royal Moroccan Football Federation as well as disciplinary investigations by the CAF. On 17 March 2026, the CAF Appeal Board ruled that, when Senegal left the field and repeatedly refused to return from their dressing room, they had forfeited the game; per the rules for forfeited games, the match was deemed a 3–0 win for Morocco. The following day, the Senegalese Football Federation announced it would appeal the decision to the Court of Arbitration for Sport. On 24 November 2026, CAS ruled in favour of Senegal, reinstating them as the winners of the tournament.",
+   "why": "全文主要敘述2025年非洲國家盃決賽期間發生的爭議事件以及後續的法律判決過程。"
+  }
+ ],
+ "date": "2026-11-26",
+ "generatedBy": {
+  "vocabAndQuiz": "gemini-3.5-flash",
+  "text": "original Wikipedia text, unchanged"
+ }
+}
