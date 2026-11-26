@@ -25,6 +25,7 @@ import re
 import sys
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 from html.parser import HTMLParser
 
@@ -52,17 +53,25 @@ def atomic_write(path, data):
     os.replace(tmp, path)
 
 
-def http_json(url, data=None, headers=None, tries=3):
+def http_json(url, data=None, headers=None, tries=3, timeout=60):
     for i in range(tries):
         try:
             req = urllib.request.Request(url, data=data, headers={"User-Agent": UA, **(headers or {})})
-            with urllib.request.urlopen(req, timeout=60) as r:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
                 return json.loads(r.read().decode("utf-8"))
-        except Exception as e:  # 網路或限流：等一下再試
+        except urllib.error.HTTPError as e:
+            # 400 這類請求本身的錯，重試也沒用，直接丟出去（呼叫端可能要換設定再送）
+            if e.code < 500 and e.code != 429:
+                raise
             if i == tries - 1:
                 raise
             print(f"  重試（{e}）", file=sys.stderr)
-            time.sleep(5 * (i + 1))
+            time.sleep(10 * (i + 1))
+        except Exception as e:  # 逾時、連線中斷：等一下再試
+            if i == tries - 1:
+                raise
+            print(f"  重試（{e}）", file=sys.stderr)
+            time.sleep(10 * (i + 1))
 
 
 def wiki(**params):
@@ -221,16 +230,42 @@ def pick_story(today):
 
 # ---------------------------------------------------------------- AI：生字與題目
 
+def thinking_config(model):
+    """少想一點：生字、出題不需要長考，想太久會逾時，也會吃掉輸出額度"""
+    if "2.5" in model:
+        return {"thinkingBudget": 0 if "flash" in model else 128}
+    return {"thinkingLevel": "low"}
+
+
+NO_THINK_CFG = set()   # 不接受思考設定的模型，記住之後就不再帶
+
+
 def gemini(prompt, key, model):
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{urllib.parse.quote(model)}:generateContent"
-    body = {
-        "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 4096, "responseMimeType": "application/json"},
-    }
-    d = http_json(url, data=json.dumps(body).encode("utf-8"),
-                  headers={"Content-Type": "application/json", "x-goog-api-key": key})
-    parts = d["candidates"][0]["content"]["parts"]
-    return json.loads("".join(p.get("text", "") for p in parts if not p.get("thought")))
+    cfg = {"temperature": 0.2, "maxOutputTokens": 8192, "responseMimeType": "application/json"}
+    if model not in NO_THINK_CFG:
+        cfg["thinkingConfig"] = thinking_config(model)
+    for attempt in range(2):
+        body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}], "generationConfig": cfg}
+        try:
+            # 回覆可能很長（生字＋例句），等久一點
+            d = http_json(url, data=json.dumps(body).encode("utf-8"), timeout=180,
+                          headers={"Content-Type": "application/json", "x-goog-api-key": key})
+        except urllib.error.HTTPError as e:
+            # 這個模型不接受思考設定：拿掉再送一次
+            if e.code == 400 and attempt == 0 and "thinkingConfig" in cfg:
+                print(f"  {model} 不接受思考設定，改用預設", file=sys.stderr)
+                NO_THINK_CFG.add(model)
+                cfg = {k: v for k, v in cfg.items() if k != "thinkingConfig"}
+                continue
+            raise
+        cand = d["candidates"][0]
+        parts = cand.get("content", {}).get("parts", [])
+        text = "".join(p.get("text", "") for p in parts if not p.get("thought"))
+        if not text and cand.get("finishReason") == "MAX_TOKENS":
+            raise RuntimeError("輸出被截斷（MAX_TOKENS）")
+        return json.loads(text)
+    raise RuntimeError("Gemini 沒有回應")
 
 
 def has_word(text, w):
@@ -296,7 +331,16 @@ Options:
 
 
 def make_vocab(text, key, model):
-    raw = gemini(VOCAB_PROMPT.format(text=text), key, model)
+    # 分兩次問（A2+B1、B2+C1）：每次的回覆短一半，比較不會逾時
+    raw = {}
+    for a, b in (("A2", "B1"), ("B2", "C1")):
+        prompt = (VOCAB_PROMPT.format(text=text)
+                  .replace("For EACH CEFR level A2, B1, B2, C1", f"For EACH CEFR level {a} and {b}")
+                  .replace('"B1":[...],"B2":[...],"C1":[...]', f'"{b}":[...]')
+                  .replace('{"A2":', '{"' + a + '":'))
+        part = gemini(prompt, key, model)
+        if isinstance(part, dict):
+            raw.update({lv: part.get(lv, []) for lv in (a, b)})
     out = {}
     for lv in LEVELS:
         seen, items = set(), []
