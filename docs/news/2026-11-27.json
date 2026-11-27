@@ -1,0 +1,228 @@
+{
+ "title": "Jensen Huang",
+ "region": "world",
+ "paragraphs": [
+  "Jen-Hsun \"Jensen\" Huang (born February 17, 1963) is a Taiwanese and American electrical engineer and business executive who is the co-founder, president, and chief executive officer (CEO) of Nvidia, one of the world's most valuable companies. As of November 2026, Forbes estimates his net worth at US$143.4 billion, making him the 13th-wealthiest person in the world.",
+  "Born in Taipei, Huang spent his childhood in Taiwan and Thailand before immigrating to the United States. After earning a master's degree from Stanford University, he launched Nvidia alongside Chris Malachowsky and Curtis Priem from a Denny's restaurant in San Jose, California, in 1993. Huang led the company out of near-bankruptcy during the 1990s and oversaw its expansion from graphics processing unit (GPU) development into high-performance computing and artificial intelligence (AI).",
+  "Under Huang's leadership, Nvidia experienced massive growth during the AI boom, becoming the first company to reach a market capitalization of more than $5 trillion in 2025. He briefly resigned from his positions at Nvidia in 2026 after reports of multiple extramarital affairs, including one with a woman suspected of Chinese espionage, but was reinstated soon after.",
+  "In 2021 and 2024, Time magazine included Huang in its list of the most influential people, and later named him as one of the \"Architects of AI\" for its 2025 Person of the Year. He was also awarded the IEEE Medal of Honor and the National Medal of Science in 2026 for his contributions to machine learning and computational science. Cite error: There are <ref group=lower-alpha> tags or {{efn}} templates on this page, but the references will not show without a {{reflist|group=lower-alpha}} template or {{notelist}} template (see the help page)."
+ ],
+ "words": 274,
+ "source": {
+  "name": "Wikipedia",
+  "title": "Jensen Huang",
+  "revid": 1388053948,
+  "revisedAt": "2026-11-26T12:33:07Z",
+  "url": "https://en.wikipedia.org/w/index.php?title=Jensen_Huang&oldid=1388053948",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+ },
+ "vocab": {
+  "A2": [
+   {
+    "w": "childhood",
+    "lemma": "childhood",
+    "pos": "n.",
+    "zh": "童年",
+    "ex": "She spent her childhood in a small quiet village near the sea.",
+    "exZh": "她在海邊的一個安靜小村莊度過了童年。"
+   },
+   {
+    "w": "growth",
+    "lemma": "growth",
+    "pos": "n.",
+    "zh": "成長；增長",
+    "ex": "The company saw fast growth in sales after launching the new product.",
+    "exZh": "這間公司在推出新產品後銷售量快速成長。"
+   },
+   {
+    "w": "list",
+    "lemma": "list",
+    "pos": "n.",
+    "zh": "名單；清單",
+    "ex": "Please write down all the things you need on this shopping list.",
+    "exZh": "請在這張購物清單上寫下你需要的所有東西。"
+   },
+   {
+    "w": "named",
+    "lemma": "name",
+    "pos": "v.",
+    "zh": "命名；提名",
+    "ex": "They named their new baby girl after her grandmother.",
+    "exZh": "他們以祖母的名字來為他們的新生女嬰命名。"
+   }
+  ],
+  "B1": [
+   {
+    "w": "immigrating",
+    "lemma": "immigrate",
+    "pos": "v.",
+    "zh": "移民",
+    "ex": "Many people dream of immigrating to Canada for a better life.",
+    "exZh": "許多人夢想移民加拿大以獲得更好的生活。"
+   },
+   {
+    "w": "launched",
+    "lemma": "launch",
+    "pos": "v.",
+    "zh": "創立；開辦",
+    "ex": "My uncle launched his own online bookstore two years ago.",
+    "exZh": "我叔叔兩年前創立了自己的網路書店。"
+   },
+   {
+    "w": "expansion",
+    "lemma": "expansion",
+    "pos": "n.",
+    "zh": "擴張；業務擴展",
+    "ex": "The business is planning a major expansion into European countries next year.",
+    "exZh": "這家企業正計劃明年向歐洲國家進行重大擴張。"
+   },
+   {
+    "w": "resigned",
+    "lemma": "resign",
+    "pos": "v.",
+    "zh": "辭職",
+    "ex": "He resigned from his job to spend more time with his family.",
+    "exZh": "他辭去了工作，以便花更多時間陪家人。"
+   },
+   {
+    "w": "influential",
+    "lemma": "influential",
+    "pos": "adj.",
+    "zh": "有影響力的",
+    "ex": "Her boss is a very influential person in the local business world.",
+    "exZh": "她的老闆在當地商界是一位非常有影響力的人物。"
+   }
+  ],
+  "B2": [
+   {
+    "w": "immigrating",
+    "lemma": "immigrate",
+    "pos": "v.",
+    "zh": "移居外國",
+    "ex": "After graduating from college, she considered immigrating to Canada to find a better job.",
+    "exZh": "大學畢業後，她考慮移居加拿大以尋找更好的工作。"
+   },
+   {
+    "w": "launched",
+    "lemma": "launch",
+    "pos": "v.",
+    "zh": "創立；開辦",
+    "ex": "The young team launched a new online store to sell handmade crafts last month.",
+    "exZh": "這個年輕團隊上個月開辦了一間新的線上商店來銷售手工藝品。"
+   },
+   {
+    "w": "expansion",
+    "lemma": "expansion",
+    "pos": "n.",
+    "zh": "擴張；擴展",
+    "ex": "The popular bakery chain announced its expansion into several major cities this year.",
+    "exZh": "這間受歡迎的連鎖烘焙坊宣布今年將擴張至幾個主要城市。"
+   },
+   {
+    "w": "resigned",
+    "lemma": "resign",
+    "pos": "v.",
+    "zh": "辭職",
+    "ex": "He resigned from his position at the bank to spend more time with family.",
+    "exZh": "他辭去了在銀行的職位，以便花更多時間陪伴家人。"
+   },
+   {
+    "w": "influential",
+    "lemma": "influential",
+    "pos": "adj.",
+    "zh": "有影響力的",
+    "ex": "She is one of the most influential writers in modern children's literature today.",
+    "exZh": "她是當今現代兒童文學中最具影響力的作家之一。"
+   }
+  ],
+  "C1": [
+   {
+    "w": "oversaw",
+    "lemma": "oversee",
+    "pos": "v.",
+    "zh": "監督；負責",
+    "ex": "The manager successfully oversaw the entire construction project from start to finish.",
+    "exZh": "經理成功地從頭到尾監督了整個工程項目。"
+   },
+   {
+    "w": "extramarital",
+    "lemma": "extramarital",
+    "pos": "adj.",
+    "zh": "婚外的",
+    "ex": "The politician's career ended suddenly after news of an extramarital affair broke out.",
+    "exZh": "在婚外情消息爆發後，這位政治人物的生涯突然結束了。"
+   },
+   {
+    "w": "espionage",
+    "lemma": "espionage",
+    "pos": "n.",
+    "zh": "間諜活動",
+    "ex": "The former agent was arrested and charged with industrial espionage last night.",
+    "exZh": "這名前特工昨晚被捕並被控犯下商業間諜罪。"
+   },
+   {
+    "w": "reinstated",
+    "lemma": "reinstate",
+    "pos": "v.",
+    "zh": "使復職；恢復",
+    "ex": "The company reinstated the employee after an internal investigation cleared his name.",
+    "exZh": "內部調查還該員工清白後，公司恢復了他的職務。"
+   },
+   {
+    "w": "contributions",
+    "lemma": "contribution",
+    "pos": "n.",
+    "zh": "貢獻",
+    "ex": "The scientist received an international award for her outstanding contributions to medical research.",
+    "exZh": "這名科學家因對醫學研究的傑出貢獻而獲得國際獎項。"
+   }
+  ]
+ },
+ "questions": [
+  {
+   "type": "main",
+   "q": "What is the main topic of the passage?",
+   "options": [
+    "The history of Denny's restaurants in California",
+    "The life, career, and achievements of Jensen Huang",
+    "The development of artificial intelligence in the 1990s",
+    "The financial problems faced by Stanford graduates"
+   ],
+   "answer": 1,
+   "evidence": "Jen-Hsun \"Jensen\" Huang (born February 17, 1963) is a Taiwanese and American electrical engineer and business executive who is the co-founder, president, and chief executive officer (CEO) of Nvidia, one of the world's most valuable companies.",
+   "why": "全文主要介紹 NVIDIA 共同創辦人黃仁勳的個人背景、職涯歷程及其成就。"
+  },
+  {
+   "type": "detail",
+   "q": "Where did Jensen Huang and his partners start Nvidia in 1993?",
+   "options": [
+    "In a Stanford University classroom",
+    "In a diner called Denny's in San Jose",
+    "In an artificial intelligence lab in Taiwan",
+    "In a computing office located in Thailand"
+   ],
+   "answer": 1,
+   "evidence": "After earning a master's degree from Stanford University, he launched Nvidia alongside Chris Malachowsky and Curtis Priem from a Denny's restaurant in San Jose, California, in 1993.",
+   "why": "文章明確提到他與合夥人於 1993 年在加州聖荷西的一家 Denny's 餐廳創立了 NVIDIA。"
+  },
+  {
+   "type": "inference",
+   "q": "What can be inferred about Nvidia's growth under Jensen Huang's leadership?",
+   "options": [
+    "The company failed to transition into the artificial intelligence market.",
+    "The company went completely bankrupt in the 1990s and never recovered.",
+    "The company successfully expanded beyond just making computer graphics cards.",
+    "The company became less valuable after it began developing high-performance computing."
+   ],
+   "answer": 2,
+   "evidence": "Huang led the company out of near-bankruptcy during the 1990s and oversaw its expansion from graphics processing unit (GPU) development into high-performance computing and artificial intelligence (AI).",
+   "why": "文中提到 NVIDIA 從圖形處理器（GPU）開發擴展至高效能運算與人工智慧，可推論其成功超越了單純的顯示卡製作。"
+  }
+ ],
+ "date": "2026-11-27",
+ "generatedBy": {
+  "vocabAndQuiz": "gemini-3.5-flash",
+  "text": "original Wikipedia text, unchanged"
+ }
+}
