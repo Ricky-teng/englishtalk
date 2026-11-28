@@ -1,0 +1,226 @@
+{
+ "title": "Jensen Huang scandal",
+ "region": "world",
+ "paragraphs": [
+  "On October 29, 2026, The New York Times reported that Jensen Huang, the co-founder and CEO of Nvidia, had been the target of a spy plot involving the government of China, citing people briefed on U.S. intelligence surveillance who spoke on condition of anonymity. Huang had an extramarital affair with Alice Huang (no relation), a Chinese national who was an executive of Megaspeed, a Singaporean company. U.S. officials reportedly suspected that she had been recruited by China's Ministry of State Security as a spy. On November 11, The New York Times reported, citing five Nvidia employees, that Jensen Huang had also had an extramarital relationship with Kimberly Powell, an executive who reported to him. That same day, Nvidia's board met to discuss his ouster and accepted his resignation, which the company announced the following day.",
+  "President Donald Trump was briefed on the intelligence in 2025 and in May 2026, and chose not to act. U.S. officials did not warn Jensen Huang through a defensive briefing. On November 12, Attorney General Todd Blanche said the Justice Department had reached no conclusion about whether Alice Huang was a spy, and CNN reported, citing multiple sources, that the intelligence collected on her did not prove she had acted as one. The next day, the Times reported that multiple people who had reviewed the underlying U.S. intelligence stated that they were confident in their information about her interactions with Chinese intelligence and believed she was an \"asset\" rather than a trained intelligence officer, and that the investigations were still ongoing. On November 16, Trump said he did not know whether she was a spy. On November 24, U.S. intelligence officials told congressional staff that there was no evidence the ministry had directed her to begin the affair or to spy on Jensen Huang; According to The Wall Street Journal, China's spy agency approached Alice Huang to provide them with information as required under Chinese law, but there was no indication that she had disclosed significant intelligence."
+ ],
+ "words": 332,
+ "source": {
+  "name": "Wikipedia",
+  "title": "Jensen Huang scandal",
+  "revid": 1388271224,
+  "revisedAt": "2026-11-27T10:33:13Z",
+  "url": "https://en.wikipedia.org/w/index.php?title=Jensen_Huang_scandal&oldid=1388271224",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+ },
+ "vocab": {
+  "A2": [
+   {
+    "w": "relationship",
+    "lemma": "relationship",
+    "pos": "n.",
+    "zh": "戀愛關係；感情",
+    "ex": "They have been in a happy relationship for over three years.",
+    "exZh": "他們已經維持了三年多的幸福戀愛關係。"
+   },
+   {
+    "w": "reported",
+    "lemma": "report",
+    "pos": "v.",
+    "zh": "報導；報告",
+    "ex": "The local newspaper reported a minor traffic accident this morning.",
+    "exZh": "當地報紙今天早上報導了一起輕微的交通意外。"
+   },
+   {
+    "w": "accepted",
+    "lemma": "accept",
+    "pos": "v.",
+    "zh": "接受；收下",
+    "ex": "She happily accepted the birthday gift from her best friend.",
+    "exZh": "她高興地接受了她最好的朋友送的生日禮物。"
+   },
+   {
+    "w": "chose",
+    "lemma": "choose",
+    "pos": "v.",
+    "zh": "選擇",
+    "ex": "He chose the red shirt instead of the blue one.",
+    "exZh": "他選擇了紅色襯衫而不是藍色那件。"
+   }
+  ],
+  "B1": [
+   {
+    "w": "anonymity",
+    "lemma": "anonymity",
+    "pos": "n.",
+    "zh": "匿名",
+    "ex": "The donor asked for anonymity when giving money to the hospital.",
+    "exZh": "捐款人在向醫院捐款時要求匿名。"
+   },
+   {
+    "w": "extramarital",
+    "lemma": "extramarital",
+    "pos": "adj.",
+    "zh": "婚外的",
+    "ex": "Having an extramarital affair can ruin a marriage completely.",
+    "exZh": "發生婚外情可能會徹底毀掉婚姻。"
+   },
+   {
+    "w": "resignation",
+    "lemma": "resignation",
+    "pos": "n.",
+    "zh": "辭職；辭呈",
+    "ex": "The manager handed in his resignation after finding a new job.",
+    "exZh": "該經理在找到新工作後遞交了辭呈。"
+   },
+   {
+    "w": "underlying",
+    "lemma": "underlying",
+    "pos": "adj.",
+    "zh": "潛在的；根本的",
+    "ex": "Doctors are trying to find the underlying cause of her illness.",
+    "exZh": "醫生們正在努力找出她疾病的根本原因。"
+   },
+   {
+    "w": "disclosed",
+    "lemma": "disclose",
+    "pos": "v.",
+    "zh": "透露；公開",
+    "ex": "The company disclosed its new plan to the public yesterday.",
+    "exZh": "該公司昨天向公眾透露了其新計畫。"
+   }
+  ],
+  "B2": [
+   {
+    "w": "target",
+    "lemma": "target",
+    "pos": "n.",
+    "zh": "目標；對象",
+    "ex": "The popular restaurant became a target for angry complaints after raising its prices.",
+    "exZh": "這間熱門餐廳在調漲價格後，成了民眾憤怒抱怨的對象。"
+   },
+   {
+    "w": "anonymity",
+    "lemma": "anonymity",
+    "pos": "n.",
+    "zh": "匿名",
+    "ex": "The donor asked for complete anonymity when giving money to the local charity.",
+    "exZh": "該捐款者在捐錢給當地慈善機構時要求完全匿名。"
+   },
+   {
+    "w": "recruited",
+    "lemma": "recruit",
+    "pos": "v.",
+    "zh": "招募；吸收",
+    "ex": "The tech company recruited several promising engineers right after they graduated from college.",
+    "exZh": "這間科技公司在大專院校學生畢業後，立刻招募了幾位很有潛力的工程師。"
+   },
+   {
+    "w": "resignation",
+    "lemma": "resignation",
+    "pos": "n.",
+    "zh": "辭職；辭呈",
+    "ex": "The manager submitted her resignation to pursue a new career in photography.",
+    "exZh": "該經理提出了辭呈，以追求她在攝影領域的新事業。"
+   },
+   {
+    "w": "ongoing",
+    "lemma": "ongoing",
+    "pos": "adj.",
+    "zh": "進行中的",
+    "ex": "Police said the investigation into the store robbery is still ongoing right now.",
+    "exZh": "警方表示對該商店搶案的調查目前仍在進行中。"
+   }
+  ],
+  "C1": [
+   {
+    "w": "extramarital",
+    "lemma": "extramarital",
+    "pos": "adj.",
+    "zh": "婚外的",
+    "ex": "Having an extramarital relationship completely destroyed the trust in their ten-year marriage.",
+    "exZh": "擁有婚外情完全摧毀了他們十年婚姻中的信任。"
+   },
+   {
+    "w": "ouster",
+    "lemma": "ouster",
+    "pos": "n.",
+    "zh": "罷免；逼退",
+    "ex": "After the financial scandal, the board members voted for the chief executive's immediate ouster.",
+    "exZh": "財務醜聞發生後，董事會成員投票決定立即罷免執行長。"
+   },
+   {
+    "w": "briefed",
+    "lemma": "brief",
+    "pos": "v.",
+    "zh": "簡報；向…說明",
+    "ex": "The assistant briefed the mayor on the emergency situation before the press conference.",
+    "exZh": "助理在記者會前向市長簡報了緊急狀況。"
+   },
+   {
+    "w": "underlying",
+    "lemma": "underlying",
+    "pos": "adj.",
+    "zh": "潛在的；根本的",
+    "ex": "The doctor tried to identify the underlying cause of his chronic headache symptoms.",
+    "exZh": "醫生試圖找出他慢性頭痛症狀的根本原因。"
+   },
+   {
+    "w": "asset",
+    "lemma": "asset",
+    "pos": "n.",
+    "zh": "情報人員；線人",
+    "ex": "The agency lost contact with its key asset working deep inside the country.",
+    "exZh": "該機構與在該國深處工作的關鍵線人失去了聯繫。"
+   }
+  ]
+ },
+ "questions": [
+  {
+   "type": "main",
+   "q": "What is the main topic of the text?",
+   "options": [
+    "The resignation of Nvidia's CEO following reports of affair allegations and spy investigations",
+    "The official trade agreements reached between the U.S. government and Nvidia executives",
+    "A confirmed plot by Chinese intelligence to take over Nvidia's daily operations",
+    "A conflict between President Donald Trump and the U.S. Justice Department over law enforcement"
+   ],
+   "answer": 0,
+   "evidence": "On October 29, 2026, The New York Times reported that Jensen Huang, the co-founder and CEO of Nvidia, had been the target of a spy plot involving the government of China, citing people briefed on U.S. intelligence surveillance who spoke on condition of anonymity.",
+   "why": "文章主要報導輝達執行長黃仁勳因涉及婚外情及潛在的中國間諜調查爭議，最終導致其辭職的事件。"
+  },
+  {
+   "type": "detail",
+   "q": "Why did Nvidia's board accept Jensen Huang's resignation?",
+   "options": [
+    "He disclosed top-secret company intelligence to Alice Huang",
+    "He had an extramarital relationship with an executive who reported to him",
+    "The Justice Department officially charged him with espionage",
+    "President Donald Trump personally instructed the company board to remove him"
+   ],
+   "answer": 1,
+   "evidence": "On November 11, The New York Times reported, citing five Nvidia employees, that Jensen Huang had also had an extramarital relationship with Kimberly Powell, an executive who reported to him. That same day, Nvidia's board met to discuss his ouster and accepted his resignation, which the company announced the following day.",
+   "why": "根據文本，董事會在報導指出黃仁勳與其下屬主管金柏莉·鮑威爾有婚外情後開會討論並接受了他的辭職。"
+  },
+  {
+   "type": "inference",
+   "q": "What can be inferred about Alice Huang based on the final reports mentioned in the text?",
+   "options": [
+    "She was a fully trained Chinese military spy before meeting Jensen Huang",
+    "She was forced to leave Singapore immediately after the affair began",
+    "There is no proof that she actively shared important secret information",
+    "She successfully brought down Nvidia's operations under China's orders"
+   ],
+   "answer": 2,
+   "evidence": "According to The Wall Street Journal, China's spy agency approached Alice Huang to provide them with information as required under Chinese law, but there was no indication that she had disclosed significant intelligence.",
+   "why": "文中最後提到「沒有跡象顯示她洩露了重要情報」，可推論目前沒有明確證據證明她主動傳遞了重大機密。"
+  }
+ ],
+ "date": "2026-11-28",
+ "generatedBy": {
+  "vocabAndQuiz": "gemini-3.5-flash",
+  "text": "original Wikipedia text, unchanged"
+ }
+}
